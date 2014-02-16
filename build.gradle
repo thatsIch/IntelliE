@@ -40,12 +40,11 @@ dependencies {
     runtime 'com.google.inject:guice:4.0-beta'
 }
 
-version = "1.0"
 group = "de.thatsich.intellie"
 archivesBaseName = "IntelliE"
 
 minecraft {
-    version = "1.7.2-10.12.0.1028"
+    version = "1.7.2-10.12.0.1029"
     assetDir = "eclipse/assets"
 }
 
@@ -73,3 +72,61 @@ processResources {
     }
 }
 
+// IronChest uses git tagging to mark major versions. This sets up the project version to that version data
+def versionInfo = getGitVersion()
+version = "${versionInfo['IntelliE.version']}"
+
+// this sets our output jar to have a 'tag' of 'universal' on it
+// It also adds the minecraft version in a custom version name
+// The result is files named <projectname>-<mcversion>-<version>-universal.jar
+jar {
+    classifier = 'universal'
+    version = "${project.minecraft.version}-${project.version}"
+}
+
+// This is a special task for pulling the version information from git and the environment (for BUILD_NUMBER)
+def getGitVersion()
+{
+    def out = [:]
+
+    // call git command.
+    def outStream = new ByteArrayOutputStream()
+    def result = exec {
+        executable = 'git'
+        args = [ 'describe', '--long', "--match=[^(jenkins)]*"]
+        standardOutput = outStream
+    }
+
+    def fullVersion = outStream.toString().trim()
+    def matcher = fullVersion =~ /(\d+).(\d+)-(\d+)-(.*)/
+
+    def maj = matcher[0][1]
+    def min = matcher[0][2]
+    def rev = matcher[0][3]
+    def bn = getGitCommitCount()
+
+    out['IntelliE.build.major.number'] = maj.toString()
+    out['IntelliE.build.minor.number'] = min.toString()
+    out['IntelliE.build.revision.number'] = rev.toString()
+    out['IntelliE.build.githash'] = matcher[0][4].toString()
+    out['IntelliE.build.number' ] = bn.toString()
+    out['IntelliE.version' ] = "${maj}.${min}.${rev}.${bn}".toString()
+
+    return out
+}
+
+def getGitCommitCount() {
+
+    // call git command.
+    def outStream = new ByteArrayOutputStream()
+    def result = exec {
+        executable = 'git'
+        args = [ 'rev-list', 'HEAD', "--count"]
+        standardOutput = outStream
+    }
+
+    def fullVersion = outStream.toString().trim()
+    def matcher = fullVersion =~ /(\d+)/
+
+    return matcher[0][1]
+}
