@@ -1,0 +1,16 @@
+[
+{
+  "modid": "intellie",
+  "name": "IntelliE",
+  "description": "Addon to Applied Energistics (AE). Adds smart things to AE.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/thatsIch/IntelliE",
+  "updateUrl": "",
+  "authors": ["thatsIch"],
+  "credits": "IntelliJ for the IDE, ForgeDevs for Forge and AlgorithmX2 for AE",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": ["AppliedEnergistics"]
+}
+]

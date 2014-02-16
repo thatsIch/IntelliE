@@ -1,0 +1,67 @@
+apply plugin: 'java'
+apply plugin: 'forge'
+apply plugin: 'maven'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+        maven {
+            name = "shadow-repo"
+            url = "http://dl.bintray.com/content/johnrengelman/gradle-plugins/"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.1-SNAPSHOT'
+        classpath 'com.github.jengelman.gradle.plugins:shadow:0.8'
+        classpath 'com.google.inject:guice:4.0-beta'
+    }
+}
+
+apply plugin: 'shadow'
+
+shadow {
+    artifactSet {
+        include 'com.google.inject'
+        include 'javax.inject'
+    }
+}
+
+dependencies {
+    compile 'com.google.inject:guice:4.0-beta'
+    runtime 'com.google.inject:guice:4.0-beta'
+}
+
+version = "1.0"
+group = "de.thatsich.appint"
+archivesBaseName = "IntelliE"
+
+minecraft {
+    version = "1.7.2-10.12.0.1024"
+    assetDir = "eclipse/assets"
+}
+
+processResources
+{
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+                
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
