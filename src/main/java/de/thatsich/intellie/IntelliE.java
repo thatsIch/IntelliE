@@ -1,5 +1,6 @@
-package de.thatsich.appint;
+package de.thatsich.intellie;
 
+import appeng.api.AEApi;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import cpw.mods.fml.common.Mod;
@@ -18,6 +19,7 @@ public class IntelliE
 	{
 		Injector injector = Guice.createInjector();
 		System.out.println( injector );
+		System.out.println( AEApi.class );
 
 		// some example code
 		System.out.println("DIRT BLOCK >> "+ Blocks.dirt.getLocalizedName());
