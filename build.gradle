@@ -1,3 +1,17 @@
+apply plugin: 'java'
+apply plugin: 'forge'
+apply plugin: 'maven'
+apply plugin: 'shadow'
+
+group = "de.thatsich.intellie" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "IntelliE"
+version = readVersion()
+
+minecraft {
+    version = "1.7.2-10.12.0.1029"
+    assetDir = "../Forge/eclipse/assets"
+}
+
 buildscript {
     repositories {
         mavenCentral()
@@ -22,30 +36,22 @@ buildscript {
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'forge'
-apply plugin: 'maven'
-
-apply plugin: 'shadow'
-
 shadow {
     artifactSet {
         include 'com.google.inject'
         include 'javax.inject'
     }
+
+    // this sets our output jar to have a 'tag' of 'universal' on it
+    // It also adds the minecraft version in a custom version name
+    // The result is files named <projectname>-<mcversion>-<version>-universal.jar
+    baseName = "${archivesBaseName}-${project.minecraft.version}"
+    classifier = "universal"
 }
 
 dependencies {
     compile 'com.google.inject:guice:4.0-beta'
     runtime 'com.google.inject:guice:4.0-beta'
-}
-
-group = "de.thatsich.intellie"
-archivesBaseName = "IntelliE"
-
-minecraft {
-    version = "1.7.2-10.12.0.1029"
-    assetDir = "eclipse/assets"
 }
 
 sourceSets {
@@ -72,61 +78,135 @@ processResources {
     }
 }
 
-// IronChest uses git tagging to mark major versions. This sets up the project version to that version data
-def versionInfo = getGitVersion()
-version = "${versionInfo['IntelliE.version']}"
+// This is a special task for pulling the version information from git
+ProjectVersion readVersion() {
 
-// this sets our output jar to have a 'tag' of 'universal' on it
-// It also adds the minecraft version in a custom version name
-// The result is files named <projectname>-<mcversion>-<version>-universal.jar
-jar {
-    classifier = 'universal'
+    // call git command.
+    def outStream = new ByteArrayOutputStream()
+    try {
+        exec {
+            executable = 'git'
+            args = [ 'describe', '--tags', "HEAD"]
+            standardOutput = outStream
+        }
+
+        def fullVersion = outStream.toString().trim()
+        def matcher = fullVersion =~ /(\d+).(\d+).(\d+).(\d+)/
+
+        Integer maj = matcher[0][1].toInteger()
+        Integer min = matcher[0][2].toInteger()
+        Integer rev = matcher[0][3].toInteger()
+        Integer cmt = getGitCommitCount()
+
+        ProjectVersion projectVersion = new ProjectVersion(maj, min, rev, cmt)
+        logger.quiet "Current version from Git: $projectVersion"
+
+        return projectVersion
+    }
+    catch (e) {
+        println "Can't get project version: $e"
+        return new ProjectVersion(0, 0, 0, 0)
+    }
+}
+
+Integer getGitCommitCount() {
+
+    // call git command.
+    def outStream = new ByteArrayOutputStream()
+    try {
+        exec {
+            executable = 'git'
+            args = [ 'rev-list', 'HEAD', "--count"]
+            standardOutput = outStream
+        }
+
+        def fullVersion = outStream.toString().trim()
+        def matcher = fullVersion =~ /(\d+)/
+
+        return matcher[0][1].toInteger()
+    }
+    catch (e) {
+        println "Can't get commit count: $e"
+        return 0
+    }
+}
+
+task incMajor(group: 'versioning', description: 'Increments project major version.') << {
+    String currentVersion = version.toString()
+    ++version.major
+    version.minor = 0
+    version.revision = 0
+    String newVersion = version.toString()
+    String message = "Incrementing major project version: $currentVersion -> $newVersion"
+    logger.quiet message
+
+    exec {
+        executable = 'git'
+        args = [ 'tag', '-a', "v$newVersion", "-m", message]
+    }
+}
+
+task incMinor(group: 'versioning', description: 'Increments project minor version.') << {
+    String currentVersion = version.toString()
+    ++version.minor
+    version.revision = 0
+    String newVersion = version.toString()
+    String message = "Incrementing minor project version: $currentVersion -> $newVersion"
+    logger.quiet message
+
+    exec {
+        executable = 'git'
+        args = [ 'tag', '-a', "v$newVersion", "-m", message]
+    }
+}
+
+task incRev(group: 'versioning', description: 'Increments project reversion.') << {
+    String currentVersion = version.toString()
+    ++version.revision
+    String newVersion = version.toString()
+    String message = "Incrementing minor project version: $currentVersion -> $newVersion"
+    logger.quiet message
+
+    exec {
+        executable = 'git'
+        args = [ 'tag', '-a', "v$newVersion", "-m", message]
+    }
+}
+
+class ProjectVersion {
+    Integer major
+    Integer minor
+    Integer revision
+    Integer commit
+
+    ProjectVersion(Integer major, Integer minor, Integer revision, Integer commit) {
+        this.major = major
+        this.minor = minor
+        this.revision = revision
+        this.commit = commit
+    }
+
+    @Override
+    String toString() {
+        "$major.$minor.$revision.$commit"
+    }
+}
+
+// Add in an mcp named jar, for those who wish to run in a development environment
+task deobfJar(type: Jar, description: 'Outputs a deobfuscated version for developers.') {
+    from sourceSets.main.output
+    classifier = 'deobf'
     version = "${project.minecraft.version}-${project.version}"
 }
 
-// This is a special task for pulling the version information from git and the environment (for BUILD_NUMBER)
-def getGitVersion()
-{
-    def out = [:]
-
-    // call git command.
-    def outStream = new ByteArrayOutputStream()
-    def result = exec {
-        executable = 'git'
-        args = [ 'describe', '--long', "--match=[^(jenkins)]*"]
-        standardOutput = outStream
-    }
-
-    def fullVersion = outStream.toString().trim()
-    def matcher = fullVersion =~ /(\d+).(\d+)-(\d+)-(.*)/
-
-    def maj = matcher[0][1]
-    def min = matcher[0][2]
-    def rev = matcher[0][3]
-    def bn = getGitCommitCount()
-
-    out['IntelliE.build.major.number'] = maj.toString()
-    out['IntelliE.build.minor.number'] = min.toString()
-    out['IntelliE.build.revision.number'] = rev.toString()
-    out['IntelliE.build.githash'] = matcher[0][4].toString()
-    out['IntelliE.build.number' ] = bn.toString()
-    out['IntelliE.version' ] = "${maj}.${min}.${rev}.${bn}".toString()
-
-    return out
+// Add in a source jar for people, should they desire to download such a thing
+task sourceJar(type: Jar, description: 'Outputs a source version.') {
+    from sourceSets.main.allSource
+    classifier = 'src'
+    version = "${project.minecraft.version}-${project.version}"
 }
 
-def getGitCommitCount() {
-
-    // call git command.
-    def outStream = new ByteArrayOutputStream()
-    def result = exec {
-        executable = 'git'
-        args = [ 'rev-list', 'HEAD', "--count"]
-        standardOutput = outStream
-    }
-
-    def fullVersion = outStream.toString().trim()
-    def matcher = fullVersion =~ /(\d+)/
-
-    return matcher[0][1]
+// Tell the artifact system about our extra jars
+artifacts {
+    archives sourceJar, deobfJar
 }
