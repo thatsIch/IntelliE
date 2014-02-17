@@ -8,7 +8,7 @@
   "url": "https://github.com/thatsIch/IntelliE",
   "updateUrl": "",
   "authors": ["thatsIch"],
-  "credits": "IntelliJ for the IDE, ForgeDevs for Forge and AlgorithmX2 for AE",
+  "credits": "JetBrains for the IDE, ForgeDevs for Forge, AlgorithmX2 for AE and #AE for this",
   "logoFile": "",
   "screenshots": [],
   "dependencies": ["AppliedEnergistics"]
