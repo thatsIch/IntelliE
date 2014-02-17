@@ -63,21 +63,6 @@ sourceSets {
     }
 }
 
-processResources {
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-
-        // replace version and mcversion
-        expand 'version': "${project.version}", 'mcversion': project.minecraft.version
-    }
-
-    // copy everything else, thats not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
-}
-
 // This is a special task for pulling the version information from git
 ProjectVersion readVersion() {
 
@@ -209,4 +194,19 @@ task sourceJar(type: Jar, description: 'Outputs a source version.') {
 // Tell the artifact system about our extra jars
 artifacts {
     archives sourceJar, deobfJar
+}
+
+processResources {
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+
+        // replace version and mcversion
+        expand 'version': project.version.text, 'mcversion': project.minecraft.version
+    }
+
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
 }
