@@ -1,8 +1,14 @@
 package de.thatsich.common.module.block;
 
-import net.minecraft.client.renderer.texture.IIconRegister;
+import lombok.Getter;
 
 public abstract class ABlockTexture
 {
-	public abstract void registerIcons( IIconRegister register );
+	@Getter
+	private final String texture;
+
+	protected ABlockTexture ( String texture )
+	{
+		this.texture = texture;
+	}
 }

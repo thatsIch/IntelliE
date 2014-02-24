@@ -1,17 +1,22 @@
 package de.thatsich.common.module.tileentity;
 
+import lombok.Getter;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.config.Configuration;
 
 public abstract class ATileEntity extends TileEntity
 {
-	@Override
-	protected ATileEntity clone() throws CloneNotSupportedException
+	@Getter private final String category;
+	@Getter private final String key;
+	@Getter private final String tileEntityID;
+
+	protected ATileEntity ( String category, String key, String tileEntityID )
 	{
-		return ( ATileEntity ) super.clone();
+		super();
+		this.category = category;
+		this.key = key;
+		this.tileEntityID = tileEntityID;
 	}
 
-	public String getKey()
-	{
-		return null;
-	}
+	public abstract void register ( final Configuration config );
 }

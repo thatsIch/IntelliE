@@ -1,7 +1,6 @@
 package de.thatsich.intellie.functionality.router.module.block;
 
 import com.google.inject.Singleton;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import de.thatsich.common.module.block.ABlockTexture;
@@ -11,7 +10,12 @@ import de.thatsich.common.module.block.ABlockTexture;
 @SideOnly( Side.CLIENT )
 public class BlockTextureRouter extends ABlockTexture
 {
-//	private Icon	topIcon;
+	protected BlockTextureRouter ( final String texture )
+	{
+		super( texture );
+	}
+
+	//	private Icon	topIcon;
 //	private Icon	sideIcon;
 //	private Icon	botIcon;
 //

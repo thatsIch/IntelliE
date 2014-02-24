@@ -1,16 +1,15 @@
 package de.thatsich.common;
 
-import com.google.inject.AbstractModule;
-import com.google.inject.Guice;
-import com.google.inject.Inject;
-import com.google.inject.Injector;
-import com.google.inject.Module;
+import com.google.inject.*;
 import com.google.inject.binder.AnnotatedBindingBuilder;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import de.thatsich.common.handler.HandlerConfig;
+import de.thatsich.common.handler.RegistryConfig;
 import de.thatsich.common.handler.RegistryBlock;
+import de.thatsich.common.handler.RegistryItem;
+import de.thatsich.common.handler.RegistryTileEntity;
+import net.minecraftforge.common.MinecraftForge;
 
 import java.io.File;
 import java.lang.reflect.AnnotatedElement;
@@ -20,10 +19,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public abstract class AGuiceMod implements IGuiceMod
+public abstract class AGuiceMod
 {
-	private final HandlerConfig configs;
+	private final RegistryConfig configs;
 	private final RegistryBlock blocks;
+	private final RegistryItem items;
+	private final RegistryTileEntity tileEntites;
 
 	/**
 	 * To make sure that the initialization of Guice-based JavaFX application
@@ -60,28 +61,13 @@ public abstract class AGuiceMod implements IGuiceMod
 		// Injects all fields annotated with @Inject into this GuiceApplication instance.
 		injector.injectMembers( this );
 
-		this.configs = tempInjector.getInstance( HandlerConfig.class );
+		this.configs = tempInjector.getInstance( RegistryConfig.class );
 		this.blocks = tempInjector.getInstance( RegistryBlock.class );
-
-//		final HandlerItem items = tempInjector.getInstance( HandlerItem.class );
-//		final RegistryEntity entities = tempInjector.getInstance( RegistryEntity.class );
-//		final RegistryTileEntity tileEntities = tempInjector.getInstance( RegistryTileEntity.class );
-//		final HandlerGui gui = tempInjector.getInstance( HandlerGui.class );
+		this.items = tempInjector.getInstance( RegistryItem.class );
+		this.tileEntites = tempInjector.getInstance( RegistryTileEntity.class );
+		//		final RegistryEntity entities = tempInjector.getInstance( RegistryEntity.class );
+		//		final HandlerGui gui = tempInjector.getInstance( HandlerGui.class );
 	}
-
-	/**
-	 * This method is used to fetch and/or create (Guice) modules necessary
-	 * to fully construct this application.
-	 * <p>
-	 * The modules that are initialized in this method and added to the passed
-	 * List will be used to create the {@link com.google.inject.Injector} instance that is used in
-	 * the context of this application.
-	 * </p>
-	 *
-	 * @return A list of modules (initially empty) that shall be used to
-	 * create the injector to be used in the context of this application.
-	 */
-	public abstract List<Class<? extends AMinecraftModule>> initModules ();
 
 	/**
 	 * Checks the GuiceApplication instance and makes sure that none of the
@@ -121,6 +107,20 @@ public abstract class AGuiceMod implements IGuiceMod
 	}
 
 	/**
+	 * This method is used to fetch and/or create (Guice) modules necessary
+	 * to fully construct this application.
+	 * <p>
+	 * The modules that are initialized in this method and added to the passed
+	 * List will be used to create the {@link com.google.inject.Injector} instance that is used in
+	 * the context of this application.
+	 * </p>
+	 *
+	 * @return A list of modules (initially empty) that shall be used to
+	 * create the injector to be used in the context of this application.
+	 */
+	public abstract List<Class<? extends AMinecraftModule>> initModules ();
+
+	/**
 	 * Run before anything else. Read your config, create blocks, items, etc,
 	 * and register them with the GameRegistry.
 	 *
@@ -132,6 +132,7 @@ public abstract class AGuiceMod implements IGuiceMod
 
 		this.configs.load( suggConfigFile );
 		this.blocks.registerBlocks();
+		this.items.registerItems();
 		// super.getEntities().register();
 		// proxy.initSounds();
 		// proxy.initRenders();
@@ -145,11 +146,14 @@ public abstract class AGuiceMod implements IGuiceMod
 	 */
 	protected void init ( FMLInitializationEvent event )
 	{
+		this.tileEntites.registerTileEntities();
 		// super.getItems().addNames();
 		// super.getBlocks().registerNames();
 		// super.getItems().registerRecipes();
 		// super.getTileEntities().init();
 		// super.getGui().init( this );
+
+		MinecraftForge.EVENT_BUS.register( this );
 	}
 
 	/**

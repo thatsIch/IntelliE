@@ -7,6 +7,7 @@ import de.thatsich.common.module.block.ABlock;
 import de.thatsich.common.module.block.AContainerBlock;
 import de.thatsich.common.module.item.AItemBlock;
 import de.thatsich.intellie.common.util.IELog;
+import net.minecraftforge.common.config.Configuration;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -109,5 +110,10 @@ public class RegistryBlock
 				GameRegistry.registerBlock( block, unlocalizedName );
 			}
 		}
+	}
+
+	public void loadConfig ( final Configuration config )
+	{
+
 	}
 }
