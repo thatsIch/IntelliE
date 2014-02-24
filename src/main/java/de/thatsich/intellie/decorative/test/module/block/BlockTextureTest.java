@@ -4,13 +4,24 @@ import com.google.inject.Singleton;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import de.thatsich.common.module.block.ABlockTexture;
+import net.minecraft.client.renderer.texture.IIconRegister;
 
 
 @Singleton
 @SideOnly( Side.CLIENT )
 public class BlockTextureTest extends ABlockTexture
 {
-//	private Icon	topIcon;
+	@Override
+	public void registerIcons ( final IIconRegister register )
+	{
+		final String namespace = "intellie:";
+		final String test = namespace + "test";
+
+		register.registerIcon( test );
+	}
+
+
+	//	private Icon	topIcon;
 //	private Icon	sideIcon;
 //	private Icon	botIcon;
 //

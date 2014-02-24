@@ -1,26 +1,40 @@
 package de.thatsich.common.handler;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.google.inject.Inject;
 import cpw.mods.fml.common.registry.GameRegistry;
 import de.thatsich.common.module.tileentity.ATileEntity;
+import de.thatsich.intellie.common.util.IELog;
+
+import java.util.Collection;
+import java.util.LinkedList;
 
 
 public class RegistryEntity
 {
-	private final List<ATileEntity>	tileEntites	= new ArrayList<>();
+	private final Collection<ATileEntity> tileEntites;
+	private final IELog log;
 
-	public void addTileEntity( ATileEntity tileEntity )
+	@Inject
+	public RegistryEntity ( IELog log)
 	{
-		this.tileEntites.add( tileEntity );
+		this.tileEntites = new LinkedList<>();
+		this.log = log;
 	}
 
-	public void register()
+	public void addTileEntity ( ATileEntity tileEntity )
+	{
+		this.tileEntites.add( tileEntity );
+		this.log.info( "Added TileEntitiy %s", tileEntity );
+	}
+
+	public void register ()
 	{
 		for ( ATileEntity tileEntity : this.tileEntites )
 		{
-			GameRegistry.registerTileEntity( tileEntity.getClass(), tileEntity.getKey() );
+			final Class<? extends ATileEntity> tileEntityClass = tileEntity.getClass();
+			final String tileEntityKey = tileEntity.getKey();
+
+			GameRegistry.registerTileEntity( tileEntityClass, tileEntityKey );
 		}
 	}
 }
