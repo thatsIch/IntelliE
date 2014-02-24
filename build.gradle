@@ -4,12 +4,12 @@ apply plugin: 'maven'
 apply plugin: 'shadow'
 
 group = "de.thatsich.intellie" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "IntelliE"
+archivesBaseName = "IntelligentEnergistics"
 version = readVersion()
 
 minecraft {
     version = "1.7.2-10.12.0.1029"
-    assetDir = "../Forge/eclipse/assets"
+    assetDir = '../Forge/eclipse/assets'
 }
 
 buildscript {
@@ -18,21 +18,22 @@ buildscript {
         jcenter()
         maven {
             name = "forge"
-            url = "http://files.minecraftforge.net/maven"
+            url = 'http://files.minecraftforge.net/maven'
         }
         maven {
             name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+            url = 'https://oss.sonatype.org/content/repositories/snapshots/'
         }
         maven {
             name = "shadow-repo"
-            url = "http://dl.bintray.com/content/johnrengelman/gradle-plugins/"
+            url = 'http://dl.bintray.com/content/johnrengelman/gradle-plugins/'
         }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.1-SNAPSHOT'
         classpath 'com.github.jengelman.gradle.plugins:shadow:0.8'
         classpath 'com.google.inject:guice:4.0-beta'
+	    classpath 'org.projectlombok:lombok:1.12.4'
     }
 }
 
@@ -50,8 +51,8 @@ shadow {
 }
 
 dependencies {
-    compile 'com.google.inject:guice:4.0-beta'
     runtime 'com.google.inject:guice:4.0-beta'
+	compile 'org.projectlombok:lombok:1.12.4'
 }
 
 sourceSets {
@@ -63,11 +64,28 @@ sourceSets {
     }
 }
 
+processResources {
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+
+        // replace version and mcversion
+        expand 'version': project.version.toString(), 'mcversion': project.minecraft.version
+    }
+
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
 // This is a special task for pulling the version information from git
-ProjectVersion readVersion() {
+private ProjectVersion readVersion() {
 
     // call git command.
     def outStream = new ByteArrayOutputStream()
+	def projectVersion = new ProjectVersion(0, 0, 0, 0)
+
     try {
         exec {
             executable = 'git'
@@ -78,23 +96,22 @@ ProjectVersion readVersion() {
         def fullVersion = outStream.toString().trim()
         def matcher = fullVersion =~ /(\d+).(\d+).(\d+).(\d+)/
 
-        Integer maj = matcher[0][1].toInteger()
-        Integer min = matcher[0][2].toInteger()
-        Integer rev = matcher[0][3].toInteger()
-        Integer cmt = getGitCommitCount()
+        Integer major = matcher[0][1].toInteger()
+        Integer minor = matcher[0][2].toInteger()
+        Integer revision = matcher[0][3].toInteger()
+        Integer commit = gitCommitCount
 
-        ProjectVersion projectVersion = new ProjectVersion(maj, min, rev, cmt)
+        projectVersion = new ProjectVersion(major, minor, revision, commit)
         logger.quiet "Current version from Git: $projectVersion"
-
-        return projectVersion
     }
     catch (e) {
         println "Can't get project version: $e"
-        return new ProjectVersion(0, 0, 0, 0)
     }
+
+	return projectVersion
 }
 
-Integer getGitCommitCount() {
+private Integer getGitCommitCount() {
 
     // call git command.
     def outStream = new ByteArrayOutputStream()
@@ -110,8 +127,8 @@ Integer getGitCommitCount() {
 
         return matcher[0][1].toInteger()
     }
-    catch (e) {
-        println "Can't get commit count: $e"
+    catch (exception) {
+        println "Can't get commit count: $exception"
         return 0
     }
 }
@@ -196,17 +213,3 @@ artifacts {
     archives sourceJar, deobfJar
 }
 
-processResources {
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-
-        // replace version and mcversion
-        expand 'version': project.version.text, 'mcversion': project.minecraft.version
-    }
-
-    // copy everything else, thats not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
-}

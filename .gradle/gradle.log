@@ -1,0 +1,44 @@
+Current version from Git: 2.0.0.12Current version from Git: 2.0.0.12
+
+****************************
+ Powered By MCP:            
+ http://mcp.ocean-labs.de/  
+ Searge, ProfMobius, Fesh0r,
+ R4wk, ZeuX, IngisKahn      
+ MCP Data version : unknown
+****************************
+:clean
+:compileApiJavawarning: [options] bootstrap class path not set in conjunction with -source 1.6
+Note: H:\Minecraft Modding\1.7.2\IntelliE\src\api\java\appeng\api\storage\MEMonitorHandler.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: H:\Minecraft Modding\1.7.2\IntelliE\src\api\java\appeng\api\storage\MEMonitorHandler.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+1 warning
+
+:processApiResources UP-TO-DATE
+:apiClasses
+:sourceMainJava
+:compileJavawarning: [options] bootstrap class path not set in conjunction with -source 1.6
+1 warning
+
+:processResources
+:classes
+:deobfJar
+:jar
+:extractUserDev
+:genSrgs
+:reobf
+:sourceJar
+:assemble
+:compileTestJava UP-TO-DATE
+:processTestResources UP-TO-DATE
+:testClasses UP-TO-DATE
+:test UP-TO-DATE
+:check UP-TO-DATE
+:build
+:copySignedLibs UP-TO-DATE
+:shadowJar
+
+BUILD SUCCESSFUL
+
+Total time: 31.741 secs
