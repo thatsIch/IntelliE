@@ -21,8 +21,6 @@ public abstract class ABlock extends Block
 		this.setBlockName( name );
 		this.setHardness( hardness );
 		this.setBlockTextureName( texture );
-		//		this.setBlockBounds(  );
-
 		this.setCreativeTab( creativeTab );
 	}
 }

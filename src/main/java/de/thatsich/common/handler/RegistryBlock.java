@@ -23,7 +23,6 @@ public class RegistryBlock
 {
 	private final Collection<ABlock> blocks;
 	private final Collection<AContainerBlock> containerBlocks;
-
 	private final IELog log;
 
 	/**
@@ -48,6 +47,7 @@ public class RegistryBlock
 	public void addBlock ( final ABlock block )
 	{
 		this.blocks.add( block );
+		this.log.info( "Added Block %s", block );
 	}
 
 	/**
@@ -59,6 +59,7 @@ public class RegistryBlock
 	public void addBlock ( final AContainerBlock containerBlock )
 	{
 		this.containerBlocks.add( containerBlock );
+		this.log.info( "Added BlockContainer %s", containerBlock );
 	}
 
 	/**
@@ -66,25 +67,9 @@ public class RegistryBlock
 	 */
 	public void registerBlocks ()
 	{
-		this.registerContainerBlocks( this.containerBlocks );
 		this.registerBlocks( this.blocks );
-	}
-
-	/**
-	 * Register the blocks in the GameRegistry with:
-	 * - block (Block)
-	 * - block key (String)
-	 *
-	 * @param blocks new blocks to be added
-	 */
-	private void registerBlocks ( Iterable<ABlock> blocks )
-	{
-		for ( ABlock block : blocks )
-		{
-			final String unlocalizedName = block.getUnlocalizedName();
-			GameRegistry.registerBlock( block, unlocalizedName );
-			this.log.info( "Registered block %s", block );
-		}
+		this.registerContainerBlocks( this.containerBlocks );
+		this.log.info( "Finished registering Blocks and BlockContainer." );
 	}
 
 	/**
@@ -109,11 +94,29 @@ public class RegistryBlock
 			{
 				GameRegistry.registerBlock( block, unlocalizedName );
 			}
+			this.log.info( "Registered BlockContainer %s", block );
+		}
+	}
+
+	/**
+	 * Register the blocks in the GameRegistry with:
+	 * - block (Block)
+	 * - block key (String)
+	 *
+	 * @param blocks new blocks to be added
+	 */
+	private void registerBlocks ( Iterable<ABlock> blocks )
+	{
+		for ( ABlock block : blocks )
+		{
+			final String unlocalizedName = block.getUnlocalizedName();
+			GameRegistry.registerBlock( block, unlocalizedName );
+			this.log.info( "Registered block with %s, %s", block, unlocalizedName );
 		}
 	}
 
 	public void loadConfig ( final Configuration config )
 	{
-
+		this.log.info( "Loaded Configuration %s", config );
 	}
 }

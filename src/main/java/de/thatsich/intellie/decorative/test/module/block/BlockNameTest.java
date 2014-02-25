@@ -8,6 +8,6 @@ public class BlockNameTest extends ABlockName
 {
 	protected BlockNameTest ()
 	{
-		super( "Test" );
+		super( "intellie.Test" );
 	}
 }

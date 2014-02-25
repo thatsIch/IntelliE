@@ -9,6 +9,6 @@ public class BlockConfigTest extends ABlockConfig
 {
 	protected BlockConfigTest ()
 	{
-		super( "blockRouter" );
+		super( "blockTest" );
 	}
 }

@@ -2,21 +2,26 @@ package de.thatsich.intellie.common.util;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.FMLRelaunchLog;
+import cpw.mods.fml.relauncher.Side;
 import org.apache.logging.log4j.Level;
 
-//@Singleton
+/**
+ * Logger Class for IE
+ */
 public class IELog
 {
 	private static void log ( Level level, String format, Object... data )
 	{
-		final boolean isClient = FMLCommonHandler.instance().getEffectiveSide().isClient();
+		final FMLCommonHandler instance = FMLCommonHandler.instance();
+		final Side effectiveSide = instance.getEffectiveSide();
+		final boolean isClient = effectiveSide.isClient();
 		final boolean loggingEnabled = true; // TODO shift to config and inject
 		final boolean configExists = true; // TODO shift to config
-		final String side = ( isClient ) ? "C" : "S";
+		final String side = isClient ? "C" : "S";
 
 		if ( configExists && loggingEnabled )
 		{
-			FMLRelaunchLog.log( "IE:" + side, level, format, data );
+			FMLRelaunchLog.log( "IE|" + side, level, format, data );
 		}
 	}
 
@@ -41,7 +46,8 @@ public class IELog
 	}
 
 	public void trace ( Throwable exception ) {
-		this.severe( "Exception: " + exception.getMessage(), new Object[0] );
+		final String message = exception.getMessage();
+		this.severe( "Exception: %s", message );
 		exception.printStackTrace();
 	}
 }

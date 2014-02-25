@@ -9,11 +9,17 @@ import net.minecraftforge.common.config.Configuration;
 import java.util.Collection;
 import java.util.LinkedList;
 
+/**
+ * Registry for TileEntities
+ */
 public class RegistryTileEntity
 {
 	private final Collection<ATileEntity> tileEntities;
 	private final IELog log;
 
+	/**
+	 * @param log Injected Logger
+	 */
 	@Inject
 	public RegistryTileEntity ( IELog log )
 	{
@@ -21,11 +27,21 @@ public class RegistryTileEntity
 		this.log = log;
 	}
 
+	/**
+	 * Adds a TileEntity
+	 *
+	 * @param tileEntity added TileEntity
+	 */
 	public void addTileEntity ( ATileEntity tileEntity )
 	{
 		this.tileEntities.add( tileEntity );
 	}
 
+	/**
+	 * Loads each config through their own responsibility
+	 *
+	 * @param config Configuration
+	 */
 	public void loadConfig ( final Configuration config )
 	{
 		for ( ATileEntity tileEntity : this.tileEntities )
@@ -34,6 +50,9 @@ public class RegistryTileEntity
 		}
 	}
 
+	/**
+	 * Registers all added TileEntites through their clas and key
+	 */
 	public void registerTileEntities ()
 	{
 		for ( ATileEntity tileEntity : this.tileEntities )
