@@ -28,7 +28,7 @@ public class RegistryBlock
 	/**
 	 * CTOR
 	 *
-	 * @param log Logger
+	 * @param log Logge r
 	 */
 	@Inject
 	public RegistryBlock ( IELog log )

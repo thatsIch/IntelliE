@@ -5,8 +5,8 @@ import com.google.inject.binder.AnnotatedBindingBuilder;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import de.thatsich.common.handler.RegistryConfig;
 import de.thatsich.common.handler.RegistryBlock;
+import de.thatsich.common.handler.RegistryConfig;
 import de.thatsich.common.handler.RegistryItem;
 import de.thatsich.common.handler.RegistryTileEntity;
 import net.minecraftforge.common.MinecraftForge;
@@ -48,7 +48,7 @@ public abstract class AGuiceMod
 
 		// Propagates initialization of additional modules to the specific
 		// subclass of this GuiceApplication instance.
-		final List<Class<? extends AMinecraftModule>> additionalModuleClasses = this.initModules();
+		final Collection<Class<? extends AMinecraftModule>> additionalModuleClasses = this.initModules();
 		for ( Class<? extends Module> moduleClass : additionalModuleClasses )
 		{
 			final Module moduleInstance = tempInjector.getInstance( moduleClass );
@@ -68,6 +68,20 @@ public abstract class AGuiceMod
 		//		final RegistryEntity entities = tempInjector.getInstance( RegistryEntity.class );
 		//		final HandlerGui gui = tempInjector.getInstance( HandlerGui.class );
 	}
+
+	/**
+	 * This method is used to fetch and/or create (Guice) modules necessary
+	 * to fully construct this application.
+	 * <p>
+	 * The modules that are initialized in this method and added to the passed
+	 * List will be used to create the {@link com.google.inject.Injector} instance that is used in
+	 * the context of this application.
+	 * </p>
+	 *
+	 * @return A list of modules (initially empty) that shall be used to
+	 * create the injector to be used in the context of this application.
+	 */
+	public abstract Collection<Class<? extends AMinecraftModule>> initModules ();
 
 	/**
 	 * Checks the GuiceApplication instance and makes sure that none of the
@@ -105,20 +119,6 @@ public abstract class AGuiceMod
 	{
 		return object.isAnnotationPresent( Inject.class );
 	}
-
-	/**
-	 * This method is used to fetch and/or create (Guice) modules necessary
-	 * to fully construct this application.
-	 * <p>
-	 * The modules that are initialized in this method and added to the passed
-	 * List will be used to create the {@link com.google.inject.Injector} instance that is used in
-	 * the context of this application.
-	 * </p>
-	 *
-	 * @return A list of modules (initially empty) that shall be used to
-	 * create the injector to be used in the context of this application.
-	 */
-	public abstract List<Class<? extends AMinecraftModule>> initModules ();
 
 	/**
 	 * Run before anything else. Read your config, create blocks, items, etc,
