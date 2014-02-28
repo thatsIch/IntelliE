@@ -1,6 +1,10 @@
 package de.thatsich.common;
 
-import com.google.inject.*;
+import com.google.inject.AbstractModule;
+import com.google.inject.Guice;
+import com.google.inject.Inject;
+import com.google.inject.Injector;
+import com.google.inject.Module;
 import com.google.inject.binder.AnnotatedBindingBuilder;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -16,7 +20,6 @@ import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Constructor;
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.List;
 
 
 public abstract class AGuiceMod
