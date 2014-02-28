@@ -3,7 +3,7 @@ package de.thatsich.common.handler;
 import com.google.inject.Inject;
 import cpw.mods.fml.common.registry.GameRegistry;
 import de.thatsich.common.module.tileentity.ATileEntity;
-import de.thatsich.common.util.IELog;
+import de.thatsich.common.util.Logger;
 import net.minecraftforge.common.config.Configuration;
 
 import java.util.Collection;
@@ -13,10 +13,10 @@ import java.util.LinkedList;
 public class RegistryEntity
 {
 	private final Collection<ATileEntity> tileEntites;
-	private final IELog log;
+	private final Logger log;
 
 	@Inject
-	public RegistryEntity ( IELog log)
+	public RegistryEntity ( Logger log)
 	{
 		this.tileEntites = new LinkedList<>();
 		this.log = log;

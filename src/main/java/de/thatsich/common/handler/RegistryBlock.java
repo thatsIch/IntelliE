@@ -6,7 +6,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import de.thatsich.common.module.block.ABlock;
 import de.thatsich.common.module.block.AContainerBlock;
 import de.thatsich.common.module.item.AItemBlock;
-import de.thatsich.common.util.IELog;
+import de.thatsich.common.util.Logger;
 import net.minecraftforge.common.config.Configuration;
 
 import java.util.Collection;
@@ -23,7 +23,7 @@ public class RegistryBlock
 {
 	private final Collection<ABlock> blocks;
 	private final Collection<AContainerBlock> containerBlocks;
-	private final IELog log;
+	private final Logger log;
 
 	/**
 	 * CTOR
@@ -31,7 +31,7 @@ public class RegistryBlock
 	 * @param log Logge r
 	 */
 	@Inject
-	public RegistryBlock ( IELog log )
+	public RegistryBlock ( Logger log )
 	{
 		this.log = log;
 		this.blocks = new LinkedList<>();
