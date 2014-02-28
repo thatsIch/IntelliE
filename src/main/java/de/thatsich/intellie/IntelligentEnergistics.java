@@ -11,7 +11,7 @@ import de.thatsich.intellie.decorative.test.ModuleTest;
 import java.util.Collection;
 import java.util.LinkedList;
 
-@Mod(modid = "intellie", name = "IntelligentEnergistics", version = "${version}", dependencies = "required-after:Forge@[7.0,);required-after:FML@[5.0.5,)")
+@Mod(modid = "intellie", name = "IntelligentEnergistics", version = "${version}", dependencies = "required-after:Forge@[7.0,);required-after:FML@[5.0.5,);required-after:appliedenergistics2")
 public class IntelligentEnergistics extends AGuiceMod
 {
 //	@Mod.Instance(value = "intellie")
