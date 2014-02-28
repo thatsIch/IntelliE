@@ -6,7 +6,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import de.thatsich.common.module.block.ABlock;
 import de.thatsich.common.module.block.AContainerBlock;
 import de.thatsich.common.module.item.AItemBlock;
-import de.thatsich.intellie.common.util.IELog;
+import de.thatsich.common.util.IELog;
 import net.minecraftforge.common.config.Configuration;
 
 import java.util.Collection;

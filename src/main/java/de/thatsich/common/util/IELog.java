@@ -1,4 +1,4 @@
-package de.thatsich.intellie.common.util;
+package de.thatsich.common.util;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.FMLRelaunchLog;

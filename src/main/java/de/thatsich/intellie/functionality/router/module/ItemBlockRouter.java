@@ -2,7 +2,7 @@ package de.thatsich.intellie.functionality.router.module;
 
 import com.google.inject.Inject;
 
-import de.thatsich.intellie.common.util.IELog;
+import de.thatsich.common.util.IELog;
 import de.thatsich.intellie.functionality.router.module.item.ItemConfigRouter;
 import de.thatsich.intellie.functionality.router.module.item.ItemInfoRouter;
 import de.thatsich.intellie.functionality.router.module.item.ItemRecipeRouter;
