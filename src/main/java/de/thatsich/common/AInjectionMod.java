@@ -7,6 +7,7 @@ import dagger.ObjectGraph;
 import de.thatsich.common.registries.RegistryBlock;
 import de.thatsich.common.registries.RegistryConfig;
 import de.thatsich.common.registries.RegistryItem;
+import de.thatsich.common.registries.RegistryModule;
 import de.thatsich.common.registries.RegistryTileEntity;
 import de.thatsich.common.module.IModule;
 import de.thatsich.common.util.ILog;
@@ -36,7 +37,7 @@ public abstract class AInjectionMod
 	 */
 	protected AInjectionMod ()
 	{
-		ObjectGraph injector = ObjectGraph.create( new LoggerModule() );
+		ObjectGraph injector = ObjectGraph.create( new LoggerModule(), new RegistryModule() );
 
 		// Creates an injector with all of the required modules.
 		final Object[] modules = this.getModuleInstances().toArray();
