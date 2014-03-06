@@ -21,7 +21,7 @@ import java.util.LinkedList;
 /**
  * Minecraft Mod with enabled Dependency Injection namely @Inject
  */
-public abstract class ADIMod
+public abstract class AInjectionMod
 {
 	private final RegistryConfig configs;
 	private final RegistryBlock blocks;
@@ -34,7 +34,7 @@ public abstract class ADIMod
 	 * works flawlessly, the original init method of the base JavaFX Application
 	 * class is overwritten here. All of the
 	 */
-	protected ADIMod ()
+	protected AInjectionMod ()
 	{
 		ObjectGraph injector = ObjectGraph.create( new LoggerModule() );
 
