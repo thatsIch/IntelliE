@@ -4,12 +4,12 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import dagger.ObjectGraph;
+import de.thatsich.common.module.IModule;
 import de.thatsich.common.registries.RegistryBlock;
 import de.thatsich.common.registries.RegistryConfig;
 import de.thatsich.common.registries.RegistryItem;
 import de.thatsich.common.registries.RegistryModule;
 import de.thatsich.common.registries.RegistryTileEntity;
-import de.thatsich.common.module.IModule;
 import de.thatsich.common.util.ILog;
 import de.thatsich.common.util.LoggerModule;
 import net.minecraftforge.common.MinecraftForge;
@@ -37,11 +37,9 @@ public abstract class AInjectionMod
 	 */
 	protected AInjectionMod ()
 	{
-		ObjectGraph injector = ObjectGraph.create( new LoggerModule(), new RegistryModule() );
-
 		// Creates an injector with all of the required modules.
 		final Object[] modules = this.getModuleInstances().toArray();
-		injector = injector.plus( modules );
+		ObjectGraph injector = ObjectGraph.create( new LoggerModule(), new RegistryModule(), modules );
 
 		// Enable Logging
 		this.log = injector.get( ILog.class );
