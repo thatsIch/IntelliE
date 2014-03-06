@@ -1,33 +1,26 @@
 package de.thatsich.common;
 
-import com.google.inject.AbstractModule;
-import com.google.inject.Inject;
-
 import de.thatsich.common.handler.RegistryBlock;
+import de.thatsich.common.module.IModule;
 import de.thatsich.common.module.block.ABlock;
 import de.thatsich.common.module.block.AContainerBlock;
-import de.thatsich.common.module.entity.AEntity;
 import de.thatsich.common.module.item.IItem;
 
+import javax.inject.Inject;
 
-public abstract class AMinecraftModule extends AbstractModule
+
+public abstract class AMinecraftModule implements IModule
 {
 	private final ABlock block;
 
 	@Inject
-	public AMinecraftModule( IItem item, ABlock block, AContainerBlock containerBlock, AEntity entity )
+	protected AMinecraftModule( IItem item, ABlock block, AContainerBlock containerBlock)
 	{
 		this.block = block;
 	}
 	
 	@Inject
 	private void init( RegistryBlock blocks ) {
-		System.out.println("Init CALLED");
 		blocks.addBlock( this.block );
-	}
-
-	@Override
-	protected void configure()
-	{
 	}
 }

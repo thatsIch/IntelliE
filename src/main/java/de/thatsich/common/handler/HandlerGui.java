@@ -1,18 +1,14 @@
 package de.thatsich.common.handler;
 
+import cpw.mods.fml.common.network.IGuiHandler;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import de.thatsich.common.ADIMod;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
-import com.google.inject.Singleton;
-
-import cpw.mods.fml.common.network.IGuiHandler;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import de.thatsich.common.AGuiceMod;
-
-@Singleton
 public class HandlerGui implements IGuiHandler
 {
-	public void init( AGuiceMod instance ) {
+	public void init( ADIMod instance ) {
 		NetworkRegistry.INSTANCE.registerGuiHandler( instance, this );
 	}
 

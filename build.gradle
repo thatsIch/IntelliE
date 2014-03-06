@@ -1,215 +1,85 @@
-apply plugin: 'java'
-apply plugin: 'forge'
-apply plugin: 'maven'
-apply plugin: 'shadow'
+apply plugin: 'apt'     // annotation processor plugin eg lombok and dagger
+apply plugin: 'forge'   // forge tasks
+apply plugin: 'java'    // enables sourcesets
+apply plugin: 'shadow'  // enables shadow
 
-group = "de.thatsich.intellie" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+apply from: '$projectDir/gradle/scripts/versioning.gradle'
+apply from: '$projectDir/gradle/scripts/deobf.gradle'
+
+// http://maven.apache.org/guides/mini/guide-naming-conventions.html
+// group = "de.thatsich.intellie"
 archivesBaseName = "IntelligentEnergistics"
-version = readVersion()
 
+// needed for pulling new versions from forge
 minecraft {
-    version = "1.7.2-10.12.0.1029"
-    assetDir = '../Forge/eclipse/assets'
+	version = "$MINECRAFT_VERSION-$FORGE_VERSION"
+	assetDir = '../Forge/eclipse/assets'
 }
 
 buildscript {
-    repositories {
-        mavenCentral()
-        jcenter()
-        maven {
-            name = "forge"
-            url = 'http://files.minecraftforge.net/maven'
-        }
-        maven {
-            name = "sonatype"
-            url = 'https://oss.sonatype.org/content/repositories/snapshots/'
-        }
-        maven {
-            name = "shadow-repo"
-            url = 'http://dl.bintray.com/content/johnrengelman/gradle-plugins/'
-        }
-    }
-    dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.1-SNAPSHOT'
-        classpath 'com.github.jengelman.gradle.plugins:shadow:0.8'
-        classpath 'com.google.inject:guice:4.0-beta'
-	    classpath 'org.projectlombok:lombok:1.12.4'
-    }
+	repositories {
+		mavenCentral()
+		jcenter()
+		maven {
+			name = "forge"
+			url = 'http://files.minecraftforge.net/maven'
+		}
+		maven {
+			name = "sonatype"
+			url = 'https://oss.sonatype.org/content/repositories/snapshots/'
+		}
+		maven {
+			name = "shadow-repo"
+			url = 'http://dl.bintray.com/content/johnrengelman/gradle-plugins/'
+		}
+	}
+	dependencies {
+		classpath "net.minecraftforge.gradle:ForgeGradle:$FORGE_GRADLE_VERSION"
+		classpath "com.github.jengelman.gradle.plugins:shadow:$SHADOW_VERSION"
+		classpath "org.projectlombok:lombok:$LOMBOK_VERSION"
+		classpath "com.squareup.dagger:dagger-compiler:$DAGGER_VERSION"
+	}
 }
 
+// Ship specific libs with it
 shadow {
-    artifactSet {
-        include 'com.google.inject'
-        include 'javax.inject'
-    }
+	artifactSet {
+		include 'dagger'
+		include 'javax.inject'
+	}
 
-    // this sets our output jar to have a 'tag' of 'universal' on it
-    // It also adds the minecraft version in a custom version name
-    // The result is files named <projectname>-<mcversion>-<version>-universal.jar
-    baseName = "${archivesBaseName}-${project.minecraft.version}"
-    classifier = "universal"
+	// The resulting file is named <projectname>-<mcversion>-<version>-universal.jar
+	baseName = "${archivesBaseName}-${project.minecraft.version}"
+	classifier = "universal"
 }
 
+// dependencies needed
 dependencies {
-    runtime 'com.google.inject:guice:4.0-beta'
-	compile 'org.projectlombok:lombok:1.12.4'
+	compile "com.squareup.dagger:dagger:$DAGGER_VERSION"
+	compile "org.projectlombok:lombok:$LOMBOK_VERSION"
 }
 
+// exclude layers and integration of (AE2)
 sourceSets {
-    api {
-        java {
-            exclude '**/layers/**'
-            exclude '**/integration/**'
-        }
-    }
+	api {
+		java {
+			exclude '**/layers/**'
+			exclude '**/integration/**'
+		}
+	}
 }
 
 processResources {
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
+	// replace stuff in mcmod.info, nothing else
+	from(sourceSets.main.resources.srcDirs) {
+		include 'mcmod.info'
 
-        // replace version and mcversion
-        expand 'version': project.version.toString(), 'mcversion': project.minecraft.version
-    }
+		// replace version and mcversion
+		expand 'version': project.version.toString(), 'mcversion': $MINECRAFT_VERSION
+	}
 
-    // copy everything else, thats not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
+	// copy everything else, thats not the mcmod.info
+	from(sourceSets.main.resources.srcDirs) {
+		exclude 'mcmod.info'
+	}
 }
-
-// This is a special task for pulling the version information from git
-private ProjectVersion readVersion() {
-
-    // call git command.
-    def outStream = new ByteArrayOutputStream()
-	def projectVersion = new ProjectVersion(0, 0, 0, 0)
-
-    try {
-        exec {
-            executable = 'git'
-            args = [ 'describe', '--tags', "HEAD"]
-            standardOutput = outStream
-        }
-
-        def fullVersion = outStream.toString().trim()
-        def matcher = fullVersion =~ /(\d+).(\d+).(\d+).(\d+)/
-
-        Integer major = matcher[0][1].toInteger()
-        Integer minor = matcher[0][2].toInteger()
-        Integer revision = matcher[0][3].toInteger()
-        Integer commit = gitCommitCount
-
-        projectVersion = new ProjectVersion(major, minor, revision, commit)
-        logger.quiet "Current version from Git: $projectVersion"
-    }
-    catch (e) {
-        println "Can't get project version: $e"
-    }
-
-	return projectVersion
-}
-
-private Integer getGitCommitCount() {
-
-    // call git command.
-    def outStream = new ByteArrayOutputStream()
-    try {
-        exec {
-            executable = 'git'
-            args = [ 'rev-list', 'HEAD', "--count"]
-            standardOutput = outStream
-        }
-
-        def fullVersion = outStream.toString().trim()
-        def matcher = fullVersion =~ /(\d+)/
-
-        return matcher[0][1].toInteger()
-    }
-    catch (exception) {
-        println "Can't get commit count: $exception"
-        return 0
-    }
-}
-
-task incMajor(group: 'versioning', description: 'Increments project major version.') << {
-    String currentVersion = version.toString()
-    ++version.major
-    version.minor = 0
-    version.revision = 0
-    String newVersion = version.toString()
-    String message = "Incrementing major project version: $currentVersion -> $newVersion"
-    logger.quiet message
-
-    exec {
-        executable = 'git'
-        args = [ 'tag', '-a', "v$newVersion", "-m", message]
-    }
-}
-
-task incMinor(group: 'versioning', description: 'Increments project minor version.') << {
-    String currentVersion = version.toString()
-    ++version.minor
-    version.revision = 0
-    String newVersion = version.toString()
-    String message = "Incrementing minor project version: $currentVersion -> $newVersion"
-    logger.quiet message
-
-    exec {
-        executable = 'git'
-        args = [ 'tag', '-a', "v$newVersion", "-m", message]
-    }
-}
-
-task incRev(group: 'versioning', description: 'Increments project reversion.') << {
-    String currentVersion = version.toString()
-    ++version.revision
-    String newVersion = version.toString()
-    String message = "Incrementing minor project version: $currentVersion -> $newVersion"
-    logger.quiet message
-
-    exec {
-        executable = 'git'
-        args = [ 'tag', '-a', "v$newVersion", "-m", message]
-    }
-}
-
-class ProjectVersion {
-    Integer major
-    Integer minor
-    Integer revision
-    Integer commit
-
-    ProjectVersion(Integer major, Integer minor, Integer revision, Integer commit) {
-        this.major = major
-        this.minor = minor
-        this.revision = revision
-        this.commit = commit
-    }
-
-    @Override
-    String toString() {
-        "$major.$minor.$revision.$commit"
-    }
-}
-
-// Add in an mcp named jar, for those who wish to run in a development environment
-task deobfJar(type: Jar, description: 'Outputs a deobfuscated version for developers.') {
-    from sourceSets.main.output
-    classifier = 'deobf'
-    version = "${project.minecraft.version}-${project.version}"
-}
-
-// Add in a source jar for people, should they desire to download such a thing
-task sourceJar(type: Jar, description: 'Outputs a source version.') {
-    from sourceSets.main.allSource
-    classifier = 'src'
-    version = "${project.minecraft.version}-${project.version}"
-}
-
-// Tell the artifact system about our extra jars
-artifacts {
-    archives sourceJar, deobfJar
-}
-

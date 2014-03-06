@@ -1,7 +1,5 @@
 package de.thatsich.common.handler;
 
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
 import cpw.mods.fml.common.registry.GameRegistry;
 import de.thatsich.common.module.block.ABlock;
 import de.thatsich.common.module.block.AContainerBlock;
@@ -9,6 +7,7 @@ import de.thatsich.common.module.item.AItemBlock;
 import de.thatsich.common.util.Logger;
 import net.minecraftforge.common.config.Configuration;
 
+import javax.inject.Inject;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -18,7 +17,6 @@ import java.util.LinkedList;
  * This class is used by the framework and does not need
  * to be instantiated or used in any way.
  */
-@Singleton
 public class RegistryBlock
 {
 	private final Collection<ABlock> blocks;

@@ -3,13 +3,30 @@ package de.thatsich.common.util;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.FMLRelaunchLog;
 import cpw.mods.fml.relauncher.Side;
+import de.thatsich.common.handler.RegistryConfig;
 import org.apache.logging.log4j.Level;
+
+import javax.inject.Inject;
 
 /**
  * Logger Class
  */
-public class Logger
+public class Logger implements ILog
 {
+	private final RegistryConfig config;
+
+	/**
+	 * Constructor either only be injected or tested
+	 * thus package private
+	 *
+	 * @param config Config
+	 */
+	@Inject
+	Logger ( RegistryConfig config )
+	{
+		this.config = config;
+	}
+
 	/**
 	 * Information
 	 *
@@ -18,7 +35,7 @@ public class Logger
 	 */
 	public void info ( String format, Object... data )
 	{
-		Logger.log( Level.INFO, format, data );
+		this.log( Level.INFO, format, data );
 	}
 
 	/**
@@ -28,17 +45,17 @@ public class Logger
 	 * @param format formated String
 	 * @param data   Input into formated String
 	 */
-	private static void log ( Level level, String format, Object... data )
+	private void log ( Level level, String format, Object... data )
 	{
 		final FMLCommonHandler instance = FMLCommonHandler.instance();
 		final Side effectiveSide = instance.getEffectiveSide();
 		final boolean isClient = effectiveSide.isClient();
-		final boolean loggingEnabled = true; // TODO shift to config and inject
+		final boolean loggingEnabled = this.config.getBoolean( "general", "logging", true );
 		final String side = isClient ? "C" : "S";
 
 		if ( loggingEnabled )
 		{
-			FMLRelaunchLog.log( "IE|" + side, level, format, data );
+			FMLRelaunchLog.log( "IE-" + side, level, format, data );
 		}
 	}
 
@@ -50,7 +67,7 @@ public class Logger
 	 */
 	public void warn ( String format, Object... data )
 	{
-		Logger.log( Level.WARN, format, data );
+		this.log( Level.WARN, format, data );
 	}
 
 	/**
@@ -61,7 +78,7 @@ public class Logger
 	 */
 	public void debug ( String format, Object... data )
 	{
-		Logger.log( Level.DEBUG, format, data );
+		this.log( Level.DEBUG, format, data );
 	}
 
 	/**
@@ -84,6 +101,6 @@ public class Logger
 	 */
 	public void severe ( String format, Object... data )
 	{
-		Logger.log( Level.FATAL, format, data );
+		this.log( Level.FATAL, format, data );
 	}
 }

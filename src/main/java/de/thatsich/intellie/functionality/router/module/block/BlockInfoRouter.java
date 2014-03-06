@@ -1,9 +1,9 @@
 package de.thatsich.intellie.functionality.router.module.block;
 
-import com.google.inject.Inject;
-
 import de.thatsich.common.module.block.info.ABlockInfo;
 import net.minecraft.creativetab.CreativeTabs;
+
+import javax.inject.Inject;
 
 public class BlockInfoRouter extends ABlockInfo
 {

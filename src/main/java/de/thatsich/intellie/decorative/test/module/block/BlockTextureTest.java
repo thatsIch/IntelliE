@@ -1,12 +1,10 @@
 package de.thatsich.intellie.decorative.test.module.block;
 
-import com.google.inject.Singleton;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import de.thatsich.common.module.block.ABlockTexture;
 
 
-@Singleton
 @SideOnly(Side.CLIENT)
 public class BlockTextureTest extends ABlockTexture
 {

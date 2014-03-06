@@ -1,11 +1,11 @@
 package de.thatsich.common.handler;
 
-import com.google.inject.Inject;
 import cpw.mods.fml.common.registry.GameRegistry;
 import de.thatsich.common.module.tileentity.ATileEntity;
-import de.thatsich.common.util.Logger;
+import de.thatsich.common.util.ILog;
 import net.minecraftforge.common.config.Configuration;
 
+import javax.inject.Inject;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -15,13 +15,13 @@ import java.util.LinkedList;
 public class RegistryTileEntity
 {
 	private final Collection<ATileEntity> tileEntities;
-	private final Logger log;
+	private final ILog log;
 
 	/**
 	 * @param log Injected Logger
 	 */
 	@Inject
-	public RegistryTileEntity ( Logger log )
+	RegistryTileEntity ( ILog log )
 	{
 		this.tileEntities = new LinkedList<>();
 		this.log = log;
@@ -34,6 +34,7 @@ public class RegistryTileEntity
 	 */
 	public void addTileEntity ( ATileEntity tileEntity )
 	{
+		this.log.info( "Added Tile Entity: %s", tileEntity );
 		this.tileEntities.add( tileEntity );
 	}
 

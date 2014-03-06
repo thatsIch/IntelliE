@@ -1,8 +1,9 @@
 package de.thatsich.intellie.decorative.test;
 
-import com.google.inject.Inject;
 import de.thatsich.common.AMinecraftModule;
 import de.thatsich.intellie.decorative.test.module.BlockTest;
+
+import javax.inject.Inject;
 
 /**
  * @author thatsIch
