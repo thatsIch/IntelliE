@@ -1,6 +1,6 @@
 package de.thatsich.common;
 
-import de.thatsich.common.handler.RegistryBlock;
+import de.thatsich.common.registries.RegistryBlock;
 import de.thatsich.common.module.IModule;
 import de.thatsich.common.module.block.ABlock;
 import de.thatsich.common.module.block.AContainerBlock;

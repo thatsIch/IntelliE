@@ -1,7 +1,7 @@
 package de.thatsich.common.module.block;
 
 import dagger.ObjectGraph;
-import de.thatsich.common.handler.RegistryTileEntity;
+import de.thatsich.common.registries.RegistryTileEntity;
 import de.thatsich.common.module.block.info.ABlockInfo;
 import de.thatsich.common.module.block.info.ABlockName;
 import de.thatsich.common.module.item.AItemBlock;

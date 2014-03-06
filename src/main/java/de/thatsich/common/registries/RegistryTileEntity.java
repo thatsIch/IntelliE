@@ -1,4 +1,4 @@
-package de.thatsich.common.handler;
+package de.thatsich.common.registries;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import de.thatsich.common.module.tileentity.ATileEntity;

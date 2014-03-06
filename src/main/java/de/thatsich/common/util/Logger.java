@@ -3,7 +3,7 @@ package de.thatsich.common.util;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.FMLRelaunchLog;
 import cpw.mods.fml.relauncher.Side;
-import de.thatsich.common.handler.RegistryConfig;
+import de.thatsich.common.registries.RegistryConfig;
 import org.apache.logging.log4j.Level;
 
 import javax.inject.Inject;

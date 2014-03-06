@@ -1,4 +1,4 @@
-package de.thatsich.common.handler;
+package de.thatsich.common.registries;
 
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;

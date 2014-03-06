@@ -1,4 +1,4 @@
-package de.thatsich.common.handler;
+package de.thatsich.common.registries;
 
 /**
  * @author thatsIch
