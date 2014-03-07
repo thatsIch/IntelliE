@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import javax.inject.Inject;
 
 
-public abstract class AContainerBlock extends BlockContainer
+public abstract class AContainerBlock extends BlockContainer implements IContainerBlock
 {
 	@Getter
 	private final Class<? extends AItemBlock>	itemBlockClass;

@@ -1,19 +1,21 @@
 package de.thatsich.intellie.decorative.test;
 
-import de.thatsich.common.AMinecraftModule;
+import dagger.Module;
+import de.thatsich.common.module.IModule;
 import de.thatsich.intellie.decorative.test.module.BlockTest;
-
-import javax.inject.Inject;
+import de.thatsich.intellie.decorative.test.module.block.BlockConfigTest;
+import de.thatsich.intellie.decorative.test.module.block.BlockInfoTest;
+import de.thatsich.intellie.decorative.test.module.block.BlockNameTest;
+import de.thatsich.intellie.decorative.test.module.block.BlockTextureTest;
 
 /**
  * @author thatsIch
- * @date 18.02.14.
+ * @date 06.03.14.
  */
-public class ModuleTest extends AMinecraftModule
-{
-	@Inject
-	public ModuleTest ( final BlockTest block )
-	{
-		super( null, block, null, null );
+@Module(
+	injects = {
+		ObjectTest.class, BlockTest.class, BlockConfigTest.class, BlockInfoTest.class, BlockNameTest.class, BlockTextureTest.class
 	}
-}
+)
+public class ModuleTest implements IModule
+{}

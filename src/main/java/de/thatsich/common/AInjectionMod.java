@@ -83,7 +83,7 @@ public abstract class AInjectionMod
 	 * @param modules A list of modules (initially empty) that shall be used to
 	 *                create the injector to be used in the context of this application.
 	 */
-	protected abstract void initModules ( Collection<? extends IModule> modules );
+	protected abstract void initModules ( Collection<IModule> modules );
 
 	/**
 	 * Run before anything else. Read your config, create blocks, items, etc,

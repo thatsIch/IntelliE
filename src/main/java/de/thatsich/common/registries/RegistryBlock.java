@@ -3,6 +3,8 @@ package de.thatsich.common.registries;
 import cpw.mods.fml.common.registry.GameRegistry;
 import de.thatsich.common.module.block.ABlock;
 import de.thatsich.common.module.block.AContainerBlock;
+import de.thatsich.common.module.block.IBlock;
+import de.thatsich.common.module.block.IContainerBlock;
 import de.thatsich.common.module.item.AItemBlock;
 import de.thatsich.common.util.Logger;
 import net.minecraftforge.common.config.Configuration;
@@ -19,8 +21,8 @@ import java.util.LinkedList;
  */
 public class RegistryBlock
 {
-	private final Collection<ABlock> blocks;
-	private final Collection<AContainerBlock> containerBlocks;
+	private final Collection<IBlock> blocks;
+	private final Collection<IContainerBlock> containerBlocks;
 	private final Logger log;
 
 	/**
@@ -42,7 +44,7 @@ public class RegistryBlock
 	 *
 	 * @param block new to be added block.
 	 */
-	public void addBlock ( final ABlock block )
+	public void addBlock ( final IBlock block )
 	{
 		this.blocks.add( block );
 		this.log.info( "Added Block %s", block );
@@ -54,7 +56,7 @@ public class RegistryBlock
 	 *
 	 * @param containerBlock new to be added blockcontainer
 	 */
-	public void addBlock ( final AContainerBlock containerBlock )
+	public void addBlock ( final IContainerBlock containerBlock )
 	{
 		this.containerBlocks.add( containerBlock );
 		this.log.info( "Added BlockContainer %s", containerBlock );
@@ -78,19 +80,20 @@ public class RegistryBlock
 	 *
 	 * @param containerBlocks blockcontainers to be added
 	 */
-	private void registerContainerBlocks ( Iterable<AContainerBlock> containerBlocks )
+	private void registerContainerBlocks ( Iterable<IContainerBlock> containerBlocks )
 	{
-		for ( AContainerBlock block : containerBlocks )
+		for ( IContainerBlock block : containerBlocks )
 		{
-			final Class<? extends AItemBlock> itemBlockClass = block.getItemBlockClass();
-			final String unlocalizedName = block.getUnlocalizedName();
+			final AContainerBlock container = (AContainerBlock) block;
+			final Class<? extends AItemBlock> itemBlockClass = container.getItemBlockClass();
+			final String unlocalizedName = container.getUnlocalizedName();
 
 			if ( itemBlockClass != null )
 			{
-				GameRegistry.registerBlock( block, itemBlockClass, unlocalizedName );
+				GameRegistry.registerBlock( container, itemBlockClass, unlocalizedName );
 			} else
 			{
-				GameRegistry.registerBlock( block, unlocalizedName );
+				GameRegistry.registerBlock( container, unlocalizedName );
 			}
 			this.log.info( "Registered BlockContainer %s", block );
 		}
@@ -103,12 +106,13 @@ public class RegistryBlock
 	 *
 	 * @param blocks new blocks to be added
 	 */
-	private void registerBlocks ( Iterable<ABlock> blocks )
+	private void registerBlocks ( Iterable<IBlock> blocks )
 	{
-		for ( ABlock block : blocks )
+		for ( IBlock block : blocks )
 		{
-			final String unlocalizedName = block.getUnlocalizedName();
-			GameRegistry.registerBlock( block, unlocalizedName );
+			ABlock concreteBlock = (ABlock) block;
+			final String unlocalizedName = concreteBlock.getUnlocalizedName();
+			GameRegistry.registerBlock( concreteBlock, unlocalizedName );
 			this.log.info( "Registered block with %s, %s", block, unlocalizedName );
 		}
 	}

@@ -6,7 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 
 
-public abstract class ABlock extends Block
+public abstract class ABlock extends Block implements IBlock
 {
 	protected ABlock ( ABlockInfo info, ABlockConfig config, ABlockTexture blockTexture )
 	{

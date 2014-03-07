@@ -1,6 +1,6 @@
 package de.thatsich.common.registries;
 
-import de.thatsich.common.module.item.AItem;
+import de.thatsich.common.module.item.IItem;
 
 /**
  * @author thatsIch
@@ -8,6 +8,6 @@ import de.thatsich.common.module.item.AItem;
  */
 public class RegistryItem
 {
-	public void addItem( AItem item ) {}
+	public void addItem( IItem item ) {}
 	public void registerItems () {}
 }
