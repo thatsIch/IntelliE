@@ -1,6 +1,9 @@
 package de.thatsich.common.registries;
 
 import de.thatsich.common.module.item.IItem;
+import de.thatsich.common.util.ILog;
+
+import javax.inject.Inject;
 
 /**
  * @author thatsIch
@@ -8,6 +11,20 @@ import de.thatsich.common.module.item.IItem;
  */
 public class RegistryItem
 {
-	public void addItem( IItem item ) {}
-	public void registerItems () {}
+	private final ILog log;
+
+	@Inject
+	RegistryItem ( ILog log )
+	{
+		this.log = log;
+	}
+
+	public void addItem ( IItem item ) {
+
+		this.log.info( "Added Item %s.", item );
+	}
+
+	public void registerItems () {
+		this.log.info( "Registering all Items." );
+	}
 }

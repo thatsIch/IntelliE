@@ -59,7 +59,7 @@ public abstract class AInjectionMod
 	 *
 	 * @return ModuleInstances
 	 */
-	private Collection<? extends IModule> getModuleInstances ()
+	private Collection<IModule> getModuleInstances ()
 	{
 		// Preprare
 		final Collection<IModule> instances = new LinkedList<>();
@@ -96,10 +96,15 @@ public abstract class AInjectionMod
 		this.log.info( "PreInit Begin" );
 		final File suggConfigFile = event.getSuggestedConfigurationFile();
 		final Configuration config = this.configs.load( suggConfigFile );
+
+//		this.items.loadConfig( config );
+
+		this.tileEntites.loadConfig( config );
+
 		this.blocks.registerBlocks();
 		this.items.registerItems();
-		this.tileEntites.loadConfig( config );
-		// super.getEntities().register();
+
+
 		// proxy.initSounds();
 		// proxy.initRenders();
 		this.log.info( "PreInit End" );
@@ -115,9 +120,8 @@ public abstract class AInjectionMod
 	{
 		this.log.info( "Init Begin" );
 		this.tileEntites.registerTileEntities();
-		// super.getItems().addNames();
-		// super.getBlocks().registerNames();
 		// super.getItems().registerRecipes();
+
 		// super.getTileEntities().init();
 		// super.getGui().init( this );
 
@@ -133,6 +137,8 @@ public abstract class AInjectionMod
 	protected void modLoaded ( FMLPostInitializationEvent event )
 	{
 		this.log.info( "Loaded Begin" );
+
+
 		this.log.info( "Loaded End" );
 	}
 }
