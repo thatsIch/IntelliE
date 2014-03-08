@@ -3,6 +3,8 @@ package de.thatsich.common.registries;
 import com.google.common.base.CaseFormat;
 
 /**
+ * All seperate configfiles with enum access
+ *
  * @author thatsIch
  * @date 07.03.14.
  */
@@ -12,8 +14,13 @@ public enum EConfigs
 	APPLIED_AGGROCULTURE,
 	APPLIED_INTELLIGENCE;
 
-	private static final char SEPARATOR = '_';
-
+	/**
+	 * Converts the config names into a Java documented way.
+	 * THAT_IS_AN_EXAMPLE will result into ThatIsAnExample.
+	 * Will be used to convert this enum to normal config names.
+	 *
+	 * @return CamelCase enum name
+	 */
 	@Override
 	public String toString ()
 	{
