@@ -6,7 +6,6 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import de.thatsich.common.AInjectionMod;
 import de.thatsich.common.module.IModule;
-import de.thatsich.intellie.decorative.test.ModuleTest;
 
 import java.util.Collection;
 
@@ -22,7 +21,7 @@ public class IntelligentEnergistics extends AInjectionMod
 	@Override
 	protected void initModules ( final Collection<IModule> modules )
 	{
-		modules.add( new ModuleTest() );
+//		modules.add( new ModuleTest() );
 	}
 
 	@Override

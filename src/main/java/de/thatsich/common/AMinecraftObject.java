@@ -16,10 +16,10 @@ import javax.inject.Inject;
 
 public abstract class AMinecraftObject implements IModule
 {
-	@Inject private RegistryBlock blocks;
-	@Inject private RegistryConfig configs;
-	@Inject private RegistryItem items;
-	@Inject private RegistryTileEntity tileEntities;
+	@Inject RegistryBlock blocks;
+	@Inject RegistryConfig configs;
+	@Inject RegistryItem items;
+	@Inject RegistryTileEntity tileEntities;
 
 	protected AMinecraftObject ( IItem item, ABlock block, AContainerBlock containerBlock )
 	{

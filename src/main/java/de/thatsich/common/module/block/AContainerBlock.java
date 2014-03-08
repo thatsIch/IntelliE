@@ -23,12 +23,11 @@ public abstract class AContainerBlock extends BlockContainer implements IContain
 	private final Class<? extends ATileEntity> tileEntityClass;
 
 	@Inject
-	private ObjectGraph injector;
+	ObjectGraph injector;
 
 	@Inject
-	private RegistryTileEntity tileEntities;
+	RegistryTileEntity tileEntities;
 
-	@Inject
 	protected AContainerBlock ( ABlockInfo info, ABlockConfig config, ABlockGui gui, ABlockNetwork network, ABlockTexture texture, Class<? extends ATileEntity> tileEntityClass, Class<? extends AItemBlock> itemBlockClass )
 	{
 		super( info.getMaterial() );

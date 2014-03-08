@@ -3,7 +3,6 @@ package de.thatsich.common.util;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.FMLRelaunchLog;
 import cpw.mods.fml.relauncher.Side;
-import de.thatsich.common.registries.RegistryConfig;
 import org.apache.logging.log4j.Level;
 
 import javax.inject.Inject;
@@ -13,18 +12,13 @@ import javax.inject.Inject;
  */
 public class Logger implements ILog
 {
-	private final RegistryConfig config;
-
 	/**
 	 * Constructor either only be injected or tested
 	 * thus package private
-	 *
-	 * @param config Config
 	 */
 	@Inject
-	Logger ( RegistryConfig config )
+	Logger ()
 	{
-		this.config = config;
 	}
 
 	/**
@@ -36,27 +30,6 @@ public class Logger implements ILog
 	public void info ( String format, Object... data )
 	{
 		this.log( Level.INFO, format, data );
-	}
-
-	/**
-	 * Default Logging if enabled
-	 *
-	 * @param level  Logging-Level
-	 * @param format formated String
-	 * @param data   Input into formated String
-	 */
-	private void log ( Level level, String format, Object... data )
-	{
-		final FMLCommonHandler instance = FMLCommonHandler.instance();
-		final Side effectiveSide = instance.getEffectiveSide();
-		final boolean isClient = effectiveSide.isClient();
-		final boolean loggingEnabled = this.config.getBoolean( "general", "logging", true );
-		final String side = isClient ? "C" : "S";
-
-		if ( loggingEnabled )
-		{
-			FMLRelaunchLog.log( "IE-" + side, level, format, data );
-		}
 	}
 
 	/**
@@ -102,5 +75,26 @@ public class Logger implements ILog
 	public void severe ( String format, Object... data )
 	{
 		this.log( Level.FATAL, format, data );
+	}
+
+	/**
+	 * Default Logging if enabled
+	 *
+	 * @param level  Logging-Level
+	 * @param format formated String
+	 * @param data   Input into formated String
+	 */
+	private void log ( Level level, String format, Object... data )
+	{
+		final FMLCommonHandler instance = FMLCommonHandler.instance();
+		final Side effectiveSide = instance.getEffectiveSide();
+		final boolean isClient = effectiveSide.isClient();
+		final boolean loggingEnabled = true; //this.config.getBoolean( "general", "logging", true );
+		final String side = isClient ? "C" : "S";
+
+		if ( loggingEnabled )
+		{
+			FMLRelaunchLog.log( "IE-" + side, level, format, data );
+		}
 	}
 }
