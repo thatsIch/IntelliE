@@ -1,11 +1,8 @@
 package de.thatsich.intellie.decorative.test;
 
 import dagger.Module;
-import de.thatsich.intellie.decorative.test.module.BlockTest;
-import de.thatsich.intellie.decorative.test.module.block.BlockConfigTest;
-import de.thatsich.intellie.decorative.test.module.block.BlockInfoTest;
-import de.thatsich.intellie.decorative.test.module.block.BlockNameTest;
-import de.thatsich.intellie.decorative.test.module.block.BlockTextureTest;
+import de.thatsich.common.registries.RegistryModule;
+import de.thatsich.common.util.LoggerModule;
 
 /**
  * @author thatsIch
@@ -13,8 +10,13 @@ import de.thatsich.intellie.decorative.test.module.block.BlockTextureTest;
  */
 @Module(
 	injects = {
-		Test.class, BlockTest.class, BlockConfigTest.class, BlockInfoTest.class, BlockNameTest.class, BlockTextureTest.class
+		Test.class
+	},
+	includes = {
+		LoggerModule.class, RegistryModule.class
 	}
 )
 public class ModuleTest
-{}
+{
+
+}

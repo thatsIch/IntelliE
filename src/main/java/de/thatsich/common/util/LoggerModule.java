@@ -10,7 +10,8 @@ import javax.inject.Singleton;
  * @date 05.03.14.
  */
 @Module(
-	library = true
+	library = true,
+	overrides = true
 )
 public class LoggerModule
 {

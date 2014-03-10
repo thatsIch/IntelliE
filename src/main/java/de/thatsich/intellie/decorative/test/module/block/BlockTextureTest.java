@@ -4,11 +4,14 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import de.thatsich.common.module.block.ABlockTexture;
 
+import javax.inject.Inject;
+
 
 @SideOnly(Side.CLIENT)
 public class BlockTextureTest extends ABlockTexture
 {
-	protected BlockTextureTest ()
+	@Inject
+	BlockTextureTest ()
 	{
 		super( "intellie:test" );
 	}
