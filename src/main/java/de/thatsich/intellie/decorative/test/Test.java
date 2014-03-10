@@ -9,10 +9,10 @@ import javax.inject.Inject;
  * @author thatsIch
  * @date 18.02.14.
  */
-public class ObjectTest extends AMinecraftObject
+public class Test extends AMinecraftObject
 {
 	@Inject
-	public ObjectTest ( final BlockTest block )
+	public Test ( final BlockTest block )
 	{
 		super( block );
 	}

@@ -1,6 +1,5 @@
 package de.thatsich.common;
 
-import de.thatsich.common.module.IModule;
 import de.thatsich.common.module.block.ABlock;
 import de.thatsich.common.module.block.AContainerBlock;
 import de.thatsich.common.module.block.IBlock;
@@ -10,11 +9,12 @@ import de.thatsich.common.registries.RegistryBlock;
 import de.thatsich.common.registries.RegistryConfig;
 import de.thatsich.common.registries.RegistryItem;
 import de.thatsich.common.registries.RegistryTileEntity;
+import de.thatsich.common.util.IMinecraftObject;
 
 import javax.inject.Inject;
 
 
-public abstract class AMinecraftObject implements IModule
+public abstract class AMinecraftObject implements IMinecraftObject
 {
 	@Inject RegistryBlock blocks;
 	@Inject RegistryConfig configs;

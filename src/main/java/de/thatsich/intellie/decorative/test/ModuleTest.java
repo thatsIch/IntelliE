@@ -1,12 +1,14 @@
 package de.thatsich.intellie.decorative.test;
 
 import dagger.Module;
-import de.thatsich.common.module.IModule;
+import dagger.Provides;
 import de.thatsich.intellie.decorative.test.module.BlockTest;
 import de.thatsich.intellie.decorative.test.module.block.BlockConfigTest;
 import de.thatsich.intellie.decorative.test.module.block.BlockInfoTest;
 import de.thatsich.intellie.decorative.test.module.block.BlockNameTest;
 import de.thatsich.intellie.decorative.test.module.block.BlockTextureTest;
+
+import javax.inject.Singleton;
 
 /**
  * @author thatsIch
@@ -14,8 +16,15 @@ import de.thatsich.intellie.decorative.test.module.block.BlockTextureTest;
  */
 @Module(
 	injects = {
-		ObjectTest.class, BlockTest.class, BlockConfigTest.class, BlockInfoTest.class, BlockNameTest.class, BlockTextureTest.class
+		Test.class, BlockTest.class, BlockConfigTest.class, BlockInfoTest.class, BlockNameTest.class, BlockTextureTest.class
 	}
 )
-public class ModuleTest implements IModule
-{}
+public class ModuleTest
+{
+	@Provides
+	@Singleton
+	public Test provideTest ( final Test object )
+	{
+		return object;
+	}
+}

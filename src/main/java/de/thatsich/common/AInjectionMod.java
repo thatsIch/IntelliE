@@ -4,7 +4,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import dagger.ObjectGraph;
-import de.thatsich.common.module.IModule;
 import de.thatsich.common.registries.RegistryBlock;
 import de.thatsich.common.registries.RegistryConfig;
 import de.thatsich.common.registries.RegistryItem;
@@ -59,10 +58,10 @@ public abstract class AInjectionMod
 	 *
 	 * @return ModuleInstances
 	 */
-	private Collection<IModule> getModuleInstances ()
+	private Collection<Object> getModuleInstances ()
 	{
 		// Preprare
-		final Collection<IModule> instances = new LinkedList<>();
+		final Collection<Object> instances = new LinkedList<>();
 
 		// Fetch all ModuleClasses
 		this.initModules( instances );
@@ -83,7 +82,7 @@ public abstract class AInjectionMod
 	 * @param modules A list of modules (initially empty) that shall be used to
 	 *                create the injector to be used in the context of this application.
 	 */
-	protected abstract void initModules ( Collection<IModule> modules );
+	protected abstract void initModules ( Collection<Object> modules );
 
 	/**
 	 * Run before anything else. Read your config, create blocks, items, etc,
