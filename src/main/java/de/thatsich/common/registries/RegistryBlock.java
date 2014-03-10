@@ -10,6 +10,7 @@ import de.thatsich.common.util.Logger;
 import net.minecraftforge.common.config.Configuration;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -19,6 +20,7 @@ import java.util.LinkedList;
  * This class is used by the framework and does not need
  * to be instantiated or used in any way.
  */
+@Singleton
 public class RegistryBlock
 {
 	private final Collection<IBlock> blocks;

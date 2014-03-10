@@ -3,6 +3,7 @@ package de.thatsich.common;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import dagger.Module;
 import dagger.ObjectGraph;
 import de.thatsich.common.registries.RegistryBlock;
 import de.thatsich.common.registries.RegistryConfig;
@@ -48,8 +49,43 @@ public abstract class AInjectionMod
 		this.blocks = injector.get( RegistryBlock.class );
 		this.items = injector.get( RegistryItem.class );
 		this.tileEntites = injector.get( RegistryTileEntity.class );
+
+		// using injector and modules to instantiate them once
+		this.instantiateModules( injector, modules );
+
 		//		final RegistryEntity entities = tempInjector.getInstance( RegistryEntity.class );
 		//		final HandlerGui gui = tempInjector.getInstance( HandlerGui.class );
+	}
+
+	/**
+	 * Instantiates module objects
+	 *
+	 * @param injector ObjectGraph
+	 * @param modules To be instantiated modules
+	 */
+	private void instantiateModules( ObjectGraph injector, Object... modules ) {
+		for ( Object obj : modules )
+		{
+			final Class<?> clazz = obj.getClass();
+			if ( clazz.isAnnotationPresent( Module.class ) )
+			{
+				final Module module = clazz.getAnnotation( Module.class );
+				final Class<?>[] injects = module.injects();
+				this.instantiateInjections( injector, injects );
+			}
+		}
+	}
+
+	/**
+	 * Fed classes are instantiated by ObjectGraph
+	 *
+	 * @param injector ObjectGraph
+	 * @param injections instantiated class references
+	 */
+	private void instantiateInjections( ObjectGraph injector, Class<?>... injections ) {
+		for ( Class<?> injection : injections) {
+			injector.get( injection );
+		}
 	}
 
 	/**
@@ -96,7 +132,7 @@ public abstract class AInjectionMod
 		final File suggConfigFile = event.getSuggestedConfigurationFile();
 		final Configuration config = this.configs.load( suggConfigFile );
 
-//		this.items.loadConfig( config );
+		//		this.items.loadConfig( config );
 
 		this.tileEntites.loadConfig( config );
 

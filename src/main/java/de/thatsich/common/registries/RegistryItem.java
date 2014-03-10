@@ -4,11 +4,13 @@ import de.thatsich.common.module.item.IItem;
 import de.thatsich.common.util.ILog;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 /**
  * @author thatsIch
  * @date 25.02.14.
  */
+@Singleton
 public class RegistryItem
 {
 	private final ILog log;

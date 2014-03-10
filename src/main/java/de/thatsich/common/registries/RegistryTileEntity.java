@@ -6,12 +6,14 @@ import de.thatsich.common.util.ILog;
 import net.minecraftforge.common.config.Configuration;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.util.Collection;
 import java.util.LinkedList;
 
 /**
  * Registry for TileEntities
  */
+@Singleton
 public class RegistryTileEntity
 {
 	private final Collection<ATileEntity> tileEntities;

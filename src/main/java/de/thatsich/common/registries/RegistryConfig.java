@@ -5,6 +5,7 @@ import de.thatsich.common.util.ILog;
 import net.minecraftforge.common.config.Configuration;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.io.File;
 
 /**
@@ -15,6 +16,7 @@ import java.io.File;
  * @author thatsIch
  * @date 25.02.14.
  */
+@Singleton
 public class RegistryConfig
 {
 	// Final Fields
