@@ -2,6 +2,8 @@
  * Applied Aerodynamics:
  * Gravisuite für AE
  *
+ * save last spot teleportation
+ *
  * @author thatsIch
  * @date 16.03.14.
  */
