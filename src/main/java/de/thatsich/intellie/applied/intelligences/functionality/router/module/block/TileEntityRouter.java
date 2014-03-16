@@ -1,4 +1,4 @@
-package de.thatsich.intellie.functionality.router.module.block;
+package de.thatsich.intellie.applied.intelligences.functionality.router.module.block;
 
 import de.thatsich.common.module.tileentity.ATileEntity;
 import net.minecraftforge.common.config.Configuration;

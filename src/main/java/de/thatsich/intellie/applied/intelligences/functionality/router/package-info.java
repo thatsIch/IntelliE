@@ -17,4 +17,4 @@
  * touching the imprinted inventory.
  * </p>
  */
-package de.thatsich.intellie.functionality.router;
+package de.thatsich.intellie.applied.intelligences.functionality.router;

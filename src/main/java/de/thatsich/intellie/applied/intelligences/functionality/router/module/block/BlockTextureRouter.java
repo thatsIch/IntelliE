@@ -1,4 +1,4 @@
-package de.thatsich.intellie.functionality.router.module.block;
+package de.thatsich.intellie.applied.intelligences.functionality.router.module.block;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

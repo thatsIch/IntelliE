@@ -1,4 +1,4 @@
-package de.thatsich.intellie.functionality.router.module.item;
+package de.thatsich.intellie.applied.intelligences.functionality.router.module.item;
 
 import de.thatsich.common.module.item.AItemRecipe;
 

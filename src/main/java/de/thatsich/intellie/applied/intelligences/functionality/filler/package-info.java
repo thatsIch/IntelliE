@@ -8,4 +8,4 @@
  * @author thatsIch
  * @date 16.03.14.
  */
-package de.thatsich.intellie.functionality.filler;
+package de.thatsich.intellie.applied.intelligences.functionality.filler;
