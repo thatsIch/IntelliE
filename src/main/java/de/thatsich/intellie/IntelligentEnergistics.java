@@ -14,7 +14,7 @@ public class IntelligentEnergistics extends AInjectionMod
 	//	@Mod.Instance(value = "intellie")
 	//	public static IntelligentEnergistics s_instance;
 	//
-	//	@SidedProxy(clientSide = "de.thatsich.intellie.applied.intelligences.proxies.ClientProxy", serverSide = "de.thatsich.intellie.applied.intelligences.proxies.CommonProxy")
+	//	@SidedProxy(clientSide = "de.thatsich.intellie.applied.intelligences.common.proxies.ClientProxy", serverSide = "de.thatsich.intellie.applied.intelligences.common.proxies.CommonProxy")
 	//	public static CommonProxy s_proxy;
 
 	@Override
