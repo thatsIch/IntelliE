@@ -94,7 +94,7 @@ public class Logger implements ILog
 
 		if ( loggingEnabled )
 		{
-			FMLRelaunchLog.log( "IE-" + side, level, format, data );
+			FMLRelaunchLog.log( "IE:" + side, level, format, data );
 		}
 	}
 }

@@ -10,14 +10,14 @@ import javax.inject.Singleton;
  * @date 05.03.14.
  */
 @Module(
-	library = true,
-	overrides = true
+	injects = ILog.class,
+	library = true
 )
 public class LoggerModule
 {
 	@Provides
 	@Singleton
-	ILog provideLog ( Logger logger )
+	ILog provideILog ( Logger logger )
 	{
 		return logger;
 	}
