@@ -1,4 +1,4 @@
-package de.thatsich.intellie.decorative.test.module.block;
+package de.thatsich.intellie.applied.intelligences.decorative.test.module.block;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

@@ -1,7 +1,7 @@
-package de.thatsich.intellie.decorative.test;
+package de.thatsich.intellie.applied.intelligences.decorative.test;
 
 import de.thatsich.common.AMinecraftObject;
-import de.thatsich.intellie.decorative.test.module.BlockTest;
+import de.thatsich.intellie.applied.intelligences.decorative.test.module.BlockTest;
 
 import javax.inject.Inject;
 

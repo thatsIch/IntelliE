@@ -1,4 +1,4 @@
-package de.thatsich.intellie.decorative.test.module.block;
+package de.thatsich.intellie.applied.intelligences.decorative.test.module.block;
 
 import de.thatsich.common.module.block.ABlockConfig;
 

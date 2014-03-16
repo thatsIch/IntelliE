@@ -1,4 +1,4 @@
-package de.thatsich.intellie.common.proxies;
+package de.thatsich.intellie.applied.intelligences.proxies;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;

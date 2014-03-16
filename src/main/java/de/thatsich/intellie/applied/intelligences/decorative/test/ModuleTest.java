@@ -1,4 +1,4 @@
-package de.thatsich.intellie.decorative.test;
+package de.thatsich.intellie.applied.intelligences.decorative.test;
 
 import dagger.Module;
 import de.thatsich.common.registries.RegistryModule;
