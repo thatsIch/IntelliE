@@ -1,4 +1,4 @@
-package de.thatsich.intellie.applied.aerodynamics.functionality.suite;
+package de.thatsich.common.module;
 
 /**
  * @author thatsIch
