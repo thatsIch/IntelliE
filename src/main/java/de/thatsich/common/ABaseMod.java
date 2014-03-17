@@ -12,6 +12,7 @@ import de.thatsich.common.registries.RegistryModule;
 import de.thatsich.common.registries.RegistryTileEntity;
 import de.thatsich.common.util.ILog;
 import de.thatsich.common.util.LoggerModule;
+import de.thatsich.intellie.applied.aerodynamics.IProxy;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
@@ -21,25 +22,35 @@ import java.util.LinkedList;
 
 /**
  * Minecraft Mod with enabled Dependency Injection namely @Inject
+ *
+ * @author thatsIch
+ * @date 16.03.14.
  */
-public abstract class AInjectionMod
+public abstract class ABaseMod implements IProxy
 {
+	// Logger
+	final ILog log;
+
+	// Registries
 	private final RegistryConfig configs;
 	private final RegistryBlock blocks;
 	private final RegistryItem items;
 	private final RegistryTileEntity tileEntites;
-	private final ILog log;
 
 	/**
 	 * To make sure that the initialization of Guice-based JavaFX application
 	 * works flawlessly, the original init method of the base JavaFX Application
 	 * class is overwritten here. All of the
 	 */
-	protected AInjectionMod ()
+	protected ABaseMod ()
 	{
 		// Creates an injector with all of the required modules.
-		final Object[] modules = this.getModuleInstances().toArray();
-		ObjectGraph injector = ObjectGraph.create( new LoggerModule(), new RegistryModule(), modules );
+		final Collection<Object> moduleInstances = this.getModuleInstances();
+		moduleInstances.add( new LoggerModule() );
+		moduleInstances.add( new RegistryModule() );
+
+		final Object[] modules = moduleInstances.toArray();
+		final ObjectGraph injector = ObjectGraph.create( modules );
 
 		// Enable Logging
 		this.log = injector.get( ILog.class );
@@ -49,21 +60,21 @@ public abstract class AInjectionMod
 		this.blocks = injector.get( RegistryBlock.class );
 		this.items = injector.get( RegistryItem.class );
 		this.tileEntites = injector.get( RegistryTileEntity.class );
+		//		final RegistryEntity entities = tempInjector.getInstance( RegistryEntity.class );
+		//		final HandlerGui gui = tempInjector.getInstance( HandlerGui.class );
 
 		// using injector and modules to instantiate them once
 		this.instantiateModules( injector, modules );
-
-		//		final RegistryEntity entities = tempInjector.getInstance( RegistryEntity.class );
-		//		final HandlerGui gui = tempInjector.getInstance( HandlerGui.class );
 	}
 
 	/**
 	 * Instantiates module objects
 	 *
 	 * @param injector ObjectGraph
-	 * @param modules To be instantiated modules
+	 * @param modules  To be instantiated modules
 	 */
-	private void instantiateModules( ObjectGraph injector, Object... modules ) {
+	private void instantiateModules ( ObjectGraph injector, Object... modules )
+	{
 		for ( Object obj : modules )
 		{
 			final Class<?> clazz = obj.getClass();
@@ -79,11 +90,13 @@ public abstract class AInjectionMod
 	/**
 	 * Fed classes are instantiated by ObjectGraph
 	 *
-	 * @param injector ObjectGraph
+	 * @param injector   ObjectGraph
 	 * @param injections instantiated class references
 	 */
-	private void instantiateInjections( ObjectGraph injector, Class<?>... injections ) {
-		for ( Class<?> injection : injections) {
+	private void instantiateInjections ( ObjectGraph injector, Class<?>... injections )
+	{
+		for ( Class<?> injection : injections )
+		{
 			injector.get( injection );
 		}
 	}
@@ -126,9 +139,11 @@ public abstract class AInjectionMod
 	 *
 	 * @param event contains information to pre-initialize the mod
 	 */
-	protected void preInit ( FMLPreInitializationEvent event )
+	@Override
+	public void preInit ( FMLPreInitializationEvent event )
 	{
 		this.log.info( "PreInit Begin" );
+
 		final File suggConfigFile = event.getSuggestedConfigurationFile();
 		final Configuration config = this.configs.load( suggConfigFile );
 
@@ -139,9 +154,9 @@ public abstract class AInjectionMod
 		this.blocks.registerBlocks();
 		this.items.registerItems();
 
-
 		// proxy.initSounds();
 		// proxy.initRenders();
+
 		this.log.info( "PreInit End" );
 	}
 
@@ -151,9 +166,11 @@ public abstract class AInjectionMod
 	 *
 	 * @param event contains information to initialize and finalize the mod
 	 */
-	protected void init ( FMLInitializationEvent event )
+	@Override
+	public void init ( FMLInitializationEvent event )
 	{
 		this.log.info( "Init Begin" );
+
 		this.tileEntites.registerTileEntities();
 		// super.getItems().registerRecipes();
 
@@ -161,6 +178,7 @@ public abstract class AInjectionMod
 		// super.getGui().init( this );
 
 		MinecraftForge.EVENT_BUS.register( this );
+
 		this.log.info( "Init End" );
 	}
 
@@ -169,11 +187,10 @@ public abstract class AInjectionMod
 	 *
 	 * @param event Event after setup
 	 */
-	protected void modLoaded ( FMLPostInitializationEvent event )
+	@Override
+	public void postInit ( FMLPostInitializationEvent event )
 	{
-		this.log.info( "Loaded Begin" );
-
-
-		this.log.info( "Loaded End" );
+		this.log.info( "PostInit Begin" );
+		this.log.info( "PostInit End" );
 	}
 }

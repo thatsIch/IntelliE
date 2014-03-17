@@ -12,6 +12,8 @@ import javax.inject.Inject;
  */
 public class Logger implements ILog
 {
+	private final String name;
+
 	/**
 	 * Constructor either only be injected or tested
 	 * thus package private
@@ -19,6 +21,7 @@ public class Logger implements ILog
 	@Inject
 	Logger ()
 	{
+		this.name = "IE";
 	}
 
 	/**
@@ -27,9 +30,10 @@ public class Logger implements ILog
 	 * @param format formated String
 	 * @param data   Input into formated String
 	 */
+	@Override
 	public void info ( String format, Object... data )
 	{
-		this.log( Level.INFO, format, data );
+		this.logging( Level.INFO, format, data );
 	}
 
 	/**
@@ -38,9 +42,10 @@ public class Logger implements ILog
 	 * @param format formated String
 	 * @param data   Input into formated String
 	 */
+	@Override
 	public void warn ( String format, Object... data )
 	{
-		this.log( Level.WARN, format, data );
+		this.logging( Level.WARN, format, data );
 	}
 
 	/**
@@ -49,9 +54,10 @@ public class Logger implements ILog
 	 * @param format formated String
 	 * @param data   Input into formated String
 	 */
+	@Override
 	public void debug ( String format, Object... data )
 	{
-		this.log( Level.DEBUG, format, data );
+		this.logging( Level.DEBUG, format, data );
 	}
 
 	/**
@@ -59,6 +65,7 @@ public class Logger implements ILog
 	 *
 	 * @param exception thrown exception
 	 */
+	@Override
 	public void trace ( Throwable exception )
 	{
 		final String message = exception.getMessage();
@@ -72,9 +79,10 @@ public class Logger implements ILog
 	 * @param format formated String
 	 * @param data   Input into formated String
 	 */
+	@Override
 	public void severe ( String format, Object... data )
 	{
-		this.log( Level.FATAL, format, data );
+		this.logging( Level.FATAL, format, data );
 	}
 
 	/**
@@ -84,17 +92,15 @@ public class Logger implements ILog
 	 * @param format formated String
 	 * @param data   Input into formated String
 	 */
-	private void log ( Level level, String format, Object... data )
+	private void logging ( Level level, String format, Object... data )
 	{
 		final FMLCommonHandler instance = FMLCommonHandler.instance();
 		final Side effectiveSide = instance.getEffectiveSide();
 		final boolean isClient = effectiveSide.isClient();
-		final boolean loggingEnabled = true; //this.config.getBoolean( "general", "logging", true );
 		final String side = isClient ? "C" : "S";
 
-		if ( loggingEnabled )
-		{
-			FMLRelaunchLog.log( "IE:" + side, level, format, data );
-		}
+		FMLRelaunchLog.log( this.name + Logger.COLON + side, level, format, data );
 	}
+
+	private static final char COLON = ':';
 }

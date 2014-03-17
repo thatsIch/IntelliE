@@ -17,12 +17,12 @@ public class AppliedIntelligences
 {
 	public AppliedIntelligences ()
 	{
-		System.out.println( "CTOR" );
+
 	}
 
 	@Mod.EventHandler
 	public void preInit ( FMLPreInitializationEvent event )
 	{
-		System.out.println( "POOOPS" );
+
 	}
 }

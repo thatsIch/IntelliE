@@ -2,13 +2,13 @@ package de.thatsich.common.registries;
 
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import de.thatsich.common.AInjectionMod;
+import de.thatsich.common.ABaseMod;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
 public class HandlerGui implements IGuiHandler
 {
-	public void init( AInjectionMod instance ) {
+	public void init( ABaseMod instance ) {
 		NetworkRegistry.INSTANCE.registerGuiHandler( instance, this );
 	}
 
