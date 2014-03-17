@@ -12,7 +12,7 @@ import de.thatsich.common.registries.RegistryModule;
 import de.thatsich.common.registries.RegistryTileEntity;
 import de.thatsich.common.util.ILog;
 import de.thatsich.common.util.LoggerModule;
-import de.thatsich.intellie.applied.aerodynamics.IProxy;
+import de.thatsich.common.util.IProxy;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 

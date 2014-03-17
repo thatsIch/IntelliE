@@ -1,4 +1,4 @@
-package de.thatsich.intellie.applied.aerodynamics;
+package de.thatsich.common.util;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
