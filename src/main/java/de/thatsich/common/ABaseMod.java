@@ -5,14 +5,15 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import dagger.Module;
 import dagger.ObjectGraph;
+import de.thatsich.common.module.IModule;
 import de.thatsich.common.registries.RegistryBlock;
 import de.thatsich.common.registries.RegistryConfig;
 import de.thatsich.common.registries.RegistryItem;
 import de.thatsich.common.registries.RegistryModule;
 import de.thatsich.common.registries.RegistryTileEntity;
 import de.thatsich.common.util.ILog;
-import de.thatsich.common.util.LoggerModule;
 import de.thatsich.common.util.IProxy;
+import de.thatsich.common.util.LoggerModule;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
@@ -45,7 +46,7 @@ public abstract class ABaseMod implements IProxy
 	protected ABaseMod ()
 	{
 		// Creates an injector with all of the required modules.
-		final Collection<Object> moduleInstances = this.getModuleInstances();
+		final Collection<IModule> moduleInstances = this.getModuleInstances();
 		moduleInstances.add( new LoggerModule() );
 		moduleInstances.add( new RegistryModule() );
 
@@ -107,10 +108,10 @@ public abstract class ABaseMod implements IProxy
 	 *
 	 * @return ModuleInstances
 	 */
-	private Collection<Object> getModuleInstances ()
+	private Collection<IModule> getModuleInstances ()
 	{
 		// Preprare
-		final Collection<Object> instances = new LinkedList<>();
+		final Collection<IModule> instances = new LinkedList<>();
 
 		// Fetch all ModuleClasses
 		this.initModules( instances );
@@ -131,7 +132,7 @@ public abstract class ABaseMod implements IProxy
 	 * @param modules A list of modules (initially empty) that shall be used to
 	 *                create the injector to be used in the context of this application.
 	 */
-	protected abstract void initModules ( Collection<Object> modules );
+	protected abstract void initModules ( Collection<IModule> modules );
 
 	/**
 	 * Run before anything else. Read your config, create blocks, items, etc,

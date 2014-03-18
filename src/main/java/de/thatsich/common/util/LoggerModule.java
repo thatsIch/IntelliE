@@ -2,6 +2,7 @@ package de.thatsich.common.util;
 
 import dagger.Module;
 import dagger.Provides;
+import de.thatsich.common.module.IModule;
 
 import javax.inject.Singleton;
 
@@ -13,7 +14,7 @@ import javax.inject.Singleton;
 	injects = ILog.class,
 	library = true
 )
-public class LoggerModule
+public class LoggerModule implements IModule
 {
 	@Provides
 	@Singleton

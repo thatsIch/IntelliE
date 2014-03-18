@@ -5,6 +5,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import de.thatsich.common.ABaseMod;
+import de.thatsich.common.module.IModule;
 
 import java.util.Collection;
 
@@ -16,12 +17,12 @@ import java.util.Collection;
 	modid = "appaero",
 	name = "AppliedAerodynamics",
 	version = "${version}",
-	dependencies = "required-after:Forge@[7.0,);required-after:FML@[5.0.5,)" //;required-after:appliedenergistics2"
+	dependencies = "required-after:Forge@[7.0,);required-after:FML@[5.0.5,) ;after:appliedenergistics2"
 )
 public class AppliedAerodynamics extends ABaseMod
 {
 	@Override
-	protected void initModules ( final Collection<Object> modules )
+	protected void initModules ( final Collection<IModule> modules )
 	{
 
 	}

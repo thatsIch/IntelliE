@@ -1,6 +1,7 @@
 package de.thatsich.common.registries;
 
 import dagger.Module;
+import de.thatsich.common.module.IModule;
 import de.thatsich.common.util.LoggerModule;
 
 /**
@@ -16,5 +17,5 @@ import de.thatsich.common.util.LoggerModule;
 		LoggerModule.class
 	}
 )
-public class RegistryModule
+public class RegistryModule implements IModule
 {}
