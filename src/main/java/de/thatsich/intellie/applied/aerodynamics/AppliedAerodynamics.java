@@ -1,13 +1,12 @@
 package de.thatsich.intellie.applied.aerodynamics;
 
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import de.thatsich.common.ABaseMod;
-import de.thatsich.common.module.IModule;
-
-import java.util.Collection;
+import de.thatsich.common.util.ICommonProxy;
 
 /**
  * @author thatsIch
@@ -21,11 +20,8 @@ import java.util.Collection;
 )
 public class AppliedAerodynamics extends ABaseMod
 {
-	@Override
-	protected void initModules ( final Collection<IModule> modules )
-	{
-
-	}
+	@SidedProxy(clientSide = "de.thatsich.intellie.applied.aerodynamics.common.proxies.ClientProxy", serverSide = "de.thatsich.intellie.applied.aerodynamics.common.proxies.CommonProxy")
+	public static ICommonProxy s_proxy;
 
 	@Override
 	@Mod.EventHandler

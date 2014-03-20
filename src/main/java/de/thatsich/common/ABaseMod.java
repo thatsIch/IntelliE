@@ -18,6 +18,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -46,9 +47,12 @@ public abstract class ABaseMod implements IProxy
 	protected ABaseMod ()
 	{
 		// Creates an injector with all of the required modules.
-		final Collection<IModule> moduleInstances = this.getModuleInstances();
+		final Collection<IModule> moduleInstances = new LinkedList<>();
+		final Collection<IModule> classModule = this.getClassModule();
+
 		moduleInstances.add( new LoggerModule() );
 		moduleInstances.add( new RegistryModule() );
+		moduleInstances.addAll( classModule );
 
 		final Object[] modules = moduleInstances.toArray();
 		final ObjectGraph injector = ObjectGraph.create( modules );
@@ -66,6 +70,33 @@ public abstract class ABaseMod implements IProxy
 
 		// using injector and modules to instantiate them once
 		this.instantiateModules( injector, modules );
+	}
+
+	/**
+	 * Derives the needed module from the child classname
+	 *
+	 * If Mod is called <b>MyMod</b> then the required module name is <b>MyModModule</b> in the same package
+	 *
+	 * @return Collection of the mod module. Is empty when attempt to fetch failed.
+	 */
+	private Collection<IModule> getClassModule(  ) {
+		final Collection<IModule> moduleInstances = new LinkedList<>();
+
+		final String childName = this.getClass().getName();
+		final String moduleName = childName + "Module";
+
+		try
+		{
+			final IModule module = (IModule) Class.forName( moduleName ).getConstructor().newInstance();
+			moduleInstances.add( module );
+			System.out.println("Added!");
+		}
+		catch ( InstantiationException | IllegalAccessException | ClassNotFoundException | NoSuchMethodException | InvocationTargetException e )
+		{
+			e.printStackTrace();
+		}
+
+		return moduleInstances;
 	}
 
 	/**
@@ -102,44 +133,6 @@ public abstract class ABaseMod implements IProxy
 		}
 	}
 
-	/**
-	 * Propagates initialization of additional modules to the specific
-	 * subclass of this GuiceApplication instance.
-	 *
-	 * @return ModuleInstances
-	 */
-	private Collection<IModule> getModuleInstances ()
-	{
-		// Preprare
-		final Collection<IModule> instances = new LinkedList<>();
-
-		// Fetch all ModuleClasses
-		this.initModules( instances );
-
-		// Finalize
-		return instances;
-	}
-
-	/**
-	 * This method is used to fetch and/or create (Guice) modules necessary
-	 * to fully construct this application.
-	 * <p>
-	 * The modules that are initialized in this method and added to the passed
-	 * List will be used to create the {@link dagger.ObjectGraph} instance that is used in
-	 * the context of this application.
-	 * </p>
-	 *
-	 * @param modules A list of modules (initially empty) that shall be used to
-	 *                create the injector to be used in the context of this application.
-	 */
-	protected abstract void initModules ( Collection<IModule> modules );
-
-	/**
-	 * Run before anything else. Read your config, create blocks, items, etc,
-	 * and register them with the GameRegistry.
-	 *
-	 * @param event contains information to pre-initialize the mod
-	 */
 	@Override
 	public void preInit ( FMLPreInitializationEvent event )
 	{
@@ -161,12 +154,6 @@ public abstract class ABaseMod implements IProxy
 		this.log.info( "PreInit End" );
 	}
 
-	/**
-	 * Do your mod setup. Build whatever data structures you care about.
-	 * Register recipes, send FMLInterModComms messages to other mods.
-	 *
-	 * @param event contains information to initialize and finalize the mod
-	 */
 	@Override
 	public void init ( FMLInitializationEvent event )
 	{
@@ -183,11 +170,6 @@ public abstract class ABaseMod implements IProxy
 		this.log.info( "Init End" );
 	}
 
-	/**
-	 * Handle interaction with other mods, complete your setup based on this.
-	 *
-	 * @param event Event after setup
-	 */
 	@Override
 	public void postInit ( FMLPostInitializationEvent event )
 	{

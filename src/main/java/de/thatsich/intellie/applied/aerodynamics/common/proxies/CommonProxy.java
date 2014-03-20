@@ -1,13 +1,12 @@
-package de.thatsich.intellie.applied.intelligences.common.proxies;
+package de.thatsich.intellie.applied.aerodynamics.common.proxies;
 
+import cpw.mods.fml.common.network.IGuiHandler;
 import de.thatsich.common.util.ICommonProxy;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
-import cpw.mods.fml.common.network.IGuiHandler;
 
 public class CommonProxy implements IGuiHandler, ICommonProxy
 {
-
 	@Override
 	public Object getServerGuiElement( int ID, EntityPlayer player, World world, int x, int y, int z )
 	{

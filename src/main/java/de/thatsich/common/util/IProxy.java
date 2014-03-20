@@ -13,23 +13,25 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 public interface IProxy
 {
 	/**
-	 * Phase 1
+	 * Run before anything else. Read your config, create blocks, items, etc,
+	 * and register them with the GameRegistry.
 	 *
-	 * @param event preinit event
+	 * @param event contains information to pre-initialize the mod
 	 */
 	void preInit ( FMLPreInitializationEvent event );
 
 	/**
-	 * Phase 2
+	 * Do your mod setup. Build whatever data structures you care about.
+	 * Register recipes, send FMLInterModComms messages to other mods.
 	 *
-	 * @param event init event
+	 * @param event contains information to initialize and finalize the mod
 	 */
 	void init ( FMLInitializationEvent event );
 
 	/**
-	 * Phase 3
+	 * Handle interaction with other mods, complete your setup based on this.
 	 *
-	 * @param event postinit event
+	 * @param event Event after setup
 	 */
 	void postInit ( FMLPostInitializationEvent event );
 
@@ -38,5 +40,5 @@ public interface IProxy
 	 *
 	 * @param event mod communitcation event
 	 */
-//	void interMod ( FMLInterModComms event );
+	//	void interMod ( FMLInterModComms event );
 }
