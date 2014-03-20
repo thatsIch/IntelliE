@@ -9,4 +9,6 @@ import de.thatsich.common.module.IModule;
  */
 @Module
 public class AppliedAerodynamicsModule implements IModule
-{}
+{
+
+}

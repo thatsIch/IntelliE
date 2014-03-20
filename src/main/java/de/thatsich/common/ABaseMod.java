@@ -47,12 +47,10 @@ public abstract class ABaseMod implements IProxy
 	protected ABaseMod ()
 	{
 		// Creates an injector with all of the required modules.
-		final Collection<IModule> moduleInstances = new LinkedList<>();
-		final Collection<IModule> classModule = this.getClassModule();
+		final Collection<IModule> moduleInstances = this.getClassModule();
 
 		moduleInstances.add( new LoggerModule() );
 		moduleInstances.add( new RegistryModule() );
-		moduleInstances.addAll( classModule );
 
 		final Object[] modules = moduleInstances.toArray();
 		final ObjectGraph injector = ObjectGraph.create( modules );
