@@ -89,7 +89,6 @@ public abstract class ABaseMod implements IProxy
 		{
 			final IModule module = (IModule) Class.forName( moduleName ).getConstructor().newInstance();
 			moduleInstances.add( module );
-			System.out.println("Added!");
 		}
 		catch ( InstantiationException | IllegalAccessException | ClassNotFoundException | NoSuchMethodException | InvocationTargetException e )
 		{
