@@ -13,9 +13,9 @@ import de.thatsich.common.util.LoggerModule;
 		RegistryConfig.class, RegistryBlock.class, RegistryItem.class, RegistryTileEntity.class
 		//		HandlerGui.class, HandlerRenderer.class, HandlerSound.class
 	},
-	includes = {
-		LoggerModule.class
-	}
-)
+	includes = LoggerModule.class,
+	library = true)
 public class RegistryModule implements IModule
-{}
+{
+
+}
