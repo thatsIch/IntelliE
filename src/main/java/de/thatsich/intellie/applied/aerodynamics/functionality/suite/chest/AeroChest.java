@@ -8,10 +8,10 @@ import javax.inject.Singleton;
  * @date 20.03.2014.
  */
 @Singleton
-public class MEChest //extends AItemArmor
+public class AeroChest //extends AItemArmor
 {
 	@Inject
-	public MEChest ()
+	public AeroChest ()
 	{
 //		super( ItemArmor.ArmorMaterial.DIAMOND, 0, 0 );
 	}
