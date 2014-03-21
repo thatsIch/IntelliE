@@ -36,7 +36,6 @@ buildscript {
 	dependencies {
 		classpath "net.minecraftforge.gradle:ForgeGradle:$FORGE_GRADLE_VERSION"
 		classpath "com.github.jengelman.gradle.plugins:shadow:$SHADOW_VERSION"
-		classpath "org.projectlombok:lombok:$LOMBOK_VERSION"
 		classpath "com.squareup.dagger:dagger-compiler:$DAGGER_VERSION"
 	}
 }
@@ -56,7 +55,6 @@ shadow {
 // dependencies needed
 dependencies {
 	compile "com.squareup.dagger:dagger:$DAGGER_VERSION"
-	compile "org.projectlombok:lombok:$LOMBOK_VERSION"
 }
 
 // exclude layers and integration of (AE2)
