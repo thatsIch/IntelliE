@@ -1,5 +1,8 @@
 package de.thatsich.intellie.applied.aerodynamics.functionality.suite.chest;
 
+import de.thatsich.common.module.item.AItemArmor;
+import net.minecraft.item.ItemArmor;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -8,11 +11,11 @@ import javax.inject.Singleton;
  * @date 20.03.2014.
  */
 @Singleton
-public class AeroChest //extends AItemArmor
+public class AeroChest extends AItemArmor
 {
 	@Inject
 	public AeroChest ()
 	{
-//		super( ItemArmor.ArmorMaterial.DIAMOND, 0, 0 );
+		super( ItemArmor.ArmorMaterial.DIAMOND, 0, 0 );
 	}
 }

@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
+ * Handles registration of items
+ *
  * @author thatsIch
  * @date 25.02.14.
  */
@@ -15,6 +17,10 @@ public class RegistryItem
 {
 	private final ILog log;
 
+
+	/**
+	 * @param log Logger
+	 */
 	@Inject
 	RegistryItem ( ILog log )
 	{
@@ -30,5 +36,7 @@ public class RegistryItem
 	public void registerItems ()
 	{
 		this.log.info( "Registering all Items." );
+//		GameRegistry.registerItem(  );
 	}
+
 }
