@@ -128,7 +128,7 @@ public abstract class ABaseMod implements IProxy
 	{
 		for ( Class<?> injection : injections )
 		{
-			injector.get( injection );
+			final Object injected = injector.get( injection );
 		}
 	}
 
