@@ -1,20 +1,28 @@
 package de.thatsich.common.module.block.info;
 
-import lombok.Getter;
-
+import java.util.Locale;
+import java.util.regex.Pattern;
 
 public abstract class ABlockName implements IBlockName
 {
-	@Getter
+	private static final Pattern COMPILE = Pattern.compile( "\\s+" );
+
 	private final String name;
-	@Getter
 	private final String unlocalizedName;
 
 	protected ABlockName ( String name )
 	{
 		// process information
+		final Locale locale = Locale.getDefault();
+
 		// unlocalized name is first letter small and no space
 		this.name = name;
-		this.unlocalizedName = name.replaceAll( "\\s+", "" ).toUpperCase();
+		this.unlocalizedName = ABlockName.COMPILE.matcher( name ).replaceAll( "" ).toUpperCase( locale );
 	}
+
+	@Override
+	public String getUnlocalizedName () { return this.unlocalizedName; }
+
+	@Override
+	public String getName () { return this.name; }
 }
