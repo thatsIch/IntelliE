@@ -11,6 +11,7 @@ import de.thatsich.common.registries.RegistryConfig;
 import de.thatsich.common.registries.RegistryItem;
 import de.thatsich.common.registries.RegistryModule;
 import de.thatsich.common.registries.RegistryTileEntity;
+import de.thatsich.common.util.ICommonProxy;
 import de.thatsich.common.util.ILog;
 import de.thatsich.common.util.IProxy;
 import de.thatsich.common.util.LoggerModule;
@@ -77,7 +78,8 @@ public abstract class ABaseMod implements IProxy
 	 *
 	 * @return Collection of the mod module. Is empty when attempt to fetch failed.
 	 */
-	private Collection<IModule> getClassModule(  ) {
+	private Collection<IModule> getClassModule ()
+	{
 		final Collection<IModule> moduleInstances = new LinkedList<>();
 
 		final String childName = this.getClass().getName();
@@ -129,6 +131,8 @@ public abstract class ABaseMod implements IProxy
 			injector.get( injection );
 		}
 	}
+
+	protected abstract ICommonProxy getProxy ();
 
 	@Override
 	public void preInit ( FMLPreInitializationEvent event )

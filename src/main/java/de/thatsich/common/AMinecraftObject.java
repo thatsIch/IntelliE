@@ -23,11 +23,13 @@ public abstract class AMinecraftObject implements IMinecraftObject
 
 	protected AMinecraftObject ( IItem item, ABlock block, AContainerBlock containerBlock )
 	{
-		if (item != null) {
+		if ( item != null )
+		{
 			this.items.addItem( item );
 		}
 
-		if (block != null) {
+		if ( block != null )
+		{
 			this.blocks.addBlock( block );
 		}
 
@@ -40,17 +42,19 @@ public abstract class AMinecraftObject implements IMinecraftObject
 	 *
 	 * @param item Item which needs to be handled
 	 */
-	protected AMinecraftObject ( IItem item ) {
+	protected AMinecraftObject ( IItem item )
+	{
 		this.items.addItem( item );
 	}
 
 	/**
 	 * Constructor for Blocks with specific ItemBlock
 	 *
-	 * @param item ItemBlock
+	 * @param item  ItemBlock
 	 * @param block Block
 	 */
-	protected AMinecraftObject ( IItem item, IBlock block ) {
+	protected AMinecraftObject ( IItem item, IBlock block )
+	{
 		this.items.addItem( item );
 		this.blocks.addBlock( block );
 	}
@@ -60,11 +64,13 @@ public abstract class AMinecraftObject implements IMinecraftObject
 	 *
 	 * @param block Block
 	 */
-	protected AMinecraftObject ( IBlock block ) {
+	protected AMinecraftObject ( IBlock block )
+	{
 		this.blocks.addBlock( block );
 	}
 
-	protected AMinecraftObject ( IItem item, IContainerBlock block ) {
+	protected AMinecraftObject ( IItem item, IContainerBlock block )
+	{
 		this.items.addItem( item );
 		this.blocks.addBlock( block );
 	}

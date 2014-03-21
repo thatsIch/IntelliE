@@ -12,6 +12,7 @@ import javax.inject.Inject;
  */
 public class Logger implements ILog
 {
+	private static final char COLON = ':';
 	private final String name;
 
 	/**
@@ -101,6 +102,4 @@ public class Logger implements ILog
 
 		FMLRelaunchLog.log( this.name + Logger.COLON + side, level, format, data );
 	}
-
-	private static final char COLON = ':';
 }

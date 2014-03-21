@@ -24,6 +24,9 @@ public class AppliedAerodynamics extends ABaseMod
 	public static ICommonProxy s_proxy;
 
 	@Override
+	protected ICommonProxy getProxy () { return AppliedAerodynamics.s_proxy; }
+
+	@Override
 	@Mod.EventHandler
 	public void preInit ( FMLPreInitializationEvent event )
 	{

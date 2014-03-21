@@ -26,6 +26,6 @@ public enum EConfigs
 	{
 		final String name = this.name();
 
-		return CaseFormat.UPPER_UNDERSCORE.to( CaseFormat.UPPER_CAMEL, name);
+		return CaseFormat.UPPER_UNDERSCORE.to( CaseFormat.UPPER_CAMEL, name );
 	}
 }

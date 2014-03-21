@@ -8,18 +8,19 @@ import net.minecraft.world.World;
 
 public class HandlerGui implements IGuiHandler
 {
-	public void init( ABaseMod instance ) {
+	public void init ( ABaseMod instance )
+	{
 		NetworkRegistry.INSTANCE.registerGuiHandler( instance, this );
 	}
 
 	@Override
-	public Object getServerGuiElement( int ID, EntityPlayer player, World world, int x, int y, int z )
+	public Object getServerGuiElement ( int ID, EntityPlayer player, World world, int x, int y, int z )
 	{
 		return null;
 	}
 
 	@Override
-	public Object getClientGuiElement( int ID, EntityPlayer player, World world, int x, int y, int z )
+	public Object getClientGuiElement ( int ID, EntityPlayer player, World world, int x, int y, int z )
 	{
 		return null;
 	}

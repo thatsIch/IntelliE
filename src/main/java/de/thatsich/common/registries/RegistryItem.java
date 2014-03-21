@@ -21,12 +21,14 @@ public class RegistryItem
 		this.log = log;
 	}
 
-	public void addItem ( IItem item ) {
+	public void addItem ( IItem item )
+	{
 
 		this.log.info( "Added Item %s.", item );
 	}
 
-	public void registerItems () {
+	public void registerItems ()
+	{
 		this.log.info( "Registering all Items." );
 	}
 }

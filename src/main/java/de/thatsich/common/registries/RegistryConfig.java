@@ -75,8 +75,8 @@ public class RegistryConfig
 	/**
 	 * Boolean
 	 *
-	 * @param category Requested Category
-	 * @param key Requested Key
+	 * @param category     Requested Category
+	 * @param key          Requested Key
 	 * @param defaultValue Defaultvalue if key does not exist
 	 *
 	 * @return Requested category and key
@@ -89,8 +89,8 @@ public class RegistryConfig
 	/**
 	 * Array of Booleans
 	 *
-	 * @param category Requested Category
-	 * @param key Requested Key
+	 * @param category     Requested Category
+	 * @param key          Requested Key
 	 * @param defaultValue Defaultvalue if key does not exist
 	 *
 	 * @return Requested category and key
@@ -103,8 +103,8 @@ public class RegistryConfig
 	/**
 	 * Double
 	 *
-	 * @param category Requested Category
-	 * @param key Requested Key
+	 * @param category     Requested Category
+	 * @param key          Requested Key
 	 * @param defaultValue Defaultvalue if key does not exist
 	 *
 	 * @return Requested category and key
@@ -117,8 +117,8 @@ public class RegistryConfig
 	/**
 	 * Array of doubles
 	 *
-	 * @param category Requested Category
-	 * @param key Requested Key
+	 * @param category     Requested Category
+	 * @param key          Requested Key
 	 * @param defaultValue Defaultvalue if key does not exist
 	 *
 	 * @return Requested category and key
@@ -131,8 +131,8 @@ public class RegistryConfig
 	/**
 	 * Integer
 	 *
-	 * @param category Requested Category
-	 * @param key Requested Key
+	 * @param category     Requested Category
+	 * @param key          Requested Key
 	 * @param defaultValue Defaultvalue if key does not exist
 	 *
 	 * @return Requested category and key
@@ -145,8 +145,8 @@ public class RegistryConfig
 	/**
 	 * Array of integers
 	 *
-	 * @param category Requested Category
-	 * @param key Requested Key
+	 * @param category     Requested Category
+	 * @param key          Requested Key
 	 * @param defaultValue Defaultvalue if key does not exist
 	 *
 	 * @return Requested category and key
@@ -159,8 +159,8 @@ public class RegistryConfig
 	/**
 	 * String
 	 *
-	 * @param category Requested Category
-	 * @param key Requested Key
+	 * @param category     Requested Category
+	 * @param key          Requested Key
 	 * @param defaultValue Defaultvalue if key does not exist
 	 *
 	 * @return Requested category and key
@@ -173,8 +173,8 @@ public class RegistryConfig
 	/**
 	 * Array of Strings
 	 *
-	 * @param category Requested Category
-	 * @param key Requested Key
+	 * @param category     Requested Category
+	 * @param key          Requested Key
 	 * @param defaultValue Defaultvalue if key does not exist
 	 *
 	 * @return Requested category and key

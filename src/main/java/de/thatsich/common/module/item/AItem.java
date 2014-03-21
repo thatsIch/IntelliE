@@ -7,7 +7,7 @@ public abstract class AItem extends Item implements IItem
 {
 	private final AItemTexture itemTexture;
 
-	protected AItem( AItemTexture itemTexture )
+	protected AItem ( AItemTexture itemTexture )
 	{
 		super();
 
