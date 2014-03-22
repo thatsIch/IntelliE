@@ -6,7 +6,7 @@ import de.thatsich.common.module.block.AContainerBlock;
 import de.thatsich.common.module.block.IBlock;
 import de.thatsich.common.module.block.IContainerBlock;
 import de.thatsich.common.module.item.AItemBlock;
-import de.thatsich.common.util.Logger;
+import de.thatsich.common.util.logging.Logger;
 import net.minecraftforge.common.config.Configuration;
 
 import javax.inject.Inject;

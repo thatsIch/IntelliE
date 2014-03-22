@@ -2,7 +2,7 @@ package de.thatsich.common.registries;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import de.thatsich.common.module.item.IItem;
-import de.thatsich.common.util.ILog;
+import de.thatsich.common.util.logging.ILog;
 import net.minecraft.item.Item;
 
 import javax.inject.Inject;

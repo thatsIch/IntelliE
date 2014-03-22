@@ -2,7 +2,7 @@ package de.thatsich.common.registries;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import de.thatsich.common.module.tileentity.ATileEntity;
-import de.thatsich.common.util.ILog;
+import de.thatsich.common.util.logging.ILog;
 import net.minecraftforge.common.config.Configuration;
 
 import javax.inject.Inject;

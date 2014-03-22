@@ -12,9 +12,9 @@ import de.thatsich.common.registries.RegistryItem;
 import de.thatsich.common.registries.RegistryModule;
 import de.thatsich.common.registries.RegistryTileEntity;
 import de.thatsich.common.util.ICommonProxy;
-import de.thatsich.common.util.ILog;
 import de.thatsich.common.util.IProxy;
-import de.thatsich.common.util.LoggerModule;
+import de.thatsich.common.util.logging.ILog;
+import de.thatsich.common.util.logging.LoggerModule;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 

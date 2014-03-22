@@ -1,7 +1,7 @@
 package de.thatsich.common.registries;
 
 import com.google.common.base.Joiner;
-import de.thatsich.common.util.ILog;
+import de.thatsich.common.util.logging.ILog;
 import net.minecraftforge.common.config.Configuration;
 
 import javax.inject.Inject;

@@ -1,4 +1,4 @@
-package de.thatsich.common.util;
+package de.thatsich.common.util.logging;
 
 import dagger.Module;
 import dagger.Provides;
