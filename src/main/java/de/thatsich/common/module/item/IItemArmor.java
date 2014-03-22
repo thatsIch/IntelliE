@@ -13,24 +13,24 @@ public interface IItemArmor extends IItem
 	/**
 	 * Return the armor material for this armor item.
 	 */
-	ItemArmor.ArmorMaterial getArmorMaterial();
+	ItemArmor.ArmorMaterial getArmorMaterial ();
 
 	/**
 	 * Return whether the specified armor ItemStack has a color.
 	 */
-	boolean hasColor(ItemStack par1ItemStack);
+	boolean hasColor ( ItemStack par1ItemStack );
 
 	/**
 	 * Return the color for the specified armor ItemStack.
 	 */
-	int getColor(ItemStack par1ItemStack);
+	int getColor ( ItemStack par1ItemStack );
 
 	/**
 	 * Remove the color from the specified armor ItemStack.
 	 */
-	void removeColor(ItemStack par1ItemStack);
+	void removeColor ( ItemStack par1ItemStack );
 
-	void func_82813_b(ItemStack par1ItemStack, int par2);
+	void func_82813_b ( ItemStack par1ItemStack, int par2 );
 
 	@Override
 	Item setContainerItem ( Item par1Item );

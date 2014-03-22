@@ -29,21 +29,20 @@ public class AItemArmor extends ItemArmor implements IItemArmor
 		this.setCreativeTab( CreativeTabs.tabCombat );
 
 
-//		GameRegistry.registerItem( item, item.getUnlocalizedName().replace( "item.", "" ) );
+		//		GameRegistry.registerItem( item, item.getUnlocalizedName().replace( "item.", "" ) );
 
-//		CreativeTabs
+		//		CreativeTabs
 
-//		Recipe
+		//		Recipe
 
-//		Texture
+		//		Texture
 
 
-
-//		@Override in proxy
-//		public int addArmor(String armor)
-//		{
-//			return RenderingRegistry.addNewArmourRendererPrefix( armor );
-//		}
+		//		@Override in proxy
+		//		public int addArmor(String armor)
+		//		{
+		//			return RenderingRegistry.addNewArmourRendererPrefix( armor );
+		//		}
 	}
 
 	@Override

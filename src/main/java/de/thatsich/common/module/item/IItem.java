@@ -251,7 +251,7 @@ public interface IItem
 	/**
 	 * Gets a map of item attribute modifiers, used by ItemSword to increase hit damage.
 	 */
-	Multimap<?,?> getItemAttributeModifiers ();
+	Multimap<?, ?> getItemAttributeModifiers ();
 
 	Item setTextureName ( String par1Str );
 
@@ -527,8 +527,8 @@ public interface IItem
 	/**
 	 * Called to tick armor in the armor slot. Override to do something
 	 *
-	 * @param world The current world
-	 * @param player The player wearing the armor
+	 * @param world     The current world
+	 * @param player    The player wearing the armor
 	 * @param itemStack Wearing itemstack
 	 */
 	void onArmorTick ( World world, EntityPlayer player, ItemStack itemStack );
