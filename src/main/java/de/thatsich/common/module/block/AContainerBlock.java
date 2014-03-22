@@ -1,6 +1,7 @@
 package de.thatsich.common.module.block;
 
 import dagger.ObjectGraph;
+import de.thatsich.common.module.ATexture;
 import de.thatsich.common.module.block.info.ABlockInfo;
 import de.thatsich.common.module.block.info.ABlockName;
 import de.thatsich.common.module.item.AItemBlock;
@@ -21,7 +22,7 @@ public abstract class AContainerBlock extends BlockContainer implements IContain
 	@Inject ObjectGraph injector;
 	@Inject RegistryTileEntity tileEntities;
 
-	protected AContainerBlock ( ABlockInfo info, ABlockConfig config, ABlockGui gui, ABlockNetwork network, ABlockTexture texture, Class<? extends ATileEntity> tileEntityClass, Class<? extends AItemBlock> itemBlockClass )
+	protected AContainerBlock ( ABlockInfo info, ABlockConfig config, ABlockGui gui, ABlockNetwork network, ATexture texture, Class<? extends ATileEntity> tileEntityClass, Class<? extends AItemBlock> itemBlockClass )
 	{
 		super( info.getMaterial() );
 

@@ -1,13 +1,14 @@
 package de.thatsich.common.module.item;
 
+import de.thatsich.common.module.ATexture;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 
 public abstract class AItem extends Item implements IItem
 {
-	private final AItemTexture itemTexture;
+	private final ATexture itemTexture;
 
-	protected AItem ( AItemTexture itemTexture )
+	protected AItem ( ATexture itemTexture )
 	{
 		super();
 

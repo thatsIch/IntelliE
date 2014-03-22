@@ -1,5 +1,6 @@
 package de.thatsich.common.module.block;
 
+import de.thatsich.common.module.ATexture;
 import de.thatsich.common.module.block.info.ABlockInfo;
 import de.thatsich.common.module.block.info.ABlockName;
 import net.minecraft.block.Block;
@@ -8,7 +9,7 @@ import net.minecraft.creativetab.CreativeTabs;
 
 public abstract class ABlock extends Block implements IBlock
 {
-	protected ABlock ( ABlockInfo info, ABlockConfig config, ABlockTexture blockTexture )
+	protected ABlock ( ABlockInfo info, ABlockConfig config, ATexture blockTexture )
 	{
 		super( info.getMaterial() );
 
