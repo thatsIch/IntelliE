@@ -15,14 +15,14 @@ import net.minecraft.world.World;
 import javax.inject.Inject;
 
 
-public abstract class AContainerBlock extends BlockContainer implements IContainerBlock
+public abstract class ABlockContainer extends BlockContainer implements IContainerBlock
 {
 	private final Class<? extends AItemBlock> itemBlockClass;
 	private final Class<? extends ATileEntity> tileEntityClass;
 	@Inject ObjectGraph injector;
 	@Inject RegistryTileEntity tileEntities;
 
-	protected AContainerBlock ( ABlockInfo info, ABlockConfig config, ABlockGui gui, ABlockNetwork network, ATexture texture, Class<? extends ATileEntity> tileEntityClass, Class<? extends AItemBlock> itemBlockClass )
+	protected ABlockContainer ( ABlockInfo info, ABlockConfig config, ABlockGui gui, ABlockNetwork network, ATexture texture, Class<? extends ATileEntity> tileEntityClass, Class<? extends AItemBlock> itemBlockClass )
 	{
 		super( info.getMaterial() );
 

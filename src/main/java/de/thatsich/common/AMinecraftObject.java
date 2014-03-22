@@ -1,7 +1,7 @@
 package de.thatsich.common;
 
 import de.thatsich.common.module.block.ABlock;
-import de.thatsich.common.module.block.AContainerBlock;
+import de.thatsich.common.module.block.ABlockContainer;
 import de.thatsich.common.module.block.IBlock;
 import de.thatsich.common.module.block.IContainerBlock;
 import de.thatsich.common.module.item.IItem;
@@ -21,7 +21,7 @@ public abstract class AMinecraftObject implements IMinecraftObject
 	@Inject RegistryItem items;
 	@Inject RegistryTileEntity tileEntities;
 
-	protected AMinecraftObject ( IItem item, ABlock block, AContainerBlock containerBlock )
+	protected AMinecraftObject ( IItem item, ABlock block, ABlockContainer containerBlock )
 	{
 		if ( item != null )
 		{

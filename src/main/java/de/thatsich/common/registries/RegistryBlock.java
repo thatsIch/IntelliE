@@ -2,7 +2,7 @@ package de.thatsich.common.registries;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import de.thatsich.common.module.block.ABlock;
-import de.thatsich.common.module.block.AContainerBlock;
+import de.thatsich.common.module.block.ABlockContainer;
 import de.thatsich.common.module.block.IBlock;
 import de.thatsich.common.module.block.IContainerBlock;
 import de.thatsich.common.module.item.AItemBlock;
@@ -86,7 +86,7 @@ public class RegistryBlock
 	{
 		for ( IContainerBlock block : containerBlocks )
 		{
-			final AContainerBlock container = (AContainerBlock) block;
+			final ABlockContainer container = (ABlockContainer) block;
 			final Class<? extends AItemBlock> itemBlockClass = container.getItemBlockClass();
 			final String unlocalizedName = container.getUnlocalizedName();
 
