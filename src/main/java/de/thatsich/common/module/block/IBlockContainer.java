@@ -1,8 +1,12 @@
 package de.thatsich.common.module.block;
 
+import net.minecraft.block.ITileEntityProvider;
+
 /**
  * @author thatsIch
  * @date 06.03.14.
  */
-public interface IBlockContainer
-{}
+public interface IBlockContainer extends IBlock, ITileEntityProvider
+{
+
+}
