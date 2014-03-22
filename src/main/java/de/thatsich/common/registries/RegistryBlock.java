@@ -4,7 +4,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import de.thatsich.common.module.block.ABlock;
 import de.thatsich.common.module.block.ABlockContainer;
 import de.thatsich.common.module.block.IBlock;
-import de.thatsich.common.module.block.IContainerBlock;
+import de.thatsich.common.module.block.IBlockContainer;
 import de.thatsich.common.module.item.AItemBlock;
 import de.thatsich.common.util.logging.Logger;
 import net.minecraftforge.common.config.Configuration;
@@ -24,7 +24,7 @@ import java.util.LinkedList;
 public class RegistryBlock
 {
 	private final Collection<IBlock> blocks;
-	private final Collection<IContainerBlock> containerBlocks;
+	private final Collection<IBlockContainer> containerBlocks;
 	private final Logger log;
 
 	/**
@@ -58,7 +58,7 @@ public class RegistryBlock
 	 *
 	 * @param containerBlock new to be added blockcontainer
 	 */
-	public void addBlock ( final IContainerBlock containerBlock )
+	public void addBlock ( final IBlockContainer containerBlock )
 	{
 		this.containerBlocks.add( containerBlock );
 		this.log.info( "Added BlockContainer %s", containerBlock );
@@ -82,9 +82,9 @@ public class RegistryBlock
 	 *
 	 * @param containerBlocks blockcontainers to be added
 	 */
-	private void registerContainerBlocks ( Iterable<IContainerBlock> containerBlocks )
+	private void registerContainerBlocks ( Iterable<IBlockContainer> containerBlocks )
 	{
-		for ( IContainerBlock block : containerBlocks )
+		for ( IBlockContainer block : containerBlocks )
 		{
 			final ABlockContainer container = (ABlockContainer) block;
 			final Class<? extends AItemBlock> itemBlockClass = container.getItemBlockClass();

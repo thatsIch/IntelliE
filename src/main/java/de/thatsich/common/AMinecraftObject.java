@@ -3,7 +3,7 @@ package de.thatsich.common;
 import de.thatsich.common.module.block.ABlock;
 import de.thatsich.common.module.block.ABlockContainer;
 import de.thatsich.common.module.block.IBlock;
-import de.thatsich.common.module.block.IContainerBlock;
+import de.thatsich.common.module.block.IBlockContainer;
 import de.thatsich.common.module.item.IItem;
 import de.thatsich.common.registries.RegistryBlock;
 import de.thatsich.common.registries.RegistryConfig;
@@ -69,7 +69,7 @@ public abstract class AMinecraftObject implements IMinecraftObject
 		this.blocks.addBlock( block );
 	}
 
-	protected AMinecraftObject ( IItem item, IContainerBlock block )
+	protected AMinecraftObject ( IItem item, IBlockContainer block )
 	{
 		this.items.addItem( item );
 		this.blocks.addBlock( block );
