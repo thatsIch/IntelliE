@@ -1222,8 +1222,8 @@ public interface IBlock
 	 * Gathers how much experience this block drops when broken.
 	 *
 	 * @param world    The world
-	 * @param metadata
-	 * @param fortune
+	 * @param metadata Metadata
+	 * @param fortune  Fortune
 	 *
 	 * @return Amount of XP from breaking this block.
 	 */

@@ -8,6 +8,7 @@ import dagger.ObjectGraph;
 import de.thatsich.common.module.IModule;
 import de.thatsich.common.registries.RegistryBlock;
 import de.thatsich.common.registries.RegistryConfig;
+import de.thatsich.common.registries.RegistryConfigFactory;
 import de.thatsich.common.registries.RegistryItem;
 import de.thatsich.common.registries.RegistryModule;
 import de.thatsich.common.registries.RegistryTileEntity;
@@ -60,7 +61,7 @@ public abstract class ABaseMod implements IProxy
 		this.log = injector.get( ILog.class );
 
 		// Inject all Registries
-		this.configs = injector.get( RegistryConfig.class );
+		this.configs = injector.get( RegistryConfigFactory.class ).get( "Test" );
 		this.blocks = injector.get( RegistryBlock.class );
 		this.items = injector.get( RegistryItem.class );
 		this.tileEntites = injector.get( RegistryTileEntity.class );

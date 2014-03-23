@@ -5,7 +5,6 @@ import de.thatsich.common.util.logging.ILog;
 import net.minecraftforge.common.config.Configuration;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 import java.io.File;
 
 /**
@@ -16,11 +15,11 @@ import java.io.File;
  * @author thatsIch
  * @date 25.02.14.
  */
-@Singleton
 public class RegistryConfig
 {
 	// Final Fields
 	private final ILog log;
+	private final String name;
 
 	// Fields
 	private Configuration config = null;
@@ -29,11 +28,22 @@ public class RegistryConfig
 	 * Injected Constructor
 	 *
 	 * @param log Logger
+	 * @param name Name
 	 */
-	@Inject
-	RegistryConfig ( ILog log )
+	RegistryConfig ( ILog log, String name )
 	{
 		this.log = log;
+		this.name = name;
+	}
+
+	/**
+	 * Dagger Injected Constructor for Factory
+	 */
+	@Inject
+	RegistryConfig ()
+	{
+		this.log = null;
+		this.name = null;
 	}
 
 	/**

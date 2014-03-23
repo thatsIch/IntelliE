@@ -3,7 +3,7 @@ package de.thatsich.common.module.tileentity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.config.Configuration;
 
-public abstract class ATileEntity extends TileEntity
+public abstract class ATileEntity extends TileEntity implements ITileEntity
 {
 	private final String category;
 	private final String key;

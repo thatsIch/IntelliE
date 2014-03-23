@@ -10,7 +10,7 @@ import de.thatsich.common.util.logging.LoggerModule;
  */
 @Module(
 	injects = {
-		RegistryConfig.class, RegistryBlock.class, RegistryItem.class, RegistryTileEntity.class
+		RegistryConfigFactory.class, RegistryBlock.class, RegistryItem.class, RegistryTileEntity.class
 		//		HandlerGui.class, HandlerRenderer.class, HandlerSound.class
 	},
 	includes = LoggerModule.class,
