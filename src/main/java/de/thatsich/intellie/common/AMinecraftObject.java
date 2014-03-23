@@ -4,9 +4,9 @@ import de.thatsich.intellie.common.module.block.IBlock;
 import de.thatsich.intellie.common.module.item.IItem;
 import de.thatsich.intellie.common.module.tileentity.ITileEntity;
 import de.thatsich.intellie.common.registries.BlockRegistry;
+import de.thatsich.intellie.common.registries.ConfigRegistry;
 import de.thatsich.intellie.common.registries.ItemRegistry;
-import de.thatsich.intellie.common.registries.RegistryConfig;
-import de.thatsich.intellie.common.registries.RegistryTileEntity;
+import de.thatsich.intellie.common.registries.TileEntityRegistry;
 import de.thatsich.intellie.common.util.IMinecraftObject;
 
 import javax.inject.Inject;
@@ -15,9 +15,9 @@ import javax.inject.Inject;
 public abstract class AMinecraftObject implements IMinecraftObject
 {
 	@Inject BlockRegistry blocks;
-	@Inject RegistryConfig configs;
+	@Inject ConfigRegistry configs;
 	@Inject ItemRegistry items;
-	@Inject RegistryTileEntity tileEntities;
+	@Inject TileEntityRegistry tileEntities;
 
 	protected AMinecraftObject ( IItem item, IBlock block, ITileEntity tileEntity )
 	{

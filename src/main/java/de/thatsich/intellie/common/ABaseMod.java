@@ -7,10 +7,10 @@ import dagger.Module;
 import dagger.ObjectGraph;
 import de.thatsich.intellie.common.module.IModule;
 import de.thatsich.intellie.common.registries.BlockRegistry;
+import de.thatsich.intellie.common.registries.ConfigRegistry;
 import de.thatsich.intellie.common.registries.ItemRegistry;
-import de.thatsich.intellie.common.registries.RegistryConfig;
 import de.thatsich.intellie.common.registries.RegistryModule;
-import de.thatsich.intellie.common.registries.RegistryTileEntity;
+import de.thatsich.intellie.common.registries.TileEntityRegistry;
 import de.thatsich.intellie.common.util.ICommonProxy;
 import de.thatsich.intellie.common.util.IProxy;
 import de.thatsich.intellie.common.util.logging.ILog;
@@ -35,10 +35,10 @@ public abstract class ABaseMod implements IProxy
 	final ILog log;
 
 	// Registries
-	private final RegistryConfig configs;
+	private final ConfigRegistry configs;
 	private final BlockRegistry blocks;
 	private final ItemRegistry items;
-	private final RegistryTileEntity tileEntites;
+	private final TileEntityRegistry tileEntites;
 
 	/**
 	 * To make sure that the initialization of Guice-based JavaFX application
@@ -60,12 +60,12 @@ public abstract class ABaseMod implements IProxy
 		this.log = injector.get( ILog.class );
 
 		// Inject all Registries
-		this.configs = injector.get( RegistryConfig.class );
+		this.configs = injector.get( ConfigRegistry.class );
 		this.blocks = injector.get( BlockRegistry.class );
 		this.items = injector.get( ItemRegistry.class );
-		this.tileEntites = injector.get( RegistryTileEntity.class );
+		this.tileEntites = injector.get( TileEntityRegistry.class );
 		//		final RegistryEntity entities = tempInjector.getInstance( RegistryEntity.class );
-		//		final HandlerGui gui = tempInjector.getInstance( HandlerGui.class );
+		//		final GuiRegistry gui = tempInjector.getInstance( GuiRegistry.class );
 
 		// using injector and modules to instantiate them once
 		this.instantiateModules( injector, modules );

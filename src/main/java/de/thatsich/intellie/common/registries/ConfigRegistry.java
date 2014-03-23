@@ -17,7 +17,7 @@ import java.io.File;
  * @date 25.02.14.
  */
 @Singleton
-public class RegistryConfig
+public class ConfigRegistry
 {
 	// Final Fields
 	private final ILog log;
@@ -32,7 +32,7 @@ public class RegistryConfig
 	 * @param log  Logger
 	 * @param name Name
 	 */
-	RegistryConfig ( ILog log, String name )
+	ConfigRegistry ( ILog log, String name )
 	{
 		this.log = log;
 		this.name = name;
@@ -42,7 +42,7 @@ public class RegistryConfig
 	 * Dagger Injected Constructor for Factory
 	 */
 	@Inject
-	RegistryConfig ()
+	ConfigRegistry ()
 	{
 		this.log = null;
 		this.name = null;

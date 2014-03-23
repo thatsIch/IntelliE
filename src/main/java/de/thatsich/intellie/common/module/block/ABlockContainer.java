@@ -6,7 +6,7 @@ import de.thatsich.intellie.common.module.block.info.ABlockInfo;
 import de.thatsich.intellie.common.module.block.info.ABlockName;
 import de.thatsich.intellie.common.module.item.AItemBlock;
 import de.thatsich.intellie.common.module.tileentity.ATileEntity;
-import de.thatsich.intellie.common.registries.RegistryTileEntity;
+import de.thatsich.intellie.common.registries.TileEntityRegistry;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.tileentity.TileEntity;
@@ -20,7 +20,7 @@ public abstract class ABlockContainer extends BlockContainer implements IBlockCo
 	private final Class<? extends AItemBlock> itemBlockClass;
 	private final Class<? extends ATileEntity> tileEntityClass;
 	@Inject ObjectGraph injector;
-	@Inject RegistryTileEntity tileEntities;
+	@Inject TileEntityRegistry tileEntities;
 
 	protected ABlockContainer ( ABlockInfo info, ABlockConfig config, ABlockGui gui, ABlockNetwork network, ATexture texture, Class<? extends ATileEntity> tileEntityClass, Class<? extends AItemBlock> itemBlockClass )
 	{

@@ -14,7 +14,7 @@ import java.util.LinkedList;
  * Registry for TileEntities
  */
 @Singleton
-public class RegistryTileEntity
+public class TileEntityRegistry
 {
 	private final Collection<ATileEntity> tileEntities;
 	private final ILog log;
@@ -23,7 +23,7 @@ public class RegistryTileEntity
 	 * @param log Injected Logger
 	 */
 	@Inject
-	RegistryTileEntity ( ILog log )
+	TileEntityRegistry ( ILog log )
 	{
 		this.tileEntities = new LinkedList<>();
 		this.log = log;

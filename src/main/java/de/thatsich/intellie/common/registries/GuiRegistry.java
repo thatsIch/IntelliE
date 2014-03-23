@@ -6,7 +6,7 @@ import de.thatsich.intellie.common.ABaseMod;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
-public class HandlerGui implements IGuiHandler
+public class GuiRegistry implements IGuiHandler
 {
 	public void init ( ABaseMod instance )
 	{

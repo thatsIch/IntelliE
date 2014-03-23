@@ -1,6 +1,6 @@
 package de.thatsich.intellie.common.registries;
 
-public class HandlerSound
+public class RenderRegistry
 {
 
 }
