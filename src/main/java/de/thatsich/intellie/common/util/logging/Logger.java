@@ -5,6 +5,8 @@ import cpw.mods.fml.relauncher.FMLRelaunchLog;
 import cpw.mods.fml.relauncher.Side;
 import org.apache.logging.log4j.Level;
 
+import javax.inject.Inject;
+
 /**
  Logger Class
  */
@@ -21,6 +23,12 @@ public class Logger implements ILog
 	{
 		this.name = name;
 	}
+
+	/**
+	 Dagger CTOR
+	 */
+	@Inject
+	Logger () { this.name = ""; }
 
 	/**
 	 Information

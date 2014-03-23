@@ -20,17 +20,24 @@ import javax.inject.Singleton;
 	includes = LoggerModule.class)
 public class RegistryModule implements IModule
 {
-	private final String name;
+	private final String id;
 
-	public RegistryModule ( String name )
+	public RegistryModule ( String id )
 	{
-		this.name = name;
+		this.id = id;
+	}
+
+	@Provides
+	@Singleton
+	LoggerModule provideLoggerModule ()
+	{
+		return new LoggerModule( this.id );
 	}
 
 	@Provides
 	@Singleton
 	public ConfigRegistry provideConfigRegistry ( ILog log )
 	{
-		return new ConfigRegistry( log, this.name );
+		return new ConfigRegistry( log, this.id );
 	}
 }

@@ -87,10 +87,11 @@ public abstract class ABaseMod implements IProxy
 
 		final String childName = this.getClass().getName();
 		final String moduleName = childName + "Module";
+		final String id = this.getModAcronym();
 
 		try
 		{
-			final IModule module = (IModule) Class.forName( moduleName ).getConstructor().newInstance();
+			final IModule module = (IModule) Class.forName( moduleName ).getConstructor( String.class ).newInstance( id );
 			moduleInstances.add( module );
 		}
 		catch ( InstantiationException | IllegalAccessException | ClassNotFoundException | NoSuchMethodException | InvocationTargetException e )
