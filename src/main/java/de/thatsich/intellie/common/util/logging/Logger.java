@@ -6,7 +6,7 @@ import cpw.mods.fml.relauncher.Side;
 import org.apache.logging.log4j.Level;
 
 /**
- * Logger Class
+ Logger Class
  */
 public class Logger implements ILog
 {
@@ -14,8 +14,8 @@ public class Logger implements ILog
 	private final String name;
 
 	/**
-	 * Constructor either only be injected or tested
-	 * thus package private
+	 Constructor either only be injected or tested
+	 thus package private
 	 */
 	public Logger ( String name )
 	{
@@ -23,10 +23,10 @@ public class Logger implements ILog
 	}
 
 	/**
-	 * Information
-	 *
-	 * @param format formated String
-	 * @param data   Input into formated String
+	 Information
+
+	 @param format formated String
+	 @param data   Input into formated String
 	 */
 	@Override
 	public void info ( String format, Object... data )
@@ -35,10 +35,10 @@ public class Logger implements ILog
 	}
 
 	/**
-	 * Warning
-	 *
-	 * @param format formated String
-	 * @param data   Input into formated String
+	 Warning
+
+	 @param format formated String
+	 @param data   Input into formated String
 	 */
 	@Override
 	public void warn ( String format, Object... data )
@@ -47,10 +47,10 @@ public class Logger implements ILog
 	}
 
 	/**
-	 * Debug output
-	 *
-	 * @param format formated String
-	 * @param data   Input into formated String
+	 Debug output
+
+	 @param format formated String
+	 @param data   Input into formated String
 	 */
 	@Override
 	public void debug ( String format, Object... data )
@@ -59,9 +59,9 @@ public class Logger implements ILog
 	}
 
 	/**
-	 * Used in try catch of exceptions
-	 *
-	 * @param exception thrown exception
+	 Used in try catch of exceptions
+
+	 @param exception thrown exception
 	 */
 	@Override
 	public void trace ( Throwable exception )
@@ -72,10 +72,10 @@ public class Logger implements ILog
 	}
 
 	/**
-	 * Severe Error
-	 *
-	 * @param format formated String
-	 * @param data   Input into formated String
+	 Severe Error
+
+	 @param format formated String
+	 @param data   Input into formated String
 	 */
 	@Override
 	public void severe ( String format, Object... data )
@@ -84,11 +84,11 @@ public class Logger implements ILog
 	}
 
 	/**
-	 * Default Logging if enabled
-	 *
-	 * @param level  Logging-Level
-	 * @param format formated String
-	 * @param data   Input into formated String
+	 Default Logging if enabled
+
+	 @param level  Logging-Level
+	 @param format formated String
+	 @param data   Input into formated String
 	 */
 	private void logging ( Level level, String format, Object... data )
 	{

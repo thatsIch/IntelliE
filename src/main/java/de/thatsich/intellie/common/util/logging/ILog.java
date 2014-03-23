@@ -1,9 +1,8 @@
 package de.thatsich.intellie.common.util.logging;
 
 /**
- * @author thatsIch
- * @date 05.03.14.
- */
+ @author thatsIch
+ @date 05.03.14. */
 public interface ILog
 {
 	void info ( String format, Object... data );

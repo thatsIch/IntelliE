@@ -6,9 +6,8 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
 /**
- * @author thatsIch
- * @date 21.03.2014.
- */
+ @author thatsIch
+ @date 21.03.2014. */
 public class AItemArmor extends ItemArmor implements IItemArmor
 {
 	private static final int MAX_CHARGE = 3000000;

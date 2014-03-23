@@ -9,15 +9,13 @@ import de.thatsich.intellie.common.ABaseMod;
 import de.thatsich.intellie.common.util.ICommonProxy;
 
 /**
- * @author thatsIch
- * @date 16.03.14.
- */
+ @author thatsIch
+ @date 16.03.14. */
 @Mod(
 	modid = "appaero",
 	name = "AppliedAerodynamics",
 	version = "${version}",
-	dependencies = "required-after:Forge@[7.0,);required-after:FML@[5.0.5,) ;after:appliedenergistics2"
-)
+	dependencies = "required-after:Forge@[7.0,);required-after:FML@[5.0.5,) ;after:appliedenergistics2")
 public class AppliedAerodynamics extends ABaseMod
 {
 	@SidedProxy(clientSide = "de.thatsich.intellie.applied.aerodynamics.common.proxies.ClientProxy", serverSide = "de.thatsich.intellie.applied.aerodynamics.common.proxies.CommonProxy")

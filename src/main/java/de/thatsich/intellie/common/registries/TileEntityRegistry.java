@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 /**
- * Registry for TileEntities
+ Registry for TileEntities
  */
 @Singleton
 public class TileEntityRegistry
@@ -20,7 +20,7 @@ public class TileEntityRegistry
 	private final ILog log;
 
 	/**
-	 * @param log Injected Logger
+	 @param log Injected Logger
 	 */
 	@Inject
 	TileEntityRegistry ( ILog log )
@@ -30,9 +30,9 @@ public class TileEntityRegistry
 	}
 
 	/**
-	 * Adds a TileEntity
-	 *
-	 * @param tileEntity added TileEntity
+	 Adds a TileEntity
+
+	 @param tileEntity added TileEntity
 	 */
 	public void addTileEntity ( ATileEntity tileEntity )
 	{
@@ -41,9 +41,9 @@ public class TileEntityRegistry
 	}
 
 	/**
-	 * Loads each config through their own responsibility
-	 *
-	 * @param config Configuration
+	 Loads each config through their own responsibility
+
+	 @param config Configuration
 	 */
 	public void loadConfig ( final Configuration config )
 	{
@@ -54,7 +54,7 @@ public class TileEntityRegistry
 	}
 
 	/**
-	 * Registers all added TileEntites through their clas and key
+	 Registers all added TileEntites through their clas and key
 	 */
 	public void registerTileEntities ()
 	{

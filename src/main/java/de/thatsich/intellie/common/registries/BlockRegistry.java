@@ -16,9 +16,9 @@ import java.util.LinkedList;
 
 
 /**
- * Handles the registration of blocks and their names.
- * This class is used by the framework and does not need
- * to be instantiated or used in any way.
+ Handles the registration of blocks and their names.
+ This class is used by the framework and does not need
+ to be instantiated or used in any way.
  */
 @Singleton
 public class BlockRegistry
@@ -28,9 +28,9 @@ public class BlockRegistry
 	private final Logger log;
 
 	/**
-	 * CTOR
-	 *
-	 * @param log Logger
+	 CTOR
+
+	 @param log Logger
 	 */
 	@Inject
 	public BlockRegistry ( Logger log )
@@ -41,10 +41,10 @@ public class BlockRegistry
 	}
 
 	/**
-	 * Adds a new block to be registered and named.
-	 * Is getting called automatically by the module class
-	 *
-	 * @param block new to be added block.
+	 Adds a new block to be registered and named.
+	 Is getting called automatically by the module class
+
+	 @param block new to be added block.
 	 */
 	public void addBlock ( final IBlock block )
 	{
@@ -53,10 +53,10 @@ public class BlockRegistry
 	}
 
 	/**
-	 * Adds a new blockcontainer to be registered and named.
-	 * Is getting called automatically by the module class
-	 *
-	 * @param containerBlock new to be added blockcontainer
+	 Adds a new blockcontainer to be registered and named.
+	 Is getting called automatically by the module class
+
+	 @param containerBlock new to be added blockcontainer
 	 */
 	public void addBlock ( final IBlockContainer containerBlock )
 	{
@@ -65,7 +65,7 @@ public class BlockRegistry
 	}
 
 	/**
-	 * Register the blocks and containerblocks in the GameRegistry
+	 Register the blocks and containerblocks in the GameRegistry
 	 */
 	public void registerBlocks ()
 	{
@@ -75,12 +75,12 @@ public class BlockRegistry
 	}
 
 	/**
-	 * Register the blockand containerblocks in the GameRegistry with:
-	 * - block (Block)
-	 * - itemBlock-Class (Class<ItemBlock>)
-	 * - block key (String)
-	 *
-	 * @param containerBlocks blockcontainers to be added
+	 Register the blockand containerblocks in the GameRegistry with:
+	 - block (Block)
+	 - itemBlock-Class (Class<ItemBlock>)
+	 - block key (String)
+
+	 @param containerBlocks blockcontainers to be added
 	 */
 	private void registerContainerBlocks ( Iterable<IBlockContainer> containerBlocks )
 	{
@@ -102,11 +102,11 @@ public class BlockRegistry
 	}
 
 	/**
-	 * Register the blocks in the GameRegistry with:
-	 * - block (Block)
-	 * - block key (String)
-	 *
-	 * @param blocks new blocks to be added
+	 Register the blocks in the GameRegistry with:
+	 - block (Block)
+	 - block key (String)
+
+	 @param blocks new blocks to be added
 	 */
 	private void registerBlocks ( Iterable<IBlock> blocks )
 	{

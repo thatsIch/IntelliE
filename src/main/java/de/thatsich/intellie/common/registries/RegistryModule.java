@@ -9,9 +9,8 @@ import de.thatsich.intellie.common.util.logging.LoggerModule;
 import javax.inject.Singleton;
 
 /**
- * @author thatsIch
- * @date 05.03.14.
- */
+ @author thatsIch
+ @date 05.03.14. */
 @Module(
 	injects = {
 		ConfigRegistry.class, BlockRegistry.class, ItemRegistry.class, TileEntityRegistry.class

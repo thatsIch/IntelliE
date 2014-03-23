@@ -7,9 +7,8 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
- * @author thatsIch
- * @date 20.03.2014.
- */
+ @author thatsIch
+ @date 20.03.2014. */
 @Singleton
 public class AeroChest extends AItemArmor
 {

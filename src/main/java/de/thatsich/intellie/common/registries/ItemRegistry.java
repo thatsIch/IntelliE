@@ -11,11 +11,10 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 /**
- * Handles registration of items
- *
- * @author thatsIch
- * @date 25.02.14.
- */
+ Handles registration of items
+
+ @author thatsIch
+ @date 25.02.14. */
 @Singleton
 public class ItemRegistry
 {
@@ -23,7 +22,7 @@ public class ItemRegistry
 	private final Collection<IItem> items;
 
 	/**
-	 * @param log Logger
+	 @param log Logger
 	 */
 	@Inject
 	ItemRegistry ( ILog log )

@@ -9,13 +9,12 @@ import javax.inject.Singleton;
 import java.io.File;
 
 /**
- * All specific classes need to register their configs here
- * which will handle the loading, filenaming, saving and
- * access to the real configuration file
- *
- * @author thatsIch
- * @date 25.02.14.
- */
+ All specific classes need to register their configs here
+ which will handle the loading, filenaming, saving and
+ access to the real configuration file
+
+ @author thatsIch
+ @date 25.02.14. */
 @Singleton
 public class ConfigRegistry
 {
@@ -27,10 +26,10 @@ public class ConfigRegistry
 	private Configuration config = null;
 
 	/**
-	 * Injected Constructor
-	 *
-	 * @param log  Logger
-	 * @param name Name
+	 Injected Constructor
+
+	 @param log  Logger
+	 @param name Name
 	 */
 	ConfigRegistry ( ILog log, String name )
 	{
@@ -39,7 +38,7 @@ public class ConfigRegistry
 	}
 
 	/**
-	 * Dagger Injected Constructor for Factory
+	 Dagger Injected Constructor for Factory
 	 */
 	@Inject
 	ConfigRegistry ()
@@ -49,11 +48,11 @@ public class ConfigRegistry
 	}
 
 	/**
-	 * Loads the Configuration File needed
-	 *
-	 * @param suggestedConfigFile suggested Configuration File
-	 *
-	 * @return loaded Configuration
+	 Loads the Configuration File needed
+
+	 @param suggestedConfigFile suggested Configuration File
+
+	 @return loaded Configuration
 	 */
 	public Configuration load ( final File suggestedConfigFile )
 	{
@@ -69,9 +68,9 @@ public class ConfigRegistry
 	}
 
 	/**
-	 * When Registry is destructed, save the config if it has changed
-	 *
-	 * @throws Throwable when super.finalize() throws
+	 When Registry is destructed, save the config if it has changed
+
+	 @throws Throwable when super.finalize() throws
 	 */
 	@Override
 	protected void finalize () throws Throwable
@@ -85,13 +84,13 @@ public class ConfigRegistry
 	}
 
 	/**
-	 * Boolean
-	 *
-	 * @param category     Requested Category
-	 * @param key          Requested Key
-	 * @param defaultValue Defaultvalue if key does not exist
-	 *
-	 * @return Requested category and key
+	 Boolean
+
+	 @param category     Requested Category
+	 @param key          Requested Key
+	 @param defaultValue Defaultvalue if key does not exist
+
+	 @return Requested category and key
 	 */
 	public boolean getBoolean ( final String category, final String key, final boolean defaultValue )
 	{
@@ -99,13 +98,13 @@ public class ConfigRegistry
 	}
 
 	/**
-	 * Array of Booleans
-	 *
-	 * @param category     Requested Category
-	 * @param key          Requested Key
-	 * @param defaultValue Defaultvalue if key does not exist
-	 *
-	 * @return Requested category and key
+	 Array of Booleans
+
+	 @param category     Requested Category
+	 @param key          Requested Key
+	 @param defaultValue Defaultvalue if key does not exist
+
+	 @return Requested category and key
 	 */
 	public boolean[] getBooleanList ( final String category, final String key, final boolean... defaultValue )
 	{
@@ -113,13 +112,13 @@ public class ConfigRegistry
 	}
 
 	/**
-	 * Double
-	 *
-	 * @param category     Requested Category
-	 * @param key          Requested Key
-	 * @param defaultValue Defaultvalue if key does not exist
-	 *
-	 * @return Requested category and key
+	 Double
+
+	 @param category     Requested Category
+	 @param key          Requested Key
+	 @param defaultValue Defaultvalue if key does not exist
+
+	 @return Requested category and key
 	 */
 	public double getDouble ( final String category, final String key, final double defaultValue )
 	{
@@ -127,13 +126,13 @@ public class ConfigRegistry
 	}
 
 	/**
-	 * Array of doubles
-	 *
-	 * @param category     Requested Category
-	 * @param key          Requested Key
-	 * @param defaultValue Defaultvalue if key does not exist
-	 *
-	 * @return Requested category and key
+	 Array of doubles
+
+	 @param category     Requested Category
+	 @param key          Requested Key
+	 @param defaultValue Defaultvalue if key does not exist
+
+	 @return Requested category and key
 	 */
 	public double[] getDoubleList ( final String category, final String key, final double... defaultValue )
 	{
@@ -141,13 +140,13 @@ public class ConfigRegistry
 	}
 
 	/**
-	 * Integer
-	 *
-	 * @param category     Requested Category
-	 * @param key          Requested Key
-	 * @param defaultValue Defaultvalue if key does not exist
-	 *
-	 * @return Requested category and key
+	 Integer
+
+	 @param category     Requested Category
+	 @param key          Requested Key
+	 @param defaultValue Defaultvalue if key does not exist
+
+	 @return Requested category and key
 	 */
 	public int getInt ( final String category, final String key, final int defaultValue )
 	{
@@ -155,13 +154,13 @@ public class ConfigRegistry
 	}
 
 	/**
-	 * Array of integers
-	 *
-	 * @param category     Requested Category
-	 * @param key          Requested Key
-	 * @param defaultValue Defaultvalue if key does not exist
-	 *
-	 * @return Requested category and key
+	 Array of integers
+
+	 @param category     Requested Category
+	 @param key          Requested Key
+	 @param defaultValue Defaultvalue if key does not exist
+
+	 @return Requested category and key
 	 */
 	public int[] getIntList ( final String category, final String key, final int... defaultValue )
 	{
@@ -169,13 +168,13 @@ public class ConfigRegistry
 	}
 
 	/**
-	 * String
-	 *
-	 * @param category     Requested Category
-	 * @param key          Requested Key
-	 * @param defaultValue Defaultvalue if key does not exist
-	 *
-	 * @return Requested category and key
+	 String
+
+	 @param category     Requested Category
+	 @param key          Requested Key
+	 @param defaultValue Defaultvalue if key does not exist
+
+	 @return Requested category and key
 	 */
 	public String getString ( final String category, final String key, final String defaultValue )
 	{
@@ -183,13 +182,13 @@ public class ConfigRegistry
 	}
 
 	/**
-	 * Array of Strings
-	 *
-	 * @param category     Requested Category
-	 * @param key          Requested Key
-	 * @param defaultValue Defaultvalue if key does not exist
-	 *
-	 * @return Requested category and key
+	 Array of Strings
+
+	 @param category     Requested Category
+	 @param key          Requested Key
+	 @param defaultValue Defaultvalue if key does not exist
+
+	 @return Requested category and key
 	 */
 	public String[] getStringList ( final String category, final String key, final String... defaultValue )
 	{
