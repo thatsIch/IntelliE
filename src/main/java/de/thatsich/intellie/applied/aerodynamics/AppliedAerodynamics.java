@@ -5,8 +5,8 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import de.thatsich.common.ABaseMod;
-import de.thatsich.common.util.ICommonProxy;
+import de.thatsich.intellie.common.ABaseMod;
+import de.thatsich.intellie.common.util.ICommonProxy;
 
 /**
  * @author thatsIch

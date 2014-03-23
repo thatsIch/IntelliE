@@ -1,7 +1,7 @@
 package de.thatsich.intellie.applied.aerodynamics.common.proxies;
 
 import cpw.mods.fml.common.network.IGuiHandler;
-import de.thatsich.common.util.ICommonProxy;
+import de.thatsich.intellie.common.util.ICommonProxy;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 

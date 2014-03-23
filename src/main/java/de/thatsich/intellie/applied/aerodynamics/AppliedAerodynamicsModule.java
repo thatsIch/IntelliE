@@ -1,9 +1,9 @@
 package de.thatsich.intellie.applied.aerodynamics;
 
 import dagger.Module;
-import de.thatsich.common.module.IModule;
-import de.thatsich.common.registries.RegistryModule;
 import de.thatsich.intellie.applied.aerodynamics.functionality.suite.chest.AeroChest;
+import de.thatsich.intellie.common.module.IModule;
+import de.thatsich.intellie.common.registries.RegistryModule;
 
 /**
  * @author thatsIch

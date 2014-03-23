@@ -1,6 +1,6 @@
 package de.thatsich.intellie.applied.aerodynamics.functionality.suite.chest;
 
-import de.thatsich.common.module.item.AItemArmor;
+import de.thatsich.intellie.common.module.item.AItemArmor;
 import net.minecraft.item.ItemArmor;
 
 import javax.inject.Inject;

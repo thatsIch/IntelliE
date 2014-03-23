@@ -1,6 +1,6 @@
 package de.thatsich.intellie.applied.aerodynamics.functionality.suite.chest.module;
 
-import de.thatsich.common.module.ATexture;
+import de.thatsich.intellie.common.module.ATexture;
 
 /**
  * @author thatsIch
