@@ -6,10 +6,9 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import dagger.Module;
 import dagger.ObjectGraph;
 import de.thatsich.intellie.common.module.IModule;
-import de.thatsich.intellie.common.registries.RegistryBlock;
+import de.thatsich.intellie.common.registries.BlockRegistry;
+import de.thatsich.intellie.common.registries.ItemRegistry;
 import de.thatsich.intellie.common.registries.RegistryConfig;
-import de.thatsich.intellie.common.registries.RegistryConfigFactory;
-import de.thatsich.intellie.common.registries.RegistryItem;
 import de.thatsich.intellie.common.registries.RegistryModule;
 import de.thatsich.intellie.common.registries.RegistryTileEntity;
 import de.thatsich.intellie.common.util.ICommonProxy;
@@ -37,8 +36,8 @@ public abstract class ABaseMod implements IProxy
 
 	// Registries
 	private final RegistryConfig configs;
-	private final RegistryBlock blocks;
-	private final RegistryItem items;
+	private final BlockRegistry blocks;
+	private final ItemRegistry items;
 	private final RegistryTileEntity tileEntites;
 
 	/**
@@ -61,9 +60,9 @@ public abstract class ABaseMod implements IProxy
 		this.log = injector.get( ILog.class );
 
 		// Inject all Registries
-		this.configs = injector.get( RegistryConfigFactory.class ).get( "Test" );
-		this.blocks = injector.get( RegistryBlock.class );
-		this.items = injector.get( RegistryItem.class );
+		this.configs = injector.get( RegistryConfig.class );
+		this.blocks = injector.get( BlockRegistry.class );
+		this.items = injector.get( ItemRegistry.class );
 		this.tileEntites = injector.get( RegistryTileEntity.class );
 		//		final RegistryEntity entities = tempInjector.getInstance( RegistryEntity.class );
 		//		final HandlerGui gui = tempInjector.getInstance( HandlerGui.class );

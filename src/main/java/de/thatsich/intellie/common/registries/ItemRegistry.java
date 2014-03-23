@@ -17,7 +17,7 @@ import java.util.LinkedList;
  * @date 25.02.14.
  */
 @Singleton
-public class RegistryItem
+public class ItemRegistry
 {
 	private final ILog log;
 	private final Collection<IItem> items;
@@ -26,7 +26,7 @@ public class RegistryItem
 	 * @param log Logger
 	 */
 	@Inject
-	RegistryItem ( ILog log )
+	ItemRegistry ( ILog log )
 	{
 		this.log = log;
 		this.items = new LinkedList<IItem>();

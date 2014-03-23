@@ -21,7 +21,7 @@ import java.util.LinkedList;
  * to be instantiated or used in any way.
  */
 @Singleton
-public class RegistryBlock
+public class BlockRegistry
 {
 	private final Collection<IBlock> blocks;
 	private final Collection<IBlockContainer> containerBlocks;
@@ -33,7 +33,7 @@ public class RegistryBlock
 	 * @param log Logger
 	 */
 	@Inject
-	public RegistryBlock ( Logger log )
+	public BlockRegistry ( Logger log )
 	{
 		this.log = log;
 		this.blocks = new LinkedList<>();

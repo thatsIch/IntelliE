@@ -10,7 +10,7 @@ import de.thatsich.intellie.common.util.logging.LoggerModule;
  */
 @Module(
 	injects = {
-		RegistryConfigFactory.class, RegistryBlock.class, RegistryItem.class, RegistryTileEntity.class
+		RegistryConfig.class, BlockRegistry.class, ItemRegistry.class, RegistryTileEntity.class
 		//		HandlerGui.class, HandlerRenderer.class, HandlerSound.class
 	},
 	library = true,
