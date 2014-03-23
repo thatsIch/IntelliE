@@ -2,6 +2,7 @@ package de.thatsich.intellie.common.util.logging;
 
 import dagger.Module;
 import dagger.Provides;
+import de.thatsich.intellie.common.IntelliE;
 import de.thatsich.intellie.common.module.IModule;
 
 import javax.inject.Singleton;
@@ -18,8 +19,9 @@ public class LoggerModule implements IModule
 {
 	@Provides
 	@Singleton
-	ILog provideILog ( Logger logger )
+	@IntelliE
+	ILog provideILog ()
 	{
-		return logger;
+		return new Logger( "IE" );
 	}
 }

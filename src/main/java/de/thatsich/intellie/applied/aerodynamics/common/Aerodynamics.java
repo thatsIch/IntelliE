@@ -1,4 +1,4 @@
-package de.thatsich.intellie.applied.aerodynamics;
+package de.thatsich.intellie.applied.aerodynamics.common;
 
 import javax.inject.Qualifier;
 import java.lang.annotation.Documented;

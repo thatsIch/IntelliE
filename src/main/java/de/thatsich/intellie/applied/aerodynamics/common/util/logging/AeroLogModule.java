@@ -2,7 +2,7 @@ package de.thatsich.intellie.applied.aerodynamics.common.util.logging;
 
 import dagger.Module;
 import dagger.Provides;
-import de.thatsich.intellie.applied.aerodynamics.Aerodynamics;
+import de.thatsich.intellie.applied.aerodynamics.common.Aerodynamics;
 import de.thatsich.intellie.common.util.logging.ILog;
 import de.thatsich.intellie.common.util.logging.Logger;
 
