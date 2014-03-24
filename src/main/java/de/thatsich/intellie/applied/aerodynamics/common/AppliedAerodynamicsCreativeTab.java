@@ -1,6 +1,7 @@
 package de.thatsich.intellie.applied.aerodynamics.common;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 
 import javax.inject.Inject;
@@ -13,13 +14,13 @@ public class AppliedAerodynamicsCreativeTab extends CreativeTabs
 	@Inject
 	public AppliedAerodynamicsCreativeTab ()
 	{
-		super( CreativeTabs.getNextID(), "appliedAerodynamicsTab" );
+		super( "appliedAerodynamicsTab" );
 	}
 
 	@Override
 	public Item getTabIconItem ()
 	{
-		// TODO
-		return null;
+		// TODO change to correct item or use ItemStack function?
+		return Items.spider_eye;
 	}
 }
