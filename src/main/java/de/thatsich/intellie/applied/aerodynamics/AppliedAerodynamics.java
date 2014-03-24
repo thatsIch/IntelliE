@@ -25,7 +25,7 @@ public class AppliedAerodynamics extends ABaseMod
 	public AppliedAerodynamics ()
 	{
 		super();
-		super.addTab( new AppliedAerodynamicsCreativeTab() );
+		super.addTab( AppliedAerodynamicsCreativeTab.class );
 	}
 
 	@Override

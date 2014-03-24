@@ -24,9 +24,7 @@ import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
 
 /**
  Minecraft Mod with enabled Dependency Injection namely @Inject
@@ -38,14 +36,13 @@ public abstract class ABaseMod implements IProxy
 	private static final Character[] CHARACTERS = new Character[0];
 	// Logger
 	final ILog log;
-
+	// Injector
+	private final ObjectGraph injector;
 	// Registries
 	private final ConfigRegistry configs;
 	private final BlockRegistry blocks;
 	private final ItemRegistry items;
 	private final TileEntityRegistry tileEntites;
-
-	private final Map<Class<? extends CreativeTabs>, CreativeTabs> tabs;
 
 	/**
 	 To make sure that the initialization of Guice-based JavaFX application
@@ -63,23 +60,22 @@ public abstract class ABaseMod implements IProxy
 		moduleInstances.add( new RegistryModule( modName ) );
 
 		final Object[] modules = moduleInstances.toArray();
-		final ObjectGraph injector = ObjectGraph.create( modules );
+		this.injector = ObjectGraph.create( modules );
 
 		// Enable Logging
-		this.log = injector.get( ILog.class );
+		this.log = this.injector.get( ILog.class );
 
 		// Inject all Registries
-		this.configs = injector.get( ConfigRegistry.class );
-		this.blocks = injector.get( BlockRegistry.class );
-		this.items = injector.get( ItemRegistry.class );
-		this.tileEntites = injector.get( TileEntityRegistry.class );
+		this.configs = this.injector.get( ConfigRegistry.class );
+		this.blocks = this.injector.get( BlockRegistry.class );
+		this.items = this.injector.get( ItemRegistry.class );
+		this.tileEntites = this.injector.get( TileEntityRegistry.class );
 
-		this.tabs = new HashMap<>( 1 );
 		//		final RegistryEntity entities = tempInjector.getInstance( RegistryEntity.class );
 		//		final GuiRegistry gui = tempInjector.getInstance( GuiRegistry.class );
 
 		// using injector and modules to instantiate them once
-		this.instantiateModules( injector, modules );
+		this.instantiateModules( this.injector, modules );
 	}
 
 	/**
@@ -182,15 +178,14 @@ public abstract class ABaseMod implements IProxy
 		return builder.toString();
 	}
 
-	protected void addTab ( CreativeTabs tab )
-	{
-		final Class<? extends CreativeTabs> tabClass = tab.getClass();
-		this.tabs.put( tabClass, tab );
-	}
+	/**
+	 Instantiates a creative tab
 
-	public CreativeTabs getTab ( Class<? extends CreativeTabs> tabClass )
+	 @param tabClass class of the tab
+	 */
+	protected void addTab ( Class<? extends CreativeTabs> tabClass )
 	{
-		return this.tabs.get( tabClass );
+		final CreativeTabs tab = this.injector.get( tabClass );
 	}
 
 	@Override
@@ -209,7 +204,7 @@ public abstract class ABaseMod implements IProxy
 		this.items.registerItems();
 
 		final ICommonProxy proxy = this.getProxy();
-		System.out.println( "proxy = " + proxy );
+
 		// proxy.initSounds();
 		// proxy.initRenders();
 
