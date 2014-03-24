@@ -6,7 +6,7 @@ import de.thatsich.intellie.common.module.block.ABlockContainer;
 import de.thatsich.intellie.common.module.block.IBlock;
 import de.thatsich.intellie.common.module.block.IBlockContainer;
 import de.thatsich.intellie.common.module.item.AItemBlock;
-import de.thatsich.intellie.common.util.logging.Logger;
+import de.thatsich.intellie.common.util.logging.ILog;
 import net.minecraftforge.common.config.Configuration;
 
 import javax.inject.Inject;
@@ -25,7 +25,7 @@ public class BlockRegistry
 {
 	private final Collection<IBlock> blocks;
 	private final Collection<IBlockContainer> containerBlocks;
-	private final Logger log;
+	private final ILog log;
 
 	/**
 	 CTOR
@@ -33,7 +33,7 @@ public class BlockRegistry
 	 @param log Logger
 	 */
 	@Inject
-	public BlockRegistry ( Logger log )
+	public BlockRegistry ( ILog log )
 	{
 		this.log = log;
 		this.blocks = new LinkedList<>();

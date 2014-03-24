@@ -9,14 +9,25 @@ import java.util.Collection;
 import java.util.HashSet;
 
 /**
+ Registry for armor rendering
+ Add an armor to it which
+ will be registered into the actual registry
+ in pre-init automatically
+
  @author thatsIch
  @date 24.03.2014. */
 @Singleton
 public class ArmorRenderingRegistry
 {
+	// Fields
 	private final Collection<String> armorRenderers;
 	private final ILog log;
 
+	/**
+	 Injected Constructor
+
+	 @param log Logger
+	 */
 	@Inject
 	public ArmorRenderingRegistry ( final ILog log )
 	{
@@ -24,6 +35,11 @@ public class ArmorRenderingRegistry
 		this.armorRenderers = new HashSet<>( 1 );
 	}
 
+	/**
+	 Queue up an ArmorRenderer to be registered
+
+	 @param armor ArmorRenderer
+	 */
 	void addRenderer ( String armor )
 	{
 		this.armorRenderers.add( armor );
