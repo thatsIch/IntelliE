@@ -31,6 +31,11 @@ public abstract class AMinecraftObject implements IMinecraftObject
 			this.blocks.addBlock( block );
 		}
 
-		// TODO configs and TEs
+		if ( tileEntity != null )
+		{
+			this.tileEntities.addTileEntity( tileEntity );
+		}
+
+		// TODO configs
 	}
 }

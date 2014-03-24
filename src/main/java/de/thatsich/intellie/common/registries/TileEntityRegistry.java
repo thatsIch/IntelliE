@@ -1,8 +1,9 @@
 package de.thatsich.intellie.common.registries;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import de.thatsich.intellie.common.module.tileentity.ATileEntity;
+import de.thatsich.intellie.common.module.tileentity.ITileEntity;
 import de.thatsich.intellie.common.util.logging.ILog;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.config.Configuration;
 
 import javax.inject.Inject;
@@ -16,7 +17,7 @@ import java.util.LinkedList;
 @Singleton
 public class TileEntityRegistry
 {
-	private final Collection<ATileEntity> tileEntities;
+	private final Collection<ITileEntity> tileEntities;
 	private final ILog log;
 
 	/**
@@ -34,7 +35,7 @@ public class TileEntityRegistry
 
 	 @param tileEntity added TileEntity
 	 */
-	public void addTileEntity ( ATileEntity tileEntity )
+	public void addTileEntity ( ITileEntity tileEntity )
 	{
 		this.log.info( "Added Tile Entity: %s", tileEntity );
 		this.tileEntities.add( tileEntity );
@@ -47,7 +48,7 @@ public class TileEntityRegistry
 	 */
 	public void loadConfig ( final Configuration config )
 	{
-		for ( ATileEntity tileEntity : this.tileEntities )
+		for ( ITileEntity tileEntity : this.tileEntities )
 		{
 			tileEntity.register( config );
 		}
@@ -58,9 +59,10 @@ public class TileEntityRegistry
 	 */
 	public void registerTileEntities ()
 	{
-		for ( ATileEntity tileEntity : this.tileEntities )
+		for ( ITileEntity tileEntity : this.tileEntities )
 		{
-			final Class<? extends ATileEntity> tileEntityClass = tileEntity.getClass();
+			final TileEntity te = (TileEntity) tileEntity;
+			final Class<? extends TileEntity> tileEntityClass = te.getClass();
 			final String tileEntityKey = tileEntity.getTileEntityID();
 
 			GameRegistry.registerTileEntity( tileEntityClass, tileEntityKey );
