@@ -5,6 +5,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import de.thatsich.intellie.applied.aerodynamics.common.AppliedAerodynamicsCreativeTab;
 import de.thatsich.intellie.common.ABaseMod;
 import de.thatsich.intellie.common.util.ICommonProxy;
 
@@ -21,8 +22,11 @@ public class AppliedAerodynamics extends ABaseMod
 	@SidedProxy(clientSide = "de.thatsich.intellie.applied.aerodynamics.common.proxies.ClientProxy", serverSide = "de.thatsich.intellie.applied.aerodynamics.common.proxies.CommonProxy")
 	public static ICommonProxy s_proxy;
 
-	@Override
-	protected ICommonProxy getProxy () { return AppliedAerodynamics.s_proxy; }
+	public AppliedAerodynamics ()
+	{
+		super();
+		super.addTab( new AppliedAerodynamicsCreativeTab() );
+	}
 
 	@Override
 	@Mod.EventHandler

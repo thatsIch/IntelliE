@@ -14,7 +14,7 @@ public class AppliedAerodynamicsCreativeTabModule
 {
 	@Provides
 	@Singleton
-	AppliedAerodynamicsCreativeTab provideAppliedAerodynamicsCreativeTab ()
+	public AppliedAerodynamicsCreativeTab provideAppliedAerodynamicsCreativeTab ()
 	{
 		return new AppliedAerodynamicsCreativeTab();
 	}

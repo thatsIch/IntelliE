@@ -16,13 +16,17 @@ import de.thatsich.intellie.common.util.ICommonProxy;
 import de.thatsich.intellie.common.util.IProxy;
 import de.thatsich.intellie.common.util.logging.ILog;
 import de.thatsich.intellie.common.util.logging.LoggerModule;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 /**
  Minecraft Mod with enabled Dependency Injection namely @Inject
@@ -40,6 +44,8 @@ public abstract class ABaseMod implements IProxy
 	private final BlockRegistry blocks;
 	private final ItemRegistry items;
 	private final TileEntityRegistry tileEntites;
+
+	private final Map<Class<? extends CreativeTabs>, CreativeTabs> tabs;
 
 	/**
 	 To make sure that the initialization of Guice-based JavaFX application
@@ -67,6 +73,8 @@ public abstract class ABaseMod implements IProxy
 		this.blocks = injector.get( BlockRegistry.class );
 		this.items = injector.get( ItemRegistry.class );
 		this.tileEntites = injector.get( TileEntityRegistry.class );
+
+		this.tabs = new HashMap<>( 1 );
 		//		final RegistryEntity entities = tempInjector.getInstance( RegistryEntity.class );
 		//		final GuiRegistry gui = tempInjector.getInstance( GuiRegistry.class );
 
@@ -174,7 +182,16 @@ public abstract class ABaseMod implements IProxy
 		return builder.toString();
 	}
 
-	protected abstract ICommonProxy getProxy ();
+	protected void addTab ( CreativeTabs tab )
+	{
+		final Class<? extends CreativeTabs> tabClass = tab.getClass();
+		this.tabs.put( tabClass, tab );
+	}
+
+	public CreativeTabs getTab ( Class<? extends CreativeTabs> tabClass )
+	{
+		return this.tabs.get( tabClass );
+	}
 
 	@Override
 	public void preInit ( FMLPreInitializationEvent event )
@@ -191,10 +208,38 @@ public abstract class ABaseMod implements IProxy
 		this.blocks.registerBlocks();
 		this.items.registerItems();
 
+		final ICommonProxy proxy = this.getProxy();
+		System.out.println( "proxy = " + proxy );
 		// proxy.initSounds();
 		// proxy.initRenders();
 
 		this.log.info( "PreInit End" );
+	}
+
+	private ICommonProxy getProxy ()
+	{
+		final Class<? extends ABaseMod> clazz = this.getClass();
+		final Field[] potentialProxy = clazz.getDeclaredFields();
+
+		// search for the proxy field
+		for ( Field field : potentialProxy )
+		{
+			try
+			{
+				final Object object = field.get( null );
+				if ( object instanceof ICommonProxy )
+				{
+					return (ICommonProxy) object;
+				}
+			}
+			catch ( IllegalAccessException e )
+			{
+				e.printStackTrace();
+			}
+		}
+
+		this.log.warn( "No proxy found." );
+		throw new IllegalArgumentException( "No proxy was given." );
 	}
 
 	@Override
