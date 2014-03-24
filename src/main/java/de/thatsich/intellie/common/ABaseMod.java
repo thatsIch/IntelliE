@@ -75,7 +75,7 @@ public abstract class ABaseMod implements IProxy
 		//		final GuiRegistry gui = tempInjector.getInstance( GuiRegistry.class );
 
 		// using injector and modules to instantiate them once
-		this.instantiateModules( this.injector, modules );
+		this.instantiateModules( modules );
 	}
 
 	/**
@@ -109,10 +109,9 @@ public abstract class ABaseMod implements IProxy
 	/**
 	 Instantiates module objects
 
-	 @param injector ObjectGraph
 	 @param modules  To be instantiated modules
 	 */
-	private void instantiateModules ( ObjectGraph injector, Object... modules )
+	private void instantiateModules ( Object... modules )
 	{
 		for ( Object obj : modules )
 		{
@@ -121,7 +120,7 @@ public abstract class ABaseMod implements IProxy
 			{
 				final Module module = clazz.getAnnotation( Module.class );
 				final Class<?>[] injects = module.injects();
-				this.instantiateInjections( injector, injects );
+				this.instantiateInjections( injects );
 			}
 		}
 	}
@@ -129,14 +128,13 @@ public abstract class ABaseMod implements IProxy
 	/**
 	 Fed classes are instantiated by ObjectGraph
 
-	 @param injector   ObjectGraph
 	 @param injections instantiated class references
 	 */
-	private void instantiateInjections ( ObjectGraph injector, Class<?>... injections )
+	private void instantiateInjections ( Class<?>... injections )
 	{
 		for ( Class<?> injection : injections )
 		{
-			final Object injected = injector.get( injection );
+			final Object injected = this.injector.get( injection );
 		}
 	}
 
@@ -211,6 +209,11 @@ public abstract class ABaseMod implements IProxy
 		this.log.info( "PreInit End" );
 	}
 
+	/**
+	 retrieves the proxy class of the child by reflecting it
+
+	 @return proxy
+	 */
 	private ICommonProxy getProxy ()
 	{
 		final Class<? extends ABaseMod> clazz = this.getClass();
