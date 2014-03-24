@@ -2,6 +2,8 @@ package de.thatsich.intellie;
 
 import dagger.Module;
 import de.thatsich.intellie.applied.aerodynamics.AppliedAerodynamicsModule;
+import de.thatsich.intellie.applied.agricultures.AppliedAgriculturesModule;
+import de.thatsich.intellie.applied.intelligences.AppliedIntelligencesModule;
 
 /**
  Not getting used
@@ -10,6 +12,9 @@ import de.thatsich.intellie.applied.aerodynamics.AppliedAerodynamicsModule;
  @author thatsIch
  @date 24.03.2014. */
 @Module(
-	includes = AppliedAerodynamicsModule.class)
+	includes = {
+		AppliedAerodynamicsModule.class, AppliedAgriculturesModule.class, AppliedIntelligencesModule.class
+	},
+	library = true)
 public class IntelligentEnergisticsModule
 {}
