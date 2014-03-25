@@ -57,7 +57,8 @@ public class ConfigRegistry
 	public Configuration load ( final File suggestedConfigFile )
 	{
 		final String configFolder = suggestedConfigFile.getParent();
-		final String ieConfig = Joiner.on( File.separator ).join( configFolder, "AppliedEnergistics2", "IntelliE", "IntelliE.cfg" );
+		final String fileName = suggestedConfigFile.getName();
+		final String ieConfig = Joiner.on( File.separator ).join( configFolder, "AppliedEnergistics2", "IntelliE", fileName, ".cfg" );
 		final File ieConfigFile = new File( ieConfig );
 
 		this.config = new Configuration( ieConfigFile );

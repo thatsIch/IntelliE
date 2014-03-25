@@ -2,10 +2,7 @@ package de.thatsich.intellie.common.registries;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import de.thatsich.intellie.common.module.block.ABlock;
-import de.thatsich.intellie.common.module.block.ABlockContainer;
 import de.thatsich.intellie.common.module.block.IBlock;
-import de.thatsich.intellie.common.module.block.IBlockContainer;
-import de.thatsich.intellie.common.module.item.AItemBlock;
 import de.thatsich.intellie.common.util.logging.ILog;
 import net.minecraftforge.common.config.Configuration;
 
@@ -21,10 +18,9 @@ import java.util.LinkedList;
  to be instantiated or used in any way.
  */
 @Singleton
-public class BlockRegistry
+public class BlockRegistry implements IRegistry
 {
 	private final Collection<IBlock> blocks;
-	private final Collection<IBlockContainer> containerBlocks;
 	private final ILog log;
 
 	/**
@@ -37,7 +33,6 @@ public class BlockRegistry
 	{
 		this.log = log;
 		this.blocks = new LinkedList<>();
-		this.containerBlocks = new LinkedList<>();
 	}
 
 	/**
@@ -49,78 +44,24 @@ public class BlockRegistry
 	public void addBlock ( final IBlock block )
 	{
 		this.blocks.add( block );
-		this.log.info( "Added Block %s", block );
-	}
-
-	/**
-	 Adds a new blockcontainer to be registered and named.
-	 Is getting called automatically by the module class
-
-	 @param containerBlock new to be added blockcontainer
-	 */
-	public void addBlock ( final IBlockContainer containerBlock )
-	{
-		this.containerBlocks.add( containerBlock );
-		this.log.info( "Added BlockContainer %s", containerBlock );
-	}
-
-	/**
-	 Register the blocks and containerblocks in the GameRegistry
-	 */
-	public void registerBlocks ()
-	{
-		this.registerBlocks( this.blocks );
-		this.registerContainerBlocks( this.containerBlocks );
-		this.log.info( "Finished registering Blocks and BlockContainer." );
-	}
-
-	/**
-	 Register the blockand containerblocks in the GameRegistry with:
-	 - block (Block)
-	 - itemBlock-Class (Class<ItemBlock>)
-	 - block key (String)
-
-	 @param containerBlocks blockcontainers to be added
-	 */
-	private void registerContainerBlocks ( Iterable<IBlockContainer> containerBlocks )
-	{
-		for ( IBlockContainer block : containerBlocks )
-		{
-			final ABlockContainer container = (ABlockContainer) block;
-			final Class<? extends AItemBlock> itemBlockClass = container.getItemBlockClass();
-			final String unlocalizedName = container.getUnlocalizedName();
-
-			if ( itemBlockClass != null )
-			{
-				GameRegistry.registerBlock( container, itemBlockClass, unlocalizedName );
-			} else
-			{
-				GameRegistry.registerBlock( container, unlocalizedName );
-			}
-			this.log.info( "Registered BlockContainer %s", block );
-		}
-	}
-
-	/**
-	 Register the blocks in the GameRegistry with:
-	 - block (Block)
-	 - block key (String)
-
-	 @param blocks new blocks to be added
-	 */
-	private void registerBlocks ( Iterable<IBlock> blocks )
-	{
-		for ( IBlock block : blocks )
-		{
-			ABlock concreteBlock = (ABlock) block;
-			final String unlocalizedName = concreteBlock.getUnlocalizedName();
-			GameRegistry.registerBlock( concreteBlock, unlocalizedName );
-			this.log.info( "Registered block with %s, %s", block, unlocalizedName );
-		}
+		this.log.debug( "Added Block %s", block );
 	}
 
 	public void loadConfig ( final Configuration config )
 	{
 		this.log.info( "Loaded Configuration %s", config );
+	}
+
+	@Override
+	public void register ()
+	{
+		for ( IBlock block : this.blocks )
+		{
+			ABlock concreteBlock = (ABlock) block;
+			final String unlocalizedName = concreteBlock.getUnlocalizedName();
+			GameRegistry.registerBlock( concreteBlock, unlocalizedName );
+			this.log.debug( "Registered block with %s, %s", block, unlocalizedName );
+		}
+		this.log.info( "Finished registering Blocks and BlockContainer." );
 	}
 }

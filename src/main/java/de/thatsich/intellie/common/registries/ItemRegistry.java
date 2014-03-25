@@ -16,7 +16,7 @@ import java.util.LinkedList;
  @author thatsIch
  @date 25.02.14. */
 @Singleton
-public class ItemRegistry
+public class ItemRegistry implements IRegistry
 {
 	private final ILog log;
 	private final Collection<IItem> items;
@@ -34,17 +34,18 @@ public class ItemRegistry
 	public void addItem ( IItem item )
 	{
 		this.items.add( item );
-		this.log.info( "Added Item %s.", item );
+		this.log.debug( "Added Item %s.", item );
 	}
 
-	public void registerItems ()
+	@Override
+	public void register ()
 	{
-		this.log.info( "Registering all Items." );
 		for ( final IItem item : this.items )
 		{
 			final String unlocalizedName = item.getUnlocalizedName();
 			GameRegistry.registerItem( (Item) item, unlocalizedName );
+			this.log.debug( "Registered Item %s with %s", item, unlocalizedName );
 		}
+		this.log.info( "Registering all Items." );
 	}
-
 }

@@ -205,8 +205,8 @@ public abstract class ABaseMod implements IProxy
 
 		this.tileEntites.loadConfig( config );
 
-		this.blocks.registerBlocks();
-		this.items.registerItems();
+		this.blocks.register();
+		this.items.register();
 
 		final ICommonProxy proxy = this.getProxy();
 
