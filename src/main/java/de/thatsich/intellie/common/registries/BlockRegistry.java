@@ -33,7 +33,7 @@ public class BlockRegistry
 	 @param log Logger
 	 */
 	@Inject
-	public BlockRegistry ( ILog log )
+	public BlockRegistry ( final ILog log )
 	{
 		this.log = log;
 		this.blocks = new LinkedList<>();

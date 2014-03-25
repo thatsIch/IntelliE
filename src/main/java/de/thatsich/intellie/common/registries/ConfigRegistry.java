@@ -31,7 +31,7 @@ public class ConfigRegistry
 	 @param log  Logger
 	 @param name Name
 	 */
-	ConfigRegistry ( ILog log, String name )
+	ConfigRegistry ( final ILog log, String name )
 	{
 		this.log = log;
 		this.name = name;

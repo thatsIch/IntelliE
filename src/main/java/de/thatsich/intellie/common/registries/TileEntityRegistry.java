@@ -24,7 +24,7 @@ public class TileEntityRegistry
 	 @param log Injected Logger
 	 */
 	@Inject
-	TileEntityRegistry ( ILog log )
+	TileEntityRegistry ( final ILog log )
 	{
 		this.tileEntities = new LinkedList<>();
 		this.log = log;

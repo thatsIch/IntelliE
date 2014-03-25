@@ -13,7 +13,9 @@ import javax.inject.Singleton;
 
  @author thatsIch
  @date 05.03.14. */
-@Module(injects = ILog.class, library = true)
+@Module(
+	injects = Logger.class,
+	library = true)
 public class LoggerModule implements IModule
 {
 	private final String name;
@@ -22,5 +24,5 @@ public class LoggerModule implements IModule
 
 	@Provides
 	@Singleton
-	public ILog provideILog () { return new Logger( this.name ); }
+	public ILog provideLogger () { return new Logger( this.name ); }
 }

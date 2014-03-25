@@ -15,13 +15,13 @@ import javax.inject.Singleton;
 @Module(
 	library = true,
 	includes = {
-		RegistryModule.class, SuiteModule.class, AppliedAerodynamicsCreativeTabModule.class
+		AppliedAerodynamicsCreativeTabModule.class, RegistryModule.class, SuiteModule.class
 	})
 public class AppliedAerodynamicsModule implements IModule
 {
 	private final String id;
 
-	AppliedAerodynamicsModule ( final String id )
+	public AppliedAerodynamicsModule ( final String id )
 	{
 		this.id = id;
 	}

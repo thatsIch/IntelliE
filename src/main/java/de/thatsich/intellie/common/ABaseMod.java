@@ -15,12 +15,14 @@ import de.thatsich.intellie.common.registries.TileEntityRegistry;
 import de.thatsich.intellie.common.util.ICommonProxy;
 import de.thatsich.intellie.common.util.IProxy;
 import de.thatsich.intellie.common.util.logging.ILog;
+import de.thatsich.intellie.common.util.logging.Logger;
 import de.thatsich.intellie.common.util.logging.LoggerModule;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
@@ -56,14 +58,14 @@ public abstract class ABaseMod implements IProxy
 		// Creates an injector with all of the required modules.
 		final Collection<IModule> moduleInstances = this.getClassModule();
 
-		moduleInstances.add( new LoggerModule( modName ) );
 		moduleInstances.add( new RegistryModule( modName ) );
+		moduleInstances.add( new LoggerModule( modName ) );
 
 		final Object[] modules = moduleInstances.toArray();
 		this.injector = ObjectGraph.create( modules );
 
 		// Enable Logging
-		this.log = this.injector.get( ILog.class );
+		this.log = this.injector.get( Logger.class );
 
 		// Inject all Registries
 		this.configs = this.injector.get( ConfigRegistry.class );
@@ -95,7 +97,11 @@ public abstract class ABaseMod implements IProxy
 
 		try
 		{
-			final IModule module = (IModule) Class.forName( moduleName ).getConstructor( String.class ).newInstance( id );
+			final Class<?> clazz = Class.forName( moduleName );
+			final Constructor<?> ctor = clazz.getConstructor( String.class );
+			final Object instance = ctor.newInstance( id );
+			final IModule module = (IModule) instance;
+
 			moduleInstances.add( module );
 		}
 		catch ( InstantiationException | IllegalAccessException | ClassNotFoundException | NoSuchMethodException | InvocationTargetException e )
@@ -109,7 +115,7 @@ public abstract class ABaseMod implements IProxy
 	/**
 	 Instantiates module objects
 
-	 @param modules  To be instantiated modules
+	 @param modules To be instantiated modules
 	 */
 	private void instantiateModules ( Object... modules )
 	{
@@ -191,6 +197,7 @@ public abstract class ABaseMod implements IProxy
 	{
 		this.log.info( "PreInit Begin" );
 
+		System.out.println( event.getModConfigurationDirectory() );
 		final File suggConfigFile = event.getSuggestedConfigurationFile();
 		final Configuration config = this.configs.load( suggConfigFile );
 

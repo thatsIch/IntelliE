@@ -25,7 +25,7 @@ public class ItemRegistry
 	 @param log Logger
 	 */
 	@Inject
-	ItemRegistry ( ILog log )
+	ItemRegistry ( final ILog log )
 	{
 		this.log = log;
 		this.items = new LinkedList<IItem>();
