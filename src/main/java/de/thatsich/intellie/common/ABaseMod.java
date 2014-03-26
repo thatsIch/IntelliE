@@ -15,7 +15,6 @@ import de.thatsich.intellie.common.registries.TileEntityRegistry;
 import de.thatsich.intellie.common.util.ICommonProxy;
 import de.thatsich.intellie.common.util.IProxy;
 import de.thatsich.intellie.common.util.logging.ILog;
-import de.thatsich.intellie.common.util.logging.Logger;
 import de.thatsich.intellie.common.util.logging.LoggerModule;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
@@ -58,6 +57,7 @@ public abstract class ABaseMod implements IProxy
 		// Creates an injector with all of the required modules.
 		final Collection<IModule> moduleInstances = this.getClassModule();
 
+		moduleInstances.add( new BaseModInstanceModule( this ) );
 		moduleInstances.add( new RegistryModule( modName ) );
 		moduleInstances.add( new LoggerModule( modName ) );
 
@@ -65,7 +65,7 @@ public abstract class ABaseMod implements IProxy
 		this.injector = ObjectGraph.create( modules );
 
 		// Enable Logging
-		this.log = this.injector.get( Logger.class );
+		this.log = this.injector.get( ILog.class );
 
 		// Inject all Registries
 		this.configs = this.injector.get( ConfigRegistry.class );
@@ -197,7 +197,6 @@ public abstract class ABaseMod implements IProxy
 	{
 		this.log.info( "PreInit Begin" );
 
-		System.out.println( event.getModConfigurationDirectory() );
 		final File suggConfigFile = event.getSuggestedConfigurationFile();
 		final Configuration config = this.configs.load( suggConfigFile );
 

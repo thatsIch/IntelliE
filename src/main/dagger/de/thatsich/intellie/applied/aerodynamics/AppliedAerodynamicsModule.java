@@ -15,7 +15,7 @@ import javax.inject.Singleton;
 @Module(
 	library = true,
 	includes = {
-		AppliedAerodynamicsCreativeTabModule.class, RegistryModule.class, SuiteModule.class
+		AppliedAerodynamicsCreativeTabModule.class, SuiteModule.class, RegistryModule.class
 	})
 public class AppliedAerodynamicsModule implements IModule
 {

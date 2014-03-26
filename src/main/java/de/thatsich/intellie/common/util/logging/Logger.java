@@ -6,10 +6,12 @@ import cpw.mods.fml.relauncher.Side;
 import org.apache.logging.log4j.Level;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 /**
  Logger Class
  */
+@Singleton
 public class Logger implements ILog
 {
 	private static final char COLON = ':';
