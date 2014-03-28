@@ -256,6 +256,7 @@ public abstract class ABaseMod implements IProxy
 
 		// super.getTileEntities().init();
 		// super.getGui().init( this );
+		//		this.recipeRegistry.register();
 
 		MinecraftForge.EVENT_BUS.register( this );
 
