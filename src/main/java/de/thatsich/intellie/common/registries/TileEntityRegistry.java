@@ -2,7 +2,7 @@ package de.thatsich.intellie.common.registries;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import de.thatsich.intellie.common.module.tileentity.ITileEntity;
-import de.thatsich.intellie.common.util.logging.ILogger;
+import de.thatsich.intellie.common.util.logging.ILog;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.config.Configuration;
 
@@ -18,13 +18,13 @@ import java.util.LinkedList;
 public class TileEntityRegistry
 {
 	private final Collection<ITileEntity> tileEntities;
-	private final ILogger log;
+	private final ILog log;
 
 	/**
-	 @param log Injected Logger
+	 @param log Injected Log
 	 */
 	@Inject
-	TileEntityRegistry ( final ILogger log )
+	TileEntityRegistry ( final ILog log )
 	{
 		this.tileEntities = new LinkedList<>();
 		this.log = log;

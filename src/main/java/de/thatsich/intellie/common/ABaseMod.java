@@ -14,7 +14,7 @@ import de.thatsich.intellie.common.registries.RegistryModule;
 import de.thatsich.intellie.common.registries.TileEntityRegistry;
 import de.thatsich.intellie.common.util.ICommonProxy;
 import de.thatsich.intellie.common.util.IProxy;
-import de.thatsich.intellie.common.util.logging.ILogger;
+import de.thatsich.intellie.common.util.logging.ILog;
 import de.thatsich.intellie.common.util.logging.LoggerModule;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
@@ -35,8 +35,8 @@ import java.util.LinkedList;
 public abstract class ABaseMod implements IProxy
 {
 	private static final Character[] CHARACTERS = new Character[0];
-	// Logger
-	final ILogger log;
+	// Log
+	final ILog log;
 	// Injector
 	private final ObjectGraph injector;
 	// Registries
@@ -65,7 +65,7 @@ public abstract class ABaseMod implements IProxy
 		this.injector = ObjectGraph.create( modules );
 
 		// Enable Logging
-		this.log = this.injector.get( ILogger.class );
+		this.log = this.injector.get( ILog.class );
 
 		// Inject all Registries
 		this.configs = this.injector.get( ConfigRegistry.class );

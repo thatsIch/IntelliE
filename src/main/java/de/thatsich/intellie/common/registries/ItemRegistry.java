@@ -2,7 +2,7 @@ package de.thatsich.intellie.common.registries;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import de.thatsich.intellie.common.module.item.IItem;
-import de.thatsich.intellie.common.util.logging.ILogger;
+import de.thatsich.intellie.common.util.logging.ILog;
 import net.minecraft.item.Item;
 
 import javax.inject.Inject;
@@ -18,14 +18,14 @@ import java.util.LinkedList;
 @Singleton
 public class ItemRegistry implements IRegistry
 {
-	private final ILogger log;
+	private final ILog log;
 	private final Collection<IItem> items;
 
 	/**
-	 @param log Logger
+	 @param log Log
 	 */
 	@Inject
-	ItemRegistry ( final ILogger log )
+	ItemRegistry ( final ILog log )
 	{
 		this.log = log;
 		this.items = new LinkedList<IItem>();

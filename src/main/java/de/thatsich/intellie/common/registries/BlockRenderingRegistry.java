@@ -2,7 +2,7 @@ package de.thatsich.intellie.common.registries;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import de.thatsich.intellie.common.util.logging.ILogger;
+import de.thatsich.intellie.common.util.logging.ILog;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -16,10 +16,10 @@ import java.util.LinkedList;
 public class BlockRenderingRegistry
 {
 	private final Collection<ISimpleBlockRenderingHandler> blockRenderers;
-	private final ILogger log;
+	private final ILog log;
 
 	@Inject
-	public BlockRenderingRegistry ( final ILogger log )
+	public BlockRenderingRegistry ( final ILog log )
 	{
 		this.log = log;
 		this.blockRenderers = new LinkedList<>();

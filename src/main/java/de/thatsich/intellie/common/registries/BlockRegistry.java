@@ -3,7 +3,7 @@ package de.thatsich.intellie.common.registries;
 import cpw.mods.fml.common.registry.GameRegistry;
 import de.thatsich.intellie.common.module.block.ABlock;
 import de.thatsich.intellie.common.module.block.IBlock;
-import de.thatsich.intellie.common.util.logging.ILogger;
+import de.thatsich.intellie.common.util.logging.ILog;
 import net.minecraftforge.common.config.Configuration;
 
 import javax.inject.Inject;
@@ -21,15 +21,15 @@ import java.util.LinkedList;
 public class BlockRegistry implements IRegistry
 {
 	private final Collection<IBlock> blocks;
-	private final ILogger log;
+	private final ILog log;
 
 	/**
 	 CTOR
 
-	 @param log Logger
+	 @param log Log
 	 */
 	@Inject
-	public BlockRegistry ( final ILogger log )
+	public BlockRegistry ( final ILog log )
 	{
 		this.log = log;
 		this.blocks = new LinkedList<>();

@@ -9,10 +9,10 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
- Logger Class
+ Log Class
  */
 @Singleton
-public class Logger implements ILogger
+public class Log implements ILog
 {
 	private static final char COLON = ':';
 	private final String name;
@@ -21,7 +21,7 @@ public class Logger implements ILogger
 	 Constructor either only be injected or tested
 	 thus package private
 	 */
-	public Logger ( String name )
+	public Log ( String name )
 	{
 		this.name = name;
 	}
@@ -30,7 +30,7 @@ public class Logger implements ILogger
 	 Dagger CTOR
 	 */
 	@Inject
-	Logger () { this.name = ""; }
+	Log () { this.name = ""; }
 
 	/**
 	 Information
@@ -107,6 +107,6 @@ public class Logger implements ILogger
 		final boolean isClient = effectiveSide.isClient();
 		final String side = isClient ? "C" : "S";
 
-		FMLRelaunchLog.log( this.name + Logger.COLON + side, level, format, data );
+		FMLRelaunchLog.log( this.name + Log.COLON + side, level, format, data );
 	}
 }
