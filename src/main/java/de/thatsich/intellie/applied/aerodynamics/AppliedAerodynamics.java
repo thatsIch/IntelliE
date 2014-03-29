@@ -10,6 +10,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import de.thatsich.intellie.applied.aerodynamics.common.AppliedAerodynamicsCreativeTab;
 import de.thatsich.intellie.common.ABaseMod;
 import de.thatsich.intellie.common.util.ICommonProxy;
+import de.thatsich.intellie.common.util.logging.ILog;
+import de.thatsich.intellie.common.util.logging.Log;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
@@ -20,11 +22,11 @@ import net.minecraft.item.ItemStack;
 /**
  @author thatsIch
  @date 16.03.14. */
-@Mod(
-	modid = "appaero",
-	name = "AppliedAerodynamics",
-	version = "${version}",
-	dependencies = "required-after:Forge@[7.0,);required-after:FML@[5.0.5,) ;after:appliedenergistics2")
+//@Mod(
+//	modid = "appaero",
+//	name = "AppliedAerodynamics",
+//	version = "${version}",
+//	dependencies = "required-after:Forge@[7.0,);required-after:FML@[5.0.5,) ;after:appliedenergistics2")
 public class AppliedAerodynamics extends ABaseMod
 {
 	public static final ItemArmor ITEM_GRAVI_CHEST_PLATE = new ItemGraviChestPlate( ItemArmor.ArmorMaterial.DIAMOND, 1, 1 );
@@ -61,6 +63,9 @@ public class AppliedAerodynamics extends ABaseMod
 		GameRegistry.addRecipe( result, "xxx", "x x", "xxx", 'x', stone );
 		// IREcipe mal angucken
 		FMLCommonHandler.instance().bus().register( new KeyHandler() );
+
+		ILog test = new Log( "DasIstEinTest" );
+		test.info( "test", null );
 	}
 
 	@Override

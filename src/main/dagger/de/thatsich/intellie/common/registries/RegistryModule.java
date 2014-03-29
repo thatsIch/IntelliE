@@ -3,7 +3,7 @@ package de.thatsich.intellie.common.registries;
 import dagger.Module;
 import dagger.Provides;
 import de.thatsich.intellie.common.module.IModule;
-import de.thatsich.intellie.common.util.logging.ILog;
+import de.thatsich.intellie.common.util.logging.ILogger;
 import de.thatsich.intellie.common.util.logging.LoggerModule;
 
 import javax.inject.Singleton;
@@ -36,7 +36,7 @@ public class RegistryModule implements IModule
 
 	@Provides
 	@Singleton
-	public ConfigRegistry provideConfigRegistry ( ILog log )
+	public ConfigRegistry provideConfigRegistry ( ILogger log )
 	{
 		return new ConfigRegistry( log, this.id );
 	}

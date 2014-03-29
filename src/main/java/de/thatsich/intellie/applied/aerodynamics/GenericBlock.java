@@ -17,4 +17,10 @@ public class GenericBlock extends Block
 		this.setBlockName( "genericBlock" );
 		this.setCreativeTab( CreativeTabs.tabBlock );
 	}
+
+	@Override
+	protected String getTextureName ()
+	{
+		return "appaero:genericBlock";
+	}
 }

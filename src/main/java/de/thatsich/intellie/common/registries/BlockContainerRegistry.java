@@ -4,7 +4,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import de.thatsich.intellie.common.module.block.ABlockContainer;
 import de.thatsich.intellie.common.module.block.IBlockContainer;
 import de.thatsich.intellie.common.module.item.AItemBlock;
-import de.thatsich.intellie.common.util.logging.ILog;
+import de.thatsich.intellie.common.util.logging.ILogger;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -15,9 +15,9 @@ import java.util.HashSet;
 public class BlockContainerRegistry implements IRegistry
 {
 	private final Collection<IBlockContainer> blockContainers;
-	private final ILog log;
+	private final ILogger log;
 
-	public BlockContainerRegistry ( ILog log )
+	public BlockContainerRegistry ( ILogger log )
 	{
 		this.blockContainers = new HashSet<>( 1 );
 		this.log = log;
@@ -41,7 +41,8 @@ public class BlockContainerRegistry implements IRegistry
 			if ( itemBlockClass != null )
 			{
 				GameRegistry.registerBlock( container, itemBlockClass, unlocalizedName );
-			} else
+			}
+			else
 			{
 				GameRegistry.registerBlock( container, unlocalizedName );
 			}

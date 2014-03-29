@@ -3,7 +3,7 @@ package de.thatsich.intellie.common.util.logging;
 /**
  @author thatsIch
  @date 05.03.14. */
-public interface ILog
+public interface ILogger
 {
 	void info ( String format, Object... data );
 

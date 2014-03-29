@@ -1,7 +1,7 @@
 package de.thatsich.intellie.common.registries;
 
 import com.google.common.base.Joiner;
-import de.thatsich.intellie.common.util.logging.ILog;
+import de.thatsich.intellie.common.util.logging.ILogger;
 import net.minecraftforge.common.config.Configuration;
 
 import javax.inject.Inject;
@@ -19,7 +19,7 @@ import java.io.File;
 public class ConfigRegistry
 {
 	// Final Fields
-	private final ILog log;
+	private final ILogger log;
 	private final String name;
 
 	// Fields
@@ -31,7 +31,7 @@ public class ConfigRegistry
 	 @param log  Logger
 	 @param name Name
 	 */
-	ConfigRegistry ( final ILog log, String name )
+	ConfigRegistry ( final ILogger log, String name )
 	{
 		this.log = log;
 		this.name = name;

@@ -1,7 +1,7 @@
 package de.thatsich.intellie.common.registries;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import de.thatsich.intellie.common.util.logging.ILog;
+import de.thatsich.intellie.common.util.logging.ILogger;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -21,7 +21,7 @@ public class ArmorRenderingRegistry
 {
 	// Fields
 	private final Collection<String> armorRenderers;
-	private final ILog log;
+	private final ILogger log;
 
 	/**
 	 Injected Constructor
@@ -29,7 +29,7 @@ public class ArmorRenderingRegistry
 	 @param log Logger
 	 */
 	@Inject
-	public ArmorRenderingRegistry ( final ILog log )
+	public ArmorRenderingRegistry ( final ILogger log )
 	{
 		this.log = log;
 		this.armorRenderers = new HashSet<>( 1 );

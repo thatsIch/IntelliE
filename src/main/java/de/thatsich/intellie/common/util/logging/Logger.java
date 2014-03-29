@@ -12,7 +12,7 @@ import javax.inject.Singleton;
  Logger Class
  */
 @Singleton
-public class Logger implements ILog
+public class Logger implements ILogger
 {
 	private static final char COLON = ':';
 	private final String name;
