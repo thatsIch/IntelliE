@@ -18,16 +18,11 @@ import java.util.LinkedList;
  to be instantiated or used in any way.
  */
 @Singleton
-public class BlockRegistry implements IRegistry
+public class BlockRegistry implements IRegistry<IBlock>
 {
 	private final Collection<IBlock> blocks;
 	private final ILog log;
 
-	/**
-	 CTOR
-
-	 @param log Log
-	 */
 	@Inject
 	public BlockRegistry ( final ILog log )
 	{
@@ -35,21 +30,16 @@ public class BlockRegistry implements IRegistry
 		this.blocks = new LinkedList<>();
 	}
 
-	/**
-	 Adds a new block to be registered and named.
-	 Is getting called automatically by the module class
-
-	 @param block new to be added block.
-	 */
-	public void addBlock ( final IBlock block )
-	{
-		this.blocks.add( block );
-		this.log.debug( "Added Block %s", block );
-	}
-
 	public void loadConfig ( final Configuration config )
 	{
 		this.log.info( "Loaded Configuration %s", config );
+	}
+
+	@Override
+	public void add ( final IBlock block )
+	{
+		this.blocks.add( block );
+		this.log.debug( "Added Block %s", block );
 	}
 
 	@Override

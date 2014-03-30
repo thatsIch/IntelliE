@@ -13,7 +13,7 @@ import java.util.LinkedList;
  @author thatsIch
  @date 24.03.2014. */
 @Singleton
-public class BlockRenderingRegistry
+public class BlockRenderingRegistry implements IRegistry<ISimpleBlockRenderingHandler>
 {
 	private final Collection<ISimpleBlockRenderingHandler> blockRenderers;
 	private final ILog log;
@@ -25,13 +25,15 @@ public class BlockRenderingRegistry
 		this.blockRenderers = new LinkedList<>();
 	}
 
-	public void addRenderer ( ISimpleBlockRenderingHandler handler )
+	@Override
+	public void add ( final ISimpleBlockRenderingHandler handler )
 	{
 		this.blockRenderers.add( handler );
 		this.log.debug( "Added BlockRenderer %s", handler );
 	}
 
-	public void registerRenderers ()
+	@Override
+	public void register ()
 	{
 		for ( ISimpleBlockRenderingHandler handler : this.blockRenderers )
 		{

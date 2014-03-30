@@ -45,6 +45,7 @@ public abstract class ABlockContainer extends BlockContainer implements IBlockCo
 
 	}
 
+	@Override
 	public Class<? extends AItemBlock> getItemBlockClass ()
 	{
 		return this.itemBlockClass;
@@ -55,7 +56,7 @@ public abstract class ABlockContainer extends BlockContainer implements IBlockCo
 	{
 		final ATileEntity tileEntity = this.injector.get( this.tileEntityClass );
 
-		this.tileEntities.addTileEntity( tileEntity );
+		this.tileEntities.add( tileEntity );
 
 		return tileEntity;
 	}

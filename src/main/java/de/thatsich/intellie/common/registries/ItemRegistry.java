@@ -16,7 +16,7 @@ import java.util.LinkedList;
  @author thatsIch
  @date 25.02.14. */
 @Singleton
-public class ItemRegistry implements IRegistry
+public class ItemRegistry implements IRegistry<IItem>
 {
 	private final ILog log;
 	private final Collection<IItem> items;
@@ -28,10 +28,11 @@ public class ItemRegistry implements IRegistry
 	ItemRegistry ( final ILog log )
 	{
 		this.log = log;
-		this.items = new LinkedList<IItem>();
+		this.items = new LinkedList<>();
 	}
 
-	public void addItem ( IItem item )
+	@Override
+	public void add ( final IItem item )
 	{
 		this.items.add( item );
 		this.log.debug( "Added Item %s.", item );

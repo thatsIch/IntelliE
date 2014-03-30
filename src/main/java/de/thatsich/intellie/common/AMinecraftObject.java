@@ -23,17 +23,17 @@ public abstract class AMinecraftObject implements IMinecraftObject
 	{
 		if ( item != null )
 		{
-			this.items.addItem( item );
+			this.items.add( item );
 		}
 
 		if ( block != null )
 		{
-			this.blocks.addBlock( block );
+			this.blocks.add( block );
 		}
 
 		if ( tileEntity != null )
 		{
-			this.tileEntities.addTileEntity( tileEntity );
+			this.tileEntities.add( tileEntity );
 		}
 
 		// TODO configs

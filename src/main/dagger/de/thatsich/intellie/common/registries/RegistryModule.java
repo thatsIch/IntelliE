@@ -13,8 +13,7 @@ import javax.inject.Singleton;
  @date 05.03.14. */
 @Module(
 	injects = {
-		ConfigRegistry.class, BlockRegistry.class, ItemRegistry.class, TileEntityRegistry.class
-		//		GuiRegistry.class, HandlerRenderer.class, SoundRegistry.class
+		ArmorRenderingRegistry.class, BlockContainerRegistry.class, BlockRegistry.class, BlockRenderingRegistry.class, ConfigRegistry.class, EntityRenderingRegistry.class, GuiRegistry.class, ItemRegistry.class, SoundRegistry.class, TileEntityRegistry.class
 	},
 	library = true,
 	includes = LoggerModule.class)

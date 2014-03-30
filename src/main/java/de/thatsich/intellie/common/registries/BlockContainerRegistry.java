@@ -6,23 +6,28 @@ import de.thatsich.intellie.common.module.block.IBlockContainer;
 import de.thatsich.intellie.common.module.item.AItemBlock;
 import de.thatsich.intellie.common.util.logging.ILog;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.util.Collection;
 import java.util.HashSet;
 
 /**
  @author thatsIch
  @date 25.03.2014. */
-public class BlockContainerRegistry implements IRegistry
+@Singleton
+public class BlockContainerRegistry implements IRegistry<IBlockContainer>
 {
 	private final Collection<IBlockContainer> blockContainers;
 	private final ILog log;
 
+	@Inject
 	public BlockContainerRegistry ( ILog log )
 	{
 		this.blockContainers = new HashSet<>( 1 );
 		this.log = log;
 	}
 
+	@Override
 	public void add ( final IBlockContainer blockContainer )
 	{
 		this.blockContainers.add( blockContainer );

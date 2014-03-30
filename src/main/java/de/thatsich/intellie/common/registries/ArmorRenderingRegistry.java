@@ -17,17 +17,12 @@ import java.util.HashSet;
  @author thatsIch
  @date 24.03.2014. */
 @Singleton
-public class ArmorRenderingRegistry
+public class ArmorRenderingRegistry implements IRegistry<String>
 {
 	// Fields
 	private final Collection<String> armorRenderers;
 	private final ILog log;
 
-	/**
-	 Injected Constructor
-
-	 @param log Log
-	 */
 	@Inject
 	public ArmorRenderingRegistry ( final ILog log )
 	{
@@ -35,18 +30,15 @@ public class ArmorRenderingRegistry
 		this.armorRenderers = new HashSet<>( 1 );
 	}
 
-	/**
-	 Queue up an ArmorRenderer to be registered
-
-	 @param armor ArmorRenderer
-	 */
-	void addRenderer ( String armor )
+	@Override
+	public void add ( final String armor )
 	{
 		this.armorRenderers.add( armor );
 		this.log.debug( "Added ArmorRenderer %s", armor );
 	}
 
-	private void registerRenderers ()
+	@Override
+	public void register ()
 	{
 		for ( String armor : this.armorRenderers )
 		{

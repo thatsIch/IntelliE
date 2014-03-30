@@ -15,30 +15,16 @@ import java.util.LinkedList;
  Registry for TileEntities
  */
 @Singleton
-public class TileEntityRegistry
+public class TileEntityRegistry implements IRegistry<ITileEntity>
 {
 	private final Collection<ITileEntity> tileEntities;
 	private final ILog log;
 
-	/**
-	 @param log Injected Log
-	 */
 	@Inject
 	TileEntityRegistry ( final ILog log )
 	{
 		this.tileEntities = new LinkedList<>();
 		this.log = log;
-	}
-
-	/**
-	 Adds a TileEntity
-
-	 @param tileEntity added TileEntity
-	 */
-	public void addTileEntity ( ITileEntity tileEntity )
-	{
-		this.log.info( "Added Tile Entity: %s", tileEntity );
-		this.tileEntities.add( tileEntity );
 	}
 
 	/**
@@ -54,10 +40,15 @@ public class TileEntityRegistry
 		}
 	}
 
-	/**
-	 Registers all added TileEntites through their clas and key
-	 */
-	public void registerTileEntities ()
+	@Override
+	public void add ( final ITileEntity tileEntity )
+	{
+		this.log.info( "Added Tile Entity: %s", tileEntity );
+		this.tileEntities.add( tileEntity );
+	}
+
+	@Override
+	public void register ()
 	{
 		for ( ITileEntity tileEntity : this.tileEntities )
 		{

@@ -5,8 +5,10 @@ package de.thatsich.intellie.common.registries;
 
  @author thatsIch
  @date 25.03.2014. */
-public interface IRegistry
+public interface IRegistry<T>
 {
+	void add ( T elem );
+
 	/**
 	 Registers that particular part
 	 */
