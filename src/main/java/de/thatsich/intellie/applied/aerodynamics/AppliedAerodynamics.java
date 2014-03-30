@@ -7,11 +7,8 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
-import de.thatsich.intellie.applied.aerodynamics.common.AppliedAerodynamicsCreativeTab;
 import de.thatsich.intellie.common.ABaseMod;
 import de.thatsich.intellie.common.util.ICommonProxy;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
@@ -28,18 +25,11 @@ import net.minecraft.item.ItemStack;
 public class AppliedAerodynamics extends ABaseMod
 {
 	public static final ItemArmor ITEM_GRAVI_CHEST_PLATE = new ItemGraviChestPlate( ItemArmor.ArmorMaterial.DIAMOND, 1, 1 );
-	public static final Block BLOCK_GENERIC = new GenericBlock( Material.ground );
 	public static final Item ITEM_VAJRA = new ItemVajra();
 	//	public static ItemArmor ITEM_AERO_CHEST;
 
 	@SidedProxy(clientSide = "de.thatsich.intellie.applied.aerodynamics.common.proxies.ClientProxy", serverSide = "de.thatsich.intellie.applied.aerodynamics.common.proxies.CommonProxy")
 	public static ICommonProxy s_proxy;
-
-	public AppliedAerodynamics ()
-	{
-		super();
-		super.addTab( AppliedAerodynamicsCreativeTab.class );
-	}
 
 	@Override
 	@Mod.EventHandler
@@ -50,7 +40,7 @@ public class AppliedAerodynamics extends ABaseMod
 		//		AppliedAerodynamics.ITEM_AERO_CHEST
 
 		GameRegistry.registerItem( AppliedAerodynamics.ITEM_GRAVI_CHEST_PLATE, AppliedAerodynamics.ITEM_GRAVI_CHEST_PLATE.getUnlocalizedName() );
-		GameRegistry.registerBlock( AppliedAerodynamics.BLOCK_GENERIC, AppliedAerodynamics.BLOCK_GENERIC.getUnlocalizedName() );
+		//		GameRegistry.registerBlock( AppliedAerodynamics.BLOCK_GENERIC, AppliedAerodynamics.BLOCK_GENERIC.getUnlocalizedName() );
 	}
 
 	@Override

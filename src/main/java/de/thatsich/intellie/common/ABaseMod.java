@@ -7,8 +7,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import dagger.Module;
 import dagger.ObjectGraph;
 import de.thatsich.intellie.common.module.IModule;
-import de.thatsich.intellie.common.module.block.IBlock;
-import de.thatsich.intellie.common.module.item.IItem;
 import de.thatsich.intellie.common.registries.BlockRegistry;
 import de.thatsich.intellie.common.registries.ConfigRegistry;
 import de.thatsich.intellie.common.registries.ItemRegistry;
@@ -18,7 +16,6 @@ import de.thatsich.intellie.common.util.ICommonProxy;
 import de.thatsich.intellie.common.util.IProxy;
 import de.thatsich.intellie.common.util.logging.ILog;
 import de.thatsich.intellie.common.util.logging.LoggerModule;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
@@ -36,7 +33,6 @@ import java.util.LinkedList;
  @date 16.03.14. */
 public abstract class ABaseMod implements IProxy
 {
-	private static final Character[] CHARACTERS = new Character[0];
 	// Log
 	final ILog log;
 	// Injector
@@ -146,13 +142,10 @@ public abstract class ABaseMod implements IProxy
 	{
 		for ( Class<?> injection : injections )
 		{
-			final boolean isItemImpl = IItem.class.isAssignableFrom( injection );
-			final boolean isBlockImpl = IBlock.class.isAssignableFrom( injection );
-			final boolean isCreativeTab = CreativeTabs.class.isAssignableFrom( injection );
-
-			if ( isItemImpl || isBlockImpl || isCreativeTab )
+			final boolean toInstantiate = IInstantiate.class.isAssignableFrom( injection );
+			if ( toInstantiate )
 			{
-				final Object injected = this.injector.get( injection );
+				this.injector.get( injection );
 			}
 		}
 	}
@@ -195,16 +188,6 @@ public abstract class ABaseMod implements IProxy
 		return builder.toString();
 	}
 
-	/**
-	 Instantiates a creative tab
-
-	 @param tabClass class of the tab
-	 */
-	protected void addTab ( Class<? extends CreativeTabs> tabClass )
-	{
-		final CreativeTabs tab = this.injector.get( tabClass );
-	}
-
 	@Override
 	public void preInit ( FMLPreInitializationEvent event )
 	{
@@ -221,9 +204,8 @@ public abstract class ABaseMod implements IProxy
 		this.items.register();
 
 		final ICommonProxy proxy = this.getProxy();
-
-		// proxy.initSounds();
-		// proxy.initRenders();
+		proxy.initRenders();
+		proxy.initSounds();
 
 		this.log.info( "PreInit End" );
 	}
