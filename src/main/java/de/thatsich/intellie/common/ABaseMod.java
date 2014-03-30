@@ -148,7 +148,7 @@ public abstract class ABaseMod implements IProxy
 		{
 			final boolean isItemImpl = IItem.class.isAssignableFrom( injection );
 			final boolean isBlockImpl = IBlock.class.isAssignableFrom( injection );
-			System.out.println( injection.getSimpleName() + " isImpl = " + isItemImpl );
+
 			if ( isItemImpl || isBlockImpl )
 			{
 				final Object injected = this.injector.get( injection );
