@@ -7,6 +7,8 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import dagger.Module;
 import dagger.ObjectGraph;
 import de.thatsich.intellie.common.module.IModule;
+import de.thatsich.intellie.common.module.block.IBlock;
+import de.thatsich.intellie.common.module.item.IItem;
 import de.thatsich.intellie.common.registries.BlockRegistry;
 import de.thatsich.intellie.common.registries.ConfigRegistry;
 import de.thatsich.intellie.common.registries.ItemRegistry;
@@ -121,12 +123,16 @@ public abstract class ABaseMod implements IProxy
 	{
 		for ( Object obj : modules )
 		{
-			final Class<?> clazz = obj.getClass();
+			final Class<?> clazz = obj instanceof Class<?> ? (Class<?>) obj : obj.getClass();
+
 			if ( clazz.isAnnotationPresent( Module.class ) )
 			{
 				final Module module = clazz.getAnnotation( Module.class );
 				final Class<?>[] injects = module.injects();
+				final Class<?>[] includes = module.includes();
+
 				this.instantiateInjections( injects );
+				this.instantiateModules( includes );
 			}
 		}
 	}
@@ -140,7 +146,13 @@ public abstract class ABaseMod implements IProxy
 	{
 		for ( Class<?> injection : injections )
 		{
-			final Object injected = this.injector.get( injection );
+			final boolean isItemImpl = IItem.class.isAssignableFrom( injection );
+			final boolean isBlockImpl = IBlock.class.isAssignableFrom( injection );
+			System.out.println( injection.getSimpleName() + " isImpl = " + isItemImpl );
+			if ( isItemImpl || isBlockImpl )
+			{
+				final Object injected = this.injector.get( injection );
+			}
 		}
 	}
 

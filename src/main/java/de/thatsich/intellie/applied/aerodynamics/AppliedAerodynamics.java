@@ -30,6 +30,7 @@ public class AppliedAerodynamics extends ABaseMod
 	public static final ItemArmor ITEM_GRAVI_CHEST_PLATE = new ItemGraviChestPlate( ItemArmor.ArmorMaterial.DIAMOND, 1, 1 );
 	public static final Block BLOCK_GENERIC = new GenericBlock( Material.ground );
 	public static final Item ITEM_VAJRA = new ItemVajra();
+	//	public static ItemArmor ITEM_AERO_CHEST;
 
 	@SidedProxy(clientSide = "de.thatsich.intellie.applied.aerodynamics.common.proxies.ClientProxy", serverSide = "de.thatsich.intellie.applied.aerodynamics.common.proxies.CommonProxy")
 	public static ICommonProxy s_proxy;
@@ -45,6 +46,9 @@ public class AppliedAerodynamics extends ABaseMod
 	public void preInit ( FMLPreInitializationEvent event )
 	{
 		super.preInit( event );
+
+		//		AppliedAerodynamics.ITEM_AERO_CHEST
+
 		GameRegistry.registerItem( AppliedAerodynamics.ITEM_GRAVI_CHEST_PLATE, AppliedAerodynamics.ITEM_GRAVI_CHEST_PLATE.getUnlocalizedName() );
 		GameRegistry.registerBlock( AppliedAerodynamics.BLOCK_GENERIC, AppliedAerodynamics.BLOCK_GENERIC.getUnlocalizedName() );
 	}
