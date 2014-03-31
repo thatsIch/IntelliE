@@ -38,10 +38,10 @@ buildscript {
         }
     }
     dependencies {
-	    classpath "net.minecraftforge.gradle:ForgeGradle:$FORGE_GRADLE_VERSION"
-	    classpath "com.github.jengelman.gradle.plugins:shadow:$SHADOW_VERSION"
-        classpath "com.squareup.dagger:dagger-compiler:$DAGGER_VERSION"
-	    classpath "com.jimdo.gradle:gradle-apt-plugin:$APT_VERSION"
+	    classpath "net.minecraftforge.gradle:ForgeGradle:${project.ext.FORGE_GRADLE_VERSION}"
+	    classpath "com.github.jengelman.gradle.plugins:shadow:${project.ext.SHADOW_VERSION}"
+	    classpath "com.squareup.dagger:dagger-compiler:${project.ext.DAGGER_VERSION}"
+	    classpath "com.jimdo.gradle:gradle-apt-plugin:${project.ext.APT_VERSION}"
     }
 }
 
@@ -50,8 +50,8 @@ configurations {
 }
 
 dependencies {
-	apt "com.squareup.dagger:dagger-compiler:$DAGGER_VERSION"
-	compile "com.squareup.dagger:dagger:$DAGGER_VERSION"
+	apt "com.squareup.dagger:dagger-compiler:${project.ext.DAGGER_VERSION}"
+	compile "com.squareup.dagger:dagger:${project.ext.DAGGER_VERSION}"
 }
 
 // exclude layers and integration of (AE2)
@@ -84,7 +84,7 @@ processResources
 				include 'mcmod.info'
 
 				// replace version and mcversion
-				expand 'version': project.version, 'mcversion': MINECRAFT_VERSION
+				expand 'version': project.version, 'mcversion': $ { project.ext.MINECRAFT_VERSION }
 			}
 
 			// copy everything else, thats not the mcmod.info
