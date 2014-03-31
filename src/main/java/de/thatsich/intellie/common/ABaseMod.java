@@ -8,17 +8,8 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import dagger.Module;
 import dagger.ObjectGraph;
 import de.thatsich.intellie.common.module.IModule;
-import de.thatsich.intellie.common.registries.ArmorRenderingRegistry;
-import de.thatsich.intellie.common.registries.BlockContainerRegistry;
-import de.thatsich.intellie.common.registries.BlockRegistry;
-import de.thatsich.intellie.common.registries.BlockRenderingRegistry;
-import de.thatsich.intellie.common.registries.ConfigRegistry;
-import de.thatsich.intellie.common.registries.EntityRenderingRegistry;
-import de.thatsich.intellie.common.registries.GuiRegistry;
-import de.thatsich.intellie.common.registries.ItemRegistry;
+import de.thatsich.intellie.common.registries.Registries;
 import de.thatsich.intellie.common.registries.RegistryModule;
-import de.thatsich.intellie.common.registries.SoundRegistry;
-import de.thatsich.intellie.common.registries.TileEntityRegistry;
 import de.thatsich.intellie.common.util.ICommonProxy;
 import de.thatsich.intellie.common.util.IProxy;
 import de.thatsich.intellie.common.util.logging.ILog;
@@ -45,16 +36,7 @@ public abstract class ABaseMod implements IProxy
 	// Injector
 	private final ObjectGraph injector;
 	// Registries
-	private final ArmorRenderingRegistry armorRenderers;
-	private final BlockContainerRegistry blockContainers;
-	private final BlockRegistry blocks;
-	private final BlockRenderingRegistry blockRenderers;
-	private final ConfigRegistry configs;
-	private final EntityRenderingRegistry entityRenderers;
-	private final GuiRegistry guis;
-	private final ItemRegistry items;
-	private final SoundRegistry sounds;
-	private final TileEntityRegistry tileEntites;
+	private final Registries registries;
 
 	/**
 	 To make sure that the initialization of Guice-based JavaFX application
@@ -82,16 +64,7 @@ public abstract class ABaseMod implements IProxy
 		this.log = this.injector.get( ILog.class );
 
 		// Inject all Registries
-		this.armorRenderers = this.injector.get( ArmorRenderingRegistry.class );
-		this.blockContainers = this.injector.get( BlockContainerRegistry.class );
-		this.blocks = this.injector.get( BlockRegistry.class );
-		this.blockRenderers = this.injector.get( BlockRenderingRegistry.class );
-		this.configs = this.injector.get( ConfigRegistry.class );
-		this.entityRenderers = this.injector.get( EntityRenderingRegistry.class );
-		this.guis = this.injector.get( GuiRegistry.class );
-		this.items = this.injector.get( ItemRegistry.class );
-		this.sounds = this.injector.get( SoundRegistry.class );
-		this.tileEntites = this.injector.get( TileEntityRegistry.class );
+		this.registries = this.injector.get( Registries.class );
 
 		// using injector and modules to instantiate them once
 		this.instantiateModules( modules );
@@ -188,9 +161,8 @@ public abstract class ABaseMod implements IProxy
 
 		//		this.items.loadConfig( config );
 		//		this.tileEntites.loadConfig( config );
-
-		this.blocks.register();
-		this.items.register();
+		this.registries.getBlocks().register();
+		this.registries.getItems().register();
 
 		final ICommonProxy proxy = this.getProxy();
 		proxy.initRenders();
@@ -234,8 +206,7 @@ public abstract class ABaseMod implements IProxy
 	public void init ( FMLInitializationEvent event )
 	{
 		this.log.info( "Init Begin" );
-
-		this.tileEntites.register();
+		this.registries.getTileEntites().register();
 		// super.getItems().registerRecipes();
 
 		// super.getTileEntities().init();
