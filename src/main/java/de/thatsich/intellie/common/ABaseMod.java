@@ -110,7 +110,6 @@ public abstract class ABaseMod implements IProxy
 
 		final String childName = this.getClass().getName();
 		final String moduleName = childName + "Module";
-		final String id = this.getModName();
 
 		try
 		{

@@ -1,8 +1,6 @@
 package de.thatsich.intellie.common.util.logging;
 
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.FMLRelaunchLog;
-import cpw.mods.fml.relauncher.Side;
 import org.apache.logging.log4j.Level;
 
 import javax.inject.Inject;
@@ -14,7 +12,6 @@ import javax.inject.Singleton;
 @Singleton
 public class Log implements ILog
 {
-	private static final char COLON = ':';
 	private final String name;
 
 	/**
@@ -102,11 +99,6 @@ public class Log implements ILog
 	 */
 	private void logging ( Level level, String format, Object... data )
 	{
-		final FMLCommonHandler instance = FMLCommonHandler.instance();
-		final Side effectiveSide = instance.getEffectiveSide();
-		final boolean isClient = effectiveSide.isClient();
-		final String side = isClient ? "C" : "S";
-
-		FMLRelaunchLog.log( this.name + Log.COLON + side, level, format, data );
+		FMLRelaunchLog.log( this.name, level, format, data );
 	}
 }
