@@ -31,8 +31,8 @@ dependencies {
     compile "com.squareup.dagger:dagger:$DAGGER_VERSION"
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_7
-targetCompatibility = JavaVersion.VERSION_1_7
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 version = "1.0"
 group = "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -47,10 +47,10 @@ sourceSets {
         }
     }
     dagger {
-        java {
-            compileClasspath += main.output
-            runtimeClasspath += main.output
-        }
+        java.srcDir 'src/dagger/java'
+        resources.srcDir 'src/dagger/resources'
+        compileClasspath = sourceSets.main.output
+        runtimeClasspath = output + compileClasspath
     }
 }
 
