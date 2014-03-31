@@ -4,6 +4,7 @@ apply plugin: 'idea'    // enable automatic setup of idea workspace
 apply plugin: 'shadow'  // enables shadow
 apply plugin: 'apt'     // enable annotation preprocessor
 
+apply from: 'gradle/scripts/properties.gradle'
 apply from: 'gradle/scripts/versioning.gradle'
 apply from: 'gradle/scripts/deobf.gradle'
 
