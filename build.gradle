@@ -45,10 +45,10 @@ buildscript {
         }
     }
     dependencies {
-	    classpath "net.minecraftforge.gradle:ForgeGradle:${FORGE_GRADLE_VERSION}"
-	    classpath "com.github.jengelman.gradle.plugins:shadow:${SHADOW_VERSION}"
-	    classpath "com.squareup.dagger:dagger-compiler:${DAGGER_VERSION}"
-	    classpath "com.jimdo.gradle:gradle-apt-plugin:${APT_VERSION}"
+	    classpath "net.minecraftforge.gradle:ForgeGradle:$FORGE_GRADLE_VERSION"
+	    classpath "com.github.jengelman.gradle.plugins:shadow:$SHADOW_VERSION"
+	    classpath "com.squareup.dagger:dagger-compiler:$DAGGER_VERSION"
+	    classpath "com.jimdo.gradle:gradle-apt-plugin:$APT_VERSION"
     }
 }
 
