@@ -1,8 +1,10 @@
+import scala.tools.nsc.io.Jar
+
 // Add in an mcp named jar, for those who wish to run in a development environment
 task deobfJar(type: Jar, description: 'Outputs a deobfuscated version for developers.') {
 	from sourceSets.main.output
 	classifier = 'deobf'
-	version = "$MINECRAFT_VERSION-${project.version}"
+	version = "1.7.2-${project.version}"
 }
 
 // Tell the artifact system about our extra jars
