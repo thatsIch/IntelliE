@@ -2,6 +2,7 @@ apply plugin: 'forge'    // forge tasks
 apply plugin: 'java'    // enables sourcesets
 apply plugin: 'idea'    // enable automatic setup of idea workspace
 apply plugin: 'shadow'  // enables shadow
+apply plugin: 'apt'     // enable annotation preprocessor
 
 apply from: 'gradle/scripts/versioning.gradle'
 apply from: 'gradle/scripts/deobf.gradle'
@@ -40,11 +41,17 @@ buildscript {
 	    classpath "net.minecraftforge.gradle:ForgeGradle:$FORGE_GRADLE_VERSION"
 	    classpath "com.github.jengelman.gradle.plugins:shadow:$SHADOW_VERSION"
         classpath "com.squareup.dagger:dagger-compiler:$DAGGER_VERSION"
+	    classpath "com.jimdo.gradle:gradle-apt-plugin:$APT_VERSION"
     }
 }
 
+configurations {
+	apt
+}
+
 dependencies {
-    compile "com.squareup.dagger:dagger:$DAGGER_VERSION"
+	apt "com.squareup.dagger:dagger-compiler:$DAGGER_VERSION"
+	compile "com.squareup.dagger:dagger:$DAGGER_VERSION"
 }
 
 // exclude layers and integration of (AE2)
@@ -60,6 +67,7 @@ sourceSets {
 // Ship specific libs with it
 shadow {
 	artifactSet {
+		include 'de.thatsich.intellie'
 		include 'com.squareup.dagger'
 		include 'javax.inject'
 	}
