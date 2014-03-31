@@ -27,7 +27,7 @@ import java.util.LinkedList;
  Minecraft Mod with enabled Dependency Injection namely @Inject
 
  @author thatsIch
- @date 16.03.14. */
+ @since 16.03.14. */
 public abstract class ABaseMod implements IProxy
 {
 	// Log
@@ -118,7 +118,7 @@ public abstract class ABaseMod implements IProxy
 				final Class<?>[] includes = module.includes();
 
 				this.instantiateInjections( injects );
-				this.instantiateModules( includes );
+				this.instantiateModules((Object[]) includes);
 			}
 		}
 	}
