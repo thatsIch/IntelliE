@@ -46,13 +46,8 @@ sourceSets {
             exclude '**/integration/**'
         }
     }
-    dagger {
-        java.srcDir 'src/dagger/java'
-        resources.srcDir 'src/dagger/resources'
-        compileClasspath = sourceSets.main.output
-        runtimeClasspath = output + compileClasspath
-    }
 }
+
 
 minecraft {
     version = "1.7.2-10.12.0.1047"

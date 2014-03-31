@@ -11,10 +11,10 @@ import javax.inject.Singleton;
  * @date 26.03.2014.
  */
 @Module(library = true)
-public class BaseModInstanceModule implements IModule {
+public class BaseModModule implements IModule {
     private final ABaseMod instance;
 
-    public BaseModInstanceModule(ABaseMod instance) {
+    public BaseModModule(ABaseMod instance) {
         this.instance = instance;
     }
 

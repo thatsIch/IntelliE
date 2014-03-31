@@ -52,8 +52,8 @@ public abstract class ABaseMod implements IProxy
 		// Creates an injector with all of the required modules.
 		final Collection<IModule> moduleInstances = this.getClassModule();
 
-		moduleInstances.add( new BaseModInstanceModule( this ) );
-		moduleInstances.add( new RegistryModule( config ) );
+        moduleInstances.add(new BaseModModule(this));
+        moduleInstances.add( new RegistryModule( config ) );
 		moduleInstances.add( new LoggerModule( modName ) );
 
 		final Object[] modules = moduleInstances.toArray();
