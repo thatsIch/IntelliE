@@ -1,7 +1,6 @@
 package de.thatsich.intellie.applied.aerodynamics.decorative.generic;
 
 import dagger.Module;
-import de.thatsich.intellie.applied.aerodynamics.GenericBlock;
 
 /**
  * @author thatsIch

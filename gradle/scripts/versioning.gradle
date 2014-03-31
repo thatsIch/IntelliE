@@ -2,81 +2,81 @@ project.ext.version = readVersion()
 
 // Class contains a project version
 class ProjectVersion {
-    private Integer major
-    private Integer minor
-    private Integer revision
-    private Integer commit
+	private Integer major
+	private Integer minor
+	private Integer revision
+	private Integer commit
 
-    // CTOR
-    ProjectVersion(Integer major, Integer minor, Integer revision, Integer commit) {
-        this.major = major
-        this.minor = minor
-        this.revision = revision
-        this.commit = commit
-    }
+	// Constructor
+	ProjectVersion(Integer major, Integer minor, Integer revision, Integer commit) {
+		this.major = major
+		this.minor = minor
+		this.revision = revision
+		this.commit = commit
+	}
 
-    @Override
-    String toString() {
-        "$major.$minor.$revision.$commit"
-    }
+	@Override
+	String toString() {
+		"$major.$minor.$revision.$commit"
+	}
 }
 
 // This is a special task for pulling the version information from git
 private ProjectVersion readVersion() {
 
-    // call git command.
-    def outStream = new ByteArrayOutputStream()
-    def projectVersion = new ProjectVersion(0, 0, 0, 0)
+	// call git command.
+	def outStream = new ByteArrayOutputStream()
+	def projectVersion = new ProjectVersion(0, 0, 0, 0)
 
-    try {
-        exec {
-            executable = 'git'
-            args = ['describe', '--tags', "HEAD"]
-            standardOutput = outStream
-        }
+	try {
+		exec {
+			executable = 'git'
+			args = ['describe', '--tags', "HEAD"]
+			standardOutput = outStream
+		}
 
-        def fullVersion = outStream.toString().trim()
-        def matcher = fullVersion =~ /(\d+).(\d+).(\d+).(\d+)/
+		def fullVersion = outStream.toString().trim()
+		def matcher = fullVersion =~ /(\d+).(\d+).(\d+).(\d+)/
 
-        Integer major = matcher[0][1].toInteger()
-        Integer minor = matcher[0][2].toInteger()
-        Integer revision = matcher[0][3].toInteger()
-        Integer commit = gitCommitCount
+		Integer major = matcher[0][1].toInteger()
+		Integer minor = matcher[0][2].toInteger()
+		Integer revision = matcher[0][3].toInteger()
+		Integer commit = gitCommitCount
 
-        projectVersion = new ProjectVersion(major, minor, revision, commit)
-        logger.quiet "Current version from Git: $projectVersion"
-    }
-    catch (exception) {
-        logger.quiet "Can't get project version, maybe missing initial tag."
-        exec {
-            executable = 'git'
-            args = ['tag', '-a', "v0.0.0.0", "-m", "Initial Tag"]
-        }
-    }
+		projectVersion = new ProjectVersion(major, minor, revision, commit)
+		logger.quiet "Current version from Git: $projectVersion"
+	}
+	catch (exception) {
+		logger.quiet "Can't get project version, maybe missing initial tag."
+		exec {
+			executable = 'git'
+			args = ['tag', '-a', "v0.0.0.0", "-m", "Initial Tag"]
+		}
+	}
 
-    return projectVersion
+	return projectVersion
 }
 
 private Integer getGitCommitCount() {
 
-    // call git command.
-    def outStream = new ByteArrayOutputStream()
-    try {
-        exec {
-            executable = 'git'
-            args = ['rev-list', 'HEAD', "--count"]
-            standardOutput = outStream
-        }
+	// call git command.
+	def outStream = new ByteArrayOutputStream()
+	try {
+		exec {
+			executable = 'git'
+			args = ['rev-list', 'HEAD', "--count"]
+			standardOutput = outStream
+		}
 
-        def fullVersion = outStream.toString().trim()
-        def matcher = fullVersion =~ /(\d+)/
+		def fullVersion = outStream.toString().trim()
+		def matcher = fullVersion =~ /(\d+)/
 
-        return matcher[0][1].toInteger()
-    }
-    catch (exception) {
-        println "Can't get commit count: $exception"
-        return 0
-    }
+		return matcher[0][1].toInteger()
+	}
+	catch (exception) {
+		println "Can't get commit count: $exception"
+		return 0
+	}
 }
 
 task incMajor(group: 'versioning', description: 'Increments project major project.ext.version.') << {
@@ -86,12 +86,12 @@ task incMajor(group: 'versioning', description: 'Increments project major projec
 	project.ext.version.revision = 0
 	String newVersion = project.ext.version.toString()
 	String message = "Incrementing major project version: $currentVersion -> $newVersion"
-    logger.quiet message
+	logger.quiet message
 
-    exec {
-        executable = 'git'
-        args = ['tag', '-a', "v$newVersion", "-m", message]
-    }
+	exec {
+		executable = 'git'
+		args = ['tag', '-a', "v$newVersion", "-m", message]
+	}
 }
 
 task incMinor(group: 'versioning', description: 'Increments project minor project.ext.version.') << {
@@ -100,12 +100,12 @@ task incMinor(group: 'versioning', description: 'Increments project minor projec
 	project.ext.version.revision = 0
 	String newVersion = project.ext.version.toString()
 	String message = "Incrementing minor project version: $currentVersion -> $newVersion"
-    logger.quiet message
+	logger.quiet message
 
-    exec {
-        executable = 'git'
-        args = ['tag', '-a', "v$newVersion", "-m", message]
-    }
+	exec {
+		executable = 'git'
+		args = ['tag', '-a', "v$newVersion", "-m", message]
+	}
 }
 
 task incRev(group: 'versioning', description: 'Increments project reproject.ext.version.') << {
@@ -113,10 +113,10 @@ task incRev(group: 'versioning', description: 'Increments project reproject.ext.
 	++project.ext.version.revision
 	String newVersion = project.ext.version.toString()
 	String message = "Incrementing minor project version: $currentVersion -> $newVersion"
-    logger.quiet message
+	logger.quiet message
 
-    exec {
-        executable = 'git'
-        args = ['tag', '-a', "v$newVersion", "-m", message]
-    }
+	exec {
+		executable = 'git'
+		args = ['tag', '-a', "v$newVersion", "-m", message]
+	}
 }
