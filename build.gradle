@@ -1,82 +1,75 @@
-apply plugin: 'forge'   // forge tasks
-apply plugin: 'java'    // enables sourcesets
+apply plugin: 'forge'
+apply plugin: 'java'
+apply plugin: 'idea'
 apply plugin: 'shadow'  // enables shadow
 
-apply from: 'gradle/scripts/versioning.gradle'
-apply from: 'gradle/scripts/deobf.gradle'
-
-// http://maven.apache.org/guides/mini/guide-naming-conventions.html
-// group = "de.thatsich.intellie"
-archivesBaseName = "IntelligentEnergistics"
-
-// needed for pulling new versions from forge
-minecraft {
-	version = "${MINECRAFT_VERSION}-${FORGE_VERSION}"
-	assetDir = '../Forge/assets'
-}
-
 buildscript {
-	repositories {
-		mavenCentral()
-		jcenter()
-		maven {
-			name = "forge"
-			url = 'http://files.minecraftforge.net/maven'
-		}
-		maven {
-			name = "sonatype"
-			url = 'https://oss.sonatype.org/content/repositories/snapshots/'
-		}
-		maven {
-			name = "shadow-repo"
-			url = 'http://dl.bintray.com/content/johnrengelman/gradle-plugins/'
-		}
-	}
-	dependencies {
-		classpath "net.minecraftforge.gradle:ForgeGradle:$FORGE_GRADLE_VERSION"
-		classpath "com.github.jengelman.gradle.plugins:shadow:$SHADOW_VERSION"
-		classpath "com.squareup.dagger:dagger-compiler:$DAGGER_VERSION"
-	}
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+        maven {
+            name = "shadow-repo"
+            url = 'http://dl.bintray.com/content/johnrengelman/gradle-plugins/'
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.1-SNAPSHOT'
+        classpath "com.github.jengelman.gradle.plugins:shadow:$SHADOW_VERSION"
+        classpath "com.squareup.dagger:dagger-compiler:$DAGGER_VERSION"
+    }
 }
 
-// Ship specific libs with it
-shadow {
-	artifactSet {
-		include 'dagger'
-		include 'javax.inject'
-	}
-
-	// The resulting file is named <projectname>-<mcversion>-<version>-universal.jar
-	baseName = "${archivesBaseName}-${project.minecraft.version}"
-	classifier = "universal"
-}
-
-// dependencies needed
 dependencies {
-	compile "com.squareup.dagger:dagger:$DAGGER_VERSION"
+    compile "com.squareup.dagger:dagger:$DAGGER_VERSION"
 }
+
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
+
+version = "1.0"
+group = "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "modid"
 
 // exclude layers and integration of (AE2)
 sourceSets {
-	api {
-		java {
-			exclude '**/layers/**'
-			exclude '**/integration/**'
-		}
-	}
+    api {
+        java {
+            exclude '**/layers/**'
+            exclude '**/integration/**'
+        }
+    }
+    dagger {
+        java {
+            compileClasspath += main.output
+            runtimeClasspath += main.output
+        }
+    }
 }
 
-processResources {
-	// replace stuff in mcmod.info, nothing else
-	from(sourceSets.main.resources.srcDirs) {
-		include 'mcmod.info'
-
-		// replace version and mcversion
-		expand 'version': project.ext.version.toString(), 'mcversion': MINECRAFT_VERSION
-	}
-
-	// copy everything else, thats not the mcmod.info
-	from(sourceSets.main.resources.srcDirs) {
-		exclude 'mcmod.info'
-	}
+minecraft {
+    version = "1.7.2-10.12.0.1047"
+    assetDir = "../.idea/assets"
 }
+processResources
+        {
+            // replace stuff in mcmod.info, nothing else
+            from(sourceSets.main.resources.srcDirs) {
+                include 'mcmod.info'
+
+                // replace version and mcversion
+                expand 'version': project.version, 'mcversion': project.minecraft.version
+            }
+
+            // copy everything else, thats not the mcmod.info
+            from(sourceSets.main.resources.srcDirs) {
+                exclude 'mcmod.info'
+            }
+        }
