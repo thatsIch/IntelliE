@@ -4,7 +4,7 @@ apply plugin: 'idea'    // enable automatic setup of idea workspace
 apply plugin: 'shadow'  // enables shadow
 apply plugin: 'apt'     // enable annotation preprocessor
 
-apply from: 'gradle/scripts/properties.gradle'
+apply from: 'gradle/scripts/properties.gradle', to: v
 apply from: 'gradle/scripts/versioning.gradle'
 apply from: 'gradle/scripts/deobf.gradle'
 
@@ -17,7 +17,7 @@ version = project.ext.version.toString()
 
 // needed for pulling new versions from forge
 minecraft {
-	version = "${project.ext.DAGGER_VERSION}-${project.ext.FORGE_VERSION}"
+	version = "${v.DAGGER_VERSION}-${v.FORGE_VERSION}"
 	assetDir = "../.idea/assets"
 }
 
@@ -39,10 +39,10 @@ buildscript {
         }
     }
     dependencies {
-	    classpath "net.minecraftforge.gradle:ForgeGradle:${project.ext.FORGE_GRADLE_VERSION}"
-	    classpath "com.github.jengelman.gradle.plugins:shadow:${project.ext.SHADOW_VERSION}"
-	    classpath "com.squareup.dagger:dagger-compiler:${project.ext.DAGGER_VERSION}"
-	    classpath "com.jimdo.gradle:gradle-apt-plugin:${project.ext.APT_VERSION}"
+	    classpath "net.minecraftforge.gradle:ForgeGradle:${v.FORGE_GRADLE_VERSION}"
+	    classpath "com.github.jengelman.gradle.plugins:shadow:${v.SHADOW_VERSION}"
+	    classpath "com.squareup.dagger:dagger-compiler:${v.DAGGER_VERSION}"
+	    classpath "com.jimdo.gradle:gradle-apt-plugin:${v.APT_VERSION}"
     }
 }
 
@@ -51,8 +51,8 @@ configurations {
 }
 
 dependencies {
-	apt "com.squareup.dagger:dagger-compiler:${project.ext.DAGGER_VERSION}"
-	compile "com.squareup.dagger:dagger:${project.ext.DAGGER_VERSION}"
+	apt "com.squareup.dagger:dagger-compiler:${v.DAGGER_VERSION}"
+	compile "com.squareup.dagger:dagger:${v.DAGGER_VERSION}"
 }
 
 // exclude layers and integration of (AE2)
@@ -85,7 +85,7 @@ processResources
 				include 'mcmod.info'
 
 				// replace version and mcversion
-				expand 'version': project.version, 'mcversion': $ { project.ext.MINECRAFT_VERSION }
+				expand 'version': project.version, 'mcversion': $ { v.MINECRAFT_VERSION }
 			}
 
 			// copy everything else, thats not the mcmod.info
