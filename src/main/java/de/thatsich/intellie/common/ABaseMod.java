@@ -62,7 +62,7 @@ public abstract class ABaseMod implements IProxy
 	 */
 	protected ABaseMod ()
 	{
-		final String modName = this.getModAcronym();
+		final String modName = this.getModName();
 
 		// Creates an injector with all of the required modules.
 		final Collection<IModule> moduleInstances = this.getClassModule();
@@ -106,7 +106,7 @@ public abstract class ABaseMod implements IProxy
 
 		final String childName = this.getClass().getName();
 		final String moduleName = childName + "Module";
-		final String id = this.getModAcronym();
+		final String id = this.getModName();
 
 		try
 		{
@@ -172,35 +172,10 @@ public abstract class ABaseMod implements IProxy
 
 	 @return Modname
 	 */
-	private String getModAcronym ()
+	private String getModName ()
 	{
 		final Mod annotation = this.getClass().getAnnotation( Mod.class );
-		final String name = annotation.name();
-
-		return this.toAcronym( name );
-	}
-
-	/**
-	 converts a camelcase into an abreviation
-
-	 @param camelCaseString to be converted string
-
-	 @return an abbreviated version of the camelcasestring
-	 */
-	private String toAcronym ( final String camelCaseString )
-	{
-		final char[] cArray = camelCaseString.toCharArray();
-		final StringBuilder builder = new StringBuilder( 1 );
-
-		for ( char c : cArray )
-		{
-			if ( Character.isUpperCase( c ) )
-			{
-				builder.append( c );
-			}
-		}
-
-		return builder.toString();
+		return annotation.name();
 	}
 
 	@Override

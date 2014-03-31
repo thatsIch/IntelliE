@@ -4,7 +4,6 @@ import dagger.Module;
 import dagger.Provides;
 import de.thatsich.intellie.common.module.IModule;
 import de.thatsich.intellie.common.util.logging.ILog;
-import de.thatsich.intellie.common.util.logging.LoggerModule;
 
 import javax.inject.Singleton;
 
@@ -16,7 +15,7 @@ import javax.inject.Singleton;
 		ArmorRenderingRegistry.class, BlockContainerRegistry.class, BlockRegistry.class, BlockRenderingRegistry.class, ConfigRegistry.class, EntityRenderingRegistry.class, GuiRegistry.class, ItemRegistry.class, SoundRegistry.class, TileEntityRegistry.class
 	},
 	library = true,
-	includes = LoggerModule.class)
+	complete = false)
 public class RegistryModule implements IModule
 {
 	private final String id;
@@ -24,13 +23,6 @@ public class RegistryModule implements IModule
 	public RegistryModule ( String id )
 	{
 		this.id = id;
-	}
-
-	@Provides
-	@Singleton
-	LoggerModule provideLoggerModule ()
-	{
-		return new LoggerModule( this.id );
 	}
 
 	@Provides

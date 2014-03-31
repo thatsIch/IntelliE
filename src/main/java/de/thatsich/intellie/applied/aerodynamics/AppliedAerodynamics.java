@@ -53,6 +53,7 @@ public class AppliedAerodynamics extends ABaseMod
 		// block, size, damage value
 		final ItemStack result = new ItemStack( Blocks.stone, 9 );
 		GameRegistry.addRecipe( result, "xxx", "x x", "xxx", 'x', stone );
+		GameRegistry.addRecipe( new VajraRecipe() );
 		// IREcipe mal angucken
 		FMLCommonHandler.instance().bus().register( new KeyHandler() );
 	}
