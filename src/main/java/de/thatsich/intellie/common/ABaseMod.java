@@ -1,5 +1,6 @@
 package de.thatsich.intellie.common;
 
+import com.google.common.base.Joiner;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -62,13 +63,16 @@ public abstract class ABaseMod implements IProxy
 	 */
 	protected ABaseMod ()
 	{
+		// Prerequisites for Modules
 		final String modName = this.getModName();
+		final String configPath = Joiner.on( File.separator ).join( "config", "AppliedEnergistics2", "IntelliE", modName + ".cfg" );
+		final Configuration config = new Configuration( new File( configPath ) );
 
 		// Creates an injector with all of the required modules.
 		final Collection<IModule> moduleInstances = this.getClassModule();
 
 		moduleInstances.add( new BaseModInstanceModule( this ) );
-		moduleInstances.add( new RegistryModule( modName ) );
+		moduleInstances.add( new RegistryModule( config ) );
 		moduleInstances.add( new LoggerModule( modName ) );
 
 		final Object[] modules = moduleInstances.toArray();
@@ -111,8 +115,8 @@ public abstract class ABaseMod implements IProxy
 		try
 		{
 			final Class<?> clazz = Class.forName( moduleName );
-			final Constructor<?> ctor = clazz.getConstructor( String.class );
-			final Object instance = ctor.newInstance( id );
+			final Constructor<?> ctor = clazz.getConstructor();
+			final Object instance = ctor.newInstance();
 			final IModule module = (IModule) instance;
 
 			moduleInstances.add( module );
@@ -183,12 +187,8 @@ public abstract class ABaseMod implements IProxy
 	{
 		this.log.info( "PreInit Begin" );
 
-		final File suggConfigFile = event.getSuggestedConfigurationFile();
-		final Configuration config = this.configs.load( suggConfigFile );
-
 		//		this.items.loadConfig( config );
-
-		this.tileEntites.loadConfig( config );
+		//		this.tileEntites.loadConfig( config );
 
 		this.blocks.register();
 		this.items.register();

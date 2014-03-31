@@ -4,6 +4,7 @@ import dagger.Module;
 import dagger.Provides;
 import de.thatsich.intellie.common.module.IModule;
 import de.thatsich.intellie.common.util.logging.ILog;
+import net.minecraftforge.common.config.Configuration;
 
 import javax.inject.Singleton;
 
@@ -18,17 +19,17 @@ import javax.inject.Singleton;
 	complete = false)
 public class RegistryModule implements IModule
 {
-	private final String id;
+	private final Configuration config;
 
-	public RegistryModule ( String id )
+	public RegistryModule ( final Configuration config )
 	{
-		this.id = id;
+		this.config = config;
 	}
 
 	@Provides
 	@Singleton
-	public ConfigRegistry provideConfigRegistry ( ILog log )
+	public ConfigRegistry provideConfigRegistry ( final ILog log )
 	{
-		return new ConfigRegistry( log, this.id );
+		return new ConfigRegistry( log, this.config );
 	}
 }

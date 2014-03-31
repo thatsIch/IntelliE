@@ -1,12 +1,10 @@
 package de.thatsich.intellie.common.registries;
 
-import com.google.common.base.Joiner;
 import de.thatsich.intellie.common.util.logging.ILog;
 import net.minecraftforge.common.config.Configuration;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.io.File;
 
 /**
  All specific classes need to register their configs here
@@ -20,21 +18,18 @@ public class ConfigRegistry
 {
 	// Final Fields
 	private final ILog log;
-	private final String name;
-
-	// Fields
-	private Configuration config = null;
+	private final Configuration config;
 
 	/**
 	 Injected Constructor
 
-	 @param log  Log
-	 @param name Name
+	 @param log    Log
+	 @param config Config
 	 */
-	ConfigRegistry ( final ILog log, String name )
+	ConfigRegistry ( final ILog log, final Configuration config )
 	{
 		this.log = log;
-		this.name = name;
+		this.config = config;
 	}
 
 	/**
@@ -44,28 +39,7 @@ public class ConfigRegistry
 	ConfigRegistry ()
 	{
 		this.log = null;
-		this.name = null;
-	}
-
-	/**
-	 Loads the Configuration File needed
-
-	 @param suggestedConfigFile suggested Configuration File
-
-	 @return loaded Configuration
-	 */
-	public Configuration load ( final File suggestedConfigFile )
-	{
-		final String configFolder = suggestedConfigFile.getParent();
-		final String fileName = suggestedConfigFile.getName();
-		final String ieConfig = Joiner.on( File.separator ).join( configFolder, "AppliedEnergistics2", "IntelliE", fileName, ".cfg" );
-		final File ieConfigFile = new File( ieConfig );
-
-		this.config = new Configuration( ieConfigFile );
-
-		this.config.load();
-
-		return this.config;
+		this.config = null;
 	}
 
 	/**
