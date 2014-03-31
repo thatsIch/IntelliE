@@ -7,13 +7,6 @@ apply plugin: 'apt'     // enable annotation preprocessor
 apply from: 'gradle/scripts/versioning.gradle'
 apply from: 'gradle/scripts/deobf.gradle'
 
-APT_VERSION = "0.2-SNAPSHOT"
-DAGGER_VERSION = "1.2.1"
-MINECRAFT_VERSION = "1.7.2"
-FORGE_VERSION = "10.12.0.1047"
-FORGE_GRADLE_VERSION = "1.1-SNAPSHOT"
-SHADOW_VERSION = "0.8"
-
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
@@ -23,7 +16,7 @@ version = project.ext.version.toString()
 
 // needed for pulling new versions from forge
 minecraft {
-	version = "${MINECRAFT_VERSION}-${FORGE_VERSION}"
+	version = "1.7.2-10.12.0.1047"
 	assetDir = "../.idea/assets"
 }
 
@@ -46,9 +39,9 @@ buildscript {
     }
     dependencies {
 	    classpath "net.minecraftforge.gradle:ForgeGradle:1.1-SNAPSHOT"
-	    classpath "com.github.jengelman.gradle.plugins:shadow:$SHADOW_VERSION"
-	    classpath "com.squareup.dagger:dagger-compiler:$DAGGER_VERSION"
-	    classpath "com.jimdo.gradle:gradle-apt-plugin:$APT_VERSION"
+	    classpath "com.github.jengelman.gradle.plugins:shadow:0.8"
+	    classpath "com.squareup.dagger:dagger-compiler:1.2.1"
+	    classpath "com.jimdo.gradle:gradle-apt-plugin:0.2-SNAPSHOT"
     }
 }
 
@@ -57,8 +50,8 @@ configurations {
 }
 
 dependencies {
-	apt "com.squareup.dagger:dagger-compiler:${DAGGER_VERSION}"
-	compile "com.squareup.dagger:dagger:${DAGGER_VERSION}"
+	apt "com.squareup.dagger:dagger-compiler:1.2.1"
+	compile "com.squareup.dagger:dagger:1.2.1"
 }
 
 // exclude layers and integration of (AE2)
@@ -90,7 +83,7 @@ processResources {
 		include 'mcmod.info'
 
 		// replace version and mcversion
-		expand 'version': project.version, 'mcversion': MINECRAFT_VERSION
+		expand 'version': project.version, 'mcversion': "1.7.2"
 	}
 
 	// copy everything else, thats not the mcmod.info
