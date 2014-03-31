@@ -1,10 +1,9 @@
-apply plugin: 'apt'     // annotation processor plugin eg lombok and dagger
 apply plugin: 'forge'   // forge tasks
 apply plugin: 'java'    // enables sourcesets
 apply plugin: 'shadow'  // enables shadow
 
-apply from: '$projectDir/gradle/scripts/versioning.gradle'
-apply from: '$projectDir/gradle/scripts/deobf.gradle'
+apply from: 'gradle/scripts/versioning.gradle'
+apply from: 'gradle/scripts/deobf.gradle'
 
 // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 // group = "de.thatsich.intellie"
@@ -12,8 +11,8 @@ archivesBaseName = "IntelligentEnergistics"
 
 // needed for pulling new versions from forge
 minecraft {
-	version = "$MINECRAFT_VERSION-$FORGE_VERSION"
-	assetDir = '../Forge/eclipse/assets'
+	version = "${MINECRAFT_VERSION}-${FORGE_VERSION}"
+	assetDir = '../Forge/assets'
 }
 
 buildscript {
@@ -73,7 +72,7 @@ processResources {
 		include 'mcmod.info'
 
 		// replace version and mcversion
-		expand 'version': project.version.toString(), 'mcversion': $MINECRAFT_VERSION
+		expand 'version': project.ext.version.toString(), 'mcversion': MINECRAFT_VERSION
 	}
 
 	// copy everything else, thats not the mcmod.info

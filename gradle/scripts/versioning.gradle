@@ -28,10 +28,12 @@ private ProjectVersion readVersion() {
 	def outStream = new ByteArrayOutputStream()
 	def projectVersion = new ProjectVersion(0, 0, 0, 0)
 
+	logger.lifecycle new File(".").absolutePath
+
 	try {
 		exec {
 			executable = 'git'
-			args = [ 'describe', '--tags', "HEAD"]
+			args = ['describe', '--tags', "HEAD"]
 			standardOutput = outStream
 		}
 
@@ -60,7 +62,7 @@ private Integer getGitCommitCount() {
 	try {
 		exec {
 			executable = 'git'
-			args = [ 'rev-list', 'HEAD', "--count"]
+			args = ['rev-list', 'HEAD', "--count"]
 			standardOutput = outStream
 		}
 
@@ -75,10 +77,6 @@ private Integer getGitCommitCount() {
 	}
 }
 
-commonVersioning {
-
-}
-
 task incMajor(group: 'versioning', description: 'Increments project major version.') << {
 	String currentVersion = version.toString()
 	++version.major
@@ -90,7 +88,7 @@ task incMajor(group: 'versioning', description: 'Increments project major versio
 
 	exec {
 		executable = 'git'
-		args = [ 'tag', '-a', "v$newVersion", "-m", message]
+		args = ['tag', '-a', "v$newVersion", "-m", message]
 	}
 }
 
@@ -104,7 +102,7 @@ task incMinor(group: 'versioning', description: 'Increments project minor versio
 
 	exec {
 		executable = 'git'
-		args = [ 'tag', '-a', "v$newVersion", "-m", message]
+		args = ['tag', '-a', "v$newVersion", "-m", message]
 	}
 }
 
@@ -117,6 +115,6 @@ task incRev(group: 'versioning', description: 'Increments project reversion.') <
 
 	exec {
 		executable = 'git'
-		args = [ 'tag', '-a', "v$newVersion", "-m", message]
+		args = ['tag', '-a', "v$newVersion", "-m", message]
 	}
 }
