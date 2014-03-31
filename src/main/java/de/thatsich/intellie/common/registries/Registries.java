@@ -1,5 +1,10 @@
 package de.thatsich.intellie.common.registries;
 
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import de.thatsich.intellie.common.util.IProxy;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -7,7 +12,7 @@ import javax.inject.Singleton;
  @author thatsIch
  @since 31.03.2014. */
 @Singleton
-public class Registries
+public class Registries implements IProxy
 {
 	private final ArmorRenderingRegistry armorRenderers;
 	private final BlockContainerRegistry blockContainers;
@@ -83,5 +88,33 @@ public class Registries
 	public TileEntityRegistry getTileEntites ()
 	{
 		return this.tileEntites;
+	}
+
+	@Override
+	public void preInit ( final FMLPreInitializationEvent event )
+	{
+
+		//		this.items.loadConfig( config );
+		//		this.tileEntites.loadConfig( config );
+		this.blocks.register();
+		this.items.register();
+	}
+
+	@Override
+	public void init ( final FMLInitializationEvent event )
+	{
+		this.tileEntites.register();
+
+		// super.getItems().registerRecipes();
+
+		// super.getTileEntities().init();
+		// super.getGui().init( this );
+		//		this.recipeRegistry.register();
+	}
+
+	@Override
+	public void postInit ( final FMLPostInitializationEvent event )
+	{
+
 	}
 }

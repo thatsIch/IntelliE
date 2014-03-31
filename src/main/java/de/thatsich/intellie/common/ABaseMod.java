@@ -14,7 +14,6 @@ import de.thatsich.intellie.common.util.ICommonProxy;
 import de.thatsich.intellie.common.util.IProxy;
 import de.thatsich.intellie.common.util.logging.ILog;
 import de.thatsich.intellie.common.util.logging.LoggerModule;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
@@ -159,10 +158,7 @@ public abstract class ABaseMod implements IProxy
 	{
 		this.log.info( "PreInit Begin" );
 
-		//		this.items.loadConfig( config );
-		//		this.tileEntites.loadConfig( config );
-		this.registries.getBlocks().register();
-		this.registries.getItems().register();
+		this.registries.preInit( event );
 
 		final ICommonProxy proxy = this.getProxy();
 		proxy.initRenders();
@@ -206,14 +202,8 @@ public abstract class ABaseMod implements IProxy
 	public void init ( FMLInitializationEvent event )
 	{
 		this.log.info( "Init Begin" );
-		this.registries.getTileEntites().register();
-		// super.getItems().registerRecipes();
 
-		// super.getTileEntities().init();
-		// super.getGui().init( this );
-		//		this.recipeRegistry.register();
-
-		MinecraftForge.EVENT_BUS.register( this );
+		this.registries.init( event );
 
 		this.log.info( "Init End" );
 	}
