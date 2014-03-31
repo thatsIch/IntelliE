@@ -79,13 +79,13 @@ private Integer getGitCommitCount() {
     }
 }
 
-task incMajor(group: 'versioning', description: 'Increments project major version.') << {
-    String currentVersion = version.toString()
-    ++version.major
-    version.minor = 0
-    version.revision = 0
-    String newVersion = version.toString()
-    String message = "Incrementing major project version: $currentVersion -> $newVersion"
+task incMajor(group: 'versioning', description: 'Increments project major project.ext.version.') << {
+	String currentVersion = project.ext.version.toString()
+	++project.ext.version.major
+	project.ext.version.minor = 0
+	project.ext.version.revision = 0
+	String newVersion = project.ext.version.toString()
+	String message = "Incrementing major project version: $currentVersion -> $newVersion"
     logger.quiet message
 
     exec {
@@ -94,12 +94,12 @@ task incMajor(group: 'versioning', description: 'Increments project major versio
     }
 }
 
-task incMinor(group: 'versioning', description: 'Increments project minor version.') << {
-    String currentVersion = version.toString()
-    ++version.minor
-    version.revision = 0
-    String newVersion = version.toString()
-    String message = "Incrementing minor project version: $currentVersion -> $newVersion"
+task incMinor(group: 'versioning', description: 'Increments project minor project.ext.version.') << {
+	String currentVersion = project.ext.version.toString()
+	++project.ext.version.minor
+	project.ext.version.revision = 0
+	String newVersion = project.ext.version.toString()
+	String message = "Incrementing minor project version: $currentVersion -> $newVersion"
     logger.quiet message
 
     exec {
@@ -108,11 +108,11 @@ task incMinor(group: 'versioning', description: 'Increments project minor versio
     }
 }
 
-task incRev(group: 'versioning', description: 'Increments project reversion.') << {
-    String currentVersion = version.toString()
-    ++version.revision
-    String newVersion = version.toString()
-    String message = "Incrementing minor project version: $currentVersion -> $newVersion"
+task incRev(group: 'versioning', description: 'Increments project reproject.ext.version.') << {
+	String currentVersion = project.ext.version.toString()
+	++project.ext.version.revision
+	String newVersion = project.ext.version.toString()
+	String message = "Incrementing minor project version: $currentVersion -> $newVersion"
     logger.quiet message
 
     exec {

@@ -5,7 +5,7 @@ apply plugin: 'shadow'  // enables shadow
 apply plugin: 'apt'     // enable annotation preprocessor
 
 apply from: 'gradle/scripts/versioning.gradle'
-apply from: 'gradle/scripts/deobf.gradle'
+//apply from: 'gradle/scripts/deobf.gradle'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
