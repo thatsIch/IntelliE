@@ -2,16 +2,15 @@ package de.thatsich.intellie.applied.intelligences.functionality.router.module.b
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import de.thatsich.common.module.block.ABlockTexture;
 
 
 @SideOnly(Side.CLIENT)
-public class BlockTextureRouter extends ABlockTexture
+public class BlockTextureRouter //extends ABlockTexture
 {
-	protected BlockTextureRouter ( final String texture )
-	{
-		super( texture );
-	}
+	//	protected BlockTextureRouter ( final String texture )
+	//	{
+	//		super( texture );
+	//	}
 
 	//	private Icon	topIcon;
 	//	private Icon	sideIcon;

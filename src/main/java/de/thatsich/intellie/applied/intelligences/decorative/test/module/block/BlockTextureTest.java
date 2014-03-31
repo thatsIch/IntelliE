@@ -2,19 +2,16 @@ package de.thatsich.intellie.applied.intelligences.decorative.test.module.block;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import de.thatsich.common.module.block.ABlockTexture;
-
-import javax.inject.Inject;
 
 
 @SideOnly(Side.CLIENT)
-public class BlockTextureTest extends ABlockTexture
+public class BlockTextureTest //extends ABlockTexture
 {
-	@Inject
-	BlockTextureTest ()
-	{
-		super( "intellie:test" );
-	}
+	//	@Inject
+	//	BlockTextureTest ()
+	//	{
+	//		super( "intellie:test" );
+	//	}
 
 
 	//	private Icon	topIcon;

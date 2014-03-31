@@ -1,6 +1,6 @@
 package de.thatsich.intellie.applied.intelligences.functionality.router;
 
-public class ObjectRouter //extends AMinecraftObject
+public class ObjectRouter
 {
 	//	@Inject
 	//	ObjectRouter ( ItemBlockRouter item, BlockRouter block )
