@@ -12,22 +12,22 @@ import javax.inject.Singleton;
  * the message was actual printed
  *
  * @author thatsIch
- * @date 05.03.14.
+ * @since 05.03.14.
  */
 @Module(
-        library = true,
-        injects = ILog.class
+		library = true,
+		injects = ILog.class
 )
 public class LoggerModule implements IModule {
-    private final String name;
+	private final String name;
 
-    public LoggerModule(final String name) {
-        this.name = name;
-    }
+	public LoggerModule(final String name) {
+		this.name = name;
+	}
 
-    @Provides
-    @Singleton
-    public ILog provideLogger() {
-        return new Log(this.name);
-    }
+	@Provides
+	@Singleton
+	public ILog provideLogger() {
+		return new Log(this.name);
+	}
 }

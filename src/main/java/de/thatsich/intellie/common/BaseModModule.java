@@ -8,19 +8,19 @@ import javax.inject.Singleton;
 
 /**
  * @author thatsIch
- * @date 26.03.2014.
+ * @since 26.03.2014.
  */
 @Module(library = true)
 public class BaseModModule implements IModule {
-    private final ABaseMod instance;
+	private final ABaseMod instance;
 
-    public BaseModModule(ABaseMod instance) {
-        this.instance = instance;
-    }
+	public BaseModModule(ABaseMod instance) {
+		this.instance = instance;
+	}
 
-    @Provides
-    @Singleton
-    ABaseMod provideBaseModInstance() {
-        return this.instance;
-    }
+	@Provides
+	@Singleton
+	ABaseMod provideBaseModInstance() {
+		return this.instance;
+	}
 }

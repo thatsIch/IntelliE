@@ -20,7 +20,7 @@ import net.minecraft.item.ItemStack;
 
 /**
  * @author thatsIch
- * @date 16.03.14.
+ * @since 16.03.14.
  */
 @Mod(
 		modid = "appaero",

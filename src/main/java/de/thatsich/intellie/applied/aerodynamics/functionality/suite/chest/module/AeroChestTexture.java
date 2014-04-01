@@ -3,17 +3,16 @@ package de.thatsich.intellie.applied.aerodynamics.functionality.suite.chest.modu
 import de.thatsich.intellie.common.module.ATexture;
 
 /**
- @author thatsIch
- @date 22.03.2014. */
-public class AeroChestTexture extends ATexture
-{
+ * @author thatsIch
+ * @since 22.03.2014.
+ */
+public class AeroChestTexture extends ATexture {
 	/**
-	 Abstract constructor for a texture
-
-	 @param texture Stored texture
+	 * Abstract constructor for a texture
+	 *
+	 * @param texture Stored texture
 	 */
-	protected AeroChestTexture ( final String texture )
-	{
-		super( texture );
+	protected AeroChestTexture(final String texture) {
+		super(texture);
 	}
 }

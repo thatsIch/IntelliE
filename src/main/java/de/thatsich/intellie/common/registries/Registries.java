@@ -9,11 +9,11 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
- @author thatsIch
- @since 31.03.2014. */
+ * @author thatsIch
+ * @since 31.03.2014.
+ */
 @Singleton
-public class Registries implements IProxy
-{
+public class Registries implements IProxy {
 	private final ArmorRenderingRegistry armorRenderers;
 	private final BlockContainerRegistry blockContainers;
 	private final BlockRegistry blocks;
@@ -26,8 +26,7 @@ public class Registries implements IProxy
 	private final TileEntityRegistry tileEntites;
 
 	@Inject
-	Registries ( final ArmorRenderingRegistry armorRenderers, final BlockContainerRegistry blockContainers, final BlockRegistry blocks, final BlockRenderingRegistry blockRenderers, final ConfigRegistry configs, final EntityRenderingRegistry entityRenderers, final GuiRegistry guis, final ItemRegistry items, final SoundRegistry sounds, final TileEntityRegistry tileEntites )
-	{
+	Registries(final ArmorRenderingRegistry armorRenderers, final BlockContainerRegistry blockContainers, final BlockRegistry blocks, final BlockRenderingRegistry blockRenderers, final ConfigRegistry configs, final EntityRenderingRegistry entityRenderers, final GuiRegistry guis, final ItemRegistry items, final SoundRegistry sounds, final TileEntityRegistry tileEntites) {
 		this.armorRenderers = armorRenderers;
 		this.blockContainers = blockContainers;
 		this.blocks = blocks;
@@ -40,59 +39,48 @@ public class Registries implements IProxy
 		this.tileEntites = tileEntites;
 	}
 
-	public ArmorRenderingRegistry getArmorRenderers ()
-	{
+	public ArmorRenderingRegistry getArmorRenderers() {
 		return this.armorRenderers;
 	}
 
-	public BlockContainerRegistry getBlockContainers ()
-	{
+	public BlockContainerRegistry getBlockContainers() {
 		return this.blockContainers;
 	}
 
-	public BlockRegistry getBlocks ()
-	{
+	public BlockRegistry getBlocks() {
 		return this.blocks;
 	}
 
-	public BlockRenderingRegistry getBlockRenderers ()
-	{
+	public BlockRenderingRegistry getBlockRenderers() {
 		return this.blockRenderers;
 	}
 
-	public ConfigRegistry getConfigs ()
-	{
+	public ConfigRegistry getConfigs() {
 		return this.configs;
 	}
 
-	public EntityRenderingRegistry getEntityRenderers ()
-	{
+	public EntityRenderingRegistry getEntityRenderers() {
 		return this.entityRenderers;
 	}
 
-	public GuiRegistry getGuis ()
-	{
+	public GuiRegistry getGuis() {
 		return this.guis;
 	}
 
-	public ItemRegistry getItems ()
-	{
+	public ItemRegistry getItems() {
 		return this.items;
 	}
 
-	public SoundRegistry getSounds ()
-	{
+	public SoundRegistry getSounds() {
 		return this.sounds;
 	}
 
-	public TileEntityRegistry getTileEntites ()
-	{
+	public TileEntityRegistry getTileEntites() {
 		return this.tileEntites;
 	}
 
 	@Override
-	public void preInit ( final FMLPreInitializationEvent event )
-	{
+	public void preInit(final FMLPreInitializationEvent event) {
 
 		//		this.items.loadConfig( config );
 		//		this.tileEntites.loadConfig( config );
@@ -101,8 +89,7 @@ public class Registries implements IProxy
 	}
 
 	@Override
-	public void init ( final FMLInitializationEvent event )
-	{
+	public void init(final FMLInitializationEvent event) {
 		this.tileEntites.register();
 
 		// super.getItems().registerRecipes();
@@ -113,8 +100,7 @@ public class Registries implements IProxy
 	}
 
 	@Override
-	public void postInit ( final FMLPostInitializationEvent event )
-	{
+	public void postInit(final FMLPostInitializationEvent event) {
 
 	}
 }

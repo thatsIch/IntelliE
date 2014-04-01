@@ -8,7 +8,7 @@ import org.lwjgl.input.Keyboard;
 
 /**
  * @author thatsIch
- * @date 26.03.2014.
+ * @since 26.03.2014.
  */
 public class KeyHandler {
 	private static final int FLY_KEY = Keyboard.KEY_G;

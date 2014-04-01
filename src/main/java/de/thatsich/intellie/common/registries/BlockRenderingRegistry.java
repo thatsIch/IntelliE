@@ -10,35 +10,31 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 /**
- @author thatsIch
- @date 24.03.2014. */
+ * @author thatsIch
+ * @since 24.03.2014.
+ */
 @Singleton
-public class BlockRenderingRegistry implements IRegistry<ISimpleBlockRenderingHandler>
-{
+public class BlockRenderingRegistry implements IRegistry<ISimpleBlockRenderingHandler> {
 	private final Collection<ISimpleBlockRenderingHandler> blockRenderers;
 	private final ILog log;
 
 	@Inject
-	public BlockRenderingRegistry ( final ILog log )
-	{
+	public BlockRenderingRegistry(final ILog log) {
 		this.log = log;
 		this.blockRenderers = new LinkedList<>();
 	}
 
 	@Override
-	public void add ( final ISimpleBlockRenderingHandler handler )
-	{
-		this.blockRenderers.add( handler );
-		this.log.debug( "Added BlockRenderer %s", handler );
+	public void add(final ISimpleBlockRenderingHandler handler) {
+		this.blockRenderers.add(handler);
+		this.log.debug("Added BlockRenderer %s", handler);
 	}
 
 	@Override
-	public void register ()
-	{
-		for ( ISimpleBlockRenderingHandler handler : this.blockRenderers )
-		{
-			RenderingRegistry.registerBlockHandler( handler );
+	public void register() {
+		for (ISimpleBlockRenderingHandler handler : this.blockRenderers) {
+			RenderingRegistry.registerBlockHandler(handler);
 		}
-		this.log.info( "Registered all BlockRenderers" );
+		this.log.info("Registered all BlockRenderers");
 	}
 }

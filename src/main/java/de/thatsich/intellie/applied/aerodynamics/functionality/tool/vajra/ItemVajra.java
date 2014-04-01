@@ -5,7 +5,7 @@ import net.minecraft.item.Item;
 
 /**
  * @author thatsIch
- * @date 27.03.2014.
+ * @since 27.03.2014.
  */
 public class ItemVajra extends Item {
 	public ItemVajra() {

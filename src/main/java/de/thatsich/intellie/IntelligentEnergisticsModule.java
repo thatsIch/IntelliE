@@ -10,7 +10,7 @@ import de.thatsich.intellie.applied.intelligences.AppliedIntelligencesModule;
  * Its just there to make use of the compile time verification of Dagger
  *
  * @author thatsIch
- * @date 24.03.2014.
+ * @since 24.03.2014.
  */
 @Module(
         includes = {

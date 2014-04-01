@@ -17,7 +17,7 @@ import net.minecraftforge.common.ISpecialArmor;
 
 /**
  * @author thatsIch
- * @date 26.03.2014.
+ * @since 26.03.2014.
  */
 public class ItemGraviChestPlate extends ItemArmor implements ISpecialArmor, IAEItemPowerStorage {
 	private static final int ENERGY_MAX = 30000000;

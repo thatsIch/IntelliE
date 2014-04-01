@@ -10,7 +10,7 @@ import javax.inject.Singleton;
 
 /**
  * @author thatsIch
- * @date 05.03.14.
+ * @since 05.03.14.
  */
 @Module(
         injects = {

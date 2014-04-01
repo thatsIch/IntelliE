@@ -15,7 +15,7 @@ import java.util.HashSet;
  in pre-init automatically
 
  @author thatsIch
- @date 24.03.2014. */
+ @since 24.03.2014. */
 @Singleton
 public class ArmorRenderingRegistry implements IRegistry<String>
 {

@@ -10,7 +10,7 @@ import javax.inject.Singleton;
 
 /**
  * @author thatsIch
- * @date 27.03.2014.
+ * @since 27.03.2014.
  */
 @Singleton
 public class GenericBlock extends Block implements IInstantiate {

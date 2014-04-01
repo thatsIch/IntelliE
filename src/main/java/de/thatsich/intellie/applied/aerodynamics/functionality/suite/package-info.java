@@ -6,6 +6,6 @@
  * Hoursesteps when sprintingw
  *
  * @author thatsIch
- * @date 16.03.14.
+ * @since 16.03.14.
  */
 package de.thatsich.intellie.applied.aerodynamics.functionality.suite;

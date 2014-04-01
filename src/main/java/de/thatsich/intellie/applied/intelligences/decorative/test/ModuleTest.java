@@ -2,7 +2,7 @@ package de.thatsich.intellie.applied.intelligences.decorative.test;
 
 /**
  * @author thatsIch
- * @date 06.03.14.
+ * @since 06.03.14.
  */
 //@Module(
 //	injects = {
@@ -12,7 +12,6 @@ package de.thatsich.intellie.applied.intelligences.decorative.test;
 //		LoggerModule.class, RegistryModule.class
 //	}
 //)
-public class ModuleTest
-{
+public class ModuleTest {
 
 }

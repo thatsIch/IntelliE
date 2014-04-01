@@ -5,7 +5,7 @@ import de.thatsich.intellie.applied.aerodynamics.functionality.suite.chest.AeroC
 
 /**
  * @author thatsIch
- * @date 24.03.2014.
+ * @since 24.03.2014.
  */
 @Module(injects = AeroChest.class)
 public class SuiteModule {

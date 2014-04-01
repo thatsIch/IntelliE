@@ -9,13 +9,13 @@ import de.thatsich.intellie.common.registries.RegistryModule;
 
 /**
  * @author thatsIch
- * @date 20.03.2014.
+ * @since 20.03.2014.
  */
 @Module(
-        library = true,
-        complete = false,
-        includes = {
-                AppliedAerodynamicsCreativeTabModule.class, AppliedAerodynamicsDecorativeModule.class, AppliedAerodynamicsFunctionalityModule.class, RegistryModule.class
-        })
+		library = true,
+		complete = false,
+		includes = {
+				AppliedAerodynamicsCreativeTabModule.class, AppliedAerodynamicsDecorativeModule.class, AppliedAerodynamicsFunctionalityModule.class, RegistryModule.class
+		})
 public class AppliedAerodynamicsModule implements IModule {
 }

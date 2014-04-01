@@ -1,21 +1,22 @@
 package de.thatsich.intellie.common.module;
 
 /**
- @author thatsIch
- @date 22.03.2014. */
-public abstract class ATexture
-{
+ * @author thatsIch
+ * @since 22.03.2014.
+ */
+public abstract class ATexture {
 	private final String texture;
 
 	/**
-	 Abstract constructor for a texture
-
-	 @param texture Stored texture
+	 * Abstract constructor for a texture
+	 *
+	 * @param texture Stored texture
 	 */
-	protected ATexture ( String texture )
-	{
+	protected ATexture(String texture) {
 		this.texture = texture;
 	}
 
-	public String getTexture () { return this.texture; }
+	public String getTexture() {
+		return this.texture;
+	}
 }
