@@ -9,6 +9,7 @@ import net.minecraft.creativetab.CreativeTabs;
 
 
 public abstract class ABlock extends Block implements IBlock, IInstantiate {
+
 	protected ABlock(ABlockInfo info, ABlockConfig config, ATexture blockTexture) {
 		super(info.getMaterial());
 

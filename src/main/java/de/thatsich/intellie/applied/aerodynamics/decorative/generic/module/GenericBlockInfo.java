@@ -1,5 +1,6 @@
 package de.thatsich.intellie.applied.aerodynamics.decorative.generic.module;
 
+import de.thatsich.intellie.applied.aerodynamics.common.AppliedAerodynamicsCreativeTab;
 import de.thatsich.intellie.common.module.block.info.ABlockInfo;
 
 import javax.inject.Inject;
@@ -13,7 +14,8 @@ import javax.inject.Singleton;
 public class GenericBlockInfo extends ABlockInfo {
 
 	@Inject
-	public GenericBlockInfo(GenericBlockName blockName, GenericSoundType blockSound, GenericCreativeTabs creativeTab) {
+	public GenericBlockInfo ( GenericBlockName blockName, GenericSoundType blockSound, AppliedAerodynamicsCreativeTab creativeTab )
+	{
 		super(blockName, blockSound, creativeTab);
 	}
 }

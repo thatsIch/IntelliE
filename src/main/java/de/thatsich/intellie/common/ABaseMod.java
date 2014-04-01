@@ -8,6 +8,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import dagger.Module;
 import dagger.ObjectGraph;
 import de.thatsich.intellie.common.module.IModule;
+import de.thatsich.intellie.common.module.block.IBlock;
 import de.thatsich.intellie.common.registries.Registries;
 import de.thatsich.intellie.common.registries.RegistryModule;
 import de.thatsich.intellie.common.util.ICommonProxy;
@@ -45,56 +46,56 @@ public abstract class ABaseMod implements IProxy
 	protected ABaseMod ()
 	{
 		// Prerequisites for Modules
-		final String modName = this.getModName();
-		final String configPath = Joiner.on( File.separator ).join( "config", "AppliedEnergistics2", "IntelliE", modName + ".cfg" );
-		final Configuration config = new Configuration( new File( configPath ) );
+		final String modName = this.getModName ();
+		final String configPath = Joiner.on ( File.separator ).join ( "config", "AppliedEnergistics2", "IntelliE", modName + ".cfg" );
+		final Configuration config = new Configuration ( new File ( configPath ) );
 
 		// Creates an injector with all of the required modules.
-		final Collection<IModule> moduleInstances = this.getClassModule();
+		final Collection<IModule> moduleInstances = this.getClassModule ();
 
-        moduleInstances.add(new BaseModModule(this));
-        moduleInstances.add( new RegistryModule( config ) );
-		moduleInstances.add( new LoggerModule( modName ) );
+		moduleInstances.add ( new BaseModModule ( this ) );
+		moduleInstances.add ( new RegistryModule ( config ) );
+		moduleInstances.add ( new LoggerModule ( modName ) );
 
-		final Object[] modules = moduleInstances.toArray();
-		this.injector = ObjectGraph.create( modules );
+		final Object[] modules = moduleInstances.toArray ();
+		this.injector = ObjectGraph.create ( modules );
 
 		// Enable Logging
-		this.log = this.injector.get( ILog.class );
+		this.log = this.injector.get ( ILog.class );
 
 		// Inject all Registries
-		this.registries = this.injector.get( Registries.class );
+		this.registries = this.injector.get ( Registries.class );
 
 		// using injector and modules to instantiate them once
-		this.instantiateModules( modules );
+		this.instantiateModules ( modules );
 	}
 
 	/**
 	 Derives the needed module from the child classname
-
+	 <p/>
 	 If Mod is called <b>MyMod</b> then the required module name is <b>MyModModule</b> in the same package
 
 	 @return Collection of the mod module. Is empty when attempt to fetch failed.
 	 */
 	private Collection<IModule> getClassModule ()
 	{
-		final Collection<IModule> moduleInstances = new LinkedList<>();
+		final Collection<IModule> moduleInstances = new LinkedList<> ();
 
-		final String childName = this.getClass().getName();
+		final String childName = this.getClass ().getName ();
 		final String moduleName = childName + "Module";
 
 		try
 		{
-			final Class<?> clazz = Class.forName( moduleName );
-			final Constructor<?> ctor = clazz.getConstructor();
-			final Object instance = ctor.newInstance();
+			final Class<?> clazz = Class.forName ( moduleName );
+			final Constructor<?> ctor = clazz.getConstructor ();
+			final Object instance = ctor.newInstance ();
 			final IModule module = (IModule) instance;
 
-			moduleInstances.add( module );
+			moduleInstances.add ( module );
 		}
 		catch ( InstantiationException | IllegalAccessException | ClassNotFoundException | NoSuchMethodException | InvocationTargetException e )
 		{
-			e.printStackTrace();
+			e.printStackTrace ();
 		}
 
 		return moduleInstances;
@@ -109,16 +110,16 @@ public abstract class ABaseMod implements IProxy
 	{
 		for ( Object obj : modules )
 		{
-			final Class<?> clazz = obj instanceof Class<?> ? (Class<?>) obj : obj.getClass();
+			final Class<?> clazz = obj instanceof Class<?> ? (Class<?>) obj : obj.getClass ();
 
-			if ( clazz.isAnnotationPresent( Module.class ) )
+			if ( clazz.isAnnotationPresent ( Module.class ) )
 			{
-				final Module module = clazz.getAnnotation( Module.class );
-				final Class<?>[] injects = module.injects();
-				final Class<?>[] includes = module.includes();
+				final Module module = clazz.getAnnotation ( Module.class );
+				final Class<?>[] injects = module.injects ();
+				final Class<?>[] includes = module.includes ();
 
-				this.instantiateInjections( injects );
-				this.instantiateModules((Object[]) includes);
+				this.instantiateInjections ( injects );
+				this.instantiateModules ( (Object[]) includes );
 			}
 		}
 	}
@@ -132,10 +133,17 @@ public abstract class ABaseMod implements IProxy
 	{
 		for ( Class<?> injection : injections )
 		{
-			final boolean toInstantiate = IInstantiate.class.isAssignableFrom( injection );
+			final boolean toInstantiate = IInstantiate.class.isAssignableFrom ( injection );
+			final boolean isBlock = IBlock.class.isAssignableFrom ( injection );
+			this.log.info ( "%s is block = %b", injection, isBlock );
+
 			if ( toInstantiate )
 			{
-				this.injector.get( injection );
+				final Object obj = this.injector.get ( injection );
+				if ( isBlock )
+				{
+					this.registries.getBlocks ().add ( (IBlock) obj );
+				}
 			}
 		}
 	}
@@ -149,22 +157,22 @@ public abstract class ABaseMod implements IProxy
 	 */
 	private String getModName ()
 	{
-		final Mod annotation = this.getClass().getAnnotation( Mod.class );
-		return annotation.name();
+		final Mod annotation = this.getClass ().getAnnotation ( Mod.class );
+		return annotation.name ();
 	}
 
 	@Override
 	public void preInit ( FMLPreInitializationEvent event )
 	{
-		this.log.info( "PreInit Begin" );
+		this.log.info ( "PreInit Begin" );
 
-		this.registries.preInit( event );
+		this.registries.preInit ( event );
 
-		final ICommonProxy proxy = this.getProxy();
-		proxy.initRenders();
-		proxy.initSounds();
+		final ICommonProxy proxy = this.getProxy ();
+		proxy.initRenders ();
+		proxy.initSounds ();
 
-		this.log.info( "PreInit End" );
+		this.log.info ( "PreInit End" );
 	}
 
 	/**
@@ -174,15 +182,15 @@ public abstract class ABaseMod implements IProxy
 	 */
 	private ICommonProxy getProxy ()
 	{
-		final Class<? extends ABaseMod> clazz = this.getClass();
-		final Field[] potentialProxy = clazz.getDeclaredFields();
+		final Class<? extends ABaseMod> clazz = this.getClass ();
+		final Field[] potentialProxy = clazz.getDeclaredFields ();
 
 		// search for the proxy field
 		for ( Field field : potentialProxy )
 		{
 			try
 			{
-				final Object object = field.get( null );
+				final Object object = field.get ( null );
 				if ( object instanceof ICommonProxy )
 				{
 					return (ICommonProxy) object;
@@ -190,28 +198,31 @@ public abstract class ABaseMod implements IProxy
 			}
 			catch ( IllegalAccessException e )
 			{
-				e.printStackTrace();
+				e.printStackTrace ();
 			}
 		}
 
-		this.log.warn( "No proxy found." );
-		throw new IllegalArgumentException( "No proxy was given." );
+		this.log.warn ( "No proxy found." );
+		throw new IllegalArgumentException ( "No proxy was given." );
 	}
 
 	@Override
 	public void init ( FMLInitializationEvent event )
 	{
-		this.log.info( "Init Begin" );
+		this.log.info ( "Init Begin" );
 
-		this.registries.init( event );
+		this.registries.init ( event );
 
-		this.log.info( "Init End" );
+		this.log.info ( "Init End" );
 	}
 
 	@Override
 	public void postInit ( FMLPostInitializationEvent event )
 	{
-		this.log.info( "PostInit Begin" );
-		this.log.info( "PostInit End" );
+		this.log.info ( "PostInit Begin" );
+
+		this.registries.postInit ( event );
+
+		this.log.info ( "PostInit End" );
 	}
 }
