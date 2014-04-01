@@ -38,7 +38,7 @@ buildscript {
         }
     }
     dependencies {
-	    classpath "net.minecraftforge.gradle:ForgeGradle:1.1-SNAPSHOT"
+	    classpath "net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT"
 	    classpath "com.github.jengelman.gradle.plugins:shadow:0.8"
 	    classpath "com.squareup.dagger:dagger-compiler:1.2.1"
 	    classpath "com.jimdo.gradle:gradle-apt-plugin:0.2-SNAPSHOT"
@@ -78,12 +78,16 @@ shadow {
 }
 
 processResources {
+	// this will ensure that this task is redone when the versions change.
+	inputs.property "version", project.version
+	inputs.property "mcversion", project.minecraft.version
+
 	// replace stuff in mcmod.info, nothing else
 	from(sourceSets.main.resources.srcDirs) {
 		include 'mcmod.info'
 
 		// replace version and mcversion
-		expand 'version': project.version, 'mcversion': "1.7.2"
+		expand 'version': project.version, 'mcversion': project.minecraft.version
 	}
 
 	// copy everything else, thats not the mcmod.info
