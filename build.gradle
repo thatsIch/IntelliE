@@ -16,7 +16,7 @@ version = project.ext.version.toString()
 
 // needed for pulling new versions from forge
 minecraft {
-	version = "1.7.2-10.12.0.1047"
+	version = "1.7.2-10.12.0.1048"
 	assetDir = "../.idea/assets"
 }
 
