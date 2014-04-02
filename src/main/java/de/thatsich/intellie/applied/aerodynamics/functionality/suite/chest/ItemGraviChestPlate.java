@@ -4,6 +4,7 @@ import appeng.api.config.AccessRestriction;
 import appeng.api.implementations.items.IAEItemPowerStorage;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import de.thatsich.intellie.common.module.item.AItemArmor;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -18,7 +19,7 @@ import net.minecraftforge.common.ISpecialArmor;
 /**
  @author thatsIch
  @since 26.03.2014. */
-public class ItemGraviChestPlate extends ItemArmor implements ISpecialArmor, IAEItemPowerStorage
+public class ItemGraviChestPlate extends AItemArmor implements ISpecialArmor, IAEItemPowerStorage
 {
 	private static final int ENERGY_MAX = 30000000;
 
@@ -107,7 +108,7 @@ public class ItemGraviChestPlate extends ItemArmor implements ISpecialArmor, IAE
 		return "gravisuite:textures/armor/armor_graviChestPlate.png";
 	}
 
-	@SideOnly( Side.CLIENT )
+	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons( final IIconRegister par1IconRegister )
 	{
