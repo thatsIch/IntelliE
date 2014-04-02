@@ -18,8 +18,5 @@ public class BaseModID
 	}
 
 	@Override
-	public String toString()
-	{
-		return this.id;
-	}
+	public String toString() { return this.id; }
 }

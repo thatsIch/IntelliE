@@ -11,7 +11,7 @@ import de.thatsich.intellie.common.module.IModule;
 import de.thatsich.intellie.common.registries.Registries;
 import de.thatsich.intellie.common.registries.RegistryModule;
 import de.thatsich.intellie.common.util.ICommonProxy;
-import de.thatsich.intellie.common.util.IProxy;
+import de.thatsich.intellie.common.util.IEventProxy;
 import de.thatsich.intellie.common.util.logging.ILog;
 import de.thatsich.intellie.common.util.logging.LoggerModule;
 import net.minecraftforge.common.config.Configuration;
@@ -28,7 +28,7 @@ import java.util.LinkedList;
 
  @author thatsIch
  @since 16.03.14. */
-public abstract class ABaseMod implements IProxy
+public abstract class ABaseMod implements IEventProxy
 {
 	// Log
 	final ILog log;

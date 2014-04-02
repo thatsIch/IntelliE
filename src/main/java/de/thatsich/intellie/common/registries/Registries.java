@@ -3,7 +3,7 @@ package de.thatsich.intellie.common.registries;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import de.thatsich.intellie.common.util.IProxy;
+import de.thatsich.intellie.common.util.IEventProxy;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -12,7 +12,7 @@ import javax.inject.Singleton;
  @author thatsIch
  @since 31.03.2014. */
 @Singleton
-public class Registries implements IProxy
+public class Registries implements IEventProxy
 {
 	private final ArmorRenderingRegistry armorRenderers;
 	private final BlockContainerRegistry blockContainers;

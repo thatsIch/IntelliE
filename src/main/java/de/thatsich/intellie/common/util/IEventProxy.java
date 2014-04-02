@@ -9,7 +9,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
  @author thatsIch
  @since 17.03.14. */
-public interface IProxy
+public interface IEventProxy
 {
 	/**
 	 Run before anything else. Read your config, create blocks, items, etc,
