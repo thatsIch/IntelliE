@@ -2,8 +2,7 @@ package de.thatsich.intellie.common.module.block;
 
 import dagger.ObjectGraph;
 import de.thatsich.intellie.common.module.ATexture;
-import de.thatsich.intellie.common.module.block.info.ABlockInfo;
-import de.thatsich.intellie.common.module.block.info.ABlockName;
+import de.thatsich.intellie.common.module.IName;
 import de.thatsich.intellie.common.module.item.AItemBlock;
 import de.thatsich.intellie.common.module.tileentity.ATileEntity;
 import de.thatsich.intellie.common.registries.TileEntityRegistry;
@@ -31,7 +30,7 @@ public abstract class ABlockContainer extends BlockContainer implements IBlockCo
 		this.tileEntityClass = tileEntityClass;
 		this.itemBlockClass = itemBlockClass;
 
-		final ABlockName blockName = info.getBlockName();
+		final IName blockName = info.getName();
 		final String name = blockName.getUnlocalizedName();
 		final float hardness = info.getHardness();
 		final CreativeTabs creativeTab = info.getCreativeTab();

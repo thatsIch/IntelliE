@@ -11,7 +11,6 @@ import javax.inject.Singleton;
 @Singleton
 public class GenericSoundType extends Block.SoundType
 {
-
 	@Inject
 	public GenericSoundType()
 	{

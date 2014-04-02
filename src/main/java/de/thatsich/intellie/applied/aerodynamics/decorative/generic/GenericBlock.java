@@ -2,7 +2,6 @@ package de.thatsich.intellie.applied.aerodynamics.decorative.generic;
 
 import de.thatsich.intellie.applied.aerodynamics.decorative.generic.module.GenericBlockConfig;
 import de.thatsich.intellie.applied.aerodynamics.decorative.generic.module.GenericBlockInfo;
-import de.thatsich.intellie.applied.aerodynamics.decorative.generic.module.GenericTexture;
 import de.thatsich.intellie.common.module.block.ABlock;
 import de.thatsich.intellie.common.registries.BlockRegistry;
 
@@ -15,17 +14,12 @@ import javax.inject.Singleton;
 @Singleton
 public class GenericBlock extends ABlock
 {
-	private static final float HARDNESS = 0.5F;
-
 	@Inject
-	public GenericBlock( GenericBlockInfo info, GenericBlockConfig config, GenericTexture blockTexture, BlockRegistry blocks )
+	public GenericBlock(
+			final GenericBlockInfo info,
+			final GenericBlockConfig config,
+			final BlockRegistry blocks )
 	{
-		super( info, config, blockTexture, blocks );
+		super( info, config, blocks );
 	}
-
-//	@Override
-//	protected String getTextureName ()
-//	{
-//		return "appaero:genericBlock";
-//	}
 }

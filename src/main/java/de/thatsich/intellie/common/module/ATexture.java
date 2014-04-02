@@ -11,7 +11,10 @@ public abstract class ATexture
 
 	protected ATexture( BaseModID id )
 	{
-		this.texture = id + ":" + this.getClass().getSimpleName().replaceFirst( "Texture", "" ).toLowerCase();
+		final String namespace = id + ":";
+		final String name = this.getClass().getSimpleName().replaceFirst( "Texture", "" ).toLowerCase();
+
+		this.texture = namespace + name;
 	}
 
 	public String getTexture()

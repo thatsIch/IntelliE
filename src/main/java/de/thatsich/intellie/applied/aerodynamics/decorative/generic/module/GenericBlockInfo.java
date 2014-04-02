@@ -1,7 +1,8 @@
 package de.thatsich.intellie.applied.aerodynamics.decorative.generic.module;
 
 import de.thatsich.intellie.applied.aerodynamics.common.AppliedAerodynamicsCreativeTab;
-import de.thatsich.intellie.common.module.block.info.ABlockInfo;
+import de.thatsich.intellie.common.module.block.ABlockInfo;
+import net.minecraft.block.material.Material;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -12,10 +13,13 @@ import javax.inject.Singleton;
 @Singleton
 public class GenericBlockInfo extends ABlockInfo
 {
-
 	@Inject
-	public GenericBlockInfo( GenericBlockName blockName, GenericSoundType blockSound, AppliedAerodynamicsCreativeTab creativeTab )
+	public GenericBlockInfo(
+			final GenericBlockName blockName,
+			final GenericTexture texture,
+			final GenericSoundType blockSound,
+			final AppliedAerodynamicsCreativeTab creativeTab )
 	{
-		super( blockName, blockSound, creativeTab );
+		super( blockName, texture, 3.0F, Material.iron, blockSound, creativeTab );
 	}
 }

@@ -1,6 +1,6 @@
 package de.thatsich.intellie.applied.intelligences.decorative.test.module.block;
 
-public class BlockNameTest //extends ABlockName
+public class BlockNameTest
 {
 	//	@Inject
 	//	BlockNameTest ()

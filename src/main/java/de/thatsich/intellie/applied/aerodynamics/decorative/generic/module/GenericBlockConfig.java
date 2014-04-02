@@ -11,7 +11,6 @@ import javax.inject.Singleton;
 @Singleton
 public class GenericBlockConfig extends ABlockConfig
 {
-
 	@Inject
 	GenericBlockConfig()
 	{
