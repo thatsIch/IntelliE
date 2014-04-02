@@ -19,10 +19,12 @@ public abstract class ABlockContainer extends BlockContainer implements IBlockCo
 {
 	private final Class<? extends AItemBlock> itemBlockClass;
 	private final Class<? extends ATileEntity> tileEntityClass;
-	@Inject ObjectGraph injector;
-	@Inject TileEntityRegistry tileEntities;
+	@Inject
+	ObjectGraph injector;
+	@Inject
+	TileEntityRegistry tileEntities;
 
-	protected ABlockContainer ( ABlockInfo info, ABlockConfig config, ABlockGui gui, ABlockNetwork network, ATexture texture, Class<? extends ATileEntity> tileEntityClass, Class<? extends AItemBlock> itemBlockClass )
+	protected ABlockContainer( ABlockInfo info, ABlockConfig config, ABlockGui gui, ABlockNetwork network, ATexture texture, Class<? extends ATileEntity> tileEntityClass, Class<? extends AItemBlock> itemBlockClass )
 	{
 		super( info.getMaterial() );
 
@@ -30,7 +32,7 @@ public abstract class ABlockContainer extends BlockContainer implements IBlockCo
 		this.itemBlockClass = itemBlockClass;
 
 		final ABlockName blockName = info.getBlockName();
-		final String name = blockName.getName();
+		final String name = blockName.getUnlocalizedName();
 		final float hardness = info.getHardness();
 		final CreativeTabs creativeTab = info.getCreativeTab();
 
@@ -46,13 +48,13 @@ public abstract class ABlockContainer extends BlockContainer implements IBlockCo
 	}
 
 	@Override
-	public Class<? extends AItemBlock> getItemBlockClass ()
+	public Class<? extends AItemBlock> getItemBlockClass()
 	{
 		return this.itemBlockClass;
 	}
 
 	@Override
-	public TileEntity createNewTileEntity ( World world, int metadata )
+	public TileEntity createNewTileEntity( World world, int metadata )
 	{
 		final ATileEntity tileEntity = this.injector.get( this.tileEntityClass );
 

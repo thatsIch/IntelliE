@@ -39,7 +39,7 @@ public class BlockRegistry implements IRegistry<IBlock>
 	public void add ( final IBlock block )
 	{
 		this.blocks.add ( block );
-		this.log.debug ( "Added Block %s", block );
+		this.log.info( "Added Block %s : %s", block, block.getUnlocalizedName() );
 	}
 
 	@Override

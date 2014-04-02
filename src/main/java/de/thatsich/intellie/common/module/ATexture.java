@@ -1,22 +1,21 @@
 package de.thatsich.intellie.common.module;
 
+import de.thatsich.intellie.common.BaseModID;
+
 /**
- * @author thatsIch
- * @since 22.03.2014.
- */
-public abstract class ATexture {
+ @author thatsIch
+ @since 22.03.2014. */
+public abstract class ATexture
+{
 	private final String texture;
 
-	/**
-	 * Abstract constructor for a texture
-	 *
-	 * @param texture Stored texture
-	 */
-	protected ATexture(String texture) {
-		this.texture = texture;
+	protected ATexture( BaseModID id )
+	{
+		this.texture = id + ":" + this.getClass().getSimpleName().replaceFirst( "Texture", "" ).toLowerCase();
 	}
 
-	public String getTexture() {
+	public String getTexture()
+	{
 		return this.texture;
 	}
 }

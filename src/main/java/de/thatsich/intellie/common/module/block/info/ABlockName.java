@@ -1,28 +1,16 @@
 package de.thatsich.intellie.common.module.block.info;
 
-import java.util.Locale;
-import java.util.regex.Pattern;
+import de.thatsich.intellie.common.BaseModID;
 
 public abstract class ABlockName implements IBlockName
 {
-	private static final Pattern COMPILE = Pattern.compile( "\\s+" );
-
-	private final String name;
 	private final String unlocalizedName;
 
-	protected ABlockName ( String name )
+	protected ABlockName( BaseModID id )
 	{
-		// process information
-		final Locale locale = Locale.getDefault();
-
-		// unlocalized name is first letter small and no space
-		this.name = name;
-		this.unlocalizedName = ABlockName.COMPILE.matcher( name ).replaceAll( "" ).toUpperCase( locale );
+		this.unlocalizedName = id + "." + this.getClass().getSimpleName().replaceFirst( "BlockName", "" ).toLowerCase();
 	}
 
 	@Override
-	public String getUnlocalizedName () { return this.unlocalizedName; }
-
-	@Override
-	public String getName () { return this.name; }
+	public String getUnlocalizedName() { return this.unlocalizedName; }
 }
