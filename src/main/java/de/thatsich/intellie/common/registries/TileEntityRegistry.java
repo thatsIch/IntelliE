@@ -21,7 +21,7 @@ public class TileEntityRegistry implements IRegistry<ITileEntity>
 	private final ILog log;
 
 	@Inject
-	TileEntityRegistry ( final ILog log )
+	TileEntityRegistry( final ILog log )
 	{
 		this.tileEntities = new LinkedList<>();
 		this.log = log;
@@ -32,25 +32,25 @@ public class TileEntityRegistry implements IRegistry<ITileEntity>
 
 	 @param config Configuration
 	 */
-	public void loadConfig ( final Configuration config )
+	public void loadConfig( final Configuration config )
 	{
-		for ( ITileEntity tileEntity : this.tileEntities )
+		for( ITileEntity tileEntity : this.tileEntities )
 		{
 			tileEntity.register( config );
 		}
 	}
 
 	@Override
-	public void add ( final ITileEntity tileEntity )
+	public void add( final ITileEntity tileEntity )
 	{
 		this.log.info( "Added Tile Entity: %s", tileEntity );
 		this.tileEntities.add( tileEntity );
 	}
 
 	@Override
-	public void register ()
+	public void register()
 	{
-		for ( ITileEntity tileEntity : this.tileEntities )
+		for( ITileEntity tileEntity : this.tileEntities )
 		{
 			final TileEntity te = (TileEntity) tileEntity;
 			final Class<? extends TileEntity> tileEntityClass = te.getClass();

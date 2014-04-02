@@ -24,23 +24,23 @@ public class ArmorRenderingRegistry implements IRegistry<String>
 	private final ILog log;
 
 	@Inject
-	public ArmorRenderingRegistry ( final ILog log )
+	public ArmorRenderingRegistry( final ILog log )
 	{
 		this.log = log;
 		this.armorRenderers = new HashSet<>( 1 );
 	}
 
 	@Override
-	public void add ( final String armor )
+	public void add( final String armor )
 	{
 		this.armorRenderers.add( armor );
 		this.log.debug( "Added ArmorRenderer %s", armor );
 	}
 
 	@Override
-	public void register ()
+	public void register()
 	{
-		for ( String armor : this.armorRenderers )
+		for( String armor : this.armorRenderers )
 		{
 			RenderingRegistry.addNewArmourRendererPrefix( armor );
 		}

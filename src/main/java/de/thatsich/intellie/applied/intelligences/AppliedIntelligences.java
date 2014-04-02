@@ -4,22 +4,24 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 /**
- * @author thatsIch
- * @since 16.03.14.
- */
+ @author thatsIch
+ @since 16.03.14. */
 //@Mod(
 //	modid = "appint",
 //	name = "AppliedIntelligences",
 //	version = "${version}",
 //	dependencies = "required-after:Forge@[7.0,);required-after:FML@[5.0.5,)" //;required-after:appliedenergistics2"
 //)
-public class AppliedIntelligences {
-	public AppliedIntelligences() {
+public class AppliedIntelligences
+{
+	public AppliedIntelligences()
+	{
 
 	}
 
 	@Mod.EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
+	public void preInit( FMLPreInitializationEvent event )
+	{
 
 	}
 }

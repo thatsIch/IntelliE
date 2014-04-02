@@ -12,40 +12,47 @@ import java.util.Collection;
 import java.util.HashSet;
 
 /**
- * @author thatsIch
- * @since 25.03.2014.
- */
+ @author thatsIch
+ @since 25.03.2014. */
 @Singleton
-public class BlockContainerRegistry implements IRegistry<IBlockContainer> {
+public class BlockContainerRegistry implements IRegistry<IBlockContainer>
+{
 	private final Collection<IBlockContainer> blockContainers;
 	private final ILog log;
 
 	@Inject
-	public BlockContainerRegistry(ILog log) {
-		this.blockContainers = new HashSet<>(1);
+	public BlockContainerRegistry( ILog log )
+	{
+		this.blockContainers = new HashSet<>( 1 );
 		this.log = log;
 	}
 
 	@Override
-	public void add(final IBlockContainer blockContainer) {
-		this.blockContainers.add(blockContainer);
-		this.log.debug("Added %s", blockContainer);
+	public void add( final IBlockContainer blockContainer )
+	{
+		this.blockContainers.add( blockContainer );
+		this.log.debug( "Added %s", blockContainer );
 	}
 
 	@Override
-	public void register() {
-		for (IBlockContainer block : this.blockContainers) {
+	public void register()
+	{
+		for( IBlockContainer block : this.blockContainers )
+		{
 			final ABlockContainer container = (ABlockContainer) block;
 			final Class<? extends AItemBlock> itemBlockClass = container.getItemBlockClass();
 			final String unlocalizedName = container.getUnlocalizedName();
 
-			if (itemBlockClass != null) {
-				GameRegistry.registerBlock(container, itemBlockClass, unlocalizedName);
-			} else {
-				GameRegistry.registerBlock(container, unlocalizedName);
+			if( itemBlockClass != null )
+			{
+				GameRegistry.registerBlock( container, itemBlockClass, unlocalizedName );
 			}
-			this.log.debug("Registered BlockContainer %s", block);
+			else
+			{
+				GameRegistry.registerBlock( container, unlocalizedName );
+			}
+			this.log.debug( "Registered BlockContainer %s", block );
 		}
-		this.log.info("Finished registering Blocks and BlockContainer.");
+		this.log.info( "Finished registering Blocks and BlockContainer." );
 	}
 }

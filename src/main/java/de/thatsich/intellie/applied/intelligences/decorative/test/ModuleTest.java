@@ -1,9 +1,8 @@
 package de.thatsich.intellie.applied.intelligences.decorative.test;
 
 /**
- * @author thatsIch
- * @since 06.03.14.
- */
+ @author thatsIch
+ @since 06.03.14. */
 //@Module(
 //	injects = {
 //		Test.class
@@ -12,6 +11,7 @@ package de.thatsich.intellie.applied.intelligences.decorative.test;
 //		LoggerModule.class, RegistryModule.class
 //	}
 //)
-public class ModuleTest {
+public class ModuleTest
+{
 
 }

@@ -8,14 +8,14 @@ import de.thatsich.intellie.common.module.IModule;
 import de.thatsich.intellie.common.registries.RegistryModule;
 
 /**
- * @author thatsIch
- * @since 20.03.2014.
- */
+ @author thatsIch
+ @since 20.03.2014. */
 @Module(
 		library = true,
 		complete = false,
 		includes = {
 				AppliedAerodynamicsCreativeTabModule.class, AppliedAerodynamicsDecorativeModule.class, AppliedAerodynamicsFunctionalityModule.class, RegistryModule.class
 		})
-public class AppliedAerodynamicsModule implements IModule {
+public class AppliedAerodynamicsModule implements IModule
+{
 }

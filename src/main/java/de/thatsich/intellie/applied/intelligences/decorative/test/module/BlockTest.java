@@ -9,7 +9,7 @@ import javax.inject.Inject;
 public class BlockTest //extends ABlock
 {
 	@Inject
-	public BlockTest ( BlockInfoTest info, BlockConfigTest config, BlockTextureTest texture )
+	public BlockTest( BlockInfoTest info, BlockConfigTest config, BlockTextureTest texture )
 	{
 		//		super( info, config, texture );
 	}

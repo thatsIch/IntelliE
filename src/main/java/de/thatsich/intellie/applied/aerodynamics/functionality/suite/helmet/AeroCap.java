@@ -9,7 +9,7 @@ import net.minecraft.item.ItemArmor;
  @since 30.03.2014. */
 public class AeroCap extends AItemArmor implements IInstantiate
 {
-	public AeroCap ( final ItemArmor.ArmorMaterial material, final int renderIndex, final int armorType )
+	public AeroCap( final ItemArmor.ArmorMaterial material, final int renderIndex, final int armorType )
 	{
 		super( material, renderIndex, armorType );
 	}

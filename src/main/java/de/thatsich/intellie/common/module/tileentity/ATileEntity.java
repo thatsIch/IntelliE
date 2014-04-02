@@ -9,7 +9,7 @@ public abstract class ATileEntity extends TileEntity implements ITileEntity
 	private final String key;
 	private final String tileEntityID;
 
-	protected ATileEntity ( String category, String key, String tileEntityID )
+	protected ATileEntity( String category, String key, String tileEntityID )
 	{
 		super();
 		this.category = category;
@@ -17,11 +17,11 @@ public abstract class ATileEntity extends TileEntity implements ITileEntity
 		this.tileEntityID = tileEntityID;
 	}
 
-	public String getCategory () { return this.category; }
+	public String getCategory() { return this.category; }
 
-	public String getKey () { return this.key; }
+	public String getKey() { return this.key; }
 
-	public String getTileEntityID () { return this.tileEntityID; }
+	public abstract void register( final Configuration config );
 
-	public abstract void register ( final Configuration config );
+	public String getTileEntityID() { return this.tileEntityID; }
 }

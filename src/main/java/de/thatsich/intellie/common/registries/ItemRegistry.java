@@ -11,38 +11,42 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 /**
- * Handles registration of items
- *
- * @author thatsIch
- * @since 25.02.14.
- */
+ Handles registration of items
+
+ @author thatsIch
+ @since 25.02.14. */
 @Singleton
-public class ItemRegistry implements IRegistry<IItem> {
+public class ItemRegistry implements IRegistry<IItem>
+{
 	private final ILog log;
 	private final Collection<IItem> items;
 
 	/**
-	 * @param log Log
+	 @param log Log
 	 */
 	@Inject
-	ItemRegistry(final ILog log) {
+	ItemRegistry( final ILog log )
+	{
 		this.log = log;
 		this.items = new LinkedList<>();
 	}
 
 	@Override
-	public void add(final IItem item) {
-		this.items.add(item);
-		this.log.debug("Added Item %s.", item);
+	public void add( final IItem item )
+	{
+		this.items.add( item );
+		this.log.debug( "Added Item %s.", item );
 	}
 
 	@Override
-	public void register() {
-		for (final IItem item : this.items) {
+	public void register()
+	{
+		for( final IItem item : this.items )
+		{
 			final String unlocalizedName = item.getUnlocalizedName();
-			GameRegistry.registerItem((Item) item, unlocalizedName);
-			this.log.debug("Registered Item %s with %s", item, unlocalizedName);
+			GameRegistry.registerItem( (Item) item, unlocalizedName );
+			this.log.debug( "Registered Item %s with %s", item, unlocalizedName );
 		}
-		this.log.info("Registering all Items.");
+		this.log.info( "Registering all Items." );
 	}
 }

@@ -9,7 +9,7 @@ import net.minecraft.item.ItemArmor;
  @since 30.03.2014. */
 public class AeroBoots extends AItemArmor implements IInstantiate
 {
-	public AeroBoots ( final ItemArmor.ArmorMaterial material, final int renderIndex, final int armorType )
+	public AeroBoots( final ItemArmor.ArmorMaterial material, final int renderIndex, final int armorType )
 	{
 		super( material, renderIndex, armorType );
 	}

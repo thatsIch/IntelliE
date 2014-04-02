@@ -9,18 +9,20 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
- * @author thatsIch
- * @since 24.03.2014.
- */
+ @author thatsIch
+ @since 24.03.2014. */
 @Singleton
-public class AppliedAerodynamicsCreativeTab extends CreativeTabs implements IInstantiate {
+public class AppliedAerodynamicsCreativeTab extends CreativeTabs implements IInstantiate
+{
 	@Inject
-	public AppliedAerodynamicsCreativeTab() {
-		super("appliedAerodynamicsTab");
+	public AppliedAerodynamicsCreativeTab()
+	{
+		super( "appliedAerodynamicsTab" );
 	}
 
 	@Override
-	public Item getTabIconItem() {
+	public Item getTabIconItem()
+	{
 		// TODO change to correct item or use ItemStack function
 		return Items.spider_eye;
 	}

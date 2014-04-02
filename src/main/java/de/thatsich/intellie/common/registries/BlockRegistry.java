@@ -24,34 +24,34 @@ public class BlockRegistry implements IRegistry<IBlock>
 	private final ILog log;
 
 	@Inject
-	public BlockRegistry ( final ILog log )
+	public BlockRegistry( final ILog log )
 	{
 		this.log = log;
-		this.blocks = new LinkedList<> ();
+		this.blocks = new LinkedList<>();
 	}
 
-	public void loadConfig ( final Configuration config )
+	public void loadConfig( final Configuration config )
 	{
-		this.log.info ( "Loaded Configuration %s", config );
+		this.log.info( "Loaded Configuration %s", config );
 	}
 
 	@Override
-	public void add ( final IBlock block )
+	public void add( final IBlock block )
 	{
-		this.blocks.add ( block );
+		this.blocks.add( block );
 		this.log.info( "Added Block %s : %s", block, block.getUnlocalizedName() );
 	}
 
 	@Override
-	public void register ()
+	public void register()
 	{
-		for ( IBlock block : this.blocks )
+		for( IBlock block : this.blocks )
 		{
 			ABlock concreteBlock = (ABlock) block;
-			final String unlocalizedName = concreteBlock.getUnlocalizedName ();
-			GameRegistry.registerBlock ( concreteBlock, unlocalizedName );
-			this.log.debug ( "Registered block with %s, %s", block, unlocalizedName );
+			final String unlocalizedName = concreteBlock.getUnlocalizedName();
+			GameRegistry.registerBlock( concreteBlock, unlocalizedName );
+			this.log.debug( "Registered block with %s, %s", block, unlocalizedName );
 		}
-		this.log.info ( "Finished registering Blocks and BlockContainer." );
+		this.log.info( "Finished registering Blocks and BlockContainer." );
 	}
 }

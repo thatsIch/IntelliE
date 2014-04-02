@@ -8,13 +8,14 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
- * @author thatsIch
- * @since 20.03.2014.
- */
+ @author thatsIch
+ @since 20.03.2014. */
 @Singleton
-public class AeroChest extends AItemArmor implements IInstantiate {
+public class AeroChest extends AItemArmor implements IInstantiate
+{
 	@Inject
-	public AeroChest() {
-		super(ItemArmor.ArmorMaterial.DIAMOND, 0, 0);
+	public AeroChest()
+	{
+		super( ItemArmor.ArmorMaterial.DIAMOND, 0, 0 );
 	}
 }

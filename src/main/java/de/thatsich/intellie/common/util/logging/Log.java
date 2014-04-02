@@ -18,7 +18,7 @@ public class Log implements ILog
 	 Constructor either only be injected or tested
 	 thus package private
 	 */
-	public Log ( String name )
+	public Log( String name )
 	{
 		this.name = name;
 	}
@@ -27,7 +27,7 @@ public class Log implements ILog
 	 Dagger CTOR
 	 */
 	@Inject
-	Log () { this.name = ""; }
+	Log() { this.name = ""; }
 
 	/**
 	 Information
@@ -36,7 +36,7 @@ public class Log implements ILog
 	 @param data   Input into formated String
 	 */
 	@Override
-	public void info ( String format, Object... data )
+	public void info( String format, Object... data )
 	{
 		this.logging( Level.INFO, format, data );
 	}
@@ -48,7 +48,7 @@ public class Log implements ILog
 	 @param data   Input into formated String
 	 */
 	@Override
-	public void warn ( String format, Object... data )
+	public void warn( String format, Object... data )
 	{
 		this.logging( Level.WARN, format, data );
 	}
@@ -60,7 +60,7 @@ public class Log implements ILog
 	 @param data   Input into formated String
 	 */
 	@Override
-	public void debug ( String format, Object... data )
+	public void debug( String format, Object... data )
 	{
 		this.logging( Level.DEBUG, format, data );
 	}
@@ -71,7 +71,7 @@ public class Log implements ILog
 	 @param exception thrown exception
 	 */
 	@Override
-	public void trace ( Throwable exception )
+	public void trace( Throwable exception )
 	{
 		final String message = exception.getMessage();
 		this.severe( "Exception: %s", message );
@@ -85,7 +85,7 @@ public class Log implements ILog
 	 @param data   Input into formated String
 	 */
 	@Override
-	public void severe ( String format, Object... data )
+	public void severe( String format, Object... data )
 	{
 		this.logging( Level.FATAL, format, data );
 	}
@@ -97,7 +97,7 @@ public class Log implements ILog
 	 @param format formated String
 	 @param data   Input into formated String
 	 */
-	private void logging ( Level level, String format, Object... data )
+	private void logging( Level level, String format, Object... data )
 	{
 		FMLRelaunchLog.log( this.name, level, format, data );
 	}

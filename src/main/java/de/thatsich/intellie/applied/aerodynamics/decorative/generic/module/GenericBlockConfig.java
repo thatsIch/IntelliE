@@ -6,14 +6,15 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
- * @author thatsIch
- * @since 01.04.2014.
- */
+ @author thatsIch
+ @since 01.04.2014. */
 @Singleton
-public class GenericBlockConfig extends ABlockConfig {
+public class GenericBlockConfig extends ABlockConfig
+{
 
 	@Inject
-	GenericBlockConfig() {
-		super("blub");
+	GenericBlockConfig()
+	{
+		super( "blub" );
 	}
 }

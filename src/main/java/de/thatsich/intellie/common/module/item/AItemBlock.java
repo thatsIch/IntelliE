@@ -6,7 +6,7 @@ import net.minecraft.item.ItemBlock;
 
 public class AItemBlock extends ItemBlock implements IItemBlock
 {
-	public AItemBlock ( AItemInfo info, AItemConfig config, AItemRecipe recipe )
+	public AItemBlock( AItemInfo info, AItemConfig config, AItemRecipe recipe )
 	{
 		super( Blocks.dirt );
 	}

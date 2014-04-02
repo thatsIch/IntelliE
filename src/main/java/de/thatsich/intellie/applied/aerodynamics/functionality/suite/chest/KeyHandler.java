@@ -7,21 +7,24 @@ import net.minecraft.client.settings.KeyBinding;
 import org.lwjgl.input.Keyboard;
 
 /**
- * @author thatsIch
- * @since 26.03.2014.
- */
-public class KeyHandler {
+ @author thatsIch
+ @since 26.03.2014. */
+public class KeyHandler
+{
 	private static final int FLY_KEY = Keyboard.KEY_G;
-	private static final KeyBinding BINDING = new KeyBinding("description", KeyHandler.FLY_KEY, "FLY_KEY.category");
+	private static final KeyBinding BINDING = new KeyBinding( "description", KeyHandler.FLY_KEY, "FLY_KEY.category" );
 
-	public KeyHandler() {
-		ClientRegistry.registerKeyBinding(KeyHandler.BINDING);
+	public KeyHandler()
+	{
+		ClientRegistry.registerKeyBinding( KeyHandler.BINDING );
 	}
 
 	@SubscribeEvent
-	public void onKeyInput(InputEvent.KeyInputEvent event) {
-		if (KeyHandler.BINDING.isPressed()) {
-			System.out.println("PRESSED");
+	public void onKeyInput( InputEvent.KeyInputEvent event )
+	{
+		if( KeyHandler.BINDING.isPressed() )
+		{
+			System.out.println( "PRESSED" );
 			//			AppliedAerodynamics.packetPipeline.sendToServer( new FlyPacket() );
 		}
 	}

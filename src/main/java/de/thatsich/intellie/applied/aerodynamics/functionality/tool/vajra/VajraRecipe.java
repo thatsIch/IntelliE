@@ -6,31 +6,35 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 
 /**
- * @author thatsIch
- * @since 30.03.2014.
- */
-public class VajraRecipe implements IRecipe {
+ @author thatsIch
+ @since 30.03.2014. */
+public class VajraRecipe implements IRecipe
+{
 	@Override
-	public boolean matches(final InventoryCrafting var1, final World world) {
+	public boolean matches( final InventoryCrafting var1, final World world )
+	{
 		return true;
 	}
 
 	@Override
-	public ItemStack getCraftingResult(final InventoryCrafting inv) {
+	public ItemStack getCraftingResult( final InventoryCrafting inv )
+	{
 		final String inventoryName = inv.getInventoryName();
 		//		inv.get
-		System.out.println("inventoryName = " + inventoryName);
+		System.out.println( "inventoryName = " + inventoryName );
 
 		return null;
 	}
 
 	@Override
-	public int getRecipeSize() {
+	public int getRecipeSize()
+	{
 		return 9;
 	}
 
 	@Override
-	public ItemStack getRecipeOutput() {
+	public ItemStack getRecipeOutput()
+	{
 		return null;
 	}
 }

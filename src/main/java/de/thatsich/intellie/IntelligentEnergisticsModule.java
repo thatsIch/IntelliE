@@ -6,17 +6,17 @@ import de.thatsich.intellie.applied.agricultures.AppliedAgriculturesModule;
 import de.thatsich.intellie.applied.intelligences.AppliedIntelligencesModule;
 
 /**
- * Not getting used
- * Its just there to make use of the compile time verification of Dagger
- *
- * @author thatsIch
- * @since 24.03.2014.
- */
+ Not getting used
+ Its just there to make use of the compile time verification of Dagger
+
+ @author thatsIch
+ @since 24.03.2014. */
 @Module(
-        includes = {
-                AppliedAerodynamicsModule.class, AppliedAgriculturesModule.class, AppliedIntelligencesModule.class
-        },
-        library = true,
-        complete = false)
-public class IntelligentEnergisticsModule {
+		includes = {
+				AppliedAerodynamicsModule.class, AppliedAgriculturesModule.class, AppliedIntelligencesModule.class
+		},
+		library = true,
+		complete = false)
+public class IntelligentEnergisticsModule
+{
 }

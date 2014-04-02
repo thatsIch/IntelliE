@@ -9,25 +9,27 @@ import net.minecraftforge.common.config.Configuration;
 import javax.inject.Singleton;
 
 /**
- * @author thatsIch
- * @since 05.03.14.
- */
+ @author thatsIch
+ @since 05.03.14. */
 @Module(
-        injects = {
-                Registries.class
-        },
-        library = true,
-        complete = false)
-public class RegistryModule implements IModule {
-    private final Configuration config;
+		injects = {
+				Registries.class
+		},
+		library = true,
+		complete = false)
+public class RegistryModule implements IModule
+{
+	private final Configuration config;
 
-    public RegistryModule(final Configuration config) {
-        this.config = config;
-    }
+	public RegistryModule( final Configuration config )
+	{
+		this.config = config;
+	}
 
-    @Provides
-    @Singleton
-    public ConfigRegistry provideConfigRegistry(final ILog log) {
-        return new ConfigRegistry(log, this.config);
-    }
+	@Provides
+	@Singleton
+	public ConfigRegistry provideConfigRegistry( final ILog log )
+	{
+		return new ConfigRegistry( log, this.config );
+	}
 }
