@@ -58,6 +58,7 @@ public class AppliedAerodynamics extends ABaseMod
 		GameRegistry.addRecipe( result, "xxx", "x x", "xxx", 'x', stone );
 //		GameRegistry.addRecipe(new VajraRecipe());
 		// IREcipe mal angucken
+//		ClientRegistry.registerKeyBinding(  );
 		FMLCommonHandler.instance().bus().register( new KeyHandler() );
 	}
 
