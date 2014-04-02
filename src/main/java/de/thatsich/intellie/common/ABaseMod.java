@@ -31,7 +31,7 @@ import java.util.LinkedList;
 public abstract class ABaseMod implements IEventProxy
 {
 	// Log
-	final ILog log;
+	private final ILog log;
 	// Injector
 	private final ObjectGraph injector;
 	// Registries
