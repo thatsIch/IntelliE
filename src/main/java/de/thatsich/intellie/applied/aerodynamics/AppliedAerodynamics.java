@@ -40,6 +40,8 @@ public class AppliedAerodynamics extends ABaseMod
 	{
 		super.preInit( event );
 
+		System.out.println( "Props: " + event.getVersionProperties() );
+
 		//		AppliedAerodynamics.ITEM_AERO_CHEST
 
 		GameRegistry.registerItem( AppliedAerodynamics.ITEM_GRAVI_CHEST_PLATE, AppliedAerodynamics.ITEM_GRAVI_CHEST_PLATE.getUnlocalizedName() );
