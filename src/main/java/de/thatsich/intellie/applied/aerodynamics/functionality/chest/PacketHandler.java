@@ -11,7 +11,6 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 
 import java.util.EnumMap;
 
@@ -80,7 +79,7 @@ public enum PacketHandler
 		msg.y = tileEntityIronChest.yCoord;
 		msg.z = tileEntityIronChest.zCoord;
 		msg.facing = tileEntityIronChest.getFacing();
-		msg.items = tileEntityIronChest.buildIntDataList();
+//		msg.items = tileEntityIronChest.buildIntDataList();
 		return INSTANCE.channels.get( Side.SERVER ).generatePacketFrom( msg );
 	}
 
@@ -96,14 +95,14 @@ public enum PacketHandler
 		@Override
 		protected void channelRead0( ChannelHandlerContext ctx, IronChestMessage msg ) throws Exception
 		{
-			World world = IronChest.proxy.getClientWorld();
-			TileEntity te = world.getTileEntity( msg.x, msg.y, msg.z );
-			if( te instanceof ChestTileEntity )
-			{
-				ChestTileEntity icte = (ChestTileEntity) te;
-				icte.setFacing( msg.facing );
-				icte.handlePacketData( msg.items );
-			}
+//			World world = IronChest.proxy.getClientWorld();
+//			TileEntity te = world.getTileEntity( msg.x, msg.y, msg.z );
+//			if( te instanceof ChestTileEntity )
+//			{
+//				ChestTileEntity icte = (ChestTileEntity) te;
+//				icte.setFacing( msg.facing );
+//				icte.handlePacketData( msg.items );
+//			}
 		}
 	}
 

@@ -2,7 +2,6 @@ package de.thatsich.intellie.applied.aerodynamics;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -20,18 +19,18 @@ import net.minecraft.item.ItemStack;
 /**
  @author thatsIch
  @since 16.03.14. */
-@Mod(
-		modid = "appaero",
-		name = "AppliedAerodynamics",
-		version = "${version}",
-		dependencies = "required-after:Forge@[7.0,);required-after:FML@[5.0.5,) ;after:appliedenergistics2")
+//@Mod(
+//		modid = "appaero",
+//		name = "AppliedAerodynamics",
+//		version = "${version}",
+//		dependencies = "required-after:Forge@[7.0,);required-after:FML@[5.0.5,) ;after:appliedenergistics2")
 public class AppliedAerodynamics extends ABaseMod
 {
 	public static final ItemArmor ITEM_GRAVI_CHEST_PLATE = new ItemGraviChestPlate( ItemArmor.ArmorMaterial.DIAMOND, 1, 1 );
 	public static final Item ITEM_VAJRA = new ItemVajra();
 	//	public static ItemArmor ITEM_AERO_CHEST;
 
-	@SidedProxy(clientSide = "de.thatsich.intellie.applied.aerodynamics.common.proxies.ClientProxy", serverSide = "de.thatsich.intellie.applied.aerodynamics.common.proxies.CommonProxy")
+	//	@SidedProxy(clientSide = "de.thatsich.intellie.applied.aerodynamics.common.proxies.ClientProxy", serverSide = "de.thatsich.intellie.applied.aerodynamics.common.proxies.CommonProxy")
 	public static ICommonProxy s_proxy;
 
 	@Override
