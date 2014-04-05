@@ -1,5 +1,5 @@
 apply plugin: 'forge'   // forge tasks
-apply plugin: 'java'    // enables sourcesets
+//apply plugin: 'java'    // enables sourcesets
 apply plugin: 'idea'    // enable automatic setup of idea workspace
 apply plugin: 'scala'   // enable scala
 
@@ -45,6 +45,7 @@ sourceSets {
 	}
 }
 
+// resulting file with <archivesBaseName>-<version>-<classifier>
 jar {
 	classifier = "universal"
 	version = "${project.minecraft.version}-${project.version}"
