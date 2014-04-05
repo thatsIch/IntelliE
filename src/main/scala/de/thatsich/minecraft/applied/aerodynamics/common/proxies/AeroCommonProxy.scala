@@ -10,5 +10,13 @@ import de.thatsich.minecraft.common.ICommonProxy
  */
 class AeroCommonProxy extends ICommonProxy
 {
+	def initSounds()
+	{
 
+	}
+
+	def initRenders()
+	{
+
+	}
 }

@@ -1,9 +1,9 @@
 package de.thatsich.minecraft.applied.aerodynamics
 
 import cpw.mods.fml.common.{SidedProxy, Optional, Mod}
-import de.thatsich.minecraft.applied.aerodynamics.common.TAALog
+import de.thatsich.minecraft.applied.aerodynamics.common.TAppliedAerodynamicsLog
 import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
-import de.thatsich.intellie.common.util.ICommonProxy
+import de.thatsich.minecraft.common.ICommonProxy
 
 /**
  *
@@ -18,7 +18,7 @@ import de.thatsich.intellie.common.util.ICommonProxy
 	dependencies = "required-after:intellie",
 	modLanguage = "scala"
 )
-object AppliedAerodynamics extends TAALog
+object AppliedAerodynamics extends TAppliedAerodynamicsLog
 {
 	@SidedProxy(
 		modId = "appaero",
