@@ -1,8 +1,6 @@
-apply plugin: 'forge'    // forge tasks
+apply plugin: 'forge'   // forge tasks
 apply plugin: 'java'    // enables sourcesets
 apply plugin: 'idea'    // enable automatic setup of idea workspace
-apply plugin: 'shadow'  // enables shadow
-apply plugin: 'apt'     // enable annotation preprocessor
 apply plugin: 'scala'   // enable scala
 
 apply from: 'gradle/scripts/versioning.gradle'
@@ -17,13 +15,12 @@ version = project.ext.version.toString()
 // needed for pulling new versions from forge
 minecraft {
 	version = "1.7.2-10.12.0.1048"
-	assetDir = "../.idea/assets"
+	assetDir = "out/assets"
 }
 
 buildscript {
 	repositories {
 		mavenCentral()
-		jcenter()
 		maven {
 			name = "forge"
 			url = "http://files.minecraftforge.net/maven"
@@ -32,26 +29,10 @@ buildscript {
 			name = "sonatype"
 			url = "https://oss.sonatype.org/content/repositories/snapshots/"
 		}
-		maven {
-			name = "shadow-repo"
-			url = "http://dl.bintray.com/content/johnrengelman/gradle-plugins/"
-		}
 	}
 	dependencies {
 		classpath "net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT"
-		classpath "com.github.jengelman.gradle.plugins:shadow:0.8"
-		classpath "com.squareup.dagger:dagger-compiler:1.2.1"
-		classpath "com.jimdo.gradle:gradle-apt-plugin:0.2-SNAPSHOT"
 	}
-}
-
-configurations {
-	apt
-}
-
-dependencies {
-	apt "com.squareup.dagger:dagger-compiler:1.2.1"
-	compile "com.squareup.dagger:dagger:1.2.1"
 }
 
 // exclude layers and integration of (AE2)
@@ -64,17 +45,9 @@ sourceSets {
 	}
 }
 
-// Ship specific libs with it
-shadow {
-	artifactSet {
-		include 'de.thatsich.intellie'
-		include 'com.squareup.dagger'
-		include 'javax.inject'
-	}
-
-	// The resulting file is named <projectname>-<mcversion>-<version>-universal.jar
-	baseName = "${archivesBaseName}-${project.minecraft.version}"
+jar {
 	classifier = "universal"
+	version = "${project.minecraft.version}-${project.version}"
 }
 
 // disable Ant from scala compiling
