@@ -1,12 +1,12 @@
 package de.thatsich.minecraft.common
 
 import cpw.mods.fml.common.{ModContainer, Loader}
-import de.thatsich.minecraft.intellie.common.TIELog
+import de.thatsich.minecraft.intellie.common.TIntelligentEnergisticsLog
 import java.lang.reflect.Field
 import com.google.common.collect.{ImmutableMap, ImmutableList}
 import scala.collection.JavaConverters._
 
-trait TModUnloader extends TIELog
+trait TModUnloader extends TIntelligentEnergisticsLog
 {
 	def unload(id: String)
 	{
