@@ -25,9 +25,9 @@ object IntelligentEnergistics extends TIELog with TModUnloader
 	private val modName = this.getClass.getSimpleName
 	private val configPath = Joiner.on(File.separatorChar).join("config", "AppliedEnergistics2", "IntelliE", this.modName + ".cfg")
 	private val config = new Config(this.configPath)
-	private val loadAero = this.config.getBoolean("ChildMods", "AppliedAerodynamics", defaultValue = true)
-	private val loadAgro = this.config.getBoolean("ChildMods", "AppliedAgricultures", defaultValue = true)
-	private val loadInt = this.config.getBoolean("ChildMods", "AppliedIntelligences", defaultValue = true)
+	private val loadAero = this.config.getBoolean("ChildMods", "enableAppliedAerodynamics", defaultValue = true)
+	private val loadAgro = this.config.getBoolean("ChildMods", "enableAppliedAgricultures", defaultValue = true)
+	private val loadInt = this.config.getBoolean("ChildMods", "enableAppliedIntelligences", defaultValue = true)
 
 	if( !loadAero ) this.unload("appaero")
 	if( !loadAgro ) this.unload("appagri")
