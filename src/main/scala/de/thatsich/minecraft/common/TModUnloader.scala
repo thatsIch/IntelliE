@@ -1,10 +1,11 @@
 package de.thatsich.minecraft.common
 
-import cpw.mods.fml.common.{ModContainer, Loader}
+import cpw.mods.fml.common.{LoadController, ModContainer, Loader}
 import de.thatsich.minecraft.intellie.common.TIntelligentEnergisticsLog
 import java.lang.reflect.Field
 import com.google.common.collect.{ImmutableMap, ImmutableList}
 import scala.collection.JavaConverters._
+import java.util
 
 trait TModUnloader extends TIntelligentEnergisticsLog
 {
@@ -16,15 +17,21 @@ trait TModUnloader extends TIntelligentEnergisticsLog
 
 			val modsField = this.grantFieldAccess(classOf[ Loader ], "mods")
 			val namedModsField = this.grantFieldAccess(classOf[ Loader ], "namedMods")
+			val modControllerField = this.grantFieldAccess(classOf[ Loader ], "modController")
+			val activeModListField = this.grantFieldAccess(classOf[ LoadController ], "activeModList")
 
 			val mods = modsField.get(loader).asInstanceOf[ ImmutableList[ ModContainer ] ].asScala.to[ List ]
 			val namedMods = namedModsField.get(loader).asInstanceOf[ ImmutableMap[ String, ModContainer ] ].asScala.toMap
+			val modController = modControllerField.get(loader).asInstanceOf[ LoadController ]
+			val activeModList = activeModListField.get(modController).asInstanceOf[ util.ArrayList[ ModContainer ] ].asScala.to[ List ]
 
 			val modsWithoutID = this.removeFromImmutableList(mods, id)
 			val nameModsWithoutID = this.removeFromImmutableMap(namedMods, id)
+			val activeModListWithoutID = this.removeFromImmutableList(activeModList, id)
 
 			modsField.set(loader, modsWithoutID.asJava)
 			namedModsField.set(loader, nameModsWithoutID.asJava)
+			activeModListField.set(modController, activeModListWithoutID.asJava)
 		}
 	}
 

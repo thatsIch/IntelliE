@@ -17,5 +17,4 @@ import cpw.mods.fml.common.Mod
 )
 object AppliedIntelligences
 {
-
 }

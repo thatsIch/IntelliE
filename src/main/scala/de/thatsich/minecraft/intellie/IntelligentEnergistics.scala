@@ -20,6 +20,10 @@ import de.thatsich.minecraft.common.TModUnloader
 )
 object IntelligentEnergistics extends TIntelligentEnergisticsLog with TModUnloader with TIntelligentEnergisticsConfig
 {
+	this.unload("appaero", this.disableAero)
+	this.unload("appagri", this.disableAgro)
+	this.unload("appint", this.disableInt)
+
 	@Mod.EventHandler def preInit(event: FMLPreInitializationEvent)
 	{
 		this.log.info("PreInit Start")

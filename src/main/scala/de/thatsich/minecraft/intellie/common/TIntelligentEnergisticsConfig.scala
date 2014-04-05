@@ -16,13 +16,9 @@ trait TIntelligentEnergisticsConfig
 	private val configPath = Joiner.on(File.separatorChar).join("config", "AppliedEnergistics2", "IntelliE", this.modName + ".cfg")
 	private val config = new Config(this.configPath)
 
-	private val disableAero = this.config.getBoolean("ChildMods", "disableAppliedAerodynamics", defaultValue = false)
-	private val disableAgro = this.config.getBoolean("ChildMods", "disableAppliedAgricultures", defaultValue = false)
-	private val disableInt = this.config.getBoolean("ChildMods", "disableAppliedIntelligences", defaultValue = false)
-
-	this.unload("appaero", this.disableAero)
-	this.unload("appagri", this.disableAgro)
-	this.unload("appint", this.disableInt)
+	protected val disableAero = this.config.getBoolean("ChildMods", "disableAppliedAerodynamics", defaultValue = false)
+	protected val disableAgro = this.config.getBoolean("ChildMods", "disableAppliedAgricultures", defaultValue = false)
+	protected val disableInt = this.config.getBoolean("ChildMods", "disableAppliedIntelligences", defaultValue = false)
 
 	this.config.save()
 }
