@@ -14,7 +14,7 @@ version = project.ext.version.toString()
 
 // needed for pulling new versions from forge
 minecraft {
-	version = "1.7.2-10.12.0.1048"
+	version = "1.7.2-10.12.0.1054"
 	assetDir = "out/assets"
 }
 
@@ -33,6 +33,10 @@ buildscript {
 	dependencies {
 		classpath "net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT"
 	}
+}
+
+dependencies {
+	compile "com.google.code.findbugs:jsr305:2.0.3"
 }
 
 // exclude layers and integration of (AE2)
