@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.applied.energistics
+package de.thatsich.minecraft.applied.intelligences
 
 import cpw.mods.fml.common.Mod
 
