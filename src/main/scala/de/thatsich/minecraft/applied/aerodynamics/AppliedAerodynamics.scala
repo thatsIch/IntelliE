@@ -1,8 +1,9 @@
 package de.thatsich.minecraft.applied.aerodynamics
 
-import cpw.mods.fml.common.{Optional, Mod}
+import cpw.mods.fml.common.{SidedProxy, Optional, Mod}
 import de.thatsich.minecraft.applied.aerodynamics.common.TAALog
 import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
+import de.thatsich.intellie.common.util.ICommonProxy
 
 /**
  *
@@ -19,6 +20,13 @@ import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationE
 )
 object AppliedAerodynamics extends TAALog
 {
+	@SidedProxy(
+		modId = "appaero",
+		clientSide = "de.thatsich.minecraft.applied.aerodynamics.common.proxies.AeroClientProxy",
+		serverSide = "de.thatsich.minecraft.applied.aerodynamics.common.proxies.AeroCommonProxy"
+	)
+	var s_proxy: ICommonProxy = null
+
 	@Optional.Method(modid = "appaero")
 	@Mod.EventHandler def preInit(event: FMLPreInitializationEvent)
 	{

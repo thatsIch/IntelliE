@@ -23,7 +23,6 @@ import com.google.common.base.Joiner
 object IntelligentEnergistics extends TIELog with TModUnloader
 {
 	private val modName = this.getClass.getSimpleName
-
 	private val configPath = Joiner.on(File.separatorChar).join("config", "AppliedEnergistics2", "IntelliE", this.modName + ".cfg")
 	private val config = new Config(this.configPath)
 	private val loadAero = this.config.getBoolean("ChildMods", "AppliedAerodynamics", defaultValue = true)
