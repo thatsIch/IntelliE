@@ -8,21 +8,24 @@ import scala.collection.JavaConverters._
 
 trait TModUnloader extends TIntelligentEnergisticsLog
 {
-	def unload(id: String)
+	def unload(id: String, disableModule: Boolean)
 	{
-		val loader = Loader.instance()
+		if( disableModule )
+		{
+			val loader = Loader.instance()
 
-		val modsField = this.grantFieldAccess(classOf[ Loader ], "mods")
-		val namedModsField = this.grantFieldAccess(classOf[ Loader ], "namedMods")
+			val modsField = this.grantFieldAccess(classOf[ Loader ], "mods")
+			val namedModsField = this.grantFieldAccess(classOf[ Loader ], "namedMods")
 
-		val mods = modsField.get(loader).asInstanceOf[ ImmutableList[ ModContainer ] ].asScala.to[ List ]
-		val namedMods = namedModsField.get(loader).asInstanceOf[ ImmutableMap[ String, ModContainer ] ].asScala.toMap
+			val mods = modsField.get(loader).asInstanceOf[ ImmutableList[ ModContainer ] ].asScala.to[ List ]
+			val namedMods = namedModsField.get(loader).asInstanceOf[ ImmutableMap[ String, ModContainer ] ].asScala.toMap
 
-		val modsWithoutID = this.removeFromImmutableList(mods, id)
-		val nameModsWithoutID = this.removeFromImmutableMap(namedMods, id)
+			val modsWithoutID = this.removeFromImmutableList(mods, id)
+			val nameModsWithoutID = this.removeFromImmutableMap(namedMods, id)
 
-		modsField.set(loader, modsWithoutID.asJava)
-		namedModsField.set(loader, nameModsWithoutID.asJava)
+			modsField.set(loader, modsWithoutID.asJava)
+			namedModsField.set(loader, nameModsWithoutID.asJava)
+		}
 	}
 
 	private def grantFieldAccess(clazz: Class[ _ ], fieldName: String): Field =
