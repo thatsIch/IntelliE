@@ -1,9 +1,10 @@
 package de.thatsich.minecraft.applied.aerodynamics
 
 import cpw.mods.fml.common.{SidedProxy, Optional, Mod}
-import de.thatsich.minecraft.applied.aerodynamics.common.TAppliedAerodynamicsLog
+import de.thatsich.minecraft.applied.aerodynamics.common.OAppliedAerodynamicsLog
 import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
-import de.thatsich.minecraft.common.{Log, ICommonProxy}
+import de.thatsich.minecraft.common.{ABaseMod, ICommonProxy}
+import de.thatsich.minecraft.common.logger.ILog
 
 /**
  *
@@ -18,10 +19,8 @@ import de.thatsich.minecraft.common.{Log, ICommonProxy}
 	dependencies = "required-after:intellie",
 	modLanguage = "scala"
 )
-object AppliedAerodynamics extends TAppliedAerodynamicsLog
+object AppliedAerodynamics extends ABaseMod(OAppliedAerodynamicsLog)
 {
-	implicit override val log: Log = this.log
-
 	@SidedProxy(
 		modId = "appaero",
 		clientSide = "de.thatsich.minecraft.applied.aerodynamics.common.proxies.AeroClientProxy",

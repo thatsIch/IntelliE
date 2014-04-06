@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.common.registries
 
 import scala.collection.mutable
-import de.thatsich.minecraft.common.Log
+import de.thatsich.minecraft.common.logger.ALog
 
 /**
  *
@@ -13,7 +13,7 @@ abstract class ARegistry[ T ] extends IRegistry[ T ]
 {
 	protected val set: mutable.Queue[ T ] = new mutable.Queue[ T ]()
 
-	def add(elem: T)(implicit log: Log)
+	def add(elem: T)(implicit log: ALog)
 	{
 		this.set += elem
 		log.info("Queued " + elem + " for registration")

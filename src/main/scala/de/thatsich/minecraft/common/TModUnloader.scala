@@ -1,13 +1,12 @@
 package de.thatsich.minecraft.common
 
 import cpw.mods.fml.common.{LoadController, ModContainer, Loader}
-import de.thatsich.minecraft.intellie.common.TIntelligentEnergisticsLog
 import java.lang.reflect.Field
 import com.google.common.collect.{ImmutableMap, ImmutableList}
 import scala.collection.JavaConverters._
 import java.util
 
-trait TModUnloader extends TIntelligentEnergisticsLog
+trait TModUnloader
 {
 	def unload(id: String, disableModule: Boolean)
 	{
@@ -39,24 +38,17 @@ trait TModUnloader extends TIntelligentEnergisticsLog
 	{
 		val field = clazz.getDeclaredField(fieldName)
 		field.setAccessible(true)
-		this.log.info("Granted Access to Field " + fieldName + " of " + clazz.getSimpleName)
 
 		field
 	}
 
 	private def removeFromImmutableList(list: List[ ModContainer ], elem: String): List[ ModContainer ] =
 	{
-		val removed = list.filter(_.getModId != elem)
-		this.log.info("Removed Mod %s: " + removed, elem)
-
-		removed
+		list.filter(_.getModId != elem)
 	}
 
 	private def removeFromImmutableMap(map: Map[ String, ModContainer ], key: String): Map[ String, ModContainer ] =
 	{
-		val removed = map - key
-		this.log.info("Removed ModName %s: " + removed, key)
-
-		removed
+		map - key
 	}
 }

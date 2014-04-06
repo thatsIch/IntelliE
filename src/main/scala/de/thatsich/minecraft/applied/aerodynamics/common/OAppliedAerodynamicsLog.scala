@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.common
+package de.thatsich.minecraft.applied.aerodynamics.common
 
 import de.thatsich.minecraft.common.logger.ALog
 
@@ -8,7 +8,7 @@ import de.thatsich.minecraft.common.logger.ALog
  * @author thatsIch
  * @since 06.04.2014.
  */
-object OIntelligentEnergisticsLog extends ALog("IE")
+object OAppliedAerodynamicsLog extends ALog("Aero")
 {
 
 }

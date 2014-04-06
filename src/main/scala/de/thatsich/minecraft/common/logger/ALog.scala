@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.common
+package de.thatsich.minecraft.common.logger
 
 import org.apache.logging.log4j.Level
 import cpw.mods.fml.relauncher.FMLRelaunchLog
@@ -9,7 +9,8 @@ import cpw.mods.fml.relauncher.FMLRelaunchLog
  * @author thatsIch
  * @since 04.04.2014.
  */
-private[ minecraft ] class Log(val id: String)
+abstract class ALog(val id: String)
+	extends ILog
 {
 	/**
 	Information
