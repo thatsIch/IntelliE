@@ -2,8 +2,8 @@ package de.thatsich.minecraft.intellie
 
 import cpw.mods.fml.common.Mod
 import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
-import de.thatsich.minecraft.intellie.common.{TIntelligentEnergisticsConfig, TIntelligentEnergisticsLog}
-import de.thatsich.minecraft.common.TModUnloader
+import de.thatsich.minecraft.intellie.common.{OIntelligentEnergisticsLog, TIntelligentEnergisticsConfig}
+import de.thatsich.minecraft.common.{ABaseMod, TModUnloader}
 
 /**
  *
@@ -18,7 +18,10 @@ import de.thatsich.minecraft.common.TModUnloader
 	dependencies = "required-after:Forge@[7.0,);required-after:FML@[5.0.5,);after:appliedenergistics2",
 	modLanguage = "scala"
 )
-object IntelligentEnergistics extends TIntelligentEnergisticsLog with TModUnloader with TIntelligentEnergisticsConfig
+object IntelligentEnergistics
+	extends ABaseMod(OIntelligentEnergisticsLog)
+	with TModUnloader
+	with TIntelligentEnergisticsConfig
 {
 	this.unload("appaero", this.disableAero)
 	this.unload("appagri", this.disableAgro)

@@ -6,9 +6,9 @@ import de.thatsich.minecraft.common.Log
  *
  *
  * @author thatsIch
- * @since 04.04.2014.
+ * @since 06.04.2014.
  */
-trait TIntelligentEnergisticsLog
+object OIntelligentEnergisticsLog extends Log("IE")
 {
-	protected val log = new Log("IE")
+
 }
