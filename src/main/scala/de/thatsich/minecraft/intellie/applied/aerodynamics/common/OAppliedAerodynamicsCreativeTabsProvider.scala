@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.applied.aerodynamics.common
+package de.thatsich.minecraft.intellie.applied.aerodynamics.common
 
 /**
  *

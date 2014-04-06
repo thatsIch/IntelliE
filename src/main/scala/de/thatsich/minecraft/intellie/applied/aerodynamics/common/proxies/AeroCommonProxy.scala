@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.applied.aerodynamics.common.proxies
+package de.thatsich.minecraft.intellie.applied.aerodynamics.common.proxies
 
 import de.thatsich.minecraft.common.ICommonProxy
 

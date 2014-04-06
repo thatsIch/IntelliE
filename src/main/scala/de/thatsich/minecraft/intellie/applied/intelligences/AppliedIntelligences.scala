@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.applied.intelligences
+package de.thatsich.minecraft.intellie.applied.intelligences
 
 import cpw.mods.fml.common.Mod
 

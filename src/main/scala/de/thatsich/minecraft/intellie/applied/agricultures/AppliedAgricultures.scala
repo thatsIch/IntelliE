@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.applied.agricultures
+package de.thatsich.minecraft.intellie.applied.agricultures
 
 import cpw.mods.fml.common.Mod
 

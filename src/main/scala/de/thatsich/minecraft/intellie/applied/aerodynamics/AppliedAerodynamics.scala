@@ -1,10 +1,9 @@
-package de.thatsich.minecraft.applied.aerodynamics
+package de.thatsich.minecraft.intellie.applied.aerodynamics
 
 import cpw.mods.fml.common.{SidedProxy, Optional, Mod}
-import de.thatsich.minecraft.applied.aerodynamics.common.OAppliedAerodynamicsLog
+import de.thatsich.minecraft.intellie.applied.aerodynamics.common.OAppliedAerodynamicsLog
 import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
 import de.thatsich.minecraft.common.{ABaseMod, ICommonProxy}
-import de.thatsich.minecraft.common.logger.ILog
 
 /**
  *
@@ -23,8 +22,8 @@ object AppliedAerodynamics extends ABaseMod(OAppliedAerodynamicsLog)
 {
 	@SidedProxy(
 		modId = "appaero",
-		clientSide = "de.thatsich.minecraft.applied.aerodynamics.common.proxies.AeroClientProxy",
-		serverSide = "de.thatsich.minecraft.applied.aerodynamics.common.proxies.AeroCommonProxy"
+		clientSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.common.proxies.AeroClientProxy",
+		serverSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.common.proxies.AeroCommonProxy"
 	)
 	var s_proxy: ICommonProxy = null
 

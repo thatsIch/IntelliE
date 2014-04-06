@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.applied.agricultures.functional.harvester
+package de.thatsich.minecraft.intellie.applied.agricultures.functional.harvester
 
 /**
  * Applied Agriculture:
