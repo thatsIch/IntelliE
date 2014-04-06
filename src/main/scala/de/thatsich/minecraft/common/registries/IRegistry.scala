@@ -1,7 +1,5 @@
 package de.thatsich.minecraft.common.registries
 
-import de.thatsich.minecraft.common.logger.ALog
-
 
 /**
  *
@@ -17,10 +15,10 @@ trait IRegistry[ T ]
 
 	  * @param elem New element in the registry
 	  */
-	def add(elem: T)(implicit log: ALog)
+	def add(elem: T)
 
 	/**
 	Registers that particular part
 	  */
-	def register()(implicit log: ALog)
+	def register()
 }
