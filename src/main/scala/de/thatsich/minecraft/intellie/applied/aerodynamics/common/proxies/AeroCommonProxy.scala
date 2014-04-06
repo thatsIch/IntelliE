@@ -1,6 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.common.proxies
 
-import de.thatsich.minecraft.common.ICommonProxy
+import de.thatsich.minecraft.intellie.common.ICommonProxy
 
 /**
  *

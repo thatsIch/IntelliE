@@ -1,10 +1,9 @@
-package de.thatsich.minecraft.common.registries
+package de.thatsich.minecraft.intellie.common.registries
 
-import de.thatsich.minecraft.common.module.item.IItem
+import de.thatsich.minecraft.intellie.common.module.item.IItem
 import cpw.mods.fml.common.registry.GameRegistry
 import net.minecraft.item.Item
-import de.thatsich.minecraft.common.logger.ALog
-import de.thatsich.minecraft.intellie.common.OIntelligentEnergisticsLog
+import de.thatsich.minecraft.intellie.common.logger.{OIntelligentEnergisticsLog, ALog}
 
 /**
  *

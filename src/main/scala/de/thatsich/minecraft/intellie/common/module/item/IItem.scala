@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.common.module.item
+package de.thatsich.minecraft.intellie.common.module.item
 
 import net.minecraft.item.{EnumRarity, EnumAction, ItemStack, Item}
 import cpw.mods.fml.relauncher.{SideOnly, Side}

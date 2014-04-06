@@ -2,8 +2,9 @@ package de.thatsich.minecraft.intellie
 
 import cpw.mods.fml.common.Mod
 import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
-import de.thatsich.minecraft.intellie.common.{OIntelligentEnergisticsLog, TIntelligentEnergisticsConfig}
-import de.thatsich.minecraft.common.{ABaseMod, TModUnloader}
+import de.thatsich.minecraft.intellie.common.TIntelligentEnergisticsConfig
+import de.thatsich.minecraft.intellie.common.{ABaseMod, TModUnloader}
+import de.thatsich.minecraft.intellie.common.logger.OIntelligentEnergisticsLog
 
 /**
  *

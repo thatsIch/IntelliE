@@ -3,7 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics
 import cpw.mods.fml.common.{SidedProxy, Optional, Mod}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.common.OAppliedAerodynamicsLog
 import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
-import de.thatsich.minecraft.common.{ABaseMod, ICommonProxy}
+import de.thatsich.minecraft.intellie.common.{ABaseMod, ICommonProxy}
 
 /**
  *

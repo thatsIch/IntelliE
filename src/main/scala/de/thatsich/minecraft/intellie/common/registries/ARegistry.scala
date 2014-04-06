@@ -1,7 +1,7 @@
-package de.thatsich.minecraft.common.registries
+package de.thatsich.minecraft.intellie.common.registries
 
 import scala.collection.mutable
-import de.thatsich.minecraft.common.logger.ILog
+import de.thatsich.minecraft.intellie.common.logger.ILog
 
 /**
  *

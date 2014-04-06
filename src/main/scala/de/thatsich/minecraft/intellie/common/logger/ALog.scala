@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.common.logger
+package de.thatsich.minecraft.intellie.common.logger
 
 import org.apache.logging.log4j.Level
 import cpw.mods.fml.relauncher.FMLRelaunchLog
