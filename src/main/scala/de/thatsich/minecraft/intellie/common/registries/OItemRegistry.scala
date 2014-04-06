@@ -3,7 +3,7 @@ package de.thatsich.minecraft.intellie.common.registries
 import de.thatsich.minecraft.intellie.common.module.item.IItem
 import cpw.mods.fml.common.registry.GameRegistry
 import net.minecraft.item.Item
-import de.thatsich.minecraft.intellie.common.logger.{OIntelligentEnergisticsLog, ALog}
+import de.thatsich.minecraft.intellie.common.logger.OIntelligentEnergisticsLog
 
 /**
  *
@@ -11,11 +11,9 @@ import de.thatsich.minecraft.intellie.common.logger.{OIntelligentEnergisticsLog,
  * @author thatsIch
  * @since 06.04.2014.
  */
-object OItemRegistry extends ARegistry[ IItem ]
+object OItemRegistry extends ARegistry[ IItem ](OIntelligentEnergisticsLog)
 {
-	implicit val log: ALog = OIntelligentEnergisticsLog
-
-	def register()(implicit log: ALog)
+	def register()
 	{
 		for( item <- this.set )
 		{

@@ -9,7 +9,7 @@ import de.thatsich.minecraft.intellie.common.logger.ILog
  * @author thatsIch
  * @since 06.04.2014.
  */
-abstract class ARegistry[ T ](log: ILog) extends IRegistry[ T ]
+abstract class ARegistry[ T ](protected val log: ILog) extends IRegistry[ T ]
 {
 	protected val set: mutable.Queue[ T ] = new mutable.Queue[ T ]()
 
