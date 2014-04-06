@@ -2,6 +2,7 @@ package de.thatsich.minecraft.common.registries
 
 import de.thatsich.minecraft.common.Log
 
+
 /**
  *
  *

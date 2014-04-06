@@ -95,12 +95,12 @@ trait IItem
 	/**
 	Sets the unlocalized name of this item to the string passed as the parameter, prefixed by "item."
 	  */
-	def setUnlocalizedName(par1Str: Nothing): Item
+	def setUnlocalizedName(par1Str: String): Item
 
 	/**
 	Returns the unlocalized name of this item.
 	  */
-	def getUnlocalizedName: Nothing
+	def getUnlocalizedName: String
 
 	def setContainerItem(par1Item: Item): Item
 
@@ -151,7 +151,7 @@ trait IItem
 	/**
 	Sets the string representing this item's effect on a potion when used as an ingredient.
 	  */
-	def setPotionEffect(par1Str: Nothing): Item
+	def setPotionEffect(par1Str: String): Item
 
 	/**
 	Returns true if this item serves as a potion ingredient (its ingredient information is not null).
@@ -161,26 +161,26 @@ trait IItem
 	/**
 	Returns a string representing what this item does to a potion.
 	  */
-	def getPotionEffect(p_150896_1_ : ItemStack): Nothing
+	def getPotionEffect(p_150896_1_ : ItemStack): String
 
 	/**
 	allows items to add custom lines of information to the mouseover description
 	  */
 	@SideOnly(Side.CLIENT) def addInformation(par1ItemStack: ItemStack, par2EntityPlayer: EntityPlayer, par3List: List[ _ ], par4: Boolean)
 
-	def getItemStackDisplayName(par1ItemStack: ItemStack): Nothing
+	def getItemStackDisplayName(par1ItemStack: ItemStack): String
 
 	/**
 	Translates the unlocalized name of this item, but without the .name suffix, so the translation fails and the
 	 unlocalized name itself is returned.
 	  */
-	def getUnlocalizedNameInefficiently(par1ItemStack: ItemStack): Nothing
+	def getUnlocalizedNameInefficiently(par1ItemStack: ItemStack): String
 
 	/**
 	Returns the unlocalized name of this item. This version accepts an ItemStack so different stacks can have
 	 different names based on their damage or NBT.
 	  */
-	def getUnlocalizedName(par1ItemStack: ItemStack): Nothing
+	def getUnlocalizedName(par1ItemStack: ItemStack): String
 
 	/**
 	Return an item rarity from EnumRarity
@@ -240,7 +240,7 @@ trait IItem
 	  */
 	def getItemAttributeModifiers: Multimap[ _, _ ]
 
-	def setTextureName(par1Str: Nothing): Item
+	def setTextureName(par1Str: String): Item
 
 	/**
 	Called when a player drops the item into the world,
@@ -548,7 +548,7 @@ trait IItem
 
 	@return Path of texture to bind, or null to use default
 	  */
-	def getArmorTexture(stack: ItemStack, entity: Entity, slot: Int, `type`: Nothing): Nothing
+	def getArmorTexture(stack: ItemStack, entity: Entity, slot: Int, `type`: String): String
 
 	/**
 	Returns the font renderer used to render tooltips and overlays for this item.
@@ -676,9 +676,9 @@ trait IItem
 	 Diamond: 3
 	 Gold:    0
 	  */
-	def setHarvestLevel(toolClass: Nothing, level: Int)
+	def setHarvestLevel(toolClass: String, level: Int)
 
-	def getToolClasses(stack: ItemStack): Set[ Nothing ]
+	def getToolClasses(stack: ItemStack): Set[ String ]
 
 	/**
 	Queries the harvest level of this item stack for the specifred tool class,
@@ -689,5 +689,5 @@ trait IItem
 
 	@return Harvest level, or -1 if not the specified tool type.
 	  */
-	def getHarvestLevel(stack: ItemStack, toolClass: Nothing): Int
+	def getHarvestLevel(stack: ItemStack, toolClass: String): Int
 }
