@@ -1,3 +1,5 @@
+package de.thatsich.minecraft.intellie.applied.aerodynamics.functional
+
 /**
  * Applied Aerodynamics:
  * Gravisuite für AE
@@ -6,6 +8,9 @@
  * Hoursesteps when sprintingw
  *
  * @author thatsIch
- * @since 16.03.14.
+ * @since 07.04.2014.
  */
-package de.thatsich.intellie.applied.aerodynamics.functionality.suite;
+package object suite
+{
+
+}
