@@ -1,6 +1,7 @@
 package de.thatsich.minecraft.intellie.common.module.block
 
 import net.minecraft.block.ITileEntityProvider
+import de.thatsich.minecraft.intellie.common.module.item.IItemBlock
 
 /**
  *
