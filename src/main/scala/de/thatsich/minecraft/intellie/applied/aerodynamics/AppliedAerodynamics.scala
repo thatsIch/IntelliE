@@ -1,9 +1,12 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics
 
-import cpw.mods.fml.common.{SidedProxy, Optional, Mod}
+import cpw.mods.fml.common.{FMLCommonHandler, SidedProxy, Optional, Mod}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.common.OAppliedAerodynamicsLog
 import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
 import de.thatsich.minecraft.intellie.common.{ABaseMod, ICommonProxy}
+import net.minecraft.item.ItemArmor
+import cpw.mods.fml.common.registry.GameRegistry
+import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.chest.KeyHandler
 
 /**
  *
@@ -20,6 +23,8 @@ import de.thatsich.minecraft.intellie.common.{ABaseMod, ICommonProxy}
 )
 object AppliedAerodynamics extends ABaseMod(OAppliedAerodynamicsLog)
 {
+	final val ITEM_GRAVI_CHEST_PLATE: ItemArmor = new Nothing(ItemArmor.ArmorMaterial.DIAMOND, 1, 1)
+
 	@SidedProxy(
 		modId = "appaero",
 		clientSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.common.proxies.AeroClientProxy",
@@ -32,6 +37,8 @@ object AppliedAerodynamics extends ABaseMod(OAppliedAerodynamicsLog)
 	{
 		this.log.info("PreInit Start")
 
+		GameRegistry.registerItem(AppliedAerodynamics.ITEM_GRAVI_CHEST_PLATE, AppliedAerodynamics.ITEM_GRAVI_CHEST_PLATE.getUnlocalizedName)
+
 		this.log.info("PreInit End")
 	}
 
@@ -39,6 +46,8 @@ object AppliedAerodynamics extends ABaseMod(OAppliedAerodynamicsLog)
 	@Mod.EventHandler def init(event: FMLInitializationEvent)
 	{
 		this.log.info("Init Start")
+
+		FMLCommonHandler.instance.bus.register(new KeyHandler)
 
 		this.log.info("Init End")
 	}

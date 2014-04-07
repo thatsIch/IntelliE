@@ -1,5 +1,5 @@
 apply plugin: 'forge'   // forge tasks
-//apply plugin: 'java'    // enables sourcesets
+apply plugin: 'java'    // enables sourcesets
 apply plugin: 'idea'    // enable automatic setup of idea workspace
 apply plugin: 'scala'   // enable scala
 
