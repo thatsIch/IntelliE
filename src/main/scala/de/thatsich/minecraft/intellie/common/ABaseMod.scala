@@ -5,6 +5,7 @@ import cpw.mods.fml.common.Mod
 import java.lang.reflect.Field
 import cpw.mods.fml.common.event.{FMLPreInitializationEvent, FMLInitializationEvent, FMLPostInitializationEvent}
 import de.thatsich.minecraft.intellie.common.registries.IRegistries
+import de.thatsich.minecraft.intellie.common.config.IConfigFiles
 
 /**
  *
@@ -12,7 +13,7 @@ import de.thatsich.minecraft.intellie.common.registries.IRegistries
  * @author thatsIch
  * @since 06.04.2014.
  */
-abstract class ABaseMod(protected val log: ILog, protected val registries: IRegistries)
+abstract class ABaseMod(protected val log: ILog, protected val registries: IRegistries, protected val configFiles: IConfigFiles)
 	extends IEventProxy
 {
 	// implicit config

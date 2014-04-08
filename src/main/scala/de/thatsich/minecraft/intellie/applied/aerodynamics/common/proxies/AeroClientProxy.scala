@@ -8,13 +8,5 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.common.proxies
  */
 class AeroClientProxy extends AeroCommonProxy
 {
-	override def initSounds()
-	{
 
-	}
-
-	override def initRenders()
-	{
-
-	}
 }

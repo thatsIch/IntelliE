@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie.common.module.block
 
 import net.minecraft.block.Block
 import de.thatsich.minecraft.intellie.common.registries.BlockRegistry
-import de.thatsich.minecraft.intellie.common.module.AName
+import de.thatsich.minecraft.intellie.common.module.AName.nameToString
 import net.minecraft.creativetab.CreativeTabs
 
 /**
@@ -14,8 +14,7 @@ import net.minecraft.creativetab.CreativeTabs
 abstract class ABlock(info: ABlockInfo, config: ABlockConfig, blocks: BlockRegistry)
 	extends Block(info.getMaterial) with IBlock
 {
-	val blockName: AName = info.getName
-	val name: String = blockName.getUnlocalizedName
+	val name: String = info.getName
 	val hardness: Float = info.getHardness
 	val creativeTab: CreativeTabs = info.getCreativeTab
 	val texture: String = info.getTexture.toString

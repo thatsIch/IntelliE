@@ -2,6 +2,7 @@ package de.thatsich.minecraft.intellie.common
 
 import com.google.common.base.Joiner
 import java.io.File
+import de.thatsich.minecraft.intellie.common.config.Config
 
 /**
  *

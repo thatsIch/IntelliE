@@ -1,12 +1,9 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics
 
-import cpw.mods.fml.common.{FMLCommonHandler, SidedProxy, Optional, Mod}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.common.OAppliedAerodynamicsLog
+import cpw.mods.fml.common.{SidedProxy, Optional, Mod}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.common.{OAeroConfigFiles, OAppliedAerodynamicsLog}
 import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
 import de.thatsich.minecraft.intellie.common.{ABaseMod, ICommonProxy}
-import net.minecraft.item.ItemArmor
-import cpw.mods.fml.common.registry.GameRegistry
-import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.chest.{ItemGraviChestPlate, KeyHandler}
 import de.thatsich.minecraft.intellie.common.registries.ORegistries
 
 /**
@@ -19,12 +16,13 @@ import de.thatsich.minecraft.intellie.common.registries.ORegistries
 	modid = "appaero",
 	name = "AppliedAerodynamics",
 	version = "${version}",
-	dependencies = "required-after:intellie"
+	dependencies = "required-after:intellie",
+	modLanguage = "scala"
 )
-class AppliedAerodynamics
-	extends ABaseMod(OAppliedAerodynamicsLog, ORegistries)
+object AppliedAerodynamics
+	extends ABaseMod(OAppliedAerodynamicsLog, ORegistries, OAeroConfigFiles)
 {
-	final val ITEM_GRAVI_CHEST_PLATE: ItemArmor = new ItemGraviChestPlate(ItemArmor.ArmorMaterial.DIAMOND, 1, 1)
+	//	final val ITEM_GRAVI_CHEST_PLATE: ItemArmor = new ItemGraviChestPlate(ItemArmor.ArmorMaterial.DIAMOND, 1, 1)
 
 	@SidedProxy(
 		modId = "appaero",
@@ -39,7 +37,7 @@ class AppliedAerodynamics
 	{
 		this.log.info("PreInit Start")
 
-		GameRegistry.registerItem(AppliedAerodynamics.ITEM_GRAVI_CHEST_PLATE, AppliedAerodynamics.ITEM_GRAVI_CHEST_PLATE.getUnlocalizedName)
+		//		GameRegistry.registerItem(AppliedAerodynamics.ITEM_GRAVI_CHEST_PLATE, AppliedAerodynamics.ITEM_GRAVI_CHEST_PLATE.getUnlocalizedName)
 
 		this.log.info("PreInit End")
 	}
@@ -50,7 +48,7 @@ class AppliedAerodynamics
 	{
 		this.log.info("Init Start")
 
-		FMLCommonHandler.instance.bus.register(new KeyHandler)
+		//		FMLCommonHandler.instance.bus.register(new KeyHandler)
 
 		this.log.info("Init End")
 	}

@@ -1,15 +1,15 @@
 package de.thatsich.minecraft.intellie.common.module
 
 /**
- *
+ * Basic wrapper for a name
  *
  * @author thatsIch
  * @since 07.04.2014.
  */
-class AName
+abstract class AName(val name: String)
+{}
+
+object AName
 {
-	def getUnlocalizedName: String =
-	{
-		"test"
-	}
+	implicit def nameToString(name: AName): String = name.name
 }
