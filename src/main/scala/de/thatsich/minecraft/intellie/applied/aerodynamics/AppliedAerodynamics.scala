@@ -19,10 +19,9 @@ import de.thatsich.minecraft.intellie.common.registries.ORegistries
 	modid = "appaero",
 	name = "AppliedAerodynamics",
 	version = "${version}",
-	dependencies = "required-after:intellie",
-	modLanguage = "scala"
+	dependencies = "required-after:intellie"
 )
-object AppliedAerodynamics
+class AppliedAerodynamics
 	extends ABaseMod(OAppliedAerodynamicsLog, ORegistries)
 {
 	final val ITEM_GRAVI_CHEST_PLATE: ItemArmor = new ItemGraviChestPlate(ItemArmor.ArmorMaterial.DIAMOND, 1, 1)
