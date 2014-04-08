@@ -1,5 +1,7 @@
 package de.thatsich.minecraft.intellie.common.registries
 
+import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
+
 /**
  *
  *
@@ -7,6 +9,20 @@ package de.thatsich.minecraft.intellie.common.registries
  * @since 06.04.2014.
  */
 object ORegistries
+	extends IRegistries
 {
+	def preInit(event: FMLPreInitializationEvent)
+	{
 
+	}
+
+	def init(event: FMLInitializationEvent)
+	{
+
+	}
+
+	def postInit(event: FMLPostInitializationEvent)
+	{
+
+	}
 }

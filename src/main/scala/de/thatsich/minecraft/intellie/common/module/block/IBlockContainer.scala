@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.common.module.block
 
 import net.minecraft.block.ITileEntityProvider
-import de.thatsich.minecraft.intellie.common.module.item.IItemBlock
+import net.minecraft.item.ItemBlock
 
 /**
  *
@@ -11,5 +11,5 @@ import de.thatsich.minecraft.intellie.common.module.item.IItemBlock
  */
 trait IBlockContainer extends IBlock with ITileEntityProvider
 {
-	def getItemBlockClass: Class[ _ => IItemBlock ]
+	def getItemBlockClass: Class[ _ <: ItemBlock ]
 }

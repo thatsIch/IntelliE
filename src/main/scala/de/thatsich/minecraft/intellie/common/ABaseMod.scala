@@ -4,6 +4,7 @@ import de.thatsich.minecraft.intellie.common.logger.ILog
 import cpw.mods.fml.common.Mod
 import java.lang.reflect.Field
 import cpw.mods.fml.common.event.{FMLPreInitializationEvent, FMLInitializationEvent, FMLPostInitializationEvent}
+import de.thatsich.minecraft.intellie.common.registries.IRegistries
 
 /**
  *
@@ -11,7 +12,7 @@ import cpw.mods.fml.common.event.{FMLPreInitializationEvent, FMLInitializationEv
  * @author thatsIch
  * @since 06.04.2014.
  */
-abstract class ABaseMod(protected val log: ILog, protected val registries: ORegistries)
+abstract class ABaseMod(protected val log: ILog, protected val registries: IRegistries)
 	extends IEventProxy
 {
 	// implicit config
@@ -35,9 +36,9 @@ abstract class ABaseMod(protected val log: ILog, protected val registries: ORegi
 	 *
 	 * @return proxy
 	 */
-	private def getProxy: Nothing =
+	private def getProxy: ICommonProxy =
 	{
-		val clazz: Nothing = this.getClass
+		val clazz = this.getClass
 		val potentialProxy: Array[ Field ] = clazz.getDeclaredFields
 		for( field <- potentialProxy )
 		{
@@ -56,7 +57,7 @@ abstract class ABaseMod(protected val log: ILog, protected val registries: ORegi
 	{
 		this.log.info("PreInit Begin")
 		this.registries.preInit(event)
-		val proxy: Nothing = this.getProxy
+		val proxy = this.getProxy
 		proxy.initRenders
 		proxy.initSounds
 		this.log.info("PreInit End")

@@ -1,10 +1,11 @@
 package de.thatsich.minecraft.intellie
 
 import cpw.mods.fml.common.Mod
-import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
+import cpw.mods.fml.common.event.FMLPostInitializationEvent
 import de.thatsich.minecraft.intellie.common.TIntelligentEnergisticsConfig
 import de.thatsich.minecraft.intellie.common.{ABaseMod, TModUnloader}
 import de.thatsich.minecraft.intellie.common.logger.OIntelligentEnergisticsLog
+import de.thatsich.minecraft.intellie.common.registries.ORegistries
 
 /**
  *
@@ -20,29 +21,11 @@ import de.thatsich.minecraft.intellie.common.logger.OIntelligentEnergisticsLog
 	modLanguage = "scala"
 )
 object IntelligentEnergistics
-	extends ABaseMod(OIntelligentEnergisticsLog)
+	extends ABaseMod(OIntelligentEnergisticsLog, ORegistries)
 	with TModUnloader
 	with TIntelligentEnergisticsConfig
 {
 	this.unload("appaero", this.disableAero)
 	this.unload("appagri", this.disableAgro)
 	this.unload("appint", this.disableInt)
-
-	@Mod.EventHandler def preInit(event: FMLPreInitializationEvent)
-	{
-		this.log.info("PreInit Start")
-		this.log.info("PreInit End")
-	}
-
-	@Mod.EventHandler def init(event: FMLInitializationEvent)
-	{
-		this.log.info("Init Start")
-		this.log.info("Init End")
-	}
-
-	@Mod.EventHandler def postInit(event: FMLPostInitializationEvent)
-	{
-		this.log.info("PostInit Start")
-		this.log.info("PostInit End")
-	}
 }

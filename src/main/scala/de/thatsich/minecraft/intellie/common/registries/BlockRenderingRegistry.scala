@@ -1,6 +1,7 @@
 package de.thatsich.minecraft.intellie.common.registries
 
-import cpw.mods.fml.client.registry.RenderingRegistry
+import cpw.mods.fml.client.registry.{ISimpleBlockRenderingHandler, RenderingRegistry}
+import de.thatsich.minecraft.intellie.common.logger.ILog
 
 /**
  *
@@ -8,11 +9,12 @@ import cpw.mods.fml.client.registry.RenderingRegistry
  * @author thatsIch
  * @since 07.04.2014.
  */
-class BlockRenderingRegistry
+class BlockRenderingRegistry(log: ILog)
+	extends ARegistry[ ISimpleBlockRenderingHandler ](log)
 {
 	def register()
 	{
-		for( handler <- this.blockRenderers )
+		for( handler <- this.set )
 		{
 			RenderingRegistry.registerBlockHandler(handler)
 		}

@@ -1,10 +1,8 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.chest
 
 import net.minecraftforge.common.ISpecialArmor
-import appeng.api.implementations.items.IAEItemPowerStorage
 import net.minecraft.creativetab.CreativeTabs
 import cpw.mods.fml.relauncher.{SideOnly, Side}
-import appeng.api.config.AccessRestriction
 import net.minecraft.item.{ItemArmor, ItemStack}
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.world.World
@@ -34,15 +32,12 @@ object ItemGraviChestPlate
 	var boostMultiplier: Int = 2
 }
 
-class ItemGraviChestPlate extends ItemArmor with ISpecialArmor with IAEItemPowerStorage
+class ItemGraviChestPlate(material: ItemArmor.ArmorMaterial, renderIndex: Int, armorType: Int)
+	extends ItemArmor(material, renderIndex, armorType)
+	with ISpecialArmor
 {
-	def this(material: ItemArmor.ArmorMaterial, renderIndex: Int, armorType: Int)
-	{
-		this()
-		`super`(material, renderIndex, armorType)
-		this.setUnlocalizedName("GraviChestPlate")
-		this.setCreativeTab(CreativeTabs.tabCombat)
-	}
+	this.setUnlocalizedName("GraviChestPlate")
+	this.setCreativeTab(CreativeTabs.tabCombat)
 
 	@Override def getProperties(player: EntityLivingBase, armor: ItemStack, source: DamageSource, damage: Double, slot: Int): ISpecialArmor.ArmorProperties =
 	{
@@ -80,17 +75,17 @@ class ItemGraviChestPlate extends ItemArmor with ISpecialArmor with IAEItemPower
 		900
 	}
 
-	@Override def isRepairable: Boolean =
+	override def isRepairable: Boolean =
 	{
 		false
 	}
 
-	@Override def onArmorTick(world: World, player: EntityPlayer, itemStack: ItemStack)
+	override def onArmorTick(world: World, player: EntityPlayer, itemStack: ItemStack)
 	{
-		val clazz: Nothing = this.getClass
+		val clazz = this.getClass
 		val wearsSuite: Boolean = player.inventory.armorItemInSlot(2).getItem.getClass == clazz
 		val isInCreative: Boolean = player.capabilities.isCreativeMode
-		val isInSurvival: Boolean = !isInCreative
+
 		player.capabilities.allowFlying = wearsSuite || isInCreative
 		if( player.capabilities.isFlying )
 		{
@@ -98,39 +93,14 @@ class ItemGraviChestPlate extends ItemArmor with ISpecialArmor with IAEItemPower
 		}
 	}
 
-	@Override def getArmorTexture(stack: ItemStack, entity: Entity, slot: Int, `type`: Nothing): Nothing =
+	def getArmorTexture(stack: ItemStack, entity: Entity, slot: Int, `type`: Nothing): String =
 	{
 		"gravisuite:textures/armor/armor_graviChestPlate.png"
 	}
 
 	@SideOnly(Side.CLIENT)
-	@Override def registerIcons(par1IconRegister: IIconRegister)
+	override def registerIcons(par1IconRegister: IIconRegister)
 	{
 		this.itemIcon = par1IconRegister.registerIcon("appaero:itemGraviChestPlate")
-	}
-
-	@Override def injectAEPower(is: ItemStack, amt: Double): Double =
-	{
-		0
-	}
-
-	@Override def extractAEPower(is: ItemStack, amt: Double): Double =
-	{
-		0
-	}
-
-	@Override def getAEMaxPower(is: ItemStack): Double =
-	{
-		0
-	}
-
-	@Override def getAECurrentPower(is: ItemStack): Double =
-	{
-		0
-	}
-
-	@Override def getPowerFlow(is: ItemStack): AccessRestriction =
-	{
-		null
 	}
 }

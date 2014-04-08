@@ -10,13 +10,13 @@ import net.minecraft.client.renderer.texture.IIconRegister
  * @author thatsIch
  * @since 07.04.2014.
  */
-class AItem(texture: ATexture)
+abstract class AItem(itemTexture: ATexture)
 	extends Item
 	with IItem
 {
-	override def registerIcons(par1IconRegister: IIconRegister)
+	override def registerIcons(iconRegister: IIconRegister)
 	{
-		val texture: String = this.itemTexture.getTexture
-		this.itemIcon = par1IconRegister.registerIcon(texture)
+		val texture: String = this.itemTexture.toString
+		this.itemIcon = iconRegister.registerIcon(texture)
 	}
 }

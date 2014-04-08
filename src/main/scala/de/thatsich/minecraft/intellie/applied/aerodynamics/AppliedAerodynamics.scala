@@ -6,7 +6,8 @@ import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationE
 import de.thatsich.minecraft.intellie.common.{ABaseMod, ICommonProxy}
 import net.minecraft.item.ItemArmor
 import cpw.mods.fml.common.registry.GameRegistry
-import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.chest.KeyHandler
+import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.chest.{ItemGraviChestPlate, KeyHandler}
+import de.thatsich.minecraft.intellie.common.registries.ORegistries
 
 /**
  *
@@ -21,9 +22,10 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.ches
 	dependencies = "required-after:intellie",
 	modLanguage = "scala"
 )
-object AppliedAerodynamics extends ABaseMod(OAppliedAerodynamicsLog)
+object AppliedAerodynamics
+	extends ABaseMod(OAppliedAerodynamicsLog, ORegistries)
 {
-	final val ITEM_GRAVI_CHEST_PLATE: ItemArmor = new Nothing(ItemArmor.ArmorMaterial.DIAMOND, 1, 1)
+	final val ITEM_GRAVI_CHEST_PLATE: ItemArmor = new ItemGraviChestPlate(ItemArmor.ArmorMaterial.DIAMOND, 1, 1)
 
 	@SidedProxy(
 		modId = "appaero",
@@ -33,7 +35,8 @@ object AppliedAerodynamics extends ABaseMod(OAppliedAerodynamicsLog)
 	var s_proxy: ICommonProxy = null
 
 	@Optional.Method(modid = "appaero")
-	@Mod.EventHandler def preInit(event: FMLPreInitializationEvent)
+	@Mod.EventHandler
+	override def preInit(event: FMLPreInitializationEvent)
 	{
 		this.log.info("PreInit Start")
 
@@ -43,7 +46,8 @@ object AppliedAerodynamics extends ABaseMod(OAppliedAerodynamicsLog)
 	}
 
 	@Optional.Method(modid = "appaero")
-	@Mod.EventHandler def init(event: FMLInitializationEvent)
+	@Mod.EventHandler
+	override def init(event: FMLInitializationEvent)
 	{
 		this.log.info("Init Start")
 
@@ -53,7 +57,8 @@ object AppliedAerodynamics extends ABaseMod(OAppliedAerodynamicsLog)
 	}
 
 	@Optional.Method(modid = "appaero")
-	@Mod.EventHandler def postInit(event: FMLPostInitializationEvent)
+	@Mod.EventHandler
+	override def postInit(event: FMLPostInitializationEvent)
 	{
 		this.log.info("PostInit Start")
 

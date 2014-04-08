@@ -8,5 +8,8 @@ package de.thatsich.minecraft.intellie.common.module
  */
 class AName
 {
-
+	def getUnlocalizedName: String =
+	{
+		"test"
+	}
 }

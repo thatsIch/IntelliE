@@ -12,11 +12,12 @@ import cpw.mods.fml.client.registry.RenderingRegistry
  * @author thatsIch
  * @since 07.04.2014.
  */
-class ArmorRenderingRegistry(log: ILog) extends ARegistry[ String ](log)
+class ArmorRenderingRegistry(log: ILog)
+	extends ARegistry[ String ](log)
 {
 	def register()
 	{
-		for( armor <- this.armorRenderers )
+		for( armor <- this.set )
 		{
 			RenderingRegistry.addNewArmourRendererPrefix(armor)
 		}

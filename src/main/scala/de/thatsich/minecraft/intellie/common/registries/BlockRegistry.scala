@@ -1,7 +1,8 @@
 package de.thatsich.minecraft.intellie.common.registries
 
 import cpw.mods.fml.common.registry.GameRegistry
-import de.thatsich.minecraft.intellie.common.module.block.ABlock
+import de.thatsich.minecraft.intellie.common.module.block.{IBlock, ABlock}
+import de.thatsich.minecraft.intellie.common.logger.ILog
 
 /**
  *
@@ -9,11 +10,12 @@ import de.thatsich.minecraft.intellie.common.module.block.ABlock
  * @author thatsIch
  * @since 07.04.2014.
  */
-class BlockRegistry
+class BlockRegistry(log: ILog)
+	extends ARegistry[ IBlock ](log)
 {
 	def register()
 	{
-		for( block <- this.blocks )
+		for( block <- this.set )
 		{
 			val concreteBlock: ABlock = block.asInstanceOf[ ABlock ]
 			val unlocalizedName: String = concreteBlock.getUnlocalizedName

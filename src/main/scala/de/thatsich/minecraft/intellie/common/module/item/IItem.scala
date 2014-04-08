@@ -11,7 +11,6 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.world.World
 import net.minecraft.block.Block
 import net.minecraft.client.renderer.texture.IIconRegister
-import com.google.common.collect.Multimap
 import net.minecraft.entity.item.EntityItem
 import net.minecraftforge.common.ChestGenHooks
 import java.util.Random
@@ -234,11 +233,6 @@ trait IItem
 	def getIsRepairable(par1ItemStack: ItemStack, par2ItemStack: ItemStack): Boolean
 
 	@SideOnly(Side.CLIENT) def registerIcons(par1IconRegister: IIconRegister)
-
-	/**
-	Gets a map of item attribute modifiers, used by ItemSword to increase hit damage.
-	  */
-	def getItemAttributeModifiers: Multimap[ _, _ ]
 
 	def setTextureName(par1Str: String): Item
 
@@ -678,7 +672,7 @@ trait IItem
 	  */
 	def setHarvestLevel(toolClass: String, level: Int)
 
-	def getToolClasses(stack: ItemStack): Set[ String ]
+	def getToolClasses(stack: ItemStack): java.util.Set[ String ]
 
 	/**
 	Queries the harvest level of this item stack for the specifred tool class,

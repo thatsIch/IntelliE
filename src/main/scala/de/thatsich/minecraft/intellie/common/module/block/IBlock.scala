@@ -405,17 +405,17 @@ trait IBlock
 	/**
 	Sets the mod-specific block name
 	  */
-	def setBlockName(p_149663_1_ : Nothing): Block
+	def setBlockName(p_149663_1_ : String): Block
 
 	/**
 	Gets the localized name of this block. Used for the statistics page.
 	  */
-	def getLocalizedName: Nothing
+	def getLocalizedName: String
 
 	/**
 	Returns the unlocalized name of the block with "tile." appended to the front.
 	  */
-	def getUnlocalizedName: Nothing
+	def getUnlocalizedName: String
 
 	def onBlockEventReceived(p_149696_1_ : World, p_149696_2_ : Int, p_149696_3_ : Int, p_149696_4_ : Int, p_149696_5_ : Int, p_149696_6_ : Int): Boolean
 
@@ -514,7 +514,7 @@ trait IBlock
 	  */
 	def getComparatorInputOverride(p_149736_1_ : World, p_149736_2_ : Int, p_149736_3_ : Int, p_149736_4_ : Int, p_149736_5_ : Int): Int
 
-	def setBlockTextureName(p_149658_1_ : Nothing): Block
+	def setBlockTextureName(p_149658_1_ : String): Block
 
 	@SideOnly(Side.CLIENT) def func_149735_b(p_149735_1_ : Int, p_149735_2_ : Int): IIcon
 
@@ -528,7 +528,7 @@ trait IBlock
 	/**
 	Gets the icon name of the ItemBlock corresponding to this block. Used by hoppers.
 	  */
-	@SideOnly(Side.CLIENT) def getItemIconName: Nothing
+	@SideOnly(Side.CLIENT) def getItemIconName: String
 
 	/**
 	Get a light value for the block at the specified coordinates, normal ranges are between 0 and 15
@@ -1241,7 +1241,7 @@ trait IBlock
 	 Diamond: 3
 	 Gold:    0
 	  */
-	def setHarvestLevel(toolClass: Nothing, level: Int)
+	def setHarvestLevel(toolClass: String, level: Int)
 
 	/**
 	Sets or removes the tool and level required to harvest this block.
@@ -1265,7 +1265,7 @@ trait IBlock
 
 	@return Class of tool required to harvest this block
 	  */
-	def getHarvestTool(metadata: Int): Nothing
+	def getHarvestTool(metadata: Int): String
 
 	/**
 	Queries the harvest level of this item stack for the specifred tool class,
@@ -1286,5 +1286,5 @@ trait IBlock
 
 	@return True, if tool is effective
 	  */
-	def isToolEffective(`type`: Nothing, metadata: Int): Boolean
+	def isToolEffective(`type`: String, metadata: Int): Boolean
 }

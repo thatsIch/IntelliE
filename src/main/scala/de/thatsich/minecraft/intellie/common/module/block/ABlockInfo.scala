@@ -3,6 +3,7 @@ package de.thatsich.minecraft.intellie.common.module.block
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.block.material.Material
 import net.minecraft.block.Block
+import de.thatsich.minecraft.intellie.common.module.{ATexture, AName}
 
 /**
  *
@@ -10,9 +11,9 @@ import net.minecraft.block.Block
  * @author thatsIch
  * @since 07.04.2014.
  */
-abstract class ABlockInfo(blockName: String, texture: String, hardness: Float, mat: Material, blockSound: Block.SoundType, creativeTab: CreativeTabs)
+abstract class ABlockInfo(blockName: AName, texture: ATexture, hardness: Float, mat: Material, blockSound: Block.SoundType, creativeTab: CreativeTabs)
 {
-	def getName: String =
+	def getName: AName =
 	{
 		this.blockName
 	}
@@ -37,7 +38,7 @@ abstract class ABlockInfo(blockName: String, texture: String, hardness: Float, m
 		this.hardness
 	}
 
-	def getTexture: String =
+	def getTexture: ATexture =
 	{
 		this.texture
 	}
