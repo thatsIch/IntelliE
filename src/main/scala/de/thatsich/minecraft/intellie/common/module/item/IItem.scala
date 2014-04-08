@@ -26,31 +26,31 @@ trait IItem
 	def setMaxStackSize(par1: Int): Item
 
 	/**
-	Returns 0 for /terrain.png, 1 for /gui/items.png
-	  */
+	 * Returns 0 for /terrain.png, 1 for /gui/items.png
+	 */
 	@SideOnly(Side.CLIENT) def getSpriteNumber: Int
 
 	/**
-	Returns the icon index of the stack given as argument.
-	  */
+	 * Returns the icon index of the stack given as argument.
+	 */
 	@SideOnly(Side.CLIENT) def getIconIndex(par1ItemStack: ItemStack): IIcon
 
 	/**
-	Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
-	 True if something happen and false if it don't. This is for ITEMS, not BLOCKS
-	  */
+	 * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
+	 * True if something happen and false if it don't. This is for ITEMS, not BLOCKS
+	 */
 	def onItemUse(par1ItemStack: ItemStack, par2EntityPlayer: EntityPlayer, par3World: World, par4: Int, par5: Int, par6: Int, par7: Int, par8: Float, par9: Float, par10: Float): Boolean
 
 	/**
-	Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
-	  */
+	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
+	 */
 	def onItemRightClick(par1ItemStack: ItemStack, par2World: World, par3EntityPlayer: EntityPlayer): ItemStack
 
 	def onEaten(par1ItemStack: ItemStack, par2World: World, par3EntityPlayer: EntityPlayer): ItemStack
 
 	/**
-	Returns the metadata of the block which this Item (ItemBlock) can place
-	  */
+	 * Returns the metadata of the block which this Item (ItemBlock) can place
+	 */
 	def getMetadata(par1: Int): Int
 
 	def getHasSubtypes: Boolean
@@ -58,21 +58,21 @@ trait IItem
 	def setHasSubtypes(par1: Boolean): Item
 
 	/**
-	set max damage of an Item
-	  */
+	 * set max damage of an Item
+	 */
 	def setMaxDamage(par1: Int): Item
 
 	/**
-	Current implementations of this method in child classes do not use the entry argument beside ev. They just raise
-	 the damage on the stack.
-	  */
+	 * Current implementations of this method in child classes do not use the entry argument beside ev. They just raise
+	 * the damage on the stack.
+	 */
 	def hitEntity(par1ItemStack: ItemStack, par2EntityLivingBase: EntityLivingBase, par3EntityLivingBase: EntityLivingBase): Boolean
 
 	def onBlockDestroyed(p_150894_1_ : ItemStack, p_150894_2_ : World, p_150894_3_ : Block, p_150894_4_ : Int, p_150894_5_ : Int, p_150894_6_ : Int, p_150894_7_ : EntityLivingBase): Boolean
 
 	/**
-	Returns true if the item can be used on the given entity, e.g. shears on sheep.
-	  */
+	 * Returns true if the item can be used on the given entity, e.g. shears on sheep.
+	 */
 	def itemInteractionForEntity(par1ItemStack: ItemStack, par2EntityPlayer: EntityPlayer, par3EntityLivingBase: EntityLivingBase): Boolean
 
 	/**

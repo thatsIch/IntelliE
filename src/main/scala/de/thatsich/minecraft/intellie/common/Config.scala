@@ -10,6 +10,7 @@ import java.io.File
  * @since 04.04.2014.
  */
 class Config(val configPath: String)
+	extends IConfig
 {
 	private val config = new Configuration(new File(this.configPath))
 

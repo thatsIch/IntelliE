@@ -1,7 +1,6 @@
 package de.thatsich.minecraft.intellie
 
 import cpw.mods.fml.common.Mod
-import cpw.mods.fml.common.event.FMLPostInitializationEvent
 import de.thatsich.minecraft.intellie.common.TIntelligentEnergisticsConfig
 import de.thatsich.minecraft.intellie.common.{ABaseMod, TModUnloader}
 import de.thatsich.minecraft.intellie.common.logger.OIntelligentEnergisticsLog
@@ -17,10 +16,9 @@ import de.thatsich.minecraft.intellie.common.registries.ORegistries
 	modid = "intellie",
 	name = "IntelligentEnergistics",
 	version = "${version}",
-	dependencies = "required-after:Forge@[7.0,);required-after:FML@[5.0.5,);after:appliedenergistics2",
-	modLanguage = "scala"
+	dependencies = "required-after:Forge@[7.0,);required-after:FML@[5.0.5,);after:appliedenergistics2"
 )
-object IntelligentEnergistics
+class IntelligentEnergistics
 	extends ABaseMod(OIntelligentEnergisticsLog, ORegistries)
 	with TModUnloader
 	with TIntelligentEnergisticsConfig
