@@ -1,9 +1,9 @@
 package de.thatsich.minecraft.intellie
 
 import cpw.mods.fml.common.Mod
-import de.thatsich.minecraft.intellie.common.{OIntelligentEnergisticsConfigurationFiles, TIntelligentEnergisticsConfig, ABaseMod, TModUnloader}
-import de.thatsich.minecraft.intellie.common.logger.OIntelligentEnergisticsLog
-import de.thatsich.minecraft.intellie.common.registries.ORegistries
+import de.thatsich.minecraft.intellie.common.{OIntelliLog, OIntelliConfigFiles, TIntelliConfig}
+import de.thatsich.minecraft.core.registries.ORegistries
+import de.thatsich.minecraft.core.{ABaseMod, TModUnloader}
 
 /**
  *
@@ -19,11 +19,14 @@ import de.thatsich.minecraft.intellie.common.registries.ORegistries
 	modLanguage = "scala"
 )
 object IntelligentEnergistics
-	extends ABaseMod(OIntelligentEnergisticsLog, ORegistries, OIntelligentEnergisticsConfigurationFiles)
+	extends ABaseMod(OIntelliLog, ORegistries, OIntelliConfigFiles)
 	with TModUnloader
-	with TIntelligentEnergisticsConfig
+	with TIntelliConfig
 {
 	this.unload("appaero", this.disableAero)
 	this.unload("appagri", this.disableAgro)
 	this.unload("appint", this.disableInt)
+
+	val test = new Test
+	System.out.println("TEST " + test + ", " + test() + ", " + new Test()())
 }

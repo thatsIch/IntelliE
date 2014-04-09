@@ -1,0 +1,28 @@
+package de.thatsich.minecraft.core.module.block
+
+import net.minecraft.block.Block
+import de.thatsich.minecraft.core.registries.BlockRegistry
+import de.thatsich.minecraft.core.module.AName.nameToString
+import net.minecraft.creativetab.CreativeTabs
+
+/**
+ *
+ *
+ * @author thatsIch
+ * @since 07.04.2014.
+ */
+abstract class ABlock(info: ABlockInfo, config: ABlockConfig, blocks: BlockRegistry)
+	extends Block(info.getMaterial) with IBlock
+{
+	val name: String = info.getName
+	val hardness: Float = info.getHardness
+	val creativeTab: CreativeTabs = info.getCreativeTab
+	val texture: String = info.getTexture.toString
+
+	this.setBlockName(name)
+	this.setHardness(hardness)
+	this.setBlockTextureName(texture)
+	this.setCreativeTab(creativeTab)
+
+	blocks.add(this)
+}
