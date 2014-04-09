@@ -10,6 +10,5 @@ package de.thatsich.minecraft.core
 @author thatsIch
 @since 02.04.2014. */
 abstract class AID(id: String)
-{
-	def apply() = this.id
-}
+	extends AStringWrapper(id)
+{}

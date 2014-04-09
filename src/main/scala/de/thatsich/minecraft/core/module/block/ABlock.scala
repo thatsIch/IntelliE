@@ -2,7 +2,6 @@ package de.thatsich.minecraft.core.module.block
 
 import net.minecraft.block.Block
 import de.thatsich.minecraft.core.registries.BlockRegistry
-import de.thatsich.minecraft.core.module.AName.nameToString
 import net.minecraft.creativetab.CreativeTabs
 
 /**

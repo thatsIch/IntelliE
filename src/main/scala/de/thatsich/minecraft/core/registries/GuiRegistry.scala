@@ -3,6 +3,7 @@ package de.thatsich.minecraft.core.registries
 import cpw.mods.fml.common.network.{NetworkRegistry, IGuiHandler}
 import net.minecraft.world.World
 import net.minecraft.entity.player.EntityPlayer
+import de.thatsich.minecraft.core.ABaseMod
 
 /**
  *

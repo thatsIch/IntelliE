@@ -1,15 +1,14 @@
 package de.thatsich.minecraft.core.module
 
+import de.thatsich.minecraft.core.AStringWrapper
+
 /**
  * Basic wrapper for a name
  *
  * @author thatsIch
  * @since 07.04.2014.
  */
-abstract class AName(val name: String)
+abstract class AName(name: String)
+	extends AStringWrapper(name)
 {}
 
-object AName
-{
-	implicit def nameToString(name: AName): String = name.name
-}

@@ -1,5 +1,7 @@
 package de.thatsich.minecraft.core.registries
 
+import de.thatsich.minecraft.core.IEventProxy
+
 
 /**
  *

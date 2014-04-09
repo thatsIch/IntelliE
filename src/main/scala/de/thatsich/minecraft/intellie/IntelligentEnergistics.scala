@@ -26,7 +26,4 @@ object IntelligentEnergistics
 	this.unload("appaero", this.disableAero)
 	this.unload("appagri", this.disableAgro)
 	this.unload("appint", this.disableInt)
-
-	val test = new Test
-	System.out.println("TEST " + test + ", " + test() + ", " + new Test()())
 }
