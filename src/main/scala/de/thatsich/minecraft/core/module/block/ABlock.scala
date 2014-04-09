@@ -16,7 +16,7 @@ abstract class ABlock(info: ABlockInfo, config: ABlockConfig, blocks: BlockRegis
 	val name: String = info.getName
 	val hardness: Float = info.getHardness
 	val creativeTab: CreativeTabs = info.getCreativeTab
-	val texture: String = info.getTexture.toString
+	val texture: String = info.getTexture
 
 	this.setBlockName(name)
 	this.setHardness(hardness)
