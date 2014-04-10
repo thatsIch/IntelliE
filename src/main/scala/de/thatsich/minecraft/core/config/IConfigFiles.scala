@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.core.config
 
+
 /**
  *
  *

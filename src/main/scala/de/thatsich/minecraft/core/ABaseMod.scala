@@ -13,7 +13,7 @@ import de.thatsich.minecraft.core.log.ILog
  * @author thatsIch
  * @since 06.04.2014.
  */
-abstract class ABaseMod(protected val log: ILog, protected val registries: IRegistries, protected val configFiles: IConfigFiles)
+abstract class ABaseMod(implicit protected val log: ILog, implicit protected val registries: IRegistries, implicit protected val configFiles: IConfigFiles)
 	extends IEventProxy
 {
 	// implicit config
@@ -59,8 +59,8 @@ abstract class ABaseMod(protected val log: ILog, protected val registries: IRegi
 		this.log.info("PreInit Begin")
 		this.registries.preInit(event)
 		val proxy = this.getProxy
-		proxy.initRenders
-		proxy.initSounds
+		proxy.initRenders()
+		proxy.initSounds()
 		this.log.info("PreInit End")
 	}
 

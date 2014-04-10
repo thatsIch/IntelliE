@@ -1,9 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics
 
 import cpw.mods.fml.common.{SidedProxy, Optional, Mod}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.common.{OAeroConfigFiles, OAppliedAerodynamicsLog}
 import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
-import de.thatsich.minecraft.core.registries.ORegistries
 import de.thatsich.minecraft.core.{ICommonProxy, ABaseMod}
 
 /**
@@ -20,7 +18,7 @@ import de.thatsich.minecraft.core.{ICommonProxy, ABaseMod}
 	modLanguage = "scala"
 )
 object AppliedAerodynamics
-	extends ABaseMod(OAppliedAerodynamicsLog, ORegistries, OAeroConfigFiles)
+	extends ABaseMod
 {
 	//	final val ITEM_GRAVI_CHEST_PLATE: ItemArmor = new ItemGraviChestPlate(ItemArmor.ArmorMaterial.DIAMOND, 1, 1)
 

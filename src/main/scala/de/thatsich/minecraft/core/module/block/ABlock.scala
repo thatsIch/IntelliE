@@ -11,7 +11,8 @@ import net.minecraft.creativetab.CreativeTabs
  * @since 07.04.2014.
  */
 abstract class ABlock(info: ABlockInfo, config: ABlockConfig, blocks: BlockRegistry)
-	extends Block(info.getMaterial) with IBlock
+	extends Block(info.getMaterial)
+	with IBlock
 {
 	val name: String = info.getName
 	val hardness: Float = info.getHardness

@@ -1,8 +1,7 @@
 package de.thatsich.minecraft.intellie
 
 import cpw.mods.fml.common.Mod
-import de.thatsich.minecraft.intellie.common.{OIntelliLog, OIntelliConfigFiles, TIntelliConfig}
-import de.thatsich.minecraft.core.registries.ORegistries
+import de.thatsich.minecraft.intellie.common.TIntelliConfig
 import de.thatsich.minecraft.core.{ABaseMod, TModUnloader}
 
 /**
@@ -19,7 +18,7 @@ import de.thatsich.minecraft.core.{ABaseMod, TModUnloader}
 	modLanguage = "scala"
 )
 object IntelligentEnergistics
-	extends ABaseMod(OIntelliLog, ORegistries, OIntelliConfigFiles)
+	extends ABaseMod
 	with TModUnloader
 	with TIntelliConfig
 {

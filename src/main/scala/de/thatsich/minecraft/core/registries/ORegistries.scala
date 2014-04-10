@@ -11,6 +11,8 @@ import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationE
 object ORegistries
 	extends IRegistries
 {
+	//	val armorRenderers = new ArmorRenderingRegistry()
+
 	def preInit(event: FMLPreInitializationEvent)
 	{
 

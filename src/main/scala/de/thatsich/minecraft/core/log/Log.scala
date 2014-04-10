@@ -9,7 +9,7 @@ import cpw.mods.fml.relauncher.FMLRelaunchLog
  * @author thatsIch
  * @since 04.04.2014.
  */
-abstract class ALog(val id: String)
+class Log(val id: String)
 	extends ILog
 {
 	/**
