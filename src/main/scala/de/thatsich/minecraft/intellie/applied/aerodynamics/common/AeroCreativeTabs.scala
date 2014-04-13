@@ -10,7 +10,7 @@ import net.minecraft.init.Items
  * @author thatsIch
  * @since 05.04.2014.
  */
-object OAeroCreativeTabs extends CreativeTabs("appliedAerodynamicsTab")
+class AeroCreativeTabs extends CreativeTabs("appliedAerodynamicsTab")
 {
 	override def getTabIconItem: Item =
 	{

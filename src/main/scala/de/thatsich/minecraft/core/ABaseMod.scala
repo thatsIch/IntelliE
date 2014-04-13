@@ -6,6 +6,7 @@ import de.thatsich.minecraft.core.registries.IRegistries
 import de.thatsich.minecraft.core.config.IConfigFiles
 import de.thatsich.minecraft.core.log.ILog
 import de.thatsich.minecraft.core.module.IModules
+import de.thatsich.minecraft.core.network.PacketPipeline
 
 /**
  *
@@ -16,6 +17,7 @@ import de.thatsich.minecraft.core.module.IModules
 abstract class ABaseMod(implicit protected val log: ILog,
                         implicit protected val modules: IModules,
                         implicit protected val registries: IRegistries,
+                        implicit protected val pipeline: PacketPipeline,
                         implicit protected val configFiles: IConfigFiles)
 	extends IEventProxy
 {
@@ -39,9 +41,11 @@ abstract class ABaseMod(implicit protected val log: ILog,
 	{
 		this.log.info("PreInit Begin")
 		this.registries.preInit(event)
+		this.pipeline.preInit(event)
 
 		proxy.initRenders()
 		proxy.initSounds()
+
 
 		this.log.info("PreInit End")
 	}
@@ -50,6 +54,7 @@ abstract class ABaseMod(implicit protected val log: ILog,
 	{
 		this.log.info("Init Begin")
 		this.registries.init(event)
+		this.pipeline.init(event)
 		this.log.info("Init End")
 	}
 
@@ -57,6 +62,7 @@ abstract class ABaseMod(implicit protected val log: ILog,
 	{
 		this.log.info("PostInit Begin")
 		this.registries.postInit(event)
+		this.pipeline.postInit(event)
 		this.log.info("PostInit End")
 	}
 }

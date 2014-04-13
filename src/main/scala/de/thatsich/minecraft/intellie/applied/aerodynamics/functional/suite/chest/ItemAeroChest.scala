@@ -33,11 +33,12 @@ object ItemAeroChest
 }
 
 class ItemAeroChest(material: ItemArmor.ArmorMaterial, renderIndex: Int, armorType: Int)
+                   (implicit creativeTab: CreativeTabs)
 	extends ItemArmor(material, renderIndex, armorType)
 	with ISpecialArmor
 {
 	this.setUnlocalizedName("GraviChestPlate")
-	this.setCreativeTab(CreativeTabs.tabCombat)
+	this.setCreativeTab(creativeTab)
 
 	@Override def getProperties(player: EntityLivingBase, armor: ItemStack, source: DamageSource, damage: Double, slot: Int): ISpecialArmor.ArmorProperties =
 	{
@@ -89,7 +90,7 @@ class ItemAeroChest(material: ItemArmor.ArmorMaterial, renderIndex: Int, armorTy
 		player.capabilities.allowFlying = wearsSuite || isInCreative
 		if( player.capabilities.isFlying )
 		{
-			System.out.println(itemStack)
+			//			System.out.println(itemStack)
 		}
 	}
 
