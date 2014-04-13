@@ -1,6 +1,7 @@
 package de.thatsich.minecraft.intellie.common
 
 import de.thatsich.minecraft.core.module.AModules
+import de.thatsich.minecraft.core.registries.IRegistries
 
 /**
  *
@@ -8,7 +9,7 @@ import de.thatsich.minecraft.core.module.AModules
  * @author thatsIch
  * @since 13.04.2014.
  */
-object OIntelliModules
+class IntelliModules(implicit registries: IRegistries)
 	extends AModules
 {
 

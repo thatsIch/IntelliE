@@ -13,6 +13,7 @@ class Registries(implicit log: ILog)
 	extends IRegistries
 {
 	lazy val armorRenderers = new ArmorRenderingRegistry
+	lazy val items = new ItemRegistry
 
 	def preInit(event: FMLPreInitializationEvent)
 	{

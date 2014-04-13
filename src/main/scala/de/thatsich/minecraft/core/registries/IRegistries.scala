@@ -14,5 +14,7 @@ import de.thatsich.minecraft.core.IEventProxy
 trait IRegistries
 	extends IEventProxy
 {
+	def armorRenderers: ArmorRenderingRegistry
 
+	def items: ItemRegistry
 }

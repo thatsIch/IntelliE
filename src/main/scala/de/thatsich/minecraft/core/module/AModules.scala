@@ -1,6 +1,7 @@
 package de.thatsich.minecraft.core.module
 
 import scala.collection.mutable
+import de.thatsich.minecraft.core.registries.IRegistries
 
 /**
  * Simple abstract class
@@ -10,7 +11,7 @@ import scala.collection.mutable
  * @author thatsIch
  * @since 13.04.2014.
  */
-abstract class AModules
+abstract class AModules(implicit registries: IRegistries)
 	extends IModules
 {
 	private[ this ] final val map = new mutable.HashMap[ Class[ _ <: AModule ], AModule ]()
