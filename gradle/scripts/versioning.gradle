@@ -1,4 +1,4 @@
-project.ext.version = readVersion()
+ext.versions.project = readVersion()
 
 // Class contains a project version
 class ProjectVersion {
@@ -18,6 +18,27 @@ class ProjectVersion {
 	@Override
 	String toString() {
 		"$major.$minor.$revision.$commit"
+	}
+
+	public ProjectVersion incMajor() {
+		this.major++
+		this.minor = 0
+		this.revision = 0
+
+		return this
+	}
+
+	public ProjectVersion incMinor() {
+		this.minor++
+		this.revision = 0
+
+		return this
+	}
+
+	public ProjectVersion incRevision() {
+		this.revision++
+
+		return this
 	}
 }
 
@@ -46,12 +67,8 @@ private ProjectVersion readVersion() {
 		projectVersion = new ProjectVersion(major, minor, revision, commit)
 		logger.quiet "Current version from Git: $projectVersion"
 	}
-	catch (exception) {
-		logger.quiet "Can't get project version, maybe missing initial tag."
-		exec {
-			executable = 'git'
-			args = ['tag', '-a', "v0.0.0.0", "-m", "Initial Tag"]
-		}
+	catch (ignored) {
+		tag("/dev/null", "0.0.0.0")
 	}
 
 	return projectVersion
@@ -79,44 +96,36 @@ private Integer getGitCommitCount() {
 	}
 }
 
-task incMajor(group: 'versioning', description: 'Increments project major project.ext.version.') << {
-	String currentVersion = project.ext.version.toString()
-	++project.ext.version.major
-	project.ext.version.minor = 0
-	project.ext.version.revision = 0
-	String newVersion = project.ext.version.toString()
-	String message = "Incrementing major project version: $currentVersion -> $newVersion"
+private void tag(String oldTag, String newTag) {
+	String message = "Incrementing project version: $oldTag -> $newTag"
 	logger.quiet message
 
 	exec {
 		executable = 'git'
-		args = ['tag', '-a', "v$newVersion", "-m", message]
+		args = ['tag', '-a', "v$newTag", "-m", message]
 	}
+}
+
+task incMajor(group: 'versioning', description: 'Increments project major project.ext.version.') << {
+	ProjectVersion version = versions.project
+	String oldTag = version.toString
+	String newTag = version.incMajor().toString()
+
+	tag(oldTag, newTag)
 }
 
 task incMinor(group: 'versioning', description: 'Increments project minor project.ext.version.') << {
-	String currentVersion = project.ext.version.toString()
-	++project.ext.version.minor
-	project.ext.version.revision = 0
-	String newVersion = project.ext.version.toString()
-	String message = "Incrementing minor project version: $currentVersion -> $newVersion"
-	logger.quiet message
+	ProjectVersion version = versions.project
+	String oldTag = version.toString
+	String newTag = version.incMinor().toString()
 
-	exec {
-		executable = 'git'
-		args = ['tag', '-a', "v$newVersion", "-m", message]
-	}
+	tag(oldTag, newTag)
 }
 
 task incRev(group: 'versioning', description: 'Increments project reproject.ext.version.') << {
-	String currentVersion = project.ext.version.toString()
-	++project.ext.version.revision
-	String newVersion = project.ext.version.toString()
-	String message = "Incrementing minor project version: $currentVersion -> $newVersion"
-	logger.quiet message
+	ProjectVersion version = versions.project
+	String oldTag = version.toString
+	String newTag = version.incRevision().toString()
 
-	exec {
-		executable = 'git'
-		args = ['tag', '-a', "v$newVersion", "-m", message]
-	}
+	tag(oldTag, newTag)
 }

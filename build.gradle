@@ -3,18 +3,15 @@ apply plugin: 'java'    // enables sourcesets
 apply plugin: 'idea'    // enable automatic setup of idea workspace
 apply plugin: 'scala'   // enable scala
 
+apply from: 'gradle/scripts/properties.gradle'
 apply from: 'gradle/scripts/versioning.gradle'
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
-
-group = 'de.thatsich.intellie'
-archivesBaseName = "IntelligentEnergistics"
-version = project.ext.version.toString()
+sourceCompatibility = $ { versions.java }
+targetCompatibility = $ { versions.java }
 
 // needed for pulling new versions from forge
 minecraft {
-	version = "1.7.2-10.12.0.1057"
+	version = "${versions.minecraft}-${versions.forge}"
 	assetDir = "out/assets"
 }
 
@@ -31,28 +28,23 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT"
+		classpath "net.minecraftforge.gradle:ForgeGradle:${versions.forgegradle}"
 	}
 }
 
 dependencies {
-	compile "com.google.code.findbugs:jsr305:2.0.3"
-}
+	compile "com.google.code.findbugs:jsr305:${versions.findbugs}"
 
-// exclude layers and integration of (AE2)
-sourceSets {
-	api {
-		java {
-			exclude '**/layers/**'
-			exclude '**/integration/**'
-		}
-	}
+	testCompile "junit:junit:${versions.junit}"
+	testCompile "org.scalatest:scalatest_2.10:${versions.scalatest}"
+	testCompile "org.scalamock:scalamock_2.10:${versions.scalamock}"
 }
 
 // resulting file with <archivesBaseName>-<version>-<classifier>
 jar {
+	archivesBaseName = "IntelligentEnergistics"
+	version = "${versions.minecraft}-${versions.project.toString}"
 	classifier = "universal"
-	version = "${project.minecraft.version}-${project.version}"
 }
 
 // disable Ant from scala compiling
@@ -61,20 +53,11 @@ tasks.withType(ScalaCompile) {
 }
 
 processResources {
-	// this will ensure that this task is redone when the versions change.
-	inputs.property "version", project.version
-	inputs.property "mcversion", project.minecraft.version
-
 	// replace stuff in mcmod.info, nothing else
 	from(sourceSets.main.resources.srcDirs) {
 		include 'mcmod.info'
 
 		// replace version and mcversion
-		expand 'version': project.version, 'mcversion': project.minecraft.version
-	}
-
-	// copy everything else, thats not the mcmod.info
-	from(sourceSets.main.resources.srcDirs) {
-		exclude 'mcmod.info'
+		expand 'version': versions.project.toString, 'mcversion': versions.minecraft
 	}
 }
