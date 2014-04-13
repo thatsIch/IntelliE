@@ -6,8 +6,8 @@ apply plugin: 'scala'   // enable scala
 apply from: 'gradle/scripts/properties.gradle'
 apply from: 'gradle/scripts/versioning.gradle'
 
-sourceCompatibility = $ { versions.java }
-targetCompatibility = $ { versions.java }
+sourceCompatibility = versions.java
+targetCompatibility = versions.java
 
 // needed for pulling new versions from forge
 minecraft {
