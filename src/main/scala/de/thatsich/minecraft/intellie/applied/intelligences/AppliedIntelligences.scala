@@ -12,8 +12,9 @@ import cpw.mods.fml.common.Mod
 	modid = "appint",
 	name = "AppliedIntelligences",
 	version = "${version}",
-	dependencies = "required-after:intellie"
+	dependencies = "required-after:intellie",
+	modLanguage = "scala"
 )
-class AppliedIntelligences
+object AppliedIntelligences
 {
 }

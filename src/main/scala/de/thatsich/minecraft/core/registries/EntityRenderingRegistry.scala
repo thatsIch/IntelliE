@@ -8,7 +8,7 @@ import de.thatsich.minecraft.core.log.ILog
  * @author thatsIch
  * @since 07.04.2014.
  */
-class EntityRenderingRegistry(log: ILog)
+final class EntityRenderingRegistry(implicit log: ILog)
 	extends ARegistry[ String ](log)
 {
 	def register()

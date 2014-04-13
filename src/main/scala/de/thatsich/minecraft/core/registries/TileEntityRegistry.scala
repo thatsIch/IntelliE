@@ -11,7 +11,7 @@ import de.thatsich.minecraft.core.log.ILog
  * @author thatsIch
  * @since 07.04.2014.
  */
-class TileEntityRegistry(log: ILog)
+final class TileEntityRegistry(implicit log: ILog)
 	extends ARegistry[ ITileEntity ](log)
 {
 	def register()

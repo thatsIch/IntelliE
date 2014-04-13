@@ -12,7 +12,7 @@ import de.thatsich.minecraft.core.log.ILog
  * @author thatsIch
  * @since 07.04.2014.
  */
-class ArmorRenderingRegistry(log: ILog)
+final class ArmorRenderingRegistry(implicit log: ILog)
 	extends ARegistry[ String ](log)
 {
 	def register()

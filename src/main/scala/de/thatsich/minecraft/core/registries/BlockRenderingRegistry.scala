@@ -9,7 +9,7 @@ import de.thatsich.minecraft.core.log.ILog
  * @author thatsIch
  * @since 07.04.2014.
  */
-class BlockRenderingRegistry(log: ILog)
+final class BlockRenderingRegistry(implicit log: ILog)
 	extends ARegistry[ ISimpleBlockRenderingHandler ](log)
 {
 	def register()

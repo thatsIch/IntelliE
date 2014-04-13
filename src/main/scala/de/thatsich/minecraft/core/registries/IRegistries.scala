@@ -4,7 +4,9 @@ import de.thatsich.minecraft.core.IEventProxy
 
 
 /**
- *
+ * Representation of a collection of registries
+ * Extends IEventProxy to allocate the calls
+ * regarding to the event timings
  *
  * @author thatsIch
  * @since 08.04.2014.

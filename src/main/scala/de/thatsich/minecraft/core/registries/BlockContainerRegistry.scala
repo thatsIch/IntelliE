@@ -11,7 +11,7 @@ import de.thatsich.minecraft.core.log.ILog
  * @author thatsIch
  * @since 07.04.2014.
  */
-class BlockContainerRegistry(log: ILog)
+final class BlockContainerRegistry(implicit log: ILog)
 	extends ARegistry[ IBlockContainer ](log)
 {
 	def register()

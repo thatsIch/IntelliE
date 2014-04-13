@@ -2,7 +2,7 @@ package de.thatsich.minecraft.core.registries
 
 
 /**
- *
+ * simple registry
  *
  * @author thatsIch
  * @since 06.04.2014.

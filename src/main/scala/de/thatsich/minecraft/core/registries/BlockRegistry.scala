@@ -10,7 +10,7 @@ import de.thatsich.minecraft.core.log.ILog
  * @author thatsIch
  * @since 07.04.2014.
  */
-class BlockRegistry(log: ILog)
+final class BlockRegistry(implicit log: ILog)
 	extends ARegistry[ IBlock ](log)
 {
 	def register()

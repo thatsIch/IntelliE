@@ -11,7 +11,7 @@ import de.thatsich.minecraft.core.ABaseMod
  * @author thatsIch
  * @since 07.04.2014.
  */
-class GuiRegistry
+final class GuiRegistry
 	extends IGuiHandler
 {
 	def init(instance: ABaseMod)

@@ -19,20 +19,20 @@ import net.minecraft.client.renderer.texture.IIconRegister
 /**
 @author thatsIch
 @since 26.03.2014. */
-object ItemGraviChestPlate
+object ItemAeroChest
 {
-	private final val ENERGY_MAX: Int = 30000000
-	private final val DOUBLE: Double = 20.0D
-	var maxCharge: Int = 30000000
-	var minCharge: Int = 80000
-	var transferLimit: Int = 60000
-	var tier: Int = 4
-	var dischargeOnTick: Int = 278
-	var boostSpeed: Float = 0.11F
-	var boostMultiplier: Int = 2
+	val ENERGY_MAX: Int = 30000000
+	val BASE_VALUE: Double = 20.0D
+	val maxCharge: Int = 30000000
+	val minCharge: Int = 80000
+	val transferLimit: Int = 60000
+	val tier: Int = 4
+	val dischargeOnTick: Int = 278
+	val boostSpeed: Float = 0.11F
+	val boostMultiplier: Int = 2
 }
 
-class ItemGraviChestPlate(material: ItemArmor.ArmorMaterial, renderIndex: Int, armorType: Int)
+class ItemAeroChest(material: ItemArmor.ArmorMaterial, renderIndex: Int, armorType: Int)
 	extends ItemArmor(material, renderIndex, armorType)
 	with ISpecialArmor
 {
@@ -53,7 +53,7 @@ class ItemGraviChestPlate(material: ItemArmor.ArmorMaterial, renderIndex: Int, a
 		val baseAbsorptionRatio: Double = this.getBaseAbsorptionRatio
 		val damageAbsorptionRatio: Double = this.getDamageAbsorptionRatio
 
-		Math.round(ItemGraviChestPlate.DOUBLE * baseAbsorptionRatio * damageAbsorptionRatio).asInstanceOf[ Int ]
+		Math.round(ItemAeroChest.BASE_VALUE * baseAbsorptionRatio * damageAbsorptionRatio).toInt
 	}
 
 	@Override def damageArmor(entity: EntityLivingBase, stack: ItemStack, source: DamageSource, damage: Int, slot: Int)

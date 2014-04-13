@@ -3,7 +3,7 @@ package de.thatsich.minecraft.core.registries
 import de.thatsich.minecraft.core.module.item.IItem
 import cpw.mods.fml.common.registry.GameRegistry
 import net.minecraft.item.Item
-import de.thatsich.minecraft.core.log.Log
+import de.thatsich.minecraft.core.log.ILog
 
 /**
  *
@@ -11,7 +11,8 @@ import de.thatsich.minecraft.core.log.Log
  * @author thatsIch
  * @since 06.04.2014.
  */
-object OItemRegistry extends ARegistry[ IItem ](new Log("ItemRegistry"))
+final class ItemRegistry(implicit log: ILog)
+	extends ARegistry[ IItem ](log)
 {
 	def register()
 	{

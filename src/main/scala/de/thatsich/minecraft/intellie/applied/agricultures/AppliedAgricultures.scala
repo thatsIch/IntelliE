@@ -12,9 +12,10 @@ import cpw.mods.fml.common.Mod
 	modid = "appagri",
 	name = "AppliedAgricultures",
 	version = "${version}",
-	dependencies = "required-after:intellie"
+	dependencies = "required-after:intellie",
+	modLanguage = "scala"
 )
-class AppliedAgricultures
+object AppliedAgricultures
 {
 
 }
