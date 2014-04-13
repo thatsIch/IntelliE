@@ -1,7 +1,6 @@
 package de.thatsich.minecraft.core.log
 
-import org.apache.logging.log4j.Level
-import cpw.mods.fml.relauncher.FMLRelaunchLog
+import org.apache.logging.log4j.{LogManager, Level}
 
 /**
  *
@@ -77,6 +76,11 @@ class Log(val id: String)
 	  */
 	private def logging(level: Level, format: String, data: AnyRef*)
 	{
-		FMLRelaunchLog.log(this.id, level, format, data)
+		this.log(this.id, level, format, data)
+	}
+
+	private def log(targetLog: String, level: Level, format: String, data: AnyRef*)
+	{
+		LogManager.getLogger(targetLog).log(level, format.format(data))
 	}
 }

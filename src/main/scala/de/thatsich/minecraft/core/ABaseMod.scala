@@ -1,7 +1,6 @@
 package de.thatsich.minecraft.core
 
 import cpw.mods.fml.common.Mod
-import java.lang.reflect.Field
 import cpw.mods.fml.common.event.{FMLPreInitializationEvent, FMLInitializationEvent, FMLPostInitializationEvent}
 import de.thatsich.minecraft.core.registries.IRegistries
 import de.thatsich.minecraft.core.config.IConfigFiles
@@ -20,7 +19,7 @@ abstract class ABaseMod(implicit protected val log: ILog,
                         implicit protected val configFiles: IConfigFiles)
 	extends IEventProxy
 {
-	// implicit config
+	def proxy: ICommonProxy
 
 	/**
 	 * Retrieves the modname from the @Mod Annotation
@@ -36,35 +35,14 @@ abstract class ABaseMod(implicit protected val log: ILog,
 		annotation.name
 	}
 
-	/**
-	 * retrieves the proxy class of the child by reflecting it
-	 *
-	 * @return proxy
-	 */
-	private def getProxy: ICommonProxy =
-	{
-		val clazz = this.getClass
-		val potentialProxy: Array[ Field ] = clazz.getDeclaredFields
-		for( field <- potentialProxy )
-		{
-			val obj: Object = field.get(null)
-			obj match
-			{
-				case proxy: ICommonProxy => return proxy
-				case _ =>
-			}
-		}
-		this.log.warn("No proxy found.")
-		throw new IllegalArgumentException("No proxy was given.")
-	}
-
 	def preInit(event: FMLPreInitializationEvent)
 	{
 		this.log.info("PreInit Begin")
 		this.registries.preInit(event)
-		val proxy = this.getProxy
+
 		proxy.initRenders()
 		proxy.initSounds()
+
 		this.log.info("PreInit End")
 	}
 

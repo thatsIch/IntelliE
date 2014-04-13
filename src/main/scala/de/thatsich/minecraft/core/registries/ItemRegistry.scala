@@ -20,7 +20,7 @@ final class ItemRegistry(implicit log: ILog)
 			val unlocalizedName = item.getUnlocalizedName
 
 			GameRegistry.registerItem(item, unlocalizedName)
-			this.log.debug("Registered Item %s with %s", item, unlocalizedName)
+			this.log.debug(s"Registered Item $item with $unlocalizedName")
 		}
 		this.log.info("Registering all Items.")
 	}

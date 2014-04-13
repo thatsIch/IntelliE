@@ -16,10 +16,11 @@ import net.minecraft.item.ItemArmor
  */
 package object aerodynamics
 {
-	implicit final val log: ILog = new Log("Aero")
-	implicit final val registries: IRegistries = new Registries
-	implicit final val configFiles: IConfigFiles = OAeroConfigFiles
-	implicit final val modules: IModules = new AeroModules
+	implicit val log: ILog = new Log("Aero")
+	implicit val registries: IRegistries = new Registries
+	implicit val configFiles: IConfigFiles = OAeroConfigFiles
 
-	implicit final val itemAeroChest = new ItemAeroChest(ItemArmor.ArmorMaterial.DIAMOND, 1, 1)
+	implicit val itemAeroChest: ItemAeroChest = new ItemAeroChest(ItemArmor.ArmorMaterial.DIAMOND, 1, 1)
+
+	implicit val modules: IModules = new AeroModules
 }

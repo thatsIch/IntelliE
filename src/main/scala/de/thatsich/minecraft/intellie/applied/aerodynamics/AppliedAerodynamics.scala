@@ -20,43 +20,32 @@ import de.thatsich.minecraft.core.{ICommonProxy, ABaseMod}
 object AppliedAerodynamics
 	extends ABaseMod
 {
-	//	final val ITEM_GRAVI_CHEST_PLATE: ItemArmor = new ItemGraviChestPlate(ItemArmor.ArmorMaterial.DIAMOND, 1, 1)
-
 	@SidedProxy(
 		modId = "appaero",
 		clientSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.common.proxies.AeroClientProxy",
 		serverSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.common.proxies.AeroCommonProxy"
 	)
-	var s_proxy: ICommonProxy = null
+	var proxy: ICommonProxy = null
 
 	@Optional.Method(modid = "appaero")
 	@Mod.EventHandler
 	override def preInit(event: FMLPreInitializationEvent)
 	{
-		this.log.info("PreInit Start")
-
-		//		GameRegistry.registerItem(AppliedAerodynamics.ITEM_GRAVI_CHEST_PLATE, AppliedAerodynamics.ITEM_GRAVI_CHEST_PLATE.getUnlocalizedName)
-
-		this.log.info("PreInit End")
+		super.preInit(event)
 	}
 
 	@Optional.Method(modid = "appaero")
 	@Mod.EventHandler
 	override def init(event: FMLInitializationEvent)
 	{
-		this.log.info("Init Start")
-
+		super.init(event)
 		//		FMLCommonHandler.instance.bus.register(new KeyHandler)
-
-		this.log.info("Init End")
 	}
 
 	@Optional.Method(modid = "appaero")
 	@Mod.EventHandler
 	override def postInit(event: FMLPostInitializationEvent)
 	{
-		this.log.info("PostInit Start")
-
-		this.log.info("PostInit End")
+		super.postInit(event)
 	}
 }

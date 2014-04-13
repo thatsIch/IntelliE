@@ -12,12 +12,12 @@ import de.thatsich.minecraft.core.log.ILog
 class Registries(implicit log: ILog)
 	extends IRegistries
 {
-	lazy val armorRenderers = new ArmorRenderingRegistry
-	lazy val items = new ItemRegistry
+	val armorRenderers = new ArmorRenderingRegistry
+	val items = new ItemRegistry
 
 	def preInit(event: FMLPreInitializationEvent)
 	{
-
+		this.items.register()
 	}
 
 	def init(event: FMLInitializationEvent)

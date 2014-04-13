@@ -17,6 +17,6 @@ abstract class ARegistry[ T ](protected val log: ILog) extends IRegistry[ T ]
 	def add(elem: T)
 	{
 		this.set += elem
-		this.log.info("Queued " + elem + " for registration")
+		this.log.info("Queued " + elem.getClass.getSimpleName + " for registration")
 	}
 }
