@@ -12,7 +12,6 @@ import net.minecraft.client.renderer.texture.IIconRegister
  */
 abstract class AItem(itemTexture: ATexture)
 	extends Item
-	with IItem
 {
 	override def registerIcons(iconRegister: IIconRegister)
 	{

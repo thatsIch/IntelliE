@@ -12,7 +12,6 @@ import net.minecraft.init.Blocks
  */
 abstract class AItemBlock(info: AItemInfo, config: AConfig, recipe: ARecipe)
 	extends ItemBlock(Blocks.dirt)
-	with IItemBlock
 {
 
 

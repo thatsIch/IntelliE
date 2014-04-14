@@ -1,4 +1,4 @@
-ext.versions.project = readVersion()
+ext.projectVersion = readVersion()
 
 // Class contains a project version
 class ProjectVersion {
@@ -107,7 +107,7 @@ private void tag(String oldTag, String newTag) {
 }
 
 task incMajor(group: 'versioning', description: 'Increments project major project.ext.version.') << {
-	ProjectVersion version = versions.project
+	ProjectVersion version = projectVersion
 	String oldTag = version.toString
 	String newTag = version.incMajor().toString()
 
@@ -115,7 +115,7 @@ task incMajor(group: 'versioning', description: 'Increments project major projec
 }
 
 task incMinor(group: 'versioning', description: 'Increments project minor project.ext.version.') << {
-	ProjectVersion version = versions.project
+	ProjectVersion version = projectVersion
 	String oldTag = version.toString
 	String newTag = version.incMinor().toString()
 
@@ -123,7 +123,7 @@ task incMinor(group: 'versioning', description: 'Increments project minor projec
 }
 
 task incRev(group: 'versioning', description: 'Increments project reproject.ext.version.') << {
-	ProjectVersion version = versions.project
+	ProjectVersion version = projectVersion
 	String oldTag = version.toString
 	String newTag = version.incRevision().toString()
 

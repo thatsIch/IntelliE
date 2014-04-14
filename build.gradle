@@ -28,7 +28,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "net.minecraftforge.gradle:ForgeGradle:${versions.forgegradle}"
+		classpath "net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT"
 	}
 }
 
@@ -43,7 +43,7 @@ dependencies {
 // resulting file with <archivesBaseName>-<version>-<classifier>
 jar {
 	archivesBaseName = "IntelligentEnergistics"
-	version = "${versions.minecraft}-${versions.project.toString}"
+	version = "${versions.minecraft}-${projectVersion.toString}"
 	classifier = "universal"
 }
 
@@ -58,6 +58,6 @@ processResources {
 		include 'mcmod.info'
 
 		// replace version and mcversion
-		expand 'version': versions.project.toString, 'mcversion': versions.minecraft
+		expand 'version': projectVersion.toString, 'mcversion': versions.minecraft
 	}
 }

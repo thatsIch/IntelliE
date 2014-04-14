@@ -9,6 +9,11 @@ import net.minecraft.world.World
 import net.minecraft.util.DamageSource
 import net.minecraft.entity.{Entity, EntityLivingBase}
 import net.minecraft.client.renderer.texture.IIconRegister
+import de.thatsich.minecraft.core.module.item.AItemArmor
+import cpw.mods.fml.common.Optional
+import appeng.api.implementations.items.IAEItemPowerStorage
+import de.thatsich.minecraft.core.OModIDs
+import appeng.api.config.AccessRestriction
 
 /**
  *
@@ -30,50 +35,61 @@ object ItemAeroChest
 	val dischargeOnTick: Int = 278
 	val boostSpeed: Float = 0.11F
 	val boostMultiplier: Int = 2
+	val baseAbsorptionRatio: Double = 0.4D
+	val damageAbsorptionRatio: Double = 1.1D
+	val energyPerDamage: Int = 900
 }
 
+@Optional.Interface(iface = "appeng.api.implementations.items.ISpecialArmor", modid = OModIDs.APPENG, striprefs = true)
 class ItemAeroChest(material: ItemArmor.ArmorMaterial, renderIndex: Int, armorType: Int)
                    (implicit creativeTab: CreativeTabs)
-	extends ItemArmor(material, renderIndex, armorType)
+	extends AItemArmor(material, renderIndex, armorType)
 	with ISpecialArmor
+	with IAEItemPowerStorage
 {
-	this.setUnlocalizedName("GraviChestPlate")
-	this.setCreativeTab(creativeTab)
-
-	@Override def getProperties(player: EntityLivingBase, armor: ItemStack, source: DamageSource, damage: Double, slot: Int): ISpecialArmor.ArmorProperties =
+	def getPowerFlow(is: ItemStack): AccessRestriction =
 	{
-		val absorptionRatio: Double = this.getBaseAbsorptionRatio * this.getDamageAbsorptionRatio
-		val energyPerDamage: Int = this.getEnergyPerDamage
-		val damageLimit: Int = if( energyPerDamage > 0 ) 25 * 100 / energyPerDamage else 0
+		AccessRestriction.WRITE
+	}
+
+	def getAECurrentPower(is: ItemStack): Double =
+	{
+		0.0
+	}
+
+	def getAEMaxPower(is: ItemStack): Double =
+	{
+		0.0
+	}
+
+	def extractAEPower(is: ItemStack, amt: Double): Double =
+	{
+		0.0
+	}
+
+	def injectAEPower(is: ItemStack, amt: Double): Double =
+	{
+		0.0
+	}
+
+	override def getProperties(player: EntityLivingBase, armor: ItemStack, source: DamageSource, damage: Double, slot: Int): ISpecialArmor.ArmorProperties =
+	{
+		val absorptionRatio: Double = ItemAeroChest.baseAbsorptionRatio * ItemAeroChest.damageAbsorptionRatio
+		val damageLimit: Int = if( ItemAeroChest.energyPerDamage > 0 ) 25 * 100 / ItemAeroChest.energyPerDamage else 0
 
 		new ISpecialArmor.ArmorProperties(0, absorptionRatio, damageLimit)
 	}
 
-	@Override def getArmorDisplay(player: EntityPlayer, armor: ItemStack, slot: Int): Int =
+	override def getArmorDisplay(player: EntityPlayer, armor: ItemStack, slot: Int): Int =
 	{
-		val baseAbsorptionRatio: Double = this.getBaseAbsorptionRatio
-		val damageAbsorptionRatio: Double = this.getDamageAbsorptionRatio
-
-		Math.round(ItemAeroChest.BASE_VALUE * baseAbsorptionRatio * damageAbsorptionRatio).toInt
+		Math.round(ItemAeroChest.BASE_VALUE *
+			ItemAeroChest.baseAbsorptionRatio *
+			ItemAeroChest.damageAbsorptionRatio
+		).toInt
 	}
 
-	@Override def damageArmor(entity: EntityLivingBase, stack: ItemStack, source: DamageSource, damage: Int, slot: Int)
+	override def damageArmor(entity: EntityLivingBase, stack: ItemStack, source: DamageSource, damage: Int, slot: Int)
 	{
-	}
-
-	private def getBaseAbsorptionRatio: Double =
-	{
-		0.4D
-	}
-
-	def getDamageAbsorptionRatio: Double =
-	{
-		1.1D
-	}
-
-	def getEnergyPerDamage: Int =
-	{
-		900
 	}
 
 	override def isRepairable: Boolean =
@@ -83,15 +99,7 @@ class ItemAeroChest(material: ItemArmor.ArmorMaterial, renderIndex: Int, armorTy
 
 	override def onArmorTick(world: World, player: EntityPlayer, itemStack: ItemStack)
 	{
-		val clazz = this.getClass
-		val wearsSuite: Boolean = player.inventory.armorItemInSlot(2).getItem.getClass == clazz
-		val isInCreative: Boolean = player.capabilities.isCreativeMode
-
-		player.capabilities.allowFlying = wearsSuite || isInCreative
-		if( player.capabilities.isFlying )
-		{
-			//			System.out.println(itemStack)
-		}
+		player.capabilities.allowFlying = true
 	}
 
 	def getArmorTexture(stack: ItemStack, entity: Entity, slot: Int, `type`: Nothing): String =
@@ -100,8 +108,8 @@ class ItemAeroChest(material: ItemArmor.ArmorMaterial, renderIndex: Int, armorTy
 	}
 
 	@SideOnly(Side.CLIENT)
-	override def registerIcons(par1IconRegister: IIconRegister)
+	override def registerIcons(iconRegister: IIconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon("appaero:itemGraviChestPlate")
+		this.itemIcon = iconRegister.registerIcon("appaero:itemGraviChestPlate")
 	}
 }
