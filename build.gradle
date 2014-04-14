@@ -6,12 +6,12 @@ apply plugin: 'scala'   // enable scala
 apply from: 'gradle/scripts/properties.gradle'
 apply from: 'gradle/scripts/versioning.gradle'
 
-sourceCompatibility = versions.java
-targetCompatibility = versions.java
+sourceCompatibility = VERSION_JAVA
+targetCompatibility = VERSION_JAVA
 
 // needed for pulling new versions from forge
 minecraft {
-	version = "${versions.minecraft}-${versions.forge}"
+	version = "${VERSION_MINECRAFT}-${VERSION_FORGE}"
 	assetDir = "out/assets"
 }
 
@@ -32,18 +32,24 @@ buildscript {
 	}
 }
 
-dependencies {
-	compile "com.google.code.findbugs:jsr305:${versions.findbugs}"
-
-	testCompile "junit:junit:${versions.junit}"
-	testCompile "org.scalatest:scalatest_2.10:${versions.scalatest}"
-	testCompile "org.scalamock:scalamock_2.10:${versions.scalamock}"
+sourceSets.api.java {
+	exclude '**/layers/**'
+	exclude '**/integration/**'
 }
 
-// resulting file with <archivesBaseName>-<version>-<classifier>
+dependencies {
+	compile "com.google.code.findbugs:jsr305:${VERSION_FINDBUGS}"
+
+	testCompile "junit:junit:${VERSION_JUNIT}"
+	testCompile "org.scalatest:scalatest_2.10:${VERSION_SCALATEST}"
+	testCompile "org.scalamock:scalamock_2.10:${VERSION_SCALAMOCK}"
+}
+
+// resulting file with [baseName]-[appendix]-[version]-[classifier].[extension]
 jar {
-	archivesBaseName = "IntelligentEnergistics"
-	version = "${versions.minecraft}-${projectVersion.toString}"
+	baseName = "IntelligentEnergistics"
+	appendix = VERSION_MINECRAFT
+	version = VERSION_PROJECT.toString()
 	classifier = "universal"
 }
 
@@ -58,6 +64,6 @@ processResources {
 		include 'mcmod.info'
 
 		// replace version and mcversion
-		expand 'version': projectVersion.toString, 'mcversion': versions.minecraft
+		expand 'version': VERSION_PROJECT.toString(), 'mcversion': VERSION_MINECRAFT
 	}
 }

@@ -14,6 +14,8 @@ import net.minecraft.entity.player.EntityPlayer
  */
 trait TAeroChestSpecialArmor extends ISpecialArmor
 {
+	self: ItemAeroChest =>
+
 	override def getProperties(player: EntityLivingBase, armor: ItemStack, source: DamageSource, damage: Double, slot: Int): ISpecialArmor.ArmorProperties =
 	{
 		val absorptionRatio: Double = ItemAeroChest.baseAbsorptionRatio * ItemAeroChest.damageAbsorptionRatio

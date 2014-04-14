@@ -14,6 +14,8 @@ import appeng.api.implementations.items.IAEItemPowerStorage
  */
 trait TAeroChestAEItemPowerStorage extends IAEItemPowerStorage
 {
+	self: ItemAeroChest =>
+
 	@Optional.Method(modid = OModIDs.AE2)
 	def getPowerFlow(is: ItemStack): AccessRestriction =
 	{

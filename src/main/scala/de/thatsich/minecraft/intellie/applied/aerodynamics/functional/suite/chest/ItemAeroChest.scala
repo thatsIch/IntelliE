@@ -22,26 +22,26 @@ import de.thatsich.minecraft.core.OModIDs
 @since 26.03.2014. */
 object ItemAeroChest
 {
-	val ENERGY_MAX: Int = 30000000
-	val BASE_VALUE: Double = 20.0D
-	val maxCharge: Int = 30000000
-	val minCharge: Int = 80000
-	val transferLimit: Int = 60000
-	val tier: Int = 4
-	val dischargeOnTick: Int = 278
-	val boostSpeed: Float = 0.11F
-	val boostMultiplier: Int = 2
-	val baseAbsorptionRatio: Double = 0.4D
-	val damageAbsorptionRatio: Double = 1.1D
-	val energyPerDamage: Int = 900
+	final val ENERGY_MAX           : Int    = 30000000
+	final val BASE_VALUE           : Double = 20.0D
+	final val maxCharge            : Int    = 30000000
+	final val minCharge            : Int    = 80000
+	final val transferLimit        : Int    = 60000
+	final val tier                 : Int    = 4
+	final val dischargeOnTick      : Int    = 278
+	final val boostSpeed           : Float  = 0.11F
+	final val boostMultiplier      : Int    = 2
+	final val baseAbsorptionRatio  : Double = 0.4D
+	final val damageAbsorptionRatio: Double = 1.1D
+	final val energyPerDamage      : Int    = 900
 }
 
 @Optional.Interface(iface = "appeng.api.implementations.items.ISpecialArmor", modid = OModIDs.AE2, striprefs = true)
 class ItemAeroChest(material: ItemArmor.ArmorMaterial, renderIndex: Int, armorType: Int)
                    (implicit creativeTab: CreativeTabs)
 	extends AItemArmor(material, renderIndex, armorType)
-	with TAeroChestSpecialArmor
-	with TAeroChestAEItemPowerStorage
+	        with TAeroChestSpecialArmor
+	        with TAeroChestAEItemPowerStorage
 {
 	override def isRepairable: Boolean =
 	{
