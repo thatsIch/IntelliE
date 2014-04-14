@@ -1,19 +1,15 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.chest
 
-import net.minecraftforge.common.ISpecialArmor
 import net.minecraft.creativetab.CreativeTabs
 import cpw.mods.fml.relauncher.{SideOnly, Side}
 import net.minecraft.item.{ItemArmor, ItemStack}
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.world.World
-import net.minecraft.util.DamageSource
-import net.minecraft.entity.{Entity, EntityLivingBase}
+import net.minecraft.entity.Entity
 import net.minecraft.client.renderer.texture.IIconRegister
 import de.thatsich.minecraft.core.module.item.AItemArmor
 import cpw.mods.fml.common.Optional
-import appeng.api.implementations.items.IAEItemPowerStorage
 import de.thatsich.minecraft.core.OModIDs
-import appeng.api.config.AccessRestriction
 
 /**
  *
@@ -40,58 +36,13 @@ object ItemAeroChest
 	val energyPerDamage: Int = 900
 }
 
-@Optional.Interface(iface = "appeng.api.implementations.items.ISpecialArmor", modid = OModIDs.APPENG, striprefs = true)
+@Optional.Interface(iface = "appeng.api.implementations.items.ISpecialArmor", modid = OModIDs.AE2, striprefs = true)
 class ItemAeroChest(material: ItemArmor.ArmorMaterial, renderIndex: Int, armorType: Int)
                    (implicit creativeTab: CreativeTabs)
 	extends AItemArmor(material, renderIndex, armorType)
-	with ISpecialArmor
-	with IAEItemPowerStorage
+	with TAeroChestSpecialArmor
+	with TAeroChestAEItemPowerStorage
 {
-	def getPowerFlow(is: ItemStack): AccessRestriction =
-	{
-		AccessRestriction.WRITE
-	}
-
-	def getAECurrentPower(is: ItemStack): Double =
-	{
-		0.0
-	}
-
-	def getAEMaxPower(is: ItemStack): Double =
-	{
-		0.0
-	}
-
-	def extractAEPower(is: ItemStack, amt: Double): Double =
-	{
-		0.0
-	}
-
-	def injectAEPower(is: ItemStack, amt: Double): Double =
-	{
-		0.0
-	}
-
-	override def getProperties(player: EntityLivingBase, armor: ItemStack, source: DamageSource, damage: Double, slot: Int): ISpecialArmor.ArmorProperties =
-	{
-		val absorptionRatio: Double = ItemAeroChest.baseAbsorptionRatio * ItemAeroChest.damageAbsorptionRatio
-		val damageLimit: Int = if( ItemAeroChest.energyPerDamage > 0 ) 25 * 100 / ItemAeroChest.energyPerDamage else 0
-
-		new ISpecialArmor.ArmorProperties(0, absorptionRatio, damageLimit)
-	}
-
-	override def getArmorDisplay(player: EntityPlayer, armor: ItemStack, slot: Int): Int =
-	{
-		Math.round(ItemAeroChest.BASE_VALUE *
-			ItemAeroChest.baseAbsorptionRatio *
-			ItemAeroChest.damageAbsorptionRatio
-		).toInt
-	}
-
-	override def damageArmor(entity: EntityLivingBase, stack: ItemStack, source: DamageSource, damage: Int, slot: Int)
-	{
-	}
-
 	override def isRepairable: Boolean =
 	{
 		false

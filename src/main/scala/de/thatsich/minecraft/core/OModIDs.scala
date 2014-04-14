@@ -9,6 +9,6 @@ package de.thatsich.minecraft.core
 object OModIDs
 {
 	final val AERO = "appaero"
-	final val INTELLI_E = "intellie"
-	final val APPENG = "appliedenergistics2"
+	final val IE = "intellie"
+	final val AE2 = "appliedenergistics2"
 }
