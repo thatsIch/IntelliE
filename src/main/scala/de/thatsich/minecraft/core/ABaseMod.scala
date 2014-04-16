@@ -42,11 +42,7 @@ abstract class ABaseMod(implicit protected val log: ILog,
 		this.log.info("PreInit Begin")
 		this.registries.preInit(event)
 		this.pipeline.preInit(event)
-
-		proxy.initRenders()
-		proxy.initSounds()
-
-
+		this.proxy.preInit(event)
 		this.log.info("PreInit End")
 	}
 
@@ -55,6 +51,7 @@ abstract class ABaseMod(implicit protected val log: ILog,
 		this.log.info("Init Begin")
 		this.registries.init(event)
 		this.pipeline.init(event)
+		this.proxy.init(event)
 		this.log.info("Init End")
 	}
 
@@ -63,6 +60,7 @@ abstract class ABaseMod(implicit protected val log: ILog,
 		this.log.info("PostInit Begin")
 		this.registries.postInit(event)
 		this.pipeline.postInit(event)
+		this.proxy.postInit(event)
 		this.log.info("PostInit End")
 	}
 }

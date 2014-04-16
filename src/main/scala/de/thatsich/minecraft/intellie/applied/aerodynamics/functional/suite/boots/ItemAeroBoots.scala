@@ -1,7 +1,5 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.boots
 
-import de.thatsich.minecraft.core.OModIDs
-import cpw.mods.fml.common.Optional
 import net.minecraft.item.{ItemStack, ItemArmor}
 import net.minecraft.creativetab.CreativeTabs
 import de.thatsich.minecraft.core.module.item.AItemArmor
@@ -33,7 +31,6 @@ private[ boots ] object ItemAeroBoots
  * @author thatsIch
  * @since 16.04.2014.
  */
-@Optional.Interface(iface = "appeng.api.implementations.items.ISpecialArmor", modid = OModIDs.AE2, striprefs = true)
 class ItemAeroBoots(material: ItemArmor.ArmorMaterial, renderIndex: Int, armorType: Int)
                    (implicit creativeTab: CreativeTabs)
 	extends AItemArmor(material, renderIndex, armorType)

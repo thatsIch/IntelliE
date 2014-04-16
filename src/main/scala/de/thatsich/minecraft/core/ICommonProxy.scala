@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.core
 
+
 /**
  *
  *
@@ -7,8 +8,7 @@ package de.thatsich.minecraft.core
  * @since 05.04.2014.
  */
 trait ICommonProxy
+	extends IEventProxy
 {
-	def initSounds()
 
-	def initRenders()
 }

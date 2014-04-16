@@ -12,6 +12,7 @@ import appeng.api.config.AccessRestriction
  * @author thatsIch
  * @since 16.04.2014.
  */
+@Optional.Interface(iface = "appeng.api.implementations.items.IAEItemPowerStorage", modid = OModIDs.AE2, striprefs = true)
 private[ boots ] trait TAeroBootsAEItemPowerStorage extends IAEItemPowerStorage
 {
 	self: ItemAeroBoots =>
