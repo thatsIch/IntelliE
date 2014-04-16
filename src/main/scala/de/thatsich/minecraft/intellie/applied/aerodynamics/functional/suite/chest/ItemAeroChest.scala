@@ -53,14 +53,14 @@ class ItemAeroChest(material: ItemArmor.ArmorMaterial, renderIndex: Int, armorTy
 		player.capabilities.allowFlying = true
 	}
 
-	def getArmorTexture(stack: ItemStack, entity: Entity, slot: Int, `type`: Nothing): String =
+	override def getArmorTexture(stack: ItemStack, entity: Entity, slot: Int, `type`: String): String =
 	{
-		"gravisuite:textures/armor/armor_graviChestPlate.png"
+		"appaero:textures/models/aero.png"
 	}
 
 	@SideOnly(Side.CLIENT)
 	override def registerIcons(iconRegister: IIconRegister)
 	{
-		this.itemIcon = iconRegister.registerIcon("appaero:itemGraviChestPlate")
+		this.itemIcon = iconRegister.registerIcon("appaero:aerochest")
 	}
 }

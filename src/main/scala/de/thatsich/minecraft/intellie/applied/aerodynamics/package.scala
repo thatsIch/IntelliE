@@ -10,6 +10,8 @@ import net.minecraft.item.ItemArmor
 import de.thatsich.minecraft.core.network.PacketPipeline
 import net.minecraft.creativetab.CreativeTabs
 import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.boots.ItemAeroBoots
+import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.helm.ItemAeroHelm
+import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.legs.ItemAeroLegs
 
 /**
  *
@@ -25,8 +27,10 @@ package object aerodynamics
 	implicit val registries : IRegistries    = new Registries
 	implicit val configFiles: IConfigFiles   = OAeroConfigFiles
 
-	implicit val itemAeroChest: ItemAeroChest = new ItemAeroChest(ItemArmor.ArmorMaterial.DIAMOND, 1, 1)
-	implicit val itemAeroBoots: ItemAeroBoots = new ItemAeroBoots(ItemArmor.ArmorMaterial.DIAMOND, 2, 3)
+	implicit val itemAeroHelm  = new ItemAeroHelm(ItemArmor.ArmorMaterial.DIAMOND, 0, 0)
+	implicit val itemAeroChest = new ItemAeroChest(ItemArmor.ArmorMaterial.DIAMOND, 0, 1)
+	implicit val itemAeroLegs  = new ItemAeroLegs(ItemArmor.ArmorMaterial.DIAMOND, 0, 2)
+	implicit val itemAeroBoots = new ItemAeroBoots(ItemArmor.ArmorMaterial.DIAMOND, 0, 3)
 
 	implicit val modules: IModules = new AeroModules
 }
