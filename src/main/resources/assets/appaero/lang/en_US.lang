@@ -1,2 +1,6 @@
 tile.intellie.Test.name=Test Block
 tile.appaero.generic.name=Generic Block
+item.ItemAeroHelm.name=Aero Helm
+item.ItemAeroChest.name=Aero Chest
+item.ItemAeroLegs.name=Aero Legs
+item.ItemAeroBoots.name=Aero Boots
