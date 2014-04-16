@@ -1,20 +1,20 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.chest
+package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.boots
 
+import appeng.api.implementations.items.IAEItemPowerStorage
 import cpw.mods.fml.common.Optional
 import de.thatsich.minecraft.core.OModIDs
 import net.minecraft.item.ItemStack
 import appeng.api.config.AccessRestriction
-import appeng.api.implementations.items.IAEItemPowerStorage
 
 /**
  *
  *
  * @author thatsIch
- * @since 14.04.2014.
+ * @since 16.04.2014.
  */
-private[ chest ] trait TAeroChestAEItemPowerStorage extends IAEItemPowerStorage
+private[ boots ] trait TAeroBootsAEItemPowerStorage extends IAEItemPowerStorage
 {
-	self: ItemAeroChest =>
+	self: ItemAeroBoots =>
 
 	@Optional.Method(modid = OModIDs.AE2)
 	def getPowerFlow(is: ItemStack): AccessRestriction =

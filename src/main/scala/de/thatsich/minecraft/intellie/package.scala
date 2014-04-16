@@ -15,9 +15,9 @@ import de.thatsich.minecraft.core.network.PacketPipeline
  */
 package object intellie
 {
-	implicit val log: ILog = new Log("IE")
-	implicit val pipeline: PacketPipeline = new PacketPipeline
-	implicit val registries: IRegistries = new Registries
-	implicit val configFiles: IConfigFiles = OIntelliConfigFiles
-	implicit final val modules: IModules = new IntelliModules
+	implicit final val log        : ILog           = new Log("IE")
+	implicit final val pipeline   : PacketPipeline = new PacketPipeline
+	implicit final val registries : IRegistries    = new Registries
+	implicit final val configFiles: IConfigFiles   = OIntelliConfigFiles
+	implicit final val modules    : IModules       = new IntelliModules
 }

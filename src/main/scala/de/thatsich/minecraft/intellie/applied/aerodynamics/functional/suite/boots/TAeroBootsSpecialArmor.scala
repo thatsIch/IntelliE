@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.chest
+package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.boots
 
 import net.minecraftforge.common.ISpecialArmor
 import net.minecraft.entity.EntityLivingBase
@@ -10,25 +10,25 @@ import net.minecraft.entity.player.EntityPlayer
  *
  *
  * @author thatsIch
- * @since 14.04.2014.
+ * @since 16.04.2014.
  */
-private[ chest ] trait TAeroChestSpecialArmor extends ISpecialArmor
+private[ boots ] trait TAeroBootsSpecialArmor extends ISpecialArmor
 {
-	self: ItemAeroChest =>
+	self: ItemAeroBoots =>
 
 	override def getProperties(player: EntityLivingBase, armor: ItemStack, source: DamageSource, damage: Double, slot: Int): ISpecialArmor.ArmorProperties =
 	{
-		val absorptionRatio: Double = ItemAeroChest.baseAbsorptionRatio * ItemAeroChest.damageAbsorptionRatio
-		val damageLimit: Int = if( ItemAeroChest.energyPerDamage > 0 ) 25 * 100 / ItemAeroChest.energyPerDamage else 0
+		val absorptionRatio: Double = ItemAeroBoots.baseAbsorptionRatio * ItemAeroBoots.damageAbsorptionRatio
+		val damageLimit: Int = if( ItemAeroBoots.energyPerDamage > 0 ) 25 * 100 / ItemAeroBoots.energyPerDamage else 0
 
 		new ISpecialArmor.ArmorProperties(0, absorptionRatio, damageLimit)
 	}
 
 	override def getArmorDisplay(player: EntityPlayer, armor: ItemStack, slot: Int): Int =
 	{
-		Math.round(ItemAeroChest.BASE_VALUE *
-			ItemAeroChest.baseAbsorptionRatio *
-			ItemAeroChest.damageAbsorptionRatio
+		Math.round(ItemAeroBoots.BASE_VALUE *
+			ItemAeroBoots.baseAbsorptionRatio *
+			ItemAeroBoots.damageAbsorptionRatio
 		).toInt
 	}
 
@@ -36,3 +36,4 @@ private[ chest ] trait TAeroChestSpecialArmor extends ISpecialArmor
 	{
 	}
 }
+

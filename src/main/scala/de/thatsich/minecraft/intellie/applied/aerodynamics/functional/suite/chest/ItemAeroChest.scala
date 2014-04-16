@@ -20,20 +20,20 @@ import de.thatsich.minecraft.core.OModIDs
 /**
 @author thatsIch
 @since 26.03.2014. */
-object ItemAeroChest
+private[ chest ] object ItemAeroChest
 {
-	final val ENERGY_MAX           : Int    = 30000000
-	final val BASE_VALUE           : Double = 20.0D
-	final val maxCharge            : Int    = 30000000
-	final val minCharge            : Int    = 80000
-	final val transferLimit        : Int    = 60000
-	final val tier                 : Int    = 4
-	final val dischargeOnTick      : Int    = 278
-	final val boostSpeed           : Float  = 0.11F
-	final val boostMultiplier      : Int    = 2
-	final val baseAbsorptionRatio  : Double = 0.4D
-	final val damageAbsorptionRatio: Double = 1.1D
-	final val energyPerDamage      : Int    = 900
+	private[ chest ] final val ENERGY_MAX           : Int    = 30000000
+	private[ chest ] final val BASE_VALUE           : Double = 20.0D
+	private[ chest ] final val maxCharge            : Int    = 30000000
+	private[ chest ] final val minCharge            : Int    = 80000
+	private[ chest ] final val transferLimit        : Int    = 60000
+	private[ chest ] final val tier                 : Int    = 4
+	private[ chest ] final val dischargeOnTick      : Int    = 278
+	private[ chest ] final val boostSpeed           : Float  = 0.11F
+	private[ chest ] final val boostMultiplier      : Int    = 2
+	private[ chest ] final val baseAbsorptionRatio  : Double = 0.4D
+	private[ chest ] final val damageAbsorptionRatio: Double = 1.1D
+	private[ chest ] final val energyPerDamage      : Int    = 900
 }
 
 @Optional.Interface(iface = "appeng.api.implementations.items.ISpecialArmor", modid = OModIDs.AE2, striprefs = true)
