@@ -19,8 +19,8 @@ import de.thatsich.minecraft.core.{ICommonProxy, ABaseMod, TModUnloader}
 )
 object IntelligentEnergistics
 	extends ABaseMod
-	with TModUnloader
-	with TIntelliConfig
+	        with TModUnloader
+	        with TIntelliConfig
 {
 	this.unload("appaero", this.disableAero)
 	this.unload("appagri", this.disableAgro)

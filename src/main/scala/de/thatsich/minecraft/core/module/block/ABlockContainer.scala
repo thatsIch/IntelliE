@@ -15,7 +15,7 @@ import net.minecraft.item.ItemBlock
  */
 abstract class ABlockContainer(info: ABlockInfo, config: ABlockConfig, gui: ABlockGui, network: ABlockNetwork, texture: ATexture, tileEntityClass: Class[ _ => ITileEntity ], itemBlockClass: Class[ _ <: ItemBlock ])
 	extends BlockContainer(info.getMaterial)
-	with IBlockContainer
+	        with IBlockContainer
 {
 	def getItemBlockClass: Class[ _ <: ItemBlock ] =
 	{

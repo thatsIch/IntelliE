@@ -12,10 +12,10 @@ import net.minecraft.creativetab.CreativeTabs
  */
 abstract class ABlock(info: ABlockInfo, config: ABlockConfig, blocks: BlockRegistry)
 	extends Block(info.getMaterial)
-	with IBlock
+	        with IBlock
 {
-	val name: String = info.getName
-	val hardness: Float = info.getHardness
+	val name    : String = info.getName
+	val hardness: Float  = info.getHardness
 	val creativeTab: CreativeTabs = info.getCreativeTab
 	val texture: String = info.getTexture
 

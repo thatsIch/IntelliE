@@ -12,13 +12,13 @@ import de.thatsich.minecraft.core.config.Config
  */
 trait TIntelliConfig
 {
-	private val modName = this.getClass.getSimpleName
+	private val modName    = this.getClass.getSimpleName
 	private val configPath = Joiner.on(File.separatorChar).join("config", "AppliedEnergistics2", "IntelliE", this.modName + ".cfg")
-	private val config = new Config(this.configPath)
+	private val config     = new Config(this.configPath)
 
 	protected val disableAero = this.config.getBoolean("ChildMods", "disableAppliedAerodynamics", defaultValue = false)
 	protected val disableAgro = this.config.getBoolean("ChildMods", "disableAppliedAgricultures", defaultValue = false)
-	protected val disableInt = this.config.getBoolean("ChildMods", "disableAppliedIntelligences", defaultValue = false)
+	protected val disableInt  = this.config.getBoolean("ChildMods", "disableAppliedIntelligences", defaultValue = false)
 
 	this.config.save()
 }

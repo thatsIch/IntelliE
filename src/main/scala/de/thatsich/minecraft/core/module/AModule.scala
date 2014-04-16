@@ -17,7 +17,17 @@ abstract class AModule(item: Option[ Item ], block: Option[ Block ], entity: Opt
 {
 	item match
 	{
-		case Some(_) => registries.items.add(item.get)
-		case None =>
+		case Some(_) =>
+		{
+			{
+				registries.items.add(item.get)
+			}
+		}
+		case None    =>
+		{
+			{
+
+			}
+		}
 	}
 }

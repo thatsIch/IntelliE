@@ -8,7 +8,7 @@ import cpw.mods.fml.common.gameevent.InputEvent
 
 object KeyHandler
 {
-	private final val FLY_KEY: Int = Keyboard.KEY_G
+	private final val FLY_KEY: Int        = Keyboard.KEY_G
 	private final val BINDING: KeyBinding = new KeyBinding("description", KeyHandler.FLY_KEY, "FLY_KEY.category")
 }
 

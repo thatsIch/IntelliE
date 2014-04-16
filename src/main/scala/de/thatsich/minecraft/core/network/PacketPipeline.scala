@@ -25,11 +25,11 @@ import scala.collection.mutable
 @ChannelHandler.Sharable
 class PacketPipeline(implicit log: ILog)
 	extends MessageToMessageCodec[ FMLProxyPacket, IPacket ]
-	with IEventProxy
+	        with IEventProxy
 {
 	type PacketClass = Class[ _ <: IPacket ]
-	private[ this ] val channels = NetworkRegistry.INSTANCE.newChannel("base", this)
-	private[ this ] val packets = new mutable.MutableList[ PacketClass ]
+	private[ this ] val channels          = NetworkRegistry.INSTANCE.newChannel("base", this)
+	private[ this ] val packets           = new mutable.MutableList[ PacketClass ]
 	private[ this ] var isPostInitialized = false
 
 	/**
@@ -78,8 +78,18 @@ class PacketPipeline(implicit log: ILog)
 		val maybeClazz: Option[ PacketClass ] = this.packets.get(discriminator)
 		val clazz = maybeClazz match
 		{
-			case Some(value) => value
-			case None => throw new NullPointerException("No packet registered for discriminator: " + discriminator)
+			case Some(value) =>
+			{
+				{
+					value
+				}
+			}
+			case None        =>
+			{
+				{
+					throw new NullPointerException("No packet registered for discriminator: " + discriminator)
+				}
+			}
 		}
 
 		val packet = clazz.newInstance()
@@ -88,15 +98,28 @@ class PacketPipeline(implicit log: ILog)
 		FMLCommonHandler.instance().getEffectiveSide match
 		{
 			case Side.CLIENT =>
-				val player = this.getClientPlayer
-				packet.handleClientSide(player)
+			{
+				{
+					val player = this.getClientPlayer
+					packet.handleClientSide(player)
+				}
+			}
 
 			case Side.SERVER =>
-				val netHandler = ctx.channel().attr(NetworkRegistry.NET_HANDLER).get()
-				val player = netHandler.asInstanceOf[ NetHandlerPlayServer ].playerEntity
-				packet.handleServerSide(player)
+			{
+				{
+					val netHandler = ctx.channel().attr(NetworkRegistry.NET_HANDLER).get()
+					val player = netHandler.asInstanceOf[ NetHandlerPlayServer ].playerEntity
+					packet.handleServerSide(player)
+				}
+			}
 
 			case default =>
+			{
+				{
+
+				}
+			}
 		}
 
 		out.add(packet)
