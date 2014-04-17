@@ -98,7 +98,7 @@ package object laywire
 {}
 
 /**
- * Tries to package preconfigured stuff into 3x3 or 2x2 pattern
+ * Tries to dissembler preconfigured stuff into 3x3 or 2x2 pattern
  *
  * @author thatsIch
  * @since 30.03.2014.

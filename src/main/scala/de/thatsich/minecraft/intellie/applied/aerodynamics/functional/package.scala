@@ -21,7 +21,7 @@ package object suite
  * @author thatsIch
  * @since 07.04.2014
  */
-package object vajra
+package object dissembler
 {
 
 }

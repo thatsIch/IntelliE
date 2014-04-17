@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.vajra
+package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.dissembler
 
 import net.minecraft.item.Item
 import net.minecraft.creativetab.CreativeTabs
