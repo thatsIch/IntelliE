@@ -1,29 +1,13 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.boots
 
-import net.minecraft.item.{ItemStack, ItemArmor}
+import net.minecraft.item.ItemStack
 import net.minecraft.creativetab.CreativeTabs
-import de.thatsich.minecraft.core.module.item.AItemArmor
 import net.minecraft.world.World
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.entity.Entity
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import net.minecraft.client.renderer.texture.IIconRegister
-
-private[ boots ] object ItemAeroBoots
-{
-	private[ boots ] final val ENERGY_MAX           : Int    = 30000000
-	private[ boots ] final val BASE_VALUE           : Double = 20.0D
-	private[ boots ] final val maxCharge            : Int    = 30000000
-	private[ boots ] final val minCharge            : Int    = 80000
-	private[ boots ] final val transferLimit        : Int    = 60000
-	private[ boots ] final val tier                 : Int    = 4
-	private[ boots ] final val dischargeOnTick      : Int    = 278
-	private[ boots ] final val boostSpeed           : Float  = 0.11F
-	private[ boots ] final val boostMultiplier      : Int    = 2
-	private[ boots ] final val baseAbsorptionRatio  : Double = 0.4D
-	private[ boots ] final val damageAbsorptionRatio: Double = 1.1D
-	private[ boots ] final val energyPerDamage      : Int    = 900
-}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.common.module.item.AAEPoweredItemArmor
 
 /**
  *
@@ -31,28 +15,29 @@ private[ boots ] object ItemAeroBoots
  * @author thatsIch
  * @since 16.04.2014.
  */
-class ItemAeroBoots(material: ItemArmor.ArmorMaterial, renderIndex: Int, armorType: Int)
-                   (implicit creativeTab: CreativeTabs)
-	extends AItemArmor(material, renderIndex, armorType)
-	        with TAeroBootsSpecialArmor
-	        with TAeroBootsAEItemPowerStorage
+class ItemAeroBoots(implicit creativeTab: CreativeTabs)
+	extends AAEPoweredItemArmor(40000000, 3)
 {
-	override def isRepairable: Boolean =
-	{
-		false
-	}
+	final val disChargeOnTick = 400
 
 	override def onArmorTick(world: World, player: EntityPlayer, itemStack: ItemStack)
 	{
+		val currentStorage = this.getAECurrentPower(itemStack)
+		var newStorage = currentStorage
 		if( player.isSprinting )
 		{
+			newStorage = this.extractAEPower(itemStack, this.disChargeOnTick)
+		}
+
+		if( newStorage > 0 )
+		{
 			player.stepHeight = 1F
+			player.fallDistance = 0
 		}
 		else
 		{
 			player.stepHeight = 0.5F
 		}
-		player.fallDistance = 0F
 	}
 
 	override def getArmorTexture(stack: ItemStack, entity: Entity, slot: Int, `type`: String): String =

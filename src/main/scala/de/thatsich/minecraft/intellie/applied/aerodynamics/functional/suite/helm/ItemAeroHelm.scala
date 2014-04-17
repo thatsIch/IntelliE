@@ -1,11 +1,11 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.helm
 
-import net.minecraft.item.{ItemStack, ItemArmor}
+import net.minecraft.item.ItemStack
 import net.minecraft.creativetab.CreativeTabs
-import de.thatsich.minecraft.core.module.item.AItemArmor
 import net.minecraft.entity.Entity
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import net.minecraft.client.renderer.texture.IIconRegister
+import de.thatsich.minecraft.intellie.applied.aerodynamics.common.module.item.AAEPoweredItemArmor
 
 /**
  *
@@ -13,10 +13,11 @@ import net.minecraft.client.renderer.texture.IIconRegister
  * @author thatsIch
  * @since 07.04.2014.
  */
-class ItemAeroHelm(material: ItemArmor.ArmorMaterial, renderIndex: Int, armorType: Int)
-                  (implicit creativeTab: CreativeTabs)
-	extends AItemArmor(material, renderIndex, armorType)
+class ItemAeroHelm(implicit creativeTab: CreativeTabs)
+	extends AAEPoweredItemArmor(50000000, 0)
 {
+
+
 	override def getArmorTexture(stack: ItemStack, entity: Entity, slot: Int, `type`: String): String =
 	{
 		"appaero:textures/models/aero.png"

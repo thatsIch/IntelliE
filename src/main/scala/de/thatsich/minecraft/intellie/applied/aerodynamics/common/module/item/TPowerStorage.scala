@@ -1,24 +1,25 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.chest
+package de.thatsich.minecraft.intellie.applied.aerodynamics.common.module.item
 
+import appeng.api.implementations.items.IAEItemPowerStorage
 import cpw.mods.fml.common.Optional
 import de.thatsich.minecraft.core.OModIDs
 import net.minecraft.item.ItemStack
 import appeng.api.config.AccessRestriction
-import appeng.api.implementations.items.IAEItemPowerStorage
 import net.minecraft.nbt.NBTTagCompound
 
 /**
- *
+ * Trait for AE2 Power Storage handling
  *
  * @author thatsIch
- * @since 14.04.2014.
+ * @since 17.04.2014.
  */
 @Optional.Interface(iface = "appeng.api.implementations.items.IAEItemPowerStorage", modid = OModIDs.AE2, striprefs = true)
-private[ chest ] trait TAeroChestAEItemPowerStorage extends IAEItemPowerStorage
+private[ item ] trait TPowerStorage extends IAEItemPowerStorage
 {
-	self: ItemAeroChest =>
+	self: AAEPoweredItemArmor =>
 
 	private final val internalCurrentPower = "internalCurrentPower"
+	private final val inject               = 80000
 
 	@Optional.Method(modid = OModIDs.AE2)
 	def getPowerFlow(is: ItemStack): AccessRestriction = AccessRestriction.WRITE
@@ -33,15 +34,21 @@ private[ chest ] trait TAeroChestAEItemPowerStorage extends IAEItemPowerStorage
 	}
 
 	@Optional.Method(modid = OModIDs.AE2)
-	def getAEMaxPower(is: ItemStack): Double = ItemAeroChest.ENERGY_MAX
+	def setAECurrentPower(is: ItemStack, value: Double)
+	{
+		val tag = this.getNBTData(is)
+		tag.setDouble(internalCurrentPower, value)
+	}
+
+	@Optional.Method(modid = OModIDs.AE2)
+	def getAEMaxPower(is: ItemStack): Double = this.maxStorage
 
 	@Optional.Method(modid = OModIDs.AE2)
 	def extractAEPower(is: ItemStack, amt: Double): Double =
 	{
-		val tag = this.getNBTData(is)
-		val currentStorage = tag.getDouble(internalCurrentPower)
+		val currentStorage = this.getAECurrentPower(is)
 		val newStorage = Math.max(0.0, currentStorage - amt)
-		tag.setDouble(internalCurrentPower, newStorage)
+		this.setAECurrentPower(is, newStorage)
 
 		newStorage
 	}
@@ -49,13 +56,11 @@ private[ chest ] trait TAeroChestAEItemPowerStorage extends IAEItemPowerStorage
 	@Optional.Method(modid = OModIDs.AE2)
 	def injectAEPower(is: ItemStack, amt: Double): Double =
 	{
-		val tag = this.getNBTData(is)
-		val inject = ItemAeroChest.TRANSFER
-		val currentStorage = tag.getDouble(internalCurrentPower)
+		val currentStorage = this.getAECurrentPower(is)
 		val maxStorage = this.getAEMaxPower(is)
-		val newStorage = Math.min(maxStorage, currentStorage + inject)
+		val newStorage = Math.min(maxStorage, currentStorage + this.inject)
 		val diff = maxStorage - newStorage
-		tag.setDouble(internalCurrentPower, newStorage)
+		this.setAECurrentPower(is, newStorage)
 
 		diff
 	}
