@@ -34,5 +34,6 @@ private[ chest ] trait TAeroChestSpecialArmor extends ISpecialArmor
 
 	override def damageArmor(entity: EntityLivingBase, stack: ItemStack, source: DamageSource, damage: Int, slot: Int)
 	{
+
 	}
 }

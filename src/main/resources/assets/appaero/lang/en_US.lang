@@ -1,5 +1,5 @@
-tile.intellie.Test.name=Test Block
-tile.appaero.generic.name=Generic Block
+itemGroup.appliedAerodynamicsTab=Applied Aerodyanmics
+
 item.ItemAeroHelm.name=Aero Helm
 item.ItemAeroChest.name=Aero Chest
 item.ItemAeroLegs.name=Aero Legs
