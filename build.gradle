@@ -41,9 +41,9 @@ sourceSets.api.java {
 dependencies {
 	compile "com.google.code.findbugs:jsr305:${VERSION_FINDBUGS}"
 
-	testCompile "junit:junit:${VERSION_JUNIT}"
-	testCompile "org.scalatest:scalatest_2.10:${VERSION_SCALATEST}"
-	testCompile "org.scalamock:scalamock_2.10:${VERSION_SCALAMOCK}"
+//	testCompile "junit:junit:${VERSION_JUNIT}"
+//	testCompile "org.scalatest:scalatest_2.10:${VERSION_SCALATEST}"
+//	testCompile "org.scalamock:scalamock_2.10:${VERSION_SCALAMOCK}"
 }
 
 // resulting file with [baseName]-[appendix]-[version]-[classifier].[extension]
