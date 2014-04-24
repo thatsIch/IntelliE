@@ -1,10 +1,10 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.common.module.item
 
+import appeng.api.config.AccessRestriction
+import appeng.api.implementations.items.IAEItemPowerStorage
 import cpw.mods.fml.common.Optional
 import de.thatsich.minecraft.core.OModIDs
 import net.minecraft.item.ItemStack
-import appeng.api.implementations.items.IAEItemPowerStorage
-import appeng.api.config.AccessRestriction
 import net.minecraft.nbt.NBTTagCompound
 
 /**
@@ -22,6 +22,7 @@ private[ item ] trait TPowerStorage extends IAEItemPowerStorage
 
 	private final val internalCurrentPower = "internalCurrentPower"
 	private final val inject               = 80000
+
 
 	@Optional.Method( modid = OModIDs.AE2 )
 	def getPowerFlow( is: ItemStack ): AccessRestriction = AccessRestriction.WRITE
