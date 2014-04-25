@@ -1,7 +1,7 @@
-apply plugin: 'forge'   // forge tasks
 apply plugin: 'java'    // enables sourcesets
-apply plugin: 'idea'    // enable automatic setup of idea workspace
 apply plugin: 'scala'   // enable scala
+apply plugin: 'forge'   // forge tasks
+apply plugin: 'idea'    // enable automatic setup of idea workspace
 
 apply from: 'gradle/scripts/properties.gradle'
 apply from: 'gradle/scripts/versioning.gradle'
