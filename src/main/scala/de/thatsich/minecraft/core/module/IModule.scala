@@ -13,11 +13,8 @@ import net.minecraft.tileentity.TileEntity
  */
 trait IModule
 {
-	def item: Option[ Item ]
-
-	def block: Option[ Block ]
-
-	def tileEntity: Option[ TileEntity ]
-
-	def entity: Option[ Entity ]
+	val item      : Option[ Item ]
+	val block     : Option[ Block ]
+	val tileEntity: Option[ TileEntity ]
+	val entity    : Option[ Entity ]
 }

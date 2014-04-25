@@ -37,7 +37,7 @@ private[ item ] trait TPowerStorage extends IAEItemPowerStorage
 	}
 
 	@Optional.Method( modid = OModIDs.AE2 )
-	def setAECurrentPower( is: ItemStack, value: Double )
+	def setAECurrentPower( is: ItemStack, value: Double ): Unit =
 	{
 		val tag = this.getNBTData( is )
 		tag.setDouble( internalCurrentPower, value )

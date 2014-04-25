@@ -12,7 +12,7 @@ import net.minecraftforge.common.config.Configuration
   */
 trait ITileEntity
 {
-	def register(config: Configuration)
+	def register( config: Configuration ): Unit
 
 	def getTileEntityID: String
 }

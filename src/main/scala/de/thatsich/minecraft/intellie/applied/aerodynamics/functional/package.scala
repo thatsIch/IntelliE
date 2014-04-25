@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.functional
+package de.thatsich.minecraft.intellie.applied.aerodynamics
 
 /**
  * Applied Aerodynamics:

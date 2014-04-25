@@ -9,7 +9,9 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 07.04.2014.
  */
-abstract class AEntity(world: World) extends Entity(world) with IEntity
+abstract class AEntity( world: World )
+	extends Entity( world )
+	        with IEntity
 {
 
 }

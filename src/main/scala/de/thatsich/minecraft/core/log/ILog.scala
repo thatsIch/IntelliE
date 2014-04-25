@@ -8,13 +8,13 @@ package de.thatsich.minecraft.core.log
  */
 trait ILog
 {
-	def info(format: String, data: AnyRef*)
+	def info( format: String, data: AnyRef* ): Unit
 
-	def warn(format: String, data: AnyRef*)
+	def warn( format: String, data: AnyRef* ): Unit
 
-	def debug(format: String, data: AnyRef*)
+	def debug( format: String, data: AnyRef* ): Unit
 
-	def trace(exception: Throwable)
+	def trace( exception: Throwable ): Unit
 
-	def severe(format: String, data: AnyRef*)
+	def severe( format: String, data: AnyRef* ): Unit
 }

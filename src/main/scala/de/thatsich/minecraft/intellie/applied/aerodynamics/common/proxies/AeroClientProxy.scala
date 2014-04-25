@@ -10,12 +10,12 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent
  */
 class AeroClientProxy extends AeroCommonProxy
 {
-	private def initSounds()
+	private def initSounds( ): Unit =
 	{
 
 	}
 
-	private def initRenderers()
+	private def initRenderers( ): Unit =
 	{
 
 	}
@@ -26,9 +26,9 @@ class AeroClientProxy extends AeroCommonProxy
 	 *
 	 * @param event contains information to pre-initialize the mod
 	 */
-	override def preInit(event: FMLPreInitializationEvent)
+	override def preInit( event: FMLPreInitializationEvent ): Unit =
 	{
-		this.initRenderers()
-		this.initSounds()
+		this.initRenderers( )
+		this.initSounds( )
 	}
 }

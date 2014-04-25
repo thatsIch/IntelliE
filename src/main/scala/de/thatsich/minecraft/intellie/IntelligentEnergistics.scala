@@ -1,8 +1,9 @@
 package de.thatsich.minecraft.intellie
 
 import cpw.mods.fml.common.Mod
-import de.thatsich.minecraft.intellie.common.TIntelliConfig
 import de.thatsich.minecraft.core.{ICommonProxy, ABaseMod, TModUnloader}
+import de.thatsich.minecraft.intellie.common.TIntelliConfig
+
 
 /**
  *
@@ -22,9 +23,9 @@ object IntelligentEnergistics
 	        with TModUnloader
 	        with TIntelliConfig
 {
-	this.unload("appaero", this.disableAero)
-	this.unload("appagri", this.disableAgro)
-	this.unload("appint", this.disableInt)
+	this.unload( "appaero", this.disableAero )
+	this.unload( "appagri", this.disableAgro )
+	this.unload( "appint", this.disableInt )
 
 	val proxy: ICommonProxy = null
 }

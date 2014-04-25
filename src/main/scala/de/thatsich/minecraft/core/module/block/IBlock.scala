@@ -1,21 +1,21 @@
 package de.thatsich.minecraft.core.module.block
 
 import cpw.mods.fml.relauncher.{SideOnly, Side}
-import net.minecraft.block.material.{Material, MapColor}
-import net.minecraft.block.Block
-import net.minecraft.util.{Vec3, ChunkCoordinates, MovingObjectPosition, AxisAlignedBB, IIcon}
-import net.minecraft.item.{ItemStack, Item}
-import net.minecraft.creativetab.CreativeTabs
-import net.minecraft.tileentity.TileEntity
-import net.minecraft.world.{Explosion, World, IBlockAccess}
-import net.minecraft.entity.{EnumCreatureType, EntityLivingBase, Entity}
-import java.util.Random
-import net.minecraft.entity.player.EntityPlayer
 import java.util
-import net.minecraft.client.renderer.texture.IIconRegister
-import net.minecraftforge.common.util.ForgeDirection
+import java.util.Random
+import net.minecraft.block.Block
+import net.minecraft.block.material.{Material, MapColor}
 import net.minecraft.client.particle.EffectRenderer
+import net.minecraft.client.renderer.texture.IIconRegister
+import net.minecraft.creativetab.CreativeTabs
+import net.minecraft.entity.player.EntityPlayer
+import net.minecraft.entity.{EnumCreatureType, EntityLivingBase, Entity}
+import net.minecraft.item.{ItemStack, Item}
+import net.minecraft.tileentity.TileEntity
+import net.minecraft.util.{Vec3, ChunkCoordinates, MovingObjectPosition, AxisAlignedBB, IIcon}
+import net.minecraft.world.{Explosion, World, IBlockAccess}
 import net.minecraftforge.common.IPlantable
+import net.minecraftforge.common.util.ForgeDirection
 
 /**
  *
@@ -27,39 +27,39 @@ trait IBlock
 {
 	def getLightOpacity: Int
 
-	@SideOnly(Side.CLIENT) def getCanBlockGrass: Boolean
+	@SideOnly( Side.CLIENT ) def getCanBlockGrass: Boolean
 
 	/**
 	Should block use the brightest neighbor light value as its own
 	  */
 	def getUseNeighborBrightness: Boolean
 
-	def getMapColor(p_149728_1_ : Int): MapColor
+	def getMapColor( p_149728_1_ : Int ): MapColor
 
 	/**
 	Sets the footstep sound for the block. Returns the object for convenience in constructing.
 	  */
-	def setStepSound(p_149672_1_ : Block.SoundType): Block
+	def setStepSound( p_149672_1_ : Block.SoundType ): Block
 
 	/**
 	Sets how much light is blocked going through this block. Returns the object for convenience in constructing.
 	  */
-	def setLightOpacity(p_149713_1_ : Int): Block
+	def setLightOpacity( p_149713_1_ : Int ): Block
 
 	/**
 	Sets the light value that the block emits. Returns resulting block instance for constructing convenience. Args:
 	 level
 	  */
-	def setLightLevel(p_149715_1_ : Float): Block
+	def setLightLevel( p_149715_1_ : Float ): Block
 
 	/**
 	Sets the the blocks resistance to explosions. Returns the object for convenience in constructing.
 	  */
-	def setResistance(p_149752_1_ : Float): Block
+	def setResistance( p_149752_1_ : Float ): Block
 
 	def isNormalCube: Boolean
 
-	def getBlocksMovement(p_149655_1_ : IBlockAccess, p_149655_2_ : Int, p_149655_3_ : Int, p_149655_4_ : Int): Boolean
+	def getBlocksMovement( p_149655_1_ : IBlockAccess, p_149655_2_ : Int, p_149655_3_ : Int, p_149655_4_ : Int ): Boolean
 
 	/**
 	The type of render function that is called for this block
@@ -69,22 +69,22 @@ trait IBlock
 	/**
 	This method will set the hardness of the block to -1, making it indestructible
 	  */
-	def setBlockUnbreakable(): Block
+	def setBlockUnbreakable( ): Block
 
 	/**
 	Sets how many hits it takes to break a block.
 	  */
-	def setHardness(p_149711_1_ : Float): Block
+	def setHardness( p_149711_1_ : Float ): Block
 
 	/**
 	Returns the block hardness at a location. Args: world, x, y, z
 	  */
-	def getBlockHardness(p_149712_1_ : World, p_149712_2_ : Int, p_149712_3_ : Int, p_149712_4_ : Int): Float
+	def getBlockHardness( p_149712_1_ : World, p_149712_2_ : Int, p_149712_3_ : Int, p_149712_4_ : Int ): Float
 
 	/**
 	Sets whether this block type will receive random update ticks
 	  */
-	def setTickRandomly(p_149675_1_ : Boolean): Block
+	def setTickRandomly( p_149675_1_ : Boolean ): Block
 
 	/**
 	Returns whether or not this block is of a type that needs random ticking. Called for ref-counting purposes by
@@ -97,48 +97,48 @@ trait IBlock
 	/**
 	Sets the bounds of the block.  minX, minY, minZ, maxX, maxY, maxZ
 	  */
-	def setBlockBounds(p_149676_1_ : Float, p_149676_2_ : Float, p_149676_3_ : Float, p_149676_4_ : Float, p_149676_5_ : Float, p_149676_6_ : Float)
+	def setBlockBounds( p_149676_1_ : Float, p_149676_2_ : Float, p_149676_3_ : Float, p_149676_4_ : Float, p_149676_5_ : Float, p_149676_6_ : Float ): Unit
 
 	/**
 	How bright to render this block based on the light its receiving. Args: iBlockAccess, x, y, z
 	  */
-	@SideOnly(Side.CLIENT) def getMixedBrightnessForBlock(p_149677_1_ : IBlockAccess, p_149677_2_ : Int, p_149677_3_ : Int, p_149677_4_ : Int): Int
+	@SideOnly( Side.CLIENT ) def getMixedBrightnessForBlock( p_149677_1_ : IBlockAccess, p_149677_2_ : Int, p_149677_3_ : Int, p_149677_4_ : Int ): Int
 
 	/**
 	Returns true if the given side of this block type should be rendered, if the adjacent block is at the given
 	 coordinates.  Args: blockAccess, x, y, z, side
 	  */
-	@SideOnly(Side.CLIENT) def shouldSideBeRendered(p_149646_1_ : IBlockAccess, p_149646_2_ : Int, p_149646_3_ : Int, p_149646_4_ : Int, p_149646_5_ : Int): Boolean
+	@SideOnly( Side.CLIENT ) def shouldSideBeRendered( p_149646_1_ : IBlockAccess, p_149646_2_ : Int, p_149646_3_ : Int, p_149646_4_ : Int, p_149646_5_ : Int ): Boolean
 
 	/**
 	Returns true if the given side of this block type should be rendered (if it's solid or not), if the adjacent
 	 block is at the given coordinates. Args: blockAccess, x, y, z, side
 	  */
-	def isBlockSolid(p_149747_1_ : IBlockAccess, p_149747_2_ : Int, p_149747_3_ : Int, p_149747_4_ : Int, p_149747_5_ : Int): Boolean
+	def isBlockSolid( p_149747_1_ : IBlockAccess, p_149747_2_ : Int, p_149747_3_ : Int, p_149747_4_ : Int, p_149747_5_ : Int ): Boolean
 
-	@SideOnly(Side.CLIENT) def getIcon(p_149673_1_ : IBlockAccess, p_149673_2_ : Int, p_149673_3_ : Int, p_149673_4_ : Int, p_149673_5_ : Int): IIcon
+	@SideOnly( Side.CLIENT ) def getIcon( p_149673_1_ : IBlockAccess, p_149673_2_ : Int, p_149673_3_ : Int, p_149673_4_ : Int, p_149673_5_ : Int ): IIcon
 
 	/**
 	Adds all intersecting collision boxes to a list. (Be sure to only add boxes to the list if they intersect the
 	 mask.) Parameters: World, X, Y, Z, mask, list, colliding entity
 	  */
-	def addCollisionBoxesToList(p_149743_1_ : World, p_149743_2_ : Int, p_149743_3_ : Int, p_149743_4_ : Int, p_149743_5_ : AxisAlignedBB, p_149743_6_ : List[ _ ], p_149743_7_ : Entity)
+	def addCollisionBoxesToList( p_149743_1_ : World, p_149743_2_ : Int, p_149743_3_ : Int, p_149743_4_ : Int, p_149743_5_ : AxisAlignedBB, p_149743_6_ : List[ _ ], p_149743_7_ : Entity ): Unit
 
 	/**
 	Returns a bounding box from the pool of bounding boxes (this means this box can change after the pool has been
 	 cleared to be reused)
 	  */
-	def getCollisionBoundingBoxFromPool(p_149668_1_ : World, p_149668_2_ : Int, p_149668_3_ : Int, p_149668_4_ : Int): AxisAlignedBB
+	def getCollisionBoundingBoxFromPool( p_149668_1_ : World, p_149668_2_ : Int, p_149668_3_ : Int, p_149668_4_ : Int ): AxisAlignedBB
 
 	/**
 	Returns the block texture based on the side being looked at.  Args: side
 	  */
-	@SideOnly(Side.CLIENT) def getBlockTextureFromSide(p_149733_1_ : Int): IIcon
+	@SideOnly( Side.CLIENT ) def getBlockTextureFromSide( p_149733_1_ : Int ): IIcon
 
 	/**
 	Returns the bounding box of the wired rectangular prism to render.
 	  */
-	@SideOnly(Side.CLIENT) def getSelectedBoundingBoxFromPool(p_149633_1_ : World, p_149633_2_ : Int, p_149633_3_ : Int, p_149633_4_ : Int): AxisAlignedBB
+	@SideOnly( Side.CLIENT ) def getSelectedBoundingBoxFromPool( p_149633_1_ : World, p_149633_2_ : Int, p_149633_3_ : Int, p_149633_4_ : Int ): AxisAlignedBB
 
 	/**
 	Is this block (a) opaque and (b) a full 1m cube?  This determines whether or not to render the shared face of two
@@ -150,7 +150,7 @@ trait IBlock
 	Returns whether this block is collideable based on the arguments passed in n@param par1 block metaData n@param
 	 par2 whether the player right-clicked while holding a boat
 	  */
-	def canCollideCheck(p_149678_1_ : Int, p_149678_2_ : Boolean): Boolean
+	def canCollideCheck( p_149678_1_ : Int, p_149678_2_ : Boolean ): Boolean
 
 	/**
 	Returns if this block is collidable (only used by Fire). Args: x, y, z
@@ -160,94 +160,94 @@ trait IBlock
 	/**
 	Ticks the block if it's been scheduled
 	  */
-	def updateTick(p_149674_1_ : World, p_149674_2_ : Int, p_149674_3_ : Int, p_149674_4_ : Int, p_149674_5_ : Random)
+	def updateTick( p_149674_1_ : World, p_149674_2_ : Int, p_149674_3_ : Int, p_149674_4_ : Int, p_149674_5_ : Random ): Unit
 
 	/**
 	A randomly called display update to be able to add particles or other items for display
 	  */
-	@SideOnly(Side.CLIENT) def randomDisplayTick(p_149734_1_ : World, p_149734_2_ : Int, p_149734_3_ : Int, p_149734_4_ : Int, p_149734_5_ : Random)
+	@SideOnly( Side.CLIENT ) def randomDisplayTick( p_149734_1_ : World, p_149734_2_ : Int, p_149734_3_ : Int, p_149734_4_ : Int, p_149734_5_ : Random ): Unit
 
 	/**
 	Called right before the block is destroyed by a player.  Args: world, x, y, z, metaData
 	  */
-	def onBlockDestroyedByPlayer(p_149664_1_ : World, p_149664_2_ : Int, p_149664_3_ : Int, p_149664_4_ : Int, p_149664_5_ : Int)
+	def onBlockDestroyedByPlayer( p_149664_1_ : World, p_149664_2_ : Int, p_149664_3_ : Int, p_149664_4_ : Int, p_149664_5_ : Int ): Unit
 
 	/**
 	Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are
 	 their own) Args: x, y, z, neighbor Block
 	  */
-	def onNeighborBlockChange(p_149695_1_ : World, p_149695_2_ : Int, p_149695_3_ : Int, p_149695_4_ : Int, p_149695_5_ : Block)
+	def onNeighborBlockChange( p_149695_1_ : World, p_149695_2_ : Int, p_149695_3_ : Int, p_149695_4_ : Int, p_149695_5_ : Block ): Unit
 
 	/**
 	How many world ticks before ticking
 	  */
-	def tickRate(p_149738_1_ : World): Int
+	def tickRate( p_149738_1_ : World ): Int
 
 	/**
 	Called whenever the block is added into the world. Args: world, x, y, z
 	  */
-	def onBlockAdded(p_149726_1_ : World, p_149726_2_ : Int, p_149726_3_ : Int, p_149726_4_ : Int)
+	def onBlockAdded( p_149726_1_ : World, p_149726_2_ : Int, p_149726_3_ : Int, p_149726_4_ : Int ): Unit
 
-	def breakBlock(p_149749_1_ : World, p_149749_2_ : Int, p_149749_3_ : Int, p_149749_4_ : Int, p_149749_5_ : Block, p_149749_6_ : Int)
+	def breakBlock( p_149749_1_ : World, p_149749_2_ : Int, p_149749_3_ : Int, p_149749_4_ : Int, p_149749_5_ : Block, p_149749_6_ : Int ): Unit
 
 	/**
 	Gets the hardness of block at the given coordinates in the given world, relative to the ability of the given
 	 EntityPlayer.
 	  */
-	def getPlayerRelativeBlockHardness(p_149737_1_ : EntityPlayer, p_149737_2_ : World, p_149737_3_ : Int, p_149737_4_ : Int, p_149737_5_ : Int): Float
+	def getPlayerRelativeBlockHardness( p_149737_1_ : EntityPlayer, p_149737_2_ : World, p_149737_3_ : Int, p_149737_4_ : Int, p_149737_5_ : Int ): Float
 
 	/**
 	called by spawner, ore, redstoneOre blocks
 	  */
-	def dropXpOnBlockBreak(p_149657_1_ : World, p_149657_2_ : Int, p_149657_3_ : Int, p_149657_4_ : Int, p_149657_5_ : Int)
+	def dropXpOnBlockBreak( p_149657_1_ : World, p_149657_2_ : Int, p_149657_3_ : Int, p_149657_4_ : Int, p_149657_5_ : Int ): Unit
 
 	/**
 	Ray traces through the blocks collision from start vector to end vector returning a ray trace hit. Args: world,
 	 x, y, z, startVec, endVec
 	  */
-	def collisionRayTrace(p_149731_1_ : World, p_149731_2_ : Int, p_149731_3_ : Int, p_149731_4_ : Int, p_149731_5_ : Vec3, p_149731_6_ : Vec3): MovingObjectPosition
+	def collisionRayTrace( p_149731_1_ : World, p_149731_2_ : Int, p_149731_3_ : Int, p_149731_4_ : Int, p_149731_5_ : Vec3, p_149731_6_ : Vec3 ): MovingObjectPosition
 
 	/**
 	Updates the blocks bounds based on its current state. Args: world, x, y, z
 	  */
-	def setBlockBoundsBasedOnState(p_149719_1_ : IBlockAccess, p_149719_2_ : Int, p_149719_3_ : Int, p_149719_4_ : Int)
+	def setBlockBoundsBasedOnState( p_149719_1_ : IBlockAccess, p_149719_2_ : Int, p_149719_3_ : Int, p_149719_4_ : Int ): Unit
 
-	def canReplace(p_149705_1_ : World, p_149705_2_ : Int, p_149705_3_ : Int, p_149705_4_ : Int, p_149705_5_ : Int, p_149705_6_ : ItemStack): Boolean
+	def canReplace( p_149705_1_ : World, p_149705_2_ : Int, p_149705_3_ : Int, p_149705_4_ : Int, p_149705_5_ : Int, p_149705_6_ : ItemStack ): Boolean
 
 	/**
 	checks to see if you can place this block can be placed on that side of a block: BlockLever overrides
 	  */
-	def canPlaceBlockOnSide(p_149707_1_ : World, p_149707_2_ : Int, p_149707_3_ : Int, p_149707_4_ : Int, p_149707_5_ : Int): Boolean
+	def canPlaceBlockOnSide( p_149707_1_ : World, p_149707_2_ : Int, p_149707_3_ : Int, p_149707_4_ : Int, p_149707_5_ : Int ): Boolean
 
 	/**
 	Checks to see if its valid to put this block at the specified coordinates. Args: world, x, y, z
 	  */
-	def canPlaceBlockAt(p_149742_1_ : World, p_149742_2_ : Int, p_149742_3_ : Int, p_149742_4_ : Int): Boolean
+	def canPlaceBlockAt( p_149742_1_ : World, p_149742_2_ : Int, p_149742_3_ : Int, p_149742_4_ : Int ): Boolean
 
 	/**
 	Called upon block activation (right click on the block.)
 	  */
-	def onBlockActivated(p_149727_1_ : World, p_149727_2_ : Int, p_149727_3_ : Int, p_149727_4_ : Int, p_149727_5_ : EntityPlayer, p_149727_6_ : Int, p_149727_7_ : Float, p_149727_8_ : Float, p_149727_9_ : Float): Boolean
+	def onBlockActivated( p_149727_1_ : World, p_149727_2_ : Int, p_149727_3_ : Int, p_149727_4_ : Int, p_149727_5_ : EntityPlayer, p_149727_6_ : Int, p_149727_7_ : Float, p_149727_8_ : Float, p_149727_9_ : Float ): Boolean
 
 	/**
 	Called whenever an entity is walking on top of this block. Args: world, x, y, z, entity
 	  */
-	def onEntityWalking(p_149724_1_ : World, p_149724_2_ : Int, p_149724_3_ : Int, p_149724_4_ : Int, p_149724_5_ : Entity)
+	def onEntityWalking( p_149724_1_ : World, p_149724_2_ : Int, p_149724_3_ : Int, p_149724_4_ : Int, p_149724_5_ : Entity ): Unit
 
 	/**
 	Called when a block is placed using its ItemBlock. Args: World, X, Y, Z, side, hitX, hitY, hitZ, block metadata
 	  */
-	def onBlockPlaced(p_149660_1_ : World, p_149660_2_ : Int, p_149660_3_ : Int, p_149660_4_ : Int, p_149660_5_ : Int, p_149660_6_ : Float, p_149660_7_ : Float, p_149660_8_ : Float, p_149660_9_ : Int): Int
+	def onBlockPlaced( p_149660_1_ : World, p_149660_2_ : Int, p_149660_3_ : Int, p_149660_4_ : Int, p_149660_5_ : Int, p_149660_6_ : Float, p_149660_7_ : Float, p_149660_8_ : Float, p_149660_9_ : Int ): Int
 
 	/**
 	Called when a player hits the block. Args: world, x, y, z, player
 	  */
-	def onBlockClicked(p_149699_1_ : World, p_149699_2_ : Int, p_149699_3_ : Int, p_149699_4_ : Int, p_149699_5_ : EntityPlayer)
+	def onBlockClicked( p_149699_1_ : World, p_149699_2_ : Int, p_149699_3_ : Int, p_149699_4_ : Int, p_149699_5_ : EntityPlayer ): Unit
 
 	/**
 	Can add to the passed in vector for a movement vector to be applied to the entity. Args: x, y, z, entity, vec3d
 	  */
-	def velocityToAddToEntity(p_149640_1_ : World, p_149640_2_ : Int, p_149640_3_ : Int, p_149640_4_ : Int, p_149640_5_ : Entity, p_149640_6_ : Vec3)
+	def velocityToAddToEntity( p_149640_1_ : World, p_149640_2_ : Int, p_149640_3_ : Int, p_149640_4_ : Int, p_149640_5_ : Entity, p_149640_6_ : Vec3 ): Unit
 
 	/**
 	returns the block bounderies minX value
@@ -279,48 +279,48 @@ trait IBlock
 	  */
 	def getBlockBoundsMaxZ: Double
 
-	@SideOnly(Side.CLIENT) def getBlockColor: Int
+	@SideOnly( Side.CLIENT ) def getBlockColor: Int
 
 	/**
 	Returns the color this block should be rendered. Used by leaves.
 	  */
-	@SideOnly(Side.CLIENT) def getRenderColor(p_149741_1_ : Int): Int
+	@SideOnly( Side.CLIENT ) def getRenderColor( p_149741_1_ : Int ): Int
 
 	/**
 	Returns a integer with hex for 0xrrggbb with this color multiplied against the blocks color. Note only called
 	 when first determining what to render.
 	  */
-	@SideOnly(Side.CLIENT) def colorMultiplier(p_149720_1_ : IBlockAccess, p_149720_2_ : Int, p_149720_3_ : Int, p_149720_4_ : Int): Int
+	@SideOnly( Side.CLIENT ) def colorMultiplier( p_149720_1_ : IBlockAccess, p_149720_2_ : Int, p_149720_3_ : Int, p_149720_4_ : Int ): Int
 
-	def isProvidingWeakPower(p_149709_1_ : IBlockAccess, p_149709_2_ : Int, p_149709_3_ : Int, p_149709_4_ : Int, p_149709_5_ : Int): Int
+	def isProvidingWeakPower( p_149709_1_ : IBlockAccess, p_149709_2_ : Int, p_149709_3_ : Int, p_149709_4_ : Int, p_149709_5_ : Int ): Int
 
 	/**
 	Triggered whenever an entity collides with this block (enters into the block). Args: world, x, y, z, entity
 	  */
-	def onEntityCollidedWithBlock(p_149670_1_ : World, p_149670_2_ : Int, p_149670_3_ : Int, p_149670_4_ : Int, p_149670_5_ : Entity)
+	def onEntityCollidedWithBlock( p_149670_1_ : World, p_149670_2_ : Int, p_149670_3_ : Int, p_149670_4_ : Int, p_149670_5_ : Entity ): Unit
 
-	def isProvidingStrongPower(p_149748_1_ : IBlockAccess, p_149748_2_ : Int, p_149748_3_ : Int, p_149748_4_ : Int, p_149748_5_ : Int): Int
+	def isProvidingStrongPower( p_149748_1_ : IBlockAccess, p_149748_2_ : Int, p_149748_3_ : Int, p_149748_4_ : Int, p_149748_5_ : Int ): Int
 
 	/**
 	Sets the block's bounds for rendering it as an item
 	  */
-	def setBlockBoundsForItemRender()
+	def setBlockBoundsForItemRender( ): Unit
 
 	/**
 	Called when the player destroys a block with an item that can harvest it. (i, j, k) are the coordinates of the
 	 block and l is the block's subtype/damage.
 	  */
-	def harvestBlock(p_149636_1_ : World, p_149636_2_ : EntityPlayer, p_149636_3_ : Int, p_149636_4_ : Int, p_149636_5_ : Int, p_149636_6_ : Int)
+	def harvestBlock( p_149636_1_ : World, p_149636_2_ : EntityPlayer, p_149636_3_ : Int, p_149636_4_ : Int, p_149636_5_ : Int, p_149636_6_ : Int ): Unit
 
 	/**
 	Drops the specified block items
 	  */
-	def dropBlockAsItem(p_149697_1_ : World, p_149697_2_ : Int, p_149697_3_ : Int, p_149697_4_ : Int, p_149697_5_ : Int, p_149697_6_ : Int)
+	def dropBlockAsItem( p_149697_1_ : World, p_149697_2_ : Int, p_149697_3_ : Int, p_149697_4_ : Int, p_149697_5_ : Int, p_149697_6_ : Int ): Unit
 
 	/**
 	Drops the block items with a specified chance of dropping the specified items
 	  */
-	def dropBlockAsItemWithChance(p_149690_1_ : World, p_149690_2_ : Int, p_149690_3_ : Int, p_149690_4_ : Int, p_149690_5_ : Int, p_149690_6_ : Float, p_149690_7_ : Int)
+	def dropBlockAsItemWithChance( p_149690_1_ : World, p_149690_2_ : Int, p_149690_3_ : Int, p_149690_4_ : Int, p_149690_5_ : Int, p_149690_6_ : Float, p_149690_7_ : Int ): Unit
 
 	/**
 	This returns a complete list of items dropped from this block.
@@ -334,9 +334,9 @@ trait IBlock
 
 	@return A ArrayList containing all items this block drops
 	  */
-	def getDrops(world: World, x: Int, y: Int, z: Int, metadata: Int, fortune: Int): util.ArrayList[ ItemStack ]
+	def getDrops( world: World, x: Int, y: Int, z: Int, metadata: Int, fortune: Int ): util.ArrayList[ ItemStack ]
 
-	def getItemDropped(p_149650_1_ : Int, p_149650_2_ : Random, p_149650_3_ : Int): Item
+	def getItemDropped( p_149650_1_ : Int, p_149650_2_ : Random, p_149650_3_ : Int ): Item
 
 	/**
 	Metadata and fortune sensitive version, this replaces the old (int meta, Random rand)
@@ -348,17 +348,17 @@ trait IBlock
 
 	@return The number of items to drop
 	  */
-	def quantityDropped(meta: Int, fortune: Int, random: Random): Int
+	def quantityDropped( meta: Int, fortune: Int, random: Random ): Int
 
 	/**
 	Returns the usual quantity dropped by the block plus a bonus of 1 to 'i' (inclusive).
 	  */
-	def quantityDroppedWithBonus(p_149679_1_ : Int, p_149679_2_ : Random): Int
+	def quantityDroppedWithBonus( p_149679_1_ : Int, p_149679_2_ : Random ): Int
 
 	/**
 	Returns the quantity of items to drop on block destruction.
 	  */
-	def quantityDropped(p_149745_1_ : Random): Int
+	def quantityDropped( p_149745_1_ : Random ): Int
 
 	/**
 	Return true from this function if the player with silk touch can harvest this block directly, and not it's normal drops.
@@ -372,7 +372,7 @@ trait IBlock
 
 	@return True if the block can be directly harvested using silk touch
 	  */
-	def canSilkHarvest(world: World, player: EntityPlayer, x: Int, y: Int, z: Int, metadata: Int): Boolean
+	def canSilkHarvest( world: World, player: EntityPlayer, x: Int, y: Int, z: Int, metadata: Int ): Boolean
 
 	/**
 	Called throughout the code as a replacement for block instanceof BlockContainer
@@ -385,27 +385,27 @@ trait IBlock
 
 	@return True if block has a tile entity, false otherwise
 	  */
-	def hasTileEntity(metadata: Int): Boolean
+	def hasTileEntity( metadata: Int ): Boolean
 
 	/**
 	Can this block stay at this position.  Similar to canPlaceBlockAt except gets checked often with plants.
 	  */
-	def canBlockStay(p_149718_1_ : World, p_149718_2_ : Int, p_149718_3_ : Int, p_149718_4_ : Int): Boolean
+	def canBlockStay( p_149718_1_ : World, p_149718_2_ : Int, p_149718_3_ : Int, p_149718_4_ : Int ): Boolean
 
 	/**
 	Called when the block is placed in the world.
 	  */
-	def onBlockPlacedBy(p_149689_1_ : World, p_149689_2_ : Int, p_149689_3_ : Int, p_149689_4_ : Int, p_149689_5_ : EntityLivingBase, p_149689_6_ : ItemStack)
+	def onBlockPlacedBy( p_149689_1_ : World, p_149689_2_ : Int, p_149689_3_ : Int, p_149689_4_ : Int, p_149689_5_ : EntityLivingBase, p_149689_6_ : ItemStack ): Unit
 
 	/**
 	Called after a block is placed
 	  */
-	def onPostBlockPlaced(p_149714_1_ : World, p_149714_2_ : Int, p_149714_3_ : Int, p_149714_4_ : Int, p_149714_5_ : Int)
+	def onPostBlockPlaced( p_149714_1_ : World, p_149714_2_ : Int, p_149714_3_ : Int, p_149714_4_ : Int, p_149714_5_ : Int ): Unit
 
 	/**
 	Sets the mod-specific block name
 	  */
-	def setBlockName(p_149663_1_ : String): Block
+	def setBlockName( p_149663_1_ : String ): Block
 
 	/**
 	Gets the localized name of this block. Used for the statistics page.
@@ -417,7 +417,7 @@ trait IBlock
 	  */
 	def getUnlocalizedName: String
 
-	def onBlockEventReceived(p_149696_1_ : World, p_149696_2_ : Int, p_149696_3_ : Int, p_149696_4_ : Int, p_149696_5_ : Int, p_149696_6_ : Int): Boolean
+	def onBlockEventReceived( p_149696_1_ : World, p_149696_2_ : Int, p_149696_3_ : Int, p_149696_4_ : Int, p_149696_5_ : Int, p_149696_6_ : Int ): Boolean
 
 	/**
 	Return the state of blocks statistics flags - if the block is counted for mined and placed.
@@ -433,74 +433,74 @@ trait IBlock
 	/**
 	Returns the default ambient occlusion value based on block opacity
 	  */
-	@SideOnly(Side.CLIENT) def getAmbientOcclusionLightValue: Float
+	@SideOnly( Side.CLIENT ) def getAmbientOcclusionLightValue: Float
 
 	/**
 	Indicate if a material is a normal solid opaque cube
 	  */
-	@SideOnly(Side.CLIENT) def isBlockNormalCube: Boolean
+	@SideOnly( Side.CLIENT ) def isBlockNormalCube: Boolean
 
 	/**
 	Block's chance to react to an entity falling on it.
 	  */
-	def onFallenUpon(p_149746_1_ : World, p_149746_2_ : Int, p_149746_3_ : Int, p_149746_4_ : Int, p_149746_5_ : Entity, p_149746_6_ : Float)
+	def onFallenUpon( p_149746_1_ : World, p_149746_2_ : Int, p_149746_3_ : Int, p_149746_4_ : Int, p_149746_5_ : Entity, p_149746_6_ : Float ): Unit
 
 	/**
 	Gets an item for the block being called on. Args: world, x, y, z
 	  */
-	@SideOnly(Side.CLIENT) def getItem(p_149694_1_ : World, p_149694_2_ : Int, p_149694_3_ : Int, p_149694_4_ : Int): Item
+	@SideOnly( Side.CLIENT ) def getItem( p_149694_1_ : World, p_149694_2_ : Int, p_149694_3_ : Int, p_149694_4_ : Int ): Item
 
 	/**
 	Get the block's damage value (for use with pick block).
 	  */
-	def getDamageValue(p_149643_1_ : World, p_149643_2_ : Int, p_149643_3_ : Int, p_149643_4_ : Int): Int
+	def getDamageValue( p_149643_1_ : World, p_149643_2_ : Int, p_149643_3_ : Int, p_149643_4_ : Int ): Int
 
 	/**
 	Determines the damage on the item the block drops. Used in cloth and wood.
 	  */
-	def damageDropped(p_149692_1_ : Int): Int
+	def damageDropped( p_149692_1_ : Int ): Int
 
 	/**
 	returns a list of blocks with the same ID, but different meta (eg: wood returns 4 blocks)
 	  */
-	@SideOnly(Side.CLIENT) def getSubBlocks(p_149666_1_ : Item, p_149666_2_ : CreativeTabs, p_149666_3_ : List[ _ ])
+	@SideOnly( Side.CLIENT ) def getSubBlocks( p_149666_1_ : Item, p_149666_2_ : CreativeTabs, p_149666_3_ : List[ _ ] ): Unit
 
-	def setCreativeTab(p_149647_1_ : CreativeTabs): Block
+	def setCreativeTab( p_149647_1_ : CreativeTabs ): Block
 
 	/**
 	Called when the block is attempted to be harvested
 	  */
-	def onBlockHarvested(p_149681_1_ : World, p_149681_2_ : Int, p_149681_3_ : Int, p_149681_4_ : Int, p_149681_5_ : Int, p_149681_6_ : EntityPlayer)
+	def onBlockHarvested( p_149681_1_ : World, p_149681_2_ : Int, p_149681_3_ : Int, p_149681_4_ : Int, p_149681_5_ : Int, p_149681_6_ : EntityPlayer ): Unit
 
 	/**
 	Returns the CreativeTab to display the given block on.
 	  */
-	@SideOnly(Side.CLIENT) def getCreativeTabToDisplayOn: CreativeTabs
+	@SideOnly( Side.CLIENT ) def getCreativeTabToDisplayOn: CreativeTabs
 
 	/**
 	Called on server worlds only when the block is about to be replaced by a different block or the same block with a
 	 different metadata value. Args: world, x, y, z, old metadata
 	  */
-	def onBlockPreDestroy(p_149725_1_ : World, p_149725_2_ : Int, p_149725_3_ : Int, p_149725_4_ : Int, p_149725_5_ : Int)
+	def onBlockPreDestroy( p_149725_1_ : World, p_149725_2_ : Int, p_149725_3_ : Int, p_149725_4_ : Int, p_149725_5_ : Int ): Unit
 
 	/**
 	currently only used by BlockCauldron to incrament meta-data during rain
 	  */
-	def fillWithRain(p_149639_1_ : World, p_149639_2_ : Int, p_149639_3_ : Int, p_149639_4_ : Int)
+	def fillWithRain( p_149639_1_ : World, p_149639_2_ : Int, p_149639_3_ : Int, p_149639_4_ : Int ): Unit
 
 	/**
 	Returns true only if block is flowerPot
 	  */
-	@SideOnly(Side.CLIENT) def isFlowerPot: Boolean
+	@SideOnly( Side.CLIENT ) def isFlowerPot: Boolean
 
 	def func_149698_L: Boolean
 
 	/**
 	Return whether this block can drop from an explosion.
 	  */
-	def canDropFromExplosion(p_149659_1_ : Explosion): Boolean
+	def canDropFromExplosion( p_149659_1_ : Explosion ): Boolean
 
-	def isAssociatedBlock(p_149667_1_ : Block): Boolean
+	def isAssociatedBlock( p_149667_1_ : Block ): Boolean
 
 	/**
 	If this returns true, then comparators facing away from this block will use the value from
@@ -512,23 +512,23 @@ trait IBlock
 	If hasComparatorInputOverride returns true, the return value from this is used instead of the redstone signal
 	 strength when this block inputs to a comparator.
 	  */
-	def getComparatorInputOverride(p_149736_1_ : World, p_149736_2_ : Int, p_149736_3_ : Int, p_149736_4_ : Int, p_149736_5_ : Int): Int
+	def getComparatorInputOverride( p_149736_1_ : World, p_149736_2_ : Int, p_149736_3_ : Int, p_149736_4_ : Int, p_149736_5_ : Int ): Int
 
-	def setBlockTextureName(p_149658_1_ : String): Block
+	def setBlockTextureName( p_149658_1_ : String ): Block
 
-	@SideOnly(Side.CLIENT) def func_149735_b(p_149735_1_ : Int, p_149735_2_ : Int): IIcon
+	@SideOnly( Side.CLIENT ) def func_149735_b( p_149735_1_ : Int, p_149735_2_ : Int ): IIcon
 
 	/**
 	Gets the block's texture. Args: side, meta
 	  */
-	@SideOnly(Side.CLIENT) def getIcon(p_149691_1_ : Int, p_149691_2_ : Int): IIcon
+	@SideOnly( Side.CLIENT ) def getIcon( p_149691_1_ : Int, p_149691_2_ : Int ): IIcon
 
-	@SideOnly(Side.CLIENT) def registerBlockIcons(p_149651_1_ : IIconRegister)
+	@SideOnly( Side.CLIENT ) def registerBlockIcons( p_149651_1_ : IIconRegister ): Unit
 
 	/**
 	Gets the icon name of the ItemBlock corresponding to this block. Used by hoppers.
 	  */
-	@SideOnly(Side.CLIENT) def getItemIconName: String
+	@SideOnly( Side.CLIENT ) def getItemIconName: String
 
 	/**
 	Get a light value for the block at the specified coordinates, normal ranges are between 0 and 15
@@ -540,7 +540,7 @@ trait IBlock
 
 	@return The light value
 	  */
-	def getLightValue(world: IBlockAccess, x: Int, y: Int, z: Int): Int
+	def getLightValue( world: IBlockAccess, x: Int, y: Int, z: Int ): Int
 
 	/**
 	Gets the light value of the specified block coords. Args: x, y, z
@@ -558,7 +558,7 @@ trait IBlock
 
 	@return True if the block should act like a ladder
 	  */
-	def isLadder(world: IBlockAccess, x: Int, y: Int, z: Int, entity: EntityLivingBase): Boolean
+	def isLadder( world: IBlockAccess, x: Int, y: Int, z: Int, entity: EntityLivingBase ): Boolean
 
 	/**
 	Determines if a new block can be replace the space occupied by this one,
@@ -571,7 +571,7 @@ trait IBlock
 
 	@return True if the block is replaceable by another block
 	  */
-	def isReplaceable(world: IBlockAccess, x: Int, y: Int, z: Int): Boolean
+	def isReplaceable( world: IBlockAccess, x: Int, y: Int, z: Int ): Boolean
 
 	/**
 	Determines if this block should set fire and deal fire damage
@@ -584,7 +584,7 @@ trait IBlock
 
 	@return True if the block should deal damage
 	  */
-	def isBurning(world: IBlockAccess, x: Int, y: Int, z: Int): Boolean
+	def isBurning( world: IBlockAccess, x: Int, y: Int, z: Int ): Boolean
 
 	/**
 	Determines this block should be treated as an air block
@@ -599,7 +599,7 @@ trait IBlock
 
 	@return True if the block considered air
 	  */
-	def isAir(world: IBlockAccess, x: Int, y: Int, z: Int): Boolean
+	def isAir( world: IBlockAccess, x: Int, y: Int, z: Int ): Boolean
 
 	def getMaterial: Material
 
@@ -611,7 +611,7 @@ trait IBlock
 
 	@return True to spawn the drops
 	  */
-	def canHarvestBlock(player: EntityPlayer, meta: Int): Boolean
+	def canHarvestBlock( player: EntityPlayer, meta: Int ): Boolean
 
 	/**
 	Called when a player removes a block.  This is responsible for
@@ -632,7 +632,7 @@ trait IBlock
 
 	@return True if the block is actually destroyed.
 	  */
-	def removedByPlayer(world: World, player: EntityPlayer, x: Int, y: Int, z: Int): Boolean
+	def removedByPlayer( world: World, player: EntityPlayer, x: Int, y: Int, z: Int ): Boolean
 
 	/**
 	Called when fire is updating, checks if a block face can catch fire.
@@ -645,7 +645,7 @@ trait IBlock
 
 	@return True if the face can be on fire, false otherwise.
 	  */
-	def isFlammable(world: IBlockAccess, x: Int, y: Int, z: Int, face: ForgeDirection): Boolean
+	def isFlammable( world: IBlockAccess, x: Int, y: Int, z: Int, face: ForgeDirection ): Boolean
 
 	/**
 	Chance that fire will spread and consume this block.
@@ -659,7 +659,7 @@ trait IBlock
 
 	@return A number ranging from 0 to 300 relating used to determine if the block will be consumed by fire
 	  */
-	def getFlammability(world: IBlockAccess, x: Int, y: Int, z: Int, face: ForgeDirection): Int
+	def getFlammability( world: IBlockAccess, x: Int, y: Int, z: Int, face: ForgeDirection ): Int
 
 	/**
 	Called when fire is updating on a neighbor block.
@@ -673,7 +673,7 @@ trait IBlock
 
 	@return A number that is used to determine the speed of fire growth around the block
 	  */
-	def getFireSpreadSpeed(world: IBlockAccess, x: Int, y: Int, z: Int, face: ForgeDirection): Int
+	def getFireSpreadSpeed( world: IBlockAccess, x: Int, y: Int, z: Int, face: ForgeDirection ): Int
 
 	/**
 	Currently only called by fire when it is on top of this block.
@@ -688,7 +688,7 @@ trait IBlock
 
 	@return True if this block sustains fire, meaning it will never go out.
 	  */
-	def isFireSource(world: World, x: Int, y: Int, z: Int, side: ForgeDirection): Boolean
+	def isFireSource( world: World, x: Int, y: Int, z: Int, side: ForgeDirection ): Boolean
 
 	/**
 	Called throughout the code as a replacement for ITileEntityProvider.createNewTileEntity
@@ -699,7 +699,7 @@ trait IBlock
 
 	@return A instance of a class extending TileEntity
 	  */
-	def createTileEntity(world: World, metadata: Int): TileEntity
+	def createTileEntity( world: World, metadata: Int ): TileEntity
 
 	/**
 	Determines if a specified mob type can spawn on this block, returning false will
@@ -713,7 +713,7 @@ trait IBlock
 
 	@return True to allow a mob of the specified category to spawn, false to prevent it.
 	  */
-	def canCreatureSpawn(`type`: EnumCreatureType, world: IBlockAccess, x: Int, y: Int, z: Int): Boolean
+	def canCreatureSpawn( `type`: EnumCreatureType, world: IBlockAccess, x: Int, y: Int, z: Int ): Boolean
 
 	def func_149730_j: Boolean
 
@@ -728,7 +728,7 @@ trait IBlock
 
 	@return True if the block is solid on the specified side.
 	  */
-	def isSideSolid(world: IBlockAccess, x: Int, y: Int, z: Int, side: ForgeDirection): Boolean
+	def isSideSolid( world: IBlockAccess, x: Int, y: Int, z: Int, side: ForgeDirection ): Boolean
 
 	/**
 	Return true if the block is a normal, solid cube.  This
@@ -742,7 +742,7 @@ trait IBlock
 
 	@return True if the block is a full cube
 	  */
-	def isNormalCube(world: IBlockAccess, x: Int, y: Int, z: Int): Boolean
+	def isNormalCube( world: IBlockAccess, x: Int, y: Int, z: Int ): Boolean
 
 	/**
 	If this block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
@@ -767,7 +767,7 @@ trait IBlock
 
 	@return True to treat this as a bed
 	  */
-	def isBed(world: IBlockAccess, x: Int, y: Int, z: Int, player: EntityLivingBase): Boolean
+	def isBed( world: IBlockAccess, x: Int, y: Int, z: Int, player: EntityLivingBase ): Boolean
 
 	/**
 	Returns the position that the player is moved to upon
@@ -781,7 +781,7 @@ trait IBlock
 
 	@return The spawn position
 	  */
-	def getBedSpawnPosition(world: IBlockAccess, x: Int, y: Int, z: Int, player: EntityPlayer): ChunkCoordinates
+	def getBedSpawnPosition( world: IBlockAccess, x: Int, y: Int, z: Int, player: EntityPlayer ): ChunkCoordinates
 
 	/**
 	Called when a user either starts or stops sleeping in the bed.
@@ -793,7 +793,7 @@ trait IBlock
 	@param player   The player or camera entity, null in some cases.
 	@param occupied True if we are occupying the bed, or false if they are stopping use of the bed
 	  */
-	def setBedOccupied(world: IBlockAccess, x: Int, y: Int, z: Int, player: EntityPlayer, occupied: Boolean)
+	def setBedOccupied( world: IBlockAccess, x: Int, y: Int, z: Int, player: EntityPlayer, occupied: Boolean ): Unit
 
 	/**
 	Returns the direction of the block. Same values that
@@ -806,7 +806,7 @@ trait IBlock
 
 	@return Bed direction
 	  */
-	def getBedDirection(world: IBlockAccess, x: Int, y: Int, z: Int): Int
+	def getBedDirection( world: IBlockAccess, x: Int, y: Int, z: Int ): Int
 
 	/**
 	Determines if the current block is the foot half of the bed.
@@ -818,7 +818,7 @@ trait IBlock
 
 	@return True if the current block is the foot side of a bed.
 	  */
-	def isBedFoot(world: IBlockAccess, x: Int, y: Int, z: Int): Boolean
+	def isBedFoot( world: IBlockAccess, x: Int, y: Int, z: Int ): Boolean
 
 	/**
 	Called when a leaf should start its decay process.
@@ -828,7 +828,7 @@ trait IBlock
 	@param y     Y Position
 	@param z     Z Position
 	  */
-	def beginLeavesDecay(world: World, x: Int, y: Int, z: Int)
+	def beginLeavesDecay( world: World, x: Int, y: Int, z: Int ): Unit
 
 	/**
 	Determines if this block can prevent leaves connected to it from decaying.
@@ -840,7 +840,7 @@ trait IBlock
 
 	@return true if the presence this block can prevent leaves from decaying.
 	  */
-	def canSustainLeaves(world: IBlockAccess, x: Int, y: Int, z: Int): Boolean
+	def canSustainLeaves( world: IBlockAccess, x: Int, y: Int, z: Int ): Boolean
 
 	/**
 	Determines if this block is considered a leaf block, used to apply the leaf decay and generation system.
@@ -852,7 +852,7 @@ trait IBlock
 
 	@return true if this block is considered leaves.
 	  */
-	def isLeaves(world: IBlockAccess, x: Int, y: Int, z: Int): Boolean
+	def isLeaves( world: IBlockAccess, x: Int, y: Int, z: Int ): Boolean
 
 	/**
 	Used during tree growth to determine if newly generated leaves can replace this block.
@@ -864,7 +864,7 @@ trait IBlock
 
 	@return true if this block can be replaced by growing leaves.
 	  */
-	def canBeReplacedByLeaves(world: IBlockAccess, x: Int, y: Int, z: Int): Boolean
+	def canBeReplacedByLeaves( world: IBlockAccess, x: Int, y: Int, z: Int ): Boolean
 
 	/**
 	@param world The current world
@@ -874,7 +874,7 @@ trait IBlock
 
 	@return true if the block is wood (logs)
 	  */
-	def isWood(world: IBlockAccess, x: Int, y: Int, z: Int): Boolean
+	def isWood( world: IBlockAccess, x: Int, y: Int, z: Int ): Boolean
 
 	/**
 	Determines if the current block is replaceable by Ore veins during world generation.
@@ -888,7 +888,7 @@ trait IBlock
 
 	@return True to allow this block to be replaced by a ore
 	  */
-	def isReplaceableOreGen(world: World, x: Int, y: Int, z: Int, target: Block): Boolean
+	def isReplaceableOreGen( world: World, x: Int, y: Int, z: Int, target: Block ): Boolean
 
 	/**
 	Location sensitive version of getExplosionRestance
@@ -904,12 +904,12 @@ trait IBlock
 
 	@return The amount of the explosion absorbed.
 	  */
-	def getExplosionResistance(par1Entity: Entity, world: World, x: Int, y: Int, z: Int, explosionX: Double, explosionY: Double, explosionZ: Double): Float
+	def getExplosionResistance( par1Entity: Entity, world: World, x: Int, y: Int, z: Int, explosionX: Double, explosionY: Double, explosionZ: Double ): Float
 
 	/**
 	Returns how much this block can resist explosions from the passed in entity.
 	  */
-	def getExplosionResistance(p_149638_1_ : Entity): Float
+	def getExplosionResistance( p_149638_1_ : Entity ): Float
 
 	/**
 	Called when the block is destroyed by an explosion.
@@ -922,12 +922,12 @@ trait IBlock
 	@param z         Z Position
 	@param explosion The explosion instance affecting the block
 	  */
-	def onBlockExploded(world: World, x: Int, y: Int, z: Int, explosion: Explosion)
+	def onBlockExploded( world: World, x: Int, y: Int, z: Int, explosion: Explosion ): Unit
 
 	/**
 	Called upon the block being destroyed by an explosion
 	  */
-	def onBlockDestroyedByExplosion(p_149723_1_ : World, p_149723_2_ : Int, p_149723_3_ : Int, p_149723_4_ : Int, p_149723_5_ : Explosion)
+	def onBlockDestroyedByExplosion( p_149723_1_ : World, p_149723_2_ : Int, p_149723_3_ : Int, p_149723_4_ : Int, p_149723_5_ : Explosion ): Unit
 
 	/**
 	Determine if this block can make a redstone connection on the side provided,
@@ -948,7 +948,7 @@ trait IBlock
 
 	@return True to make the connection
 	  */
-	def canConnectRedstone(world: IBlockAccess, x: Int, y: Int, z: Int, side: Int): Boolean
+	def canConnectRedstone( world: IBlockAccess, x: Int, y: Int, z: Int, side: Int ): Boolean
 
 	/**
 	Determines if a torch can be placed on the top surface of this block.
@@ -961,7 +961,7 @@ trait IBlock
 
 	@return True to allow the torch to be placed
 	  */
-	def canPlaceTorchOnTop(world: World, x: Int, y: Int, z: Int): Boolean
+	def canPlaceTorchOnTop( world: World, x: Int, y: Int, z: Int ): Boolean
 
 	/**
 	Determines if this block should render in this pass.
@@ -970,12 +970,12 @@ trait IBlock
 
 	@return True to render
 	  */
-	def canRenderInPass(pass: Int): Boolean
+	def canRenderInPass( pass: Int ): Boolean
 
 	/**
 	Returns which pass should this block be rendered on. 0 for solids and 1 for alpha
 	  */
-	@SideOnly(Side.CLIENT) def getRenderBlockPass: Int
+	@SideOnly( Side.CLIENT ) def getRenderBlockPass: Int
 
 	/**
 	Called when a user uses the creative pick block button on this block
@@ -984,7 +984,7 @@ trait IBlock
 
 	@return A ItemStack to add to the player's inventory, Null if nothing should be added.
 	  */
-	def getPickBlock(target: MovingObjectPosition, world: World, x: Int, y: Int, z: Int): ItemStack
+	def getPickBlock( target: MovingObjectPosition, world: World, x: Int, y: Int, z: Int ): ItemStack
 
 	/**
 	Used by getTopSolidOrLiquidBlock while placing biome decorations, villages, etc
@@ -992,7 +992,7 @@ trait IBlock
 
 	 @return False to disallow spawning
 	  */
-	def isFoliage(world: IBlockAccess, x: Int, y: Int, z: Int): Boolean
+	def isFoliage( world: IBlockAccess, x: Int, y: Int, z: Int ): Boolean
 
 	/**
 	Spawn a digging particle effect in the world, this is a wrapper
@@ -1006,7 +1006,7 @@ trait IBlock
 
 	@return True to prevent vanilla digging particles form spawning.
 	  */
-	@SideOnly(Side.CLIENT) def addHitEffects(world: World, target: MovingObjectPosition, effectRenderer: EffectRenderer): Boolean
+	@SideOnly( Side.CLIENT ) def addHitEffects( world: World, target: MovingObjectPosition, effectRenderer: EffectRenderer ): Boolean
 
 	/**
 	Spawn particles for when the block is destroyed. Due to the nature
@@ -1023,7 +1023,7 @@ trait IBlock
 
 	@return True to prevent vanilla break particles from spawning.
 	  */
-	@SideOnly(Side.CLIENT) def addDestroyEffects(world: World, x: Int, y: Int, z: Int, meta: Int, effectRenderer: EffectRenderer): Boolean
+	@SideOnly( Side.CLIENT ) def addDestroyEffects( world: World, x: Int, y: Int, z: Int, meta: Int, effectRenderer: EffectRenderer ): Boolean
 
 	/**
 	Determines if this block can support the passed in plant, allowing it to be planted and grow.
@@ -1045,7 +1045,7 @@ trait IBlock
 
 	@return True to allow the plant to be planted/stay.
 	  */
-	def canSustainPlant(world: IBlockAccess, x: Int, y: Int, z: Int, direction: ForgeDirection, plantable: IPlantable): Boolean
+	def canSustainPlant( world: IBlockAccess, x: Int, y: Int, z: Int, direction: ForgeDirection, plantable: IPlantable ): Boolean
 
 	/**
 	Called when a plant grows on this block, only implemented for saplings using the WorldGen*Trees classes right now.
@@ -1064,7 +1064,7 @@ trait IBlock
 	@param sourceY Plant growth location Y
 	@param sourceZ Plant growth location Z
 	  */
-	def onPlantGrow(world: World, x: Int, y: Int, z: Int, sourceX: Int, sourceY: Int, sourceZ: Int)
+	def onPlantGrow( world: World, x: Int, y: Int, z: Int, sourceX: Int, sourceY: Int, sourceZ: Int ): Unit
 
 	/**
 	Checks if this soil is fertile, typically this means that growth rates
@@ -1078,7 +1078,7 @@ trait IBlock
 
 	@return True if the soil should be considered fertile.
 	  */
-	def isFertile(world: World, x: Int, y: Int, z: Int): Boolean
+	def isFertile( world: World, x: Int, y: Int, z: Int ): Boolean
 
 	/**
 	Location aware and overrideable version of the lightOpacity array,
@@ -1095,7 +1095,7 @@ trait IBlock
 
 	@return The amount of light to block, 0 for air, 255 for fully opaque.
 	  */
-	def getLightOpacity(world: IBlockAccess, x: Int, y: Int, z: Int): Int
+	def getLightOpacity( world: IBlockAccess, x: Int, y: Int, z: Int ): Int
 
 	/**
 	Determines if this block is can be destroyed by the specified entities normal behavior.
@@ -1107,7 +1107,7 @@ trait IBlock
 
 	@return True to allow the ender dragon to destroy this block
 	  */
-	def canEntityDestroy(world: IBlockAccess, x: Int, y: Int, z: Int, entity: Entity): Boolean
+	def canEntityDestroy( world: IBlockAccess, x: Int, y: Int, z: Int, entity: Entity ): Boolean
 
 	/**
 	Determines if this block can be used as the base of a beacon.
@@ -1122,7 +1122,7 @@ trait IBlock
 
 	@return True, to support the beacon, and make it active with this block.
 	  */
-	def isBeaconBase(world: IBlockAccess, x: Int, y: Int, z: Int, beaconX: Int, beaconY: Int, beaconZ: Int): Boolean
+	def isBeaconBase( world: IBlockAccess, x: Int, y: Int, z: Int, beaconX: Int, beaconY: Int, beaconZ: Int ): Boolean
 
 	/**
 	Rotate the block. For vanilla blocks this rotates around the axis passed in (generally, it should be the "face" that was hit).
@@ -1138,7 +1138,7 @@ trait IBlock
 
 	@return True if the rotation was successful, False if the rotation failed, or is not possible
 	  */
-	def rotateBlock(worldObj: World, x: Int, y: Int, z: Int, axis: ForgeDirection): Boolean
+	def rotateBlock( worldObj: World, x: Int, y: Int, z: Int, axis: ForgeDirection ): Boolean
 
 	/**
 	Get the rotations that can apply to the block at the specified coordinates. Null means no rotations are possible.
@@ -1151,7 +1151,7 @@ trait IBlock
 
 	@return An array of valid axes to rotate around, or null for none or unknown
 	  */
-	def getValidRotations(worldObj: World, x: Int, y: Int, z: Int): Array[ ForgeDirection ]
+	def getValidRotations( worldObj: World, x: Int, y: Int, z: Int ): Array[ ForgeDirection ]
 
 	/**
 	Determines the amount of enchanting power this block can provide to an enchanting table.
@@ -1163,7 +1163,7 @@ trait IBlock
 
 	@return The amount of enchanting power this block produces.
 	  */
-	def getEnchantPowerBonus(world: World, x: Int, y: Int, z: Int): Float
+	def getEnchantPowerBonus( world: World, x: Int, y: Int, z: Int ): Float
 
 	/**
 	Common way to recolour a block with an external tool
@@ -1177,7 +1177,7 @@ trait IBlock
 
 	@return If the recolouring was successful
 	  */
-	def recolourBlock(world: World, x: Int, y: Int, z: Int, side: ForgeDirection, colour: Int): Boolean
+	def recolourBlock( world: World, x: Int, y: Int, z: Int, side: ForgeDirection, colour: Int ): Boolean
 
 	/**
 	Gathers how much experience this block drops when broken.
@@ -1188,7 +1188,7 @@ trait IBlock
 
 	@return Amount of XP from breaking this block.
 	  */
-	def getExpDrop(world: IBlockAccess, metadata: Int, fortune: Int): Int
+	def getExpDrop( world: IBlockAccess, metadata: Int, fortune: Int ): Int
 
 	/**
 	Called when a tile entity on a side of this block changes is created or is destroyed.
@@ -1201,7 +1201,7 @@ trait IBlock
 	@param tileY The y position of the tile that changed
 	@param tileZ The z position of the tile that changed
 	  */
-	def onNeighborChange(world: IBlockAccess, x: Int, y: Int, z: Int, tileX: Int, tileY: Int, tileZ: Int)
+	def onNeighborChange( world: IBlockAccess, x: Int, y: Int, z: Int, tileX: Int, tileY: Int, tileZ: Int ): Unit
 
 	/**
 	Called to determine whether to allow the a block to handle its own indirect power rather than using the default rules.
@@ -1214,7 +1214,7 @@ trait IBlock
 
 	@return Whether Block#isProvidingWeakPower should be called when determining indirect power
 	  */
-	def shouldCheckWeakPower(world: IBlockAccess, x: Int, y: Int, z: Int, side: Int): Boolean
+	def shouldCheckWeakPower( world: IBlockAccess, x: Int, y: Int, z: Int, side: Int ): Boolean
 
 	/**
 	If this block should be notified of weak changes.
@@ -1228,7 +1228,7 @@ trait IBlock
 
 	@return true To be notified of changes
 	  */
-	def getWeakChanges(world: IBlockAccess, x: Int, y: Int, z: Int): Boolean
+	def getWeakChanges( world: IBlockAccess, x: Int, y: Int, z: Int ): Boolean
 
 	/**
 	Sets or removes the tool and level required to harvest this block.
@@ -1241,7 +1241,7 @@ trait IBlock
 	 Diamond: 3
 	 Gold:    0
 	  */
-	def setHarvestLevel(toolClass: String, level: Int)
+	def setHarvestLevel( toolClass: String, level: Int ): Unit
 
 	/**
 	Sets or removes the tool and level required to harvest this block.
@@ -1255,7 +1255,7 @@ trait IBlock
 	 Gold:    0
 	@param metadata  The specific metadata to set
 	  */
-	def setHarvestLevel(toolClass: Nothing, level: Int, metadata: Int)
+	def setHarvestLevel( toolClass: Nothing, level: Int, metadata: Int ): Unit
 
 	/**
 	Queries the class of tool required to harvest this block, if null is returned
@@ -1265,7 +1265,7 @@ trait IBlock
 
 	@return Class of tool required to harvest this block
 	  */
-	def getHarvestTool(metadata: Int): String
+	def getHarvestTool( metadata: Int ): String
 
 	/**
 	Queries the harvest level of this item stack for the specifred tool class,
@@ -1275,7 +1275,7 @@ trait IBlock
 
 	@return Harvest level, or -1 if not the specified tool type.
 	  */
-	def getHarvestLevel(metadata: Int): Int
+	def getHarvestLevel( metadata: Int ): Int
 
 	/**
 	Checks if the specified tool type is efficient on this block,
@@ -1286,5 +1286,5 @@ trait IBlock
 
 	@return True, if tool is effective
 	  */
-	def isToolEffective(`type`: String, metadata: Int): Boolean
+	def isToolEffective( `type`: String, metadata: Int ): Boolean
 }

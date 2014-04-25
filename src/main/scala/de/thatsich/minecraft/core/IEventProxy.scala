@@ -16,7 +16,7 @@ trait IEventProxy
 	 *
 	 * @param event contains information to pre-initialize the mod
 	 */
-	def preInit(event: FMLPreInitializationEvent)
+	def preInit( event: FMLPreInitializationEvent ): Unit
 
 	/**
 	 * Do your mod setup. Build whatever data structures you care about.
@@ -24,12 +24,12 @@ trait IEventProxy
 	 *
 	 * @param event contains information to initialize and finalize the mod
 	 */
-	def init(event: FMLInitializationEvent)
+	def init( event: FMLInitializationEvent ): Unit
 
 	/**
 	 * Handle interaction with other mods, complete your setup based on this.
 	 *
 	 * @param event Event after setup
 	 */
-	def postInit(event: FMLPostInitializationEvent)
+	def postInit( event: FMLPostInitializationEvent ): Unit
 }

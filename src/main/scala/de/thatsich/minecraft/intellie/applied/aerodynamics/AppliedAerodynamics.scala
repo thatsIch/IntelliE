@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics
 
+import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPreInitializationEvent, FMLPostInitializationEvent}
 import cpw.mods.fml.common.{SidedProxy, Optional, Mod}
-import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
 import de.thatsich.minecraft.core.{OModIDs, ICommonProxy, ABaseMod}
 
 /**
@@ -17,7 +17,8 @@ import de.thatsich.minecraft.core.{OModIDs, ICommonProxy, ABaseMod}
 	dependencies = "required-after:intellie",
 	modLanguage = "scala"
 )
-object AppliedAerodynamics extends ABaseMod
+object AppliedAerodynamics
+	extends ABaseMod
 {
 	@SidedProxy(
 		modId = OModIDs.AERO,
@@ -26,25 +27,25 @@ object AppliedAerodynamics extends ABaseMod
 	)
 	var proxy: ICommonProxy = null
 
-	@Optional.Method(modid = OModIDs.AERO)
+	@Optional.Method( modid = OModIDs.AERO )
 	@Mod.EventHandler
-	override def preInit(event: FMLPreInitializationEvent)
+	override def preInit( event: FMLPreInitializationEvent ): Unit =
 	{
-		super.preInit(event)
+		super.preInit( event )
 	}
 
-	@Optional.Method(modid = OModIDs.AERO)
+	@Optional.Method( modid = OModIDs.AERO )
 	@Mod.EventHandler
-	override def init(event: FMLInitializationEvent)
+	override def init( event: FMLInitializationEvent ): Unit =
 	{
-		super.init(event)
+		super.init( event )
 		//		FMLCommonHandler.instance.bus.register(new KeyHandler)
 	}
 
-	@Optional.Method(modid = OModIDs.AERO)
+	@Optional.Method( modid = OModIDs.AERO )
 	@Mod.EventHandler
-	override def postInit(event: FMLPostInitializationEvent)
+	override def postInit( event: FMLPostInitializationEvent ): Unit =
 	{
-		super.postInit(event)
+		super.postInit( event )
 	}
 }

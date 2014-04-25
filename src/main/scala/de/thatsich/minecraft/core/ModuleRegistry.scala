@@ -1,8 +1,7 @@
-package de.thatsich.minecraft.core.registries
+package de.thatsich.minecraft.core
 
-import cpw.mods.fml.common.event.FMLPreInitializationEvent
+import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
 import cpw.mods.fml.common.registry.GameRegistry
-import de.thatsich.minecraft.core.IEventProxy
 import de.thatsich.minecraft.core.module.IModule
 
 /**
@@ -25,12 +24,11 @@ class ModuleRegistry( implicit modules: List[ IModule ] )
 
 		(oItem, oBlock, oTileEntity, oEntity) match
 		{
-			case (Some( item ), None, None, None) => GameRegistry.registerItem( item )
+			case (Some( item ), None, None, None) => GameRegistry.registerItem( item, item.getUnlocalizedName )
 			case (None, Some( block ), None, None) => GameRegistry.registerBlock( block, block.getUnlocalizedName )
 			//			case (None, None, Some( tileEntity ), None) => GameRegistry.registerTileEntity( null )
 			//			case (None, None, None, Some( enity )) => EntityRegistry.registerModEntity( ) entityclass.class, instane
 		}
-
 		//		RenderingRegistry.registerBlockHandler() ISBRH
 		//		RenderingRegistry.registerEntityRenderingHandler() Entity.class, Render
 	}

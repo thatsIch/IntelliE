@@ -9,7 +9,9 @@ import net.minecraftforge.common.config.Configuration
  * @author thatsIch
  * @since 07.04.2014.
  */
-abstract class ATileEntity(category: String, key: String, tileEntityID: String) extends TileEntity with ITileEntity
+abstract class ATileEntity( category: String, key: String, tileEntityID: String )
+	extends TileEntity
+	        with ITileEntity
 {
 	def getCategory: String =
 	{
@@ -21,7 +23,7 @@ abstract class ATileEntity(category: String, key: String, tileEntityID: String) 
 		this.key
 	}
 
-	def register(config: Configuration)
+	def register( config: Configuration ): Unit
 
 	def getTileEntityID: String =
 	{

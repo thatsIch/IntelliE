@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.common.proxies
 
-import de.thatsich.minecraft.core.ICommonProxy
 import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
+import de.thatsich.minecraft.core.ICommonProxy
 
 /**
  *
@@ -16,7 +16,7 @@ class AeroCommonProxy extends ICommonProxy
 	 *
 	 * @param event Event after setup
 	 */
-	def postInit(event: FMLPostInitializationEvent)
+	def postInit( event: FMLPostInitializationEvent ): Unit =
 	{
 
 	}
@@ -27,7 +27,7 @@ class AeroCommonProxy extends ICommonProxy
 	 *
 	 * @param event contains information to initialize and finalize the mod
 	 */
-	def init(event: FMLInitializationEvent)
+	def init( event: FMLInitializationEvent ): Unit =
 	{
 
 	}
@@ -38,7 +38,7 @@ class AeroCommonProxy extends ICommonProxy
 	 *
 	 * @param event contains information to pre-initialize the mod
 	 */
-	def preInit(event: FMLPreInitializationEvent)
+	def preInit( event: FMLPreInitializationEvent ): Unit =
 	{
 
 	}
