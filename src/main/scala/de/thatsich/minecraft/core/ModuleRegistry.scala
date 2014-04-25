@@ -2,6 +2,7 @@ package de.thatsich.minecraft.core
 
 import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
 import cpw.mods.fml.common.registry.GameRegistry
+import de.thatsich.minecraft.core.log.ILog
 import de.thatsich.minecraft.core.module.IModule
 
 /**
@@ -10,19 +11,14 @@ import de.thatsich.minecraft.core.module.IModule
  * @author thatsIch
  * @since 23.04.2014.
  */
-class ModuleRegistry( implicit modules: List[ IModule ] )
+class ModuleRegistry( implicit modules: List[ IModule ], log: ILog )
 	extends IEventProxy
 {
 	var entityID: Int = 0
 
 	for( module <- this.modules )
 	{
-		val oItem = module.item
-		val oBlock = module.block
-		val oTileEntity = module.tileEntity
-		val oEntity = module.entity
-
-		(oItem, oBlock, oTileEntity, oEntity) match
+		(module.item, module.block, module.tileEntity, module.entity) match
 		{
 			case (Some( item ), None, None, None) => GameRegistry.registerItem( item, item.getUnlocalizedName )
 			case (None, Some( block ), None, None) => GameRegistry.registerBlock( block, block.getUnlocalizedName )

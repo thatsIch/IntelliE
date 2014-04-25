@@ -2,8 +2,8 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.common.module.item
 
 import de.thatsich.minecraft.core.module.item.AItemArmor
 import net.minecraft.creativetab.CreativeTabs
-import net.minecraft.item.{ItemStack, ItemArmor}
 import net.minecraft.entity.player.EntityPlayer
+import net.minecraft.item.{ItemStack, ItemArmor}
 
 /**
  *
@@ -33,9 +33,9 @@ abstract class AAEPoweredItemArmor( protected val maxStorage: Double, armorType:
 
 		val percent = (currentPower / maxPower * 100).toInt
 		// TODO format scala int to whole number without 10^x
+
 		val message = s"Stored Energy: $currentPower AE - $percent%"
 
-		println( "currentPower = " + currentPower + ", " + maxPower + ", " + percent )
 		val list = information.asInstanceOf[ java.util.List[ String ] ]
 		list.add( message )
 	}

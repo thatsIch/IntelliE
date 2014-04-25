@@ -6,10 +6,10 @@ import de.thatsich.minecraft.core.log.{Log, ILog}
 import de.thatsich.minecraft.core.module.IModule
 import de.thatsich.minecraft.core.network.PacketPipeline
 import de.thatsich.minecraft.intellie.applied.aerodynamics.common.AeroCreativeTabs
-import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.boots.ItemAeroBoots
-import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.chest.ItemAeroChest
-import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.helm.ItemAeroHelm
-import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.legs.ItemAeroLegs
+import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.boots.{AeroBootsModule, ItemAeroBoots}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.chest.{AeroChestModule, ItemAeroChest}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.helm.{AeroHelmModule, ItemAeroHelm}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.legs.{AeroLegsModule, ItemAeroLegs}
 import net.minecraft.creativetab.CreativeTabs
 
 /**
@@ -31,6 +31,11 @@ package object aerodynamics
 	implicit val itemAeroLegs  = new ItemAeroLegs
 	implicit val itemAeroBoots = new ItemAeroBoots
 
-	implicit final val modules   : List[ IModule ] = List( )
+	implicit final val modules: List[ IModule ] = List(
+		new AeroBootsModule,
+		new AeroChestModule,
+		new AeroHelmModule,
+		new AeroLegsModule
+	)
 	implicit final val registries: ModuleRegistry  = new ModuleRegistry
 }
