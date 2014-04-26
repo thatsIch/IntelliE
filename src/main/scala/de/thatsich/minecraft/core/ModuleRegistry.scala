@@ -24,6 +24,7 @@ class ModuleRegistry( implicit modules: List[ IModule ], log: ILog )
 			case (None, Some( block ), None, None) => GameRegistry.registerBlock( block, block.getUnlocalizedName )
 			//			case (None, None, Some( tileEntity ), None) => GameRegistry.registerTileEntity( null )
 			//			case (None, None, None, Some( enity )) => EntityRegistry.registerModEntity( ) entityclass.class, instane
+			case _ => log.severe( s"Unknown Module $module" )
 		}
 		//		RenderingRegistry.registerBlockHandler() ISBRH
 		//		RenderingRegistry.registerEntityRenderingHandler() Entity.class, Render

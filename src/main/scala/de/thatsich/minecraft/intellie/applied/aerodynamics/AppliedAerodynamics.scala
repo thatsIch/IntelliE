@@ -29,23 +29,13 @@ object AppliedAerodynamics
 
 	@Optional.Method( modid = OModIDs.AERO )
 	@Mod.EventHandler
-	override def preInit( event: FMLPreInitializationEvent ): Unit =
-	{
-		super.preInit( event )
-	}
+	override def preInit( event: FMLPreInitializationEvent ): Unit = super.preInit( event )
 
 	@Optional.Method( modid = OModIDs.AERO )
 	@Mod.EventHandler
-	override def init( event: FMLInitializationEvent ): Unit =
-	{
-		super.init( event )
-		//		FMLCommonHandler.instance.bus.register(new KeyHandler)
-	}
+	override def init( event: FMLInitializationEvent ): Unit = super.init( event )
 
 	@Optional.Method( modid = OModIDs.AERO )
 	@Mod.EventHandler
-	override def postInit( event: FMLPostInitializationEvent ): Unit =
-	{
-		super.postInit( event )
-	}
+	override def postInit( event: FMLPostInitializationEvent ): Unit = super.postInit( event )
 }

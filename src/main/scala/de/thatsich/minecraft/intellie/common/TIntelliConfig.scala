@@ -1,8 +1,7 @@
 package de.thatsich.minecraft.intellie.common
 
-import com.google.common.base.Joiner
-import java.io.File
 import de.thatsich.minecraft.core.config.Config
+import java.io.File
 
 /**
  *
@@ -13,12 +12,14 @@ import de.thatsich.minecraft.core.config.Config
 trait TIntelliConfig
 {
 	private val modName    = this.getClass.getSimpleName
-	private val configPath = Joiner.on(File.separatorChar).join("config", "AppliedEnergistics2", "IntelliE", this.modName + ".cfg")
-	private val config     = new Config(this.configPath)
+	private val paths      = List( "config", "AppliedEnergistics2", "IntelliE", this.modName + ".cfg" )
+	private val configPath = paths mkString File.separator
+	println( "PATH " + configPath )
+	private val config = new Config( this.configPath )
 
-	protected val disableAero = this.config.getBoolean("ChildMods", "disableAppliedAerodynamics", defaultValue = false)
-	protected val disableAgro = this.config.getBoolean("ChildMods", "disableAppliedAgricultures", defaultValue = false)
-	protected val disableInt  = this.config.getBoolean("ChildMods", "disableAppliedIntelligences", defaultValue = false)
+	protected val disableAero = this.config.getBoolean( "ChildMods", "disableAppliedAerodynamics", defaultValue = false )
+	protected val disableAgro = this.config.getBoolean( "ChildMods", "disableAppliedAgricultures", defaultValue = false )
+	protected val disableInt  = this.config.getBoolean( "ChildMods", "disableAppliedIntelligences", defaultValue = false )
 
-	this.config.save()
+	this.config.save( )
 }
