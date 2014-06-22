@@ -16,10 +16,11 @@ import net.minecraft.world.World
  * @since 16.04.2014.
  */
 class ItemAeroBoots( implicit creativeTab: CreativeTabs )
-	extends AAEPoweredItemArmor( 40000000, 3 )
+	extends AAEPoweredItemArmor( 4000000, 3 )
 {
-	final val disChargeOnTick = 400
+	final val disChargeOnTick = 40
 
+	// TODO muss logic ändern, sonst kann user einfach ausziehen und hat immer noch effekt
 	override def onArmorTick( world: World, player: EntityPlayer, itemStack: ItemStack ): Unit =
 	{
 		val currentStorage = this.getAECurrentPower( itemStack )

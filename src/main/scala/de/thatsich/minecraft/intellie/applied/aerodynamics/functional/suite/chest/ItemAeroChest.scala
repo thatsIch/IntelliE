@@ -1,6 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.chest
 
-import cpw.mods.fml.relauncher.{SideOnly, Side}
+import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.common.module.item.AAEPoweredItemArmor
 import net.minecraft.client.renderer.texture.IIconRegister
 import net.minecraft.creativetab.CreativeTabs
@@ -19,9 +19,9 @@ import net.minecraft.world.World
 @author thatsIch
 @since 26.03.2014. */
 class ItemAeroChest( implicit creativeTab: CreativeTabs )
-	extends AAEPoweredItemArmor( 80000000, 1 )
+	extends AAEPoweredItemArmor( 8000000, 1 )
 {
-	final val disChargeOnTick = 800
+	final val disChargeOnTick = 80
 
 	override def onArmorTick( world: World, player: EntityPlayer, itemStack: ItemStack ): Unit =
 	{

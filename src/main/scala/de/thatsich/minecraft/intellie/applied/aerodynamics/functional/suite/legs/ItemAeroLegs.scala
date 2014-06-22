@@ -16,9 +16,10 @@ import net.minecraft.world.World
  * @since 16.04.2014.
  */
 class ItemAeroLegs( implicit creativeTab: CreativeTabs )
-	extends AAEPoweredItemArmor( 70000000, 2 )
+	extends AAEPoweredItemArmor( 7000000, 2 )
 {
-	private final val dischargeOnTick = 350
+	private final val dischargeOnTick = 70
+
 
 	override def onArmorTick( world: World, player: EntityPlayer, itemStack: ItemStack ): Unit =
 	{

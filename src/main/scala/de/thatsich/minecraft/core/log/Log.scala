@@ -1,6 +1,6 @@
 package de.thatsich.minecraft.core.log
 
-import org.apache.logging.log4j.{LogManager, Level}
+import org.apache.logging.log4j.{Level, LogManager}
 
 /**
  *

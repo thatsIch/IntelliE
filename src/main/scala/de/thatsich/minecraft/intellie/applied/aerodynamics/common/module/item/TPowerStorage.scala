@@ -1,9 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.common.module.item
 
-import appeng.api.config.AccessRestriction
-import appeng.api.implementations.items.IAEItemPowerStorage
 import cpw.mods.fml.common.Optional
-import de.thatsich.minecraft.core.OModIDs
+import de.thatsich.minecraft.core.EMods
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 
@@ -13,8 +11,8 @@ import net.minecraft.nbt.NBTTagCompound
  * @author thatsIch
  * @since 17.04.2014.
  */
-@Optional.Interface( iface = "appeng.api.implementations.items.IAEItemPowerStorage", modid = OModIDs.AE2, striprefs = true )
-private[ item ] trait TPowerStorage extends IAEItemPowerStorage
+@Optional.Interface( iface = "appeng.api.implementations.items.IAEItemPowerStorage", modid = EMods.AE2.id, striprefs = true )
+private[ item ] trait TPowerStorage //extends IAEItemPowerStorage
 {
 	self: AAEPoweredItemArmor =>
 
@@ -24,10 +22,10 @@ private[ item ] trait TPowerStorage extends IAEItemPowerStorage
 	private final val inject               = 80000
 
 
-	@Optional.Method( modid = OModIDs.AE2 )
-	def getPowerFlow( is: ItemStack ): AccessRestriction = AccessRestriction.WRITE
+	//	@Optional.Method( modid = OModIDs.AE2 )
+	//	def getPowerFlow( is: ItemStack ): AccessRestriction = AccessRestriction.WRITE
 
-	@Optional.Method( modid = OModIDs.AE2 )
+	@Optional.Method( modid = EMods.AE2.id )
 	def getAECurrentPower( is: ItemStack ): Double =
 	{
 		val tag = this.getNBTData( is )
@@ -36,17 +34,17 @@ private[ item ] trait TPowerStorage extends IAEItemPowerStorage
 		currentStorage
 	}
 
-	@Optional.Method( modid = OModIDs.AE2 )
+	@Optional.Method( modid = EMods.AE2.id )
 	def setAECurrentPower( is: ItemStack, value: Double ): Unit =
 	{
 		val tag = this.getNBTData( is )
 		tag.setDouble( internalCurrentPower, value )
 	}
 
-	@Optional.Method( modid = OModIDs.AE2 )
+	@Optional.Method( modid = EMods.AE2.id )
 	def getAEMaxPower( is: ItemStack ): Double = this.maxStorage
 
-	@Optional.Method( modid = OModIDs.AE2 )
+	@Optional.Method( modid = EMods.AE2.id )
 	def extractAEPower( is: ItemStack, amt: Double ): Double =
 	{
 		val currentStorage = this.getAECurrentPower( is )
@@ -56,7 +54,7 @@ private[ item ] trait TPowerStorage extends IAEItemPowerStorage
 		newStorage
 	}
 
-	@Optional.Method( modid = OModIDs.AE2 )
+	@Optional.Method( modid = EMods.AE2.id )
 	def injectAEPower( is: ItemStack, amt: Double ): Double =
 	{
 		val currentStorage = this.getAECurrentPower( is )

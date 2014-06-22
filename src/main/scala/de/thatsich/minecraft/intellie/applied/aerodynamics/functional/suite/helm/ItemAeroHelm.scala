@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack
  * @since 07.04.2014.
  */
 class ItemAeroHelm( implicit creativeTab: CreativeTabs )
-	extends AAEPoweredItemArmor( 50000000, 0 )
+	extends AAEPoweredItemArmor( 5000000, 0 )
 {
 
 
