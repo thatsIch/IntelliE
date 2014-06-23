@@ -1,6 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.helm
 
-import de.thatsich.minecraft.core.module.AModule
+import de.thatsich.minecraft.core.module.BaseModule
 import net.minecraft.item.Item
 
 /**
@@ -10,7 +10,7 @@ import net.minecraft.item.Item
  * @since 16.04.2014.
  */
 class AeroHelmModule( implicit itemAeroHelm: ItemAeroHelm )
-	extends AModule( Some[ Item ]( itemAeroHelm ), None, None, None )
+	extends BaseModule( Some[ Item ]( itemAeroHelm ), None, None, None )
 {
 
 }

@@ -55,9 +55,9 @@ jar {
 }
 
 // disable Ant from scala compiling
-tasks.withType(ScalaCompile) {
-	scalaCompileOptions.useAnt = false
-}
+//tasks.withType(ScalaCompile) {
+//	scalaCompileOptions.useAnt = false
+//}
 
 processResources {
 	// replace stuff in mcmod.info, nothing else

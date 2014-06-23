@@ -11,7 +11,7 @@ import net.minecraft.tileentity.TileEntity
  * @author thatsIch
  * @since 23.04.2014.
  */
-trait IModule
+trait Module
 {
 	val item      : Option[ Item ]
 	val block     : Option[ Block ]

@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics
 
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import cpw.mods.fml.common.{Mod, Optional, SidedProxy}
-import de.thatsich.minecraft.core.{ABaseMod, EMods, ICommonProxy}
+import de.thatsich.minecraft.core.{BaseMod, EMods, ICommonProxy}
 
 /**
  * d
@@ -18,7 +18,7 @@ import de.thatsich.minecraft.core.{ABaseMod, EMods, ICommonProxy}
 	modLanguage = "scala"
 )
 object AppliedAerodynamics
-	extends ABaseMod
+	extends BaseMod
 {
 	@SidedProxy(
 		modId = EMods.AERO.id,

@@ -1,9 +1,9 @@
 package de.thatsich.minecraft.core
 
-import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
+import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.core.log.ILog
-import de.thatsich.minecraft.core.module.IModule
+import de.thatsich.minecraft.core.module.Module
 
 /**
  *
@@ -11,8 +11,8 @@ import de.thatsich.minecraft.core.module.IModule
  * @author thatsIch
  * @since 23.04.2014.
  */
-class ModuleRegistry( implicit modules: List[ IModule ], log: ILog )
-	extends IEventProxy
+class ModuleRegistry( implicit modules: List[ Module ], log: ILog )
+	extends EventProxy
 {
 	var entityID: Int = 0
 

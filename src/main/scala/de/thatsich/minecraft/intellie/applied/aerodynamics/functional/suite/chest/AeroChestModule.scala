@@ -1,6 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.chest
 
-import de.thatsich.minecraft.core.module.AModule
+import de.thatsich.minecraft.core.module.BaseModule
 import net.minecraft.item.Item
 
 /**
@@ -10,5 +10,5 @@ import net.minecraft.item.Item
  * @since 13.04.2014.
  */
 class AeroChestModule( implicit itemAeroChest: ItemAeroChest )
-	extends AModule( Some[ Item ]( itemAeroChest ), None, None, None )
+	extends BaseModule( Some[ Item ]( itemAeroChest ), None, None, None )
 {}

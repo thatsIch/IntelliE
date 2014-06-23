@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie
 
 import cpw.mods.fml.common.Mod
-import de.thatsich.minecraft.core.{ABaseMod, EMods, ICommonProxy, TModUnloader}
+import de.thatsich.minecraft.core.{BaseMod, EMods, ICommonProxy, TModUnloader}
 import de.thatsich.minecraft.intellie.common.TIntelliConfig
 
 
@@ -19,7 +19,7 @@ import de.thatsich.minecraft.intellie.common.TIntelliConfig
 	modLanguage = "scala"
 )
 object IntelligentEnergistics
-	extends ABaseMod
+	extends BaseMod
 	        with TModUnloader
 	        with TIntelliConfig
 {

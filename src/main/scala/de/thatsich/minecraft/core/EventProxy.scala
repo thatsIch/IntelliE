@@ -1,6 +1,6 @@
 package de.thatsich.minecraft.core
 
-import cpw.mods.fml.common.event.{FMLPreInitializationEvent, FMLInitializationEvent, FMLPostInitializationEvent}
+import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 
 /**
  * Interface for supporting the 4 phases
@@ -8,7 +8,7 @@ import cpw.mods.fml.common.event.{FMLPreInitializationEvent, FMLInitializationEv
  * @author thatsIch
  * @since 07.04.2014.
  */
-trait IEventProxy
+trait EventProxy
 {
 	/**
 	 * Run before anything else. Read your config, create blocks, items, etc,
