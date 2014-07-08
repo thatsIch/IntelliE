@@ -7,7 +7,7 @@ import de.thatsich.minecraft.core.module.Module
 import de.thatsich.minecraft.core.network.PacketPipeline
 
 /**
- *
+ * all dependencies for IE
  *
  * @author thatsIch
  * @since 25.04.2014.
