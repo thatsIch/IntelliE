@@ -2,7 +2,7 @@ package de.thatsich.minecraft.core
 
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import de.thatsich.minecraft.api.mod.config.Config
-import de.thatsich.minecraft.core.log.ILog
+import de.thatsich.minecraft.api.mod.log.Log
 import de.thatsich.minecraft.core.module.Module
 import de.thatsich.minecraft.core.network.PacketPipeline
 
@@ -12,7 +12,7 @@ import de.thatsich.minecraft.core.network.PacketPipeline
  * @author thatsIch
  * @since 06.04.2014.
  */
-abstract class BaseMod( implicit protected val log: ILog,
+abstract class BaseMod( implicit protected val log: Log,
                         implicit protected val modules: List[ Module ],
                         implicit protected val registries: ModuleRegistry,
                         implicit protected val pipeline: PacketPipeline,

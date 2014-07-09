@@ -1,8 +1,8 @@
 package de.thatsich.minecraft.intellie.applied
 
 import de.thatsich.minecraft.api.mod.config.Config
+import de.thatsich.minecraft.api.mod.log.{BaseLog, Log}
 import de.thatsich.minecraft.core.ModuleRegistry
-import de.thatsich.minecraft.core.log.{ILog, Log}
 import de.thatsich.minecraft.core.module.Module
 import de.thatsich.minecraft.core.network.PacketPipeline
 import de.thatsich.minecraft.intellie.applied.aerodynamics.common.AeroCreativeTabs
@@ -22,7 +22,7 @@ import net.minecraft.item.ItemStack
  */
 package object aerodynamics
 {
-	implicit val log     : ILog           = new Log( "Aero" )
+	implicit val log     : Log            = new BaseLog( "Aero" )
 	implicit val aeroTab : CreativeTabs   = new AeroCreativeTabs
 	implicit val pipeline: PacketPipeline = new PacketPipeline
 

@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.core.log
+package de.thatsich.minecraft.api.mod.log
 
 import org.apache.logging.log4j.{Level, LogManager}
 
@@ -8,8 +8,8 @@ import org.apache.logging.log4j.{Level, LogManager}
  * @author thatsIch
  * @since 04.04.2014.
  */
-class Log( val id: String )
-	extends ILog
+class BaseLog( val id: String )
+	extends Log
 {
 	/**
 	 * Information

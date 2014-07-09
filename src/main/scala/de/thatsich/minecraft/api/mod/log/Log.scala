@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.core.log
+package de.thatsich.minecraft.api.mod.log
 
 /**
  *
@@ -6,7 +6,7 @@ package de.thatsich.minecraft.core.log
  * @author thatsIch
  * @since 06.04.2014.
  */
-trait ILog
+trait Log
 {
 	def info( format: String, data: AnyRef* ): Unit
 
