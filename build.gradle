@@ -39,7 +39,6 @@ sourceSets.api.java {
 }
 
 dependencies {
-	compile "com.google.code.findbugs:jsr305:${VERSION_FINDBUGS}"
 
 //	testCompile "junit:junit:${VERSION_JUNIT}"
 //	testCompile "org.scalatest:scalatest_2.10:${VERSION_SCALATEST}"
@@ -54,17 +53,21 @@ jar {
 	classifier = "universal"
 }
 
-// disable Ant from scala compiling
-//tasks.withType(ScalaCompile) {
-//	scalaCompileOptions.useAnt = false
-//}
-
 processResources {
+	// this will ensure that this task is redone when the versions change.
+	inputs.property "version", VERSION_PROJECT.toString()
+	inputs.property "mcversion", VERSION_MINECRAFT
+
 	// replace stuff in mcmod.info, nothing else
 	from(sourceSets.main.resources.srcDirs) {
 		include 'mcmod.info'
 
 		// replace version and mcversion
 		expand 'version': VERSION_PROJECT.toString(), 'mcversion': VERSION_MINECRAFT
+	}
+
+	// copy everything else, thats not the mcmod.info
+	from(sourceSets.main.resources.srcDirs) {
+		exclude 'mcmod.info'
 	}
 }
