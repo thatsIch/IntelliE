@@ -1,6 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.boots
 
-import de.thatsich.minecraft.core.module.BaseModule
+import de.thatsich.minecraft.api.mod.module.BaseModule
 import net.minecraft.item.Item
 
 /**

@@ -1,6 +1,6 @@
 package de.thatsich.minecraft.core.module.block
 
-import de.thatsich.minecraft.core.module.BaseTexture
+import de.thatsich.minecraft.api.mod.module.BaseTexture
 import de.thatsich.minecraft.core.module.tileentities.ITileEntity
 import net.minecraft.block.BlockContainer
 import net.minecraft.item.ItemBlock

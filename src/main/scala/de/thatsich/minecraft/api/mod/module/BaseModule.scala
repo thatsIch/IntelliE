@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.core.module
+package de.thatsich.minecraft.api.mod.module
 
 import net.minecraft.block.Block
 import net.minecraft.entity.Entity

@@ -4,7 +4,7 @@ import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationE
 import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.api.mod.InitEventHandler
 import de.thatsich.minecraft.api.mod.log.Log
-import de.thatsich.minecraft.core.module.Module
+import de.thatsich.minecraft.api.mod.module.Module
 
 /**
  *

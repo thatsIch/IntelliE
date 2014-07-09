@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.core.module
+package de.thatsich.minecraft.api.mod.module
 
 import de.thatsich.minecraft.api.mod.BaseStringWrapper
 
@@ -10,4 +10,5 @@ import de.thatsich.minecraft.api.mod.BaseStringWrapper
  */
 abstract class BaseTexture( texture: String )
 	extends BaseStringWrapper( texture )
+	        with Texture
 {}

@@ -1,6 +1,6 @@
 package de.thatsich.minecraft.core.module.item
 
-import de.thatsich.minecraft.core.module.BaseTexture
+import de.thatsich.minecraft.api.mod.module.BaseTexture
 import net.minecraft.client.renderer.texture.IIconRegister
 import net.minecraft.item.Item
 

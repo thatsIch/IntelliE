@@ -2,9 +2,9 @@ package de.thatsich.minecraft.intellie.applied
 
 import de.thatsich.minecraft.api.mod.config.Config
 import de.thatsich.minecraft.api.mod.log.{BaseLog, Log}
+import de.thatsich.minecraft.api.mod.module.Module
 import de.thatsich.minecraft.api.mod.network.PacketPipeline
 import de.thatsich.minecraft.core.ModuleRegistry
-import de.thatsich.minecraft.core.module.Module
 import de.thatsich.minecraft.intellie.applied.aerodynamics.common.AeroCreativeTabs
 import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.dissembler.ItemDissembler
 import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.boots.{ItemAeroBoots, ModuleAeroBoots}
