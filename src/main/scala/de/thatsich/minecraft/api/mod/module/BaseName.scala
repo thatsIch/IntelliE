@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.core.module
+package de.thatsich.minecraft.api.mod.module
 
 import de.thatsich.minecraft.api.mod.BaseStringWrapper
 
@@ -10,5 +10,6 @@ import de.thatsich.minecraft.api.mod.BaseStringWrapper
  */
 abstract class BaseName( name: String )
 	extends BaseStringWrapper( name )
+	        with Name
 {}
 

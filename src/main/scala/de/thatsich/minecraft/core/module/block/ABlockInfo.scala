@@ -1,7 +1,6 @@
 package de.thatsich.minecraft.core.module.block
 
-import de.thatsich.minecraft.api.mod.module.BaseTexture
-import de.thatsich.minecraft.core.module.BaseName
+import de.thatsich.minecraft.api.mod.module.{BaseName, BaseTexture}
 import net.minecraft.block.Block
 import net.minecraft.block.material.Material
 import net.minecraft.creativetab.CreativeTabs
