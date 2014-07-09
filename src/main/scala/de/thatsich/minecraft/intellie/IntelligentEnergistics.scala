@@ -1,7 +1,8 @@
 package de.thatsich.minecraft.intellie
 
 import cpw.mods.fml.common.Mod
-import de.thatsich.minecraft.core.{BaseMod, EMods, ICommonProxy, TModUnloader}
+import de.thatsich.minecraft.api.mod.BaseMod
+import de.thatsich.minecraft.core.{EMods, ICommonProxy, TModUnloader}
 import de.thatsich.minecraft.intellie.common.TIntelliConfig
 
 
