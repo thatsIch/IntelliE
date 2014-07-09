@@ -1,10 +1,9 @@
-package de.thatsich.minecraft.core
+package de.thatsich.minecraft.api.mod.module
 
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.api.mod.InitEventHandler
 import de.thatsich.minecraft.api.mod.log.Log
-import de.thatsich.minecraft.api.mod.module.Module
 
 /**
  *

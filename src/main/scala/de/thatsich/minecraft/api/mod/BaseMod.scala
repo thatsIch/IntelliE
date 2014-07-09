@@ -3,9 +3,9 @@ package de.thatsich.minecraft.api.mod
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import de.thatsich.minecraft.api.mod.config.Config
 import de.thatsich.minecraft.api.mod.log.Log
-import de.thatsich.minecraft.api.mod.module.Module
+import de.thatsich.minecraft.api.mod.module.{Module, ModuleRegistry}
 import de.thatsich.minecraft.api.mod.network.PacketPipeline
-import de.thatsich.minecraft.core.{ICommonProxy, ModuleRegistry}
+import de.thatsich.minecraft.core.ICommonProxy
 
 /**
  *
