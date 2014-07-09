@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.core
+package de.thatsich.minecraft.api.mod
 
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 
@@ -8,7 +8,7 @@ import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationE
  * @author thatsIch
  * @since 07.04.2014.
  */
-trait EventProxy
+trait InitEventHandler
 {
 	/**
 	 * Run before anything else. Read your config, create blocks, items, etc,

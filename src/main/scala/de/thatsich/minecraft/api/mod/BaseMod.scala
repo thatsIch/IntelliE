@@ -5,7 +5,7 @@ import de.thatsich.minecraft.api.mod.config.Config
 import de.thatsich.minecraft.api.mod.log.Log
 import de.thatsich.minecraft.api.mod.network.PacketPipeline
 import de.thatsich.minecraft.core.module.Module
-import de.thatsich.minecraft.core.{EventProxy, ICommonProxy, ModuleRegistry}
+import de.thatsich.minecraft.core.{ICommonProxy, ModuleRegistry}
 
 /**
  *
@@ -18,7 +18,7 @@ abstract class BaseMod( implicit protected val log: Log,
                         implicit protected val registries: ModuleRegistry,
                         implicit protected val pipeline: PacketPipeline,
                         implicit protected val configs: List[ Config ] )
-	extends EventProxy
+	extends InitEventHandler
 {
 	def proxy: ICommonProxy
 

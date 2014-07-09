@@ -7,8 +7,8 @@ import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationE
 import cpw.mods.fml.common.network.internal.FMLProxyPacket
 import cpw.mods.fml.common.network.{FMLOutboundHandler, NetworkRegistry}
 import cpw.mods.fml.relauncher.{Side, SideOnly}
+import de.thatsich.minecraft.api.mod.InitEventHandler
 import de.thatsich.minecraft.api.mod.log.Log
-import de.thatsich.minecraft.core.EventProxy
 import io.netty.buffer.Unpooled
 import io.netty.channel.{ChannelHandler, ChannelHandlerContext}
 import io.netty.handler.codec.MessageToMessageCodec
@@ -27,7 +27,7 @@ import scala.collection.mutable
 @ChannelHandler.Sharable
 class PacketPipeline( implicit log: Log )
 	extends MessageToMessageCodec[ FMLProxyPacket, Packet ]
-	        with EventProxy
+	        with InitEventHandler
 {
 	type PacketClass = Class[ _ <: Packet ]
 	private[ this ] val channels          = NetworkRegistry.INSTANCE.newChannel( "base", this )

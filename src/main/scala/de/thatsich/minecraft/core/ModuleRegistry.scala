@@ -2,6 +2,7 @@ package de.thatsich.minecraft.core
 
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import cpw.mods.fml.common.registry.GameRegistry
+import de.thatsich.minecraft.api.mod.InitEventHandler
 import de.thatsich.minecraft.api.mod.log.Log
 import de.thatsich.minecraft.core.module.Module
 
@@ -12,7 +13,7 @@ import de.thatsich.minecraft.core.module.Module
  * @since 23.04.2014.
  */
 class ModuleRegistry( implicit modules: List[ Module ], log: Log )
-	extends EventProxy
+	extends InitEventHandler
 {
 	var entityID: Int = 0
 
