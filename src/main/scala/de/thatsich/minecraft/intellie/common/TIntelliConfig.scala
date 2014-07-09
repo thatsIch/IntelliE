@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie.common
 
 import java.io.File
 
-import de.thatsich.minecraft.core.config.Config
+import de.thatsich.minecraft.api.mod.config.BaseConfig
 
 /**
  *
@@ -15,7 +15,7 @@ trait TIntelliConfig
 	private val modName    = this.getClass.getSimpleName
 	private val paths      = List( "config", "AppliedEnergistics2", "IntelliE", this.modName + ".cfg" )
 	private val configPath = paths mkString File.separator
-	private val config     = new Config( this.configPath )
+	private val config     = new BaseConfig( this.configPath )
 
 	protected val disableAero = this.config.getBoolean( "ChildMods", "disableAppliedAerodynamics", defaultValue = false )
 	protected val disableAgro = this.config.getBoolean( "ChildMods", "disableAppliedAgricultures", defaultValue = false )

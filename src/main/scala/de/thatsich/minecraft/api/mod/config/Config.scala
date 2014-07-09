@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.core.config
+package de.thatsich.minecraft.api.mod.config
 
 /**
  *
@@ -6,7 +6,7 @@ package de.thatsich.minecraft.core.config
  * @author thatsIch
  * @since 08.04.2014.
  */
-trait IConfig
+trait Config
 {
 	/**
 	 * saves the file if changed

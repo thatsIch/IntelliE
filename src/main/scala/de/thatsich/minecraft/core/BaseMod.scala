@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.core
 
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
-import de.thatsich.minecraft.core.config.IConfig
+import de.thatsich.minecraft.api.mod.config.Config
 import de.thatsich.minecraft.core.log.ILog
 import de.thatsich.minecraft.core.module.Module
 import de.thatsich.minecraft.core.network.PacketPipeline
@@ -14,9 +14,9 @@ import de.thatsich.minecraft.core.network.PacketPipeline
  */
 abstract class BaseMod( implicit protected val log: ILog,
                         implicit protected val modules: List[ Module ],
-                         implicit protected val registries: ModuleRegistry,
-                         implicit protected val pipeline: PacketPipeline,
-                         implicit protected val configs: List[ IConfig ] )
+                        implicit protected val registries: ModuleRegistry,
+                        implicit protected val pipeline: PacketPipeline,
+                        implicit protected val configs: List[ Config ] )
 	extends EventProxy
 {
 	def proxy: ICommonProxy

@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied
 
+import de.thatsich.minecraft.api.mod.config.Config
 import de.thatsich.minecraft.core.ModuleRegistry
-import de.thatsich.minecraft.core.config.IConfig
 import de.thatsich.minecraft.core.log.{ILog, Log}
 import de.thatsich.minecraft.core.module.Module
 import de.thatsich.minecraft.core.network.PacketPipeline
@@ -26,7 +26,7 @@ package object aerodynamics
 	implicit val aeroTab : CreativeTabs   = new AeroCreativeTabs
 	implicit val pipeline: PacketPipeline = new PacketPipeline
 
-	implicit final val configs: List[ IConfig ] = List( )
+	implicit final val configs: List[ Config ] = List( )
 
 	implicit val itemAeroHelm  = new ItemAeroHelm
 	implicit val itemAeroChest = new ItemAeroChest
@@ -37,11 +37,11 @@ package object aerodynamics
 
 	implicit val stackDissembler = new ItemStack( itemDissembler )
 
-	implicit final val modules: List[ Module ] = List(
+	implicit final val modules   : List[ Module ] = List(
 		new ModuleAeroBoots,
 		new AeroChestModule,
 		new AeroHelmModule,
 		new AeroLegsModule
 	)
-	implicit final val registries: ModuleRegistry  = new ModuleRegistry
+	implicit final val registries: ModuleRegistry = new ModuleRegistry
 }

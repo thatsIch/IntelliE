@@ -1,6 +1,7 @@
-package de.thatsich.minecraft.core.config
+package de.thatsich.minecraft.api.mod.config
 
 import java.io.File
+
 import net.minecraftforge.common.config.Configuration
 
 /**
@@ -9,8 +10,8 @@ import net.minecraftforge.common.config.Configuration
  * @author thatsIch
  * @since 04.04.2014.
  */
-class Config( val configPath: String )
-	extends IConfig
+abstract class BaseConfig( val configPath: String )
+	extends Config
 {
 	private val config = new Configuration( new File( this.configPath ) )
 
