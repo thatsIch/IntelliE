@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.core.network
+package de.thatsich.minecraft.api.mod.network
 
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
@@ -10,7 +10,7 @@ import net.minecraft.entity.player.EntityPlayer
  * @author thatsIch
  * @since 13.04.2014.
  */
-trait IPacket
+trait Packet
 {
 	/**
 	 * Encode the packet data into the ByteBuf stream. Complex data sets may need specific data handlers (See @link{cpw.mods.fml.common.network.ByteBuffUtils})

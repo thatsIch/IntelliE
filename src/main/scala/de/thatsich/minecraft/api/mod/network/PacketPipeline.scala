@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.core.network
+package de.thatsich.minecraft.api.mod.network
 
 import java.util
 
@@ -26,10 +26,10 @@ import scala.collection.mutable
  */
 @ChannelHandler.Sharable
 class PacketPipeline( implicit log: Log )
-	extends MessageToMessageCodec[ FMLProxyPacket, IPacket ]
+	extends MessageToMessageCodec[ FMLProxyPacket, Packet ]
 	        with EventProxy
 {
-	type PacketClass = Class[ _ <: IPacket ]
+	type PacketClass = Class[ _ <: Packet ]
 	private[ this ] val channels          = NetworkRegistry.INSTANCE.newChannel( "base", this )
 	private[ this ] val packets           = new mutable.MutableList[ PacketClass ]
 	private[ this ] var isPostInitialized = false
@@ -117,7 +117,7 @@ class PacketPipeline( implicit log: Log )
 	 *
 	 * @param packet The message to send
 	 */
-	def sendToAll( packet: IPacket ): Unit =
+	def sendToAll( packet: Packet ): Unit =
 	{
 		this.channels.get( Side.SERVER ).attr( FMLOutboundHandler.FML_MESSAGETARGET ).set( FMLOutboundHandler.OutboundTarget.ALL )
 		this.channels.get( Side.SERVER ).writeAndFlush( packet )
@@ -131,7 +131,7 @@ class PacketPipeline( implicit log: Log )
 	 * @param packet The message to send
 	 * @param player  The player to send it to
 	 */
-	def sendTo( packet: IPacket, player: EntityPlayerMP ): Unit =
+	def sendTo( packet: Packet, player: EntityPlayerMP ): Unit =
 	{
 		this.channels.get( Side.SERVER ).attr( FMLOutboundHandler.FML_MESSAGETARGET ).set( FMLOutboundHandler.OutboundTarget.PLAYER )
 		this.channels.get( Side.SERVER ).attr( FMLOutboundHandler.FML_MESSAGETARGETARGS ).set( player )
@@ -146,7 +146,7 @@ class PacketPipeline( implicit log: Log )
 	 * @param packet The message to send
 	 * @param point   The { @link cpw.mods.fml.common.network.NetworkRegistry.TargetPoint} around which to send
 	 */
-	def sendToAllAround( packet: IPacket, point: NetworkRegistry.TargetPoint ): Unit =
+	def sendToAllAround( packet: Packet, point: NetworkRegistry.TargetPoint ): Unit =
 	{
 		this.channels.get( Side.SERVER ).attr( FMLOutboundHandler.FML_MESSAGETARGET ).set( FMLOutboundHandler.OutboundTarget.ALLAROUNDPOINT )
 		this.channels.get( Side.SERVER ).attr( FMLOutboundHandler.FML_MESSAGETARGETARGS ).set( point )
@@ -161,7 +161,7 @@ class PacketPipeline( implicit log: Log )
 	 * @param packet     The message to send
 	 * @param dimensionId The dimension id to target
 	 */
-	def sendToDimension( packet: IPacket, dimensionId: Int ): Unit =
+	def sendToDimension( packet: Packet, dimensionId: Int ): Unit =
 	{
 		this.channels.get( Side.SERVER ).attr( FMLOutboundHandler.FML_MESSAGETARGET ).set( FMLOutboundHandler.OutboundTarget.DIMENSION )
 		this.channels.get( Side.SERVER ).attr( FMLOutboundHandler.FML_MESSAGETARGETARGS ).set( dimensionId.asInstanceOf[ Object ] )
@@ -175,7 +175,7 @@ class PacketPipeline( implicit log: Log )
 	 *
 	 * @param packet The message to send
 	 */
-	def sendToServer( packet: IPacket ): Unit =
+	def sendToServer( packet: Packet ): Unit =
 	{
 		this.channels.get( Side.CLIENT ).attr( FMLOutboundHandler.FML_MESSAGETARGET ).set( FMLOutboundHandler.OutboundTarget.TOSERVER )
 		this.channels.get( Side.CLIENT ).writeAndFlush( packet )
@@ -188,7 +188,7 @@ class PacketPipeline( implicit log: Log )
 	 * @param msg message
 	 * @param out out
 	 */
-	def encode( ctx: ChannelHandlerContext, msg: IPacket, out: util.List[ AnyRef ] ): Unit =
+	def encode( ctx: ChannelHandlerContext, msg: Packet, out: util.List[ AnyRef ] ): Unit =
 	{
 		val buffer = Unpooled.buffer( )
 		val clazz = msg.getClass

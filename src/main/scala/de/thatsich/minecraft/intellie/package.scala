@@ -2,9 +2,9 @@ package de.thatsich.minecraft
 
 import de.thatsich.minecraft.api.mod.config.Config
 import de.thatsich.minecraft.api.mod.log.{BaseLog, Log}
+import de.thatsich.minecraft.api.mod.network.PacketPipeline
 import de.thatsich.minecraft.core.ModuleRegistry
 import de.thatsich.minecraft.core.module.Module
-import de.thatsich.minecraft.core.network.PacketPipeline
 
 /**
  * all dependencies for IE

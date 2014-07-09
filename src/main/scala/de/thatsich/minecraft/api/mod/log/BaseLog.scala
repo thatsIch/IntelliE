@@ -8,7 +8,7 @@ import org.apache.logging.log4j.{Level, LogManager}
  * @author thatsIch
  * @since 04.04.2014.
  */
-class BaseLog( val id: String )
+abstract class BaseLog( val id: String )
 	extends Log
 {
 	/**
