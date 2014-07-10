@@ -1,8 +1,7 @@
-package de.thatsich.minecraft.core.module.block
+package de.thatsich.minecraft.api.mod.module.block
 
 import de.thatsich.minecraft.api.mod.module.BaseTexture
-import de.thatsich.minecraft.core.module.tileentities.ITileEntity
-import net.minecraft.block.BlockContainer
+import de.thatsich.minecraft.api.mod.module.tileentity.TileEntity
 import net.minecraft.item.ItemBlock
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.world.World
@@ -13,9 +12,9 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 07.04.2014.
  */
-abstract class ABlockContainer( info: ABlockInfo, config: ABlockConfig, gui: ABlockGui, network: ABlockNetwork, texture: BaseTexture, tileEntityClass: Class[ _ => ITileEntity ], itemBlockClass: Class[ _ <: ItemBlock ] )
+abstract class BaseBlockContainer( info: BaseBlockInfo, config: BaseBlockConfig, gui: BaseBlockGui, network: BaseBlockNetwork, texture: BaseTexture, tileEntityClass: Class[ _ => TileEntity ], itemBlockClass: Class[ _ <: ItemBlock ] )
 	extends BlockContainer( info.getMaterial )
-	        with IBlockContainer
+	        with BlockContainer
 {
 	def getItemBlockClass: Class[ _ <: ItemBlock ] =
 	{

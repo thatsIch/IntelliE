@@ -1,19 +1,20 @@
-package de.thatsich.minecraft.core.module.block
+package de.thatsich.minecraft.api.mod.module.block
 
-import cpw.mods.fml.relauncher.{SideOnly, Side}
 import java.util
 import java.util.Random
+
+import cpw.mods.fml.relauncher.{Side, SideOnly}
 import net.minecraft.block.Block
-import net.minecraft.block.material.{Material, MapColor}
+import net.minecraft.block.material.{MapColor, Material}
 import net.minecraft.client.particle.EffectRenderer
 import net.minecraft.client.renderer.texture.IIconRegister
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.entity.{EnumCreatureType, EntityLivingBase, Entity}
-import net.minecraft.item.{ItemStack, Item}
+import net.minecraft.entity.{Entity, EntityLivingBase, EnumCreatureType}
+import net.minecraft.item.{Item, ItemStack}
 import net.minecraft.tileentity.TileEntity
-import net.minecraft.util.{Vec3, ChunkCoordinates, MovingObjectPosition, AxisAlignedBB, IIcon}
-import net.minecraft.world.{Explosion, World, IBlockAccess}
+import net.minecraft.util.{AxisAlignedBB, ChunkCoordinates, IIcon, MovingObjectPosition, Vec3}
+import net.minecraft.world.{Explosion, IBlockAccess, World}
 import net.minecraftforge.common.IPlantable
 import net.minecraftforge.common.util.ForgeDirection
 
@@ -23,7 +24,7 @@ import net.minecraftforge.common.util.ForgeDirection
  * @author thatsIch
  * @since 07.04.2014.
  */
-trait IBlock
+trait Block
 {
 	def getLightOpacity: Int
 

@@ -1,6 +1,5 @@
-package de.thatsich.minecraft.core.module.block
+package de.thatsich.minecraft.api.mod.module.block
 
-import net.minecraft.block.Block
 import net.minecraft.creativetab.CreativeTabs
 
 /**
@@ -9,9 +8,9 @@ import net.minecraft.creativetab.CreativeTabs
  * @author thatsIch
  * @since 07.04.2014.
  */
-abstract class ABlock( info: ABlockInfo, config: ABlockConfig )
+abstract class BaseBlock( info: BaseBlockInfo, config: BaseBlockConfig )
 	extends Block( info.getMaterial )
-	        with IBlock
+	        with Block
 {
 	val name       : String       = info.getName
 	val hardness   : Float        = info.getHardness

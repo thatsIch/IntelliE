@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.core.module.tileentities
+package de.thatsich.minecraft.api.mod.module.tileentity
 
 import net.minecraftforge.common.config.Configuration
 
@@ -10,9 +10,11 @@ import net.minecraftforge.common.config.Configuration
  */
 /**
   */
-trait ITileEntity
+trait TileEntity
 {
 	def register( config: Configuration ): Unit
 
-	def getTileEntityID: String
+	val category    : String
+	val key         : String
+	val tileEntityID: String
 }

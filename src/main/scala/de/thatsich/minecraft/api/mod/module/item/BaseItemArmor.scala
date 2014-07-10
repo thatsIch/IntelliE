@@ -1,8 +1,8 @@
-package de.thatsich.minecraft.core.module.item
+package de.thatsich.minecraft.api.mod.module.item
 
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.Entity
-import net.minecraft.item.{ItemStack, ItemArmor}
+import net.minecraft.item.{ItemArmor, ItemStack}
 
 /**
  *
@@ -10,8 +10,8 @@ import net.minecraft.item.{ItemStack, ItemArmor}
  * @author thatsIch
  * @since 07.04.2014.
  */
-abstract class AItemArmor( material: ItemArmor.ArmorMaterial, renderIndex: Int, armorType: Int )
-                         ( implicit creativeTab: CreativeTabs )
+abstract class BaseItemArmor( material: ItemArmor.ArmorMaterial, renderIndex: Int, armorType: Int )
+                            ( implicit creativeTab: CreativeTabs )
 	extends ItemArmor( material, renderIndex, armorType )
 {
 	this.setCreativeTab( creativeTab )
