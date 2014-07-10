@@ -28,4 +28,8 @@ trait ModInfo
 	 */
 	val dependencies: String
 
+	/**
+	 * Abbreviation of the mod
+	 */
+	val abbreviation: String
 }

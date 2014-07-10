@@ -25,7 +25,7 @@ import scala.collection.mutable
  * @since 13.04.2014.
  */
 @ChannelHandler.Sharable
-class PacketPipeline( implicit log: Log )
+abstract class PacketPipeline( log: Log )
 	extends MessageToMessageCodec[ FMLProxyPacket, Packet ]
 	        with InitEventHandler
 {

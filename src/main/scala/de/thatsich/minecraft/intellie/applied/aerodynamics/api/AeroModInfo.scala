@@ -10,8 +10,9 @@ import de.thatsich.minecraft.api.mod.ModInfo
  */
 object AeroModInfo extends ModInfo
 {
-	final val id          : String = "appaero"
-	final val name        : String = "Applied Aerodynamics"
-	final val version     : String = "${version}"
-	final val dependencies: String = "required-after:intellie"
+	final val id           = "appaero"
+	final val name         = "Applied Aerodynamics"
+	final val version      = "${version}"
+	final val dependencies = "required-after:intellie"
+	final val abbreviation = "Aero"
 }
