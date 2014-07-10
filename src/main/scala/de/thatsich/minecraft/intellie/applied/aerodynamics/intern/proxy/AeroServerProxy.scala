@@ -1,7 +1,7 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.common.proxies
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy
 
-import cpw.mods.fml.common.event.{FMLPostInitializationEvent, FMLInitializationEvent, FMLPreInitializationEvent}
-import de.thatsich.minecraft.core.ICommonProxy
+import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
+import de.thatsich.minecraft.api.mod.proxy.BaseServerProxy
 
 /**
  *
@@ -9,7 +9,7 @@ import de.thatsich.minecraft.core.ICommonProxy
  * @author thatsIch
  * @since 04.04.2014.
  */
-class AeroCommonProxy extends ICommonProxy
+final class AeroServerProxy extends BaseServerProxy
 {
 	/**
 	 * Handle interaction with other mods, complete your setup based on this.

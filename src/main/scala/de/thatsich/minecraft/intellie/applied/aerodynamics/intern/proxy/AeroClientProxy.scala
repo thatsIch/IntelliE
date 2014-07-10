@@ -1,14 +1,15 @@
-package de.thatsich.minecraft.api.mod
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy
 
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
+import de.thatsich.minecraft.api.mod.proxy.BaseClientProxy
 
 /**
- * Interface for supporting the 4 phases
+ *
  *
  * @author thatsIch
- * @since 07.04.2014.
+ * @since 04.04.2014.
  */
-trait InitEventHandler
+final class AeroClientProxy extends BaseClientProxy
 {
 	/**
 	 * Run before anything else. Read your config, create blocks, items, etc,
@@ -16,7 +17,11 @@ trait InitEventHandler
 	 *
 	 * @param event contains information to pre-initialize the mod
 	 */
-	def preInit( event: FMLPreInitializationEvent ): Unit
+	override def preInit( event: FMLPreInitializationEvent ): Unit =
+	{
+		this.initRenderers( )
+		this.initSounds( )
+	}
 
 	/**
 	 * Do your mod setup. Build whatever data structures you care about.
@@ -24,12 +29,28 @@ trait InitEventHandler
 	 *
 	 * @param event contains information to initialize and finalize the mod
 	 */
-	def init( event: FMLInitializationEvent ): Unit
+	def init( event: FMLInitializationEvent ): Unit =
+	{
+
+	}
 
 	/**
 	 * Handle interaction with other mods, complete your setup based on this.
 	 *
 	 * @param event Event after setup
 	 */
-	def postInit( event: FMLPostInitializationEvent ): Unit
+	def postInit( event: FMLPostInitializationEvent ): Unit =
+	{
+
+	}
+
+	private def initSounds( ): Unit =
+	{
+
+	}
+
+	private def initRenderers( ): Unit =
+	{
+
+	}
 }

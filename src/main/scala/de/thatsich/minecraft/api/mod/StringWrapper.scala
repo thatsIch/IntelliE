@@ -8,5 +8,13 @@ package de.thatsich.minecraft.api.mod
  */
 trait StringWrapper
 {
-	val string: String
+	protected val wrapped: String
+}
+
+object StringWrapper
+{
+	implicit def wrapperToString( wrapper: StringWrapper ): String =
+	{
+		wrapper.wrapped
+	}
 }

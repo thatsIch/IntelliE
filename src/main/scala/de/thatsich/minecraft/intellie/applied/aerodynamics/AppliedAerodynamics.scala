@@ -3,8 +3,9 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import cpw.mods.fml.common.{Mod, Optional, SidedProxy}
 import de.thatsich.minecraft.api.mod.BaseMod
-import de.thatsich.minecraft.core.ICommonProxy
+import de.thatsich.minecraft.api.mod.proxy.Proxy
 import de.thatsich.minecraft.intellie.applied.aerodynamics.api.AeroModInfo
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern._
 
 /**
  * d
@@ -19,15 +20,14 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.api.AeroModInfo
 	dependencies = AeroModInfo.dependencies,
 	modLanguage = "scala"
 )
-object AppliedAerodynamics
-	extends BaseMod
+object AppliedAerodynamics extends BaseMod( AeroLog, AeroModules, AeroModuleRegistry, AeroPacketPipeline, AeroConfigs )
 {
 	@SidedProxy(
 		modId = AeroModInfo.id,
 		clientSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.common.proxies.AeroClientProxy",
 		serverSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.common.proxies.AeroCommonProxy"
 	)
-	var proxy: ICommonProxy = null
+	var proxy: Proxy = null
 
 	@Optional.Method( modid = AeroModInfo.id )
 	@Mod.EventHandler

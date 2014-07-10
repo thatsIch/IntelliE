@@ -8,8 +8,5 @@ import de.thatsich.minecraft.api.mod.BaseStringWrapper
  * @author thatsIch
  * @since 07.04.2014.
  */
-abstract class BaseName( name: String )
-	extends BaseStringWrapper( name )
-	        with Name
-{}
+abstract class BaseName( name: String ) extends BaseStringWrapper( name ) with Name
 

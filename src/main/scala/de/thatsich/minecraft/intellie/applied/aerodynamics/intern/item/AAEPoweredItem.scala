@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.common.module.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.item
 
 import net.minecraft.creativetab.CreativeTabs
 

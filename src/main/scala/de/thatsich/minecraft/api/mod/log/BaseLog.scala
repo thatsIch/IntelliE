@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.api.mod.log
 
+import de.thatsich.minecraft.api.mod.Abbreviation
 import org.apache.logging.log4j.{Level, LogManager}
 
 /**
@@ -8,7 +9,7 @@ import org.apache.logging.log4j.{Level, LogManager}
  * @author thatsIch
  * @since 04.04.2014.
  */
-abstract class BaseLog( val id: String )
+abstract class BaseLog( abbr: Abbreviation )
 	extends Log
 {
 	/**
@@ -76,7 +77,7 @@ abstract class BaseLog( val id: String )
 	 */
 	private def logging( level: Level, format: String, data: AnyRef* ): Unit =
 	{
-		this.log( this.id, level, format, data )
+		this.log( this.abbr, level, format, data )
 	}
 
 	private def log( targetLog: String, level: Level, format: String, data: AnyRef* ): Unit =

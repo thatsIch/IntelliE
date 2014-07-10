@@ -2,8 +2,8 @@ package de.thatsich.minecraft.api.mod.module
 
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import cpw.mods.fml.common.registry.GameRegistry
-import de.thatsich.minecraft.api.mod.InitEventHandler
 import de.thatsich.minecraft.api.mod.log.Log
+import de.thatsich.minecraft.api.mod.proxy.Proxy
 
 /**
  *
@@ -11,8 +11,7 @@ import de.thatsich.minecraft.api.mod.log.Log
  * @author thatsIch
  * @since 23.04.2014.
  */
-class ModuleRegistry( implicit modules: List[ Module ], log: Log )
-	extends InitEventHandler
+abstract class BaseModuleRegistry( modules: Seq[ Module ], log: Log ) extends Proxy
 {
 	var entityID: Int = 0
 

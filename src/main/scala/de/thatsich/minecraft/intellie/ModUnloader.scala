@@ -1,12 +1,14 @@
-package de.thatsich.minecraft.core
+package de.thatsich.minecraft.intellie
 
-import com.google.common.collect.{ImmutableMap, ImmutableList}
-import cpw.mods.fml.common.{LoadController, ModContainer, Loader}
 import java.lang.reflect.Field
 import java.util
+
+import com.google.common.collect.{ImmutableList, ImmutableMap}
+import cpw.mods.fml.common.{LoadController, Loader, ModContainer}
+
 import scala.collection.JavaConverters._
 
-trait TModUnloader
+trait ModUnloader
 {
 	def unload( id: String, disableModule: Boolean ): Unit =
 	{
