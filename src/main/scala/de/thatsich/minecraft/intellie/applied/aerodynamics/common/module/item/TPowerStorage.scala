@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.common.module.item
 
 import cpw.mods.fml.common.Optional
-import de.thatsich.minecraft.core.EMods
+import de.thatsich.minecraft.appeng.api.AE2ModInfo
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 
@@ -11,7 +11,7 @@ import net.minecraft.nbt.NBTTagCompound
  * @author thatsIch
  * @since 17.04.2014.
  */
-@Optional.Interface( iface = "appeng.api.implementations.items.IAEItemPowerStorage", modid = EMods.AE2.id, striprefs = true )
+@Optional.Interface( iface = "appeng.api.implementations.items.IAEItemPowerStorage", modid = AE2ModInfo.id, striprefs = true )
 private[ item ] trait TPowerStorage //extends IAEItemPowerStorage
 {
 	self: AAEPoweredItemArmor =>
@@ -25,7 +25,7 @@ private[ item ] trait TPowerStorage //extends IAEItemPowerStorage
 	//	@Optional.Method( modid = OModIDs.AE2 )
 	//	def getPowerFlow( is: ItemStack ): AccessRestriction = AccessRestriction.WRITE
 
-	@Optional.Method( modid = EMods.AE2.id )
+	@Optional.Method( modid = AE2ModInfo.id )
 	def getAECurrentPower( is: ItemStack ): Double =
 	{
 		val tag = this.getNBTData( is )
@@ -34,17 +34,17 @@ private[ item ] trait TPowerStorage //extends IAEItemPowerStorage
 		currentStorage
 	}
 
-	@Optional.Method( modid = EMods.AE2.id )
+	@Optional.Method( modid = AE2ModInfo.id )
 	def setAECurrentPower( is: ItemStack, value: Double ): Unit =
 	{
 		val tag = this.getNBTData( is )
 		tag.setDouble( internalCurrentPower, value )
 	}
 
-	@Optional.Method( modid = EMods.AE2.id )
+	@Optional.Method( modid = AE2ModInfo.id )
 	def getAEMaxPower( is: ItemStack ): Double = this.maxStorage
 
-	@Optional.Method( modid = EMods.AE2.id )
+	@Optional.Method( modid = AE2ModInfo.id )
 	def extractAEPower( is: ItemStack, amt: Double ): Double =
 	{
 		val currentStorage = this.getAECurrentPower( is )
@@ -54,7 +54,7 @@ private[ item ] trait TPowerStorage //extends IAEItemPowerStorage
 		newStorage
 	}
 
-	@Optional.Method( modid = EMods.AE2.id )
+	@Optional.Method( modid = AE2ModInfo.id )
 	def injectAEPower( is: ItemStack, amt: Double ): Double =
 	{
 		val currentStorage = this.getAECurrentPower( is )

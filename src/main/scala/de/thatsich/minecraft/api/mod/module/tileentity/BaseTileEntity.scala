@@ -10,5 +10,4 @@ import net.minecraft.tileentity.{TileEntity => MCTE}
  */
 abstract class BaseTileEntity( val category: String, val key: String, val tileEntityID: String )
 	extends MCTE
-	        with TileEntity
 {}
