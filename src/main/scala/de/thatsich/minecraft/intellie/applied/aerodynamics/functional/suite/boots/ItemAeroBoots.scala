@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.boots
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.item.AAEPoweredItemArmor
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.item.AAEPoweredItemArmor
 import net.minecraft.client.renderer.texture.IIconRegister
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.Entity

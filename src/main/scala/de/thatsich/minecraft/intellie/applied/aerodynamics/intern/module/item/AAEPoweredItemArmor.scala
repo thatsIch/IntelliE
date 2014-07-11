@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.item
 
 import de.thatsich.minecraft.api.mod.module.item.BaseItemArmor
 import net.minecraft.creativetab.CreativeTabs
