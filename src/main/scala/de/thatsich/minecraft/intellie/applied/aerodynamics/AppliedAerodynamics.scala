@@ -24,8 +24,8 @@ object AppliedAerodynamics extends BaseMod( AeroLog, AeroModules, AeroModuleRegi
 {
 	@SidedProxy(
 		modId = AeroModInfo.id,
-		clientSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.common.proxies.AeroClientProxy",
-		serverSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.common.proxies.AeroCommonProxy"
+		clientSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy.AeroClientProxy",
+		serverSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy.AeroServerProxy"
 	)
 	var proxy: Proxy = null
 

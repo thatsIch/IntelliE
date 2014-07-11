@@ -24,9 +24,9 @@ object IntelligentEnergistics extends BaseMod( IELog, IEModules, IEModuleRegistr
                                       with ModUnloader
                                       with TIntelliConfig
 {
+	val proxy: Proxy = null
+
 	this.unload( "appaero", this.disableAero )
 	this.unload( "appagri", this.disableAgro )
 	this.unload( "appint", this.disableInt )
-
-	val proxy: Proxy = null
 }
