@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.chest
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.suite.chest
 
 import cpw.mods.fml.client.registry.ClientRegistry
 import cpw.mods.fml.common.eventhandler.SubscribeEvent

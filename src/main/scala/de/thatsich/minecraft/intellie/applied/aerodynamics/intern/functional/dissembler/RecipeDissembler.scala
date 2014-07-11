@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.dissembler
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler
 
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.ItemStacks
 import net.minecraft.item.crafting.ShapedRecipes

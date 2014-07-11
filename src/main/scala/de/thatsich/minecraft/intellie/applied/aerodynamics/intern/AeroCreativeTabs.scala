@@ -1,6 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern
 
-import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.chest.ItemAeroChest
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.suite.chest.ItemAeroChest
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.item.Item
 

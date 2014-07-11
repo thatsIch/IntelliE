@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.legs
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.suite.legs
 
 import de.thatsich.minecraft.api.mod.module.BaseModule
 import net.minecraft.item.Item

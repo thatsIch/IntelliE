@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.boots
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.suite.legs
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.item.AAEPoweredItemArmor
@@ -15,29 +15,27 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 16.04.2014.
  */
-class ItemAeroBoots( implicit creativeTab: CreativeTabs )
-	extends AAEPoweredItemArmor( 4000000, 3 )
+class ItemAeroLegs( implicit creativeTab: CreativeTabs )
+	extends AAEPoweredItemArmor( 7000000, 2 )
 {
-	final val disChargeOnTick = 40
+	private final val dischargeOnTick = 70
 
-	// TODO muss logic ändern, sonst kann user einfach ausziehen und hat immer noch effekt
+
 	override def onArmorTick( world: World, player: EntityPlayer, itemStack: ItemStack ): Unit =
 	{
 		val currentStorage = this.getAECurrentPower( itemStack )
-		var newStorage = currentStorage
-		if( player.isSprinting )
-		{
-			newStorage = this.extractAEPower( itemStack, this.disChargeOnTick )
-		}
+		val newStorage = currentStorage
+		this.extractAEPower( itemStack, this.dischargeOnTick )
 
 		if( newStorage > 0 )
 		{
-			player.stepHeight = 1F
-			player.fallDistance = 0
+			player.capabilities.setPlayerWalkSpeed( 0.11F )
+			player.capabilities.setFlySpeed( 0.1F )
 		}
 		else
 		{
-			player.stepHeight = 0.5F
+			player.capabilities.setPlayerWalkSpeed( 0.1F )
+			player.capabilities.setFlySpeed( 0.05F )
 		}
 	}
 
@@ -49,6 +47,6 @@ class ItemAeroBoots( implicit creativeTab: CreativeTabs )
 	@SideOnly( Side.CLIENT )
 	override def registerIcons( iconRegister: IIconRegister ): Unit =
 	{
-		this.itemIcon = iconRegister.registerIcon( "appaero:aeroboots" )
+		this.itemIcon = iconRegister.registerIcon( "appaero:aerolegs" )
 	}
 }

@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.dissembler
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler
 
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.item.Item
@@ -11,9 +11,9 @@ import net.minecraft.item.Item
  */
 class ItemDissembler extends Item
 {
-	this.setMaxStackSize(64)
-	this.setCreativeTab(CreativeTabs.tabMisc)
-	this.setUnlocalizedName("itemVajra")
+	this.setMaxStackSize( 64 )
+	this.setCreativeTab( CreativeTabs.tabMisc )
+	this.setUnlocalizedName( "itemVajra" )
 }
 
 object ItemDissembler extends ItemDissembler

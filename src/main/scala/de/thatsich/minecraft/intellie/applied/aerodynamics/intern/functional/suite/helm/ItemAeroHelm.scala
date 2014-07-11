@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.functional.suite.helm
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.suite.helm
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.item.AAEPoweredItemArmor

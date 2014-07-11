@@ -1,6 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern
 
-import de.thatsich.minecraft.intellie.applied.aerodynamics.functional.dissembler.ItemDissembler
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler.ItemDissembler
 import net.minecraft.init.Blocks
 import net.minecraft.item.ItemStack
 
