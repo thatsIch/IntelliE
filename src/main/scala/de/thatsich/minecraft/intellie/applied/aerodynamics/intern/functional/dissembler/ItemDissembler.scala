@@ -22,41 +22,36 @@ class ItemDissembler( mat: ToolMaterial ) extends ItemPickaxe( mat )
 	this.setUnlocalizedName( "AppliedAerodynamics.ItemDissembler" )
 	this.setTextureName( "AppliedAerodynamics:ItemDissembler" )
 
-
+	/**
+	 * harvests block into inventory
+	 * returns false to process server side too
+	 *
+	 * @param stack using item
+	 * @param player using player
+	 * @param world current world of player
+	 * @param x x coord
+	 * @param y y coord
+	 * @param z z coord
+	 * @param side side of interacting block
+	 * @param hitX hitbox x
+	 * @param hitY hitbox y
+	 * @param hitZ hitbox z
+	 * @return
+	 */
 	override def onItemUseFirst( stack: ItemStack, player: EntityPlayer, world: World, x: Int, y: Int, z: Int, side: Int, hitX: Float, hitY: Float, hitZ: Float ): Boolean =
 	{
-		println( "onItemUseFirst" )
+		this.instantHarvestBlockIntoInventory( player, world, x, y, z )
 
 		false
-		//		this.instantHarvestBlockIntoInventory( player, world, x, y, z )
 	}
 
 
 	//
 	//	override def func_150893_a( p_150893_1_ : ItemStack, p_150893_2_ : Block ): Float =
 	//	{
-	//		println( "func_150893_a" )
+	//		println( "getStrVsBlock" )
 	//		1.0F
 	//	}
-	//
-	//	override def func_150897_b( block: Block ): Boolean =
-	//	{
-	////		val world: World = block.
-	////		block.harvestBlock()
-	//		println( "func_150897_b" )
-	//		false
-	//	}
-	//
-	//	override def onUsingTick( stack: ItemStack, player: EntityPlayer, count: Int ): Unit = {
-	//		println( "onUsingTick" )
-	//	}
-
-	override def onItemUse( is: ItemStack, player: EntityPlayer, world: World, x: Int, y: Int, z: Int, i1: Int, f1: Float, f2: Float, f3: Float ): Boolean =
-	{
-		println( "onItemUse" )
-
-		this.instantHarvestBlockIntoInventory( player, world, x, y, z )
-	}
 
 	/**
 	 * Sets the mining speed to 5000 without condition
