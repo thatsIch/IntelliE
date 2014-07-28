@@ -5,7 +5,6 @@ import cpw.mods.fml.common.{Mod, Optional, SidedProxy}
 import de.thatsich.minecraft.api.mod.BaseMod
 import de.thatsich.minecraft.api.mod.proxy.Proxy
 import de.thatsich.minecraft.intellie.applied.aerodynamics.api.AeroModInfo
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern._
 
 /**
  * d
@@ -20,7 +19,7 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.intern._
 	dependencies = AeroModInfo.dependencies,
 	modLanguage = "scala"
 )
-object AppliedAerodynamics extends BaseMod( AeroLog, AeroModules, AeroModuleRegistry, AeroPacketPipeline, AeroConfigs )
+object AppliedAerodynamics extends BaseMod
 {
 	@SidedProxy(
 		modId = AeroModInfo.id,

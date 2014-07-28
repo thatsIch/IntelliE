@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie
+package de.thatsich.minecraft.intellie.intern.unloadchilds
 
 import java.lang.reflect.Field
 import java.util
@@ -8,7 +8,7 @@ import cpw.mods.fml.common.{LoadController, Loader, ModContainer}
 
 import scala.collection.JavaConverters._
 
-trait ModUnloader
+trait ChildUnloader
 {
 	def unload( id: String, disableModule: Boolean ): Unit =
 	{

@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern
 
+import de.thatsich.minecraft.api.mod.log.Log
 import de.thatsich.minecraft.api.mod.network.BasePacketPipeline
 
 /**
@@ -8,4 +9,4 @@ import de.thatsich.minecraft.api.mod.network.BasePacketPipeline
  * @author thatsIch
  * @since 10.07.2014.
  */
-object AeroPacketPipeline extends BasePacketPipeline( AeroLog )
+class AeroPacketPipeline( log: Log ) extends BasePacketPipeline( log )

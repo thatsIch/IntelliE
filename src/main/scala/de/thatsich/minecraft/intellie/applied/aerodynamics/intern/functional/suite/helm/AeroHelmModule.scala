@@ -9,8 +9,6 @@ import net.minecraft.item.Item
  * @author thatsIch
  * @since 16.04.2014.
  */
-class AeroHelmModule( implicit itemAeroHelm: ItemAeroHelm )
-	extends BaseModule( Some[ Item ]( itemAeroHelm ), None, None, None )
-{
+object AeroHelmModule extends AeroHelmModule( AeroHelmItem )
 
-}
+class AeroHelmModule( itemAeroHelm: AeroHelmItem ) extends BaseModule( Some[ Item ]( itemAeroHelm ), None, None, None )

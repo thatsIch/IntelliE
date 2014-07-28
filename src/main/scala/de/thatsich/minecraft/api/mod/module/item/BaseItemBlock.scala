@@ -11,9 +11,4 @@ import net.minecraft.item.ItemBlock
  * @author thatsIch
  * @since 07.04.2014.
  */
-abstract class BaseItemBlock( info: BaseItemInfo, config: Config, recipe: Recipe )
-	extends ItemBlock( Blocks.dirt )
-{
-
-
-}
+abstract class BaseItemBlock( info: BaseItemInfo, config: Config, recipe: Recipe ) extends ItemBlock( Blocks.dirt )

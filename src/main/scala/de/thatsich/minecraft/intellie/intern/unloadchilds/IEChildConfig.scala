@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie
+package de.thatsich.minecraft.intellie.intern.unloadchilds
 
 import de.thatsich.minecraft.api.mod.ConfigPath
 import de.thatsich.minecraft.api.mod.config.BaseConfig

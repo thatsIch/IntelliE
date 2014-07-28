@@ -3,7 +3,6 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.su
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.item.AAEPoweredItemArmor
 import net.minecraft.client.renderer.texture.IIconRegister
-import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -15,8 +14,9 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 16.04.2014.
  */
-class ItemAeroBoots( implicit creativeTab: CreativeTabs )
-	extends AAEPoweredItemArmor( 4000000, 3 )
+object AeroBootsItem extends AeroBootsItem
+
+class AeroBootsItem extends AAEPoweredItemArmor( 4000000, 3 )
 {
 	final val disChargeOnTick = 40
 

@@ -1,7 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.item
 
 import de.thatsich.minecraft.api.mod.module.item.BaseItemArmor
-import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{ItemArmor, ItemStack}
 
@@ -11,7 +10,7 @@ import net.minecraft.item.{ItemArmor, ItemStack}
  * @author thatsIch
  * @since 17.04.2014.
  */
-abstract class AAEPoweredItemArmor( protected val maxStorage: Double, armorType: Int )( implicit creativeTab: CreativeTabs )
+abstract class AAEPoweredItemArmor( protected val maxStorage: Double, armorType: Int )
 	extends BaseItemArmor( ItemArmor.ArmorMaterial.DIAMOND, 0, armorType )
 	        with TSpecialArmor
 	        with TPowerStorage

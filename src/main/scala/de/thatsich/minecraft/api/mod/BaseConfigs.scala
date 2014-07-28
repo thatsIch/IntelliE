@@ -8,4 +8,4 @@ import de.thatsich.minecraft.api.mod.config.Config
  * @author thatsIch
  * @since 11.07.2014.
  */
-abstract class BaseConfigs( val configs: Config* ) extends Configs
+class BaseConfigs( val configs: Config* ) extends Configs

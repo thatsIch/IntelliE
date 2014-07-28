@@ -1,9 +1,0 @@
-package de.thatsich.minecraft.api.mod
-
-/**
- *
- *
- * @author thatsIch
- * @since 10.07.2014.
- */
-abstract class BaseAbbreviation( abbreviation: String ) extends BaseStringWrapper( abbreviation ) with Abbreviation

@@ -3,7 +3,6 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.su
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.item.AAEPoweredItemArmor
 import net.minecraft.client.renderer.texture.IIconRegister
-import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.Entity
 import net.minecraft.item.ItemStack
 
@@ -13,8 +12,9 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 07.04.2014.
  */
-class ItemAeroHelm( implicit creativeTab: CreativeTabs )
-	extends AAEPoweredItemArmor( 5000000, 0 )
+object AeroHelmItem extends AeroHelmItem
+
+class AeroHelmItem extends AAEPoweredItemArmor( 5000000, 0 )
 {
 
 

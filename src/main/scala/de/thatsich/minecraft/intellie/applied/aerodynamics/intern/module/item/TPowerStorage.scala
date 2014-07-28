@@ -1,5 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.item
 
+import appeng.api.config.AccessRestriction
+import appeng.api.implementations.items.IAEItemPowerStorage
 import cpw.mods.fml.common.Optional
 import de.thatsich.minecraft.appeng.api.AE2ModInfo
 import net.minecraft.item.ItemStack
@@ -12,7 +14,7 @@ import net.minecraft.nbt.NBTTagCompound
  * @since 17.04.2014.
  */
 @Optional.Interface( iface = "appeng.api.implementations.items.IAEItemPowerStorage", modid = AE2ModInfo.id, striprefs = true )
-private[ item ] trait TPowerStorage //extends IAEItemPowerStorage
+private[ item ] trait TPowerStorage extends IAEItemPowerStorage
 {
 	self: AAEPoweredItemArmor =>
 
@@ -21,28 +23,8 @@ private[ item ] trait TPowerStorage //extends IAEItemPowerStorage
 	private final val internalCurrentPower = "internalCurrentPower"
 	private final val inject               = 80000
 
-
-	//	@Optional.Method( modid = OModIDs.AE2 )
-	//	def getPowerFlow( is: ItemStack ): AccessRestriction = AccessRestriction.WRITE
-
 	@Optional.Method( modid = AE2ModInfo.id )
-	def getAECurrentPower( is: ItemStack ): Double =
-	{
-		val tag = this.getNBTData( is )
-		val currentStorage = tag.getDouble( internalCurrentPower )
-
-		currentStorage
-	}
-
-	@Optional.Method( modid = AE2ModInfo.id )
-	def setAECurrentPower( is: ItemStack, value: Double ): Unit =
-	{
-		val tag = this.getNBTData( is )
-		tag.setDouble( internalCurrentPower, value )
-	}
-
-	@Optional.Method( modid = AE2ModInfo.id )
-	def getAEMaxPower( is: ItemStack ): Double = this.maxStorage
+	def getPowerFlow( is: ItemStack ): AccessRestriction = AccessRestriction.WRITE
 
 	@Optional.Method( modid = AE2ModInfo.id )
 	def extractAEPower( is: ItemStack, amt: Double ): Double =
@@ -66,6 +48,15 @@ private[ item ] trait TPowerStorage //extends IAEItemPowerStorage
 		diff
 	}
 
+	@Optional.Method( modid = AE2ModInfo.id )
+	def getAECurrentPower( is: ItemStack ): Double =
+	{
+		val tag = this.getNBTData( is )
+		val currentStorage = tag.getDouble( internalCurrentPower )
+
+		currentStorage
+	}
+
 	private def getNBTData( itemStack: ItemStack ): NBTTagCompound =
 	{
 		var compound = itemStack.getTagCompound
@@ -77,4 +68,14 @@ private[ item ] trait TPowerStorage //extends IAEItemPowerStorage
 
 		compound
 	}
+
+	@Optional.Method( modid = AE2ModInfo.id )
+	def setAECurrentPower( is: ItemStack, value: Double ): Unit =
+	{
+		val tag = this.getNBTData( is )
+		tag.setDouble( internalCurrentPower, value )
+	}
+
+	@Optional.Method( modid = AE2ModInfo.id )
+	def getAEMaxPower( is: ItemStack ): Double = this.maxStorage
 }

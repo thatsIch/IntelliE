@@ -4,6 +4,9 @@ import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationE
 import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.api.mod.log.Log
 import de.thatsich.minecraft.api.mod.proxy.Proxy
+import net.minecraft.block.Block
+import net.minecraft.item.Item
+import net.minecraft.tileentity.TileEntity
 
 /**
  *
@@ -11,18 +14,19 @@ import de.thatsich.minecraft.api.mod.proxy.Proxy
  * @author thatsIch
  * @since 23.04.2014.
  */
-abstract class BaseModuleRegistry( modules: Seq[ Module ], log: Log ) extends Proxy
+class ModuleRegistry( modules: Seq[ Module ], log: Log ) extends Proxy
 {
 	var entityID: Int = 0
 
 	for( module <- this.modules )
 	{
-		(module.item, module.block, module.tileEntity, module.entity) match
+		(module.item, module.block, module.tileEntity, module.entity).productIterator.foreach
 		{
-			case (Some( item ), None, None, None) => GameRegistry.registerItem( item, item.getUnlocalizedName )
-			case (None, Some( block ), None, None) => GameRegistry.registerBlock( block, block.getUnlocalizedName )
-			//			case (None, None, Some( tileEntity ), None) => GameRegistry.registerTileEntity( null )
-			//			case (None, None, None, Some( enity )) => EntityRegistry.registerModEntity( ) entityclass.class, instane
+			case item: Item => GameRegistry.registerItem( item, item.getUnlocalizedName )
+			case block: Block => GameRegistry.registerBlock( block, block.getUnlocalizedName )
+			case tileEntity: TileEntity => GameRegistry.registerTileEntity( tileEntity.getClass, tileEntity.getClass.toString )
+			//			case entity: Entity => EntityRegistry.registerModEntity(entity.getClass, entity.getClass.toString, entity.getEntityId, )
+
 			case _ => log.severe( s"Unknown Module $module" )
 		}
 		//		RenderingRegistry.registerBlockHandler() ISBRH

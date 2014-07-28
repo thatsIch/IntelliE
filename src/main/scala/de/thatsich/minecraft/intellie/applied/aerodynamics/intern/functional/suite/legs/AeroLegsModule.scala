@@ -9,7 +9,7 @@ import net.minecraft.item.Item
  * @author thatsIch
  * @since 16.04.2014.
  */
-class AeroLegsModule( implicit itemAeroLegs: ItemAeroLegs )
+class AeroLegsModule( implicit itemAeroLegs: AeroLegsItem )
 	extends BaseModule( Some[ Item ]( itemAeroLegs ), None, None, None )
 {
 
