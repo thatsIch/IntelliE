@@ -2,6 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.di
 
 import net.minecraft.block.Block
 import net.minecraft.creativetab.CreativeTabs
+import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{Item, ItemPickaxe, ItemStack}
 import net.minecraft.world.World
@@ -44,13 +45,24 @@ class ItemDissembler( mat: Item.ToolMaterial ) extends ItemPickaxe( mat )
 		false
 	}
 
-
-	//
-	//	override def func_150893_a( p_150893_1_ : ItemStack, p_150893_2_ : Block ): Float =
-	//	{
-	//		println( "getStrVsBlock" )
-	//		1.0F
-	//	}
+	/**
+	 * Try to intercept the mining and collect the dropped item here
+	 *
+	 * @param is used itemstack
+	 * @param world world where item will be spawned
+	 * @param block mined block
+	 * @param x x pos of block
+	 * @param y y pos of block
+	 * @param z z pos of block
+	 * @param entity dropped entity
+	 *
+	 * @return true if block is destroyed
+	 */
+	override def onBlockDestroyed( is: ItemStack, world: World, block: Block, x: Int, y: Int, z: Int, entity: EntityLivingBase ): Boolean =
+	{
+		println( "onBlockDestroyed" )
+		super.onBlockDestroyed( is, world, block, x, y, z, entity )
+	}
 
 	/**
 	 * Sets the mining speed to 5000 without condition
@@ -61,10 +73,6 @@ class ItemDissembler( mat: Item.ToolMaterial ) extends ItemPickaxe( mat )
 	 * @return 5000
 	 */
 	override def func_150893_a( is: ItemStack, b: Block ): Float = 5000
-
-
-	//
-	//	override def func_150897_b( p_150897_1_ : Block ): Boolean = true
 
 	/**
 	 * Does not activate blocks when sneaking
