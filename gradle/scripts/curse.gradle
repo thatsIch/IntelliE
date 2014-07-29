@@ -19,7 +19,6 @@ private String getChangelog() {
 		}
 
 		changelog = outStream.toString().trim()
-		logger.quiet "Changelog from Git:\n\n $changelog"
 	}
 	catch (e) {
 		logger.quiet "Error while generating changelog: $e"

@@ -40,12 +40,7 @@ sourceSets.api.java {
 	exclude '**/integration/**'
 }
 
-curse {
-	apiKey = "eb5b9b11-5d6a-405c-baa2-3acac200baee"
-	projectId = "222848"
-	changelog = "test"
-	releaseType = "alpha"
-}
+curse = ext.curse
 
 dependencies {
 //	testCompile "junit:junit:${VERSION_JUNIT}"
