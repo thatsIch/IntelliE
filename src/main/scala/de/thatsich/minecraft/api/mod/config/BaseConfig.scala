@@ -15,9 +15,16 @@ abstract class BaseConfig( configPath: ConfigPath )
 	extends Config
 {
 	private val configPathString: String = this.configPath
-	private val config                   = new Configuration( new File( this.configPathString ) )
+	println( "PATH: " + this.configPathString )
+	private val config = new Configuration( new File( this.configPathString ) )
 
-	def save( ): Unit = this.config.save( )
+	def save( ): Unit =
+	{
+		if( this.config.hasChanged )
+		{
+			this.config.save( )
+		}
+	}
 
 	def getBoolean( category: String, key: String, defaultValue: Boolean ): Boolean =
 	{
