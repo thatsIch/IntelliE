@@ -3,8 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.di
 import net.minecraft.block.Block
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.item.Item.ToolMaterial
-import net.minecraft.item.{ItemPickaxe, ItemStack}
+import net.minecraft.item.{Item, ItemPickaxe, ItemStack}
 import net.minecraft.world.World
 
 /**
@@ -13,9 +12,9 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 07.04.2014.
  */
-class ItemDissembler( mat: ToolMaterial ) extends ItemPickaxe( mat )
-                                                  with AEWrench
-                                                  with PrecisionHarvester
+class ItemDissembler( mat: Item.ToolMaterial ) extends ItemPickaxe( mat )
+                                                       with AEWrench
+                                                       with PrecisionHarvester
 {
 	this.setMaxStackSize( 1 )
 	this.setCreativeTab( CreativeTabs.tabTools )
