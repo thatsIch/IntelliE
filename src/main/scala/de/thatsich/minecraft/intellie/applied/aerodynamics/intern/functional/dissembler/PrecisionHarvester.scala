@@ -29,23 +29,18 @@ trait PrecisionHarvester
 	 */
 	protected def instantHarvestBlockIntoInventory( player: EntityPlayer, world: World, x: Int, y: Int, z: Int ): Boolean =
 	{
-		println( "instantHarvestBlockIntoInventory" )
 		if( this.nothingChanging( player, world, x, y, z ) )
 		{
-			println( "Nothing Changing" )
 			return false
 		}
 		if( this.clientAnimation( player, world ) )
 		{
-			println( "Client Animation" )
 			return true
 		}
 
-		println( "capturing items" )
 		this.itemCapturing( player, x, y, z )
 		if( this.processCapturedItemsAndCheckForChangedInventory( world, player ) )
 		{
-			println( "sync player inventory" )
 			this.syncPlayerInventory( player )
 		}
 
