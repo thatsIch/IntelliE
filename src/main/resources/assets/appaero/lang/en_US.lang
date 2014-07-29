@@ -1,6 +1,9 @@
 itemGroup.appliedAerodynamicsTab=Applied Aerodyanmics
 
+item.appaero.dissembler.name=Dissembler
+
 item.ItemAeroHelm.name=Aero Helm
 item.ItemAeroChest.name=Aero Chest
 item.ItemAeroLegs.name=Aero Legs
 item.ItemAeroBoots.name=Aero Boots
+
