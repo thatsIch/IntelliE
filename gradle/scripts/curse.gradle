@@ -1,11 +1,4 @@
-ext.curse = {
-	apiKey = "eb5b9b11-5d6a-405c-baa2-3acac200baee"
-	projectId = "222848"
-	changelog = changelog
-	releaseType = "alpha"
-}
-
-String changelog = getChangelog()
+ext.changelog = getChangelog()
 
 private String getChangelog() {
 	def outStream = new ByteArrayOutputStream()
@@ -28,5 +21,5 @@ private String getChangelog() {
 }
 
 task printChangelog(group: 'Debug', description: 'Prints the changelog for debugging purposes.') << {
-	logger.quiet changelog
+	logger.quiet ext.changelog
 }

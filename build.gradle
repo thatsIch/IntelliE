@@ -1,7 +1,7 @@
-apply plugin: 'java'    // enables sourcesets
-apply plugin: 'scala'   // enable scala
-apply plugin: 'forge'   // forge tasks
-apply plugin: 'idea'    // enable automatic setup of idea workspace
+apply plugin: 'java'        // enables sourcesets
+apply plugin: 'scala'       // enable scala
+apply plugin: 'forge'       // forge tasks
+apply plugin: 'idea'        // enable automatic setup of idea workspace
 apply plugin: 'curseforge'  // enable automatic upload to curseforge
 
 apply from: 'gradle/scripts/properties.gradle'
@@ -40,7 +40,12 @@ sourceSets.api.java {
 	exclude '**/integration/**'
 }
 
-curse = ext.curse
+curse {
+	apiKey = "eb5b9b11-5d6a-405c-baa2-3acac200baee"
+	projectId = "222848"
+	changelog = ext.changelog
+	releaseType = "alpha"
+}
 
 dependencies {
 //	testCompile "junit:junit:${VERSION_JUNIT}"

@@ -119,10 +119,3 @@ task incMinor(group: 'versioning', description: 'Increments project minor projec
 
 	tag(oldTag, newTag)
 }
-
-task incRev(group: 'versioning', description: 'Increments project reproject.ext.version.') << {
-	String oldTag = VERSION_PROJECT.toString()
-	String newTag = VERSION_PROJECT.incRevision().toString()
-
-	tag(oldTag, newTag)
-}
