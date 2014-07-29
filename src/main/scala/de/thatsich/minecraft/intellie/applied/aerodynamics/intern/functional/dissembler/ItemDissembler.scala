@@ -19,8 +19,8 @@ class ItemDissembler( mat: ToolMaterial ) extends ItemPickaxe( mat )
 {
 	this.setMaxStackSize( 1 )
 	this.setCreativeTab( CreativeTabs.tabTools )
-	this.setUnlocalizedName( "AppliedAerodynamics.ItemDissembler" )
-	this.setTextureName( "AppliedAerodynamics:ItemDissembler" )
+	this.setUnlocalizedName( "appaero.dissembler" )
+	this.setTextureName( "appaero:dissembler" )
 
 	/**
 	 * harvests block into inventory

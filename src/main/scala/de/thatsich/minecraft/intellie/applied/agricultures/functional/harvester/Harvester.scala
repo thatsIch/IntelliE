@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie.applied.agricultures.functional.harvester
 
 /**
  * Applied Agriculture:
- * MFR Farms für AE
+ * Digitizing trees into ME
  *
  * @author thatsIch
  * @since 05.04.2014.
