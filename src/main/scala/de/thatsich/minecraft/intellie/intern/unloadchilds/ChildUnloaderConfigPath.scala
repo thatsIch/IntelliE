@@ -8,4 +8,4 @@ import de.thatsich.minecraft.api.mod.BaseConfigPath
  * @author thatsIch
  * @since 10.07.2014.
  */
-object ConfigPath extends BaseConfigPath( "config", "AppliedEnergistics2", "IntelliE", "IntelliE.cfg" )
+class ChildUnloaderConfigPath extends BaseConfigPath( "config", "AppliedEnergistics2", "IntelliE", "IntelliE.cfg" )

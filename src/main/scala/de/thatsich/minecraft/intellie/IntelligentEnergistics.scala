@@ -4,7 +4,7 @@ import cpw.mods.fml.common.Mod
 import de.thatsich.minecraft.api.mod.BaseMod
 import de.thatsich.minecraft.api.mod.proxy.Proxy
 import de.thatsich.minecraft.intellie.api.IEModInfo
-import de.thatsich.minecraft.intellie.intern.unloadchilds.{ChildUnloader, ChildUnloaderConfig}
+import de.thatsich.minecraft.intellie.intern.unloadchilds.{ChildUnloader, ChildUnloaderConfigAccess}
 
 
 /**
@@ -20,7 +20,7 @@ import de.thatsich.minecraft.intellie.intern.unloadchilds.{ChildUnloader, ChildU
 	dependencies = IEModInfo.dependencies,
 	modLanguage = "scala"
 )
-object IntelligentEnergistics extends BaseMod with ChildUnloader with ChildUnloaderConfig
+object IntelligentEnergistics extends BaseMod with ChildUnloader with ChildUnloaderConfigAccess
 {
 	val proxy: Proxy = null
 
