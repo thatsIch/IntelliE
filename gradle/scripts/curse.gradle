@@ -1,13 +1,15 @@
-ext.changelog = getChangelog()
+ext.CHANGELOG = getChangelog()
 
 private String getChangelog() {
 	def outStream = new ByteArrayOutputStream()
-	def changelog = ""
+	String changelog = ""
+	String lastGitTag = getLastGitTag()
+	logger.quiet lastGitTag
 
 	try {
 		exec {
 			executable = "git"
-			args = ["log", "--oneline", "--decorate"]
+			args = ["log", "--oneline", "$lastGitTag..HEAD"]
 			standardOutput = outStream
 		}
 
@@ -20,6 +22,30 @@ private String getChangelog() {
 	return changelog
 }
 
+private String getLastGitTag() {
+	def outStream = new ByteArrayOutputStream()
+	def lastGitTag = ""
+
+	try {
+		exec {
+			executable = "git"
+			args = ["describe", "--abbrev=0"]
+			standardOutput = outStream
+		}
+
+		lastGitTag = outStream.toString().trim()
+	}
+	catch (e) {
+		logger.quiet "Error while fetching last git tag: $e"
+	}
+
+	return lastGitTag
+}
+
 task printChangelog(group: 'Debug', description: 'Prints the changelog for debugging purposes.') << {
-	logger.quiet ext.changelog
+	logger.quiet CHANGELOG
+}
+
+task printLastGitTag(group: 'Debug', description: 'Prints the last git tag for debugging purposes.') << {
+	logger.quiet getLastGitTag()
 }
