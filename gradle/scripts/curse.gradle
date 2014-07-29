@@ -1,0 +1,33 @@
+ext.curse = {
+	apiKey = "eb5b9b11-5d6a-405c-baa2-3acac200baee"
+	projectId = "222848"
+	changelog = changelog
+	releaseType = "alpha"
+}
+
+String changelog = getChangelog()
+
+private String getChangelog() {
+	def outStream = new ByteArrayOutputStream()
+	def changelog = ""
+
+	try {
+		exec {
+			executable = "git"
+			args = ["log", "--oneline", "--decorate"]
+			standardOutput = outStream
+		}
+
+		changelog = outStream.toString().trim()
+		logger.quiet "Changelog from Git:\n\n $changelog"
+	}
+	catch (e) {
+		logger.quiet "Error while generating changelog: $e"
+	}
+
+	return changelog
+}
+
+task printChangelog(group: 'Debug', description: 'Prints the changelog for debugging purposes.') << {
+	logger.quiet changelog
+}
