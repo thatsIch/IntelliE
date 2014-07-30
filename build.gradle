@@ -8,14 +8,13 @@ apply from: 'gradle/scripts/ae2.gradle'
 apply from: 'gradle/scripts/properties.gradle'
 apply from: 'gradle/scripts/versioning.gradle'
 apply from: 'gradle/scripts/curse.gradle'
-
-sourceCompatibility = VERSION_JAVA
-targetCompatibility = VERSION_JAVA
+apply from: 'gradle/scripts/dependencies.gradle'
+apply from: 'gradle/scripts/javacompat.gradle'
 
 // needed for pulling new versions from forge
 minecraft {
 	version = "${VERSION_MINECRAFT}-${VERSION_FORGE}"
-	assetDir = "out/assets"
+	runDir = "out"
 }
 
 buildscript {
@@ -33,12 +32,6 @@ buildscript {
 	dependencies {
 		classpath "net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT"
 	}
-}
-
-dependencies {
-//	testCompile "junit:junit:${VERSION_JUNIT}"
-//	testCompile "org.scalatest:scalatest_2.10:${VERSION_SCALATEST}"
-//	testCompile "org.scalamock:scalamock_2.10:${VERSION_SCALAMOCK}"
 }
 
 // resulting file with [baseName]-[appendix]-[version]-[classifier].[extension]

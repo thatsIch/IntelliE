@@ -1,0 +1,5 @@
+dependencies {
+//	testCompile "junit:junit:${VERSION_JUNIT}"
+//	testCompile "org.scalatest:scalatest_2.10:${VERSION_SCALATEST}"
+//	testCompile "org.scalamock:scalamock_2.10:${VERSION_SCALAMOCK}"
+}
