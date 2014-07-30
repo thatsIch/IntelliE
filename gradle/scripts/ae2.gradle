@@ -1,0 +1,5 @@
+// exclude from AE2 api
+sourceSets.api.java {
+	exclude '**/layers/**'
+	exclude '**/integration/**'
+}

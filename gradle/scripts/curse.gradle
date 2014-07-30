@@ -1,10 +1,17 @@
-ext.CHANGELOG = getChangelog()
+def theLastGitTag = getLastGitTag()
+def theChangelog = getChangelog()
+
+curse {
+	apiKey = "eb5b9b11-5d6a-405c-baa2-3acac200baee"
+	projectId = "222848"
+	changelog = theChangelog
+	releaseType = "alpha"
+}
 
 private String getChangelog() {
 	def outStream = new ByteArrayOutputStream()
 	String changelog = ""
 	String lastGitTag = getLastGitTag()
-	logger.quiet lastGitTag
 
 	try {
 		exec {
@@ -16,7 +23,7 @@ private String getChangelog() {
 		changelog = outStream.toString().trim()
 	}
 	catch (e) {
-		logger.quiet "Error while generating changelog: $e"
+		logger.quiet "Error while generating theChangelog: $e"
 	}
 
 	return changelog
@@ -42,10 +49,10 @@ private String getLastGitTag() {
 	return lastGitTag
 }
 
-task printChangelog(group: 'Debug', description: 'Prints the changelog for debugging purposes.') << {
-	logger.quiet CHANGELOG
+task printChangelog(group: 'Debug', description: 'Prints the theChangelog for debugging purposes.') << {
+	logger.quiet "The last changelog:\n\n$theChangelog"
 }
 
 task printLastGitTag(group: 'Debug', description: 'Prints the last git tag for debugging purposes.') << {
-	logger.quiet getLastGitTag()
+	logger.quiet "The last git tag: $theLastGitTag"
 }

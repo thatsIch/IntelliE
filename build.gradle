@@ -4,6 +4,7 @@ apply plugin: 'forge'       // forge tasks
 apply plugin: 'idea'        // enable automatic setup of idea workspace
 apply plugin: 'curseforge'  // enable automatic upload to curseforge
 
+apply from: 'gradle/scripts/ae2.gradle'
 apply from: 'gradle/scripts/properties.gradle'
 apply from: 'gradle/scripts/versioning.gradle'
 apply from: 'gradle/scripts/curse.gradle'
@@ -32,19 +33,6 @@ buildscript {
 	dependencies {
 		classpath "net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT"
 	}
-}
-
-// exclude from AE2 api
-sourceSets.api.java {
-	exclude '**/layers/**'
-	exclude '**/integration/**'
-}
-
-curse {
-	apiKey = "eb5b9b11-5d6a-405c-baa2-3acac200baee"
-	projectId = "222848"
-	changelog = CHANGELOG
-	releaseType = "alpha"
 }
 
 dependencies {

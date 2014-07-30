@@ -1,6 +1,12 @@
 ext.VERSION_PROJECT = readVersion()
 
-// Class contains a project version
+/**
+ * Class for project version.
+ * Contains major minor revision and commit count.
+ * Offers 3 methods to increase major, minor and revision,
+ * commit count will be determined dynamically
+ * and can only be set upon construction
+ */
 class ProjectVersion {
 	private Integer major
 	private Integer minor
@@ -42,7 +48,11 @@ class ProjectVersion {
 	}
 }
 
-// This is a special task for pulling the version information from git
+/**
+ * Pulls the version information from git
+ *
+ * @return project version
+ */
 private ProjectVersion readVersion() {
 
 	// call git command.
@@ -65,7 +75,6 @@ private ProjectVersion readVersion() {
 		Integer commit = gitCommitCount
 
 		projectVersion = new ProjectVersion(major, minor, revision, commit)
-		logger.quiet "Current version from Git: $projectVersion"
 	}
 	catch (ignored) {
 		tag("/dev/null", "0.0.0.0")
@@ -74,6 +83,11 @@ private ProjectVersion readVersion() {
 	return projectVersion
 }
 
+/**
+ * gets the count of commits on the repository
+ *
+ * @return count of commits
+ */
 private Integer getGitCommitCount() {
 
 	// call git command.
@@ -96,6 +110,12 @@ private Integer getGitCommitCount() {
 	}
 }
 
+/**
+ * Creates a new tag with old and new tag message
+ *
+ * @param oldTag old tag
+ * @param newTag new tag
+ */
 private void tag(String oldTag, String newTag) {
 	String message = "Incrementing project version: $oldTag -> $newTag"
 	logger.quiet message
