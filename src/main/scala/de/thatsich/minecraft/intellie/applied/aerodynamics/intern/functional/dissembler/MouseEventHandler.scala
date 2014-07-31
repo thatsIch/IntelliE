@@ -10,11 +10,11 @@ import net.minecraftforge.common.MinecraftForge
  * @author thatsIch
  * @since 29.07.2014.
  */
-trait ListensToMouse
+trait MouseEventHandler
 {
 	MinecraftForge.EVENT_BUS.register( this )
 
-	var notInUse = true
+	var inUse = false
 
 	/**
 	 * set notInUse to true if right mouse button is released
@@ -24,9 +24,11 @@ trait ListensToMouse
 	@SubscribeEvent( priority = EventPriority.LOWEST )
 	def onMouseEvent( event: MouseEvent ): Unit =
 	{
-		if( event.button != -1 && !event.buttonstate )
+		// button = 0, left mouse, button = 1, right mouse
+		if( event.button == 1 && !event.buttonstate )
 		{
-			this.notInUse = true
+			// buttonstate = true means button is pressed
+			this.inUse = false
 		}
 	}
 }

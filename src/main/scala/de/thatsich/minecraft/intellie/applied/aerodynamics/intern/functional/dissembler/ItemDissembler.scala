@@ -2,7 +2,6 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.di
 
 import net.minecraft.block.Block
 import net.minecraft.creativetab.CreativeTabs
-import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{Item, ItemPickaxe, ItemStack}
 import net.minecraft.world.World
@@ -16,14 +15,12 @@ import net.minecraft.world.World
 class ItemDissembler( mat: Item.ToolMaterial ) extends ItemPickaxe( mat )
                                                        with AEWrench
                                                        with PrecisionHarvester
-                                                       with ListensToMouse
+                                                       with BlockBreakEventHandler
 {
 	this.setMaxStackSize( 1 )
 	this.setCreativeTab( CreativeTabs.tabTools )
 	this.setUnlocalizedName( "appaero.dissembler" )
 	this.setTextureName( "appaero:dissembler" )
-
-	var useItem = false
 
 	/**
 	 * harvests block into inventory
@@ -43,53 +40,8 @@ class ItemDissembler( mat: Item.ToolMaterial ) extends ItemPickaxe( mat )
 	 */
 	override def onItemUseFirst( stack: ItemStack, player: EntityPlayer, world: World, x: Int, y: Int, z: Int, side: Int, hitX: Float, hitY: Float, hitZ: Float ): Boolean =
 	{
-		if( world.isRemote && this.notInUse )
-		{
-			this.instantHarvestBlockIntoInventory( player, world, x, y, z )
-			this.notInUse = false
-			this.useItem = true
-		}
-		else if( !world.isRemote && this.useItem )
-		{
-			this.instantHarvestBlockIntoInventory( player, world, x, y, z )
-			this.useItem = false
-		}
-
-		false
+		this.precisionHarvest( stack, world, player, x, y, z )
 	}
-
-	/**
-	 * Try to intercept the mining and collect the dropped item here
-	 *
-	 * @param is used itemstack
-	 * @param world world where item will be spawned
-	 * @param block mined block
-	 * @param x x pos of block
-	 * @param y y pos of block
-	 * @param z z pos of block
-	 * @param entity dropped entity
-	 *
-	 * @return true if block is destroyed
-	 */
-	override def onBlockDestroyed( is: ItemStack, world: World, block: Block, x: Int, y: Int, z: Int, entity: EntityLivingBase ): Boolean =
-	{
-		val player: EntityPlayer = entity.asInstanceOf[ EntityPlayer ]
-
-		//		this.instantHarvestBlockIntoInventory(player, world, x,y,z)
-		//		println(entity.getClass)
-		super.onBlockDestroyed( is, world, block, x, y, z, entity )
-
-		true
-	}
-
-	//
-	//
-	//	override def onPlayerStoppedUsing( is: ItemStack, world: World, player: EntityPlayer, itemInUseCount: Int ): Unit =
-	//	{
-	//		println( "STOPPPED" )
-	//
-	//		super.onPlayerStoppedUsing( is, world, player, itemInUseCount )
-	//	}
 
 	/**
 	 * Sets the mining speed to 5000 without condition

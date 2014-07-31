@@ -15,8 +15,7 @@ abstract class BaseConfig( configPath: ConfigPath )
 	extends Config
 {
 	private val configPathString: String = this.configPath
-	println( "PATH: " + this.configPathString )
-	private val config = new Configuration( new File( this.configPathString ) )
+	private val config                   = new Configuration( new File( this.configPathString ) )
 
 	def save( ): Unit =
 	{
