@@ -12,15 +12,24 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 07.04.2014.
  */
-class ItemDissembler( mat: Item.ToolMaterial ) extends ItemPickaxe( mat )
+class DissemblerItem( mat: Item.ToolMaterial ) extends ItemPickaxe( mat )
                                                        with AEWrench
                                                        with PrecisionHarvester
                                                        with BlockBreakEventHandler
+                                                       with AEPowerStorage
 {
 	this.setMaxStackSize( 1 )
 	this.setCreativeTab( CreativeTabs.tabTools )
+	this.setMaxDamage( this.steps )
+	this.hasSubtypes = false
 	this.setUnlocalizedName( "appaero.dissembler" )
 	this.setTextureName( "appaero:dissembler" )
+
+	final val maxStorage: Double = 1000000
+
+	final val injectAmount: Double = 10000
+
+	final val steps: Int = 32
 
 	/**
 	 * harvests block into inventory
@@ -65,5 +74,33 @@ class ItemDissembler( mat: Item.ToolMaterial ) extends ItemPickaxe( mat )
 	 * @return true
 	 */
 	override def doesSneakBypassUse( world: World, x: Int, y: Int, z: Int, player: EntityPlayer ): Boolean = true
+
+	override def isRepairable: Boolean = false
+
+	override def isDamageable: Boolean = true
+
+	override def isDamaged( stack: ItemStack ): Boolean = true
+
+	override def addInformation( itemStack: ItemStack, player: EntityPlayer, information: java.util.List[ _ ], advToolTips: Boolean ) =
+	{
+		val currentPower = this.getAECurrentPower( itemStack )
+		val maxPower = this.getAEMaxPower( itemStack )
+
+		val percent = (currentPower / maxPower * 100).toInt
+		// TODO format scala int to whole number without 10^x
+
+		val message = s"Stored Energy: $currentPower AE - $percent%"
+
+		val list = information.asInstanceOf[ java.util.List[ String ] ]
+		list.add( message )
+	}
+
+	override def getDamage( stack: ItemStack ): Int =
+	{
+		val percent = this.getAECurrentPower( stack ) / this.getAEMaxPower( stack )
+		val damage = this.steps - (this.steps * percent).toInt
+
+		damage
+	}
 }
 

@@ -10,7 +10,7 @@ import net.minecraftforge.common.MinecraftForge
  * @author thatsIch
  * @since 29.07.2014.
  */
-trait MouseEventHandler
+private[ dissembler ] trait MouseEventHandler
 {
 	MinecraftForge.EVENT_BUS.register( this )
 

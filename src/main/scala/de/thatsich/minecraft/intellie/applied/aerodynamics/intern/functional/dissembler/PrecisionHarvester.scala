@@ -11,7 +11,7 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 28.07.2014.
  */
-trait PrecisionHarvester extends MouseEventHandler //PlayerUseItemEventHandler
+private[ dissembler ] trait PrecisionHarvester extends MouseEventHandler //PlayerUseItemEventHandler
 {
 	def precisionHarvest( is: ItemStack, world: World, player: EntityPlayer, x: Int, y: Int, z: Int ): Boolean =
 	{

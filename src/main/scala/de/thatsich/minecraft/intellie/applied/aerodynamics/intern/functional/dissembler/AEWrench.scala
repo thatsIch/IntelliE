@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 26.07.2014.
  */
-trait AEWrench extends IAEWrench
+private[ dissembler ] trait AEWrench extends IAEWrench
 {
 	/**
 	 * This item can wrench AE parts

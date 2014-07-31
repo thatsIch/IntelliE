@@ -14,7 +14,7 @@ import scala.collection.JavaConverters._
  * @author thatsIch
  * @since 31.07.2014.
  */
-trait BlockBreakEventHandler
+private[ dissembler ] trait BlockBreakEventHandler
 {
 	MinecraftForge.EVENT_BUS.register( this )
 
@@ -31,7 +31,7 @@ trait BlockBreakEventHandler
 		val heldItem: ItemStack = player.getHeldItem
 		val item: Item = heldItem.getItem
 
-		if( item.isInstanceOf[ ItemDissembler ] )
+		if( item.isInstanceOf[ DissemblerItem ] )
 		{
 			val drops: Seq[ ItemStack ] = event.drops.asScala
 			for( dropItemStack <- drops )
