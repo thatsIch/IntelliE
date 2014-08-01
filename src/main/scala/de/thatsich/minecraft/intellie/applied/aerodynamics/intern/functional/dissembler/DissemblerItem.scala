@@ -1,7 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler
 
 import net.minecraft.block.Block
-import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{Item, ItemStack}
 import net.minecraft.world.World
@@ -83,12 +82,13 @@ class DissemblerItem extends Item
 	override def addInformation( itemStack: ItemStack, player: EntityPlayer, information: java.util.List[ _ ], advToolTips: Boolean ) =
 	{
 		val currentPower = this.getAECurrentPower( itemStack )
+		val roundCurrent = currentPower.toInt
 		val maxPower = this.getAEMaxPower( itemStack )
 
 		val percent = (currentPower / maxPower * 100).toInt
 		// TODO format scala int to whole number without 10^x
 
-		val message = s"Stored Energy: $currentPower AE - $percent%"
+		val message = s"Stored Energy: $roundCurrent AE - $percent%"
 
 		val list = information.asInstanceOf[ java.util.List[ String ] ]
 		list.add( message )
@@ -98,8 +98,12 @@ class DissemblerItem extends Item
 
 	override def getDamage( stack: ItemStack ): Int =
 	{
-		val percent = this.getAECurrentPower( stack ) / this.getAEMaxPower( stack )
-		val damage = this.steps - (this.steps * percent).toInt
+		val current: Double = this.getAECurrentPower( stack )
+		val max: Double = this.getAEMaxPower( stack )
+		val percent = current / max
+		val damage = (this.steps * percent).toInt
+
+		//		println("Damage: " + damage + " based on " + current + " and " + max)
 
 		damage
 	}
