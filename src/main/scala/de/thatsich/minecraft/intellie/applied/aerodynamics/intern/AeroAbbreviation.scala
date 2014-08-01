@@ -8,4 +8,4 @@ import de.thatsich.minecraft.api.mod.Abbreviation
  * @author thatsIch
  * @since 10.07.2014.
  */
-private[ aerodynamics ] class AeroAbbreviation extends Abbreviation( "Aero" )
+class AeroAbbreviation extends Abbreviation( "Aero" )

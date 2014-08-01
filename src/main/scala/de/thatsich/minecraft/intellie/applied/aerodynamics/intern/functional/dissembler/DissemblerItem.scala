@@ -18,17 +18,17 @@ class DissemblerItem extends Item
                              with BlockBreakEventHandler
                              with AEPowerStorage
 {
-	this.setMaxStackSize( 1 )
-	this.setMaxDamage( this.steps )
-	this.hasSubtypes = false
-	this.setUnlocalizedName( "appaero.dissembler" )
-	this.setTextureName( "appaero:dissembler" )
-
 	final val maxStorage: Double = 1000000
 
 	final val injectAmount: Double = 10000
 
 	final val steps: Int = 32
+
+	this.setMaxStackSize( 1 )
+	this.setMaxDamage( this.steps )
+	this.hasSubtypes = false
+	this.setUnlocalizedName( "appaero.dissembler" )
+	this.setTextureName( "appaero:dissembler" )
 
 	/**
 	 * harvests block into inventory

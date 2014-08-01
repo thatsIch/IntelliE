@@ -14,7 +14,7 @@ import net.minecraft.tileentity.TileEntity
  * @author thatsIch
  * @since 05.04.2014.
  */
-private[ aerodynamics ] class AeroCreativeTabs( icon: Item, modules: Modules, log: Log ) extends CreativeTabs( "appliedAerodynamicsTab" )
+class AeroCreativeTabs( icon: Item, modules: Modules, log: Log ) extends CreativeTabs( "appliedAerodynamicsTab" )
 {
 	for( module <- modules )
 	{

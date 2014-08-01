@@ -9,7 +9,7 @@ import de.thatsich.minecraft.api.mod.proxy.BaseClientProxy
  * @author thatsIch
  * @since 04.04.2014.
  */
-private[ aerodynamics ] final class AeroClientProxy extends BaseClientProxy
+final class AeroClientProxy extends BaseClientProxy
 {
 	/**
 	 * Run before anything else. Read your config, create blocks, items, etc,

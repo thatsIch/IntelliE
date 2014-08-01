@@ -8,4 +8,4 @@ import de.thatsich.minecraft.api.mod.BaseConfigs
  * @author thatsIch
  * @since 11.07.2014.
  */
-private[ aerodynamics ] class AeroConfigs extends BaseConfigs( )
+class AeroConfigs extends BaseConfigs( )
