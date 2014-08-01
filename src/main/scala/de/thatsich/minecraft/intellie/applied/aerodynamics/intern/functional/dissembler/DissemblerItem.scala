@@ -19,7 +19,6 @@ class DissemblerItem extends Item
                              with AEPowerStorage
 {
 	this.setMaxStackSize( 1 )
-	this.setCreativeTab( CreativeTabs.tabTools )
 	this.setMaxDamage( this.steps )
 	this.hasSubtypes = false
 	this.setUnlocalizedName( "appaero.dissembler" )

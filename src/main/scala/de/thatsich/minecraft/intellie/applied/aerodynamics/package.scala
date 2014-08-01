@@ -1,12 +1,9 @@
 package de.thatsich.minecraft.intellie.applied
 
-import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.api.mod.log.Log
-import de.thatsich.minecraft.api.mod.module.ModuleRegistry
 import de.thatsich.minecraft.api.mod.{Abbreviation, Configs, Modules}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern._
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler.DissemblerModule
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.suite.chest.AeroChestItem
 import net.minecraft.creativetab.CreativeTabs
 
 /**
@@ -25,10 +22,9 @@ package object aerodynamics
 
 	implicit val modules: Modules = new AeroModules( new DissemblerModule )
 
-	// requires AeroChestItem
-	val chest: AeroChestItem = new AeroChestItem
+	val icon = new AeroCreativeTabIcon
+	implicit val tab: CreativeTabs = new AeroCreativeTabs( icon, modules, log )
 
-	implicit val tab: CreativeTabs = new AeroCreativeTabs( chest )
 
 	//		dissembler.setCreativeTab( tab )
 	//	GameRegistry.registerItem( itemStacks.dissembler, itemStacks.dissembler.getUnlocalizedName )
