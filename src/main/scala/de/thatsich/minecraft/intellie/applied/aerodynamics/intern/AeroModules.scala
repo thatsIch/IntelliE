@@ -9,4 +9,4 @@ import de.thatsich.minecraft.api.mod.module.Module
  * @author thatsIch
  * @since 11.07.2014.
  */
-class AeroModules( modules: Module* ) extends BaseModules( modules )
+private[ aerodynamics ] class AeroModules( modules: Module* ) extends BaseModules( modules )

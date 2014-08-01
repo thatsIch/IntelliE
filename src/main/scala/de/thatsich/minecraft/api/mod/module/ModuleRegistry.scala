@@ -22,12 +22,12 @@ class ModuleRegistry( modules: Seq[ Module ], log: Log ) extends Proxy
 	{
 		(module.item, module.block, module.tileEntity, module.entity).productIterator.foreach
 		{
-			case item: Item => GameRegistry.registerItem( item, item.getUnlocalizedName )
-			case block: Block => GameRegistry.registerBlock( block, block.getUnlocalizedName )
-			case tileEntity: TileEntity => GameRegistry.registerTileEntity( tileEntity.getClass, tileEntity.getClass.toString )
-			//			case entity: Entity => EntityRegistry.registerModEntity(entity.getClass, entity.getClass.toString, entity.getEntityId, )
-
-			case _ => log.severe( s"Unknown Module $module" )
+			case Some( item: Item ) => GameRegistry.registerItem( item, item.getUnlocalizedName )
+			case Some( block: Block ) => GameRegistry.registerBlock( block, block.getUnlocalizedName )
+			case Some( tileEntity: TileEntity ) => GameRegistry.registerTileEntity( tileEntity.getClass, tileEntity.getClass.toString )
+			//			case entity: Entity => EntityRegistry.registerModEntity( entity.getClass, entity.getClass.toString, entity.getEntityId, )
+			case None =>
+			case any => log.severe( s"Unknown Module $module with $any" )
 		}
 		//		RenderingRegistry.registerBlockHandler() ISBRH
 		//		RenderingRegistry.registerEntityRenderingHandler() Entity.class, Render

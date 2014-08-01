@@ -3,7 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.di
 import net.minecraft.block.Block
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.item.{Item, ItemPickaxe, ItemStack}
+import net.minecraft.item.{Item, ItemStack}
 import net.minecraft.world.World
 
 /**
@@ -12,11 +12,11 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 07.04.2014.
  */
-class DissemblerItem( mat: Item.ToolMaterial ) extends ItemPickaxe( mat )
-                                                       with AEWrench
-                                                       with PrecisionHarvester
-                                                       with BlockBreakEventHandler
-                                                       with AEPowerStorage
+class DissemblerItem extends Item
+                             with AEWrench
+                             with PrecisionHarvester
+                             with BlockBreakEventHandler
+                             with AEPowerStorage
 {
 	this.setMaxStackSize( 1 )
 	this.setCreativeTab( CreativeTabs.tabTools )
@@ -94,6 +94,8 @@ class DissemblerItem( mat: Item.ToolMaterial ) extends ItemPickaxe( mat )
 		val list = information.asInstanceOf[ java.util.List[ String ] ]
 		list.add( message )
 	}
+
+	override def func_150897_b( block: Block ): Boolean = true
 
 	override def getDamage( stack: ItemStack ): Int =
 	{

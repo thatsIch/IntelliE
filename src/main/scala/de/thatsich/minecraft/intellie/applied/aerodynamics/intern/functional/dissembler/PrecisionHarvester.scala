@@ -1,5 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler
 
+import appeng.api.definitions.Blocks
+import appeng.api.util.AEItemDefinition
 import net.minecraft.block.Block
 import net.minecraft.entity.player.{EntityPlayer, EntityPlayerMP}
 import net.minecraft.item.ItemStack

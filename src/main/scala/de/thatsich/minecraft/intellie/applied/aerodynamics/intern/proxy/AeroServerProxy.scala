@@ -9,7 +9,7 @@ import de.thatsich.minecraft.api.mod.proxy.BaseServerProxy
  * @author thatsIch
  * @since 04.04.2014.
  */
-final class AeroServerProxy extends BaseServerProxy
+private[ aerodynamics ] final class AeroServerProxy extends BaseServerProxy
 {
 	/**
 	 * Handle interaction with other mods, complete your setup based on this.

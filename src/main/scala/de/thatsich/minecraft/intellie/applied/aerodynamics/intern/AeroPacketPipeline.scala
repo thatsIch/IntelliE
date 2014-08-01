@@ -9,4 +9,4 @@ import de.thatsich.minecraft.api.mod.network.BasePacketPipeline
  * @author thatsIch
  * @since 10.07.2014.
  */
-class AeroPacketPipeline( log: Log ) extends BasePacketPipeline( log )
+private[ aerodynamics ] class AeroPacketPipeline( log: Log ) extends BasePacketPipeline( log )

@@ -9,7 +9,7 @@ import de.thatsich.minecraft.api.mod.proxy.BaseClientProxy
  * @author thatsIch
  * @since 04.04.2014.
  */
-final class AeroClientProxy extends BaseClientProxy
+private[ aerodynamics ] final class AeroClientProxy extends BaseClientProxy
 {
 	/**
 	 * Run before anything else. Read your config, create blocks, items, etc,
@@ -21,6 +21,16 @@ final class AeroClientProxy extends BaseClientProxy
 	{
 		this.initRenderers( )
 		this.initSounds( )
+	}
+
+	private def initSounds( ): Unit =
+	{
+
+	}
+
+	private def initRenderers( ): Unit =
+	{
+
 	}
 
 	/**
@@ -40,16 +50,6 @@ final class AeroClientProxy extends BaseClientProxy
 	 * @param event Event after setup
 	 */
 	def postInit( event: FMLPostInitializationEvent ): Unit =
-	{
-
-	}
-
-	private def initSounds( ): Unit =
-	{
-
-	}
-
-	private def initRenderers( ): Unit =
 	{
 
 	}

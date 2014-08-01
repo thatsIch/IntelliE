@@ -13,8 +13,7 @@ import de.thatsich.minecraft.api.mod.proxy.Proxy
  * @since 06.04.2014.
  */
 abstract class BaseMod( implicit protected val log: Log,
-                        implicit protected val modules: Modules,
-                        implicit protected val configs: Configs )
+                        implicit protected val modules: Modules )
 	extends Proxy
 {
 	def proxy: Proxy

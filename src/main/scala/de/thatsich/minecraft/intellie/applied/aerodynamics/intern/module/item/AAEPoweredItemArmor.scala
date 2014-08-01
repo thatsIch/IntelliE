@@ -10,7 +10,7 @@ import net.minecraft.item.{ItemArmor, ItemStack}
  * @author thatsIch
  * @since 17.04.2014.
  */
-abstract class AAEPoweredItemArmor( protected val maxStorage: Double, armorType: Int )
+private[ aerodynamics ] abstract class AAEPoweredItemArmor( protected val maxStorage: Double, armorType: Int )
 	extends BaseItemArmor( ItemArmor.ArmorMaterial.DIAMOND, 0, armorType )
 	        with TSpecialArmor
 	        with TPowerStorage
