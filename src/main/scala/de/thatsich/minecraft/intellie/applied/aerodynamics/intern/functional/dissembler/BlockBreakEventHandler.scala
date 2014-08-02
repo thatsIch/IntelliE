@@ -34,6 +34,7 @@ private[ dissembler ] trait BlockBreakEventHandler
 		if( item.isInstanceOf[ DissemblerItem ] )
 		{
 			val drops: Seq[ ItemStack ] = event.drops.asScala
+
 			for( dropItemStack <- drops )
 			{
 				player.inventory.addItemStackToInventory( dropItemStack )

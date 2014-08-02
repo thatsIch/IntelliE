@@ -1,6 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler
 
 import net.minecraft.block.Block
+import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{Item, ItemStack}
 import net.minecraft.world.World
@@ -42,6 +43,13 @@ class DissemblerItem extends Item
 	override def onItemUseFirst( stack: ItemStack, player: EntityPlayer, world: World, x: Int, y: Int, z: Int, side: Int, hitX: Float, hitY: Float, hitZ: Float ): Boolean =
 	{
 		this.precisionHarvest( stack, world, player, x, y, z )
+	}
+
+	override def onEntitySwing( entityLiving: EntityLivingBase, stack: ItemStack ): Boolean =
+	{
+		this.extractAEPower( stack, this.energyPerBlockBreak )
+
+		false
 	}
 
 	/**
@@ -88,6 +96,13 @@ class DissemblerItem extends Item
 		list.add( message )
 	}
 
+	/**
+	 * Can harvest block?
+	 *
+	 * @param block block to be harvested
+	 *
+	 * @return true if you can harvest the block
+	 */
 	override def func_150897_b( block: Block ): Boolean = true
 
 	override def getDurabilityForDisplay( stack: ItemStack ): Double =
