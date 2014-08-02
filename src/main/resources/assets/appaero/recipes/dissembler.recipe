@@ -4,4 +4,5 @@ shaped=
     _ cqHoe _,
     cqHoe ae2:ItemMaterial.EngProcessor _,
     _ _ ae2:ToolNetherQuartzWrench
-    -> aero:appaero.dissembler
+    -> aero:
+    dissembler

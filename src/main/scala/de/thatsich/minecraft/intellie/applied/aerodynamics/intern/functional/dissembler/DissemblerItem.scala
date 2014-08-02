@@ -23,7 +23,7 @@ class DissemblerItem extends Item
 	this.setMaxStackSize( 1 )
 	this.hasSubtypes = false
 	this.setMaxDamage( 32 )
-	this.setUnlocalizedName( "appaero.dissembler" )
+	this.setUnlocalizedName( "dissembler" )
 	this.setTextureName( "appaero:dissembler" )
 
 	/**
