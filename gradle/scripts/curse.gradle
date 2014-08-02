@@ -16,7 +16,7 @@ private String getChangelog() {
 	try {
 		exec {
 			executable = "git"
-			args = ["log", "--oneline", "$lastGitTag..HEAD"]
+			args = ["log", "--pretty=%B", "$lastGitTag..HEAD"]
 			standardOutput = outStream
 		}
 
