@@ -1,19 +1,19 @@
-package de.thatsich.minecraft.api.mod.proxy
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy
 
 import java.io._
 
 import appeng.api.AEApi
 import appeng.api.recipes.{IRecipeHandler, IRecipeLoader}
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
-import de.thatsich.minecraft.api.mod.BaseConfigPath
+import de.thatsich.minecraft.api.mod.{Proxy, BaseConfigPath}
 
 /**
  *
  *
  * @author thatsIch
- * @since 09.07.2014.
+ * @since 03.08.2014.
  */
-abstract class BaseProxy extends Proxy
+abstract class AeroCommonProxy extends Proxy
 {
 	/**
 	 * Run before anything else. Read your config, create blocks, items, etc,
@@ -70,9 +70,6 @@ abstract class BaseProxy extends Proxy
 		def getFile( name: String ): BufferedReader =
 		{
 			val resourceAsStream: InputStream = getClass.getResourceAsStream( s"/assets/appaero/recipes/$name" )
-			if (resourceAsStream == null ) {
-				println("shiet?")
-			}
 			val reader: InputStreamReader = new InputStreamReader( resourceAsStream, "UTF-8" )
 
 			new BufferedReader( reader )

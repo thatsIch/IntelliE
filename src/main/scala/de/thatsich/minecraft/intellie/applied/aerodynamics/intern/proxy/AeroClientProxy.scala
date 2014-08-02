@@ -1,7 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy
 
 import cpw.mods.fml.common.event.FMLPreInitializationEvent
-import de.thatsich.minecraft.api.mod.proxy.BaseClientProxy
 
 /**
  *
@@ -9,7 +8,7 @@ import de.thatsich.minecraft.api.mod.proxy.BaseClientProxy
  * @author thatsIch
  * @since 04.04.2014.
  */
-final class AeroClientProxy extends BaseClientProxy
+final class AeroClientProxy extends AeroCommonProxy
 {
 	/**
 	 * Run before anything else. Read your config, create blocks, items, etc,

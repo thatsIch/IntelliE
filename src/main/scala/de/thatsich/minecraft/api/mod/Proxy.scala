@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.api.mod.proxy
+package de.thatsich.minecraft.api.mod
 
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 

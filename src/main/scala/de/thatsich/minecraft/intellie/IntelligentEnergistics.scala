@@ -1,8 +1,7 @@
 package de.thatsich.minecraft.intellie
 
 import cpw.mods.fml.common.Mod
-import de.thatsich.minecraft.api.mod.BaseMod
-import de.thatsich.minecraft.api.mod.proxy.Proxy
+import de.thatsich.minecraft.api.mod.{Proxy, BaseMod}
 import de.thatsich.minecraft.intellie.api.IEModInfo
 import de.thatsich.minecraft.intellie.intern.unloadchilds.{ChildUnloader, ChildUnloaderConfigAccess}
 

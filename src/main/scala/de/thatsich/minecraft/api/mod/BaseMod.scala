@@ -2,10 +2,10 @@ package de.thatsich.minecraft.api.mod
 
 import appeng.api.AEApi
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
+import de.thatsich.minecraft.api.mod.Proxy
 import de.thatsich.minecraft.api.mod.log.Log
 import de.thatsich.minecraft.api.mod.module.ModuleRegistry
 import de.thatsich.minecraft.api.mod.network.BasePacketPipeline
-import de.thatsich.minecraft.api.mod.proxy.Proxy
 
 /**
  *

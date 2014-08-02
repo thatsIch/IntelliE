@@ -2,8 +2,8 @@ package de.thatsich.minecraft.api.mod.module
 
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import cpw.mods.fml.common.registry.GameRegistry
+import de.thatsich.minecraft.api.mod.Proxy
 import de.thatsich.minecraft.api.mod.log.Log
-import de.thatsich.minecraft.api.mod.proxy.Proxy
 import net.minecraft.block.Block
 import net.minecraft.item.Item
 import net.minecraft.tileentity.TileEntity
