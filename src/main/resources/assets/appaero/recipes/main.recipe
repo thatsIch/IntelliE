@@ -1,0 +1,5 @@
+alias=mc -> minecraft
+alias=aero -> appaero
+alias=ae2 -> appliedenergistics2
+
+import=dissembler.recipe

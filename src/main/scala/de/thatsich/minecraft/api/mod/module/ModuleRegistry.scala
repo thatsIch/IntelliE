@@ -26,7 +26,9 @@ class ModuleRegistry( modules: Seq[ Module ], log: Log ) extends Proxy
 			case Some( block: Block ) => GameRegistry.registerBlock( block, block.getUnlocalizedName )
 			case Some( tileEntity: TileEntity ) => GameRegistry.registerTileEntity( tileEntity.getClass, tileEntity.getClass.toString )
 			//			case entity: Entity => EntityRegistry.registerModEntity( entity.getClass, entity.getClass.toString, entity.getEntityId, )
+
 			case None =>
+
 			case any => log.severe( s"Unknown Module $module with $any" )
 		}
 		//		RenderingRegistry.registerBlockHandler() ISBRH

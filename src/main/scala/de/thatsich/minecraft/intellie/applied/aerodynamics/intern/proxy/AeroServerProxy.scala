@@ -1,6 +1,11 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy
 
+import java.io._
+
+import appeng.api.AEApi
+import appeng.api.recipes.{IRecipeHandler, IRecipeLoader}
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
+import de.thatsich.minecraft.api.mod.BaseConfigPath
 import de.thatsich.minecraft.api.mod.proxy.BaseServerProxy
 
 /**
@@ -29,7 +34,7 @@ final class AeroServerProxy extends BaseServerProxy
 	 */
 	def init( event: FMLInitializationEvent ): Unit =
 	{
-
+		this.registerRecipes( )
 	}
 
 	/**
@@ -42,4 +47,43 @@ final class AeroServerProxy extends BaseServerProxy
 	{
 
 	}
+
+	private def registerRecipes( ): Unit =
+	{
+		val recipehandler: IRecipeHandler = AEApi.instance( ).registries( ).recipes( ).createNewRecipehandler( )
+		val externalRecipePath: String = new ExternalRecipePath
+		val externalRecipe = new File( externalRecipePath )
+
+		if( externalRecipe.exists( ) )
+		{
+			recipehandler.parseRecipes( new ExternalRecipeLoader, externalRecipe.getPath )
+		}
+		else
+		{
+			recipehandler.parseRecipes( new InternalRecipeLoader, "main.recipe" )
+		}
+
+		recipehandler.registerHandlers( )
+	}
+
+	private class InternalRecipeLoader extends IRecipeLoader
+	{
+		def getFile( name: String ): BufferedReader =
+		{
+			val resourceAsStream: InputStream = getClass.getResourceAsStream( "assets/appaero/recipes/" + name )
+			val reader: InputStreamReader = new InputStreamReader( resourceAsStream, "UTF-8" )
+
+			new BufferedReader( reader )
+		}
+	}
+
+	private class ExternalRecipeLoader extends IRecipeLoader
+	{
+		def getFile( path: String ): BufferedReader =
+		{
+			new BufferedReader( new FileReader( new File( path ) ) )
+		}
+	}
+
+	private class ExternalRecipePath extends BaseConfigPath("config", "AppliedEnergistics2", "IntelliE", "Aero", "dissembler.recipe")
 }

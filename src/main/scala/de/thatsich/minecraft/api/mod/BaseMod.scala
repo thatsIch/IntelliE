@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.api.mod
 
+import appeng.api.AEApi
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import de.thatsich.minecraft.api.mod.log.Log
 import de.thatsich.minecraft.api.mod.module.ModuleRegistry
@@ -33,9 +34,12 @@ abstract class BaseMod( implicit protected val log: Log,
 	def init( event: FMLInitializationEvent ): Unit =
 	{
 		this.log.info( "Init Begin" )
+//		AEApi.instance().registries().recipes().addNewSubItemResolver(new )
 		this.registries.init( event )
 		this.pipeline.init( event )
+
 		this.proxy.init( event )
+
 		this.log.info( "Init End" )
 	}
 

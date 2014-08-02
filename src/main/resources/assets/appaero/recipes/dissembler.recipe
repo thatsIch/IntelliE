@@ -1,0 +1,5 @@
+shaped=
+    _ ae2:ToolCertusQuartzHoe _
+    ae2:ToolCertusQuartzHoe ae2:ItemMaterial.EngProcessor _
+    _ _ ae2:ToolNetherQuartzWrench
+    -> aero:DissemblerItem

@@ -1,5 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler
 
+import cpw.mods.fml.common.registry.GameRegistry
+import de.thatsich.minecraft.intellie.applied.aerodynamics.api.AeroModInfo
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
@@ -50,6 +52,17 @@ class DissemblerItem extends Item
 		this.extractAEPower( stack, this.energyPerBlockBreak )
 
 		false
+	}
+
+
+	override def onItemRightClick( is: ItemStack, world: World, player: EntityPlayer ): ItemStack =
+	{
+		if( !world.isRemote )
+		{
+			player.openGui( AeroModInfo.id, 0, world, player.posX.toInt, player.posY.toInt, player.posZ.toInt )
+		}
+
+		is
 	}
 
 	/**
