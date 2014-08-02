@@ -1,8 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler
 
-import cpw.mods.fml.relauncher.{Side, SideOnly}
 import net.minecraft.block.Block
-import net.minecraft.client.renderer.texture.IIconRegister
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{Item, ItemStack}
 import net.minecraft.world.World
@@ -24,8 +22,8 @@ class DissemblerItem extends Item
 	final val injectAmount: Double = 10000
 
 	this.setMaxStackSize( 1 )
-	this.setMaxDamage( 32 )
 	this.hasSubtypes = false
+	this.setMaxDamage( 32 )
 	this.setUnlocalizedName( "appaero.dissembler" )
 	this.setTextureName( "appaero:dissembler" )
 
@@ -96,18 +94,11 @@ class DissemblerItem extends Item
 
 	override def func_150897_b( block: Block ): Boolean = true
 
-	override def getDamage( stack: ItemStack ): Int =
+	override def getDurabilityForDisplay( stack: ItemStack ): Double =
 	{
-		val current: Double = this.getAECurrentPower( stack )
-		val steps: Int = this.getMaxDamage
-		val max: Double = this.getAEMaxPower( stack )
-
-		val percent = current / max
-		val damage = steps - (steps * percent).toInt
-
-		stack.setItemDamage( damage )
-
-		damage
+		1 - this.getAECurrentPower( stack ) / this.getAEMaxPower( stack )
 	}
+
+	override def isBookEnchantable( stack: ItemStack, book: ItemStack ): Boolean = false
 }
 
