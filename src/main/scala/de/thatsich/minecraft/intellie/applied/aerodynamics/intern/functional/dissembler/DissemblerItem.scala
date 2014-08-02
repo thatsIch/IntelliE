@@ -17,10 +17,6 @@ class DissemblerItem extends Item
                              with BlockBreakEventHandler
                              with AEPowerStorage
 {
-	final val maxStorage: Double = 1000000
-
-	final val injectAmount: Double = 10000
-
 	this.setMaxStackSize( 1 )
 	this.hasSubtypes = false
 	this.setMaxDamage( 32 )
@@ -49,14 +45,14 @@ class DissemblerItem extends Item
 	}
 
 	/**
-	 * Sets the mining speed to 5000 without condition
+	 * Sets the mining speed to 5000 per default, configureable
 	 *
 	 * @param is ItemStack of this
 	 * @param b Mining block
 	 *
-	 * @return 5000
+	 * @return configured mining speed (5000 default)
 	 */
-	override def func_150893_a( is: ItemStack, b: Block ): Float = 5000
+	override def func_150893_a( is: ItemStack, b: Block ): Float = this.miningSpeed
 
 	/**
 	 * Does not activate blocks when sneaking
