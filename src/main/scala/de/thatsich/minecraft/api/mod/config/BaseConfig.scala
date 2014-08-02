@@ -11,8 +11,7 @@ import net.minecraftforge.common.config.Configuration
  * @author thatsIch
  * @since 04.04.2014.
  */
-abstract class BaseConfig( configPath: ConfigPath )
-	extends Config
+abstract class BaseConfig( configPath: ConfigPath ) extends Config
 {
 	private val configPathString: String = this.configPath
 	private val config                   = new Configuration( new File( this.configPathString ) )
