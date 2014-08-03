@@ -1,5 +1,7 @@
 package de.thatsich.minecraft.api.mod.module
 
+import de.thatsich.minecraft.api.mod.module.recipe.Recipe
+
 /**
  *
  *

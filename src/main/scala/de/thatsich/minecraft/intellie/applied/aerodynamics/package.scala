@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied
 
 import de.thatsich.minecraft.api.mod.log.Log
-import de.thatsich.minecraft.api.mod.{Abbreviation, Configs, Modules}
+import de.thatsich.minecraft.api.mod.{Abbreviation, Modules}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern._
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler.DissemblerModule
 import net.minecraft.creativetab.CreativeTabs
@@ -15,8 +15,6 @@ import net.minecraft.creativetab.CreativeTabs
 package object aerodynamics
 {
 	implicit lazy val abbreviation: Abbreviation = new AeroAbbreviation
-	implicit      val configs     : Configs      = new AeroConfigs
-	implicit      val itemStacks  : ItemStacks   = new ItemStacks
 
 	implicit val log: Log = new AeroLog( abbreviation )
 

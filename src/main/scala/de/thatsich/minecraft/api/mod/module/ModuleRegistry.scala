@@ -3,7 +3,7 @@ package de.thatsich.minecraft.api.mod.module
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import de.thatsich.minecraft.api.mod.Proxy
 import de.thatsich.minecraft.api.mod.log.Log
-import de.thatsich.minecraft.api.mod.module.registries.{BlockRegistry, ItemRegistry, TileEntityRegistry}
+import de.thatsich.minecraft.api.mod.module.registries.{BlockRegistry, ItemRegistry, RecipeRegistry, TileEntityRegistry}
 
 /**
  *
@@ -14,6 +14,7 @@ import de.thatsich.minecraft.api.mod.module.registries.{BlockRegistry, ItemRegis
 class ModuleRegistry( modules: Seq[ Module ], log: Log ) extends ItemRegistry
                                                                  with BlockRegistry
                                                                  with TileEntityRegistry
+                                                                 with RecipeRegistry
                                                                  with Proxy
 {
 
@@ -42,7 +43,7 @@ class ModuleRegistry( modules: Seq[ Module ], log: Log ) extends ItemRegistry
 	 */
 	def init( event: FMLInitializationEvent ): Unit =
 	{
-
+		this.registerRecipes( this.modules )
 	}
 
 	/**

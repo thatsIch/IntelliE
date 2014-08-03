@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.api.mod.module.item
 
 import de.thatsich.minecraft.api.mod.config.Config
-import de.thatsich.minecraft.api.mod.module.Recipe
+import de.thatsich.minecraft.api.mod.module.recipe.Recipe
 import net.minecraft.init.Blocks
 import net.minecraft.item.ItemBlock
 
