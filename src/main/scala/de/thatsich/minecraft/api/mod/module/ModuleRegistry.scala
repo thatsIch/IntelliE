@@ -1,12 +1,9 @@
 package de.thatsich.minecraft.api.mod.module
 
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
-import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.api.mod.Proxy
 import de.thatsich.minecraft.api.mod.log.Log
-import net.minecraft.block.Block
-import net.minecraft.item.Item
-import net.minecraft.tileentity.TileEntity
+import de.thatsich.minecraft.api.mod.module.registries.{BlockRegistry, ItemRegistry, TileEntityRegistry}
 
 /**
  *
@@ -14,26 +11,16 @@ import net.minecraft.tileentity.TileEntity
  * @author thatsIch
  * @since 23.04.2014.
  */
-class ModuleRegistry( modules: Seq[ Module ], log: Log ) extends Proxy
+class ModuleRegistry( modules: Seq[ Module ], log: Log ) extends ItemRegistry
+                                                                 with BlockRegistry
+                                                                 with TileEntityRegistry
+                                                                 with Proxy
 {
-	var entityID: Int = 0
 
-	for( module <- this.modules )
-	{
-		(module.item, module.block, module.tileEntity, module.entity).productIterator.foreach
-		{
-			case Some( item: Item ) => GameRegistry.registerItem( item, item.getUnlocalizedName )
-			case Some( block: Block ) => GameRegistry.registerBlock( block, block.getUnlocalizedName )
-			case Some( tileEntity: TileEntity ) => GameRegistry.registerTileEntity( tileEntity.getClass, tileEntity.getClass.toString )
-			//			case entity: Entity => EntityRegistry.registerModEntity( entity.getClass, entity.getClass.toString, entity.getEntityId, )
-
-			case None =>
-
-			case any => log.severe( s"Unknown Module $module with $any" )
-		}
-		//		RenderingRegistry.registerBlockHandler() ISBRH
-		//		RenderingRegistry.registerEntityRenderingHandler() Entity.class, Render
-	}
+	//	this.registerTileEntities( this.modules )
+	// 	RenderingRegistry.registerBlockHandler() ISBRH
+	//	RenderingRegistry.registerEntityRenderingHandler() Entity.class, Render
+	//	case entity: Entity => EntityRegistry.registerModEntity( entity.getClass, entity.getClass.toString, entity.getEntityId, )
 
 	/**
 	 * Run before anything else. Read your config, create blocks, items, etc,
@@ -43,7 +30,8 @@ class ModuleRegistry( modules: Seq[ Module ], log: Log ) extends Proxy
 	 */
 	def preInit( event: FMLPreInitializationEvent ): Unit =
 	{
-
+		this.registerItems( this.modules )
+		this.registerBlocks( this.modules )
 	}
 
 	/**

@@ -1,10 +1,5 @@
 package de.thatsich.minecraft.api.mod.module
 
-import net.minecraft.block.Block
-import net.minecraft.entity.Entity
-import net.minecraft.item.Item
-import net.minecraft.tileentity.TileEntity
-
 /**
  *
  *
@@ -13,8 +8,5 @@ import net.minecraft.tileentity.TileEntity
  */
 trait Module
 {
-	val item      : Option[ Item ]
-	val block     : Option[ Block ]
-	val tileEntity: Option[ TileEntity ]
-	val entity    : Option[ Entity ]
+	val moduleParts: Seq[ AnyRef ]
 }

@@ -1,8 +1,7 @@
 package de.thatsich.minecraft.api.mod
 
-import appeng.api.AEApi
+import com.google.common.base.Stopwatch
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
-import de.thatsich.minecraft.api.mod.Proxy
 import de.thatsich.minecraft.api.mod.log.Log
 import de.thatsich.minecraft.api.mod.module.ModuleRegistry
 import de.thatsich.minecraft.api.mod.network.BasePacketPipeline
@@ -22,33 +21,50 @@ abstract class BaseMod( implicit protected val log: Log,
 	protected val registries: ModuleRegistry     = new ModuleRegistry( modules, log )
 	protected val pipeline  : BasePacketPipeline = new BasePacketPipeline( log )
 
+	private val stopwatch: Stopwatch = Stopwatch.createUnstarted
+
 	def preInit( event: FMLPreInitializationEvent ): Unit =
 	{
 		this.log.info( "PreInit Begin" )
+
+		this.stopwatch.start
+
 		this.registries.preInit( event )
 		this.pipeline.preInit( event )
 		this.proxy.preInit( event )
-		this.log.info( "PreInit End" )
+
+		this.stopwatch.stop
+
+		this.log.info( s"PreInit End ($stopwatch)" )
 	}
 
 	def init( event: FMLInitializationEvent ): Unit =
 	{
 		this.log.info( "Init Begin" )
-//		AEApi.instance().registries().recipes().addNewSubItemResolver(new )
+
+		this.stopwatch.reset.start
+
 		this.registries.init( event )
 		this.pipeline.init( event )
-
 		this.proxy.init( event )
 
-		this.log.info( "Init End" )
+		this.stopwatch.stop
+
+		this.log.info( s"Init End ($stopwatch)" )
 	}
 
 	def postInit( event: FMLPostInitializationEvent ): Unit =
 	{
 		this.log.info( "PostInit Begin" )
+
+		this.stopwatch.reset.start
+
 		this.registries.postInit( event )
 		this.pipeline.postInit( event )
 		this.proxy.postInit( event )
-		this.log.info( "PostInit End" )
+
+		this.stopwatch.stop
+
+		this.log.info( s"PostInit End ($stopwatch)" )
 	}
 }
