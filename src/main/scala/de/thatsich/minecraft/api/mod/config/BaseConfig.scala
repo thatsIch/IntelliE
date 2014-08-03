@@ -1,8 +1,7 @@
 package de.thatsich.minecraft.api.mod.config
 
 import java.io.File
-
-import de.thatsich.minecraft.api.mod.ConfigPath
+import de.thatsich.minecraft.api.mod.util.string.ConfigPath
 import net.minecraftforge.common.config.Configuration
 
 /**

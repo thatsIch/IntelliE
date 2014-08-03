@@ -1,10 +1,10 @@
 package de.thatsich.minecraft.intellie.applied
 
 import de.thatsich.minecraft.api.mod.log.Log
-import de.thatsich.minecraft.api.mod.{Abbreviation, Modules}
+import de.thatsich.minecraft.api.mod.Modules
+import de.thatsich.minecraft.api.mod.util.string.Abbreviation
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern._
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler.DissemblerModule
-import net.minecraft.creativetab.CreativeTabs
 
 /**
  *
@@ -14,16 +14,12 @@ import net.minecraft.creativetab.CreativeTabs
  */
 package object aerodynamics
 {
-	implicit lazy val abbreviation: Abbreviation = new AeroAbbreviation
+	val abbreviation: Abbreviation = new AeroAbbreviation
 
 	implicit val log: Log = new AeroLog( abbreviation )
 
 	implicit val modules: Modules = new AeroModules( new DissemblerModule )
 
 	val icon = new AeroCreativeTabIcon
-	implicit val tab: CreativeTabs = new AeroCreativeTabs( icon, modules, log )
-
-
-	//		dissembler.setCreativeTab( tab )
-	//	GameRegistry.registerItem( itemStacks.dissembler, itemStacks.dissembler.getUnlocalizedName )
+	new AeroCreativeTabs( icon, modules, log )
 }

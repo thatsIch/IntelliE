@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler
 
 import cpw.mods.fml.common.registry.GameRegistry
-import de.thatsich.minecraft.intellie.applied.aerodynamics.api.AeroModInfo
+import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
@@ -59,7 +59,7 @@ class DissemblerItem extends Item
 	{
 		if( !world.isRemote )
 		{
-			player.openGui( AeroModInfo.id, 0, world, player.posX.toInt, player.posY.toInt, player.posZ.toInt )
+			player.openGui( AppliedAerodynamics.id, 0, world, player.posX.toInt, player.posY.toInt, player.posZ.toInt )
 		}
 
 		is

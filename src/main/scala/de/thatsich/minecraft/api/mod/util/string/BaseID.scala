@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.api.mod
+package de.thatsich.minecraft.api.mod.util.string
 
 /**
  * Simple ID container

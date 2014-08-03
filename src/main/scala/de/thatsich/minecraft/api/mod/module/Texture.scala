@@ -1,6 +1,6 @@
 package de.thatsich.minecraft.api.mod.module
 
-import de.thatsich.minecraft.api.mod.StringWrapper
+import de.thatsich.minecraft.api.mod.util.string.StringWrapper
 
 /**
  *

@@ -1,6 +1,6 @@
 package de.thatsich.minecraft.api.mod.log
 
-import de.thatsich.minecraft.api.mod.Abbreviation
+import de.thatsich.minecraft.api.mod.util.string.Abbreviation
 import org.apache.logging.log4j.{Level, LogManager}
 
 /**
