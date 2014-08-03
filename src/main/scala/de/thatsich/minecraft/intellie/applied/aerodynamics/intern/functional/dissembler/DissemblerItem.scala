@@ -1,6 +1,5 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler
 
-import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityLivingBase
@@ -44,14 +43,26 @@ class DissemblerItem extends Item
 	 */
 	override def onItemUseFirst( stack: ItemStack, player: EntityPlayer, world: World, x: Int, y: Int, z: Int, side: Int, hitX: Float, hitY: Float, hitZ: Float ): Boolean =
 	{
-		this.precisionHarvest( stack, world, player, x, y, z )
+		if( this.getAECurrentPower( stack ) > this.energyPerBlockBreak )
+		{
+			this.precisionHarvest( stack, world, player, x, y, z )
+		} else
+		{
+			true
+		}
 	}
 
 	override def onEntitySwing( entityLiving: EntityLivingBase, stack: ItemStack ): Boolean =
 	{
-		this.extractAEPower( stack, this.energyPerBlockBreak )
-
-		false
+		if( this.getAECurrentPower( stack ) > this.energyPerBlockBreak )
+		{
+			this.extractAEPower( stack, this.energyPerBlockBreak )
+			false
+		}
+		else
+		{
+			true
+		}
 	}
 
 
@@ -73,7 +84,10 @@ class DissemblerItem extends Item
 	 *
 	 * @return configured mining speed (5000 default)
 	 */
-	override def func_150893_a( is: ItemStack, b: Block ): Float = this.miningSpeed
+	override def func_150893_a( is: ItemStack, b: Block ): Float =
+	{
+		if( this.getAECurrentPower( is ) > this.energyPerBlockBreak ) this.miningSpeed else 0
+	}
 
 	/**
 	 * Does not activate blocks when sneaking
