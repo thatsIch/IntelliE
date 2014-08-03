@@ -1,7 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler
 
-import appeng.api.definitions.Blocks
-import appeng.api.util.AEItemDefinition
+import appeng.api.AEApi
 import net.minecraft.block.Block
 import net.minecraft.entity.player.{EntityPlayer, EntityPlayerMP}
 import net.minecraft.item.ItemStack
@@ -13,16 +12,23 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 28.07.2014.
  */
-private[ dissembler ] trait PrecisionHarvester extends MouseEventHandler //PlayerUseItemEventHandler
+private[ dissembler ] trait PrecisionHarvester extends MouseEventHandler
 {
 	def precisionHarvest( is: ItemStack, world: World, player: EntityPlayer, x: Int, y: Int, z: Int ): Boolean =
 	{
 		val block: Block = world.getBlock( x, y, z )
 		val meta: Int = world.getBlockMetadata( x, y, z )
 
-		precondition( is, world, player, block, x, y, z, meta ) ||
-			precisionHarvestBoth( is, player ) ||
-			precisionHarvestServer( is, world, player, x, y, z )
+		if( AEApi.instance( ).blocks( ).blockCharger.sameAs( new ItemStack( block ) ) )
+		{
+			false
+		}
+		else
+		{
+			precondition( is, world, player, block, x, y, z, meta ) ||
+				precisionHarvestBoth( is, player ) ||
+				precisionHarvestServer( is, world, player, x, y, z )
+		}
 	}
 
 	/**

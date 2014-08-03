@@ -46,10 +46,17 @@ class DissemblerItem extends Item
 		if( this.getAECurrentPower( stack ) > this.energyPerBlockBreak )
 		{
 			this.precisionHarvest( stack, world, player, x, y, z )
-		} else
+		}
+		else
 		{
 			true
 		}
+	}
+
+
+	override def onItemUse( p_77648_1_ : ItemStack, p_77648_2_ : EntityPlayer, p_77648_3_ : World, p_77648_4_ : Int, p_77648_5_ : Int, p_77648_6_ : Int, p_77648_7_ : Int, p_77648_8_ : Float, p_77648_9_ : Float, p_77648_10_ : Float ): Boolean = {
+		println("onItemUse")
+		super.onItemUse( p_77648_1_, p_77648_2_, p_77648_3_, p_77648_4_, p_77648_5_, p_77648_6_, p_77648_7_, p_77648_8_, p_77648_9_, p_77648_10_ )
 	}
 
 	override def onEntitySwing( entityLiving: EntityLivingBase, stack: ItemStack ): Boolean =
@@ -66,15 +73,15 @@ class DissemblerItem extends Item
 	}
 
 
-	override def onItemRightClick( is: ItemStack, world: World, player: EntityPlayer ): ItemStack =
-	{
-		if( !world.isRemote )
-		{
-			player.openGui( AppliedAerodynamics.id, 0, world, player.posX.toInt, player.posY.toInt, player.posZ.toInt )
-		}
-
-		is
-	}
+//	override def onItemRightClick( is: ItemStack, world: World, player: EntityPlayer ): ItemStack =
+//	{
+//		if( !world.isRemote )
+//		{
+//			player.openGui( AppliedAerodynamics.id, 0, world, player.posX.toInt, player.posY.toInt, player.posZ.toInt )
+//		}
+//
+//		is
+//	}
 
 	/**
 	 * Sets the mining speed to 5000 per default, configureable
