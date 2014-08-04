@@ -2,6 +2,8 @@ itemGroup.appliedAerodynamicsTab=Applied Aerodyanmics
 
 item.dissembler.name=Dissembler
 
+gui.storedenergy=Stored Energy
+
 item.ItemAeroHelm.name=Aero Helm
 item.ItemAeroChest.name=Aero Chest
 item.ItemAeroLegs.name=Aero Legs
