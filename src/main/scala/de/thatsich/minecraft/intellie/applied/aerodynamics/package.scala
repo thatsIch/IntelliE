@@ -1,9 +1,10 @@
 package de.thatsich.minecraft.intellie.applied
 
-import de.thatsich.minecraft.api.mod.log.Log
 import de.thatsich.minecraft.api.mod.Modules
+import de.thatsich.minecraft.api.mod.log.Log
 import de.thatsich.minecraft.api.mod.util.string.Abbreviation
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern._
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.bench.ModificationWorkbenchModule
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler.DissemblerModule
 
 /**
@@ -18,7 +19,10 @@ package object aerodynamics
 
 	implicit val log: Log = new AeroLog( abbreviation )
 
-	implicit val modules: Modules = new AeroModules( new DissemblerModule )
+	implicit val modules: Modules = new AeroModules(
+		new DissemblerModule,
+		new ModificationWorkbenchModule
+	)
 
 	val icon = new AeroCreativeTabIcon
 	new AeroCreativeTabs( icon, modules, log )
