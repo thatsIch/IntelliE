@@ -1,6 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler
 
-import de.thatsich.minecraft.api.mod.util.string.BaseResourcePath
+import de.thatsich.minecraft.common.string.BaseResourcePath
 
 /**
  *

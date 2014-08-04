@@ -1,6 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.suite.chest
 
-import de.thatsich.minecraft.api.mod.module.BaseModule
+import de.thatsich.minecraft.common.module.BaseModule
 import net.minecraft.item.Item
 
 /**

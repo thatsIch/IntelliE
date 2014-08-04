@@ -1,6 +1,6 @@
 package de.thatsich.minecraft.intellie.intern.unloadchilds
 
-import de.thatsich.minecraft.api.mod.config.BaseConfig
+import de.thatsich.minecraft.common.config.BaseConfig
 
 /**
  *

@@ -1,8 +1,8 @@
 package de.thatsich.minecraft.intellie.applied
 
-import de.thatsich.minecraft.api.mod.Modules
-import de.thatsich.minecraft.api.mod.log.Log
-import de.thatsich.minecraft.api.mod.util.string.Abbreviation
+import de.thatsich.minecraft.common.Modules
+import de.thatsich.minecraft.common.log.Log
+import de.thatsich.minecraft.common.string.Abbreviation
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern._
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.bench.ModificationWorkbenchModule
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler.DissemblerModule

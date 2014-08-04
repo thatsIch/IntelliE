@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern
 
-import de.thatsich.minecraft.api.mod.log.BaseLog
-import de.thatsich.minecraft.api.mod.util.string.Abbreviation
+import de.thatsich.minecraft.common.log.BaseLog
+import de.thatsich.minecraft.common.string.Abbreviation
 
 /**
  *

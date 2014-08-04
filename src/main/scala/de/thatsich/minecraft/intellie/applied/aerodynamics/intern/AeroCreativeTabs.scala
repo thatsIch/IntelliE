@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern
 
-import de.thatsich.minecraft.api.mod.Modules
-import de.thatsich.minecraft.api.mod.log.Log
+import de.thatsich.minecraft.common.Modules
+import de.thatsich.minecraft.common.log.Log
 import net.minecraft.block.Block
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.item.Item

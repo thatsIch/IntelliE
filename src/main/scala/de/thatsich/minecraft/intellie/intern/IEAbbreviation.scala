@@ -1,6 +1,6 @@
 package de.thatsich.minecraft.intellie.intern
 
-import de.thatsich.minecraft.api.mod.util.string.Abbreviation
+import de.thatsich.minecraft.common.string.Abbreviation
 
 /**
  *
