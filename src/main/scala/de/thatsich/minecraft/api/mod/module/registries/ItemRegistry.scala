@@ -10,7 +10,7 @@ import net.minecraft.item.Item
  * @author thatsIch
  * @since 03.08.2014.
  */
-trait ItemRegistry
+trait ItemRegistry extends CamelCaseParser
 {
 	def registerItems( modules: Seq[ Module ] ): Unit =
 	{
@@ -26,6 +26,13 @@ trait ItemRegistry
 
 	private def registerItem( item: Item ): Unit =
 	{
-		GameRegistry.registerItem( item, item.getUnlocalizedName )
+		GameRegistry.registerItem( item, this.getItemName( item ) )
+	}
+
+	private def getItemName( item: Item ): String =
+	{
+		val className: String = item.getClass.getSimpleName
+
+		this.parseCamelCase( className )
 	}
 }

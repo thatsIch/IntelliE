@@ -11,5 +11,6 @@ import net.minecraft.block.material.Material
  */
 class ModificationWorkbenchBlock extends Block( Material.iron )
 {
-
+	this.setBlockName("appaero.workbench")
+	this.setBlockTextureName("workbench")
 }

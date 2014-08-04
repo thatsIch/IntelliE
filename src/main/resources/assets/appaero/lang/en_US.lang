@@ -1,8 +1,8 @@
-itemGroup.appliedAerodynamicsTab=Applied Aerodyanmics
+itemGroup.appaero=Applied Aerodyanmics
 
-item.dissembler.name=Dissembler
+item.appaero.dissembler.name=Dissembler
 
-gui.storedenergy=Stored Energy
+tile.appaero.workbench.name=Modification Workbench
 
 item.ItemAeroHelm.name=Aero Helm
 item.ItemAeroChest.name=Aero Chest

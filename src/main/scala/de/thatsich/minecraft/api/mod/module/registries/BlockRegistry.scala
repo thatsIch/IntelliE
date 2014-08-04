@@ -3,7 +3,6 @@ package de.thatsich.minecraft.api.mod.module.registries
 import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.api.mod.module.Module
 import net.minecraft.block.Block
-import net.minecraft.item.ItemBlock
 
 /**
  *
@@ -11,7 +10,7 @@ import net.minecraft.item.ItemBlock
  * @author thatsIch
  * @since 03.08.2014.
  */
-trait BlockRegistry
+trait BlockRegistry extends CamelCaseParser
 {
 	def registerBlocks( modules: Seq[ Module ] ): Unit =
 	{
@@ -27,13 +26,18 @@ trait BlockRegistry
 
 	private def registerBlock( block: Block ): Unit =
 	{
-		GameRegistry.registerBlock( block, block.getUnlocalizedName )
+		GameRegistry.registerBlock( block, this.getBlockName( block ) )
 	}
 
-	private def registerBlock( block: Block, itemBlock: ItemBlock ): Unit =
+	//	private def registerBlock( block: Block, itemBlock: ItemBlock ): Unit =
+	//	{
+	//		GameRegistry.registerBlock( block, itemBlock.getClass,  this.getBlockName( block ) )
+	//	}
+
+	private def getBlockName( block: Block ): String =
 	{
-		GameRegistry.registerBlock( block, itemBlock.getClass, block.getUnlocalizedName )
+		val className: String = block.getClass.getSimpleName
+
+		this.parseCamelCase( className )
 	}
-
-
 }
