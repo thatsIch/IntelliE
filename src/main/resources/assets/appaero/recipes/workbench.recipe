@@ -1,0 +1,14 @@
+alias=mc -> minecraft
+alias=aero -> appaero
+alias=ae2 -> appliedenergistics2
+
+group=mc:iron_ingot -> iron
+group=ae2:BlockCellWorkbench -> cellwb
+group=ae2:ItemMaterial.EngProcessor -> eng
+group=ae2:ItemMaterial.CalcProcessor -> calc
+
+shaped=
+    eng calc eng,
+    iron cellwb iron,
+    iron iron iron
+    -> aero:workbench
