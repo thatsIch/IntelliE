@@ -25,7 +25,7 @@ import scala.collection.mutable
  * @since 13.04.2014.
  */
 @ChannelHandler.Sharable
-class BasePacketPipeline( log: Log ) extends MessageToMessageCodec[ FMLProxyPacket, Packet ] with Proxy
+class PacketPipeline( log: Log ) extends MessageToMessageCodec[ FMLProxyPacket, Packet ] with Proxy
 {
 	type PacketClass = Class[ _ <: Packet ]
 	private[ this ] val channels          = NetworkRegistry.INSTANCE.newChannel( "base", this )

@@ -4,7 +4,7 @@ import com.google.common.base.Stopwatch
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.ModuleRegistry
-import de.thatsich.minecraft.common.network.BasePacketPipeline
+import de.thatsich.minecraft.common.network.PacketPipeline
 
 /**
  *
@@ -12,21 +12,19 @@ import de.thatsich.minecraft.common.network.BasePacketPipeline
  * @author thatsIch
  * @since 06.04.2014.
  */
-abstract class BaseMod( implicit protected val log: Log,
-                        implicit protected val modules: Modules )
+abstract class BaseMod( implicit protected val log: Log, implicit protected val modules: Modules )
 	extends Proxy
 {
 	def proxy: Proxy
 
-	protected val registries: ModuleRegistry     = new ModuleRegistry( modules, log )
-	protected val pipeline  : BasePacketPipeline = new BasePacketPipeline( log )
+	protected val registries: ModuleRegistry = new ModuleRegistry( modules, log )
+	protected val pipeline  : PacketPipeline = new PacketPipeline( log )
 
 	private val stopwatch: Stopwatch = Stopwatch.createUnstarted
 
 	def preInit( event: FMLPreInitializationEvent ): Unit =
 	{
 		this.log.info( "PreInit Begin" )
-
 		this.stopwatch.start
 
 		this.registries.preInit( event )
@@ -41,7 +39,6 @@ abstract class BaseMod( implicit protected val log: Log,
 	def init( event: FMLInitializationEvent ): Unit =
 	{
 		this.log.info( "Init Begin" )
-
 		this.stopwatch.reset.start
 
 		this.registries.init( event )
@@ -56,7 +53,6 @@ abstract class BaseMod( implicit protected val log: Log,
 	def postInit( event: FMLPostInitializationEvent ): Unit =
 	{
 		this.log.info( "PostInit Begin" )
-
 		this.stopwatch.reset.start
 
 		this.registries.postInit( event )
