@@ -10,5 +10,5 @@ import net.minecraft.tileentity.TileEntity
  */
 class WorkbenchTileEntity extends TileEntity
 {
-
+	override def canUpdate: Boolean = false
 }
