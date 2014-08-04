@@ -3,12 +3,11 @@ alias=aero -> appaero
 alias=ae2 -> appliedenergistics2
 
 group=mc:iron_ingot -> iron
-group=ae2:BlockCellWorkbench -> cellwb
 group=ae2:ItemMaterial.EngProcessor -> eng
-group=ae2:ItemMaterial.CalcProcessor -> calc
+group=ae2:ItemMaterial.CertusQuartzCrystalCharged -> charged
 
 shaped=
-    eng calc eng,
-    iron cellwb iron,
+    eng mc:crafting_table eng,
+    charged mc:chest charged,
     iron iron iron
     -> aero:workbench
