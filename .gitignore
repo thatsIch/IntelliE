@@ -18,3 +18,6 @@
 # include git important files
 !.gitmodules
 !.gitignore
+
+# include travis build
+!.travis.yml

@@ -17,6 +17,7 @@ class WorkbenchTileEntity extends TileEntity with IInventory
 	private val items: Array[ ItemStack ] = new Array[ ItemStack ]( 6 )
 
 
+
 	override def canUpdate: Boolean = false
 
 	def getSizeInventory: Int = this.items.length
@@ -70,6 +71,8 @@ class WorkbenchTileEntity extends TileEntity with IInventory
 
 		is
 	}
+
+
 
 	def openInventory( ): Unit =
 	{}
