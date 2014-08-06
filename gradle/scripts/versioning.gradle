@@ -126,6 +126,17 @@ private void tag(String oldTag, String newTag) {
 	}
 }
 
+/**
+ * Pushes all outstanding commits
+ */
+private void push() {
+    // call git command.
+    exec {
+        executable = 'git'
+        args = ['push', '--tags']
+    }
+}
+
 task incMajor(group: 'versioning', description: 'Increments project major project.ext.version.') << {
 	String oldTag = VERSION_PROJECT.toString()
 	String newTag = VERSION_PROJECT.incMajor().toString()
@@ -145,4 +156,8 @@ task incRev(group: 'versioning', description: 'Increments project reproject.ext.
 	String newTag = VERSION_PROJECT.incRevision().toString()
 
 	tag(oldTag, newTag)
+}
+
+task push(group: 'versioning', description: 'Pushes all outstanding commits to remote', dependsOn: 'curse') {
+    push()
 }

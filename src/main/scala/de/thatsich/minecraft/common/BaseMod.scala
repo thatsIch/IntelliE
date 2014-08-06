@@ -1,10 +1,12 @@
 package de.thatsich.minecraft.common
 
 import com.google.common.base.Stopwatch
+import cpw.mods.fml.common.FMLCommonHandler
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.ModuleRegistry
 import de.thatsich.minecraft.common.network.PacketPipeline
+import net.minecraft.client.Minecraft
 
 /**
  *
