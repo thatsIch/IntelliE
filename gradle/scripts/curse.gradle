@@ -1,4 +1,3 @@
-def theLastGitTag = getLastGitTag()
 def theChangelog = getChangelog()
 def theLastGitPush = getLastGitPush()
 
@@ -30,26 +29,6 @@ private String getChangelog() {
 	return changelog
 }
 
-private String getLastGitTag() {
-	def outStream = new ByteArrayOutputStream()
-	def lastGitTag = ""
-
-	try {
-		exec {
-			executable = "git"
-			args = ["describe", "--abbrev=0"]
-			standardOutput = outStream
-		}
-
-		lastGitTag = outStream.toString().trim()
-	}
-	catch (e) {
-		logger.quiet "Error while fetching last git tag: $e"
-	}
-
-	return lastGitTag
-}
-
 private String getLastGitPush() {
 	def outStream = new ByteArrayOutputStream()
 	def lastGitPush = ""
@@ -72,10 +51,6 @@ private String getLastGitPush() {
 
 task printChangelog(group: 'Debug', description: 'Prints the theChangelog for debugging purposes.') << {
 	logger.quiet "The last changelog:\n\n$theChangelog"
-}
-
-task printLastGitTag(group: 'Debug', description: 'Prints the last git tag for debugging purposes.') << {
-	logger.quiet "The last git tag: $theLastGitTag"
 }
 
 task printLastGitPush(group: 'Debug', description: 'Prints the hash of last git push for debugging purposes') << {
