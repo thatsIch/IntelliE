@@ -18,14 +18,14 @@ trait TileEntityRegistry
 		{
 			module.moduleParts.foreach
 			{
-				case te: TileEntity => this.registerTileEntity( te )
+				case te: Class[TileEntity] => this.registerTileEntity( te )
 				case _ =>
 			}
 		}
 	}
 
-	private def registerTileEntity( tileEntity: TileEntity ): Unit =
+	private def registerTileEntity( tileEntity: Class[TileEntity] ): Unit =
 	{
-		GameRegistry.registerTileEntity( tileEntity.getClass, tileEntity.getClass.toString )
+		GameRegistry.registerTileEntity( tileEntity, tileEntity.toString )
 	}
 }

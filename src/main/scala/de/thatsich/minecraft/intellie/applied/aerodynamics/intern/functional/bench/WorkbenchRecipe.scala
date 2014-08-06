@@ -1,6 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.bench
 
 import de.thatsich.minecraft.common.module.recipe.BaseRecipe
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.bench.recipe.{InternalWorkbenchRecipePath, ExternalWorkbenchRecipePath}
 
 /**
  *

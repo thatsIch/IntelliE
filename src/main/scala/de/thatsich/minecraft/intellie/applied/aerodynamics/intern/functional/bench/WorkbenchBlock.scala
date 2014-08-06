@@ -1,9 +1,11 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.bench
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
 import net.minecraft.block.BlockContainer
 import net.minecraft.block.material.Material
 import net.minecraft.client.renderer.texture.IIconRegister
+import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.tileentity.TileEntity
 import net.minecraft.util.IIcon
 import net.minecraft.world.{IBlockAccess, World}
@@ -55,5 +57,16 @@ class WorkbenchBlock extends BlockContainer( Material.iron )
 		}
 	}
 
-	def createNewTileEntity( p_149915_1_ : World, p_149915_2_ : Int ): TileEntity = new WorkbenchTileEntity
+
+	override def onBlockActivated( world: World, x: Int, y: Int, z: Int, player: EntityPlayer, side: Int, hitX: Float, hitY: Float, p_149727_9_ : Float ): Boolean =
+	{
+		if( !world.isRemote )
+		{
+			player.openGui( AppliedAerodynamics, 0, world, x, y, z )
+		}
+
+		true
+	}
+
+	def createNewTileEntity( world: World, par2int: Int ): TileEntity = new WorkbenchTileEntity
 }

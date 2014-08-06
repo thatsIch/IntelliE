@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.bench
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.bench.recipe
 
 import de.thatsich.minecraft.common.string.BaseConfigPath
 
