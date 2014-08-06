@@ -126,21 +126,21 @@ private void tag(String oldTag, String newTag) {
 	}
 }
 
-task incMajor(group: 'versioning', description: 'Increments project major project.ext.version.', dependsOn: "curse") << {
+task incMajor(group: 'versioning', description: 'Increments project major project.ext.version.') << {
 	String oldTag = VERSION_PROJECT.toString()
 	String newTag = VERSION_PROJECT.incMajor().toString()
 
 	tag(oldTag, newTag)
 }
 
-task incMinor(group: 'versioning', description: 'Increments project minor project.ext.version.', dependsOn: "curse") << {
+task incMinor(group: 'versioning', description: 'Increments project minor project.ext.version.') << {
 	String oldTag = VERSION_PROJECT.toString()
 	String newTag = VERSION_PROJECT.incMinor().toString()
 
 	tag(oldTag, newTag)
 }
 
-task incRev(group: 'versioning', description: 'Increments project reproject.ext.version.', dependsOn: "curse") << {
+task incRev(group: 'versioning', description: 'Increments project reproject.ext.version.') << {
 	String oldTag = VERSION_PROJECT.toString()
 	String newTag = VERSION_PROJECT.incRevision().toString()
 
