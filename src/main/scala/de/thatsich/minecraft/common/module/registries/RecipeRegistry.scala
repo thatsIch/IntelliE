@@ -13,7 +13,7 @@ import de.thatsich.minecraft.common.module.recipe.Recipe
  * @author thatsIch
  * @since 03.08.2014.
  */
-trait RecipeRegistry
+class RecipeRegistry
 {
 	def registerRecipes( modules: Seq[ Module ] ): Unit =
 	{

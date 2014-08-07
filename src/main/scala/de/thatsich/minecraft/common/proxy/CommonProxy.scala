@@ -1,10 +1,12 @@
 package de.thatsich.minecraft.common.proxy
 
+
+import appeng.api.AEApi
 import com.google.common.base.Stopwatch
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import de.thatsich.minecraft.common.Modules
 import de.thatsich.minecraft.common.log.{Log, NamedLog}
-import de.thatsich.minecraft.common.module.ModuleRegistry
+import de.thatsich.minecraft.common.module.registries.{GuiRegistry, TileEntityRegistry, RecipeRegistry, BlockRegistry, ItemRegistry}
 import de.thatsich.minecraft.common.string.Abbreviation
 
 
@@ -40,7 +42,6 @@ abstract class CommonProxy extends EventProxy
 	def mod: AnyRef
 
 	protected final val log: Log = new NamedLog(this.abbr)
-	private final val registries: ModuleRegistry = new ModuleRegistry(modules, log)
 	protected final val stopwatch: Stopwatch = Stopwatch.createUnstarted
 
 	/**
@@ -54,7 +55,11 @@ abstract class CommonProxy extends EventProxy
 		this.log.info("PreInit Begin")
 		this.stopwatch.reset.start
 
-		this.registries.preInit( event )
+		val items: ItemRegistry = new ItemRegistry
+		val blocks: BlockRegistry = new BlockRegistry
+
+		items.registerItems(this.modules)
+		blocks.registerBlocks(this.modules)
 
 		this.stopwatch.stop
 		this.log.info(s"PreInit End ($stopwatch)")
@@ -71,7 +76,13 @@ abstract class CommonProxy extends EventProxy
 		this.log.info("Init Begin")
 		this.stopwatch.reset.start
 
-		this.registries.init(event)
+		val recipes: RecipeRegistry = new RecipeRegistry
+		val tiles: TileEntityRegistry = new TileEntityRegistry
+		val guis: GuiRegistry = new GuiRegistry
+
+		recipes.registerRecipes(this.modules)
+		tiles.registerTileEntities(this.modules)
+		guis.registerGuis(this.modules)
 
 		this.stopwatch.stop
 		this.log.info(s"Init End ($stopwatch)")
@@ -86,8 +97,6 @@ abstract class CommonProxy extends EventProxy
 	{
 		this.log.info("PostInit Begin")
 		this.stopwatch.reset.start
-
-		this.registries.postInit(event)
 
 		this.stopwatch.stop
 		this.log.info(s"PostInit End ($stopwatch)")

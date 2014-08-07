@@ -10,7 +10,7 @@ import net.minecraft.item.Item
  * @author thatsIch
  * @since 03.08.2014.
  */
-trait ItemRegistry extends CamelCaseParser
+class ItemRegistry extends CamelCaseParser
 {
 	def registerItems( modules: Seq[ Module ] ): Unit =
 	{

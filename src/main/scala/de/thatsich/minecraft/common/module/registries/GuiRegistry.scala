@@ -15,7 +15,7 @@ import net.minecraft.tileentity.TileEntity
  * @author thatsIch
  * @since 06.08.2014.
  */
-trait GuiRegistry
+class GuiRegistry
 {
 	private var id = 0
 	private val table: util.Hashtable[Class[_ <: IGuiHandler], IGuiHandler] = new util.Hashtable[Class[_ <: IGuiHandler], IGuiHandler]()

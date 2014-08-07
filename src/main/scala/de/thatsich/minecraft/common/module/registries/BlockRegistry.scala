@@ -10,7 +10,7 @@ import net.minecraft.block.Block
  * @author thatsIch
  * @since 03.08.2014.
  */
-trait BlockRegistry extends CamelCaseParser
+class BlockRegistry extends CamelCaseParser
 {
 	def registerBlocks( modules: Seq[ Module ] ): Unit =
 	{
