@@ -1,10 +1,12 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler
 
+
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{Item, ItemStack}
 import net.minecraft.world.World
+
 
 /**
  *
@@ -18,11 +20,11 @@ class DissemblerItem extends Item
                              with BlockBreakEventHandler
                              with AEPowerStorage
 {
-	this.setMaxStackSize( 1 )
+	this.setMaxStackSize(1)
 	this.hasSubtypes = false
-	this.setMaxDamage( 32 )
-	this.setUnlocalizedName( "appaero.dissembler" )
-	this.setTextureName( "appaero:dissembler" )
+	this.setMaxDamage(32)
+	this.setUnlocalizedName("appaero.dissembler")
+	this.setTextureName("appaero:dissembler")
 
 	/**
 	 * harvests block into inventory
@@ -38,13 +40,13 @@ class DissemblerItem extends Item
 	 * @param hitX hitbox x
 	 * @param hitY hitbox y
 	 * @param hitZ hitbox z
-	 * @return
+	 * @return true to stop further processing
 	 */
-	override def onItemUseFirst( stack: ItemStack, player: EntityPlayer, world: World, x: Int, y: Int, z: Int, side: Int, hitX: Float, hitY: Float, hitZ: Float ): Boolean =
+	override def onItemUseFirst(stack: ItemStack, player: EntityPlayer, world: World, x: Int, y: Int, z: Int, side: Int, hitX: Float, hitY: Float, hitZ: Float): Boolean =
 	{
-		if( this.getAECurrentPower( stack ) > this.energyPerBlockBreak )
+		if (this.getAECurrentPower(stack) > this.energyPerBlockBreak)
 		{
-			this.precisionHarvest( stack, world, player, x, y, z )
+			this.precisionHarvest(stack, world, player, x, y, z)
 		}
 		else
 		{
@@ -52,13 +54,20 @@ class DissemblerItem extends Item
 		}
 	}
 
-	override def onEntitySwing( elb: EntityLivingBase, stack: ItemStack ): Boolean =
+	/**
+	 * When player.swingItem is executed
+	 *
+	 * @param elb swinging entity
+	 * @param stack with item
+	 * @return true to cancel further processing
+	 */
+	override def onEntitySwing(elb: EntityLivingBase, stack: ItemStack): Boolean =
 	{
-		if( this.getAECurrentPower( stack ) > this.energyPerBlockBreak && elb.isClientWorld )
+		if (this.getAECurrentPower(stack) > this.energyPerBlockBreak && elb.isClientWorld)
 		{
-			if( !this.inUse )
+			if (!this.inUse)
 			{
-				this.extractAEPower( stack, this.energyPerBlockBreak )
+				this.extractAEPower(stack, this.energyPerBlockBreak)
 			}
 
 			this.inUse
@@ -77,9 +86,9 @@ class DissemblerItem extends Item
 	 *
 	 * @return configured mining speed (5000 default)
 	 */
-	override def func_150893_a( is: ItemStack, b: Block ): Float =
+	override def func_150893_a(is: ItemStack, b: Block): Float =
 	{
-		if( this.getAECurrentPower( is ) > this.energyPerBlockBreak ) this.miningSpeed else 0
+		if (this.getAECurrentPower(is) > this.energyPerBlockBreak) this.miningSpeed else 0
 	}
 
 	/**
@@ -93,27 +102,27 @@ class DissemblerItem extends Item
 	 *
 	 * @return true
 	 */
-	override def doesSneakBypassUse( world: World, x: Int, y: Int, z: Int, player: EntityPlayer ): Boolean = true
+	override def doesSneakBypassUse(world: World, x: Int, y: Int, z: Int, player: EntityPlayer): Boolean = true
 
 	override def isRepairable: Boolean = false
 
 	override def isDamageable: Boolean = true
 
-	override def isDamaged( stack: ItemStack ): Boolean = true
+	override def isDamaged(stack: ItemStack): Boolean = true
 
-	override def addInformation( itemStack: ItemStack, player: EntityPlayer, information: java.util.List[ _ ], advToolTips: Boolean ) =
+	override def addInformation(itemStack: ItemStack, player: EntityPlayer, information: java.util.List[_], advToolTips: Boolean) =
 	{
-		val currentPower = this.getAECurrentPower( itemStack )
+		val currentPower = this.getAECurrentPower(itemStack)
 		val roundCurrent = currentPower.toInt
-		val maxPower = this.getAEMaxPower( itemStack )
+		val maxPower = this.getAEMaxPower(itemStack)
 
 		val percent = (currentPower / maxPower * 100).toInt
 		// TODO format scala int to whole number without 10^x
 
 		val message = s"Stored Energy: $roundCurrent AE - $percent%"
 
-		val list = information.asInstanceOf[ java.util.List[ String ] ]
-		list.add( message )
+		val list = information.asInstanceOf[java.util.List[String]]
+		list.add(message)
 	}
 
 	/**
@@ -123,13 +132,13 @@ class DissemblerItem extends Item
 	 *
 	 * @return true if you can harvest the block
 	 */
-	override def func_150897_b( block: Block ): Boolean = true
+	override def func_150897_b(block: Block): Boolean = true
 
-	override def getDurabilityForDisplay( stack: ItemStack ): Double =
+	override def getDurabilityForDisplay(stack: ItemStack): Double =
 	{
-		1 - this.getAECurrentPower( stack ) / this.getAEMaxPower( stack )
+		1 - this.getAECurrentPower(stack) / this.getAEMaxPower(stack)
 	}
 
-	override def isBookEnchantable( stack: ItemStack, book: ItemStack ): Boolean = false
+	override def isBookEnchantable(stack: ItemStack, book: ItemStack): Boolean = false
 }
 

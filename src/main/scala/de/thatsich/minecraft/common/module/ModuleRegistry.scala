@@ -1,9 +1,10 @@
 package de.thatsich.minecraft.common.module
 
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
-import de.thatsich.minecraft.common.Proxy
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.registries._
+import de.thatsich.minecraft.common.proxy.EventProxy
+
 
 /**
  *
@@ -16,7 +17,7 @@ class ModuleRegistry( modules: Seq[ Module ], log: Log ) extends ItemRegistry
                                                                  with TileEntityRegistry
                                                                  with RecipeRegistry
                                                                  with GuiRegistry
-                                                                 with Proxy
+                                                                 with EventProxy
 {
 
 	//	this.registerTileEntities( this.modules )
@@ -45,7 +46,11 @@ class ModuleRegistry( modules: Seq[ Module ], log: Log ) extends ItemRegistry
 	def init( event: FMLInitializationEvent ): Unit =
 	{
 		this.registerRecipes( this.modules )
-		this.registerGuis( this.modules )
+
+		//
+		val guiAssoc = this.registerGuis( this.modules )
+
+		//
 	}
 
 	/**

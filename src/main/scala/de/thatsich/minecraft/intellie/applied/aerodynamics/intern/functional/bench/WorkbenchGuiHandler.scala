@@ -1,41 +1,30 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.bench
 
-import cpw.mods.fml.common.network.{IGuiHandler, NetworkRegistry}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
+
+import de.thatsich.minecraft.common.module.registries.ModuleGuiHandler
 import net.minecraft.entity.player.EntityPlayer
+import net.minecraft.tileentity.TileEntity
 import net.minecraft.world.World
 
+
 /**
- * TODO can only have one per mod
+ * Handles the creation of the needed elements depending
+ * if its server or client side
  *
  * @author thatsIch
  * @since 06.08.2014.
  */
-class WorkbenchGuiHandler extends IGuiHandler
+class WorkbenchGuiHandler extends ModuleGuiHandler
 {
-	NetworkRegistry.INSTANCE.registerGuiHandler( AppliedAerodynamics, this )
+	//	NetworkRegistry.INSTANCE.registerGuiHandler( AppliedAerodynamics, this )
 
-	def getServerGuiElement( ID: Int, player: EntityPlayer, world: World, x: Int, y: Int, z: Int ): AnyRef =
+	def getServerGuiElement(player: EntityPlayer, tile: TileEntity): AnyRef =
 	{
-		ID match
-		{
-			case 0 =>
-				world.getTileEntity( x, y, z ) match
-				{
-					case workbench: WorkbenchTileEntity => new WorkbenchContainer( player.inventory, workbench )
-				}
-		}
+		new WorkbenchContainer(player.inventory, tile.asInstanceOf[WorkbenchTileEntity])
 	}
 
-	def getClientGuiElement( ID: Int, player: EntityPlayer, world: World, x: Int, y: Int, z: Int ): AnyRef =
+	def getClientGuiElement(player: EntityPlayer, tile: TileEntity): AnyRef =
 	{
-		ID match
-		{
-			case 0 =>
-				world.getTileEntity( x, y, z ) match
-				{
-					case workbench: WorkbenchTileEntity => new WorkbechGui(player.inventory, workbench)
-				}
-		}
+		new WorkbechGui(player.inventory, tile.asInstanceOf[WorkbenchTileEntity])
 	}
 }

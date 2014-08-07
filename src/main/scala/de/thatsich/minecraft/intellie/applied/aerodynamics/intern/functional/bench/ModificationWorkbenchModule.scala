@@ -8,4 +8,4 @@ import de.thatsich.minecraft.common.module.BaseModule
  * @author thatsIch
  * @since 04.08.2014.
  */
-class ModificationWorkbenchModule extends BaseModule( new WorkbenchBlock, new WorkbenchRecipe, classOf[ WorkbenchGuiHandler ] )
+class ModificationWorkbenchModule extends BaseModule( new WorkbenchBlock, new WorkbenchRecipe, new WorkbenchGuiHandler )

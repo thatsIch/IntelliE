@@ -9,7 +9,7 @@ import org.apache.logging.log4j.{Level, LogManager}
  * @author thatsIch
  * @since 04.04.2014.
  */
-abstract class BaseLog( abbr: Abbreviation ) extends Log
+class NamedLog( abbr: Abbreviation ) extends Log
 {
 	/**
 	 * Information

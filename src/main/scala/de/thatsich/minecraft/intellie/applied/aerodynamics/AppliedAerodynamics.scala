@@ -1,8 +1,10 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics
 
+
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
-import cpw.mods.fml.common.{Optional, Mod, SidedProxy}
-import de.thatsich.minecraft.common.{BaseMod, Proxy}
+import cpw.mods.fml.common.{Mod, Optional, SidedProxy}
+import de.thatsich.minecraft.common.proxy.EventProxy
+
 
 /**
  * d
@@ -17,29 +19,28 @@ import de.thatsich.minecraft.common.{BaseMod, Proxy}
 	dependencies = AppliedAerodynamics.dependencies,
 	modLanguage = "scala"
 )
-object AppliedAerodynamics extends BaseMod
+object AppliedAerodynamics
 {
-	final val id           = "appaero"
-	final val name         = "Applied Aerodynamics"
-	final val version      = "${version}"
+	final val id = "appaero"
+	final val name = "Applied Aerodynamics"
+	final val version = "${version}"
 	final val dependencies = "required-after:intellie"
-
 	@SidedProxy(
 		modId = AppliedAerodynamics.id,
 		clientSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy.AeroClientProxy",
 		serverSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy.AeroServerProxy"
 	)
-	var proxy: Proxy = null
+	var proxy: EventProxy = null
 
-	@Optional.Method( modid = AppliedAerodynamics.id )
+	@Optional.Method(modid = AppliedAerodynamics.id)
 	@Mod.EventHandler
-	override def preInit( event: FMLPreInitializationEvent ): Unit = super.preInit( event )
+	def preInit(event: FMLPreInitializationEvent): Unit = this.proxy.preInit(event)
 
-	@Optional.Method( modid = AppliedAerodynamics.id )
+	@Optional.Method(modid = AppliedAerodynamics.id)
 	@Mod.EventHandler
-	override def init( event: FMLInitializationEvent ): Unit = super.init( event )
+	def init(event: FMLInitializationEvent): Unit = this.proxy.init(event)
 
-	@Optional.Method( modid = AppliedAerodynamics.id )
+	@Optional.Method(modid = AppliedAerodynamics.id)
 	@Mod.EventHandler
-	override def postInit( event: FMLPostInitializationEvent ): Unit = super.postInit( event )
+	def postInit(event: FMLPostInitializationEvent): Unit = this.proxy.postInit(event)
 }

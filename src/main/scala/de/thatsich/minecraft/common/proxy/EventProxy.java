@@ -1,6 +1,8 @@
-package de.thatsich.minecraft.common
+package de.thatsich.minecraft.common.proxy;
 
-import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 /**
  * Interface for supporting the 4 phases
@@ -8,7 +10,7 @@ import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationE
  * @author thatsIch
  * @since 09.07.2014.
  */
-trait Proxy
+public interface EventProxy
 {
 	/**
 	 * Run before anything else. Read your config, create blocks, items, etc,
@@ -16,7 +18,7 @@ trait Proxy
 	 *
 	 * @param event contains information to pre-initialize the mod
 	 */
-	def preInit( event: FMLPreInitializationEvent ): Unit
+	void preInit(FMLPreInitializationEvent event);
 
 	/**
 	 * Do your mod setup. Build whatever data structures you care about.
@@ -24,12 +26,12 @@ trait Proxy
 	 *
 	 * @param event contains information to initialize and finalize the mod
 	 */
-	def init( event: FMLInitializationEvent ): Unit
+	void init(FMLInitializationEvent event);
 
 	/**
 	 * Handle interaction with other mods, complete your setup based on this.
 	 *
 	 * @param event Event after setup
 	 */
-	def postInit( event: FMLPostInitializationEvent ): Unit
+	void postInit(FMLPostInitializationEvent event);
 }

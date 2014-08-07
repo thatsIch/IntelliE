@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.intern.unloadchilds
+package de.thatsich.minecraft.intellie.unloadchilds
 
 /**
  *

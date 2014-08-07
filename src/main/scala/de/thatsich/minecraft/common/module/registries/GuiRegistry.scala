@@ -1,7 +1,13 @@
 package de.thatsich.minecraft.common.module.registries
 
+
+import java.util
+
 import cpw.mods.fml.common.network.IGuiHandler
 import de.thatsich.minecraft.common.module.Module
+import net.minecraft.entity.player.EntityPlayer
+import net.minecraft.tileentity.TileEntity
+
 
 /**
  *
@@ -11,20 +17,28 @@ import de.thatsich.minecraft.common.module.Module
  */
 trait GuiRegistry
 {
-	def registerGuis( modules: Seq[ Module ] ): Unit =
+	private var id = 0
+	private val table: util.Hashtable[Class[_ <: IGuiHandler], IGuiHandler] = new util.Hashtable[Class[_ <: IGuiHandler], IGuiHandler]()
+
+	def registerGuis(modules: Seq[Module]): Unit =
 	{
-		for( module <- modules )
+		for (module <- modules)
 		{
 			module.moduleParts.foreach
 			{
-				case handler: Class[ IGuiHandler ] => this.registerGui( handler )
-				case _ =>
+				case handler: IGuiHandler => this.registerGui(handler)
+				case _                    =>
 			}
 		}
 	}
 
-	private def registerGui( handler: Class[ IGuiHandler ] ): Unit =
+	private def registerGui(handler: IGuiHandler): Unit =
 	{
-		handler.newInstance
+		this.table.put(handler.getClass, handler)
+	}
+
+	def openGui(player: EntityPlayer, tile: TileEntity): Unit =
+	{
+		player.openGui()
 	}
 }

@@ -12,7 +12,7 @@ import net.minecraft.item.Item
  * @author thatsIch
  * @since 05.04.2014.
  */
-class AeroCreativeTabs( icon: Item, modules: Modules, log: Log ) extends CreativeTabs( "appaero" )
+class AeroCreativeTabs( icon: Item, modules: Modules, log: Log, modid: String ) extends CreativeTabs( modid )
 {
 	for( module <- modules )
 	{
