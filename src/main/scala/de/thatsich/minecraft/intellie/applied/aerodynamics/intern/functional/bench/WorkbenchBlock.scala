@@ -63,6 +63,7 @@ class WorkbenchBlock extends BlockContainer(Material.iron)
 	{
 		if (!world.isRemote)
 		{
+			println("HASH: " + this.hashCode())
 			player.openGui(AppliedAerodynamics, this.hashCode(), world, x, y, z)
 		}
 
