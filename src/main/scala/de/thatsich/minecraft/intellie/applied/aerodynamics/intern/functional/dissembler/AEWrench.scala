@@ -1,8 +1,10 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler
 
+
 import appeng.api.implementations.items.IAEWrench
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
+
 
 /**
  *
@@ -10,7 +12,7 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 26.07.2014.
  */
-private[ dissembler ] trait AEWrench extends IAEWrench
+private[dissembler] trait AEWrench extends IAEWrench
 {
 	/**
 	 * This item can wrench AE parts
@@ -23,5 +25,5 @@ private[ dissembler ] trait AEWrench extends IAEWrench
 	 *
 	 * @return true
 	 **/
-	def canWrench( wrench: ItemStack, player: EntityPlayer, x: Int, y: Int, z: Int ): Boolean = true
+	def canWrench(wrench: ItemStack, player: EntityPlayer, x: Int, y: Int, z: Int): Boolean = true
 }

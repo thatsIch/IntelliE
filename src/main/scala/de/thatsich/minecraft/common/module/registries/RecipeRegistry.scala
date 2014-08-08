@@ -1,11 +1,13 @@
 package de.thatsich.minecraft.common.module.registries
 
+
 import java.io._
 
 import appeng.api.AEApi
 import appeng.api.recipes.{IRecipeHandler, IRecipeLoader}
 import de.thatsich.minecraft.common.module.Module
 import de.thatsich.minecraft.common.module.recipe.Recipe
+
 
 /**
  *
@@ -15,53 +17,53 @@ import de.thatsich.minecraft.common.module.recipe.Recipe
  */
 class RecipeRegistry
 {
-	def registerRecipes( modules: Seq[ Module ] ): Unit =
+	def registerRecipes(modules: Seq[Module]): Unit =
 	{
-		for( module <- modules )
+		for (module <- modules)
 		{
-			module.moduleParts.foreach
+			module.foreach
 			{
-				case recipe: Recipe => this.registerRecipe( recipe )
-				case _ =>
+				case recipe: Recipe => this.registerRecipe(recipe)
+				case _              =>
 			}
 		}
 	}
 
-	private def registerRecipe( recipe: Recipe ): Unit =
+	private def registerRecipe(recipe: Recipe): Unit =
 	{
-		val recipehandler: IRecipeHandler = AEApi.instance( ).registries( ).recipes( ).createNewRecipehandler( )
+		val recipehandler: IRecipeHandler = AEApi.instance().registries().recipes().createNewRecipehandler()
 		val externalRecipePath: String = recipe.externalPath
 		val internalRecipePath: String = recipe.internalPath
-		val externalRecipe = new File( externalRecipePath )
+		val externalRecipe = new File(externalRecipePath)
 
-		if( externalRecipe.exists( ) )
+		if (externalRecipe.exists())
 		{
-			recipehandler.parseRecipes( new ExternalRecipeLoader, externalRecipe.getPath )
+			recipehandler.parseRecipes(new ExternalRecipeLoader, externalRecipe.getPath)
 		}
 		else
 		{
-			recipehandler.parseRecipes( new InternalRecipeLoader, internalRecipePath )
+			recipehandler.parseRecipes(new InternalRecipeLoader, internalRecipePath)
 		}
 
-		recipehandler.registerHandlers( )
+		recipehandler.registerHandlers()
 	}
 
 	private class InternalRecipeLoader extends IRecipeLoader
 	{
-		def getFile( path: String ): BufferedReader =
+		def getFile(path: String): BufferedReader =
 		{
-			val resourceAsStream: InputStream = getClass.getResourceAsStream( path )
-			val reader: InputStreamReader = new InputStreamReader( resourceAsStream, "UTF-8" )
+			val resourceAsStream: InputStream = getClass.getResourceAsStream(path)
+			val reader: InputStreamReader = new InputStreamReader(resourceAsStream, "UTF-8")
 
-			new BufferedReader( reader )
+			new BufferedReader(reader)
 		}
 	}
 
 	private class ExternalRecipeLoader extends IRecipeLoader
 	{
-		def getFile( path: String ): BufferedReader =
+		def getFile(path: String): BufferedReader =
 		{
-			new BufferedReader( new FileReader( new File( path ) ) )
+			new BufferedReader(new FileReader(new File(path)))
 		}
 	}
 

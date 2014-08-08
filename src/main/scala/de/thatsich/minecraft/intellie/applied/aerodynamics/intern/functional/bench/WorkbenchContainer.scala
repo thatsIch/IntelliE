@@ -1,7 +1,9 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.bench
 
-import net.minecraft.entity.player.{InventoryPlayer, EntityPlayer}
+
+import net.minecraft.entity.player.{EntityPlayer, InventoryPlayer}
 import net.minecraft.inventory.Container
+
 
 /**
  *
@@ -11,5 +13,5 @@ import net.minecraft.inventory.Container
  */
 class WorkbenchContainer(player: InventoryPlayer, private val workbench: WorkbenchTileEntity) extends Container
 {
-	def canInteractWith( player : EntityPlayer ): Boolean = workbench.isUseableByPlayer(player)
+	def canInteractWith(player: EntityPlayer): Boolean = workbench.isUseableByPlayer(player)
 }

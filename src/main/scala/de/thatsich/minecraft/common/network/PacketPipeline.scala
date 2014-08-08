@@ -25,12 +25,12 @@ import scala.collection.mutable
  * @since 13.04.2014.
  */
 @ChannelHandler.Sharable
-class PacketPipeline( log: Log ) extends MessageToMessageCodec[ FMLProxyPacket, Packet ] with EventProxy
+class PacketPipeline(log: Log) extends MessageToMessageCodec[FMLProxyPacket, Packet] with EventProxy
 {
-	type PacketClass = Class[ _ <: Packet ]
-	private[ this ] val channels          = NetworkRegistry.INSTANCE.newChannel( "base", this )
-	private[ this ] val packets           = new mutable.MutableList[ PacketClass ]
-	private[ this ] var isPostInitialized = false
+	type PacketClass = Class[_ <: Packet]
+	private[this] val channels = NetworkRegistry.INSTANCE.newChannel("base", this)
+	private[this] val packets = new mutable.MutableList[PacketClass]
+	private[this] var isPostInitialized = false
 
 	/**
 	 * Register your packet with the pipeline. Discriminators are automatically set.
@@ -39,23 +39,23 @@ class PacketPipeline( log: Log ) extends MessageToMessageCodec[ FMLProxyPacket, 
 	 *
 	 * @return whether registration was successful. Failure may occur if 256 packets have been registered or if the registry already contains this packet
 	 */
-	def register( clazz: PacketClass ): Boolean =
+	def register(clazz: PacketClass): Boolean =
 	{
-		if( this.packets.size > 256 )
+		if (this.packets.size > 256)
 		{
-			this.log.severe( "Packet amount exceeded" )
+			this.log.severe("Packet amount exceeded")
 			return false
 		}
 
-		if( this.packets.contains( clazz ) )
+		if (this.packets.contains(clazz))
 		{
-			this.log.severe( "Packet already registered" )
+			this.log.severe("Packet already registered")
 			return false
 		}
 
-		if( this.isPostInitialized )
+		if (this.isPostInitialized)
 		{
-			this.log.severe( "Already post initialized" )
+			this.log.severe("Already post initialized")
 			return false
 		}
 
@@ -71,38 +71,38 @@ class PacketPipeline( log: Log ) extends MessageToMessageCodec[ FMLProxyPacket, 
 	 * @param msg message
 	 * @param out out
 	 */
-	def decode( ctx: ChannelHandlerContext, msg: FMLProxyPacket, out: util.List[ AnyRef ] ): Unit =
+	def decode(ctx: ChannelHandlerContext, msg: FMLProxyPacket, out: util.List[AnyRef]): Unit =
 	{
-		val payload = msg.payload( )
-		val discriminator = payload.readByte( )
-		val maybeClazz: Option[ PacketClass ] = this.packets.get( discriminator )
+		val payload = msg.payload()
+		val discriminator = payload.readByte()
+		val maybeClazz: Option[PacketClass] = this.packets.get(discriminator)
 		val clazz = maybeClazz match
 		{
-			case Some( value ) => value
-			case None => throw new NullPointerException( "No packet registered for discriminator: " + discriminator )
+			case Some(value) => value
+			case None        => throw new NullPointerException("No packet registered for discriminator: " + discriminator)
 		}
 
-		val packet = clazz.newInstance( )
-		packet.decodeInto( ctx, payload.slice( ) )
+		val packet = clazz.newInstance()
+		packet.decodeInto(ctx, payload.slice())
 
-		FMLCommonHandler.instance( ).getEffectiveSide match
+		FMLCommonHandler.instance().getEffectiveSide match
 		{
 			case Side.CLIENT =>
 				val player = this.getClientPlayer
-				packet.handleClientSide( player )
+				packet.handleClientSide(player)
 
 			case Side.SERVER =>
-				val netHandler = ctx.channel( ).attr( NetworkRegistry.NET_HANDLER ).get( )
-				val player = netHandler.asInstanceOf[ NetHandlerPlayServer ].playerEntity
-				packet.handleServerSide( player )
+				val netHandler = ctx.channel().attr(NetworkRegistry.NET_HANDLER).get()
+				val player = netHandler.asInstanceOf[NetHandlerPlayServer].playerEntity
+				packet.handleServerSide(player)
 
 			case default =>
 		}
 
-		out.add( packet )
+		out.add(packet)
 	}
 
-	@SideOnly( Side.CLIENT )
+	@SideOnly(Side.CLIENT)
 	private def getClientPlayer: EntityPlayer =
 	{
 		Minecraft.getMinecraft.thePlayer
@@ -115,10 +115,10 @@ class PacketPipeline( log: Log ) extends MessageToMessageCodec[ FMLProxyPacket, 
 	 *
 	 * @param packet The message to send
 	 */
-	def sendToAll( packet: Packet ): Unit =
+	def sendToAll(packet: Packet): Unit =
 	{
-		this.channels.get( Side.SERVER ).attr( FMLOutboundHandler.FML_MESSAGETARGET ).set( FMLOutboundHandler.OutboundTarget.ALL )
-		this.channels.get( Side.SERVER ).writeAndFlush( packet )
+		this.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.ALL)
+		this.channels.get(Side.SERVER).writeAndFlush(packet)
 	}
 
 	/**
@@ -129,11 +129,11 @@ class PacketPipeline( log: Log ) extends MessageToMessageCodec[ FMLProxyPacket, 
 	 * @param packet The message to send
 	 * @param player  The player to send it to
 	 */
-	def sendTo( packet: Packet, player: EntityPlayerMP ): Unit =
+	def sendTo(packet: Packet, player: EntityPlayerMP): Unit =
 	{
-		this.channels.get( Side.SERVER ).attr( FMLOutboundHandler.FML_MESSAGETARGET ).set( FMLOutboundHandler.OutboundTarget.PLAYER )
-		this.channels.get( Side.SERVER ).attr( FMLOutboundHandler.FML_MESSAGETARGETARGS ).set( player )
-		this.channels.get( Side.SERVER ).writeAndFlush( packet )
+		this.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.PLAYER)
+		this.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGETARGS).set(player)
+		this.channels.get(Side.SERVER).writeAndFlush(packet)
 	}
 
 	/**
@@ -144,11 +144,11 @@ class PacketPipeline( log: Log ) extends MessageToMessageCodec[ FMLProxyPacket, 
 	 * @param packet The message to send
 	 * @param point   The { @link cpw.mods.fml.common.network.NetworkRegistry.TargetPoint} around which to send
 	 */
-	def sendToAllAround( packet: Packet, point: NetworkRegistry.TargetPoint ): Unit =
+	def sendToAllAround(packet: Packet, point: NetworkRegistry.TargetPoint): Unit =
 	{
-		this.channels.get( Side.SERVER ).attr( FMLOutboundHandler.FML_MESSAGETARGET ).set( FMLOutboundHandler.OutboundTarget.ALLAROUNDPOINT )
-		this.channels.get( Side.SERVER ).attr( FMLOutboundHandler.FML_MESSAGETARGETARGS ).set( point )
-		this.channels.get( Side.SERVER ).writeAndFlush( packet )
+		this.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.ALLAROUNDPOINT)
+		this.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGETARGS).set(point)
+		this.channels.get(Side.SERVER).writeAndFlush(packet)
 	}
 
 	/**
@@ -159,11 +159,11 @@ class PacketPipeline( log: Log ) extends MessageToMessageCodec[ FMLProxyPacket, 
 	 * @param packet     The message to send
 	 * @param dimensionId The dimension id to target
 	 */
-	def sendToDimension( packet: Packet, dimensionId: Int ): Unit =
+	def sendToDimension(packet: Packet, dimensionId: Int): Unit =
 	{
-		this.channels.get( Side.SERVER ).attr( FMLOutboundHandler.FML_MESSAGETARGET ).set( FMLOutboundHandler.OutboundTarget.DIMENSION )
-		this.channels.get( Side.SERVER ).attr( FMLOutboundHandler.FML_MESSAGETARGETARGS ).set( dimensionId.asInstanceOf[ Object ] )
-		this.channels.get( Side.SERVER ).writeAndFlush( packet )
+		this.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.DIMENSION)
+		this.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGETARGS).set(dimensionId.asInstanceOf[Object])
+		this.channels.get(Side.SERVER).writeAndFlush(packet)
 	}
 
 	/**
@@ -173,10 +173,10 @@ class PacketPipeline( log: Log ) extends MessageToMessageCodec[ FMLProxyPacket, 
 	 *
 	 * @param packet The message to send
 	 */
-	def sendToServer( packet: Packet ): Unit =
+	def sendToServer(packet: Packet): Unit =
 	{
-		this.channels.get( Side.CLIENT ).attr( FMLOutboundHandler.FML_MESSAGETARGET ).set( FMLOutboundHandler.OutboundTarget.TOSERVER )
-		this.channels.get( Side.CLIENT ).writeAndFlush( packet )
+		this.channels.get(Side.CLIENT).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.TOSERVER)
+		this.channels.get(Side.CLIENT).writeAndFlush(packet)
 	}
 
 	/**
@@ -186,22 +186,22 @@ class PacketPipeline( log: Log ) extends MessageToMessageCodec[ FMLProxyPacket, 
 	 * @param msg message
 	 * @param out out
 	 */
-	def encode( ctx: ChannelHandlerContext, msg: Packet, out: util.List[ AnyRef ] ): Unit =
+	def encode(ctx: ChannelHandlerContext, msg: Packet, out: util.List[AnyRef]): Unit =
 	{
-		val buffer = Unpooled.buffer( )
+		val buffer = Unpooled.buffer()
 		val clazz = msg.getClass
 
-		if( !this.packets.contains( clazz ) )
+		if (!this.packets.contains(clazz))
 		{
-			throw new NullPointerException( "No Packet Registered for: " + msg.getClass.getCanonicalName )
+			throw new NullPointerException("No Packet Registered for: " + msg.getClass.getCanonicalName)
 		}
 
-		val discriminator = this.packets.indexOf( clazz ).asInstanceOf[ Byte ]
-		buffer.writeByte( discriminator )
-		msg.encodeInto( ctx, buffer )
+		val discriminator = this.packets.indexOf(clazz).asInstanceOf[Byte]
+		buffer.writeByte(discriminator)
+		msg.encodeInto(ctx, buffer)
 
-		val proxyPacket = new FMLProxyPacket( buffer.copy( ), ctx.channel( ).attr( NetworkRegistry.FML_CHANNEL ).get( ) )
-		out.add( proxyPacket )
+		val proxyPacket = new FMLProxyPacket(buffer.copy(), ctx.channel().attr(NetworkRegistry.FML_CHANNEL).get())
+		out.add(proxyPacket)
 	}
 
 	/**
@@ -209,13 +209,13 @@ class PacketPipeline( log: Log ) extends MessageToMessageCodec[ FMLProxyPacket, 
 	 *
 	 * @param event Event after setup
 	 */
-	def postInit( event: FMLPostInitializationEvent ): Unit =
+	def postInit(event: FMLPostInitializationEvent): Unit =
 	{
-		if( this.isPostInitialized ) return
+		if (this.isPostInitialized) return
 
 		this.isPostInitialized = true
 
-		this.packets.sortWith( _.getCanonicalName <= _.getCanonicalName )
+		this.packets.sortWith(_.getCanonicalName <= _.getCanonicalName)
 	}
 
 	/**
@@ -224,9 +224,8 @@ class PacketPipeline( log: Log ) extends MessageToMessageCodec[ FMLProxyPacket, 
 	 *
 	 * @param event contains information to initialize and finalize the mod
 	 */
-	def init( event: FMLInitializationEvent ): Unit =
+	def init(event: FMLInitializationEvent): Unit =
 	{
-
 	}
 
 	/**
@@ -235,8 +234,7 @@ class PacketPipeline( log: Log ) extends MessageToMessageCodec[ FMLProxyPacket, 
 	 *
 	 * @param event contains information to pre-initialize the mod
 	 */
-	def preInit( event: FMLPreInitializationEvent ): Unit =
+	def preInit(event: FMLPreInitializationEvent): Unit =
 	{
-
 	}
 }

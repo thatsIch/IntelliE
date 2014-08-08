@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.common.module.registries
 
+
 /**
  *
  *
@@ -13,11 +14,11 @@ trait CamelCaseParser
 	 * @param string camel case string
 	 * @return incoming without last camel case
 	 */
-	def parseCamelCase( string: String ): String =
+	def parseCamelCase(string: String): String =
 	{
-		val split: Array[ String ] = string.split( "(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])" )
-		val newSplit = split.dropRight( 1 )
+		val split: Array[String] = string.split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])")
+		val newSplit = split.dropRight(1)
 
-		newSplit.mkString( "_" ).toLowerCase
+		newSplit.mkString("_").toLowerCase
 	}
 }

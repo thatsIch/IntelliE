@@ -1,6 +1,8 @@
 package de.thatsich.minecraft.common
 
+
 import de.thatsich.minecraft.common.module.Module
+
 
 /**
  *
@@ -10,12 +12,12 @@ import de.thatsich.minecraft.common.module.Module
  */
 trait Modules
 {
-	protected val modules: Seq[ Module ]
+	protected val modules: Seq[Module]
 }
 
 object Modules
 {
-	implicit def modulesToList( modules: Modules ): Seq[ Module ] =
+	implicit def modulesToList(modules: Modules): Seq[Module] =
 	{
 		modules.modules
 	}

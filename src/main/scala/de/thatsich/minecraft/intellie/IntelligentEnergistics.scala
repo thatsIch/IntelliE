@@ -1,8 +1,8 @@
 package de.thatsich.minecraft.intellie
 
+
 import cpw.mods.fml.common.Mod
-import de.thatsich.minecraft.common.proxy.EventProxy
-import de.thatsich.minecraft.intellie.unloadchilds.{ChildUnloader, ChildUnloaderConfigAccess}
+import de.thatsich.minecraft.intellie.unloadchilds.ChildUnloader
 
 
 /**
@@ -20,12 +20,12 @@ import de.thatsich.minecraft.intellie.unloadchilds.{ChildUnloader, ChildUnloader
 )
 object IntelligentEnergistics extends ChildUnloader
 {
-	final val id           = "intellie"
-	final val name         = "Intelligent Energistics"
-	final val version      = "${version}"
+	final val id = "intellie"
+	final val name = "Intelligent Energistics"
+	final val version = "${version}"
 	final val dependencies = "required-after:Forge@[7.0,);required-after:FML@[5.0.5,);after:appliedenergistics2"
 
-	this.unload( "appaero", this.disableAero )
-	this.unload( "appagri", this.disableAgro )
-	this.unload( "appint", this.disableInt )
+	this.unload("appaero", this.disableAero)
+	this.unload("appagri", this.disableAgro)
+	this.unload("appint", this.disableInt)
 }

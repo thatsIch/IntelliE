@@ -2,57 +2,57 @@ def theChangelog = getChangelog()
 def theLastGitPush = getLastGitPush()
 
 curse {
-	apiKey = "eb5b9b11-5d6a-405c-baa2-3acac200baee"
-	projectId = "222848"
-	changelog = theChangelog
-	releaseType = "alpha"
+    apiKey = "eb5b9b11-5d6a-405c-baa2-3acac200baee"
+    projectId = "222848"
+    changelog = theChangelog
+    releaseType = "alpha"
 }
 
 private String getChangelog() {
-	def outStream = new ByteArrayOutputStream()
-	String changelog = ""
-	String lastGitPush = getLastGitPush()
+    def outStream = new ByteArrayOutputStream()
+    String changelog = ""
+    String lastGitPush = getLastGitPush()
 
-	try {
-		exec {
-			executable = "git"
-			args = ["log", "--pretty=%B", "$lastGitPush..HEAD"]
-			standardOutput = outStream
-		}
+    try {
+        exec {
+            executable = "git"
+            args = ["log", "--pretty=%B", "$lastGitPush..HEAD"]
+            standardOutput = outStream
+        }
 
-		changelog = outStream.toString().trim()
-	}
-	catch (e) {
-		logger.quiet "Error while generating theChangelog: $e"
-	}
+        changelog = outStream.toString().trim()
+    }
+    catch (e) {
+        logger.quiet "Error while generating theChangelog: $e"
+    }
 
-	return changelog
+    return changelog
 }
 
 private String getLastGitPush() {
-	def outStream = new ByteArrayOutputStream()
-	def lastGitPush = ""
+    def outStream = new ByteArrayOutputStream()
+    def lastGitPush = ""
 
-	try {
-		exec {
-			executable = "git"
-			args = ["rev-parse", "origin/master"]
-			standardOutput = outStream
-		}
+    try {
+        exec {
+            executable = "git"
+            args = ["rev-parse", "origin/master"]
+            standardOutput = outStream
+        }
 
-		lastGitPush = outStream.toString().trim()
-	}
-	catch (e) {
-		logger.quiet "Error while fetching last git tag: $e"
-	}
+        lastGitPush = outStream.toString().trim()
+    }
+    catch (e) {
+        logger.quiet "Error while fetching last git tag: $e"
+    }
 
-	return lastGitPush
+    return lastGitPush
 }
 
 task printChangelog(group: 'Debug', description: 'Prints the theChangelog for debugging purposes.') << {
-	logger.quiet "The last changelog:\n\n$theChangelog"
+    logger.quiet "The last changelog:\n\n$theChangelog"
 }
 
 task printLastGitPush(group: 'Debug', description: 'Prints the hash of last git push for debugging purposes') << {
-	logger.quiet "The last git push hash: $theLastGitPush"
+    logger.quiet "The last git push hash: $theLastGitPush"
 }

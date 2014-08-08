@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.common.string
 
+
 /**
  * Simple ID container
  *
@@ -9,4 +10,4 @@ package de.thatsich.minecraft.common.string
 /**
 @author thatsIch
 @since 02.04.2014. */
-abstract class BaseID( id: String ) extends BaseStringWrapper( id ) with ID
+abstract class BaseID(id: String) extends BaseStringWrapper(id) with ID

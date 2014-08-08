@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.common.module
 
+
 /**
  *
  *
@@ -8,5 +9,4 @@ package de.thatsich.minecraft.common.module
  */
 class BaseDescription extends Description
 {
-
 }

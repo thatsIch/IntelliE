@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.bench
 
+
 /**
  *
  *
@@ -9,6 +10,6 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.be
 object Direction extends Enumeration
 {
 	type Direction = Value
-	val HORIZONTAL = Value( "Horizontal" )
-	val VERTICAL   = Value( "Vertical" )
+	val HORIZONTAL = Value("Horizontal")
+	val VERTICAL = Value("Vertical")
 }

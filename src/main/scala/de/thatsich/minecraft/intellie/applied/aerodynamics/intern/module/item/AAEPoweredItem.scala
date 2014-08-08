@@ -1,6 +1,8 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.item
 
+
 import net.minecraft.creativetab.CreativeTabs
+
 
 /**
  *
@@ -8,7 +10,7 @@ import net.minecraft.creativetab.CreativeTabs
  * @author thatsIch
  * @since 17.04.2014.
  */
-abstract class AAEPoweredItem( protected val maxStorage: Double )( implicit creativeTab: CreativeTabs )
+abstract class AAEPoweredItem(protected val maxStorage: Double)(implicit creativeTab: CreativeTabs)
 //	extends AItem(new ATexture("test") {}) // TODO texture
 //	        with TPowerStorage
 {

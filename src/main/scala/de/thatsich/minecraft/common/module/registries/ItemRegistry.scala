@@ -1,8 +1,10 @@
 package de.thatsich.minecraft.common.module.registries
 
+
 import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.common.module.Module
 import net.minecraft.item.Item
+
 
 /**
  *
@@ -12,27 +14,27 @@ import net.minecraft.item.Item
  */
 class ItemRegistry extends CamelCaseParser
 {
-	def registerItems( modules: Seq[ Module ] ): Unit =
+	def registerItems(modules: Seq[Module]): Unit =
 	{
-		for( module <- modules )
+		for (module <- modules)
 		{
-			module.moduleParts.foreach
+			module.foreach
 			{
-				case item: Item => this.registerItem( item )
-				case _ =>
+				case item: Item => this.registerItem(item)
+				case _          =>
 			}
 		}
 	}
 
-	private def registerItem( item: Item ): Unit =
+	private def registerItem(item: Item): Unit =
 	{
-		GameRegistry.registerItem( item, this.getItemName( item ) )
+		GameRegistry.registerItem(item, this.getItemName(item))
 	}
 
-	private def getItemName( item: Item ): String =
+	private def getItemName(item: Item): String =
 	{
 		val className: String = item.getClass.getSimpleName
 
-		this.parseCamelCase( className )
+		this.parseCamelCase(className)
 	}
 }

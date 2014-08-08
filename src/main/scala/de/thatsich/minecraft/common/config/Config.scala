@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.common.config
 
+
 /**
  *
  *
@@ -11,7 +12,7 @@ trait Config
 	/**
 	 * saves the file if changed
 	 */
-	def save( ): Unit
+	def save(): Unit
 
 	/**
 	 * Boolean
@@ -22,7 +23,7 @@ trait Config
 	 *
 	 * @return Requested category and key
 	 */
-	def getBoolean( category: String, key: String, defaultValue: Boolean ): Boolean
+	def getBoolean(category: String, key: String, defaultValue: Boolean): Boolean
 
 	/**
 	 * Array of Booleans
@@ -33,7 +34,7 @@ trait Config
 	 *
 	 * @return Requested category and key
 	 */
-	def getBooleanList( category: String, key: String, defaultValue: Array[ Boolean ] ): Array[ Boolean ]
+	def getBooleanList(category: String, key: String, defaultValue: Array[Boolean]): Array[Boolean]
 
 	/**
 	 * Double
@@ -44,7 +45,7 @@ trait Config
 	 *
 	 * @return Requested category and key
 	 */
-	def getDouble( category: String, key: String, defaultValue: Double ): Double
+	def getDouble(category: String, key: String, defaultValue: Double): Double
 
 	/**
 	 * Array of doubles
@@ -55,7 +56,7 @@ trait Config
 	 *
 	 * @return Requested category and key
 	 */
-	def getDoubleList( category: String, key: String, defaultValue: Array[ Double ] ): Array[ Double ]
+	def getDoubleList(category: String, key: String, defaultValue: Array[Double]): Array[Double]
 
 	/**
 	 * Integer
@@ -66,7 +67,7 @@ trait Config
 	 *
 	 * @return Requested category and key
 	 */
-	def getInt( category: String, key: String, defaultValue: Int ): Int
+	def getInt(category: String, key: String, defaultValue: Int): Int
 
 	/**
 	 * Array of integers
@@ -77,7 +78,7 @@ trait Config
 	 *
 	 * @return Requested category and key
 	 */
-	def getIntList( category: String, key: String, defaultValue: Array[ Int ] ): Array[ Int ]
+	def getIntList(category: String, key: String, defaultValue: Array[Int]): Array[Int]
 
 	/**
 	 * String
@@ -88,7 +89,7 @@ trait Config
 	 *
 	 * @return Requested category and key
 	 */
-	def getString( category: String, key: String, defaultValue: String ): String
+	def getString(category: String, key: String, defaultValue: String): String
 
 	/**
 	 * Array of Strings
@@ -99,5 +100,5 @@ trait Config
 	 *
 	 * @return Requested category and key
 	 */
-	def getStringList( category: String, key: String, defaultValue: Array[ String ] ): Array[ String ]
+	def getStringList(category: String, key: String, defaultValue: Array[String]): Array[String]
 }

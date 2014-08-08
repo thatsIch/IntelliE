@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.common.string
 
+
 /**
  *
  *
@@ -13,7 +14,7 @@ trait StringWrapper
 
 object StringWrapper
 {
-	implicit def wrapperToString( wrapper: StringWrapper ): String =
+	implicit def wrapperToString(wrapper: StringWrapper): String =
 	{
 		wrapper.wrapped
 	}

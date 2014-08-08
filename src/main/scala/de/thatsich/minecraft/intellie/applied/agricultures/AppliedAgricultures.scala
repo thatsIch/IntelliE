@@ -1,6 +1,8 @@
 package de.thatsich.minecraft.intellie.applied.agricultures
 
+
 import cpw.mods.fml.common.Mod
+
 
 /**
  *
@@ -17,5 +19,4 @@ import cpw.mods.fml.common.Mod
 )
 object AppliedAgricultures
 {
-
 }

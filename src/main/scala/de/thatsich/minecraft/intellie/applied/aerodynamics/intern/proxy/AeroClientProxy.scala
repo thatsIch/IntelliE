@@ -1,6 +1,8 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy
 
+
 import cpw.mods.fml.common.event.FMLPreInitializationEvent
+
 
 /**
  *
@@ -16,21 +18,19 @@ final class AeroClientProxy extends AeroCommonProxy
 	 *
 	 * @param event contains information to pre-initialize the mod
 	 */
-	override def preInit( event: FMLPreInitializationEvent ): Unit =
+	override def preInit(event: FMLPreInitializationEvent): Unit =
 	{
-		this.initRenderers( )
-		this.initSounds( )
+		this.initRenderers()
+		this.initSounds()
 
-		super.preInit( event )
+		super.preInit(event)
 	}
 
-	private def initSounds( ): Unit =
+	private def initSounds(): Unit =
 	{
-
 	}
 
-	private def initRenderers( ): Unit =
+	private def initRenderers(): Unit =
 	{
-
 	}
 }

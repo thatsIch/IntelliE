@@ -1,8 +1,10 @@
 package de.thatsich.minecraft.common.module.registries
 
+
 import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.common.module.Module
 import net.minecraft.block.Block
+
 
 /**
  *
@@ -12,21 +14,21 @@ import net.minecraft.block.Block
  */
 class BlockRegistry extends CamelCaseParser
 {
-	def registerBlocks( modules: Seq[ Module ] ): Unit =
+	def registerBlocks(modules: Seq[Module]): Unit =
 	{
-		for( module <- modules )
+		for (module <- modules)
 		{
-			module.moduleParts.foreach
+			module.foreach
 			{
-				case block: Block => this.registerBlock( block )
-				case _ =>
+				case block: Block => this.registerBlock(block)
+				case _            =>
 			}
 		}
 	}
 
-	private def registerBlock( block: Block ): Unit =
+	private def registerBlock(block: Block): Unit =
 	{
-		GameRegistry.registerBlock( block, this.getBlockName( block ) )
+		GameRegistry.registerBlock(block, this.getBlockName(block))
 	}
 
 	//	private def registerBlock( block: Block, itemBlock: ItemBlock ): Unit =
@@ -34,10 +36,10 @@ class BlockRegistry extends CamelCaseParser
 	//		GameRegistry.registerBlock( block, itemBlock.getClass,  this.getBlockName( block ) )
 	//	}
 
-	private def getBlockName( block: Block ): String =
+	private def getBlockName(block: Block): String =
 	{
 		val className: String = block.getClass.getSimpleName
 
-		this.parseCamelCase( className )
+		this.parseCamelCase(className)
 	}
 }

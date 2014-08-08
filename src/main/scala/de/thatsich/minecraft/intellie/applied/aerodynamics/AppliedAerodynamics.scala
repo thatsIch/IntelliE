@@ -25,6 +25,7 @@ object AppliedAerodynamics
 	final val name = "Applied Aerodynamics"
 	final val version = "${version}"
 	final val dependencies = "required-after:intellie"
+
 	@SidedProxy(
 		modId = AppliedAerodynamics.id,
 		clientSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy.AeroClientProxy",

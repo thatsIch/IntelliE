@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.intelligences
 
+
 /**
  * bore constructed with pipes
  * and need water to flood up the blocks
@@ -19,7 +20,6 @@ package object bore
  * @since 16.03.14.
  */
 package object builder
-{}
 
 /**
  * sees incoming mats and outcoming, can reset
@@ -28,7 +28,6 @@ package object builder
  * @since 30.03.2014.
  */
 package object diff
-{}
 
 /**
  * vllt mit inventory muster sodass man verschiedene Blöcke machen kann
@@ -39,7 +38,6 @@ package object diff
  * @since 30.03.2014.
  */
 package object drawbridge
-{}
 
 /**
  * Wand of Equal Trade nur mit System
@@ -49,7 +47,6 @@ package object drawbridge
  * @since 16.03.14.
  */
 package object exchanger
-{}
 
 /**
  * Filler Block
@@ -62,7 +59,6 @@ package object exchanger
  * @since 16.03.14.
  */
 package object filler
-{}
 
 /**
  * ME Interface like auto refill
@@ -72,10 +68,8 @@ package object filler
  * @since 30.03.2014.
  */
 package object grassifier
-{}
 
 package object implosionsingularity
-{}
 
 /**
  * Intersection Block > Network Block but can define 3 channels with liquid, redstone, power, item
@@ -84,7 +78,6 @@ package object implosionsingularity
  * @since 16.03.14.
  */
 package object intersection
-{}
 
 /**
  * tool to lay down wire smartly without need to place them manually, just need startpoint, endpoint and then apply
@@ -95,7 +88,6 @@ package object intersection
  * @since 16.03.14.
  */
 package object laywire
-{}
 
 /**
  * Tries to dissembler preconfigured stuff into 3x3 or 2x2 pattern
@@ -104,7 +96,6 @@ package object laywire
  * @since 30.03.2014.
  */
 package object packager
-{}
 
 /**
  * Provides Classes and Interfaces necessary to create a Router.
@@ -126,4 +117,3 @@ package object packager
  * </p>
  */
 package object router
-{}

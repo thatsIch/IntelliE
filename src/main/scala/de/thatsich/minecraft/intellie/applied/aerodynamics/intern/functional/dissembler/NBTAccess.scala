@@ -1,7 +1,9 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler
 
+
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
+
 
 /**
  *
@@ -9,15 +11,15 @@ import net.minecraft.nbt.NBTTagCompound
  * @author thatsIch
  * @since 31.07.2014.
  */
-private[ dissembler ] trait NBTAccess
+private[dissembler] trait NBTAccess
 {
-	def getNBTData( itemStack: ItemStack ): NBTTagCompound =
+	def getNBTData(itemStack: ItemStack): NBTTagCompound =
 	{
 		var compound = itemStack.getTagCompound
-		if( compound == null )
+		if (compound == null)
 		{
 			compound = new NBTTagCompound
-			itemStack.setTagCompound( compound )
+			itemStack.setTagCompound(compound)
 		}
 
 		compound

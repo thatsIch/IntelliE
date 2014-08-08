@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy
 
+
 /**
  *
  *
@@ -8,5 +9,4 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy
  */
 final class AeroServerProxy extends AeroCommonProxy
 {
-
 }

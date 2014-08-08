@@ -1,7 +1,9 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern
 
+
 import cpw.mods.fml.common.registry.GameRegistry
 import net.minecraft.item.Item
+
 
 /**
  *
@@ -11,7 +13,7 @@ import net.minecraft.item.Item
  */
 class AeroCreativeTabIcon extends Item
 {
-	this.setUnlocalizedName( "appaero.creativeTabIcon" )
-	this.setTextureName( "appaero:aerochest" )
-	GameRegistry.registerItem( this, this.getUnlocalizedName )
+	this.setUnlocalizedName("appaero.creativeTabIcon")
+	this.setTextureName("appaero:aerochest")
+	GameRegistry.registerItem(this, this.getUnlocalizedName)
 }
