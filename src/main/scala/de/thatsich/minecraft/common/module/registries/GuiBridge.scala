@@ -39,7 +39,8 @@ class GuiBridge(table: util.Hashtable[Int, BlockGuiHandler], log: Log) extends I
 		}
 		else
 		{
-			this.log.warn(s"Tried to access GUI with ID $ID")
+			val keySet: util.Set[Int] = this.table.keySet()
+			this.log.warn(s"Tried to access GUI with ID $ID but is not part of $keySet")
 			null
 		}
 	}

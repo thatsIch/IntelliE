@@ -63,12 +63,27 @@ class WorkbenchBlock extends BlockContainer(Material.iron)
 	{
 		if (!world.isRemote)
 		{
-			println("HASH: " + this.hashCode())
-			player.openGui(AppliedAerodynamics, this.hashCode(), world, x, y, z)
+			val name = this.getClass.getSimpleName
+			val hash = this.getUniqueID(name)
+			println(s"HASH: $hash")
+			player.openGui(AppliedAerodynamics, hash, world, x, y, z)
 		}
 
 		true
 	}
 
 	def createNewTileEntity(world: World, par2int: Int): TileEntity = new WorkbenchTileEntity
+
+	// TODO refactoring to commong
+	private def getUniqueID(str: String): Int =
+	{
+		var h: Int = 0
+
+		for (ch <- str)
+		{
+			h = 31 * h + ch
+		}
+
+		h
+	}
 }

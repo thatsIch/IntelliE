@@ -25,12 +25,27 @@ class GuiRegistry(log: Log)
 			module.foreach
 			{
 				case handler: BlockGuiHandler =>
-					this.log.info(s"Adding handler $handler with hash " + handler.hashCode())
-					table.put(handler.hashCode(), handler)
+					val name: String = handler.getClass.getSimpleName
+					val hash: Int = this.getUniqueID(name)
+					this.log.info(s"Adding handler $handler with hash $hash")
+					table.put(hash, handler)
 				case _                        =>
 			}
 		}
 
 		new GuiBridge(table, this.log)
+	}
+
+	// TODO refactoring to commong
+	private def getUniqueID(str: String): Int =
+	{
+		var h: Int = 0
+
+		for (ch <- str)
+		{
+			h = 31 * h + ch
+		}
+
+		h
 	}
 }
