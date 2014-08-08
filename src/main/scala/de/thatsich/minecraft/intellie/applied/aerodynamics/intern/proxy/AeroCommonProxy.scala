@@ -7,7 +7,7 @@ import de.thatsich.minecraft.common.string.Abbreviation
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.ModificationWorkbenchModule
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerModule
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.{AeroAbbreviation, AeroCreativeTabIcon, AeroCreativeTabs, AeroModules}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.{AeroAbbreviation, AeroCreativeTabIcon, AeroCreativeTabs, AeroID, AeroModules}
 
 
 /**
@@ -25,6 +25,16 @@ abstract class AeroCommonProxy extends CommonProxy
 	 * @return abbreviation of mod
 	 */
 	protected final lazy val abbr: Abbreviation = new AeroAbbreviation
+
+	/**
+	 * Instance of the mod
+	 *
+	 * @return mod instance
+	 */
+	protected final val mod = AppliedAerodynamics
+
+	protected final val modid = new AeroID
+
 	/**
 	 * Modules of functionality of the mod.
 	 * Can contain blocks, items, recipes etc
@@ -33,14 +43,9 @@ abstract class AeroCommonProxy extends CommonProxy
 	 */
 	protected final lazy val modules: Modules = new AeroModules(
 		new DissemblerModule,
-		new ModificationWorkbenchModule
+		new ModificationWorkbenchModule(this.log, this.modid)
 	)
-	/**
-	 * Instance of the mod
-	 *
-	 * @return mod instance
-	 */
-	protected final val mod = AppliedAerodynamics
+
 	private final val icon = new AeroCreativeTabIcon
-	new AeroCreativeTabs(this.icon, this.modules, this.log, this.mod.id)
+	new AeroCreativeTabs(this.icon, this.modules, this.log, this.modid)
 }

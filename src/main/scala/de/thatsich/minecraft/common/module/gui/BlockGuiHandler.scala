@@ -1,5 +1,4 @@
-package de.thatsich.minecraft.common.module.registries
-
+package de.thatsich.minecraft.common.module.gui
 
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.tileentity.TileEntity
