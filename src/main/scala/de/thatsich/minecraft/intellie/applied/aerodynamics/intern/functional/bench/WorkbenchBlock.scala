@@ -65,7 +65,7 @@ class WorkbenchBlock extends BlockContainer(Material.iron)
 		{
 			val name = this.getClass.getSimpleName
 			val hash = this.getUniqueID(name)
-			println(s"HASH: $hash")
+
 			player.openGui(AppliedAerodynamics, hash, world, x, y, z)
 		}
 
