@@ -24,7 +24,7 @@ abstract class CommonProxy extends EventProxy
 	 *
 	 * @return abbreviation of mod
 	 */
-	protected def abbr: Abbreviation
+	protected val abbr: Abbreviation
 
 	/**
 	 * Modules of functionality of the mod.
@@ -32,16 +32,16 @@ abstract class CommonProxy extends EventProxy
 	 *
 	 * @return modules of mod
 	 */
-	protected def modules: Modules
+	protected val modules: Modules
 
 	/**
 	 * Instance of the mod
 	 *
 	 * @return mod instance
 	 */
-	protected def mod: AnyRef
+	protected val mod: AnyRef
 
-	protected final val log: Log = new NamedLog(this.abbr)
+	protected final lazy val log: Log = new NamedLog(this.abbr)
 	protected final val stopwatch: Stopwatch = Stopwatch.createUnstarted
 
 	/**

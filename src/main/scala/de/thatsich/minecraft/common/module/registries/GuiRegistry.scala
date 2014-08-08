@@ -24,6 +24,7 @@ class GuiRegistry
 			module.foreach
 			{
 				case handler: BlockGuiHandler => table.put(handler.hashCode(), handler)
+				case _                        =>
 			}
 		}
 
