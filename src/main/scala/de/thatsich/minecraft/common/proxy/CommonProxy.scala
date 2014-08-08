@@ -1,12 +1,12 @@
 package de.thatsich.minecraft.common.proxy
 
 
-import appeng.api.AEApi
 import com.google.common.base.Stopwatch
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
+import cpw.mods.fml.common.network.{IGuiHandler, NetworkRegistry}
 import de.thatsich.minecraft.common.Modules
 import de.thatsich.minecraft.common.log.{Log, NamedLog}
-import de.thatsich.minecraft.common.module.registries.{GuiRegistry, TileEntityRegistry, RecipeRegistry, BlockRegistry, ItemRegistry}
+import de.thatsich.minecraft.common.module.registries.{BlockRegistry, GuiRegistry, ItemRegistry, RecipeRegistry, TileEntityRegistry}
 import de.thatsich.minecraft.common.string.Abbreviation
 
 
@@ -24,7 +24,7 @@ abstract class CommonProxy extends EventProxy
 	 *
 	 * @return abbreviation of mod
 	 */
-	def abbr: Abbreviation
+	protected def abbr: Abbreviation
 
 	/**
 	 * Modules of functionality of the mod.
@@ -32,14 +32,14 @@ abstract class CommonProxy extends EventProxy
 	 *
 	 * @return modules of mod
 	 */
-	def modules: Modules
+	protected def modules: Modules
 
 	/**
 	 * Instance of the mod
 	 *
 	 * @return mod instance
 	 */
-	def mod: AnyRef
+	protected def mod: AnyRef
 
 	protected final val log: Log = new NamedLog(this.abbr)
 	protected final val stopwatch: Stopwatch = Stopwatch.createUnstarted
@@ -82,7 +82,8 @@ abstract class CommonProxy extends EventProxy
 
 		recipes.registerRecipes(this.modules)
 		tiles.registerTileEntities(this.modules)
-		guis.registerGuis(this.modules)
+		val handler: IGuiHandler = guis.registerGuis(this.modules)
+		NetworkRegistry.INSTANCE.registerGuiHandler(this.mod, handler)
 
 		this.stopwatch.stop
 		this.log.info(s"Init End ($stopwatch)")

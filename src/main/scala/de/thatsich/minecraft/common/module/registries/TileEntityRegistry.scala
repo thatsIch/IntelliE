@@ -19,7 +19,7 @@ class TileEntityRegistry
 	{
 		for (module <- modules)
 		{
-			module.moduleParts.foreach
+			module.foreach
 			{
 				case te: Class[TileEntity] => this.registerTileEntity(te)
 				case _                     =>

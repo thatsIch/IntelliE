@@ -11,7 +11,7 @@ import net.minecraft.tileentity.TileEntity
  * @author thatsIch
  * @since 07.08.2014.
  */
-trait ModuleGuiHandler
+trait BlockGuiHandler
 {
 	def getServerGuiElement(player: EntityPlayer, tile: TileEntity): AnyRef
 

@@ -1,10 +1,9 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.bench
 
 
-import de.thatsich.minecraft.common.module.registries.ModuleGuiHandler
+import de.thatsich.minecraft.common.module.registries.BlockGuiHandler
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.tileentity.TileEntity
-import net.minecraft.world.World
 
 
 /**
@@ -14,10 +13,8 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 06.08.2014.
  */
-class WorkbenchGuiHandler extends ModuleGuiHandler
+trait WorkbenchGuiHandler extends BlockGuiHandler
 {
-	//	NetworkRegistry.INSTANCE.registerGuiHandler( AppliedAerodynamics, this )
-
 	def getServerGuiElement(player: EntityPlayer, tile: TileEntity): AnyRef =
 	{
 		new WorkbenchContainer(player.inventory, tile.asInstanceOf[WorkbenchTileEntity])

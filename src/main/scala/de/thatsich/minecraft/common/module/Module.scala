@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.common.module
 
+
 /**
  *
  *
@@ -8,5 +9,14 @@ package de.thatsich.minecraft.common.module
  */
 trait Module
 {
-	val moduleParts: Seq[ AnyRef ]
+	protected val moduleParts: Seq[AnyRef]
 }
+
+object Module
+{
+	implicit def moduleToSeq(module: Module): Seq[AnyRef] =
+	{
+		module.moduleParts
+	}
+}
+

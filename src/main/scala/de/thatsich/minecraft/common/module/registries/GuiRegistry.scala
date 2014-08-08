@@ -5,8 +5,6 @@ import java.util
 
 import cpw.mods.fml.common.network.IGuiHandler
 import de.thatsich.minecraft.common.module.Module
-import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.tileentity.TileEntity
 
 
 /**
@@ -17,28 +15,18 @@ import net.minecraft.tileentity.TileEntity
  */
 class GuiRegistry
 {
-	private var id = 0
-	private val table: util.Hashtable[Class[_ <: IGuiHandler], IGuiHandler] = new util.Hashtable[Class[_ <: IGuiHandler], IGuiHandler]()
-
-	def registerGuis(modules: Seq[Module]): Unit =
+	def registerGuis(modules: Seq[Module]): IGuiHandler =
 	{
+		val table = new util.Hashtable[Int, BlockGuiHandler]()
+
 		for (module <- modules)
 		{
-			module.moduleParts.foreach
+			module.foreach
 			{
-				case handler: IGuiHandler => this.registerGui(handler)
-				case _                    =>
+				case handler: BlockGuiHandler => table.put(handler.hashCode(), handler)
 			}
 		}
-	}
 
-	private def registerGui(handler: IGuiHandler): Unit =
-	{
-		this.table.put(handler.getClass, handler)
-	}
-
-	def openGui(player: EntityPlayer, tile: TileEntity): Unit =
-	{
-		player.openGui()
+		new GuiBridge(table)
 	}
 }
