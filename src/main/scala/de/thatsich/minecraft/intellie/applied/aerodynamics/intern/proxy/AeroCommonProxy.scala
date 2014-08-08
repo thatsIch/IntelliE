@@ -5,8 +5,8 @@ import de.thatsich.minecraft.common.Modules
 import de.thatsich.minecraft.common.proxy.CommonProxy
 import de.thatsich.minecraft.common.string.Abbreviation
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.bench.ModificationWorkbenchModule
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.functional.dissembler.DissemblerModule
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.ModificationWorkbenchModule
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerModule
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.{AeroAbbreviation, AeroCreativeTabIcon, AeroCreativeTabs, AeroModules}
 
 
