@@ -3,7 +3,7 @@ package de.thatsich.minecraft.common.module.registries
 
 import appeng.api.AEApi
 import cpw.mods.fml.common.registry.GameRegistry
-import de.thatsich.minecraft.common.module.Module
+import de.thatsich.minecraft.common.Modules
 import net.minecraft.tileentity.TileEntity
 
 
@@ -15,15 +15,12 @@ import net.minecraft.tileentity.TileEntity
  */
 class TileEntityRegistry
 {
-	def registerTileEntities(modules: Seq[Module]): Unit =
+	def registerTileEntities(registrable: Modules): Unit =
 	{
-		for (module <- modules)
+		registrable.foreach
 		{
-			module.foreach
-			{
-				case te: Class[TileEntity] => this.registerTileEntity(te)
-				case _                     =>
-			}
+			case te: Class[TileEntity] => this.registerTileEntity(te)
+			case _                     =>
 		}
 	}
 

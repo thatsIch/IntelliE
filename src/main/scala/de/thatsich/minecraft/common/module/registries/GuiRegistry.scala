@@ -1,12 +1,14 @@
-package de.thatsich.minecraft.common.module.registries
+package de.thatsich.minecraft
+package common
+package module
+package registries
 
 
 import java.util
 
 import cpw.mods.fml.common.network.IGuiHandler
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.Module
-import de.thatsich.minecraft.common.module.gui.{GuiBridge, BlockGuiHandler}
+import de.thatsich.minecraft.common.module.gui.{BlockGuiHandler, GuiBridge}
 
 
 /**
@@ -17,21 +19,18 @@ import de.thatsich.minecraft.common.module.gui.{GuiBridge, BlockGuiHandler}
  */
 class GuiRegistry(log: Log)
 {
-	def registerGuis(modules: Seq[Module]): IGuiHandler =
+	def registerGuis(registrable: Modules): IGuiHandler =
 	{
 		val table = new util.Hashtable[Int, BlockGuiHandler]()
-		this.log.info("Processing " + modules.size + " elements")
-		for (module <- modules)
+
+		registrable.foreach
 		{
-			module.foreach
-			{
-				case handler: BlockGuiHandler =>
-					val name: String = handler.getClass.getSimpleName
-					val hash: Int = this.getUniqueID(name)
-					this.log.info(s"Adding handler $handler with hash $hash")
-					table.put(hash, handler)
-				case _                        =>
-			}
+			case handler: BlockGuiHandler =>
+				val name: String = handler.getClass.getSimpleName
+				val hash: Int = this.getUniqueID(name)
+				this.log.info(s"Adding handler $handler with hash $hash")
+				table.put(hash, handler)
+			case _                        =>
 		}
 
 		new GuiBridge(table, this.log)

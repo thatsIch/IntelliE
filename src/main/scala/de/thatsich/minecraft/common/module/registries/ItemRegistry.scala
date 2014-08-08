@@ -2,7 +2,7 @@ package de.thatsich.minecraft.common.module.registries
 
 
 import cpw.mods.fml.common.registry.GameRegistry
-import de.thatsich.minecraft.common.module.Module
+import de.thatsich.minecraft.common.Modules
 import net.minecraft.item.Item
 
 
@@ -14,15 +14,12 @@ import net.minecraft.item.Item
  */
 class ItemRegistry extends CamelCaseParser
 {
-	def registerItems(modules: Seq[Module]): Unit =
+	def registerItems(registrable: Modules): Unit =
 	{
-		for (module <- modules)
+		registrable.foreach
 		{
-			module.foreach
-			{
-				case item: Item => this.registerItem(item)
-				case _          =>
-			}
+			case item: Item => this.registerItem(item)
+			case _          =>
 		}
 	}
 

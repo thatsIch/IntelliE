@@ -1,8 +1,10 @@
-package de.thatsich.minecraft.common.module.registries
+package de.thatsich.minecraft
+package common
+package module
+package registries
 
 
 import cpw.mods.fml.common.registry.GameRegistry
-import de.thatsich.minecraft.common.module.Module
 import net.minecraft.block.Block
 
 
@@ -14,15 +16,12 @@ import net.minecraft.block.Block
  */
 class BlockRegistry extends CamelCaseParser
 {
-	def registerBlocks(modules: Seq[Module]): Unit =
+	def registerBlocks(modules: Modules): Unit =
 	{
-		for (module <- modules)
+		modules.foreach
 		{
-			module.foreach
-			{
-				case block: Block => this.registerBlock(block)
-				case _            =>
-			}
+			case block: Block => this.registerBlock(block)
+			case _            =>
 		}
 	}
 

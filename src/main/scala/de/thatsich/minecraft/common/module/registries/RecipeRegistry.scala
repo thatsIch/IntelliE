@@ -5,6 +5,7 @@ import java.io._
 
 import appeng.api.AEApi
 import appeng.api.recipes.{IRecipeHandler, IRecipeLoader}
+import de.thatsich.minecraft.common.Modules
 import de.thatsich.minecraft.common.module.Module
 import de.thatsich.minecraft.common.module.recipe.Recipe
 
@@ -17,15 +18,12 @@ import de.thatsich.minecraft.common.module.recipe.Recipe
  */
 class RecipeRegistry
 {
-	def registerRecipes(modules: Seq[Module]): Unit =
+	def registerRecipes(registrable: Modules): Unit =
 	{
-		for (module <- modules)
+		registrable.foreach
 		{
-			module.foreach
-			{
-				case recipe: Recipe => this.registerRecipe(recipe)
-				case _              =>
-			}
+			case recipe: Recipe => this.registerRecipe(recipe)
+			case _              =>
 		}
 	}
 

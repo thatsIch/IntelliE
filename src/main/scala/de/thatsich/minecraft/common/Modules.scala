@@ -17,8 +17,11 @@ trait Modules
 
 object Modules
 {
-	implicit def modulesToList(modules: Modules): Seq[Module] =
+	implicit def modulesToList(modules: Modules): Seq[AnyRef] =
 	{
-		modules.modules
+		val seqOfModule: Seq[Module] = modules.modules
+		val flatten: Seq[AnyRef] = seqOfModule.flatten
+
+		flatten
 	}
 }

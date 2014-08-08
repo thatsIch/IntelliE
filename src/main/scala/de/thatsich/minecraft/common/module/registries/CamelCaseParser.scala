@@ -11,7 +11,9 @@ trait CamelCaseParser
 {
 	/**
 	 * Splits the incoming camel case string and removes the lasst upper case part
+	 *
 	 * @param string camel case string
+	 *
 	 * @return incoming without last camel case
 	 */
 	def parseCamelCase(string: String): String =
