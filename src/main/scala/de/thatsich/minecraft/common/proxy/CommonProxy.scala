@@ -78,7 +78,7 @@ abstract class CommonProxy extends EventProxy
 
 		val recipes: RecipeRegistry = new RecipeRegistry
 		val tiles: TileEntityRegistry = new TileEntityRegistry
-		val guis: GuiRegistry = new GuiRegistry
+		val guis: GuiRegistry = new GuiRegistry(this.log)
 
 		recipes.registerRecipes(this.modules)
 		tiles.registerTileEntities(this.modules)
