@@ -16,10 +16,6 @@ class ArmorSlot(inventory: IInventory, id: Int, x: Int, y: Int) extends Slot(inv
 {
 	override def isItemValid(stack: ItemStack): Boolean =
 	{
-		stack.getItem match
-		{
-			case armor: AAEPoweredItemArmor => true
-			case _                          => false
-		}
+		stack.getItem.isInstanceOf[AAEPoweredItemArmor]
 	}
 }

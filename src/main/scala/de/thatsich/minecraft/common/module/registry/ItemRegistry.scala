@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.common.module.registries
+package de.thatsich.minecraft.common.module.registry
 
 
 import cpw.mods.fml.common.registry.GameRegistry

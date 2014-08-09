@@ -16,10 +16,6 @@ class DissemblerSlot(inventory: IInventory, id: Int, x: Int, y: Int) extends Slo
 {
 	override def isItemValid(stack: ItemStack): Boolean =
 	{
-		stack.getItem match
-		{
-			case dissembler: DissemblerItem => true
-			case _                          => false
-		}
+		stack.getItem.isInstanceOf[DissemblerItem]
 	}
 }

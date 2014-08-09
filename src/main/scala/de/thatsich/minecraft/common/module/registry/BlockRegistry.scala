@@ -1,7 +1,7 @@
 package de.thatsich.minecraft
 package common
 package module
-package registries
+package registry
 
 
 import cpw.mods.fml.common.registry.GameRegistry

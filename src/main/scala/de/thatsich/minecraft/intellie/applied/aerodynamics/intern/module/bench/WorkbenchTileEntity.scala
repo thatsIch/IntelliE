@@ -23,7 +23,7 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 
 		val items: NBTTagList = new NBTTagList
 
-		for (invIndex <- 0 to this.getSizeInventory - 1)
+		for (invIndex <- 0 until this.getSizeInventory)
 		{
 			val stack: ItemStack = this.getStackInSlot(invIndex)
 
@@ -45,7 +45,7 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 
 		val items: NBTTagList = compound.getTagList("Items", Constants.NBT.TAG_COMPOUND)
 
-		for (index <- 0 to items.tagCount() - 1)
+		for (index <- 0 until items.tagCount())
 		{
 			val item: NBTTagCompound = items.getCompoundTagAt(index)
 			val slot: Int = item.getByte("Slot").asInstanceOf[Int]

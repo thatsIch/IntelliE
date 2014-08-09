@@ -1,6 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 
 
+import de.thatsich.minecraft.common.module.container.slot.OutputSlot
 import net.minecraft.entity.player.{EntityPlayer, InventoryPlayer}
 import net.minecraft.inventory.{Container, Slot}
 import net.minecraft.item.ItemStack
