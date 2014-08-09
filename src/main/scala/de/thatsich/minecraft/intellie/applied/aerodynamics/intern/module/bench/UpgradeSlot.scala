@@ -26,7 +26,6 @@ class UpgradeSlot(inventory: IInventory, id: Int, x: Int, y: Int) extends Slot(i
 		// increase energy capacity of tool/armor
 		val energyCell: AEItemDefinition = blocks.blockEnergyCell
 		val densenEnergyCell: AEItemDefinition = blocks.blockEnergyCellDense
-		val creativeEnergyCell: AEItemDefinition = blocks.blockEnergyCellCreative
 
 		// increase mining speed/flyspeed
 		val accel: AEItemDefinition = mats.materialCardSpeed
@@ -36,16 +35,13 @@ class UpgradeSlot(inventory: IInventory, id: Int, x: Int, y: Int) extends Slot(i
 		val cell4k: AEItemDefinition = items.itemCell4k
 		val cell16k: AEItemDefinition = items.itemCell16k
 		val cell64k: AEItemDefinition = items.itemCell64k
-		val cellCreative: AEItemDefinition = items.itemCellCreative
 
 		energyCell.sameAs(stack) ||
 			densenEnergyCell.sameAs(stack) ||
-			creativeEnergyCell.sameAs(stack) ||
 			accel.sameAs(stack) ||
 			cell1k.sameAs(stack) ||
 			cell4k.sameAs(stack) ||
 			cell16k.sameAs(stack) ||
-			cell64k.sameAs(stack) ||
-			cellCreative.sameAs(stack)
+			cell64k.sameAs(stack)
 	}
 }
