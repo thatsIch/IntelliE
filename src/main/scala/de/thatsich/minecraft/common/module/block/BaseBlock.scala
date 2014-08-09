@@ -21,24 +21,24 @@ import net.minecraft.util.IIcon
 abstract class BaseBlock(protected val modid: ID, blockName: ID, protected val log: Log, mat: Material = Material.iron) extends BlockContainer(mat)
 {
 	private final val name: String = this.blockName
+	private final val id: String = this.modid
 
 	this.setBlockName(this.name)
 
 	@SideOnly(Side.CLIENT)
 	def getBlockIcon(side: Int): IIcon = this.blockIcon
 
-	def getUnwrappedUnlocalizedName(unlocalizedName: String): String =
-	{
-		unlocalizedName.substring(unlocalizedName.indexOf(".") + 1)
-	}
-
+	/**
+	 * appaero.tile.workbench
+	 * appaero.tile.workbench.name
+	 * @return
+	 */
 	override def getUnlocalizedName: String =
 	{
-		val unwrapped: String = getUnwrappedUnlocalizedName(super.getUnlocalizedName)
-		val id: String = this.modid
-
-		s"$id:$unwrapped"
+		s"$id.tile.$name"
 	}
+
+	def getName: String = this.name
 
 	override def setBlockName(name: String): Block =
 	{

@@ -33,8 +33,9 @@ trait WorkbenchInventory extends TileEntity with IInventory
 			else
 			{
 				is = is.splitStack(count)
-				this.markDirty()
 			}
+
+			this.markDirty()
 		}
 
 		is

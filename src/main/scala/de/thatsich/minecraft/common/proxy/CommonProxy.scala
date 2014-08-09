@@ -77,7 +77,7 @@ abstract class CommonProxy extends EventProxy
 		this.stopwatch.reset.start
 
 		val recipes: RecipeRegistry = new RecipeRegistry
-		val tiles: TileEntityRegistry = new TileEntityRegistry
+		val tiles: TileEntityRegistry = new TileEntityRegistry(this.log)
 		val guis: GuiRegistry = new GuiRegistry(this.log)
 
 		recipes.registerRecipes(this.modules)

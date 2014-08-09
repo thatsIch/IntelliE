@@ -4,6 +4,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.{NBTTagCompound, NBTTagList}
 import net.minecraft.tileentity.TileEntity
+import net.minecraftforge.common.util.Constants
 
 
 /**
@@ -22,7 +23,7 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 
 		val items: NBTTagList = new NBTTagList
 
-		for (invIndex <- 0 to this.getSizeInventory)
+		for (invIndex <- 0 to this.getSizeInventory - 1)
 		{
 			val stack: ItemStack = this.getStackInSlot(invIndex)
 
@@ -30,7 +31,7 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 			{
 				val item: NBTTagCompound = new NBTTagCompound
 				item.setByte("Slot", invIndex.asInstanceOf[Byte])
-				stack.writeToNBT(compound)
+				stack.writeToNBT(item)
 				items.appendTag(item)
 			}
 		}
@@ -42,12 +43,12 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 	{
 		super.readFromNBT(compound)
 
-		val items: NBTTagList = compound.getTagList("Items", 0)
+		val items: NBTTagList = compound.getTagList("Items", Constants.NBT.TAG_COMPOUND)
 
-		for (index <- 0 to items.tagCount())
+		for (index <- 0 to items.tagCount() - 1)
 		{
 			val item: NBTTagCompound = items.getCompoundTagAt(index)
-			val slot: Byte = item.getByte("Slot")
+			val slot: Int = item.getByte("Slot").asInstanceOf[Int]
 
 			if (slot >= 0 && slot < this.getSizeInventory)
 			{

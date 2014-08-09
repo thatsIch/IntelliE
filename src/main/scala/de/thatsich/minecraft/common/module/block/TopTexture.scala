@@ -5,7 +5,6 @@ package block
 
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
-import net.minecraft.client.renderer.texture.IIconRegister
 import net.minecraft.util.IIcon
 import net.minecraft.world.IBlockAccess
 
@@ -40,10 +39,8 @@ trait TopTexture extends BaseBlock
 
 	override def getTextureName: String =
 	{
-		val unlocal: String = this.getUnlocalizedName
-		val unwrapped: String = this.getUnwrappedUnlocalizedName(unlocal)
 		val id: String = this.modid
 
-		id + ":" + unwrapped + "_top"
+		id + ":" + this.getName + "_top"
 	}
 }

@@ -45,10 +45,9 @@ trait SideTexture extends BaseBlock
 	{
 		super.registerBlockIcons(register)
 
-		val unlocal: String = this.getUnlocalizedName
-		val unwrapped: String = this.getUnwrappedUnlocalizedName(unlocal)
 		val id: String = this.modid
+		val icon: String = id + ":" + this.getName + "_side"
 
-		this.iconSide = register.registerIcon(id + ":" + unwrapped + "_side")
+		this.iconSide = register.registerIcon(icon)
 	}
 }

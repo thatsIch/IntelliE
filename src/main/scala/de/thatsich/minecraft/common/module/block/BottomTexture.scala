@@ -45,10 +45,8 @@ trait BottomTexture extends BaseBlock
 	{
 		super.registerBlockIcons(register)
 
-		val unlocal: String = this.getUnlocalizedName
-		val unwrapped: String = this.getUnwrappedUnlocalizedName(unlocal)
 		val id: String = this.modid
-		val icon = id + ":" + unwrapped + "_bot"
+		val icon = id + ":" + this.getName + "_bot"
 
 		this.iconBot = register.registerIcon(icon)
 	}

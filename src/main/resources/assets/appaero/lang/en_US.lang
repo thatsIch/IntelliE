@@ -2,7 +2,7 @@ itemGroup.appaero=Applied Aerodyanmics
 
 item.appaero.dissembler.name=Dissembler
 
-tile.appaero.workbench.name=Modification Workbench
+appaero.tile.workbench.name=Modification Workbench
 
 item.ItemAeroHelm.name=Aero Helm
 item.ItemAeroChest.name=Aero Chest
