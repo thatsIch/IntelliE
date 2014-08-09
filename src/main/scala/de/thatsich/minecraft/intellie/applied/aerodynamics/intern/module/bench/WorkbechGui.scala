@@ -19,7 +19,7 @@ import org.lwjgl.opengl.GL11
 class WorkbechGui(invPlayer: InventoryPlayer, workbench: WorkbenchTileEntity) extends GuiContainer(new WorkbenchContainer(invPlayer, workbench))
 {
 	this.xSize = 176
-	this.ySize = 152
+	this.ySize = 176
 
 	def drawGuiContainerBackgroundLayer(f: Float, x: Int, y: Int): Unit =
 	{
@@ -28,6 +28,12 @@ class WorkbechGui(invPlayer: InventoryPlayer, workbench: WorkbenchTileEntity) ex
 
 		Minecraft.getMinecraft.renderEngine.bindTexture(WorkbechGui.texture)
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize)
+	}
+
+	override def drawGuiContainerForegroundLayer(x: Int, y: Int): Unit =
+	{
+		this.fontRendererObj.drawString("Modification Workbench", 8, 6, 0x404040)
+		this.fontRendererObj.drawString("Inventory", 8, 83, 0x404040)
 	}
 }
 

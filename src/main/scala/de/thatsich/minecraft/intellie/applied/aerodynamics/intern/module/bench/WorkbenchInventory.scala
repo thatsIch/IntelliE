@@ -16,7 +16,7 @@ import net.minecraft.tileentity.TileEntity
  */
 trait WorkbenchInventory extends TileEntity with IInventory
 {
-	protected val items: Array[ItemStack] = new Array[ItemStack](6)
+	protected val items: Array[ItemStack] = new Array[ItemStack](3)
 
 	def getSizeInventory: Int = this.items.length
 

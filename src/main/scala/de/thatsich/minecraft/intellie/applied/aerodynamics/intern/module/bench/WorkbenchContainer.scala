@@ -2,6 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 
 
 import de.thatsich.minecraft.common.module.container.slot.OutputSlot
+import net.minecraft.client.Minecraft
 import net.minecraft.entity.player.{EntityPlayer, InventoryPlayer}
 import net.minecraft.inventory.{Container, Slot}
 import net.minecraft.item.ItemStack
@@ -28,12 +29,9 @@ class WorkbenchContainer(player: InventoryPlayer, private val workbench: Workben
 	}
 
 	// Workbench
-	this.addSlotToContainer(new ArmorSlot(workbench, 0, 39, 13))
-	this.addSlotToContainer(new UpgradeSlot(workbench, 1, 59, 13))
-	this.addSlotToContainer(new OutputSlot(workbench, 2, 110, 13))
-	this.addSlotToContainer(new DissemblerSlot(workbench, 3, 39, 43))
-	this.addSlotToContainer(new UpgradeSlot(workbench, 4, 59, 43))
-	this.addSlotToContainer(new OutputSlot(workbench, 5, 110, 43))
+	this.addSlotToContainer(new ArmorDissemblerSlot(workbench, 0, 39, 40))
+	this.addSlotToContainer(new UpgradeSlot(workbench, 1, 59, 40))
+	this.addSlotToContainer(new OutputSlot(workbench, 2, 110, 40))
 
 	def canInteractWith(player: EntityPlayer): Boolean = workbench.isUseableByPlayer(player)
 
