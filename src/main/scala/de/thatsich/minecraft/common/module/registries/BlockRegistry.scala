@@ -16,9 +16,9 @@ import net.minecraft.block.Block
  */
 class BlockRegistry extends CamelCaseParser
 {
-	def registerBlocks(modules: Modules): Unit =
+	def registerBlocks(registrable: Modules): Unit =
 	{
-		modules.foreach
+		registrable.foreach
 		{
 			case block: Block => this.registerBlock(block)
 			case _            =>

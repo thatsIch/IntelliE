@@ -2,7 +2,7 @@ package de.thatsich.minecraft.common.config
 
 
 /**
- *
+ * A configuration interface to simplify the access to the real configuration
  *
  * @author thatsIch
  * @since 08.04.2014.

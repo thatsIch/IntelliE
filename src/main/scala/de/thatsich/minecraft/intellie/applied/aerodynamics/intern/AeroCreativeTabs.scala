@@ -15,17 +15,14 @@ import net.minecraft.item.Item
  * @author thatsIch
  * @since 05.04.2014.
  */
-class AeroCreativeTabs(icon: Item, modules: Modules, log: Log, modid: ID) extends CreativeTabs(modid)
+class AeroCreativeTabs(icon: Item, registrable: Modules, log: Log, modid: ID) extends CreativeTabs(modid)
 {
-	for (module <- modules)
+	registrable.foreach
 	{
-		module.foreach
-		{
-			case item: Item   => item.setCreativeTab(this)
-			case block: Block => block.setCreativeTab(this)
+		case item: Item   => item.setCreativeTab(this)
+		case block: Block => block.setCreativeTab(this)
 
-			case _ =>
-		}
+		case _ =>
 	}
 
 	override def getTabIconItem: Item =

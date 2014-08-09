@@ -28,8 +28,10 @@ class GuiRegistry(log: Log)
 			case handler: BlockGuiHandler =>
 				val name: String = handler.getClass.getSimpleName
 				val hash: Int = this.getUniqueID(name)
+
 				this.log.info(s"Adding handler $handler with hash $hash")
 				table.put(hash, handler)
+
 			case _                        =>
 		}
 

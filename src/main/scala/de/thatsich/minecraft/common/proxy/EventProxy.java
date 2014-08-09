@@ -5,7 +5,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 /**
- * Interface for supporting the 4 phases
+ * Interface for supporting the 4 intialisation phases
  *
  * @author thatsIch
  * @since 09.07.2014.

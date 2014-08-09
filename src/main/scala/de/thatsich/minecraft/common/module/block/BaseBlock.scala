@@ -4,10 +4,12 @@ package module
 package block
 
 
+import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.string.ID
 import net.minecraft.block.material.Material
 import net.minecraft.block.{Block, BlockContainer}
+import net.minecraft.util.IIcon
 
 
 /**
@@ -21,6 +23,9 @@ abstract class BaseBlock(protected val modid: ID, blockName: ID, protected val l
 	private final val name: String = this.blockName
 
 	this.setBlockName(this.name)
+
+	@SideOnly(Side.CLIENT)
+	def getBlockIcon(side: Int): IIcon = this.blockIcon
 
 	def getUnwrappedUnlocalizedName(unlocalizedName: String): String =
 	{

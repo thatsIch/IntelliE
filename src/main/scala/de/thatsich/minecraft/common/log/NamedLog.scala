@@ -6,7 +6,8 @@ import org.apache.logging.log4j.{Level, LogManager}
 
 
 /**
- *
+ * Uses a special name to display the log
+ * Cause of readability an abbreviation is enough
  *
  * @author thatsIch
  * @since 04.04.2014.

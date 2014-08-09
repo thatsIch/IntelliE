@@ -7,16 +7,26 @@ import net.minecraftforge.common.config.Configuration
 
 
 /**
- *
+ * A config wrapper with simplified configuration access
  *
  * @author thatsIch
  * @since 04.04.2014.
  */
 abstract class BaseConfig(configPath: ConfigPath) extends Config
 {
+	/**
+	 * Path to the real config file
+	 */
 	private val configPathString: String = this.configPath
+
+	/**
+	 * The real configuration. Derives the file from the incoming config path string
+	 */
 	private val config = new Configuration(new File(this.configPathString))
 
+	/**
+	 * Saves the underlying config if the config itself has changed
+	 */
 	def save(): Unit =
 	{
 		if (this.config.hasChanged)
