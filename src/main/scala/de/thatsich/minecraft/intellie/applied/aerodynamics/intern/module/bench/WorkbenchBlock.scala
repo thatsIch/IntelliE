@@ -22,9 +22,11 @@ import net.minecraft.world.World
  * @since 04.08.2014.
  */
 class WorkbenchBlock(modid: ID, name: ID, log: Log) extends BaseBlock(modid, name, log)
-                                                     with MultiTexture
-                                                     with WorkbenchGuiHandler
+                                                            with MultiTexture
+                                                            with WorkbenchGuiHandler
 {
+	this.setResistance(1)
+
 	override def onBlockActivated(world: World, x: Int, y: Int, z: Int, player: EntityPlayer, side: Int, hitX: Float, hitY: Float, p_149727_9_ : Float): Boolean =
 	{
 		if (!world.isRemote)

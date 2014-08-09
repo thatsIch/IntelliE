@@ -3,6 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 
 import net.minecraft.entity.player.{EntityPlayer, InventoryPlayer}
 import net.minecraft.inventory.{Container, Slot}
+import net.minecraft.item.ItemStack
 
 
 /**
@@ -16,7 +17,7 @@ class WorkbenchContainer(player: InventoryPlayer, private val workbench: Workben
 	// Hotbar
 	for (slotIndex <- 0 to 8)
 	{
-		this.addSlotToContainer(new Slot(player, slotIndex, 8 + 19 * slotIndex, 128))
+		this.addSlotToContainer(new Slot(player, slotIndex, 8 + 18 * slotIndex, 128))
 	}
 
 	// Bag
@@ -29,11 +30,14 @@ class WorkbenchContainer(player: InventoryPlayer, private val workbench: Workben
 	this.addSlotToContainer(new Slot(workbench, 0, 39, 13))
 	this.addSlotToContainer(new Slot(workbench, 1, 59, 13))
 	this.addSlotToContainer(new Slot(workbench, 2, 110, 13))
-	this.addSlotToContainer(new Slot(workbench, 3, 39, 43))
+	this.addSlotToContainer(new DissemblerSlot(workbench, 3, 39, 43))
 	this.addSlotToContainer(new Slot(workbench, 4, 59, 43))
 	this.addSlotToContainer(new Slot(workbench, 5, 110, 43))
 
 	def canInteractWith(player: EntityPlayer): Boolean = workbench.isUseableByPlayer(player)
 
-
+	override def transferStackInSlot(player: EntityPlayer, i: Int): ItemStack =
+	{
+		null
+	}
 }

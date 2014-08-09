@@ -1,10 +1,8 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 
 
-import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.init.Blocks
-import net.minecraft.inventory.IInventory
 import net.minecraft.item.ItemStack
+import net.minecraft.nbt.{NBTTagCompound, NBTTagList}
 import net.minecraft.tileentity.TileEntity
 
 
@@ -14,98 +12,47 @@ import net.minecraft.tileentity.TileEntity
  * @author thatsIch
  * @since 04.08.2014.
  */
-class WorkbenchTileEntity extends TileEntity with IInventory
+class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 {
-	private val items: Array[ItemStack] = new Array[ItemStack](6)
-
 	override def canUpdate: Boolean = false
 
-	def getSizeInventory: Int = this.items.length
-
-	def decrStackSize(index: Int, count: Int): ItemStack =
+	override def writeToNBT(compound: NBTTagCompound): Unit =
 	{
-		var is: ItemStack = this.getStackInSlot(index)
+		super.writeToNBT(compound)
 
-		if (is != null)
+		val items: NBTTagList = new NBTTagList
+
+		for (invIndex <- 0 to this.getSizeInventory)
 		{
-			if (is.stackSize <= count)
+			val stack: ItemStack = this.getStackInSlot(invIndex)
+
+			if (stack != null)
 			{
-				this.setInventorySlotContents(index, null)
-			}
-			else
-			{
-				is = is.splitStack(count)
-				this.markDirty()
+				val item: NBTTagCompound = new NBTTagCompound
+				item.setByte("Slot", invIndex.asInstanceOf[Byte])
+				stack.writeToNBT(compound)
+				items.appendTag(item)
 			}
 		}
 
-		is
+		compound.setTag("Items", items)
 	}
 
-	def setInventorySlotContents(index: Int, is: ItemStack): Unit =
+	override def readFromNBT(compound: NBTTagCompound): Unit =
 	{
-		this.items(index) = is
+		super.readFromNBT(compound)
 
-		if (is != null && is.stackSize > this.getInventoryStackLimit)
+		val items: NBTTagList = compound.getTagList("Items", 0)
+
+		for (index <- 0 to items.tagCount())
 		{
-			is.stackSize = this.getInventoryStackLimit
+			val item: NBTTagCompound = items.getCompoundTagAt(index)
+			val slot: Byte = item.getByte("Slot")
+
+			if (slot >= 0 && slot < this.getSizeInventory)
+			{
+				this.setInventorySlotContents(slot, ItemStack.loadItemStackFromNBT(item))
+			}
 		}
 	}
-
-	/**
-	 * can only put in stacks of max size 1
-	 *
-	 * @return 1
-	 */
-	def getInventoryStackLimit: Int = 1
-
-	/**
-	 * accesses the stored inventory array
-	 *
-	 * @param index index of accessed inventory array
-	 *
-	 * @return corresponding itemstack in inventory array with index
-	 */
-	def getStackInSlot(index: Int): ItemStack = this.items(index)
-
-	def closeInventory(): Unit =
-	{}
-
-	/**
-	 * What is valid
-	 * @param i index
-	 * @param is item
-	 * @return
-	 */
-	def isItemValidForSlot(i: Int, is: ItemStack): Boolean =
-	{
-		// TODO change to other things later on like only my tools and stuff
-		is.isItemEqual(new ItemStack(Blocks.anvil))
-	}
-
-	def getStackInSlotOnClosing(index: Int): ItemStack =
-	{
-		val is: ItemStack = this.getStackInSlot(index)
-		this.setInventorySlotContents(index, null)
-
-		is
-	}
-
-	def openInventory(): Unit =
-	{}
-
-	/**
-	 * Distance of interaction range of player
-	 *
-	 * @param p interacting player
-	 * @return if distance is smaller than 8
-	 */
-	def isUseableByPlayer(p: EntityPlayer): Boolean =
-	{
-		p.getDistanceSq(this.xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) <= 64
-	}
-
-	def hasCustomInventoryName: Boolean = false
-
-	def getInventoryName: String = "WorkbenchInventory"
 }
