@@ -1,11 +1,22 @@
-itemGroup.appaero=Applied Aerodyanmics
+itemGroup.appaero=Applied Aerodynamics
 
 item.appaero.dissembler.name=Dissembler
-
-appaero.tile.workbench.name=Modification Workbench
 
 item.ItemAeroHelm.name=Aero Helm
 item.ItemAeroChest.name=Aero Chest
 item.ItemAeroLegs.name=Aero Legs
 item.ItemAeroBoots.name=Aero Boots
 
+
+appaero.tab.name=Applied Aerodynamics
+
+appaero.item.dissembler.name=Dissembler
+appaero.item.helm.name=Sky Diver
+appaero.item.chest.name=Chest Nut
+appaero.item.legs.name=Free Runner
+appaero.item.boots.name=Horse Shoes
+
+appaero.tile.workbench.name=Modification Workbench
+
+appaero.gui.workbench.name=Modification Workbench
+appaero.gui.inventory.name=Inventory

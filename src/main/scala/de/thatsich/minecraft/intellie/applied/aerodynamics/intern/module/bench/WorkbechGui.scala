@@ -5,7 +5,7 @@ import cpw.mods.fml.relauncher.{Side, SideOnly}
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.inventory.GuiContainer
 import net.minecraft.entity.player.InventoryPlayer
-import net.minecraft.util.ResourceLocation
+import net.minecraft.util.{StatCollector, ResourceLocation}
 import org.lwjgl.opengl.GL11
 
 
@@ -30,9 +30,9 @@ class WorkbechGui(invPlayer: InventoryPlayer, workbench: WorkbenchTileEntity) ex
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize)
 
 		// draw more transparent
-		GL11.glPushAttrib(1048575)
+		GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS)
 		GL11.glColor4f(1, 1, 1, 0.4F)
-		GL11.glEnable(3042)
+		GL11.glEnable(GL11.GL_BLEND)
 
 		Minecraft.getMinecraft.renderEngine.bindTexture(WorkbechGui.tiles)
 		this.drawTexturedModalRect(this.guiLeft + 39, this.guiTop + 40, 0, 0, 16, 16)
@@ -45,8 +45,11 @@ class WorkbechGui(invPlayer: InventoryPlayer, workbench: WorkbenchTileEntity) ex
 
 	override def drawGuiContainerForegroundLayer(x: Int, y: Int): Unit =
 	{
-		this.fontRendererObj.drawString("Modification Workbench", 8, 6, 0x404040)
-		this.fontRendererObj.drawString("Inventory", 8, 83, 0x404040)
+		val workbench: String = StatCollector.translateToLocal("appaero.gui.workbench.name")
+		val inventory: String = StatCollector.translateToLocal("appaero.gui.inventory.name")
+
+		this.fontRendererObj.drawString(workbench, 8, 6, 0x404040)
+		this.fontRendererObj.drawString(inventory, 8, 83, 0x404040)
 	}
 }
 

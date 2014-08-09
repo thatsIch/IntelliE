@@ -5,7 +5,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{Item, ItemStack}
 import net.minecraftforge.common.MinecraftForge
-import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent
+import net.minecraftforge.event.world.BlockEvent.{BreakEvent, HarvestDropsEvent}
 
 import scala.collection.JavaConverters._
 
@@ -30,7 +30,8 @@ private[dissembler] trait BlockBreakEventHandler
 	def onHarvestDropsEvent(event: HarvestDropsEvent): Unit =
 	{
 		val player: EntityPlayer = event.harvester
-		if (player != null) {
+		if (player != null)
+		{
 			val heldItem: ItemStack = player.getHeldItem
 			val item: Item = heldItem.getItem
 
