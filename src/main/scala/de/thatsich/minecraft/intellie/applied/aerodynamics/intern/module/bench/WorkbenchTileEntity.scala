@@ -1,6 +1,9 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 
 
+import appeng.api.implementations.items.IAEItemPowerStorage
+import cpw.mods.fml.relauncher.{Side, SideOnly}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerItem
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.{NBTTagCompound, NBTTagList}
 import net.minecraft.tileentity.TileEntity
@@ -15,7 +18,19 @@ import net.minecraftforge.common.util.Constants
  */
 class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 {
-	override def canUpdate: Boolean = false
+	private var modificationTime: Int = 0
+
+	@SideOnly(Side.CLIENT)
+	def isModifying: Boolean =
+	{
+		this.modificationTime > 0
+	}
+
+	@SideOnly(Side.CLIENT)
+	def getModificationProgressScaled(scale: Int): Int =
+	{
+		this.modificationTime * scale / 200
+	}
 
 	override def writeToNBT(compound: NBTTagCompound): Unit =
 	{
@@ -37,6 +52,7 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 		}
 
 		compound.setTag("Items", items)
+		compound.setShort("ModTime", this.modificationTime.shortValue())
 	}
 
 	override def readFromNBT(compound: NBTTagCompound): Unit =
@@ -44,6 +60,7 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 		super.readFromNBT(compound)
 
 		val items: NBTTagList = compound.getTagList("Items", Constants.NBT.TAG_COMPOUND)
+		this.modificationTime = compound.getShort("ModTime")
 
 		for (index <- 0 until items.tagCount())
 		{
@@ -57,5 +74,59 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 		}
 	}
 
+	override def updateEntity(): Unit =
+	{
+		var invChanged: Boolean = false
 
+		if (this.canModify)
+		{
+			this.modificationTime += 1
+
+			if (this.modificationTime == 200)
+			{
+				this.modificationTime = 0
+				this.modifyItem()
+				invChanged = true
+			}
+		}
+		else
+		{
+			this.modificationTime = 0
+		}
+
+		if (invChanged)
+		{
+			this.markDirty()
+		}
+	}
+
+	def canModify: Boolean =
+	{
+		this.items(0) != null && this.items(1) != null && this.items(2) == null
+	}
+
+	def modifyItem(): Unit =
+	{
+		if (this.canModify)
+		{
+			val armorTool: ItemStack = this.getStackInSlotOnClosing(0)
+			val upgrade: ItemStack = this.getStackInSlotOnClosing(1)
+
+			armorTool.getItem match
+			{
+				case dissembler: DissemblerItem =>
+					upgrade.getItem match
+					{
+						case powerStorage: IAEItemPowerStorage =>
+							val currentUpgrade: Double = powerStorage.getAECurrentPower(upgrade)
+							val maxUpgrade: Double = powerStorage.getAEMaxPower(upgrade)
+
+							dissembler.addAEMaxPower(armorTool, maxUpgrade)
+							dissembler.injectAEPower(armorTool, currentUpgrade)
+					}
+			}
+
+			this.setInventorySlotContents(2, armorTool.copy())
+		}
+	}
 }

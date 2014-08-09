@@ -5,7 +5,7 @@ import cpw.mods.fml.relauncher.{Side, SideOnly}
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.inventory.GuiContainer
 import net.minecraft.entity.player.InventoryPlayer
-import net.minecraft.util.{StatCollector, ResourceLocation}
+import net.minecraft.util.{ResourceLocation, StatCollector}
 import org.lwjgl.opengl.GL11
 
 
@@ -28,6 +28,12 @@ class WorkbechGui(invPlayer: InventoryPlayer, workbench: WorkbenchTileEntity) ex
 
 		Minecraft.getMinecraft.renderEngine.bindTexture(WorkbechGui.texture)
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize)
+
+		if (this.workbench.isModifying)
+		{
+			val scaled: Int = this.workbench.getModificationProgressScaled(18)
+			this.drawTexturedModalRect(this.guiLeft + 132, this.guiTop + 39 + 18 - scaled, 179, 39 + 18 - scaled, 6, scaled)
+		}
 
 		// draw more transparent
 		GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS)

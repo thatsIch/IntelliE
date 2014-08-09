@@ -17,6 +17,15 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
                                                  with DissemblerConfigAccess
 {
 	private final val internalCurrentPower = "internalCurrentPower"
+	private final val internalMaxPower = "internalMaxPower"
+
+	def addAEMaxPower(is: ItemStack, amt: Double): Double =
+	{
+		val max: Double = this.getAEMaxPower(is)
+		this.setAEMaxPower(is, max + amt)
+
+		max + amt
+	}
 
 	def injectAEPower(is: ItemStack, amt: Double): Double =
 	{
@@ -29,7 +38,19 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
 		diff
 	}
 
-	def getAEMaxPower(is: ItemStack): Double = this.maxEnergy
+	def getAEMaxPower(is: ItemStack): Double =
+	{
+		val tag = this.getNBTData(is)
+		val maxStorage = tag.getDouble(this.internalMaxPower)
+
+		maxStorage
+	}
+
+	def setAEMaxPower(is: ItemStack, value: Double): Unit =
+	{
+		val tag = this.getNBTData(is)
+		tag.setDouble(this.internalMaxPower, value)
+	}
 
 	def getPowerFlow(is: ItemStack): AccessRestriction = AccessRestriction.WRITE
 
