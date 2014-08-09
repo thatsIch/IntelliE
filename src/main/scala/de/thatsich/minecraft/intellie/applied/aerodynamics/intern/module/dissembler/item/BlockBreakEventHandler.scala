@@ -1,11 +1,11 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler
-
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerItem
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{Item, ItemStack}
 import net.minecraftforge.common.MinecraftForge
-import net.minecraftforge.event.world.BlockEvent.{BreakEvent, HarvestDropsEvent}
+import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent
 
 import scala.collection.JavaConverters._
 

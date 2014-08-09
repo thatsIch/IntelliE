@@ -1,8 +1,8 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler
-
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
 
 import appeng.api.config.AccessRestriction
 import appeng.api.implementations.items.IAEItemPowerStorage
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.{DissemblerConfigAccess, NBTAccess}
 import net.minecraft.item.ItemStack
 
 
@@ -17,7 +17,8 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
                                                  with DissemblerConfigAccess
 {
 	private final val internalCurrentPower = "internalCurrentPower"
-	private final val internalMaxPower = "internalMaxPower"
+	private final val internalCurrentMaxPower = "internalCurrentMaxPower"
+	private final val internalCurrentChargePerTick = "internalCurrentChargePerTick"
 
 	def addAEMaxPower(is: ItemStack, amt: Double): Double =
 	{
@@ -31,7 +32,7 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
 	{
 		val currentStorage = this.getAECurrentPower(is)
 		val maxStorage = this.getAEMaxPower(is)
-		val newStorage = Math.min(maxStorage, currentStorage + this.chargePerTick)
+		val newStorage = Math.min(maxStorage, currentStorage + this.getCurrentChargePerTick(is))
 		val diff = maxStorage - newStorage
 		this.setAECurrentPower(is, newStorage)
 
@@ -41,15 +42,15 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
 	def getAEMaxPower(is: ItemStack): Double =
 	{
 		val tag = this.getNBTData(is)
-		val maxStorage = tag.getDouble(this.internalMaxPower)
+		val maxStorage = tag.getDouble(this.internalCurrentMaxPower)
 
-		maxStorage
+		maxStorage.min(this.maxEnergy)
 	}
 
 	def setAEMaxPower(is: ItemStack, value: Double): Unit =
 	{
 		val tag = this.getNBTData(is)
-		tag.setDouble(this.internalMaxPower, value)
+		tag.setDouble(this.internalCurrentMaxPower, value)
 	}
 
 	def getPowerFlow(is: ItemStack): AccessRestriction = AccessRestriction.WRITE
@@ -75,5 +76,19 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
 	{
 		val tag = this.getNBTData(is)
 		tag.setDouble(this.internalCurrentPower, value)
+	}
+
+	private def getCurrentChargePerTick(is: ItemStack): Double =
+	{
+		val tag = this.getNBTData(is)
+		val currentChargePerTick: Double = tag.getDouble(this.internalCurrentChargePerTick)
+
+		this.initChargePerTick.max(currentChargePerTick.min(this.maxChargePerTick))
+	}
+
+	private def setCurrentChargePerTick(is: ItemStack, value: Double): Unit =
+	{
+		val tag = this.getNBTData(is)
+		tag.setDouble(this.internalCurrentChargePerTick, value)
 	}
 }

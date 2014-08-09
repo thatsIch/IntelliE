@@ -1,5 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler
-
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
 
 import appeng.api.implementations.items.IAEWrench
 import net.minecraft.entity.player.EntityPlayer

@@ -1,6 +1,13 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler
+package de.thatsich.minecraft
+package intellie
+package applied
+package aerodynamics
+package intern
+package module
+package dissembler
 
 
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.{AEPowerStorage, AEWrench, BlockBreakEventHandler, PrecisionHarvester, Weapon}
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
@@ -19,6 +26,7 @@ class DissemblerItem extends Item
                              with PrecisionHarvester
                              with BlockBreakEventHandler
                              with AEPowerStorage
+                             with Weapon
 {
 	this.setMaxStackSize(1)
 	this.hasSubtypes = false
@@ -123,6 +131,12 @@ class DissemblerItem extends Item
 
 		val list = information.asInstanceOf[java.util.List[String]]
 		list.add(message)
+
+		// add additional information when sneaking
+		if (player.isSneaking)
+		{
+			list.add("Add additional energ cells to increase energy storage")
+		}
 	}
 
 	/**
