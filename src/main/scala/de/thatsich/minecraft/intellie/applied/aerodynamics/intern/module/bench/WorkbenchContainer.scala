@@ -19,13 +19,13 @@ class WorkbenchContainer(player: InventoryPlayer, private val workbench: Workben
 	// Hotbar
 	for (slotIndex <- 0 to 8)
 	{
-		this.addSlotToContainer(new Slot(player, slotIndex, 8 + 18 * slotIndex, 128))
+		this.addSlotToContainer(new Slot(player, slotIndex, 8 + 18 * slotIndex, 152))
 	}
 
 	// Bag
 	for (row <- 0 to 2; col <- 0 to 8)
 	{
-		this.addSlotToContainer(new Slot(player, col + row * 9 + 9, 8 + 18 * col, 70 + row * 18))
+		this.addSlotToContainer(new Slot(player, col + row * 9 + 9, 8 + 18 * col, 94 + row * 18))
 	}
 
 	// Workbench

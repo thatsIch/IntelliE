@@ -28,6 +28,19 @@ class WorkbechGui(invPlayer: InventoryPlayer, workbench: WorkbenchTileEntity) ex
 
 		Minecraft.getMinecraft.renderEngine.bindTexture(WorkbechGui.texture)
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize)
+
+		// draw more transparent
+		GL11.glPushAttrib(1048575)
+		GL11.glColor4f(1, 1, 1, 0.4F)
+		GL11.glEnable(3042)
+
+		Minecraft.getMinecraft.renderEngine.bindTexture(WorkbechGui.tiles)
+		this.drawTexturedModalRect(this.guiLeft + 39, this.guiTop + 40, 0, 0, 16, 16)
+		this.drawTexturedModalRect(this.guiLeft + 59, this.guiTop + 40, 0, 16, 16, 16)
+
+		// reset color
+		GL11.glColor4f(1, 1, 1, 1)
+		GL11.glPopAttrib()
 	}
 
 	override def drawGuiContainerForegroundLayer(x: Int, y: Int): Unit =
@@ -40,6 +53,7 @@ class WorkbechGui(invPlayer: InventoryPlayer, workbench: WorkbenchTileEntity) ex
 object WorkbechGui
 {
 	private final val texture: ResourceLocation = new ResourceLocation("appaero", "textures/gui/workbench.png")
+	private final val tiles: ResourceLocation = new ResourceLocation("appaero", "textures/gui/tiles.png")
 }
 
 
