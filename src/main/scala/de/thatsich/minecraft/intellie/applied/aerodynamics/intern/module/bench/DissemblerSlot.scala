@@ -1,13 +1,13 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 
 
-import net.minecraft.init.Blocks
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerItem
 import net.minecraft.inventory.{IInventory, Slot}
 import net.minecraft.item.ItemStack
 
 
 /**
- *
+ * A slot distinctive for dissemblers
  *
  * @author thatsIch
  * @since 09.08.2014.
@@ -16,7 +16,10 @@ class DissemblerSlot(inventory: IInventory, id: Int, x: Int, y: Int) extends Slo
 {
 	override def isItemValid(stack: ItemStack): Boolean =
 	{
-		// TODO making it for dissembler
-		stack.isItemEqual(new ItemStack(Blocks.anvil))
+		stack.getItem match
+		{
+			case dissembler: DissemblerItem => true
+			case _                          => false
+		}
 	}
 }

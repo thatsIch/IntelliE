@@ -29,10 +29,10 @@ class WorkbenchContainer(player: InventoryPlayer, private val workbench: Workben
 	// Workbench
 	this.addSlotToContainer(new Slot(workbench, 0, 39, 13))
 	this.addSlotToContainer(new Slot(workbench, 1, 59, 13))
-	this.addSlotToContainer(new Slot(workbench, 2, 110, 13))
+	this.addSlotToContainer(new OutputSlot(workbench, 2, 110, 13))
 	this.addSlotToContainer(new DissemblerSlot(workbench, 3, 39, 43))
 	this.addSlotToContainer(new Slot(workbench, 4, 59, 43))
-	this.addSlotToContainer(new Slot(workbench, 5, 110, 43))
+	this.addSlotToContainer(new OutputSlot(workbench, 5, 110, 43))
 
 	def canInteractWith(player: EntityPlayer): Boolean = workbench.isUseableByPlayer(player)
 
