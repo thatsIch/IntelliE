@@ -56,4 +56,6 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 			}
 		}
 	}
+
+
 }

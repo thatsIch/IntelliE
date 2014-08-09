@@ -29,7 +29,10 @@ class WorkbenchBlock(modid: ID, name: ID, log: Log) extends BaseBlock(modid, nam
                                                             with MultiTexture
                                                             with WorkbenchGuiHandler
 {
-	this.setResistance(1)
+	this.setResistance(10)
+	this.setHardness(2.2F)
+	this.setStepSound(Block.soundTypeMetal)
+	this.setHarvestLevel("pickaxe", 0)
 
 	override def onBlockActivated(world: World, x: Int, y: Int, z: Int, player: EntityPlayer, side: Int, hitX: Float, hitY: Float, p_149727_9_ : Float): Boolean =
 	{
