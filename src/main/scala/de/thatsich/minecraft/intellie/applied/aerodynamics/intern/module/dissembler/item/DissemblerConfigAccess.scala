@@ -28,13 +28,13 @@ trait DissemblerConfigAccess
 
 	// Energy
 	protected final val initEnergy = this.config.getDouble("Energy", "initialEnergy", 0)
-	protected final val maxEnergy = this.config.getDouble("Energy", "maxEnergy", 1000000)
+	protected final val maxEnergy = this.config.getDouble("Energy", "maxEnergy", 100000000)
 
 	protected final val initChargeMultiplier = this.config.getDouble("Energy", "initialChargeMultiplier", 1)
 	protected final val maxChargeMultiplier = this.config.getDouble("Energy", "maxChargeMultiplier", 10000)
 
-	protected final val initEnergyPerBlockBreak = this.config.getDouble("Energy", "initEnergyPerBlockBreak", 1000)
-	protected final val minEnergyPerBlockBreak = this.config.getDouble("Energy", "minEnergyPerBlockBreak", 250)
+	protected final val initEnergyPerBlockBreak = this.config.getDouble("Energy", "initEnergyPerBlockBreak", 100000)
+	protected final val minEnergyPerBlockBreak = this.config.getDouble("Energy", "minEnergyPerBlockBreak", 6666)
 
 	this.config.save()
 }

@@ -16,6 +16,7 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.world.World
+import org.lwjgl.input.Keyboard
 
 
 /**
@@ -34,9 +35,10 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 {
 	this.setMaxStackSize(1)
 	this.hasSubtypes = false
-	this.setMaxDamage(32)
-//	this.setUnlocalizedName("appaero.dissembler")
-//	this.setTextureName("appaero:dissembler")
+
+	//	this.setMaxDamage(32)
+	//	this.setUnlocalizedName("appaero.dissembler")
+	//	this.setTextureName("appaero:dissembler")
 
 	/**
 	 * harvests block into inventory
@@ -131,24 +133,38 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 
 	override def isDamaged(stack: ItemStack): Boolean = true
 
-	override def addInformation(itemStack: ItemStack, player: EntityPlayer, information: java.util.List[_], advToolTips: Boolean) =
+	override def addInformation(is: ItemStack, player: EntityPlayer, information: java.util.List[_], advToolTips: Boolean) =
 	{
-		val currentPower = this.getAECurrentPower(itemStack)
+		val currentPower = this.getAECurrentPower(is)
 		val roundCurrent = currentPower.toInt
-		val maxPower = this.getAEMaxPower(itemStack)
 
+		val maxPower = this.getAEMaxPower(is)
 		val percent = (currentPower / maxPower * 100).toInt
-		// TODO format scala int to whole number without 10^x
-
-		val message = s"Stored Energy: $roundCurrent AE - $percent%"
 
 		val list = information.asInstanceOf[java.util.List[String]]
-		list.add(message)
 
 		// add additional information when sneaking
-		if (player.isSneaking)
+		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT))
 		{
-			list.add("Add additional energ cells to increase energy storage")
+			val energyBlockBreak: Double = this.getCurrentEnergyPerBlockBreak(is)
+			val multiplier: Double = this.getCurrentChargeMultiplier(is)
+			val speed: Int = this.getCurrentMiningSpeed(is)
+			val level: Int = this.getCurrentMiningLevel(is)
+			val damage: Double = this.getCurrentDamageVsEntities(is)
+
+			list.add(s"Stored Energy: $roundCurrent AE - $percent%")
+			list.add(s"Energy Cost: $energyBlockBreak")
+			list.add(s"Charge multiplier: $multiplier")
+
+			list.add(s"Mining Speed: $speed")
+			list.add(s"Mining Level: $level")
+
+			list.add(s"Damage: $damage")
+		}
+		else
+		{
+			val shortCurrent = this.readableForm(roundCurrent)
+			list.add(s"Stored Energy: $shortCurrent AE - $percent%")
 		}
 	}
 
@@ -166,6 +182,17 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 		1 - this.getAECurrentPower(stack) / this.getAEMaxPower(stack)
 	}
 
+	override def showDurabilityBar(stack: ItemStack): Boolean = true
+
 	override def isBookEnchantable(stack: ItemStack, book: ItemStack): Boolean = false
+
+	private def readableForm(value: Int): String =
+	{
+		val unit = 1000
+		if (value < unit) return value + " AE"
+		val exp = (Math.log(value) / Math.log(unit)).toInt
+		val pre: String = "kMBT".charAt(exp - 1) + ""
+		"%.1f %sAE".format(value / Math.pow(unit, exp), pre)
+	}
 }
 

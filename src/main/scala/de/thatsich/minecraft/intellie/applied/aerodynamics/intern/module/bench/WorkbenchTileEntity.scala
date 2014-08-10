@@ -3,7 +3,6 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 
 import appeng.api.implementations.items.IAEItemPowerStorage
 import cpw.mods.fml.relauncher.{Side, SideOnly}
-import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.common.item.AAEPoweredItemArmor
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerItem
 import net.minecraft.item.ItemStack
@@ -126,9 +125,8 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 
 							dissembler.addAEMaxPower(armorTool, maxUpgrade)
 							dissembler.injectAEPower(armorTool, currentUpgrade)
-							println(s"Increase max capacity by $maxUpgrade and energy level by $currentUpgrade" )
 
-						case any => println(s"Unsupported upgrade $any")
+						case any => println(s"Unsupported upgrade $any") // TODO remove or better
 					}
 
 				case armor: AAEPoweredItemArmor =>
@@ -141,10 +139,10 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 							armor.addAEMaxPower(armorTool, maxUpgrade)
 							armor.injectAEPower(armorTool, currentUpgrade)
 
-						case any => println(s"Unsupported upgrade $any")
+						case any => println(s"Unsupported upgrade $any") // TODO remove or better
 					}
 
-				case any => println(s"Unsupported item to upgrade $any")
+				case any => println(s"Unsupported item to upgrade $any") // TODO remove or better
 			}
 
 			this.setInventorySlotContents(2, armorTool.copy())
