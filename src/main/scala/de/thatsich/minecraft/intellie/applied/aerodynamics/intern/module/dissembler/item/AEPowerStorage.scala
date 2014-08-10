@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
 
+
 import appeng.api.config.AccessRestriction
 import appeng.api.implementations.items.IAEItemPowerStorage
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.{DissemblerConfigAccess, NBTAccess}
@@ -15,10 +16,12 @@ import net.minecraft.item.ItemStack
 private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
                                                  with NBTAccess
                                                  with DissemblerConfigAccess
+                                                 with CappedValue
 {
 	private final val internalCurrentPower = "internalCurrentPower"
 	private final val internalCurrentMaxPower = "internalCurrentMaxPower"
 	private final val internalCurrentChargePerTick = "internalCurrentChargePerTick"
+	private final val internalCurrentEnergyPerBlockBreak = "internalCurrentEnergyPerBlockBreak"
 
 	def addAEMaxPower(is: ItemStack, amt: Double): Double =
 	{
@@ -72,23 +75,37 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
 		currentStorage
 	}
 
-	private def setAECurrentPower(is: ItemStack, value: Double): Unit =
+	def setAECurrentPower(is: ItemStack, value: Double): Unit =
 	{
 		val tag = this.getNBTData(is)
 		tag.setDouble(this.internalCurrentPower, value)
 	}
 
-	private def getCurrentChargePerTick(is: ItemStack): Double =
+	def getCurrentChargePerTick(is: ItemStack): Double =
 	{
 		val tag = this.getNBTData(is)
-		val currentChargePerTick: Double = tag.getDouble(this.internalCurrentChargePerTick)
+		val current: Double = tag.getDouble(this.internalCurrentChargePerTick)
 
-		this.initChargePerTick.max(currentChargePerTick.min(this.maxChargePerTick))
+		this.getInBetween(this.initChargePerTick, current, this.maxChargePerTick)
 	}
 
-	private def setCurrentChargePerTick(is: ItemStack, value: Double): Unit =
+	def setCurrentChargePerTick(is: ItemStack, value: Double): Unit =
 	{
 		val tag = this.getNBTData(is)
 		tag.setDouble(this.internalCurrentChargePerTick, value)
+	}
+
+	def getCurrentEnergyPerBlockBreak(is: ItemStack): Double =
+	{
+		val tag = this.getNBTData(is)
+		val current = tag.getDouble(this.internalCurrentEnergyPerBlockBreak)
+
+		this.getInBetween(this.initChargePerTick, current, this.maxChargePerTick)
+	}
+
+	def setCurrentEnergyPerBlockBreak(is: ItemStack, value: Double): Unit =
+	{
+		val tag = this.getNBTData(is)
+		tag.setDouble(this.internalCurrentEnergyPerBlockBreak, value)
 	}
 }

@@ -7,7 +7,7 @@ package module
 package dissembler
 
 
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.{AEPowerStorage, AEWrench, BlockBreakEventHandler, PrecisionHarvester, Weapon}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.{AEPowerStorage, AEWrench, BlockBreakEventHandler, MiningTool, PrecisionHarvester, Weapon}
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
@@ -27,6 +27,7 @@ class DissemblerItem extends Item
                              with BlockBreakEventHandler
                              with AEPowerStorage
                              with Weapon
+                             with MiningTool
 {
 	this.setMaxStackSize(1)
 	this.hasSubtypes = false
@@ -52,7 +53,7 @@ class DissemblerItem extends Item
 	 */
 	override def onItemUseFirst(stack: ItemStack, player: EntityPlayer, world: World, x: Int, y: Int, z: Int, side: Int, hitX: Float, hitY: Float, hitZ: Float): Boolean =
 	{
-		if (this.getAECurrentPower(stack) > this.energyPerBlockBreak)
+		if (this.getAECurrentPower(stack) > this.getCurrentEnergyPerBlockBreak(stack))
 		{
 			this.precisionHarvest(stack, world, player, x, y, z)
 		}
@@ -71,11 +72,12 @@ class DissemblerItem extends Item
 	 */
 	override def onEntitySwing(elb: EntityLivingBase, stack: ItemStack): Boolean =
 	{
-		if (this.getAECurrentPower(stack) > this.energyPerBlockBreak && elb.isClientWorld)
+		val energyPerBlockBreak: Double = this.getCurrentEnergyPerBlockBreak(stack)
+		if (this.getAECurrentPower(stack) > energyPerBlockBreak && elb.isClientWorld)
 		{
 			if (!this.inUse)
 			{
-				this.extractAEPower(stack, this.energyPerBlockBreak)
+				this.extractAEPower(stack, energyPerBlockBreak)
 			}
 
 			this.inUse
@@ -96,7 +98,14 @@ class DissemblerItem extends Item
 	 */
 	override def func_150893_a(is: ItemStack, b: Block): Float =
 	{
-		if (this.getAECurrentPower(is) > this.energyPerBlockBreak) this.miningSpeed else 0
+		if (this.getAECurrentPower(is) > this.getCurrentEnergyPerBlockBreak(is))
+		{
+			this.getCurrentMiningLevel(is)
+		}
+		else
+		{
+			0
+		}
 	}
 
 	/**

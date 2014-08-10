@@ -18,6 +18,7 @@ import net.minecraft.util.DamageSource
 trait Weapon extends Item
                      with NBTAccess
                      with DissemblerConfigAccess
+                     with CappedValue
 {
 	override def onLeftClickEntity(stack: ItemStack, player: EntityPlayer, entity: Entity): Boolean =
 	{
@@ -30,13 +31,15 @@ trait Weapon extends Item
 		false
 	}
 
-	private def getCurrentDamageVsEntities(is: ItemStack): Double =
+	def getCurrentDamageVsEntities(is: ItemStack): Double =
 	{
 		val tag: NBTTagCompound = this.getNBTData(is)
-		tag.getDouble("internalCurrentDamageVsEntites")
+		val current: Double = tag.getDouble("internalCurrentDamageVsEntites")
+
+		this.getInBetween(this.initDamageVsEntites, current, this.maxDamageVsEntites)
 	}
 
-	private def setCurrentDamageVsEntities(is: ItemStack, value: Double): Unit =
+	def setCurrentDamageVsEntities(is: ItemStack, value: Double): Unit =
 	{
 		val tag: NBTTagCompound = this.getNBTData(is)
 		tag.setDouble("internalCurrentDamageVsEntites", value)
