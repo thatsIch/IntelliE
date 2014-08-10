@@ -13,7 +13,7 @@ apply from: 'gradle/scripts/javacompat.gradle'
 // needed for pulling new versions from forge
 minecraft {
     version = "${VERSION_MINECRAFT}-${VERSION_FORGE}"
-    runDir = "out"
+    runDir = "run"
 }
 
 buildscript {
