@@ -52,7 +52,7 @@ private[dissembler] trait PrecisionHarvester extends Item
 		}
 	}
 
-	def precisionHarvest(is: ItemStack, world: World, player: EntityPlayer, x: Int, y: Int, z: Int): Boolean =
+	private def precisionHarvest(is: ItemStack, world: World, player: EntityPlayer, x: Int, y: Int, z: Int): Boolean =
 	{
 		val block: Block = world.getBlock(x, y, z)
 		val meta: Int = world.getBlockMetadata(x, y, z)

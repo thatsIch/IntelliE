@@ -10,7 +10,7 @@ package dissembler
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.item.BaseItem
 import de.thatsich.minecraft.common.string.ID
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.{AEPowerStorage, AEWrench, BlockBreakEventHandler, BreakSpeedHandler, MiningTool, PrecisionHarvester, SpecialTool, UniqueItem, UnstackableItem, Weapon}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.{AEPowerStorage, AEWrench, BlockBreakEventHandler, BreakSpeedHandler, HumanNumberFormat, MiningTool, PrecisionHarvester, SpecialTool, UniqueItem, UnstackableItem, Weapon}
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
@@ -36,6 +36,7 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
                                                             with SpecialTool
                                                             with UnstackableItem
                                                             with UniqueItem
+                                                            with HumanNumberFormat
 {
 	/**
 	 * When player.swingItem is executed
@@ -74,14 +75,15 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 	 */
 	override def getDigSpeed(is: ItemStack, block: Block, metadata: Int): Float =
 	{
-		if (this.canHarvestBlock(block, is))
-		{
-			this.getCurrentMiningSpeed(is)
-		}
-		else
-		{
-			0
-		}
+		//		if (this.canHarvestBlock(block, is))
+		//		{
+		//			this.getCurrentMiningSpeed(is)
+		//		}
+		//		else
+		//		{
+		//			0
+		//		}
+		64
 	}
 
 	/**
@@ -135,27 +137,19 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 
 	override def canHarvestBlock(block: Block, is: ItemStack): Boolean =
 	{
-		val harvestLevel: Int = block.getHarvestLevel(0)
-		val currentMiningLevel: Int = this.getCurrentMiningLevel(is)
-
-		val currentEnergy = this.getAECurrentPower(is)
-		val energyUsage = this.getCurrentEnergyPerBlockBreak(is)
-
-		currentMiningLevel >= harvestLevel && currentEnergy >= energyUsage
+		//		val harvestLevel: Int = block.getHarvestLevel(0)
+		//		val currentMiningLevel: Int = this.getCurrentMiningLevel(is)
+		//
+		//		val currentEnergy = this.getAECurrentPower(is)
+		//		val energyUsage = this.getCurrentEnergyPerBlockBreak(is)
+		//
+		//		currentMiningLevel >= harvestLevel && currentEnergy >= energyUsage
+		true
 	}
 
 	override def getDurabilityForDisplay(stack: ItemStack): Double =
 	{
 		1 - this.getAECurrentPower(stack) / this.getAEMaxPower(stack)
-	}
-
-	private def readableForm(value: Int): String =
-	{
-		val unit = 1000
-		if (value < unit) return value + " AE"
-		val exp = (Math.log(value) / Math.log(unit)).toInt
-		val pre: String = "kMBT".charAt(exp - 1) + ""
-		"%.1f %sAE".format(value / Math.pow(unit, exp), pre)
 	}
 }
 

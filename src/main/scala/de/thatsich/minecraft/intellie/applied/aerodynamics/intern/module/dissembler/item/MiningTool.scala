@@ -16,13 +16,10 @@ trait MiningTool extends Item
                          with DissemblerConfigAccess
                          with CappedValue
 {
-	private final val internalCurrentMiningSpeed = "internalCurrentMiningSpeed"
-	private final val internalCurrentMiningLevel = "internalCurrentMiningLevel"
-
 	def getCurrentMiningSpeed(is: ItemStack): Int =
 	{
 		val tag = this.getNBTData(is)
-		val current: Int = tag.getInteger(this.internalCurrentMiningSpeed)
+		val current: Int = tag.getInteger(MiningTool.internalCurrentMiningSpeed)
 
 		this.getInBetween(this.initMiningSpeed, current, this.maxMiningSpeed)
 	}
@@ -30,13 +27,13 @@ trait MiningTool extends Item
 	def setCurrentMiningSpeed(is: ItemStack, value: Int): Unit =
 	{
 		val tag = this.getNBTData(is)
-		tag.setInteger(this.internalCurrentMiningSpeed, value)
+		tag.setInteger(MiningTool.internalCurrentMiningSpeed, value)
 	}
 
 	def getCurrentMiningLevel(is: ItemStack): Int =
 	{
 		val tag = this.getNBTData(is)
-		val current = tag.getInteger(this.internalCurrentMiningLevel)
+		val current = tag.getInteger(MiningTool.internalCurrentMiningLevel)
 
 		this.getInBetween(this.initMiningLevel, current, this.maxMiningLevel)
 	}
@@ -44,6 +41,12 @@ trait MiningTool extends Item
 	def setCurrentMiningLevel(is: ItemStack, value: Int): Unit =
 	{
 		val tag = this.getNBTData(is)
-		tag.setInteger(this.internalCurrentMiningLevel, value)
+		tag.setInteger(MiningTool.internalCurrentMiningLevel, value)
 	}
 }
+
+private[this] object MiningTool {
+	private final val internalCurrentMiningSpeed = "internalCurrentMiningSpeed"
+	private final val internalCurrentMiningLevel = "internalCurrentMiningLevel"
+}
+

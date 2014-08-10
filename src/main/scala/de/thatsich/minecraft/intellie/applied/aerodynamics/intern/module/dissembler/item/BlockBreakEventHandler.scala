@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
 
+
 import cpw.mods.fml.common.eventhandler.SubscribeEvent
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerItem
 import net.minecraft.entity.player.EntityPlayer
@@ -30,22 +31,20 @@ private[dissembler] trait BlockBreakEventHandler
 	def onHarvestDropsEvent(event: HarvestDropsEvent): Unit =
 	{
 		val player: EntityPlayer = event.harvester
-		if (player != null)
+		if (player == null) return
+
+		val heldItemStack: ItemStack = player.getHeldItem
+		if (heldItemStack == null) return
+
+		val heldItem: Item = heldItemStack.getItem
+		if (heldItem == null) return
+		if (!heldItem.isInstanceOf[DissemblerItem]) return
+
+		// put drops into inventory of player
+		val drops: Seq[ItemStack] = event.drops.asScala
+		for (dropItemStack <- drops)
 		{
-			val heldItem: ItemStack = player.getHeldItem
-			if (heldItem != null) {
-				val item: Item = heldItem.getItem
-
-				if (item.isInstanceOf[DissemblerItem])
-				{
-					val drops: Seq[ItemStack] = event.drops.asScala
-
-					for (dropItemStack <- drops)
-					{
-						player.inventory.addItemStackToInventory(dropItemStack)
-					}
-				}
-			}
+			player.inventory.addItemStackToInventory(dropItemStack)
 		}
 	}
 }

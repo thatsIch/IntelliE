@@ -6,7 +6,8 @@ import net.minecraftforge.common.MinecraftForge
 
 
 /**
- *
+ * Tracks the state of the right mouse button.
+ * resets the use state when it is released
  *
  * @author thatsIch
  * @since 29.07.2014.
