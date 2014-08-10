@@ -1,6 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern
 
 
+import cpw.mods.fml.relauncher.{SideOnly, Side}
 import de.thatsich.minecraft.common.Modules
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.string.ID
@@ -25,8 +26,15 @@ class AeroCreativeTabs(icon: Item, registrable: Modules, log: Log, modid: ID) ex
 		case _ =>
 	}
 
+	@SideOnly(Side.CLIENT)
 	override def getTabIconItem: Item =
 	{
 		this.icon
+	}
+
+	override def getTranslatedTabLabel: String = {
+		val id: String = this.modid
+
+		s"$id.tab.name"
 	}
 }

@@ -1,7 +1,6 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
 
-
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.config.{DissemblerConfig, DissemblerConfigPath}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.config.{DissemblerConfig, DissemblerConfigPath}
 
 
 /**

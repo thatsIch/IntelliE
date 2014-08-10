@@ -3,7 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissem
 
 import appeng.api.config.AccessRestriction
 import appeng.api.implementations.items.IAEItemPowerStorage
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.{DissemblerConfigAccess, NBTAccess}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.DissemblerConfigAccess
 import net.minecraft.item.ItemStack
 
 

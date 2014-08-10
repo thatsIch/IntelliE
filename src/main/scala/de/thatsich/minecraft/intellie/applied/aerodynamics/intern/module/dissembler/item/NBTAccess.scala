@@ -1,5 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler
-
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
 
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound

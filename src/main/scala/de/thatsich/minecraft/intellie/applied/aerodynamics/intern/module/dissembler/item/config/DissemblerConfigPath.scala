@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.config
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.config
 
 
 import de.thatsich.minecraft.common.string.BaseConfigPath

@@ -73,6 +73,7 @@ class DissemblerItem extends Item
 	override def onEntitySwing(elb: EntityLivingBase, stack: ItemStack): Boolean =
 	{
 		val energyPerBlockBreak: Double = this.getCurrentEnergyPerBlockBreak(stack)
+
 		if (this.getAECurrentPower(stack) > energyPerBlockBreak && elb.isClientWorld)
 		{
 			if (!this.inUse)

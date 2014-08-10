@@ -1,5 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler
-
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.recipe
 
 import de.thatsich.minecraft.common.string.BaseResourcePath
 

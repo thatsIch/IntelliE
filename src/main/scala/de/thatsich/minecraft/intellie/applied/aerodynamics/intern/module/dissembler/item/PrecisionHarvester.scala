@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
 
 import appeng.api.AEApi
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.MouseEventHandler
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.MouseEventHandler
 import net.minecraft.block.Block
 import net.minecraft.entity.player.{EntityPlayer, EntityPlayerMP}
 import net.minecraft.item.ItemStack
