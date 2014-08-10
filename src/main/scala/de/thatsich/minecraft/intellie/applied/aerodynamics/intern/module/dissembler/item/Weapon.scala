@@ -2,7 +2,6 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissem
 
 
 import de.thatsich.minecraft.common.module.util.{CappedValue, NBTAccess}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.DissemblerConfigAccess
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.entity.{Entity, SharedMonsterAttributes}
 import net.minecraft.item.{Item, ItemStack}
@@ -21,6 +20,8 @@ trait Weapon extends Item
                      with DissemblerConfigAccess
                      with CappedValue
 {
+	private final val internalCurrentDamageVsEntities: String = "internalCurrentDamageVsEntities"
+
 	override def onLeftClickEntity(stack: ItemStack, player: EntityPlayer, entity: Entity): Boolean =
 	{
 		var damage: Double = player.getEntityAttribute(SharedMonsterAttributes.attackDamage).getAttributeValue
@@ -35,7 +36,7 @@ trait Weapon extends Item
 	def getCurrentDamageVsEntities(is: ItemStack): Double =
 	{
 		val tag: NBTTagCompound = this.getNBTData(is)
-		val current: Double = tag.getDouble("internalCurrentDamageVsEntites")
+		val current: Double = tag.getDouble(this.internalCurrentDamageVsEntities)
 
 		this.getInBetween(this.initDamageVsEntites, current, this.maxDamageVsEntites)
 	}
@@ -43,6 +44,6 @@ trait Weapon extends Item
 	def setCurrentDamageVsEntities(is: ItemStack, value: Double): Unit =
 	{
 		val tag: NBTTagCompound = this.getNBTData(is)
-		tag.setDouble("internalCurrentDamageVsEntites", value)
+		tag.setDouble(this.internalCurrentDamageVsEntities, value)
 	}
 }

@@ -137,8 +137,10 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 
 						// mining speed
 						case cell: IStorageCell =>
-							val additionalLevels = cell.getBytes(upgrade)
-							println("Levels: " + additionalLevels)
+							val current = dissembler.getCurrentMiningSpeed(armorTool)
+							val additionalLevels = cell.getBytes(upgrade) / 1024
+
+							dissembler.setCurrentMiningSpeed(armorTool, current + additionalLevels)
 
 						case any =>
 							// mining level
@@ -156,14 +158,14 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 							}
 
 							// charge multiplier
-							else if (mats.materialCalcProcessor.sameAs(upgrade))
+							else if (mats.materialCardSpeed.sameAs(upgrade))
 							{
 								val current = dissembler.getCurrentChargeMultiplier(armorTool)
 								dissembler.setCurrentChargePerTick(armorTool, current + 1)
 							}
 
 							// energy cost
-							else if (mats.materialCardSpeed.sameAs(upgrade))
+							else if (mats.materialCalcProcessor.sameAs(upgrade))
 							{
 								val current = dissembler.getCurrentEnergyPerBlockBreak(armorTool)
 								dissembler.setCurrentEnergyPerBlockBreak(armorTool, current - 1)
