@@ -33,15 +33,17 @@ private[dissembler] trait BlockBreakEventHandler
 		if (player != null)
 		{
 			val heldItem: ItemStack = player.getHeldItem
-			val item: Item = heldItem.getItem
+			if (heldItem != null) {
+				val item: Item = heldItem.getItem
 
-			if (item.isInstanceOf[DissemblerItem])
-			{
-				val drops: Seq[ItemStack] = event.drops.asScala
-
-				for (dropItemStack <- drops)
+				if (item.isInstanceOf[DissemblerItem])
 				{
-					player.inventory.addItemStackToInventory(dropItemStack)
+					val drops: Seq[ItemStack] = event.drops.asScala
+
+					for (dropItemStack <- drops)
+					{
+						player.inventory.addItemStackToInventory(dropItemStack)
+					}
 				}
 			}
 		}

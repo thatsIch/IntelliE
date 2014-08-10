@@ -54,7 +54,7 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 	 */
 	override def onItemUseFirst(stack: ItemStack, player: EntityPlayer, world: World, x: Int, y: Int, z: Int, side: Int, hitX: Float, hitY: Float, hitZ: Float): Boolean =
 	{
-		val block: Block = world.getBlock(x,y,z)
+		val block: Block = world.getBlock(x, y, z)
 		if (this.canHarvestBlock(block, stack))
 		{
 			this.precisionHarvest(stack, world, player, x, y, z)
@@ -91,17 +91,31 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 		}
 	}
 
+	//	override def func_150893_a(is: ItemStack, b: Block): Float =
+	//	{
+	//		if (this.getAECurrentPower(is) > this.getCurrentEnergyPerBlockBreak(is))
+	//		{
+	//			5000
+	//			//			this.getCurrentMiningSpeed(is)
+	//		}
+	//		else
+	//		{
+	//			0
+	//		}
+	//	}
+
 	/**
-	 * Sets the mining speed to 5000 per default, configureable
+	 * gets the mining speed
 	 *
 	 * @param is ItemStack of this
-	 * @param b Mining block
+	 * @param block Mining block
+	 * @param metadata metadata of bloc
 	 *
-	 * @return configured mining speed (5000 default)
+	 * @return configured mining speed
 	 */
-	override def func_150893_a(is: ItemStack, b: Block): Float =
+	override def getDigSpeed(is: ItemStack, block: Block, metadata: Int): Float =
 	{
-		if (this.getAECurrentPower(is) > this.getCurrentEnergyPerBlockBreak(is))
+		if (this.canHarvestBlock(block, is))
 		{
 			this.getCurrentMiningSpeed(is)
 		}
@@ -166,15 +180,6 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 		}
 	}
 
-	//	/**
-	//	 * Can harvest block?
-	//	 *
-	//	 * @param block block to be harvested
-	//	 *
-	//	 * @return true if you can harvest the block
-	//	 */
-	//	override def func_150897_b(block: Block): Boolean = true
-
 	override def canHarvestBlock(block: Block, is: ItemStack): Boolean =
 	{
 		val harvestLevel: Int = block.getHarvestLevel(0)
@@ -182,15 +187,8 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 
 		val currentEnergy = this.getAECurrentPower(is)
 		val energyUsage = this.getCurrentEnergyPerBlockBreak(is)
-		//		println( s"Level $harvestLevel | Current : $currentMiningLevel")
 
-		println(s"Current Energy: $currentEnergy | $energyUsage")
-
-		val result = currentMiningLevel >= harvestLevel && currentEnergy >= energyUsage
-
-		println(result)
-
-		result
+		currentMiningLevel >= harvestLevel && currentEnergy >= energyUsage
 	}
 
 	override def getDurabilityForDisplay(stack: ItemStack): Double =
