@@ -10,7 +10,7 @@ package dissembler
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.item.BaseItem
 import de.thatsich.minecraft.common.string.ID
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.{AEPowerStorage, AEWrench, BlockBreakEventHandler, MiningTool, PrecisionHarvester, Weapon}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.{AEPowerStorage, AEWrench, BlockBreakEventHandler, BreakSpeedHandler, MiningTool, PrecisionHarvester, SpecialTool, UniqueItem, UnstackableItem, Weapon}
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
@@ -32,39 +32,11 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
                                                             with AEPowerStorage
                                                             with Weapon
                                                             with MiningTool
+                                                            with BreakSpeedHandler
+                                                            with SpecialTool
+                                                            with UnstackableItem
+                                                            with UniqueItem
 {
-	this.setMaxStackSize(1)
-	this.hasSubtypes = false
-
-	/**
-	 * harvests block into inventory
-	 * returns false to process server side too
-	 *
-	 * @param stack using item
-	 * @param player using player
-	 * @param world current world of player
-	 * @param x x coord
-	 * @param y y coord
-	 * @param z z coord
-	 * @param side side of interacting block
-	 * @param hitX hitbox x
-	 * @param hitY hitbox y
-	 * @param hitZ hitbox z
-	 * @return true to stop further processing
-	 */
-	override def onItemUseFirst(stack: ItemStack, player: EntityPlayer, world: World, x: Int, y: Int, z: Int, side: Int, hitX: Float, hitY: Float, hitZ: Float): Boolean =
-	{
-		val block: Block = world.getBlock(x, y, z)
-		if (this.canHarvestBlock(block, stack))
-		{
-			this.precisionHarvest(stack, world, player, x, y, z)
-		}
-		else
-		{
-			true
-		}
-	}
-
 	/**
 	 * When player.swingItem is executed
 	 *
@@ -90,19 +62,6 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 			true
 		}
 	}
-
-	//	override def func_150893_a(is: ItemStack, b: Block): Float =
-	//	{
-	//		if (this.getAECurrentPower(is) > this.getCurrentEnergyPerBlockBreak(is))
-	//		{
-	//			5000
-	//			//			this.getCurrentMiningSpeed(is)
-	//		}
-	//		else
-	//		{
-	//			0
-	//		}
-	//	}
 
 	/**
 	 * gets the mining speed
@@ -137,12 +96,6 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 	 * @return true
 	 */
 	override def doesSneakBypassUse(world: World, x: Int, y: Int, z: Int, player: EntityPlayer): Boolean = true
-
-	override def isRepairable: Boolean = false
-
-	override def isDamageable: Boolean = true
-
-	override def isDamaged(stack: ItemStack): Boolean = true
 
 	override def addInformation(is: ItemStack, player: EntityPlayer, information: java.util.List[_], advToolTips: Boolean) =
 	{
@@ -195,10 +148,6 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 	{
 		1 - this.getAECurrentPower(stack) / this.getAEMaxPower(stack)
 	}
-
-	override def showDurabilityBar(stack: ItemStack): Boolean = true
-
-	override def isBookEnchantable(stack: ItemStack, book: ItemStack): Boolean = false
 
 	private def readableForm(value: Int): String =
 	{

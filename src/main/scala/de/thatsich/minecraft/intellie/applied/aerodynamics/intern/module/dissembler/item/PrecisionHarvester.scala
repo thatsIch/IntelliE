@@ -1,10 +1,10 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
 
+
 import appeng.api.AEApi
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.MouseEventHandler
 import net.minecraft.block.Block
 import net.minecraft.entity.player.{EntityPlayer, EntityPlayerMP}
-import net.minecraft.item.ItemStack
+import net.minecraft.item.{Item, ItemStack}
 import net.minecraft.world.World
 
 
@@ -14,23 +14,52 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 28.07.2014.
  */
-private[dissembler] trait PrecisionHarvester extends MouseEventHandler
+private[dissembler] trait PrecisionHarvester extends Item
+                                                     with MouseEventHandler
 {
+	/**
+	 * harvests block into inventory
+	 * returns false to process server side too
+	 *
+	 * @param stack using item
+	 * @param player using player
+	 * @param world current world of player
+	 * @param x x coord
+	 * @param y y coord
+	 * @param z z coord
+	 * @param side side of interacting block
+	 * @param hitX hitbox x
+	 * @param hitY hitbox y
+	 * @param hitZ hitbox z
+	 * @return true to stop further processing
+	 */
+	override def onItemUseFirst(stack: ItemStack, player: EntityPlayer, world: World, x: Int, y: Int, z: Int, side: Int, hitX: Float, hitY: Float, hitZ: Float): Boolean =
+	{
+		val block: Block = world.getBlock(x, y, z)
+		val blockCharger = AEApi.instance().blocks().blockCharger
+
+		if (blockCharger.sameAs(new ItemStack(block)))
+		{
+			false
+		}
+		else if (this.canHarvestBlock(block, stack))
+		{
+			this.precisionHarvest(stack, world, player, x, y, z)
+		}
+		else
+		{
+			true
+		}
+	}
+
 	def precisionHarvest(is: ItemStack, world: World, player: EntityPlayer, x: Int, y: Int, z: Int): Boolean =
 	{
 		val block: Block = world.getBlock(x, y, z)
 		val meta: Int = world.getBlockMetadata(x, y, z)
 
-		if (AEApi.instance().blocks().blockCharger.sameAs(new ItemStack(block)))
-		{
-			false
-		}
-		else
-		{
-			precondition(is, world, player, block, x, y, z, meta) ||
-				precisionHarvestBoth(is, player) ||
-				precisionHarvestServer(is, world, player, x, y, z)
-		}
+		precondition(is, world, player, block, x, y, z, meta) ||
+			precisionHarvestBoth(is, player) ||
+			precisionHarvestServer(is, world, player, x, y, z)
 	}
 
 	/**

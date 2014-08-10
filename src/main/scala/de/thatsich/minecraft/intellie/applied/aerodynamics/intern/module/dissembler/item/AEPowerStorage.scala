@@ -35,6 +35,7 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
 	{
 		val currentStorage = this.getAECurrentPower(is)
 		val maxStorage = this.getAEMaxPower(is)
+
 		val newStorage = Math.min(maxStorage, currentStorage + amt * this.getCurrentChargeMultiplier(is))
 		val diff = maxStorage - newStorage
 		this.setAECurrentPower(is, newStorage)
