@@ -1,6 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
 
 
+import de.thatsich.minecraft.common.module.util.{CappedValue, NBTAccess}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.DissemblerConfigAccess
 import net.minecraft.item.{Item, ItemStack}
 

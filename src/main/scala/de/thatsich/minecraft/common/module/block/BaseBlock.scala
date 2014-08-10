@@ -31,7 +31,8 @@ abstract class BaseBlock(protected val modid: ID, blockName: ID, protected val l
 	/**
 	 * appaero.tile.workbench
 	 * appaero.tile.workbench.name
-	 * @return
+	 *
+	 * @return unlocalized name
 	 */
 	override def getUnlocalizedName: String =
 	{
@@ -40,9 +41,17 @@ abstract class BaseBlock(protected val modid: ID, blockName: ID, protected val l
 
 	def getName: String = this.name
 
+	/**
+	 * appaero.workbench
+	 *
+	 * @param name name of workbench
+	 *
+	 * @return itself
+	 */
 	override def setBlockName(name: String): Block =
 	{
 		val id: String = this.modid
+
 		super.setBlockName(s"$id.$name")
 	}
 }

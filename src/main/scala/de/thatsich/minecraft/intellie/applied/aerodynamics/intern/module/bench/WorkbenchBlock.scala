@@ -47,7 +47,7 @@ class WorkbenchBlock(modid: ID, name: ID, log: Log) extends BaseBlock(modid, nam
 		true
 	}
 
-	def createNewTileEntity(world: World, par2int: Int): TileEntity = new WorkbenchTileEntity
+	def createNewTileEntity(world: World, par2int: Int): TileEntity = new WorkbenchTileEntity(this.log)
 
 	// TODO refactoring to commong
 	private def getUniqueID(str: String): Int =

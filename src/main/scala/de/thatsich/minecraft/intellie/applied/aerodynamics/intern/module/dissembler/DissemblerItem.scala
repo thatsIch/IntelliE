@@ -7,11 +7,14 @@ package module
 package dissembler
 
 
+import de.thatsich.minecraft.common.log.Log
+import de.thatsich.minecraft.common.module.item.BaseItem
+import de.thatsich.minecraft.common.string.ID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.{AEPowerStorage, AEWrench, BlockBreakEventHandler, MiningTool, PrecisionHarvester, Weapon}
 import net.minecraft.block.Block
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.item.{Item, ItemStack}
+import net.minecraft.item.ItemStack
 import net.minecraft.world.World
 
 
@@ -21,19 +24,19 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 07.04.2014.
  */
-class DissemblerItem extends Item
-                             with AEWrench
-                             with PrecisionHarvester
-                             with BlockBreakEventHandler
-                             with AEPowerStorage
-                             with Weapon
-                             with MiningTool
+class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name, log)
+                                                            with AEWrench
+                                                            with PrecisionHarvester
+                                                            with BlockBreakEventHandler
+                                                            with AEPowerStorage
+                                                            with Weapon
+                                                            with MiningTool
 {
 	this.setMaxStackSize(1)
 	this.hasSubtypes = false
 	this.setMaxDamage(32)
-	this.setUnlocalizedName("appaero.dissembler")
-	this.setTextureName("appaero:dissembler")
+//	this.setUnlocalizedName("appaero.dissembler")
+//	this.setTextureName("appaero:dissembler")
 
 	/**
 	 * harvests block into inventory

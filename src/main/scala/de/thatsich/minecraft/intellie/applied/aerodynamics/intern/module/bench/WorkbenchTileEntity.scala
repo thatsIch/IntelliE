@@ -3,6 +3,8 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 
 import appeng.api.implementations.items.IAEItemPowerStorage
 import cpw.mods.fml.relauncher.{Side, SideOnly}
+import de.thatsich.minecraft.common.log.Log
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.common.item.AAEPoweredItemArmor
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerItem
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.{NBTTagCompound, NBTTagList}
@@ -16,7 +18,7 @@ import net.minecraftforge.common.util.Constants
  * @author thatsIch
  * @since 04.08.2014.
  */
-class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
+class WorkbenchTileEntity(log: Log) extends TileEntity with WorkbenchInventory
 {
 	private var modificationTime: Int = 0
 
@@ -123,7 +125,23 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 
 							dissembler.addAEMaxPower(armorTool, maxUpgrade)
 							dissembler.injectAEPower(armorTool, currentUpgrade)
+
+						case _ =>
 					}
+
+				case armor: AAEPoweredItemArmor =>
+					upgrade.getItem match
+					{
+						case powerStorage: IAEItemPowerStorage =>
+							val currentUpgrade: Double = powerStorage.getAECurrentPower(upgrade)
+							val maxUpgrade: Double = powerStorage.getAEMaxPower(upgrade)
+
+							armor.addAEMaxPower(armorTool, maxUpgrade)
+							armor.injectAEPower(armorTool, currentUpgrade)
+
+						case _ =>
+					}
+				case _                          =>
 			}
 
 			this.setInventorySlotContents(2, armorTool.copy())

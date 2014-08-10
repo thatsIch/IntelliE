@@ -3,6 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.common.item
 
 import appeng.api.config.AccessRestriction
 import appeng.api.implementations.items.IAEItemPowerStorage
+import de.thatsich.minecraft.common.module.util.{CappedValue, NBTAccess}
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 
@@ -14,11 +15,14 @@ import net.minecraft.nbt.NBTTagCompound
  * @since 17.04.2014.
  */
 private[item] trait TPowerStorage extends IAEItemPowerStorage
+                                          with NBTAccess
+                                          with CappedValue
 {
 	self: AAEPoweredItemArmor =>
 	//	def maxStorage: Double
 
 	private final val internalCurrentPower = "internalCurrentPower"
+	private final val internalCurrentMaxPower = "internalCurrentMaxPower"
 	private final val inject = 80000
 
 	def getPowerFlow(is: ItemStack): AccessRestriction = AccessRestriction.WRITE
@@ -46,18 +50,6 @@ private[item] trait TPowerStorage extends IAEItemPowerStorage
 		tag.setDouble(internalCurrentPower, value)
 	}
 
-	private def getNBTData(itemStack: ItemStack): NBTTagCompound =
-	{
-		var compound = itemStack.getTagCompound
-		if (compound == null)
-		{
-			compound = new NBTTagCompound
-			itemStack.setTagCompound(compound)
-		}
-
-		compound
-	}
-
 	def injectAEPower(is: ItemStack, amt: Double): Double =
 	{
 		val currentStorage = this.getAECurrentPower(is)
@@ -70,4 +62,18 @@ private[item] trait TPowerStorage extends IAEItemPowerStorage
 	}
 
 	def getAEMaxPower(is: ItemStack): Double = this.maxStorage
+
+	def setAEMaxPower(is: ItemStack, value: Double): Unit =
+	{
+		val tag: NBTTagCompound = this.getNBTData(is)
+		tag.setDouble(this.internalCurrentMaxPower, value)
+	}
+
+	def addAEMaxPower(is: ItemStack, amt: Double): Double =
+	{
+		val max: Double = this.getAEMaxPower(is)
+		this.setAEMaxPower(is, max + amt)
+
+		max + amt
+	}
 }
