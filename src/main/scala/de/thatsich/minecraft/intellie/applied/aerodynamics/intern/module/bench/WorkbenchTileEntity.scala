@@ -1,7 +1,9 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 
 
-import appeng.api.implementations.items.IAEItemPowerStorage
+import appeng.api.AEApi
+import appeng.api.definitions.Materials
+import appeng.api.implementations.items.{IAEItemPowerStorage, IStorageCell}
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.common.item.AAEPoweredItemArmor
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerItem
@@ -114,11 +116,18 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 			val armorTool: ItemStack = this.getStackInSlotOnClosing(0)
 			val upgrade: ItemStack = this.getStackInSlotOnClosing(1)
 
-			armorTool.getItem match
+			val armorToolItem = armorTool.getItem
+			val upgradeItem = upgrade.getItem
+
+			val api = AEApi.instance()
+			val mats: Materials = api.materials()
+
+			armorToolItem match
 			{
 				case dissembler: DissemblerItem =>
 					upgrade.getItem match
 					{
+						// add energy
 						case powerStorage: IAEItemPowerStorage =>
 							val currentUpgrade: Double = powerStorage.getAECurrentPower(upgrade)
 							val maxUpgrade: Double = powerStorage.getAEMaxPower(upgrade)
@@ -126,7 +135,43 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 							dissembler.addAEMaxPower(armorTool, maxUpgrade)
 							dissembler.injectAEPower(armorTool, currentUpgrade)
 
-						case any => println(s"Unsupported upgrade $any") // TODO remove or better
+						// mining speed
+						case cell: IStorageCell =>
+							val additionalLevels = cell.getBytes(upgrade)
+							println("Levels: " + additionalLevels)
+
+						case any =>
+							// mining level
+							if (mats.materialLogicProcessor.sameAs(upgrade))
+							{
+								val current = dissembler.getCurrentMiningLevel(armorTool)
+								dissembler.setCurrentMiningLevel(armorTool, current + 1)
+							}
+
+							// damage
+							else if (mats.materialEngProcessor.sameAs(upgrade))
+							{
+								val current = dissembler.getCurrentDamageVsEntities(armorTool)
+								dissembler.setCurrentDamageVsEntities(armorTool, current + 1)
+							}
+
+							// charge multiplier
+							else if (mats.materialCalcProcessor.sameAs(upgrade))
+							{
+								val current = dissembler.getCurrentChargeMultiplier(armorTool)
+								dissembler.setCurrentChargePerTick(armorTool, current + 1)
+							}
+
+							// energy cost
+							else if (mats.materialCardSpeed.sameAs(upgrade))
+							{
+								val current = dissembler.getCurrentEnergyPerBlockBreak(armorTool)
+								dissembler.setCurrentEnergyPerBlockBreak(armorTool, current - 1)
+							}
+							else
+							{
+								println(s"Unsupported upgrade $any")
+							}
 					}
 
 				case armor: AAEPoweredItemArmor =>
