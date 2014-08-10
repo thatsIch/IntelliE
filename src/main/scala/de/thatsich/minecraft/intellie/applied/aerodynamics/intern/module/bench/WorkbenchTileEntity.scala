@@ -18,7 +18,7 @@ import net.minecraftforge.common.util.Constants
  * @author thatsIch
  * @since 04.08.2014.
  */
-class WorkbenchTileEntity(log: Log) extends TileEntity with WorkbenchInventory
+class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 {
 	private var modificationTime: Int = 0
 
@@ -105,6 +105,7 @@ class WorkbenchTileEntity(log: Log) extends TileEntity with WorkbenchInventory
 	def canModify: Boolean =
 	{
 		this.items(0) != null && this.items(1) != null && this.items(2) == null
+		// TODO not maxed out
 	}
 
 	def modifyItem(): Unit =
@@ -125,8 +126,9 @@ class WorkbenchTileEntity(log: Log) extends TileEntity with WorkbenchInventory
 
 							dissembler.addAEMaxPower(armorTool, maxUpgrade)
 							dissembler.injectAEPower(armorTool, currentUpgrade)
+							println(s"Increase max capacity by $maxUpgrade and energy level by $currentUpgrade" )
 
-						case _ =>
+						case any => println(s"Unsupported upgrade $any")
 					}
 
 				case armor: AAEPoweredItemArmor =>
@@ -139,9 +141,10 @@ class WorkbenchTileEntity(log: Log) extends TileEntity with WorkbenchInventory
 							armor.addAEMaxPower(armorTool, maxUpgrade)
 							armor.injectAEPower(armorTool, currentUpgrade)
 
-						case _ =>
+						case any => println(s"Unsupported upgrade $any")
 					}
-				case _                          =>
+
+				case any => println(s"Unsupported item to upgrade $any")
 			}
 
 			this.setInventorySlotContents(2, armorTool.copy())

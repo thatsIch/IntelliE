@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
 
+
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.config.{DissemblerConfig, DissemblerConfigPath}
 
 
@@ -29,8 +30,8 @@ trait DissemblerConfigAccess
 	protected final val initEnergy = this.config.getDouble("Energy", "initialEnergy", 0)
 	protected final val maxEnergy = this.config.getDouble("Energy", "maxEnergy", 1000000)
 
-	protected final val initChargePerTick = this.config.getDouble("Energy", "initialChargePerTick", 0)
-	protected final val maxChargePerTick = this.config.getDouble("Energy", "maxChargePerTick", 10000)
+	protected final val initChargeMultiplier = this.config.getDouble("Energy", "initialChargeMultiplier", 1)
+	protected final val maxChargeMultiplier = this.config.getDouble("Energy", "maxChargeMultiplier", 10000)
 
 	protected final val initEnergyPerBlockBreak = this.config.getDouble("Energy", "initEnergyPerBlockBreak", 1000)
 	protected final val minEnergyPerBlockBreak = this.config.getDouble("Energy", "minEnergyPerBlockBreak", 250)

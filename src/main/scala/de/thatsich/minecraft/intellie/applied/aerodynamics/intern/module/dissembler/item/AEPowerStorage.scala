@@ -4,7 +4,6 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissem
 import appeng.api.config.AccessRestriction
 import appeng.api.implementations.items.IAEItemPowerStorage
 import de.thatsich.minecraft.common.module.util.{CappedValue, NBTAccess}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.DissemblerConfigAccess
 import net.minecraft.item.ItemStack
 
 
@@ -36,7 +35,7 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
 	{
 		val currentStorage = this.getAECurrentPower(is)
 		val maxStorage = this.getAEMaxPower(is)
-		val newStorage = Math.min(maxStorage, currentStorage + this.getCurrentChargePerTick(is))
+		val newStorage = Math.min(maxStorage, currentStorage + amt * this.getCurrentChargeMultiplier(is))
 		val diff = maxStorage - newStorage
 		this.setAECurrentPower(is, newStorage)
 
@@ -46,9 +45,9 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
 	def getAEMaxPower(is: ItemStack): Double =
 	{
 		val tag = this.getNBTData(is)
-		val maxStorage = tag.getDouble(this.internalCurrentMaxPower)
+		val current = tag.getDouble(this.internalCurrentMaxPower)
 
-		maxStorage.min(this.maxEnergy)
+		this.getInBetween(this.initEnergy, current, this.maxEnergy)
 	}
 
 	def setAEMaxPower(is: ItemStack, value: Double): Unit =
@@ -71,9 +70,7 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
 	def getAECurrentPower(is: ItemStack): Double =
 	{
 		val tag = this.getNBTData(is)
-		val currentStorage = tag.getDouble(this.internalCurrentPower)
-
-		currentStorage
+		tag.getDouble(this.internalCurrentPower)
 	}
 
 	def setAECurrentPower(is: ItemStack, value: Double): Unit =
@@ -82,12 +79,12 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
 		tag.setDouble(this.internalCurrentPower, value)
 	}
 
-	def getCurrentChargePerTick(is: ItemStack): Double =
+	def getCurrentChargeMultiplier(is: ItemStack): Double =
 	{
 		val tag = this.getNBTData(is)
 		val current: Double = tag.getDouble(this.internalCurrentChargePerTick)
 
-		this.getInBetween(this.initChargePerTick, current, this.maxChargePerTick)
+		this.getInBetween(this.initChargeMultiplier, current, this.maxChargeMultiplier)
 	}
 
 	def setCurrentChargePerTick(is: ItemStack, value: Double): Unit =
@@ -101,7 +98,7 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
 		val tag = this.getNBTData(is)
 		val current = tag.getDouble(this.internalCurrentEnergyPerBlockBreak)
 
-		this.getInBetween(this.initChargePerTick, current, this.maxChargePerTick)
+		this.getInBetween(this.minEnergyPerBlockBreak, current, this.initEnergyPerBlockBreak)
 	}
 
 	def setCurrentEnergyPerBlockBreak(is: ItemStack, value: Double): Unit =
