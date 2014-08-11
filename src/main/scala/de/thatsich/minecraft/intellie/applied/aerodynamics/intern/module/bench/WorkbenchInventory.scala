@@ -1,10 +1,12 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 
 
+import appeng.api.definitions.{Items, Materials}
+import appeng.api.{AEApi, IAppEngApi, definitions}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerItem
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.init.Blocks
 import net.minecraft.inventory.IInventory
-import net.minecraft.item.ItemStack
+import net.minecraft.item.{Item, ItemStack}
 import net.minecraft.tileentity.TileEntity
 
 
@@ -59,8 +61,35 @@ trait WorkbenchInventory extends TileEntity with IInventory
 	 */
 	def isItemValidForSlot(i: Int, is: ItemStack): Boolean =
 	{
-		// TODO change to other things later on like only my tools and stuff
-		is.isItemEqual(new ItemStack(Blocks.anvil))
+		val item: Item = is.getItem
+		val api: IAppEngApi = AEApi.instance()
+		val apiBlocks: definitions.Blocks = api.blocks()
+		val apiItems: Items = api.items()
+		val apiMats: Materials = api.materials()
+
+
+		// first slot only dissembler and armor
+		if (i == 0)
+		{
+			item.isInstanceOf[DissemblerItem]
+		}
+		else if (i == 1)
+		{
+			apiBlocks.blockEnergyCell.sameAs(is) ||
+				apiBlocks.blockEnergyCellDense.sameAs(is) ||
+				apiItems.itemCell1k.sameAs(is) ||
+				apiItems.itemCell4k.sameAs(is) ||
+				apiItems.itemCell16k.sameAs(is) ||
+				apiItems.itemCell64k.sameAs(is) ||
+				apiMats.materialCardSpeed.sameAs(is) ||
+				apiMats.materialCalcProcessor.sameAs(is) ||
+				apiMats.materialLogicProcessor.sameAs(is) ||
+				apiMats.materialEngProcessor.sameAs(is)
+		}
+		else
+		{
+			false
+		}
 	}
 
 	def getStackInSlotOnClosing(index: Int): ItemStack =
