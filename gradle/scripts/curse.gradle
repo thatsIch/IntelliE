@@ -1,10 +1,11 @@
 def theChangelog = getChangelog()
+def formatChangelog = formatChangelog(theChangelog)
 def theLastGitPush = getLastGitPush()
 
 curse {
     apiKey = "eb5b9b11-5d6a-405c-baa2-3acac200baee"
     projectId = "222848"
-    changelog = theChangelog
+    changelog = formatChangelog
     releaseType = "alpha"
 }
 
@@ -54,44 +55,43 @@ private String formatChangelog(String changelog) {
 
     final StringBuilder result = new StringBuilder()
     final StringBuilder additions = new StringBuilder("Additions:\r\n")
-    final StringBuilder fixes = new StringBuilder("Fixes:\r\n")
-    final StringBuilder changes = new StringBuilder("Changes:\r\n")
-    final StringBuilder removals = new StringBuilder("Removals:\r\n")
-    final StringBuilder misc = new StringBuilder("Misc:\r\n")
+    final StringBuilder fixes = new StringBuilder("\r\nFixes:\r\n")
+    final StringBuilder changes = new StringBuilder("\r\nChanges:\r\n")
+    final StringBuilder removals = new StringBuilder("\r\nRemovals:\r\n")
+    final StringBuilder misc = new StringBuilder("\r\nMisc:\r\n")
 
     for (String s : split) {
         if (s.length() == 0) continue
+        String temp = s + "\r\n"
 
         switch (s.charAt(0)) {
             case '+':
-                additions.append(s)
+                additions.append(temp)
                 break
 
             case '=':
-                fixes.append(s)
+                fixes.append(temp)
                 break
 
             case '~':
-                changes.append(s)
+                changes.append(temp)
                 break
 
             case '-':
-                removals.append(s)
+                removals.append(temp)
                 break
 
             default:
-                misc.append(s)
+                misc.append(temp)
                 break
         }
     }
 
-    additions.append("\r\n\r\n")
-
-    if (additions.length() > 10) result.append(additions)
-    if (fixes.length() > 10) result.append(fixes)
-    if (changes.length() > 10) result.append(changes)
-    if (removals.length() > 10) result.append(removals)
-    if (misc.length() > 10) result.append(misc)
+    if (additions.length() > 14) result.append(additions)
+    if (fixes.length() > 14) result.append(fixes)
+    if (changes.length() > 16) result.append(changes)
+    if (removals.length() > 17) result.append(removals)
+    if (misc.length() > 13) result.append(misc)
 
     return result.toString()
 }
