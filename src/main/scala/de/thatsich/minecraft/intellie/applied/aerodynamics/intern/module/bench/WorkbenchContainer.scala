@@ -1,10 +1,14 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 
 
+import appeng.api.definitions.{Blocks, Items, Materials}
+import appeng.api.{AEApi, IAppEngApi}
 import de.thatsich.minecraft.common.module.container.slot.OutputSlot
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.common.item.AAEPoweredItemArmor
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerItem
 import net.minecraft.entity.player.{EntityPlayer, InventoryPlayer}
 import net.minecraft.inventory.{Container, Slot}
-import net.minecraft.item.ItemStack
+import net.minecraft.item.{Item, ItemStack}
 
 
 /**
@@ -44,8 +48,6 @@ class WorkbenchContainer(player: InventoryPlayer, private val workbench: Workben
 			val stackInSlot: ItemStack = slot.getStack
 			val result = stackInSlot.copy
 
-			println(slotIndex)
-
 			// armor tool slot
 			if (slotIndex >= 36)
 			{
@@ -55,65 +57,50 @@ class WorkbenchContainer(player: InventoryPlayer, private val workbench: Workben
 				}
 			}
 			// in player inventory
-			else if (slotIndex > 36)
+			else if (slotIndex < 36)
 			{
-				println("player inventory")
+				val itemInSlot: Item = stackInSlot.getItem
+				val api: IAppEngApi = AEApi.instance()
+				val apiItems: Items = api.items()
+				val apiBlocks: Blocks = api.blocks()
+				val apiMats: Materials = api.materials()
+
+				// is armor tool
+				if (itemInSlot.isInstanceOf[DissemblerItem] || itemInSlot.isInstanceOf[AAEPoweredItemArmor])
+				{
+					if (!this.mergeItemStack(stackInSlot, 36, 37, false))
+					{
+						return null
+					}
+				}
+				// is upgrade
+				else if (apiBlocks.blockEnergyCell.sameAs(stackInSlot) ||
+					apiBlocks.blockEnergyCellDense.sameAs(stackInSlot) ||
+					apiItems.itemCell1k.sameAs(stackInSlot) ||
+					apiItems.itemCell4k.sameAs(stackInSlot) ||
+					apiItems.itemCell16k.sameAs(stackInSlot) ||
+					apiItems.itemCell64k.sameAs(stackInSlot) ||
+					apiMats.materialCardSpeed.sameAs(stackInSlot) ||
+					apiMats.materialLogicProcessor.sameAs(stackInSlot) ||
+					apiMats.materialEngProcessor.sameAs(stackInSlot) ||
+					apiMats.materialCalcProcessor.sameAs(stackInSlot))
+				{
+					val upgradeSlot: Slot = this.getSlot(37)
+
+					if (upgradeSlot!= null && upgradeSlot.getHasStack)
+					{
+						val upgradeStack: ItemStack = upgradeSlot.getStack
+						if (upgradeStack.stackSize == 0)
+						{
+							if (!this.mergeItemStack(stackInSlot, 37, 38, false))
+							{
+								return null
+							}
+						}
+					}
+				}
 			}
 
-			//
-			//			if (slotIndex == 2)
-			//			{
-			//				if (!this.mergeItemStack(stackInSlot, 3, 39, true))
-			//				{
-			//					return null
-			//				}
-			//				slot.onSlotChange(stackInSlot, result)
-			//			}
-			//			else if (slotIndex != 1 && slotIndex != 0)
-			//			{
-			//				if (FurnaceRecipes.smelting.getSmeltingResult(stackInSlot) != null)
-			//				{
-			//					if (!this.mergeItemStack(stackInSlot, 0, 1, false))
-			//					{
-			//						return null
-			//					}
-			//				}
-			//				else if (TileEntityFurnace.isItemFuel(stackInSlot))
-			//				{
-			//					if (!this.mergeItemStack(stackInSlot, 1, 2, false))
-			//					{
-			//						return null
-			//					}
-			//				}
-			//				else if (slotIndex >= 3 && slotIndex < 30)
-			//				{
-			//					if (!this.mergeItemStack(stackInSlot, 30, 39, false))
-			//					{
-			//						return null
-			//					}
-			//				}
-			//				else if (slotIndex >= 30 && slotIndex < 39 && !this.mergeItemStack(stackInSlot, 3, 30, false))
-			//				{
-			//					return null
-			//				}
-			//			}
-			//			else if (!this.mergeItemStack(stackInSlot, 3, 39, false))
-			//			{
-			//				return null
-			//			}
-			//			if (stackInSlot.stackSize == 0)
-			//			{
-			//				slot.putStack(null.asInstanceOf[ItemStack])
-			//			}
-			//			else
-			//			{
-			//				slot.onSlotChanged()
-			//			}
-			//			if (stackInSlot.stackSize == result.stackSize)
-			//			{
-			//				return null
-			//			}
-			//			slot.onPickupFromSlot(player, stackInSlot)
 			if (stackInSlot.stackSize == 0)
 			{
 				slot.putStack(null)
