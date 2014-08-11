@@ -50,11 +50,11 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 		// add additional information when sneaking
 		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT))
 		{
-			val energyUsage: Double = this.getCurrentEnergyUsage(is)
-			val multiplier: Double = this.getCurrentChargeMultiplier(is)
-			val speed: Int = this.getCurrentMiningSpeed(is)
-			val level: Int = this.getCurrentMiningLevel(is)
-			val damage: Double = this.getCurrentDamageVsEntities(is)
+			val energyUsage = this.getCurrentEnergyUsage(is).toInt
+			val multiplier = this.getCurrentChargeMultiplier(is).toInt
+			val speed = this.getCurrentMiningSpeed(is)
+			val level = this.getCurrentMiningLevel(is)
+			val damage = this.getCurrentDamageVsEntities(is).toInt
 
 			list.add(s"Stored Energy: $roundCurrent/$roundMax AE - $percent%")
 			list.add(s"Energy Cost: $energyUsage")
