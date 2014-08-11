@@ -34,7 +34,7 @@ trait Weapon extends Item
 	 */
 	override def onLeftClickEntity(is: ItemStack, hitter: EntityPlayer, target: Entity): Boolean =
 	{
-		val energyUsage = this.getCurrentEnergyPerBlockBreak(is)
+		val energyUsage = this.getCurrentEnergyUsage(is)
 		if (this.getAECurrentPower(is) > energyUsage)
 		{
 			this.extractAEPower(is, energyUsage)

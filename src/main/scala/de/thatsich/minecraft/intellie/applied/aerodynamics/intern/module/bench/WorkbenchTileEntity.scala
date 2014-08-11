@@ -167,7 +167,7 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 							// energy cost
 							else if (mats.materialCalcProcessor.sameAs(upgrade))
 							{
-								val current = dissembler.getCurrentEnergyPerBlockBreak(armorTool)
+								val current = dissembler.getCurrentEnergyUsage(armorTool)
 								dissembler.setCurrentEnergyPerBlockBreak(armorTool, current - 1)
 							}
 							else

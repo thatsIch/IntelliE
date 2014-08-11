@@ -50,15 +50,15 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 		// add additional information when sneaking
 		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT))
 		{
-			val energyBlockBreak: Double = this.getCurrentEnergyPerBlockBreak(is)
+			val energyUsage: Double = this.getCurrentEnergyUsage(is)
 			val multiplier: Double = this.getCurrentChargeMultiplier(is)
 			val speed: Int = this.getCurrentMiningSpeed(is)
 			val level: Int = this.getCurrentMiningLevel(is)
 			val damage: Double = this.getCurrentDamageVsEntities(is)
 
 			list.add(s"Stored Energy: $roundCurrent/$roundMax AE - $percent%")
-			list.add(s"Energy Cost: $energyBlockBreak")
-			list.add(s"Charge multiplier: $multiplier")
+			list.add(s"Energy Cost: $energyUsage")
+			list.add(s"Charge Multiplier: $multiplier")
 
 			list.add(s"Mining Speed: $speed")
 			list.add(s"Mining Level: $level")
@@ -79,7 +79,7 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 		val currentMiningLevel: Int = this.getCurrentMiningLevel(is)
 
 		val currentEnergy = this.getAECurrentPower(is)
-		val energyUsage = this.getCurrentEnergyPerBlockBreak(is)
+		val energyUsage = this.getCurrentEnergyUsage(is)
 
 		currentMiningLevel >= harvestLevel && currentEnergy >= energyUsage
 	}

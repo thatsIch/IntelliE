@@ -90,12 +90,12 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
 		tag.setDouble(Tags.CurrentChargeMultiplier, value)
 	}
 
-	def getCurrentEnergyPerBlockBreak(is: ItemStack): Double =
+	def getCurrentEnergyUsage(is: ItemStack): Double =
 	{
 		val tag = this.getNBTData(is)
 		val value = tag.getDouble(Tags.CurrentEnergyUsage)
 
-		(this.initEnergyUsage min value) max this.minEnergyUsage
+		(this.minEnergyUsage max value) min this.initEnergyUsage
 	}
 
 	def setCurrentEnergyPerBlockBreak(is: ItemStack, value: Double): Unit =
