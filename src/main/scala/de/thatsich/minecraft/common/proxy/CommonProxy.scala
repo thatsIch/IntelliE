@@ -6,7 +6,7 @@ import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationE
 import cpw.mods.fml.common.network.{IGuiHandler, NetworkRegistry}
 import de.thatsich.minecraft.common.Modules
 import de.thatsich.minecraft.common.log.{Log, NamedLog}
-import de.thatsich.minecraft.common.module.registry.{BlockRegistry, GuiRegistry, ItemRegistry, RecipeRegistry, TileEntityRegistry}
+import de.thatsich.minecraft.common.module.registry.{CraftHandlerRegistry, BlockRegistry, GuiRegistry, ItemRegistry, RecipeRegistry, TileEntityRegistry}
 import de.thatsich.minecraft.common.string.Abbreviation
 
 
@@ -76,10 +76,12 @@ abstract class CommonProxy extends EventProxy
 		this.log.info("Init Begin")
 		this.stopwatch.reset.start
 
+		val craftHandlers: CraftHandlerRegistry = new CraftHandlerRegistry(this.log)
 		val recipes: RecipeRegistry = new RecipeRegistry
 		val tiles: TileEntityRegistry = new TileEntityRegistry(this.log)
 		val guis: GuiRegistry = new GuiRegistry(this.log)
 
+		craftHandlers.registerCraftHandlers(this.modules)
 		recipes.registerRecipes(this.modules)
 		tiles.registerTileEntities(this.modules)
 		val handler: IGuiHandler = guis.registerGuis(this.modules)

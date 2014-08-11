@@ -20,6 +20,7 @@ class TileEntityRegistry(log: Log)
 {
 	def registerTileEntities(registrable: Modules): Unit =
 	{
+		val TE = classOf[TileEntity]
 		registrable.foreach
 		{
 			case te: Class[TileEntity] => this.registerTileEntity(te)

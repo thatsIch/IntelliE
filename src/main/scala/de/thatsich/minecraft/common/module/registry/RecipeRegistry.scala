@@ -6,7 +6,6 @@ import java.io._
 import appeng.api.AEApi
 import appeng.api.recipes.{IRecipeHandler, IRecipeLoader}
 import de.thatsich.minecraft.common.Modules
-import de.thatsich.minecraft.common.module.Module
 import de.thatsich.minecraft.common.module.recipe.Recipe
 
 
