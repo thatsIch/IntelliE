@@ -38,9 +38,9 @@ trait DissemblerConfigAccess
 	protected final val chargePerUpgrade = this.config.getInt("Energy", "chargePerUpgrade", 5)
 	protected final val maxChargeMultiplier = this.config.getDouble("Energy", "maxChargeMultiplier", 10000)
 
-	protected final val initEnergyPerBlockBreak = this.config.getDouble("Energy", "initEnergyPerBlockBreak", 100000)
+	protected final val initEnergyUsage = this.config.getDouble("Energy", "initEnergyPerBlockBreak", 100000)
 	protected final val energyUsagePerUpgrade = this.config.getInt("Energy", "energyUsagePerUpgrade", 1500)
-	protected final val minEnergyPerBlockBreak = this.config.getDouble("Energy", "minEnergyPerBlockBreak", 6666)
+	protected final val minEnergyUsage = this.config.getDouble("Energy", "minEnergyPerBlockBreak", 6666)
 
 	this.config.save()
 }

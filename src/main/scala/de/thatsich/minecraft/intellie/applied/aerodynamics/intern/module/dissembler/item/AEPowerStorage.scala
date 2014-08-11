@@ -18,17 +18,13 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
                                                  with DissemblerConfigAccess
                                                  with CappedValue
 {
-	private final val internalCurrentPower = "internalCurrentPower"
-	private final val internalCurrentMaxPower = "internalCurrentMaxPower"
-	private final val internalCurrentChargePerTick = "internalCurrentChargePerTick"
-	private final val internalCurrentEnergyPerBlockBreak = "internalCurrentEnergyPerBlockBreak"
-
 	def addAEMaxPower(is: ItemStack, amt: Double): Double =
 	{
 		val max: Double = this.getAEMaxPower(is)
-		this.setAEMaxPower(is, max + amt)
+		val sum = max + amt
+		this.setAEMaxPower(is, sum)
 
-		max + amt
+		sum
 	}
 
 	def injectAEPower(is: ItemStack, amt: Double): Double =
@@ -46,7 +42,7 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
 	def getAEMaxPower(is: ItemStack): Double =
 	{
 		val tag = this.getNBTData(is)
-		val current = tag.getDouble(this.internalCurrentMaxPower)
+		val current = tag.getDouble(Tags.CurrentMaxPower)
 
 		this.getInBetween(this.initEnergy, current, this.maxEnergy)
 	}
@@ -54,7 +50,7 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
 	def setAEMaxPower(is: ItemStack, value: Double): Unit =
 	{
 		val tag = this.getNBTData(is)
-		tag.setDouble(this.internalCurrentMaxPower, value)
+		tag.setDouble(Tags.CurrentMaxPower, value)
 	}
 
 	def getPowerFlow(is: ItemStack): AccessRestriction = AccessRestriction.WRITE
@@ -71,40 +67,49 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
 	def getAECurrentPower(is: ItemStack): Double =
 	{
 		val tag = this.getNBTData(is)
-		tag.getDouble(this.internalCurrentPower)
+		tag.getDouble(Tags.CurrentPower)
 	}
 
 	def setAECurrentPower(is: ItemStack, value: Double): Unit =
 	{
 		val tag = this.getNBTData(is)
-		tag.setDouble(this.internalCurrentPower, value)
+		tag.setDouble(Tags.CurrentPower, value)
 	}
 
 	def getCurrentChargeMultiplier(is: ItemStack): Double =
 	{
 		val tag = this.getNBTData(is)
-		val current: Double = tag.getDouble(this.internalCurrentChargePerTick)
+		val value = tag.getDouble(Tags.CurrentChargeMultiplier)
 
-		this.getInBetween(this.initChargeMultiplier, current, this.maxChargeMultiplier)
+		(this.initChargeMultiplier max value) min this.maxChargeMultiplier
 	}
 
 	def setCurrentChargePerTick(is: ItemStack, value: Double): Unit =
 	{
 		val tag = this.getNBTData(is)
-		tag.setDouble(this.internalCurrentChargePerTick, value)
+		tag.setDouble(Tags.CurrentChargeMultiplier, value)
 	}
 
 	def getCurrentEnergyPerBlockBreak(is: ItemStack): Double =
 	{
 		val tag = this.getNBTData(is)
-		val current = tag.getDouble(this.internalCurrentEnergyPerBlockBreak)
+		val value = tag.getDouble(Tags.CurrentEnergyUsage)
 
-		this.getInBetween(this.minEnergyPerBlockBreak, current, this.initEnergyPerBlockBreak)
+		(this.initEnergyUsage min value) max this.minEnergyUsage
 	}
 
 	def setCurrentEnergyPerBlockBreak(is: ItemStack, value: Double): Unit =
 	{
 		val tag = this.getNBTData(is)
-		tag.setDouble(this.internalCurrentEnergyPerBlockBreak, value)
+		tag.setDouble(Tags.CurrentEnergyUsage, value)
 	}
+
+	private object Tags extends Enumeration
+	{
+		type Tags = Value
+		val CurrentPower, CurrentMaxPower, CurrentChargeMultiplier, CurrentEnergyUsage = Value
+
+		implicit def tagsToString(tag: Tags): String = tag.toString
+	}
+
 }

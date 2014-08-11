@@ -42,6 +42,7 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 		val roundCurrent = currentPower.toInt
 
 		val maxPower = this.getAEMaxPower(is)
+		val roundMax = maxPower.toInt
 		val percent = (currentPower / maxPower * 100).toInt
 
 		val list = information.asInstanceOf[java.util.List[String]]
@@ -55,7 +56,7 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 			val level: Int = this.getCurrentMiningLevel(is)
 			val damage: Double = this.getCurrentDamageVsEntities(is)
 
-			list.add(s"Stored Energy: $roundCurrent AE - $percent%")
+			list.add(s"Stored Energy: $roundCurrent/$roundMax AE - $percent%")
 			list.add(s"Energy Cost: $energyBlockBreak")
 			list.add(s"Charge multiplier: $multiplier")
 
