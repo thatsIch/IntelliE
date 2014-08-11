@@ -17,7 +17,8 @@ import scala.collection.JavaConverters._
  * @author thatsIch
  * @since 31.07.2014.
  */
-private[dissembler] trait BlockBreakEventHandler
+private[dissembler] trait BlockBreakEventHandler extends AEPowerStorage
+                                                         with DissemblerConfigAccess
 {
 	MinecraftForge.EVENT_BUS.register(this)
 
@@ -42,9 +43,13 @@ private[dissembler] trait BlockBreakEventHandler
 
 		// put drops into inventory of player
 		val drops: Seq[ItemStack] = event.drops.asScala
+		val powerUsage = this.getCurrentEnergyUsage(heldItemStack)
+		var power: Double = 0
 		for (dropItemStack <- drops)
 		{
 			player.inventory.addItemStackToInventory(dropItemStack)
+			power += powerUsage
 		}
+		this.extractAEPower(heldItemStack, power)
 	}
 }
