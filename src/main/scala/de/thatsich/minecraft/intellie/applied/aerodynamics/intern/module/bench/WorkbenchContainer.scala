@@ -114,6 +114,20 @@ class WorkbenchContainer(player: InventoryPlayer, private val workbench: Workben
 			//				return null
 			//			}
 			//			slot.onPickupFromSlot(player, stackInSlot)
+			if (stackInSlot.stackSize == 0)
+			{
+				slot.putStack(null)
+			}
+			else
+			{
+				slot.onSlotChanged()
+			}
+
+			if (stackInSlot.stackSize == result.stackSize)
+			{
+				return null
+			}
+			slot.onPickupFromSlot(player, stackInSlot)
 		}
 
 		null
