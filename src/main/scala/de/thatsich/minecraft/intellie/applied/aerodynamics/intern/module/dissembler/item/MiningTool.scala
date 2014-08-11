@@ -2,6 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissem
 
 
 import de.thatsich.minecraft.common.module.util.{CappedValue, NBTAccess}
+import net.minecraft.block.Block
 import net.minecraft.item.{Item, ItemStack}
 
 
@@ -16,6 +17,27 @@ trait MiningTool extends Item
                          with DissemblerConfigAccess
                          with CappedValue
 {
+	/**
+	 * gets the mining speed
+	 *
+	 * @param is ItemStack of this
+	 * @param block Mining block
+	 * @param metadata metadata of bloc
+	 *
+	 * @return configured mining speed
+	 */
+	override def getDigSpeed(is: ItemStack, block: Block, metadata: Int): Float =
+	{
+		if (this.canHarvestBlock(block, is))
+		{
+			this.getCurrentMiningSpeed(is)
+		}
+		else
+		{
+			0
+		}
+	}
+
 	def getCurrentMiningSpeed(is: ItemStack): Int =
 	{
 		val tag = this.getNBTData(is)

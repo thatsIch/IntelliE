@@ -32,36 +32,22 @@ trait Weapon extends Item
 	 *
 	 * @return false to cancel further processing
 	 */
-	override def hitEntity(is: ItemStack, target: EntityLivingBase, hitter: EntityLivingBase): Boolean =
+	override def onLeftClickEntity(is: ItemStack, hitter: EntityPlayer, target: Entity): Boolean =
 	{
 		val energyUsage = this.getCurrentEnergyPerBlockBreak(is)
 		if (this.getAECurrentPower(is) > energyUsage)
 		{
 			this.extractAEPower(is, energyUsage)
 
-			hitter match
-			{
-				case player: EntityPlayer =>
-					val source = DamageSource.causePlayerDamage(player)
-					val damage: Float = this.getCurrentDamageVsEntities(is).toFloat
+			val source = DamageSource.causePlayerDamage(hitter)
+			val damage: Float = this.getCurrentDamageVsEntities(is).toFloat
 
-					target.attackEntityFrom(source, damage)
-					return true
-				case _                    =>
-			}
+			target.attackEntityFrom(source, damage)
+			return true
 		}
 
 		false
 	}
-
-//	override def onLeftClickEntity(stack: ItemStack, player: EntityPlayer, entity: Entity): Boolean =
-//	{
-//		val damage = this.getCurrentDamageVsEntities(stack)
-//
-//		entity.attackEntityFrom(DamageSource.causePlayerDamage(player), damage.toFloat)
-//
-//		false
-//	}
 
 	def getCurrentDamageVsEntities(is: ItemStack): Double =
 	{

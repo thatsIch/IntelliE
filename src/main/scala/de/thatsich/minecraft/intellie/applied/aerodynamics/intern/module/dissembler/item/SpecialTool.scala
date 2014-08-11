@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
 
 
-import net.minecraft.item.{ItemStack, Item}
+import net.minecraft.item.{Item, ItemStack}
 
 
 /**
@@ -11,6 +11,7 @@ import net.minecraft.item.{ItemStack, Item}
  * @since 10.08.2014.
  */
 trait SpecialTool extends Item
+                          with AEPowerStorage
 {
 	override def isRepairable: Boolean = false
 
@@ -22,4 +23,8 @@ trait SpecialTool extends Item
 
 	override def isBookEnchantable(stack: ItemStack, book: ItemStack): Boolean = false
 
+	override def getDurabilityForDisplay(stack: ItemStack): Double =
+	{
+		1 - this.getAECurrentPower(stack) / this.getAEMaxPower(stack)
+	}
 }

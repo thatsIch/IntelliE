@@ -12,10 +12,8 @@ import de.thatsich.minecraft.common.module.item.BaseItem
 import de.thatsich.minecraft.common.string.ID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.{AEPowerStorage, AEWrench, BlockBreakEventHandler, BreakSpeedHandler, HumanNumberFormat, MiningTool, PrecisionHarvester, SpecialTool, UniqueItem, UnstackableItem, Weapon}
 import net.minecraft.block.Block
-import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
-import net.minecraft.world.World
 import org.lwjgl.input.Keyboard
 
 
@@ -38,67 +36,6 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
                                                             with UniqueItem
                                                             with HumanNumberFormat
 {
-	/**
-	 * When player.swingItem is executed
-	 *
-	 * @param elb swinging entity
-	 * @param stack with item
-	 * @return true to cancel further processing
-	 */
-	override def onEntitySwing(elb: EntityLivingBase, stack: ItemStack): Boolean =
-	{
-		val energyPerBlockBreak: Double = this.getCurrentEnergyPerBlockBreak(stack)
-
-		if (this.getAECurrentPower(stack) > energyPerBlockBreak && elb.isClientWorld)
-		{
-			if (!this.inUse)
-			{
-				this.extractAEPower(stack, energyPerBlockBreak)
-			}
-
-			this.inUse
-		}
-		else
-		{
-			true
-		}
-	}
-
-	/**
-	 * gets the mining speed
-	 *
-	 * @param is ItemStack of this
-	 * @param block Mining block
-	 * @param metadata metadata of bloc
-	 *
-	 * @return configured mining speed
-	 */
-	override def getDigSpeed(is: ItemStack, block: Block, metadata: Int): Float =
-	{
-		//		if (this.canHarvestBlock(block, is))
-		//		{
-		//			this.getCurrentMiningSpeed(is)
-		//		}
-		//		else
-		//		{
-		//			0
-		//		}
-		64
-	}
-
-	/**
-	 * Does not activate blocks when sneaking
-	 *
-	 * @param world current world
-	 * @param x x pos
-	 * @param y y pos
-	 * @param z z pos
-	 * @param player sneaking player
-	 *
-	 * @return true
-	 */
-	override def doesSneakBypassUse(world: World, x: Int, y: Int, z: Int, player: EntityPlayer): Boolean = true
-
 	override def addInformation(is: ItemStack, player: EntityPlayer, information: java.util.List[_], advToolTips: Boolean) =
 	{
 		val currentPower = this.getAECurrentPower(is)
@@ -137,19 +74,13 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 
 	override def canHarvestBlock(block: Block, is: ItemStack): Boolean =
 	{
-		//		val harvestLevel: Int = block.getHarvestLevel(0)
-		//		val currentMiningLevel: Int = this.getCurrentMiningLevel(is)
-		//
-		//		val currentEnergy = this.getAECurrentPower(is)
-		//		val energyUsage = this.getCurrentEnergyPerBlockBreak(is)
-		//
-		//		currentMiningLevel >= harvestLevel && currentEnergy >= energyUsage
-		true
-	}
+		val harvestLevel: Int = block.getHarvestLevel(0)
+		val currentMiningLevel: Int = this.getCurrentMiningLevel(is)
 
-	override def getDurabilityForDisplay(stack: ItemStack): Double =
-	{
-		1 - this.getAECurrentPower(stack) / this.getAEMaxPower(stack)
+		val currentEnergy = this.getAECurrentPower(is)
+		val energyUsage = this.getCurrentEnergyPerBlockBreak(is)
+
+		currentMiningLevel >= harvestLevel && currentEnergy >= energyUsage
 	}
 }
 

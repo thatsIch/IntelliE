@@ -15,7 +15,8 @@ import net.minecraftforge.common.MinecraftForge
 private[dissembler] trait MouseEventHandler
 {
 	MinecraftForge.EVENT_BUS.register(this)
-	var inUse = false
+
+	protected var inUse = false
 
 	/**
 	 * set notInUse to true if right mouse button is released
