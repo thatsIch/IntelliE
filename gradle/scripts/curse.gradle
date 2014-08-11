@@ -49,8 +49,58 @@ private String getLastGitPush() {
     return lastGitPush
 }
 
+private String formatChangelog(String changelog) {
+    final String[] split = changelog.split("\n")
+
+    final StringBuilder result = new StringBuilder()
+    final StringBuilder additions = new StringBuilder("Additions:\r\n")
+    final StringBuilder fixes = new StringBuilder("Fixes:\r\n")
+    final StringBuilder changes = new StringBuilder("Changes:\r\n")
+    final StringBuilder removals = new StringBuilder("Removals:\r\n")
+    final StringBuilder misc = new StringBuilder("Misc:\r\n")
+
+    for (String s : split) {
+        switch (s.charAt(0)) {
+            case '+':
+                additions.append(s)
+                break
+
+            case '=':
+                fixes.append(s)
+                break
+
+            case '~':
+                changes.append(s)
+                break
+
+            case '-':
+                removals.append(s)
+                break
+
+            default:
+                misc.append(s)
+                break
+        }
+    }
+
+    if (additions.length() > 10) result.append(additions)
+    if (fixes.length() > 10) result.append(fixes)
+    if (changes.length() > 10) result.append(changes)
+    if (removals.length() > 10) result.append(removals)
+    if (misc.length() > 10) result.append(misc)
+
+    return result.toString()
+}
+
 task printChangelog(group: 'Debug', description: 'Prints the theChangelog for debugging purposes.') << {
     logger.quiet "The last changelog:\n\n$theChangelog"
+}
+
+task printFormatChangelog(group: 'Debug', description: 'Prints the theChangelog in a format for debugging purposes.') << {
+    String cl = theChangelog
+    String format = formatChangelog(cl)
+
+    logger.quiet "The formatted changelog:\n\n$format"
 }
 
 task printLastGitPush(group: 'Debug', description: 'Prints the hash of last git push for debugging purposes') << {
