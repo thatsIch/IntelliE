@@ -16,7 +16,7 @@ trait DissemblerConfigAccess
 	private final val config = new DissemblerConfig(path)
 
 	// Mining
-	protected final val initMiningSpeed = this.config.getInt("General", "initialMiningSpeed", 0)
+	protected final val initMiningSpeed = this.config.getInt("General", "initialMiningSpeed", 1)
 	protected final val miningSpeedPerUpgrade = this.config.getInt("General", "miningSpeedPerUpgrade", 1)
 	protected final val maxMiningSpeed = this.config.getInt("General", "maxMiningSpeed", 5000)
 

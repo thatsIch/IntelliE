@@ -81,7 +81,11 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 		val currentEnergy = this.getAECurrentPower(is)
 		val energyUsage = this.getCurrentEnergyUsage(is)
 
-		currentMiningLevel >= harvestLevel && currentEnergy >= energyUsage
+		val res = currentMiningLevel >= harvestLevel && currentEnergy >= energyUsage
+
+		println(s"$currentMiningLevel >= $harvestLevel && $currentEnergy >= $energyUsage = $res")
+
+		res
 	}
 }
 

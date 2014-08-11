@@ -28,14 +28,7 @@ trait MiningTool extends Item
 	 */
 	override def getDigSpeed(is: ItemStack, block: Block, metadata: Int): Float =
 	{
-		if (this.canHarvestBlock(block, is))
-		{
-			this.getCurrentMiningSpeed(is)
-		}
-		else
-		{
-			0
-		}
+		this.getCurrentMiningSpeed(is)
 	}
 
 	def getCurrentMiningSpeed(is: ItemStack): Int =
