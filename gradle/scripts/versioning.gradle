@@ -158,6 +158,7 @@ task incRev(group: 'versioning', description: 'Increments project reproject.ext.
     tag(oldTag, newTag)
 }
 
-task push(group: 'versioning', description: 'Pushes all outstanding commits to remote', dependsOn: 'curse') {
+task pushToCurse(group: 'versioning', description: 'Pushes all outstanding commits to remote', dependsOn: 'curse') {
+    logger.quiet "Pushing"
     push()
 }
