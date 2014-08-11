@@ -3,9 +3,10 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 
 import appeng.api.definitions.{Items, Materials}
 import appeng.api.{AEApi, IAppEngApi, definitions}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.common.item.AAEPoweredItemArmor
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerItem
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.inventory.IInventory
+import net.minecraft.inventory.{IInventory, ISidedInventory}
 import net.minecraft.item.{Item, ItemStack}
 import net.minecraft.tileentity.TileEntity
 
@@ -16,7 +17,7 @@ import net.minecraft.tileentity.TileEntity
  * @author thatsIch
  * @since 09.08.2014.
  */
-trait WorkbenchInventory extends TileEntity with IInventory
+trait WorkbenchInventory extends TileEntity with IInventory with ISidedInventory
 {
 	protected val items: Array[ItemStack] = new Array[ItemStack](3)
 
@@ -67,12 +68,14 @@ trait WorkbenchInventory extends TileEntity with IInventory
 		val apiItems: Items = api.items()
 		val apiMats: Materials = api.materials()
 
-
 		// first slot only dissembler and armor
 		if (i == 0)
 		{
-			item.isInstanceOf[DissemblerItem]
+			item.isInstanceOf[DissemblerItem] ||
+				item.isInstanceOf[AAEPoweredItemArmor]
 		}
+
+		// second slot upgrades only
 		else if (i == 1)
 		{
 			apiBlocks.blockEnergyCell.sameAs(is) ||
@@ -86,6 +89,8 @@ trait WorkbenchInventory extends TileEntity with IInventory
 				apiMats.materialLogicProcessor.sameAs(is) ||
 				apiMats.materialEngProcessor.sameAs(is)
 		}
+
+		// third slot nothing since output
 		else
 		{
 			false
@@ -136,4 +141,15 @@ trait WorkbenchInventory extends TileEntity with IInventory
 	def hasCustomInventoryName: Boolean = false
 
 	def getInventoryName: String = "WorkbenchInventory"
+
+	private final val access = Array(0, 1, 2)
+
+	def getAccessibleSlotsFromSide(side: Int): Array[Int] = this.access
+
+	def canExtractItem(slot: Int, is: ItemStack, side: Int): Boolean =
+	{
+		slot == 2
+	}
+
+	def canInsertItem(slot : Int, is : ItemStack, side : Int): Boolean = true
 }

@@ -18,6 +18,6 @@ class ArmorDissemblerSlot(inventory: IInventory, id: Int, x: Int, y: Int) extend
 	override def isItemValid(stack: ItemStack): Boolean =
 	{
 		stack.getItem.isInstanceOf[AAEPoweredItemArmor] ||
-		stack.getItem.isInstanceOf[DissemblerItem]
+			stack.getItem.isInstanceOf[DissemblerItem]
 	}
 }
