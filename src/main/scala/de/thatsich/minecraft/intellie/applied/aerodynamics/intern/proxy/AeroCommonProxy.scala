@@ -41,7 +41,7 @@ abstract class AeroCommonProxy extends CommonProxy
 	 *
 	 * @return modules of mod
 	 */
-	protected final lazy val modules: Modules = new AeroModules(
+	final lazy val modules: Modules = new AeroModules(
 		new DissemblerModule(this.log, this.modid),
 		new ModificationWorkbenchModule(this.log, this.modid)
 	)
