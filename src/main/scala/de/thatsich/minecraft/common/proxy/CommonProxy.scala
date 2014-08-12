@@ -32,7 +32,7 @@ abstract class CommonProxy extends EventProxy
 	 *
 	 * @return modules of mod
 	 */
-	protected val modules: Modules
+	val modules: Modules
 
 	/**
 	 * Instance of the mod

@@ -22,7 +22,6 @@ abstract class BaseItem(protected val modid: ID, itemName: ID, protected val log
 
 	override def getUnlocalizedName: String = s"$id.item.$name"
 
-	// TODO maybe support for own renaming
 	override def getUnlocalizedName(is : ItemStack): String = s"$id.item.$name"
 
 	/**

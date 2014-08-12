@@ -3,7 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.fakeup
 
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.item.BaseItem
-import de.thatsich.minecraft.common.string.ID
+import de.thatsich.minecraft.common.string.{BaseID, ID}
 
 
 /**
@@ -12,4 +12,6 @@ import de.thatsich.minecraft.common.string.ID
  * @author thatsIch
  * @since 12.08.2014.
  */
-class IncCurrentEnergyStorage(modid: ID, itemname: ID, log: Log) extends BaseItem(modid, itemname, log)
+class IncCurrentEnergyStorage(modid: ID, log: Log) extends BaseItem(modid, new IncCurrentEnergyStorageID, log)
+
+private[this] class IncCurrentEnergyStorageID extends BaseID("incCurrentEnergyStorage")

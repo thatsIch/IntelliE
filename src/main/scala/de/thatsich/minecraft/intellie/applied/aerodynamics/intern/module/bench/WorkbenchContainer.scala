@@ -118,8 +118,6 @@ class WorkbenchContainer(player: InventoryPlayer, private val workbench: Workben
 			slot.onPickupFromSlot(player, stackInSlot)
 		}
 
-		AppliedAerodynamics.proxy.modules
-
 		null
 	}
 
