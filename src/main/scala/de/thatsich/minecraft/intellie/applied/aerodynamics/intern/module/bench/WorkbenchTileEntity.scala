@@ -21,7 +21,7 @@ import net.minecraftforge.common.util.Constants
  */
 class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 {
-	private var modificationTime: Int = 0
+	var modificationTime: Int = 0
 
 	@SideOnly(Side.CLIENT)
 	def isModifying: Boolean =

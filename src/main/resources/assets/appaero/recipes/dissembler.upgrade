@@ -1,0 +1,16 @@
+alias=aero -> appaero
+alias=ae2 -> appliedenergistics2
+
+workbench = aero:dissembler ae2:ItemMaterial.EngProcessor 5 aero:decEnergyCost -> aero:dissembler
+workbench = aero:dissembler ae2:ItemMaterial.EngProcessor 5 aero:decEnergyCost -> aero:dissembler
+
+workbench = aero:dissembler ae2:ItemMaterial.EngProcessor 5 aero:decEnergyCost -> aero:dissembler
+workbench = aero:dissembler ae2:ItemMaterial.EngProcessor 5 aero:decEnergyCost -> aero:dissembler
+workbench = aero:dissembler ae2:ItemMaterial.EngProcessor 5 aero:decEnergyCost -> aero:dissembler
+workbench = aero:dissembler ae2:ItemMaterial.EngProcessor 5 aero:decEnergyCost -> aero:dissembler
+
+workbench = aero:dissembler ae2:ItemMaterial.EngProcessor 5 aero:decEnergyCost -> aero:dissembler
+workbench = aero:dissembler ae2:ItemMaterial.EngProcessor 5 aero:decEnergyCost -> aero:dissembler
+workbench = aero:dissembler ae2:ItemMaterial.EngProcessor 5 aero:decEnergyCost -> aero:dissembler
+
+workbench = aero:dissembler ae2:ItemMaterial.EngProcessor 5 aero:decEnergyCost -> aero:dissembler

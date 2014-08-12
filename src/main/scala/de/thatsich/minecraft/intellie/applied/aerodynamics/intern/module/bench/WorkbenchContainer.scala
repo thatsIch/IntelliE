@@ -1,14 +1,20 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
+package de.thatsich.minecraft
+package intellie
+package applied
+package aerodynamics
+package intern
+package module
+package bench
 
 
 import appeng.api.definitions.{Blocks, Items, Materials}
 import appeng.api.{AEApi, IAppEngApi}
+import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.module.container.slot.OutputSlot
-import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.common.item.AAEPoweredItemArmor
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerItem
 import net.minecraft.entity.player.{EntityPlayer, InventoryPlayer}
-import net.minecraft.inventory.{Container, Slot}
+import net.minecraft.inventory.{Container, ICrafting, Slot}
 import net.minecraft.item.{Item, ItemStack}
 
 
@@ -39,6 +45,32 @@ class WorkbenchContainer(player: InventoryPlayer, private val workbench: Workben
 
 	def canInteractWith(player: EntityPlayer): Boolean = workbench.isUseableByPlayer(player)
 
+	@SideOnly(Side.CLIENT)
+	override def updateProgressBar(id: Int, data: Int): Unit =
+	{
+		if (id == 0)
+		{
+			this.workbench.modificationTime = data
+		}
+	}
+
+	private var lastModificationTime = 0
+
+	override def detectAndSendChanges(): Unit =
+	{
+		super.detectAndSendChanges()
+		for (player: Object <- this.crafters)
+		{
+			val crafter: ICrafting = player.asInstanceOf[ICrafting]
+			if (this.lastModificationTime != this.workbench.modificationTime)
+			{
+				crafter.sendProgressBarUpdate(this, 0, this.workbench.modificationTime)
+			}
+		}
+
+		this.lastModificationTime = this.workbench.modificationTime
+	}
+
 	override def transferStackInSlot(player: EntityPlayer, slotIndex: Int): ItemStack =
 	{
 		val slot: Slot = this.getSlot(slotIndex)
@@ -67,7 +99,8 @@ class WorkbenchContainer(player: InventoryPlayer, private val workbench: Workben
 				val apiMats: Materials = api.materials()
 
 				// is armor tool
-				if (itemInSlot.isInstanceOf[DissemblerItem] || itemInSlot.isInstanceOf[AAEPoweredItemArmor])
+				if (itemInSlot.isInstanceOf[DissemblerItem] ||
+					itemInSlot.isInstanceOf[AAEPoweredItemArmor])
 				{
 					if (!this.mergeItemStack(stackInSlot, 36, 37, false))
 					{
@@ -88,7 +121,7 @@ class WorkbenchContainer(player: InventoryPlayer, private val workbench: Workben
 				{
 					val upgradeSlot: Slot = this.getSlot(37)
 
-					if (upgradeSlot!= null && upgradeSlot.getHasStack)
+					if (upgradeSlot != null && upgradeSlot.getHasStack)
 					{
 						val upgradeStack: ItemStack = upgradeSlot.getStack
 						if (upgradeStack.stackSize == 0)
@@ -115,109 +148,10 @@ class WorkbenchContainer(player: InventoryPlayer, private val workbench: Workben
 			{
 				return null
 			}
+
 			slot.onPickupFromSlot(player, stackInSlot)
 		}
 
 		null
 	}
-
-	//	override def transferStackInSlot(player: EntityPlayer, slotClicked: Int): ItemStack =
-	//	{
-	//		var itemstack: ItemStack = null
-	//		//This gets the slot that the player right clicked from.
-	//		val slot = this.getSlot(slotClicked)
-	//
-	//		if (slot != null && slot.getHasStack)
-	//		{
-	//			val itemstack1: ItemStack = slot.getStack
-	//			itemstack = itemstack1.copy()
-	//
-	//			//This is the cooked item slot, slot 0 is the raw item,
-	//			//slot 1 is the fuel and slot 2 is where to cooked item goes.
-	//			if (slotClicked == 2)
-	//			{
-	//				//This function is trying to send it to slots 3 all the way to 39 (Which is the players inventory)
-	//				//par4 is true, that means it will try to put it in the players hot-bar (All the ay at the bottom).
-	//				if (!this.mergeItemStack(itemstack1, 3, 39, true))
-	//				{
-	//					//If that doesn't work, return null...
-	//					return null
-	//				}
-	//
-	//				//Declare the slot changed for the server and client...
-	//				slot.onSlotChange(itemstack1, itemstack)
-	//			}
-	//			//This means if the slot clicked isn't the raw slot, or not the fuel slot (meaning it's the inventory slot)
-	//			else if (slotClicked != 1 && slotClicked != 0)
-	//			{
-	//				//This means if it could be cooked in a furnace
-	//				if (FurnaceRecipes.smelting().getSmeltingResult(itemstack1) != null)
-	//				{
-	//					//This is trying to put it in the first (raw) slot.
-	//					if (!this.mergeItemStack(itemstack1, 0, 1, false))
-	//					{
-	//						//If that doesn't work, return null...
-	//						return null
-	//					}
-	//				}
-	//				//This means if it is fuel for the furnace
-	//				else if (TileEntityFurnace.isItemFuel(itemstack1))
-	//				{
-	//					//This is trying to put it in the second (fuel) slot.
-	//					if (!this.mergeItemStack(itemstack1, 1, 2, false))
-	//					{
-	//						//If that doesn't work, return null...
-	//						return null
-	//					}
-	//				}
-	//				//If it's not fuel, and can't be cooked, but it's in the inventory, not the hot-bar
-	//				else if (slotClicked >= 3 && slotClicked < 30)
-	//				{
-	//					//Just re place it in the inventory, not the hot-bar
-	//					if (!this.mergeItemStack(itemstack1, 30, 39, false))
-	//					{
-	//						//If that doesn't work, return null...
-	//						return null
-	//					}
-	//				}
-	//				//If it's not fuel, and can't be cooked and it's in the hot-bar
-	//				else if (slotClicked >= 30 && slotClicked < 39)
-	//				{
-	//					//Try to place it in the inventory, not the hot-bar
-	//					if (!this.mergeItemStack(itemstack1, 3, 30, false))
-	//					{
-	//						//If that doesn't work, return null...
-	//						return null
-	//					}
-	//				}
-	//			}
-	//			//If all else fails, try to put it somewhere in the inventory...
-	//			else if (!this.mergeItemStack(itemstack1, 3, 39, false))
-	//			{
-	//				//If that doesn't work, return null...
-	//				return null
-	//			}
-	//
-	//			//If it's stack size is 0, set it to null...
-	//			if (itemstack1.stackSize == 0)
-	//			{
-	//				slot.putStack(null)
-	//			}
-	//			else
-	//			{
-	//				slot.onSlotChanged()
-	//			}
-	//
-	//			//If the stack sizes are equal, meaning the whole stack was transferred over, set it to null
-	//			if (itemstack1.stackSize == itemstack.stackSize)
-	//			{
-	//				return null
-	//			}
-	//
-	//			slot.onPickupFromSlot(player, itemstack1)
-	//		}
-	//
-	//		//Return it when it's all done!
-	//		itemstack
-	//	}
 }
