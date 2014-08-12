@@ -36,9 +36,12 @@ trait WorkbenchInventory extends TileEntity with IInventory with ISidedInventory
 			else
 			{
 				is = is.splitStack(count)
+				if (this.getStackInSlot(index).stackSize == 0)
+				{
+					this.items(index) = null
+					this.markDirty()
+				}
 			}
-
-			this.markDirty()
 		}
 
 		is
@@ -116,6 +119,8 @@ trait WorkbenchInventory extends TileEntity with IInventory with ISidedInventory
 		{
 			is.stackSize = this.getInventoryStackLimit
 		}
+
+		this.markDirty()
 	}
 
 	/**
@@ -151,5 +156,5 @@ trait WorkbenchInventory extends TileEntity with IInventory with ISidedInventory
 		slot == 2
 	}
 
-	def canInsertItem(slot : Int, is : ItemStack, side : Int): Boolean = true
+	def canInsertItem(slot: Int, is: ItemStack, side: Int): Boolean = this.isItemValidForSlot(slot, is)
 }

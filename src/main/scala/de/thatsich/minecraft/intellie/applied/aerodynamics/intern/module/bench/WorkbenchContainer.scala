@@ -17,6 +17,8 @@ import net.minecraft.entity.player.{EntityPlayer, InventoryPlayer}
 import net.minecraft.inventory.{Container, ICrafting, Slot}
 import net.minecraft.item.{Item, ItemStack}
 
+import scala.collection.JavaConversions._
+
 
 /**
  *
@@ -40,8 +42,8 @@ class WorkbenchContainer(player: InventoryPlayer, private val workbench: Workben
 
 	// Workbench
 	this.addSlotToContainer(new ArmorDissemblerSlot(workbench, 0, 39, 40))
-	this.addSlotToContainer(new UpgradeSlot(workbench, 1, 59, 40))
-	this.addSlotToContainer(new OutputSlot(workbench, 2, 110, 40))
+	this.addSlotToContainer(new UpgradeSlot(player.player, workbench, 1, 59, 40))
+	this.addSlotToContainer(new OutputSlot(player.player, workbench, 2, 110, 40))
 
 	def canInteractWith(player: EntityPlayer): Boolean = workbench.isUseableByPlayer(player)
 
@@ -54,14 +56,22 @@ class WorkbenchContainer(player: InventoryPlayer, private val workbench: Workben
 		}
 	}
 
+	override def addCraftingToCrafters(crafter: ICrafting): Unit =
+	{
+		super.addCraftingToCrafters(crafter)
+
+		crafter.sendProgressBarUpdate(this, 0, this.workbench.modificationTime)
+	}
+
 	private var lastModificationTime = 0
 
 	override def detectAndSendChanges(): Unit =
 	{
 		super.detectAndSendChanges()
-		for (player: Object <- this.crafters)
+
+		val crafters = this.crafters.toList.asInstanceOf[List[ICrafting]]
+		for (crafter <- crafters)
 		{
-			val crafter: ICrafting = player.asInstanceOf[ICrafting]
 			if (this.lastModificationTime != this.workbench.modificationTime)
 			{
 				crafter.sendProgressBarUpdate(this, 0, this.workbench.modificationTime)

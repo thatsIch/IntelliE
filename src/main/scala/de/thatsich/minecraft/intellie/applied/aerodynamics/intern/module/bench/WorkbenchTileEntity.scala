@@ -81,20 +81,23 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 	{
 		var invChanged: Boolean = false
 
-		if (this.canModify)
+		if (!this.worldObj.isRemote)
 		{
-			this.modificationTime += 1
+			if (this.canModify)
+			{
+				this.modificationTime += 1
 
-			if (this.modificationTime == 200)
+				if (this.modificationTime == 200)
+				{
+					this.modificationTime = 0
+					this.modifyItem()
+					invChanged = true
+				}
+			}
+			else
 			{
 				this.modificationTime = 0
-				this.modifyItem()
-				invChanged = true
 			}
-		}
-		else
-		{
-			this.modificationTime = 0
 		}
 
 		if (invChanged)
@@ -105,7 +108,9 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 
 	def canModify: Boolean =
 	{
-		this.items(0) != null && this.items(1) != null && this.items(2) == null
+		this.getStackInSlot(0) != null &&
+			this.getStackInSlot(1) != null &&
+			this.getStackInSlot(2) == null
 		// TODO check if item is not maxed out
 	}
 
@@ -118,7 +123,6 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 			val upgrade: ItemStack = this.getStackInSlotOnClosing(1)
 
 			val armorToolItem = armorTool.getItem
-			val upgradeItem = upgrade.getItem
 
 			val api = AEApi.instance()
 			val mats: Materials = api.materials()

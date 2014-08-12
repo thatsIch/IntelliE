@@ -4,7 +4,9 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 import appeng.api.definitions.{Blocks, Items, Materials}
 import appeng.api.util.AEItemDefinition
 import appeng.api.{AEApi, IAppEngApi}
-import net.minecraft.inventory.{IInventory, Slot}
+import de.thatsich.minecraft.common.module.container.slot.AdvancedSlot
+import net.minecraft.entity.player.EntityPlayer
+import net.minecraft.inventory.IInventory
 import net.minecraft.item.ItemStack
 
 
@@ -14,7 +16,7 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 09.08.2014.
  */
-class UpgradeSlot(inventory: IInventory, id: Int, x: Int, y: Int) extends Slot(inventory, id, x, y)
+class UpgradeSlot(player: EntityPlayer, inventory: IInventory, id: Int, x: Int, y: Int) extends AdvancedSlot(player, inventory, id, x, y)
 {
 	override def isItemValid(stack: ItemStack): Boolean =
 	{
