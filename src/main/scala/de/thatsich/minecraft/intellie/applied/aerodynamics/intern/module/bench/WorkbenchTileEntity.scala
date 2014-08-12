@@ -106,9 +106,10 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 	def canModify: Boolean =
 	{
 		this.items(0) != null && this.items(1) != null && this.items(2) == null
-		// TODO not maxed out
+		// TODO check if item is not maxed out
 	}
 
+	// TODO add regression chance based
 	def modifyItem(): Unit =
 	{
 		if (this.canModify)

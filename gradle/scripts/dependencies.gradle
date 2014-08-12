@@ -1,5 +1,6 @@
 dependencies {
-//    'com.softwaremill.macwire:macros_2.11:0.7'
+    compile "appeng:appliedenergistics2:rv0-stable-10:dev"
+
 //	testCompile "junit:junit:${VERSION_JUNIT}"
 //	testCompile "org.scalatest:scalatest_2.10:${VERSION_SCALATEST}"
 //	testCompile "org.scalamock:scalamock_2.10:${VERSION_SCALAMOCK}"

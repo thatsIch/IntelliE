@@ -4,6 +4,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 import appeng.api.definitions.{Blocks, Items, Materials}
 import appeng.api.{AEApi, IAppEngApi}
 import de.thatsich.minecraft.common.module.container.slot.OutputSlot
+import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.common.item.AAEPoweredItemArmor
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerItem
 import net.minecraft.entity.player.{EntityPlayer, InventoryPlayer}
@@ -116,6 +117,8 @@ class WorkbenchContainer(player: InventoryPlayer, private val workbench: Workben
 			}
 			slot.onPickupFromSlot(player, stackInSlot)
 		}
+
+		AppliedAerodynamics.proxy.modules
 
 		null
 	}
