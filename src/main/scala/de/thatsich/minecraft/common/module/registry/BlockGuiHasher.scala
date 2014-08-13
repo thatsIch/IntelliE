@@ -9,7 +9,20 @@ package de.thatsich.minecraft.common.module.registry
  */
 trait BlockGuiHasher
 {
+	private[this] val map = Map[String, Int]()
+
 	protected def hash(key: String): Int =
+	{
+		val maybeInt: Option[Int] = this.map get key
+
+		maybeInt match
+		{
+			case Some(hash) => hash
+			case None       => this.calcHash(key)
+		}
+	}
+
+	private def calcHash(key: String): Int =
 	{
 		var length = key.length
 		var hash = length
