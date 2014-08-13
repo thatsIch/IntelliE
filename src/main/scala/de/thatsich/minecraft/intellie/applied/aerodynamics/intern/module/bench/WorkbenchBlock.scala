@@ -30,17 +30,12 @@ class WorkbenchBlock(modid: ID, name: ID, log: Log) extends BaseBlock(modid, nam
                                                             with MultiTexture
                                                             with BlockGuiHasher
 {
-	this.setResistance(10)
-	this.setHardness(2.2F)
-	this.setStepSound(Block.soundTypeMetal)
-	this.setHarvestLevel("pickaxe", 0)
-
 	override def onBlockActivated(world: World, x: Int, y: Int, z: Int, player: EntityPlayer, side: Int, hitX: Float, hitY: Float, p_149727_9_ : Float): Boolean =
 	{
 		if (!world.isRemote)
 		{
 			val name: String = this.name
-			val hash = this.getUniqueID(name)
+			val hash = this.hash(name)
 
 			player.openGui(AppliedAerodynamics, hash, world, x, y, z)
 		}

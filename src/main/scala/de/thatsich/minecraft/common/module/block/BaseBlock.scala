@@ -24,6 +24,10 @@ abstract class BaseBlock(protected val modid: ID, blockName: ID, protected val l
 	private final val id: String = this.modid
 
 	this.setBlockName(this.name)
+	this.setResistance(10)
+	this.setHardness(2.2F)
+	this.setStepSound(Block.soundTypeMetal)
+	this.setHarvestLevel("pickaxe", 0)
 
 	@SideOnly(Side.CLIENT)
 	def getBlockIcon(side: Int): IIcon = this.blockIcon
