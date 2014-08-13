@@ -27,7 +27,6 @@ import net.minecraft.world.World
  */
 class WorkbenchBlock(modid: ID, name: ID, log: Log) extends BaseBlock(modid, name, log)
                                                             with MultiTexture
-                                                            with WorkbenchGuiHandler
 {
 	this.setResistance(10)
 	this.setHardness(2.2F)

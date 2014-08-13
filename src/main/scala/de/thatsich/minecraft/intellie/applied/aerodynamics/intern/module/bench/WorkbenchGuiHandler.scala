@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 
 
-import de.thatsich.minecraft.common.module.block.BaseBlock
+import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.gui.BlockGuiHandler
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.tileentity.TileEntity
@@ -14,7 +14,7 @@ import net.minecraft.tileentity.TileEntity
  * @author thatsIch
  * @since 06.08.2014.
  */
-trait WorkbenchGuiHandler extends BaseBlock with BlockGuiHandler
+class WorkbenchGuiHandler(log: Log) extends BlockGuiHandler
 {
 	def getServerGuiElement(player: EntityPlayer, tile: TileEntity): AnyRef =
 	{
