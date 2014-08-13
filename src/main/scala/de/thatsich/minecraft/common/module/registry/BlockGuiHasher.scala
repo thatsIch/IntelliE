@@ -1,8 +1,11 @@
 package de.thatsich.minecraft.common.module.registry
 
 
+import scala.util.hashing.MurmurHash3
 /**
- *
+ * A hasher for blocks with guis
+ * Uses the SuperFastHash of
+ * http://www.azillionmonkeys.com/qed/hash.html
  *
  * @author thatsIch
  * @since 13.08.2014.
@@ -13,13 +16,7 @@ trait BlockGuiHasher
 
 	protected def hash(key: String): Int =
 	{
-		val maybeInt: Option[Int] = this.map get key
-
-		maybeInt match
-		{
-			case Some(hash) => hash
-			case None       => this.calcHash(key)
-		}
+		MurmurHash3.stringHash(key)
 	}
 
 	private def calcHash(key: String): Int =
