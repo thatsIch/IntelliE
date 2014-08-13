@@ -44,7 +44,7 @@ class GuiRegistry(registrable: Seq[Module], log: Log) extends BlockGuiHasher
 	 */
 	private def register(handler: BlockGuiHandler, table: util.Hashtable[Int, BlockGuiHandler]): Unit =
 	{
-		val name: String = handler.getClass.getSimpleName
+		val name: String = handler.name
 		val hash: Int = this.getUniqueID(name)
 
 		this.log.info(s"Adding handler $handler with hash $hash")

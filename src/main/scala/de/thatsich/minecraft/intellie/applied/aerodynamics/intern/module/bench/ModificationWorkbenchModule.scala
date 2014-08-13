@@ -16,5 +16,5 @@ class ModificationWorkbenchModule(log: Log, modid: ID, name: ID = new WorkbenchI
 	blocks = List(new WorkbenchBlock(modid, name, log)),
 	recipes = List(new WorkbenchRecipe),
 	tiles = List(classOf[WorkbenchTileEntity]),
-	guis = List(new WorkbenchGuiHandler(log))
+	guis = List(new WorkbenchGuiHandler(name, log))
 )

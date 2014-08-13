@@ -1,5 +1,7 @@
 package de.thatsich.minecraft.common.module.gui
 
+
+import de.thatsich.minecraft.common.string.ID
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.tileentity.TileEntity
 
@@ -12,6 +14,8 @@ import net.minecraft.tileentity.TileEntity
  */
 trait BlockGuiHandler
 {
+	def name: ID
+
 	def getServerGuiElement(player: EntityPlayer, tile: TileEntity): AnyRef
 
 	def getClientGuiElement(player: EntityPlayer, tile: TileEntity): AnyRef

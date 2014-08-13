@@ -9,6 +9,7 @@ package bench
 
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.block.{BaseBlock, MultiTexture}
+import de.thatsich.minecraft.common.module.registry.BlockGuiHasher
 import de.thatsich.minecraft.common.string.ID
 import net.minecraft.block.Block
 import net.minecraft.entity.item.EntityItem
@@ -27,6 +28,7 @@ import net.minecraft.world.World
  */
 class WorkbenchBlock(modid: ID, name: ID, log: Log) extends BaseBlock(modid, name, log)
                                                             with MultiTexture
+                                                            with BlockGuiHasher
 {
 	this.setResistance(10)
 	this.setHardness(2.2F)
@@ -37,7 +39,7 @@ class WorkbenchBlock(modid: ID, name: ID, log: Log) extends BaseBlock(modid, nam
 	{
 		if (!world.isRemote)
 		{
-			val name = this.getClass.getSimpleName
+			val name: String = this.name
 			val hash = this.getUniqueID(name)
 
 			player.openGui(AppliedAerodynamics, hash, world, x, y, z)
@@ -47,19 +49,6 @@ class WorkbenchBlock(modid: ID, name: ID, log: Log) extends BaseBlock(modid, nam
 	}
 
 	def createNewTileEntity(world: World, par2int: Int): TileEntity = new WorkbenchTileEntity
-
-	// TODO refactoring to commong
-	private def getUniqueID(str: String): Int =
-	{
-		var h: Int = 0
-
-		for (ch <- str)
-		{
-			h = 31 * h + ch
-		}
-
-		h
-	}
 
 	override def breakBlock(world: World, x: Int, y: Int, z: Int, id: Block, meta: Int): Unit =
 	{
