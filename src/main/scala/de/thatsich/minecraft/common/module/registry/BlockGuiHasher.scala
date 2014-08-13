@@ -1,7 +1,6 @@
 package de.thatsich.minecraft.common.module.registry
 
 
-import scala.collection._
 import scala.util.hashing.MurmurHash3
 
 
@@ -14,19 +13,8 @@ import scala.util.hashing.MurmurHash3
  */
 trait BlockGuiHasher
 {
-	private[this] val map = mutable.Map[String, Int]()
-
 	protected def hash(key: String): Int =
 	{
-		val maybeInt: Option[Int] = this.map get key
-
-		maybeInt match
-		{
-			case Some(hash) => hash
-			case None       =>
-				val hash = MurmurHash3.stringHash(key)
-				this.map += key -> hash
-				hash
-		}
+		MurmurHash3.stringHash(key)
 	}
 }
