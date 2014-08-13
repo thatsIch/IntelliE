@@ -82,8 +82,8 @@ abstract class CommonProxy extends EventProxy
 		val guis: GuiRegistry = new GuiRegistry(this.log)
 
 		craftHandlers.registerCraftHandlers(this.modules)
-		recipes.registerRecipes(this.modules)
-		tiles.registerTileEntities(this.modules)
+		recipes.registerAll(this.modules)
+		tiles.registerAll(this.modules)
 		val handler: IGuiHandler = guis.registerGuis(this.modules)
 		NetworkRegistry.INSTANCE.registerGuiHandler(this.mod, handler)
 

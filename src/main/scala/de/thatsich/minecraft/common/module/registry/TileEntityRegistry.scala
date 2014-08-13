@@ -11,27 +11,36 @@ import net.minecraft.tileentity.TileEntity
 
 
 /**
- *
+ * Registry for TileEntities.
+ * Uses modules to load the TEs
+ * You can load single TEs too
+ * Acts as a wrapper if API will ever change
  *
  * @author thatsIch
  * @since 03.08.2014.
  */
-class TileEntityRegistry(log: Log)
+class TileEntityRegistry(registrable: Modules, log: Log) extends Registry
 {
-	def registerTileEntities(registrable: Modules): Unit =
+	/**
+	 * Registers all tile entites of the module
+	 */
+	def registerAll(): Unit =
 	{
-		val TE = classOf[TileEntity]
-		registrable.foreach
+		for (module: Module <- this.registrable; te <- module.tiles)
 		{
-			case te: Class[TileEntity] => this.registerTileEntity(te)
-			case _                     =>
+			this.register(te)
 		}
 	}
 
-	private def registerTileEntity(tileEntity: Class[TileEntity]): Unit =
+	/**
+	 * Registers a single tile entity into the game registry and SIO
+	 *
+	 * @param teClass class of the tile entity
+	 */
+	private def register(teClass: Class[TileEntity]): Unit =
 	{
-		this.log.info(s"Registering TE $tileEntity")
-		GameRegistry.registerTileEntity(tileEntity, tileEntity.toString)
-		AEApi.instance().registries().moveable().whiteListTileEntity(tileEntity)
+		this.log.info(s"Registering TE $teClass")
+		GameRegistry.registerTileEntity(teClass, teClass.toString)
+		AEApi.instance().registries().moveable().whiteListTileEntity(teClass)
 	}
 }

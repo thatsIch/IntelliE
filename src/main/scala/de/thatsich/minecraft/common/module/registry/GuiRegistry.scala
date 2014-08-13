@@ -12,42 +12,42 @@ import de.thatsich.minecraft.common.module.gui.{BlockGuiHandler, GuiBridge}
 
 
 /**
- *
+ * Registers all block gui handlers to merge into a single IGuiHandler
  *
  * @author thatsIch
  * @since 06.08.2014.
  */
-class GuiRegistry(log: Log)
+class GuiRegistry(registrable: Modules, log: Log) extends Registry with BlockGuiHasher
 {
-	def registerGuis(registrable: Modules): IGuiHandler =
+	/**
+	 * Registers all handlers and merge into a singe IGuiHandler
+	 *
+	 * @return merged gui handler
+	 */
+	def registerAll(): IGuiHandler =
 	{
 		val table = new util.Hashtable[Int, BlockGuiHandler]()
 
-		registrable.foreach
+		for (module: Module <- this.registrable; gui <- module.guis)
 		{
-			case handler: BlockGuiHandler =>
-				val name: String = handler.getClass.getSimpleName
-				val hash: Int = this.getUniqueID(name)
-
-				this.log.info(s"Adding handler $handler with hash $hash")
-				table.put(hash, handler)
-
-			case _                        =>
+			this.register(gui, table)
 		}
 
 		new GuiBridge(table, this.log)
 	}
 
-	// TODO refactoring to commong
-	private def getUniqueID(str: String): Int =
+	/**
+	 * Stores the handler into a hashtable
+	 *
+	 * @param handler to be stored handler
+	 * @param table in hashtable
+	 */
+	private def register(handler: BlockGuiHandler, table: util.Hashtable[Int, BlockGuiHandler]): Unit =
 	{
-		var h: Int = 0
+		val name: String = handler.getClass.getSimpleName
+		val hash: Int = this.getUniqueID(name)
 
-		for (ch <- str)
-		{
-			h = 31 * h + ch
-		}
-
-		h
+		this.log.info(s"Adding handler $handler with hash $hash")
+		table.put(hash, handler)
 	}
 }

@@ -1,6 +1,15 @@
 package de.thatsich.minecraft.common.module
 
 
+import appeng.api.recipes.ICraftHandler
+import de.thatsich.minecraft.common.module.gui.BlockGuiHandler
+import de.thatsich.minecraft.common.module.recipe.Recipe
+import net.minecraft.block.Block
+import net.minecraft.entity.Entity
+import net.minecraft.item.Item
+import net.minecraft.tileentity.TileEntity
+
+
 /**
  *
  *
@@ -9,14 +18,11 @@ package de.thatsich.minecraft.common.module
  */
 trait Module
 {
-	protected val moduleParts: Seq[AnyRef]
+	val items: List[Item]
+	val blocks: List[Block]
+	val tiles: List[Class[TileEntity]]
+	val entites: List[Entity]
+	val recipes: List[Recipe]
+	val guis: List[BlockGuiHandler]
+	val crafthandlers: List[Class[ICraftHandler]]
 }
-
-object Module
-{
-	implicit def moduleToSeq(module: Module): Seq[AnyRef] =
-	{
-		module.moduleParts
-	}
-}
-
