@@ -118,16 +118,16 @@ class WorkbenchContainer(player: InventoryPlayer, private val workbench: Workben
 					}
 				}
 				// is upgrade
-				else if (apiBlocks.blockEnergyCell.sameAs(stackInSlot) ||
-					apiBlocks.blockEnergyCellDense.sameAs(stackInSlot) ||
-					apiItems.itemCell1k.sameAs(stackInSlot) ||
-					apiItems.itemCell4k.sameAs(stackInSlot) ||
-					apiItems.itemCell16k.sameAs(stackInSlot) ||
-					apiItems.itemCell64k.sameAs(stackInSlot) ||
-					apiMats.materialCardSpeed.sameAs(stackInSlot) ||
-					apiMats.materialLogicProcessor.sameAs(stackInSlot) ||
-					apiMats.materialEngProcessor.sameAs(stackInSlot) ||
-					apiMats.materialCalcProcessor.sameAs(stackInSlot))
+				else if (apiBlocks.blockEnergyCell.sameAsStack(stackInSlot) ||
+					apiBlocks.blockEnergyCellDense.sameAsStack(stackInSlot) ||
+					apiItems.itemCell1k.sameAsStack(stackInSlot) ||
+					apiItems.itemCell4k.sameAsStack(stackInSlot) ||
+					apiItems.itemCell16k.sameAsStack(stackInSlot) ||
+					apiItems.itemCell64k.sameAsStack(stackInSlot) ||
+					apiMats.materialCardSpeed.sameAsStack(stackInSlot) ||
+					apiMats.materialLogicProcessor.sameAsStack(stackInSlot) ||
+					apiMats.materialEngProcessor.sameAsStack(stackInSlot) ||
+					apiMats.materialCalcProcessor.sameAsStack(stackInSlot))
 				{
 					val upgradeSlot: Slot = this.getSlot(37)
 

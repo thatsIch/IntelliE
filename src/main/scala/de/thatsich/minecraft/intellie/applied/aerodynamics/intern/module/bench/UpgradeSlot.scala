@@ -42,15 +42,15 @@ class UpgradeSlot(player: EntityPlayer, inventory: IInventory, id: Int, x: Int, 
 		val cell16k: AEItemDefinition = items.itemCell16k
 		val cell64k: AEItemDefinition = items.itemCell64k
 
-		energyCell.sameAs(stack) ||
-			denseEnergyCell.sameAs(stack) ||
-			accel.sameAs(stack) ||
-			cell1k.sameAs(stack) ||
-			cell4k.sameAs(stack) ||
-			cell16k.sameAs(stack) ||
-			cell64k.sameAs(stack) ||
-			eng.sameAs(stack) ||
-			calc.sameAs(stack) ||
-			logic.sameAs(stack)
+		energyCell.sameAsStack(stack) ||
+			denseEnergyCell.sameAsStack(stack) ||
+			accel.sameAsStack(stack) ||
+			cell1k.sameAsStack(stack) ||
+			cell4k.sameAsStack(stack) ||
+			cell16k.sameAsStack(stack) ||
+			cell64k.sameAsStack(stack) ||
+			eng.sameAsStack(stack) ||
+			calc.sameAsStack(stack) ||
+			logic.sameAsStack(stack)
 	}
 }

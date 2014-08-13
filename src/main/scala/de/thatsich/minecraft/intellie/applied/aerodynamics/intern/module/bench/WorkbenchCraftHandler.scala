@@ -52,7 +52,9 @@ class WorkbenchCraftHandler(storage: WorkbenchCraftRecipeStorage) extends ICraft
 
 		val craftRecipe: WorkbenchCraftRecipe = new WorkbenchCraftRecipe(armorToolStack, upgradeStack, attributeStack)
 
-		this.storage.internalUpgradeStorage.add(upgradeStack)
+		this.storage.internalInputs.add(armorToolStack)
+		this.storage.internalUpgrades.add(upgradeStack)
+		this.storage.internalAttributes.add(attributeStack)
 		this.storage.internalCraftRecipes.add(craftRecipe)
 	}
 }

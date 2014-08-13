@@ -149,28 +149,28 @@ class WorkbenchTileEntity extends TileEntity with WorkbenchInventory
 
 						case any =>
 							// mining level
-							if (mats.materialLogicProcessor.sameAs(upgrade))
+							if (mats.materialLogicProcessor.sameAsStack(upgrade))
 							{
 								val current = dissembler.getCurrentMiningLevel(armorTool)
 								dissembler.setCurrentMiningLevel(armorTool, current + 1)
 							}
 
 							// damage
-							else if (mats.materialEngProcessor.sameAs(upgrade))
+							else if (mats.materialEngProcessor.sameAsStack(upgrade))
 							{
 								val current = dissembler.getCurrentDamageVsEntities(armorTool)
 								dissembler.setCurrentDamageVsEntities(armorTool, current + 1)
 							}
 
 							// charge multiplier
-							else if (mats.materialCardSpeed.sameAs(upgrade))
+							else if (mats.materialCardSpeed.sameAsStack(upgrade))
 							{
 								val current = dissembler.getCurrentChargeMultiplier(armorTool)
 								dissembler.setCurrentChargePerTick(armorTool, current + 1)
 							}
 
 							// energy cost
-							else if (mats.materialCalcProcessor.sameAs(upgrade))
+							else if (mats.materialCalcProcessor.sameAsStack(upgrade))
 							{
 								val current = dissembler.getCurrentEnergyUsage(armorTool)
 								dissembler.setCurrentEnergyPerBlockBreak(armorTool, current - 1)

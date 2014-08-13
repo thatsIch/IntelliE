@@ -13,7 +13,11 @@ import scala.collection.mutable
  * @author thatsIch
  * @since 11.08.2014.
  */
+object WorkbenchCraftRecipeStorage extends WorkbenchCraftRecipeStorage
+
 class WorkbenchCraftRecipeStorage extends CraftRecipeStorage[WorkbenchCraftRecipe]
 {
-	val internalUpgradeStorage = mutable.Set[ItemStack]()
+	val internalInputs = mutable.Set[ItemStack]()
+	val internalUpgrades = mutable.Set[ItemStack]()
+	val internalAttributes = mutable.Set[ItemStack]()
 }

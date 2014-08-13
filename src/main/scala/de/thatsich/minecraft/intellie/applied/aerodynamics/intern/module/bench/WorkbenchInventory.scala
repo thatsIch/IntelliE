@@ -1,13 +1,9 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 
 
-import appeng.api.definitions.{Items, Materials}
-import appeng.api.{AEApi, IAppEngApi, definitions}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.common.item.AAEPoweredItemArmor
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerItem
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.inventory.{IInventory, ISidedInventory}
-import net.minecraft.item.{Item, ItemStack}
+import net.minecraft.item.ItemStack
 import net.minecraft.tileentity.TileEntity
 
 
@@ -20,6 +16,7 @@ import net.minecraft.tileentity.TileEntity
 trait WorkbenchInventory extends TileEntity with IInventory with ISidedInventory
 {
 	protected val items: Array[ItemStack] = new Array[ItemStack](3)
+	protected val storage = WorkbenchCraftRecipeStorage
 
 	def getSizeInventory: Int = this.items.length
 
@@ -59,38 +56,30 @@ trait WorkbenchInventory extends TileEntity with IInventory with ISidedInventory
 
 	/**
 	 * What is valid
-	 * @param i index
+	 * @param slot index
 	 * @param is item
 	 * @return
 	 */
-	def isItemValidForSlot(i: Int, is: ItemStack): Boolean =
+	def isItemValidForSlot(slot: Int, is: ItemStack): Boolean =
 	{
-		val item: Item = is.getItem
-		val api: IAppEngApi = AEApi.instance()
-		val apiBlocks: definitions.Blocks = api.blocks()
-		val apiItems: Items = api.items()
-		val apiMats: Materials = api.materials()
-
 		// first slot only dissembler and armor
-		if (i == 0)
+		if (slot == 0)
 		{
-			item.isInstanceOf[DissemblerItem] ||
-				item.isInstanceOf[AAEPoweredItemArmor]
+			this.storage.internalInputs.foreach(
+				storedIS => if (storedIS.isItemEqual(is)) return true
+			)
+
+			false
 		}
 
 		// second slot upgrades only
-		else if (i == 1)
+		else if (slot == 1)
 		{
-			apiBlocks.blockEnergyCell.sameAs(is) ||
-				apiBlocks.blockEnergyCellDense.sameAs(is) ||
-				apiItems.itemCell1k.sameAs(is) ||
-				apiItems.itemCell4k.sameAs(is) ||
-				apiItems.itemCell16k.sameAs(is) ||
-				apiItems.itemCell64k.sameAs(is) ||
-				apiMats.materialCardSpeed.sameAs(is) ||
-				apiMats.materialCalcProcessor.sameAs(is) ||
-				apiMats.materialLogicProcessor.sameAs(is) ||
-				apiMats.materialEngProcessor.sameAs(is)
+			this.storage.internalUpgrades.foreach(
+				storedIS => if (storedIS.isItemEqual(is)) return true
+			)
+
+			false
 		}
 
 		// third slot nothing since output

@@ -38,7 +38,7 @@ private[dissembler] trait PrecisionHarvester extends Item
 		val block: Block = world.getBlock(x, y, z)
 		val blockCharger = AEApi.instance().blocks().blockCharger
 
-		if (blockCharger.sameAs(new ItemStack(block)) || !this.canHarvestBlock(block, stack))
+		if (blockCharger.sameAsBlock(world, x, y, z) || !this.canHarvestBlock(block, stack))
 		{
 			false
 		}

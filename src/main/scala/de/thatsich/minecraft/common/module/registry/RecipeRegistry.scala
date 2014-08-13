@@ -30,7 +30,7 @@ class RecipeRegistry(registrable: Seq[Module], log: Log)
 			this.register(recipehandler, recipe)
 		}
 
-		recipehandler.registerHandlers()
+		recipehandler.injectRecipes()
 	}
 
 	/**
