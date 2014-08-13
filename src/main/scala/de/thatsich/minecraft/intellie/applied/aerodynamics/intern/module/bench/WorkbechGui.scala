@@ -59,7 +59,7 @@ class WorkbechGui(invPlayer: InventoryPlayer, workbench: WorkbenchTileEntity) ex
 	}
 }
 
-object WorkbechGui
+private object WorkbechGui
 {
 	private final val texture: ResourceLocation = new ResourceLocation("appaero", "textures/gui/workbench.png")
 	private final val tiles: ResourceLocation = new ResourceLocation("appaero", "textures/gui/tiles.png")
