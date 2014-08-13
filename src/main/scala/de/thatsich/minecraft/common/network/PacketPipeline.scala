@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.common.network
 
+
 import java.util
 
 import cpw.mods.fml.common.FMLCommonHandler
@@ -8,7 +9,6 @@ import cpw.mods.fml.common.network.internal.FMLProxyPacket
 import cpw.mods.fml.common.network.{FMLOutboundHandler, NetworkRegistry}
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.proxy.EventProxy
 import io.netty.buffer.Unpooled
 import io.netty.channel.{ChannelHandler, ChannelHandlerContext}
 import io.netty.handler.codec.MessageToMessageCodec
@@ -18,6 +18,7 @@ import net.minecraft.network.NetHandlerPlayServer
 
 import scala.collection.mutable
 
+
 /**
  *
  *
@@ -25,7 +26,7 @@ import scala.collection.mutable
  * @since 13.04.2014.
  */
 @ChannelHandler.Sharable
-class PacketPipeline(log: Log) extends MessageToMessageCodec[FMLProxyPacket, Packet] with EventProxy
+class PacketPipeline(log: Log) extends MessageToMessageCodec[FMLProxyPacket, Packet]
 {
 	type PacketClass = Class[_ <: Packet]
 	private[this] val channels = NetworkRegistry.INSTANCE.newChannel("base", this)

@@ -30,13 +30,13 @@ class WorkbenchBlock(modid: ID, name: ID, log: Log) extends BaseBlock(modid, nam
                                                             with MultiTexture
                                                             with BlockGuiHasher
 {
-	final private val hash = this.hash(this.name)
+	final private val guiID: Int = this.hash(this.name)
 
 	override def onBlockActivated(world: World, x: Int, y: Int, z: Int, player: EntityPlayer, side: Int, hitX: Float, hitY: Float, p_149727_9_ : Float): Boolean =
 	{
 		if (!world.isRemote)
 		{
-			player.openGui(AppliedAerodynamics, this.hash, world, x, y, z)
+			player.openGui(AppliedAerodynamics, this.guiID, world, x, y, z)
 		}
 
 		true

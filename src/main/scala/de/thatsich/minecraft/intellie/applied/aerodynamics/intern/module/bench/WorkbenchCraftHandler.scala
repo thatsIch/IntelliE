@@ -18,50 +18,29 @@ class WorkbenchCraftHandler(storage: WorkbenchCraftRecipeStorage) extends ICraft
 {
 	private var armorTool: IIngredient = null
 	private var upgrade: IIngredient = null
-	private var upgradedArmorTool: IIngredient = null
+	private var attribute: IIngredient = null
 
 	def setup(input: util.List[util.List[IIngredient]], output: util.List[util.List[IIngredient]]): Unit =
 	{
-		if (input.size() == 1)
-		{
-			val firstRow: util.List[IIngredient] = input.get(0)
-			if (firstRow.size() == 2)
-			{
-				this.armorTool = firstRow.get(0)
-				this.upgrade = firstRow.get(1)
-			}
-			else
-			{
-				new RecipeError("Workbench input must be 2 ingredients in a single row.")
-			}
-		}
-		else
-		{
-			new RecipeError("Workbench input ingredients cannot be split across 2 rows.")
-		}
+		if (input.size() != 1) new RecipeError("Workbench input must be in a single row.")
+		if (output.size() != 0) new RecipeError("Workbench does not have an output.")
 
-		if (output.size() == 1)
-		{
-			val firstRow: util.List[IIngredient] = output.get(0)
-			if (firstRow.size() == 1)
-			{
-			}
-			else
-			{
-				new RecipeError("Workbench must have a single output.")
-			}
-		}
-		else
-		{
-			new RecipeError("Workbench must have a single output.")
-		}
+		val inputRow: util.List[IIngredient] = input.get(0)
+		val outputRow: util.List[IIngredient] = output.get(0)
+
+		if (inputRow.size() != 3) new RecipeError("Workbench input must be 3 ingredients.")
+		if (outputRow.size() != 0) new RecipeError("Workbench does not have an output.")
+
+		this.armorTool = inputRow.get(0)
+		this.upgrade = inputRow.get(1)
+		this.attribute = inputRow.get(2)
 	}
 
 	def register(): Unit =
 	{
 		val armorToolStack: ItemStack = this.armorTool.getItemStack
 		val upgradeStack: ItemStack = this.upgrade.getItemStack
-		val upgradedStack: ItemStack = this.upgradedArmorTool.getItemStack
+		val attributeStack: ItemStack = this.attribute.getItemStack
 
 		if (armorToolStack == null || armorToolStack.getItem == null)
 		{
@@ -71,12 +50,12 @@ class WorkbenchCraftHandler(storage: WorkbenchCraftRecipeStorage) extends ICraft
 		{
 			throw new RegistrationError(this.upgrade.toString + ": Upgrade is not a valid item.")
 		}
-		if (upgradedStack == null || upgradedStack.getItem == null)
+		if (attributeStack == null || attributeStack.getItem == null)
 		{
-			throw new RegistrationError(this.upgradedArmorTool.toString + ": Upgraded Armor or Tool is not a valid item.")
+			throw new RegistrationError(this.attribute.toString + ": Attribute is not a valid item.")
 		}
 
-		val craftRecipe: WorkbenchCraftRecipe = new WorkbenchCraftRecipe(armorToolStack, upgradeStack, "", 1, upgradedStack)
+		val craftRecipe: WorkbenchCraftRecipe = new WorkbenchCraftRecipe(armorToolStack, upgradeStack, "", 1, attributeStack)
 
 		this.storage.addCraftRecipe(craftRecipe)
 	}

@@ -11,9 +11,3 @@ import de.thatsich.minecraft.common.module.craftrecipe.CraftRecipeStorage
  * @since 11.08.2014.
  */
 class WorkbenchCraftRecipeStorage extends CraftRecipeStorage[WorkbenchCraftRecipe]
-{
-	def addCraftRecipe(craftRecipe: WorkbenchCraftRecipe): Unit =
-	{
-
-	}
-}

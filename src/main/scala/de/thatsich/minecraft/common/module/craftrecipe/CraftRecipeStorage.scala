@@ -1,6 +1,9 @@
 package de.thatsich.minecraft.common.module.craftrecipe
 
 
+import scala.collection._
+
+
 /**
  *
  *
@@ -9,5 +12,10 @@ package de.thatsich.minecraft.common.module.craftrecipe
  */
 trait CraftRecipeStorage[T <: CraftRecipe]
 {
-	def addCraftRecipe(craftRecipe: T): Unit
+	private[this] val internalStorage = mutable.Set[T]()
+
+	def addCraftRecipe(craftRecipe: T): Unit =
+	{
+		this.internalStorage.add(craftRecipe)
+	}
 }
