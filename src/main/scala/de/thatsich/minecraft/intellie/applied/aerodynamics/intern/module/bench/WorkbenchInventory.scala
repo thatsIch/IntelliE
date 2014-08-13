@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 
 
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.inventory.{IInventory, ISidedInventory}
+import net.minecraft.inventory.ISidedInventory
 import net.minecraft.item.ItemStack
 import net.minecraft.tileentity.TileEntity
 
@@ -13,7 +13,7 @@ import net.minecraft.tileentity.TileEntity
  * @author thatsIch
  * @since 09.08.2014.
  */
-trait WorkbenchInventory extends TileEntity with IInventory with ISidedInventory
+trait WorkbenchInventory extends TileEntity with ISidedInventory
 {
 	protected val items: Array[ItemStack] = new Array[ItemStack](3)
 	protected val storage = WorkbenchCraftRecipeStorage
@@ -68,8 +68,6 @@ trait WorkbenchInventory extends TileEntity with IInventory with ISidedInventory
 			this.storage.internalInputs.foreach(
 				storedIS => if (storedIS.isItemEqual(is)) return true
 			)
-
-			false
 		}
 
 		// second slot upgrades only
@@ -78,15 +76,10 @@ trait WorkbenchInventory extends TileEntity with IInventory with ISidedInventory
 			this.storage.internalUpgrades.foreach(
 				storedIS => if (storedIS.isItemEqual(is)) return true
 			)
-
-			false
 		}
-
 		// third slot nothing since output
-		else
-		{
-			false
-		}
+
+		false
 	}
 
 	def getStackInSlotOnClosing(index: Int): ItemStack =
