@@ -12,10 +12,5 @@ import scala.collection._
  */
 trait CraftRecipeStorage[T <: CraftRecipe]
 {
-	private[this] val internalStorage = mutable.Set[T]()
-
-	def addCraftRecipe(craftRecipe: T): Unit =
-	{
-		this.internalStorage.add(craftRecipe)
-	}
+	val internalCraftRecipes = mutable.Set[T]()
 }

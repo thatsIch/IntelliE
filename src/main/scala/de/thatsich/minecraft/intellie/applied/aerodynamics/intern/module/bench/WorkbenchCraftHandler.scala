@@ -38,25 +38,21 @@ class WorkbenchCraftHandler(storage: WorkbenchCraftRecipeStorage) extends ICraft
 
 	def register(): Unit =
 	{
+		if (this.armorTool == null) throw new RegistrationError(this.armorTool.toString + ": Armor or Tool is not a valid item.")
+		if (this.upgrade == null) throw new RegistrationError(this.upgrade.toString + ": Upgrade is not a valid item.")
+		if (this.attribute == null) throw new RegistrationError(this.attribute.toString + ": Attribute is not a valid item.")
+
 		val armorToolStack: ItemStack = this.armorTool.getItemStack
 		val upgradeStack: ItemStack = this.upgrade.getItemStack
 		val attributeStack: ItemStack = this.attribute.getItemStack
 
-		if (armorToolStack == null || armorToolStack.getItem == null)
-		{
-			throw new RegistrationError(this.armorTool.toString + ": Armor or Tool is not a valid item.")
-		}
-		if (upgradeStack == null || upgradeStack.getItem == null)
-		{
-			throw new RegistrationError(this.upgrade.toString + ": Upgrade is not a valid item.")
-		}
-		if (attributeStack == null || attributeStack.getItem == null)
-		{
-			throw new RegistrationError(this.attribute.toString + ": Attribute is not a valid item.")
-		}
+		if (armorToolStack == null) throw new RegistrationError(this.armorTool.toString + ": Armor or Tool is not a valid item.")
+		if (upgradeStack == null) throw new RegistrationError(this.upgrade.toString + ": Upgrade is not a valid item.")
+		if (attributeStack == null) throw new RegistrationError(this.attribute.toString + ": Attribute is not a valid item.")
 
-		val craftRecipe: WorkbenchCraftRecipe = new WorkbenchCraftRecipe(armorToolStack, upgradeStack, "", 1, attributeStack)
+		val craftRecipe: WorkbenchCraftRecipe = new WorkbenchCraftRecipe(armorToolStack, upgradeStack, attributeStack)
 
-		this.storage.addCraftRecipe(craftRecipe)
+		this.storage.internalUpgradeStorage.add(upgradeStack)
+		this.storage.internalCraftRecipes.add(craftRecipe)
 	}
 }

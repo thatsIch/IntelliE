@@ -11,4 +11,4 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 11.08.2014.
  */
-class WorkbenchCraftRecipe(armorTool: ItemStack, upgrade: ItemStack, effect: String, amount: Int, output: ItemStack) extends CraftRecipe
+class WorkbenchCraftRecipe(armorTool: ItemStack, upgrade: ItemStack, effect: ItemStack) extends CraftRecipe
