@@ -17,7 +17,7 @@ import de.thatsich.minecraft.common.module.gui.{BlockGuiHandler, GuiBridge}
  * @author thatsIch
  * @since 06.08.2014.
  */
-class GuiRegistry(registrable: Modules, log: Log) extends Registry with BlockGuiHasher
+class GuiRegistry(registrable: Seq[Module], log: Log) extends BlockGuiHasher
 {
 	/**
 	 * Registers all handlers and merge into a singe IGuiHandler

@@ -1,13 +1,13 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy
 
 
-import de.thatsich.minecraft.common.Modules
+import de.thatsich.minecraft.common.module.Module
 import de.thatsich.minecraft.common.proxy.CommonProxy
 import de.thatsich.minecraft.common.string.Abbreviation
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.ModificationWorkbenchModule
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerModule
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.{AeroAbbreviation, AeroCreativeTabIcon, AeroCreativeTabs, AeroID, AeroModules}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.{AeroAbbreviation, AeroCreativeTabIcon, AeroCreativeTabs, AeroID}
 
 
 /**
@@ -41,7 +41,7 @@ abstract class AeroCommonProxy extends CommonProxy
 	 *
 	 * @return modules of mod
 	 */
-	final lazy val modules: Modules = new AeroModules(
+	final lazy val modules: Seq[Module] = Seq(
 		new DissemblerModule(this.log, this.modid),
 		new ModificationWorkbenchModule(this.log, this.modid)
 	)

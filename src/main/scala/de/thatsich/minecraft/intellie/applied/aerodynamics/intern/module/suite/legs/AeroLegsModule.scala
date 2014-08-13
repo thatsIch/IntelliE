@@ -2,7 +2,6 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.
 
 
 import de.thatsich.minecraft.common.module.BaseModule
-import net.minecraft.item.Item
 
 
 /**
@@ -11,7 +10,6 @@ import net.minecraft.item.Item
  * @author thatsIch
  * @since 16.04.2014.
  */
-class AeroLegsModule(implicit itemAeroLegs: AeroLegsItem)
-	extends BaseModule(Some[Item](itemAeroLegs), None, None, None)
-{
-}
+class AeroLegsModule extends BaseModule(
+	items = List(new AeroLegsItem)
+)

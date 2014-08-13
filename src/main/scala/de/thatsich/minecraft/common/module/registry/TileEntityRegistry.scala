@@ -19,7 +19,7 @@ import net.minecraft.tileentity.TileEntity
  * @author thatsIch
  * @since 03.08.2014.
  */
-class TileEntityRegistry(registrable: Modules, log: Log) extends Registry
+class TileEntityRegistry(registrable: Seq[Module], log: Log)
 {
 	/**
 	 * Registers all tile entites of the module
@@ -37,7 +37,7 @@ class TileEntityRegistry(registrable: Modules, log: Log) extends Registry
 	 *
 	 * @param teClass class of the tile entity
 	 */
-	private def register(teClass: Class[TileEntity]): Unit =
+	private def register(teClass: Class[_ <: TileEntity]): Unit =
 	{
 		this.log.info(s"Registering TE $teClass")
 		GameRegistry.registerTileEntity(teClass, teClass.toString)

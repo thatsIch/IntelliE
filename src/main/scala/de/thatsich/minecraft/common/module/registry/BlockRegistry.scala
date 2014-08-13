@@ -15,14 +15,14 @@ import net.minecraft.block.Block
  * @author thatsIch
  * @since 03.08.2014.
  */
-class BlockRegistry(registrable: Modules, log: Log) extends CamelCaseParser with Registry
+class BlockRegistry(registrable: Seq[Module], log: Log) extends CamelCaseParser
 {
 	/**
 	 * Registers all the block in modules
 	 */
 	def registerAll(): Unit =
 	{
-		for (module: Module <- this.registrable; block <- module.blocks)
+		for (module: Module <- this.registrable; block: Block <- module.blocks)
 		{
 			this.register(block)
 		}

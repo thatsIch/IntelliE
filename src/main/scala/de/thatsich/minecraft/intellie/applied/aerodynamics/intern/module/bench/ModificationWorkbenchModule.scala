@@ -12,4 +12,4 @@ import de.thatsich.minecraft.common.string.ID
  * @author thatsIch
  * @since 04.08.2014.
  */
-class ModificationWorkbenchModule(log: Log, modid: ID, name: ID = new WorkbenchID) extends BaseModule(new WorkbenchBlock(modid, name, log), new WorkbenchRecipe, classOf[WorkbenchTileEntity])
+class ModificationWorkbenchModule(log: Log, modid: ID, name: ID = new WorkbenchID) extends BaseModule(blocks = List(new WorkbenchBlock(modid, name, log)), recipes = List(new WorkbenchRecipe), tiles = List(classOf[WorkbenchTileEntity]))

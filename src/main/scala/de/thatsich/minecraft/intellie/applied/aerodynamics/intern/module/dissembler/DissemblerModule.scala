@@ -12,4 +12,7 @@ import de.thatsich.minecraft.common.string.ID
  * @author thatsIch
  * @since 01.08.2014.
  */
-class DissemblerModule(log: Log, modid: ID, name: ID = new DissemblerID) extends BaseModule(new DissemblerItem(modid, name, log), new DissemblerRecipe)
+class DissemblerModule(log: Log, modid: ID, name: ID = new DissemblerID) extends BaseModule(
+	items = List(new DissemblerItem(modid, name, log)),
+	recipes = List(new DissemblerRecipe)
+)

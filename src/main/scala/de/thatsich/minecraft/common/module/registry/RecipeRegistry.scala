@@ -5,7 +5,6 @@ import java.io._
 
 import appeng.api.AEApi
 import appeng.api.recipes.{IRecipeHandler, IRecipeLoader}
-import de.thatsich.minecraft.common.Modules
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.Module
 import de.thatsich.minecraft.common.module.recipe.Recipe
@@ -17,7 +16,7 @@ import de.thatsich.minecraft.common.module.recipe.Recipe
  * @author thatsIch
  * @since 03.08.2014.
  */
-class RecipeRegistry(registrable: Modules, log: Log) extends Registry
+class RecipeRegistry(registrable: Seq[Module], log: Log)
 {
 	/**
 	 * Registers all recipes in the modules

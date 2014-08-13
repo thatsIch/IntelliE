@@ -20,9 +20,9 @@ trait Module
 {
 	val items: List[Item]
 	val blocks: List[Block]
-	val tiles: List[Class[TileEntity]]
+	val tiles: List[Class[_ <: TileEntity]]
 	val entites: List[Entity]
 	val recipes: List[Recipe]
 	val guis: List[BlockGuiHandler]
-	val crafthandlers: List[Class[ICraftHandler]]
+	val crafthandlers: List[Class[_ <: ICraftHandler]]
 }

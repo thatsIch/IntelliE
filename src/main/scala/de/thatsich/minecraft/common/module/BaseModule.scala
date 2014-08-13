@@ -18,10 +18,11 @@ import net.minecraft.tileentity.TileEntity
  */
 abstract class BaseModule(val items: List[Item] = List(),
                           val blocks: List[Block] = List(),
-                          val tiles: List[Class[TileEntity]] = List(),
+                          val tiles: List[Class[_ <: TileEntity]] = List(),
                           val entites: List[Entity] = List(),
                           val recipes: List[Recipe] = List(),
                           val guis: List[BlockGuiHandler] = List(),
-                          val crafthandlers: List[Class[ICraftHandler]] = List()
-	                         ) extends Module
+                          val crafthandlers: List[Class[_ <: ICraftHandler]] = List()
+	                         )
+	extends Module
 

@@ -2,7 +2,6 @@ package de.thatsich.minecraft.common.module.registry
 
 
 import cpw.mods.fml.common.registry.GameRegistry
-import de.thatsich.minecraft.common.Modules
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.Module
 import net.minecraft.item.Item
@@ -14,7 +13,7 @@ import net.minecraft.item.Item
  * @author thatsIch
  * @since 03.08.2014.
  */
-class ItemRegistry(registrable: Modules, log: Log) extends CamelCaseParser with Registry
+class ItemRegistry(registrable: Seq[Module], log: Log) extends CamelCaseParser
 {
 	/**
 	 * Registers all items in modules
