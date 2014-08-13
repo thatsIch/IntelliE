@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie
 
 
 import cpw.mods.fml.common.Mod
-import de.thatsich.minecraft.intellie.unloadchilds.ChildUnloader
+import de.thatsich.minecraft.intellie.child.ChildUnloader
 
 
 /**

@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.unloadchilds
+package de.thatsich.minecraft.intellie.child
 
 
 import java.lang.reflect.Field
