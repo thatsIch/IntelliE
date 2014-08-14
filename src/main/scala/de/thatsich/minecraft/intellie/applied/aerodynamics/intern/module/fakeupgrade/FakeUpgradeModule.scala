@@ -13,13 +13,13 @@ import de.thatsich.minecraft.common.string.ID
  * @since 12.08.2014.
  */
 class FakeUpgradeModule(log: Log, modid: ID) extends BaseModule(
-	items = List(
-		new DecEnergyCostItem(modid, log),
-		new IncChargeSpeedItem(modid, log),
-		new IncCurrentEnergyStorage(modid, log),
-		new IncDamageVsEntites(modid, log),
-		new IncMaxEnergyStorage(modid, log),
-		new IncMiningLevel(modid, log),
-		new IncMiningSpeed(modid, log)
+	items = Vector(
+		new EnergyCostItem(modid, log),
+		new ChargeSpeedItem(modid, log),
+		new CurrentEnergyStorage(modid, log),
+		new DamageVsEntites(modid, log),
+		new MaxEnergyStorage(modid, log),
+		new MiningLevel(modid, log),
+		new MiningSpeed(modid, log)
 	)
 )

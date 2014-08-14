@@ -27,6 +27,8 @@ class CraftHandlerRegistry(registrable: Seq[Module], log: Log)
 		{
 			this.register(crafthandler, registry)
 		}
+
+		this.log.info(s"Finished loading ${this.registrable.length} craft handler(s).")
 	}
 
 	/**
@@ -37,8 +39,10 @@ class CraftHandlerRegistry(registrable: Seq[Module], log: Log)
 	private def register(handler: Class[_ <: ICraftHandler], registry: IRecipeHandlerRegistry): Unit =
 	{
 		val name: String = handler.getSimpleName
+		val simpleClassName: String = handler.getSimpleName
 		val stripped: String = this.stripCraftHandlerFromName(name)
 
+		this.log.debug(s"Adding craft handler $simpleClassName with name: $stripped")
 		registry.addNewCraftHandler(stripped, handler)
 	}
 

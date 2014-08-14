@@ -22,7 +22,7 @@ abstract class BaseItem(protected val modid: ID, itemName: ID, protected val log
 
 	override def getUnlocalizedName: String = s"$id.item.$name"
 
-	override def getUnlocalizedName(is : ItemStack): String = s"$id.item.$name"
+	override def getUnlocalizedName(is : ItemStack): String = this.getUnlocalizedName
 
 	/**
 	 * integrates the mod id into the item

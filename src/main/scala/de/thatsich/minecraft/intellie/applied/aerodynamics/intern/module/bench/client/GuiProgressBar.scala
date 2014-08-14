@@ -1,7 +1,7 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.client
 
 
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.Direction.Direction
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.client.Direction.Direction
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.GuiButton
 import net.minecraft.util.ResourceLocation

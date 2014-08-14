@@ -33,6 +33,8 @@ class GuiRegistry(registrable: Seq[Module], log: Log) extends BlockGuiHasher
 			this.register(gui, table)
 		}
 
+		this.log.info(s"Finished loading ${this.registrable.length} gui handler(s).")
+
 		new GuiBridge(table, this.log)
 	}
 
@@ -47,7 +49,7 @@ class GuiRegistry(registrable: Seq[Module], log: Log) extends BlockGuiHasher
 		val name: String = handler.name
 		val hash: Int = this.hash(name)
 
-		this.log.info(s"Adding handler $handler with hash $hash")
+		this.log.debug(s"Adding handler $handler with hash $hash")
 		table.put(hash, handler)
 	}
 }

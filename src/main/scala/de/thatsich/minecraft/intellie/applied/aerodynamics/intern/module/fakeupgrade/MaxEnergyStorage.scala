@@ -12,6 +12,6 @@ import de.thatsich.minecraft.common.string.{BaseID, ID}
  * @author thatsIch
  * @since 12.08.2014.
  */
-class IncMaxEnergyStorage(modid: ID, log: Log) extends BaseItem(modid, new IncMaxEnergyStorageID, log)
+class MaxEnergyStorage(modid: ID, log: Log) extends BaseItem(modid, new MaxEnergyStorageID, log)
 
-private[this] class IncMaxEnergyStorageID extends BaseID("incMaxEnergyStorage")
+private[this] class MaxEnergyStorageID extends BaseID("maxenergy")

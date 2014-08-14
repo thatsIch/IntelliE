@@ -2,7 +2,7 @@ package de.thatsich.minecraft.common.log
 
 
 import de.thatsich.minecraft.common.string.Abbreviation
-import org.apache.logging.log4j.{Level, LogManager}
+import org.apache.logging.log4j.{Level, LogManager, Logger}
 
 
 /**
@@ -14,37 +14,37 @@ import org.apache.logging.log4j.{Level, LogManager}
  */
 class NamedLog(abbr: Abbreviation) extends Log
 {
+	private final val target: String = abbr
+	private final val logger: Logger = LogManager.getLogger(target)
+
 	/**
 	 * Information
 	 *
-	 * @param format formated String
-	 * @param data   Input into formated String
+	 * @param message formated String
 	 */
-	def info(format: String, data: AnyRef*): Unit =
+	def info(message: String): Unit =
 	{
-		this.logging(Level.INFO, format, data)
+		this.logging(Level.INFO, message)
 	}
 
 	/**
 	Warning
 	  *
-	  * @param format formated String
-	  * @param data   Input into formated String
+	  * @param message formated String
 	  */
-	def warn(format: String, data: AnyRef*): Unit =
+	def warn(message: String): Unit =
 	{
-		this.logging(Level.WARN, format, data)
+		this.logging(Level.WARN, message)
 	}
 
 	/**
 	 * Debug output
 	 *
-	 * @param format formated String
-	 * @param data   Input into formated String
+	 * @param message formated String
 	 */
-	def debug(format: String, data: AnyRef*): Unit =
+	def debug(message: String): Unit =
 	{
-		this.logging(Level.DEBUG, format, data)
+		this.logging(Level.DEBUG, message)
 	}
 
 	/**
@@ -55,35 +55,28 @@ class NamedLog(abbr: Abbreviation) extends Log
 	def trace(exception: Throwable): Unit =
 	{
 		val message: String = exception.getMessage
-		this.severe("Exception: %s", message)
+		this.severe(s"Exception: $message")
 		exception.printStackTrace()
 	}
 
 	/**
 	 * Severe Error
 	 *
-	 * @param format formated String
-	 * @param data   Input into formated String
+	 * @param message formated String
 	 */
-	def severe(format: String, data: AnyRef*): Unit =
+	def severe(message: String): Unit =
 	{
-		this.logging(Level.FATAL, format, data)
+		this.logging(Level.FATAL, message)
 	}
 
 	/**
 	 * Default Logging if enabled
 	 *
 	 * @param level  Logging-Level
-	 * @param format formated String
-	 * @param data   Input into formated String
+	 * @param message log message
 	 */
-	private def logging(level: Level, format: String, data: AnyRef*): Unit =
+	private def logging(level: Level, message: String): Unit =
 	{
-		this.log(this.abbr, level, format, data)
-	}
-
-	private def log(targetLog: String, level: Level, format: String, data: AnyRef*): Unit =
-	{
-		LogManager.getLogger(targetLog).log(level, format.format(data))
+		this.logger.log(level, message)
 	}
 }

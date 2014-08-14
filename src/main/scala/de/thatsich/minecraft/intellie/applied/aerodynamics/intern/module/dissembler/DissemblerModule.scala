@@ -13,6 +13,6 @@ import de.thatsich.minecraft.common.string.ID
  * @since 01.08.2014.
  */
 class DissemblerModule(log: Log, modid: ID, name: ID = new DissemblerID) extends BaseModule(
-	items = List(new DissemblerItem(modid, name, log)),
-	recipes = List(new DissemblerRecipe)
+	items = Vector(new DissemblerItem(modid, name, log)),
+	recipes = Vector(new DissemblerRecipe, new DissemblerUpgradeRecipe)
 )

@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.client
 
 
 /**

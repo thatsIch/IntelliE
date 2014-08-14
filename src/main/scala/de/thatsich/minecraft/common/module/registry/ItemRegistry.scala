@@ -24,6 +24,8 @@ class ItemRegistry(registrable: Seq[Module], log: Log) extends CamelCaseParser
 		{
 			this.register(item)
 		}
+
+		this.log.info(s"Finished loading ${this.registrable.length} item(s).")
 	}
 
 	/**
@@ -33,7 +35,11 @@ class ItemRegistry(registrable: Seq[Module], log: Log) extends CamelCaseParser
 	 */
 	private def register(item: Item): Unit =
 	{
-		GameRegistry.registerItem(item, this.getItemName(item))
+		val name: String = this.getItemName(item)
+		val simpleClassName: String = item.getClass.getSimpleName
+
+		this.log.debug(s"Adding item $simpleClassName with name $name")
+		GameRegistry.registerItem(item, name)
 	}
 
 	/**
@@ -45,8 +51,10 @@ class ItemRegistry(registrable: Seq[Module], log: Log) extends CamelCaseParser
 	 */
 	private def getItemName(item: Item): String =
 	{
-		val className: String = item.getClass.getSimpleName
+		val unlocalizedName: String = item.getUnlocalizedName
+		val position: Int = unlocalizedName.lastIndexOf('.') + 1
+		val name : String = unlocalizedName.substring(position)
 
-		this.parseCamelCase(className)
+		name
 	}
 }

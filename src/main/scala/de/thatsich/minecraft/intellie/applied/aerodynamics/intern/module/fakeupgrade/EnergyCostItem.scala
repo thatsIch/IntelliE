@@ -12,6 +12,6 @@ import de.thatsich.minecraft.common.string.{BaseID, ID}
  * @author thatsIch
  * @since 12.08.2014.
  */
-class IncDamageVsEntites(modid: ID, log: Log) extends BaseItem(modid, new IncDamageVsEntitesID, log)
+class EnergyCostItem(modid: ID, log: Log) extends BaseItem(modid, new EnergyCostID, log)
 
-private[this] class IncDamageVsEntitesID extends BaseID("incDamageVsEntites")
+private[this] class EnergyCostID extends BaseID("energycost")

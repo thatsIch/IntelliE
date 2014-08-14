@@ -1,7 +1,7 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
-
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.client
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.{WorkbenchContainer, WorkbenchTileEntity}
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.inventory.GuiContainer
 import net.minecraft.entity.player.InventoryPlayer

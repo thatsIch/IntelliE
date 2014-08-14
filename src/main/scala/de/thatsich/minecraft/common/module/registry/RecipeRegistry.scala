@@ -30,6 +30,7 @@ class RecipeRegistry(registrable: Seq[Module], log: Log)
 			this.register(recipehandler, recipe)
 		}
 
+		this.log.info(s"Finished loading ${this.registrable.length} recipe(s).")
 		recipehandler.injectRecipes()
 	}
 
@@ -47,12 +48,12 @@ class RecipeRegistry(registrable: Seq[Module], log: Log)
 
 		if (externalRecipe.exists())
 		{
-			this.log.info("Registring external recipe from " + externalRecipe.getPath)
+			this.log.debug("Registring external recipe from " + externalRecipe.getPath)
 			recipehandler.parseRecipes(new ExternalRecipeLoader, externalRecipe.getPath)
 		}
 		else
 		{
-			this.log.info("Registring internal recipe from " + internalRecipePath)
+			this.log.debug("Registring internal recipe from " + internalRecipePath)
 			recipehandler.parseRecipes(new InternalRecipeLoader, internalRecipePath)
 		}
 	}

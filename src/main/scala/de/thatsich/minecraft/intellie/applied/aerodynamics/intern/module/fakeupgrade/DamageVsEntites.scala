@@ -12,6 +12,6 @@ import de.thatsich.minecraft.common.string.{BaseID, ID}
  * @author thatsIch
  * @since 12.08.2014.
  */
-class IncMiningLevel(modid: ID, log: Log) extends BaseItem(modid, new IncMiningLevelID, log)
+class DamageVsEntites(modid: ID, log: Log) extends BaseItem(modid, new DamageVsEntitesID, log)
 
-private[this] class IncMiningLevelID extends BaseID("incMiningLevel")
+private[this] class DamageVsEntitesID extends BaseID("damage")

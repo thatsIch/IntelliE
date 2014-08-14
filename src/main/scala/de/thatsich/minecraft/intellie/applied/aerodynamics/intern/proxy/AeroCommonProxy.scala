@@ -7,6 +7,7 @@ import de.thatsich.minecraft.common.string.Abbreviation
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.ModificationWorkbenchModule
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerModule
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.fakeupgrade.FakeUpgradeModule
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.{AeroAbbreviation, AeroCreativeTabIcon, AeroCreativeTabs, AeroID}
 
 
@@ -43,7 +44,8 @@ abstract class AeroCommonProxy extends CommonProxy
 	 */
 	final lazy val modules: Seq[Module] = Seq(
 		new DissemblerModule(this.log, this.modid),
-		new ModificationWorkbenchModule(this.log, this.modid)
+		new ModificationWorkbenchModule(this.log, this.modid),
+		new FakeUpgradeModule(this.log, this.modid)
 	)
 
 	private final val icon = new AeroCreativeTabIcon

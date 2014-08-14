@@ -4,6 +4,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.gui.BlockGuiHandler
 import de.thatsich.minecraft.common.string.ID
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.client.WorkbechGui
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.tileentity.TileEntity
 

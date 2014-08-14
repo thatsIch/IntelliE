@@ -14,8 +14,10 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 11.08.2014.
  */
-class WorkbenchCraftHandler(storage: WorkbenchCraftRecipeStorage) extends ICraftHandler
+class WorkbenchCraftHandler extends ICraftHandler
 {
+	private val storage: WorkbenchCraftRecipeStorage = WorkbenchCraftRecipeStorage
+
 	private var armorTool: IIngredient = null
 	private var upgrade: IIngredient = null
 	private var attribute: IIngredient = null

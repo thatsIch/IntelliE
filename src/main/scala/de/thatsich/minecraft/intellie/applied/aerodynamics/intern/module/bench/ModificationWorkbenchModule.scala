@@ -12,9 +12,10 @@ import de.thatsich.minecraft.common.string.ID
  * @author thatsIch
  * @since 04.08.2014.
  */
-class ModificationWorkbenchModule(log: Log, modid: ID, name: ID = new WorkbenchID) extends BaseModule(
-	blocks = List(new WorkbenchBlock(modid, name, log)),
-	recipes = List(new WorkbenchRecipe),
-	tiles = List(classOf[WorkbenchTileEntity]),
-	guis = List(new WorkbenchGuiHandler(name, log))
+class ModificationWorkbenchModule(log: Log, modid: ID, name: ID = new WorkbenchID, craftStorage: WorkbenchCraftRecipeStorage = WorkbenchCraftRecipeStorage) extends BaseModule(
+	blocks = Vector(new WorkbenchBlock(modid, name, log)),
+	recipes = Vector(new WorkbenchRecipe),
+	tiles = Vector(classOf[WorkbenchTileEntity]),
+	guis = Vector(new WorkbenchGuiHandler(name, log)),
+	crafthandlers = Vector(classOf[WorkbenchCraftHandler])
 )

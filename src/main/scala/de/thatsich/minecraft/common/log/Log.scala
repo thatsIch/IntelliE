@@ -16,13 +16,13 @@ package de.thatsich.minecraft.common.log
  */
 trait Log
 {
-	def info(format: String, data: AnyRef*): Unit
+	def info(format: String): Unit
 
-	def warn(format: String, data: AnyRef*): Unit
+	def warn(format: String): Unit
 
-	def debug(format: String, data: AnyRef*): Unit
+	def debug(format: String): Unit
 
 	def trace(exception: Throwable): Unit
 
-	def severe(format: String, data: AnyRef*): Unit
+	def severe(format: String): Unit
 }

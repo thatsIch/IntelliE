@@ -26,6 +26,8 @@ class BlockRegistry(registrable: Seq[Module], log: Log) extends CamelCaseParser
 		{
 			this.register(block)
 		}
+
+		this.log.info(s"Finished loading ${this.registrable.length} block(s).")
 	}
 
 	/**
@@ -35,7 +37,11 @@ class BlockRegistry(registrable: Seq[Module], log: Log) extends CamelCaseParser
 	 */
 	private def register(block: Block): Unit =
 	{
-		GameRegistry.registerBlock(block, this.getBlockName(block))
+		val name: String = this.getBlockName(block)
+		val simpleClassName: String = block.getClass.getSimpleName
+
+		this.log.debug(s"Adding block $simpleClassName with name $name")
+		GameRegistry.registerBlock(block, name)
 	}
 
 	/**
@@ -47,8 +53,10 @@ class BlockRegistry(registrable: Seq[Module], log: Log) extends CamelCaseParser
 	 */
 	private def getBlockName(block: Block): String =
 	{
-		val className: String = block.getClass.getSimpleName
+		val unlocalizedName: String = block.getUnlocalizedName
+		val position: Int = unlocalizedName.lastIndexOf('.') + 1
+		val name : String = unlocalizedName.substring(position)
 
-		this.parseCamelCase(className)
+		name
 	}
 }

@@ -7,15 +7,12 @@ package module
 package bench
 
 
-import appeng.api.definitions.{Blocks, Items, Materials}
-import appeng.api.{AEApi, IAppEngApi}
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.module.container.slot.OutputSlot
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.common.item.AAEPoweredItemArmor
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerItem
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.client.{ArmorDissemblerSlot, UpgradeSlot}
 import net.minecraft.entity.player.{EntityPlayer, InventoryPlayer}
 import net.minecraft.inventory.{Container, ICrafting, Slot}
-import net.minecraft.item.{Item, ItemStack}
+import net.minecraft.item.ItemStack
 
 import scala.collection.JavaConversions._
 
@@ -28,6 +25,8 @@ import scala.collection.JavaConversions._
  */
 class WorkbenchContainer(player: InventoryPlayer, private val workbench: WorkbenchTileEntity) extends Container
 {
+	private val storage = WorkbenchCraftRecipeStorage
+
 	// Hotbar
 	for (slotIndex <- 0 to 8)
 	{
@@ -102,47 +101,34 @@ class WorkbenchContainer(player: InventoryPlayer, private val workbench: Workben
 			// in player inventory
 			else if (slotIndex < 36)
 			{
-				val itemInSlot: Item = stackInSlot.getItem
-				val api: IAppEngApi = AEApi.instance()
-				val apiItems: Items = api.items()
-				val apiBlocks: Blocks = api.blocks()
-				val apiMats: Materials = api.materials()
-
-				// is armor tool
-				if (itemInSlot.isInstanceOf[DissemblerItem] ||
-					itemInSlot.isInstanceOf[AAEPoweredItemArmor])
-				{
-					if (!this.mergeItemStack(stackInSlot, 36, 37, false))
+				this.storage.internalInputs.foreach(
+					storedIS => if (storedIS.isItemEqual(stackInSlot))
 					{
-						return null
-					}
-				}
-				// is upgrade
-				else if (apiBlocks.blockEnergyCell.sameAsStack(stackInSlot) ||
-					apiBlocks.blockEnergyCellDense.sameAsStack(stackInSlot) ||
-					apiItems.itemCell1k.sameAsStack(stackInSlot) ||
-					apiItems.itemCell4k.sameAsStack(stackInSlot) ||
-					apiItems.itemCell16k.sameAsStack(stackInSlot) ||
-					apiItems.itemCell64k.sameAsStack(stackInSlot) ||
-					apiMats.materialCardSpeed.sameAsStack(stackInSlot) ||
-					apiMats.materialLogicProcessor.sameAsStack(stackInSlot) ||
-					apiMats.materialEngProcessor.sameAsStack(stackInSlot) ||
-					apiMats.materialCalcProcessor.sameAsStack(stackInSlot))
-				{
-					val upgradeSlot: Slot = this.getSlot(37)
-
-					if (upgradeSlot != null && upgradeSlot.getHasStack)
-					{
-						val upgradeStack: ItemStack = upgradeSlot.getStack
-						if (upgradeStack.stackSize == 0)
+						if (!this.mergeItemStack(stackInSlot, 36, 37, false))
 						{
-							if (!this.mergeItemStack(stackInSlot, 37, 38, false))
+							return null
+						}
+					}
+				)
+
+				this.storage.internalUpgrades.foreach(
+					storedIS => if (storedIS.isItemEqual(stackInSlot))
+					{
+						val upgradeSlot: Slot = this.getSlot(37)
+
+						if (upgradeSlot != null && upgradeSlot.getHasStack)
+						{
+							val upgradeStack: ItemStack = upgradeSlot.getStack
+							if (upgradeStack.stackSize == 0)
 							{
-								return null
+								if (!this.mergeItemStack(stackInSlot, 37, 38, false))
+								{
+									return null
+								}
 							}
 						}
 					}
-				}
+				)
 			}
 
 			if (stackInSlot.stackSize == 0)

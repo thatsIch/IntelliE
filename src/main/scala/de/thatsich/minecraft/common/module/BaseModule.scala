@@ -16,13 +16,13 @@ import net.minecraft.tileentity.TileEntity
  * @author thatsIch
  * @since 13.04.2014.
  */
-abstract class BaseModule(val items: List[Item] = List(),
-                          val blocks: List[Block] = List(),
-                          val tiles: List[Class[_ <: TileEntity]] = List(),
-                          val entites: List[Entity] = List(),
-                          val recipes: List[Recipe] = List(),
-                          val guis: List[BlockGuiHandler] = List(),
-                          val crafthandlers: List[Class[_ <: ICraftHandler]] = List()
+abstract class BaseModule(val items: Seq[Item] = List(),
+                          val blocks: Seq[Block] = List(),
+                          val tiles: Seq[Class[_ <: TileEntity]] = List(),
+                          val entites: Seq[Entity] = List(),
+                          val recipes: Seq[Recipe] = List(),
+                          val guis: Seq[BlockGuiHandler] = List(),
+                          val crafthandlers: Seq[Class[_ <: ICraftHandler]] = List()
 	                         )
 	extends Module
 

@@ -12,6 +12,6 @@ import de.thatsich.minecraft.common.string.{BaseID, ID}
  * @author thatsIch
  * @since 12.08.2014.
  */
-class IncMiningSpeed(modid: ID, log: Log) extends BaseItem(modid, new IncMiningSpeedID, log)
+class  MiningLevel(modid: ID, log: Log) extends BaseItem(modid, new MiningLevelID, log)
 
-private[this] class IncMiningSpeedID extends BaseID("incMiningSpeed")
+private[this] class MiningLevelID extends BaseID("mininglevel")

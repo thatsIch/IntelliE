@@ -30,6 +30,8 @@ class TileEntityRegistry(registrable: Seq[Module], log: Log)
 		{
 			this.register(te)
 		}
+
+		this.log.info(s"Finished loading ${this.registrable.length} tile(s).")
 	}
 
 	/**
@@ -39,7 +41,7 @@ class TileEntityRegistry(registrable: Seq[Module], log: Log)
 	 */
 	private def register(teClass: Class[_ <: TileEntity]): Unit =
 	{
-		this.log.info(s"Registering TE $teClass")
+		this.log.debug(s"Registering TE $teClass")
 		GameRegistry.registerTileEntity(teClass, teClass.toString)
 		AEApi.instance().registries().moveable().whiteListTileEntity(teClass)
 	}
