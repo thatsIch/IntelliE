@@ -84,42 +84,27 @@ class WorkbenchContainer(player: InventoryPlayer, workbench: WorkbenchTileEntity
 			// in inventory
 			if (slotIndex < 36)
 			{
-				val inputSlot = this.getBaseSlot(36)
-				if (inputSlot != null && !inputSlot.getHasStack && inputSlot.isItemValid(clickedStack))
+				val machineInventorySize = this.inventorySlots.size()
+				for (machineSlotIndex <- 36 until machineInventorySize)
 				{
-					if (clickedStack.stackSize > 1)
+					val machineSlot = this.getBaseSlot(machineSlotIndex)
+					if (machineSlot != null & !machineSlot.getHasStack && machineSlot.isItemValid(clickedStack))
 					{
-						val splitStack: ItemStack = clickedStack.splitStack(1)
-						if (!this.mergeItemStack(splitStack, 36, 37, true))
+						val limit = machineSlot.getSlotStackLimit
+						if (clickedStack.stackSize > limit)
 						{
-							return null
+							val splitStack: ItemStack = clickedStack.splitStack(limit)
+							if (!this.mergeItemStack(splitStack, machineSlotIndex, machineSlotIndex + 1, true))
+							{
+								return null
+							}
 						}
-					}
-					else
-					{
-						if (!this.mergeItemStack(clickedStack, 36, 37, true))
+						else
 						{
-							return null
-						}
-					}
-				}
-
-				val upgradeSlot = this.getBaseSlot(37)
-				if (upgradeSlot != null && !upgradeSlot.getHasStack && upgradeSlot.isItemValid(clickedStack))
-				{
-					if (clickedStack.stackSize > 1)
-					{
-						val splitStack: ItemStack = clickedStack.splitStack(1)
-						if (!this.mergeItemStack(splitStack, 37, 38, true))
-						{
-							return null
-						}
-					}
-					else
-					{
-						if (!this.mergeItemStack(clickedStack, 37, 38, true))
-						{
-							return null
+							if (!this.mergeItemStack(clickedStack, 36, machineInventorySize, true))
+							{
+								return null
+							}
 						}
 					}
 				}
@@ -147,6 +132,6 @@ class WorkbenchContainer(player: InventoryPlayer, workbench: WorkbenchTileEntity
 		resultStack
 	}
 
-	override def retrySlotClick(p_75133_1_ : Int, p_75133_2_ : Int, p_75133_3_ : Boolean, player : EntityPlayer): Unit =
+	override def retrySlotClick(p_75133_1_ : Int, p_75133_2_ : Int, p_75133_3_ : Boolean, player: EntityPlayer): Unit =
 	{}
 }
