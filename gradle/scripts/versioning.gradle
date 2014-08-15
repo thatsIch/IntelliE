@@ -158,7 +158,6 @@ task incRev(group: 'versioning', description: 'Increments project reproject.ext.
     tag(oldTag, newTag)
 }
 
-task pushToCurse(group: 'versioning', description: 'Pushes all outstanding commits to remote', dependsOn: ['cleanCompileJava', 'curse']) << {
+task pushToCurse(group: 'versioning', description: 'Pushes all outstanding commits to remote', dependsOn: 'curse') << {
     push()
 }
-curse.mustRunAfter cleanCompileJava
