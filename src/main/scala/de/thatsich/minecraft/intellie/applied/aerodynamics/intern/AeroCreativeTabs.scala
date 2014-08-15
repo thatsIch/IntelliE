@@ -18,12 +18,10 @@ import net.minecraft.item.Item
  */
 class AeroCreativeTabs(icon: Item, registrable: Seq[Module], log: Log, modid: ID) extends CreativeTabs(modid)
 {
-	registrable.foreach
+	for (module: Module <- this.registrable; block: Block <- module.blocks; item: Item <- module.items)
 	{
-		case item: Item   => item.setCreativeTab(this)
-		case block: Block => block.setCreativeTab(this)
-
-		case _ =>
+		item.setCreativeTab(this)
+		block.setCreativeTab(this)
 	}
 
 	@SideOnly(Side.CLIENT)

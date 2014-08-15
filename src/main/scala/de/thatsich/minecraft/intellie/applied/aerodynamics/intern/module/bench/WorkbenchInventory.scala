@@ -133,10 +133,7 @@ trait WorkbenchInventory extends TileEntity with ISidedInventory
 
 	def getAccessibleSlotsFromSide(side: Int): Array[Int] = this.access
 
-	def canExtractItem(slot: Int, is: ItemStack, side: Int): Boolean =
-	{
-		slot == 2
-	}
+	def canExtractItem(slot: Int, is: ItemStack, side: Int): Boolean = slot == 2
 
 	def canInsertItem(slot: Int, is: ItemStack, side: Int): Boolean = this.isItemValidForSlot(slot, is)
 }

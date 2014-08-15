@@ -22,7 +22,7 @@ class WorkbenchGuiHandler(val name: ID, log: Log) extends BlockGuiHandler
 	{
 		tile match
 		{
-			case workbench: WorkbenchTileEntity => new WorkbenchContainer(player.inventory, workbench)
+			case workbench: WorkbenchTileEntity => new WorkbenchContainer(player.inventory, workbench, this.log)
 			case _                              =>
 				this.log.warn(s"Handler $this was used with TE $tile")
 				null
@@ -33,7 +33,7 @@ class WorkbenchGuiHandler(val name: ID, log: Log) extends BlockGuiHandler
 	{
 		tile match
 		{
-			case workbench: WorkbenchTileEntity => new WorkbechGui(player.inventory, workbench)
+			case workbench: WorkbenchTileEntity => new WorkbechGui(player.inventory, workbench, this.log)
 			case _                              =>
 				this.log.warn(s"Handler $this was used with TE $tile")
 				null

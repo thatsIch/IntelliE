@@ -8,10 +8,12 @@ package bench
 
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
+import de.thatsich.minecraft.common.log.Log
+import de.thatsich.minecraft.common.module.container.BaseContainer
 import de.thatsich.minecraft.common.module.container.slot.OutputSlot
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.client.{ArmorDissemblerSlot, UpgradeSlot}
 import net.minecraft.entity.player.{EntityPlayer, InventoryPlayer}
-import net.minecraft.inventory.{Container, ICrafting, Slot}
+import net.minecraft.inventory.{ICrafting, Slot}
 import net.minecraft.item.ItemStack
 
 import scala.collection.JavaConversions._
@@ -23,10 +25,8 @@ import scala.collection.JavaConversions._
  * @author thatsIch
  * @since 06.08.2014.
  */
-class WorkbenchContainer(player: InventoryPlayer, private val workbench: WorkbenchTileEntity) extends Container
+class WorkbenchContainer(player: InventoryPlayer, workbench: WorkbenchTileEntity, log: Log) extends BaseContainer
 {
-	private val storage = WorkbenchCraftRecipeStorage
-
 	// Hotbar
 	for (slotIndex <- 0 to 8)
 	{
@@ -82,72 +82,67 @@ class WorkbenchContainer(player: InventoryPlayer, private val workbench: Workben
 
 	override def transferStackInSlot(player: EntityPlayer, slotIndex: Int): ItemStack =
 	{
-		val slot: Slot = this.getSlot(slotIndex)
+		val clickedSlot: Slot = this.getSlot(slotIndex)
+		this.log.debug(s"Player $player clicked Slot $clickedSlot with index $slotIndex.")
 
-		// check if slot really exists and has something in it
-		if (slot != null && slot.getHasStack)
+		// check if clickedSlot really exists and has something in it
+		if (clickedSlot != null && clickedSlot.getHasStack)
 		{
-			val stackInSlot: ItemStack = slot.getStack
-			val result = stackInSlot.copy
+			this.log.debug("Slot exists and has an itemstack.")
+			val stackInSlot: ItemStack = clickedSlot.getStack
+			val result: ItemStack = stackInSlot.copy()
 
-			// armor tool slot
+			// input and upgrade clickedSlot
 			if (slotIndex >= 36)
 			{
-				if (!this.mergeItemStack(stackInSlot, 0, 35, false))
-				{
-					return null
-				}
+				this.log.debug("In workbench inventory.")
+
+				val hasStackMerged = this.mergeItemStack(stackInSlot, 0, 35, false)
+				val stackIsNull = stackInSlot == null
+				val stackSize = stackInSlot.stackSize
+				this.log.debug(s"Stack has merged: $hasStackMerged")
+				this.log.debug(s"Stack is null: $stackIsNull")
+				this.log.debug(s"Stack size: $stackSize")
+
+				if (!hasStackMerged) return null
+
+				this.log.debug("Merged inventory.")
 			}
 			// in player inventory
-			else if (slotIndex < 36)
-			{
-				this.storage.internalInputs.foreach(
-					storedIS => if (storedIS.isItemEqual(stackInSlot))
-					{
-						if (!this.mergeItemStack(stackInSlot, 36, 37, false))
-						{
-							return null
-						}
-					}
-				)
-
-				this.storage.internalUpgrades.foreach(
-					storedIS => if (storedIS.isItemEqual(stackInSlot))
-					{
-						val upgradeSlot: Slot = this.getSlot(37)
-
-						if (upgradeSlot != null && upgradeSlot.getHasStack)
-						{
-							val upgradeStack: ItemStack = upgradeSlot.getStack
-							if (upgradeStack.stackSize == 0)
-							{
-								if (!this.mergeItemStack(stackInSlot, 37, 38, false))
-								{
-									return null
-								}
-							}
-						}
-					}
-				)
-			}
-
-			if (stackInSlot.stackSize == 0)
-			{
-				slot.putStack(null)
-			}
-			else
-			{
-				slot.onSlotChanged()
-			}
-
-			if (stackInSlot.stackSize == result.stackSize)
+			else if (slotIndex < 36 && this.transferFromInventoryToWorkbench(stackInSlot))
 			{
 				return null
 			}
 
-			slot.onPickupFromSlot(player, stackInSlot)
+			this.log.debug("Stacksize: " + stackInSlot.stackSize)
+			if (stackInSlot.stackSize == 0) clickedSlot.putStack(null)
+
+			clickedSlot.onSlotChanged()
+
+			return result
 		}
 
 		null
+	}
+
+	private def transferFromInputToInventory(): Unit =
+	{
+	}
+
+	private def transferFromInventoryToWorkbench(stackInSlot: ItemStack): Boolean = {
+		this.log.debug("In player inventory.")
+		val inputSlot: Slot = this.getSlot(36)
+		val upgradeSlot: Slot = this.getSlot(37)
+
+		val isInputValid = inputSlot.isItemValid(stackInSlot)
+		val isUpgradeValid = upgradeSlot.isItemValid(stackInSlot)
+		this.log.debug(s"Input is valid: $isInputValid")
+		this.log.debug(s"Upgrade is valid: $isUpgradeValid")
+
+		if (isInputValid && !this.mergeItemStack(stackInSlot, 36, 37, false)) return true
+		else if (isUpgradeValid && !this.mergeItemStack(stackInSlot, 37, 38, false)) return true
+		this.log.debug("Merged inventory.")
+
+		false
 	}
 }

@@ -108,16 +108,19 @@ class WorkbenchTileEntity extends TileEntity
 	private def executeTask(task: WorkbenchCraftRecipe): Unit =
 	{
 		val input: ItemStack = this.getStackInSlotOnClosing(0)
-		val uprade: ItemStack = this.getStackInSlotOnClosing(1)
+		this.setInventorySlotContents(1, null)
 		val attribute: ItemStack = task.attribute
 		val output: ItemStack = input.copy()
 
 		val attributeName: String = this.extractItemName(attribute)
 		val attributeValue: Int = attribute.stackSize
+		val attributeModifier: Int = if (attribute.getItemDamage != 0) -1 else 1
 
 		val outputTag: NBTTagCompound = this.getNBTData(output)
 		val attributeValueFromTag: Int = outputTag.getInteger(attributeName)
-		outputTag.setInteger(attributeName, attributeValueFromTag + attributeValue)
+		outputTag.setInteger(attributeName, attributeValueFromTag + attributeModifier * attributeValue)
+
+		this.setInventorySlotContents(2, output)
 	}
 
 	private def extractItemName(stack: ItemStack): String =
@@ -128,90 +131,6 @@ class WorkbenchTileEntity extends TileEntity
 
 		parsedName
 	}
-
-	// TODO add regression chance based
-	//	def modifyItem(): Unit =
-	//	{
-	//		val armorTool: ItemStack = this.getStackInSlotOnClosing(0)
-	//		val upgrade: ItemStack = this.getStackInSlotOnClosing(1)
-	//
-	//		val armorToolItem = armorTool.getItem
-	//
-	//		val api = AEApi.instance()
-	//		val mats: Materials = api.materials()
-	//
-	//		armorToolItem match
-	//		{
-	//			case dissembler: DissemblerItem =>
-	//				upgrade.getItem match
-	//				{
-	//					// add energy
-	//					case powerStorage: IAEItemPowerStorage =>
-	//						val currentUpgrade: Double = powerStorage.getAECurrentPower(upgrade)
-	//						val maxUpgrade: Double = powerStorage.getAEMaxPower(upgrade)
-	//
-	//						dissembler.addAEMaxPower(armorTool, maxUpgrade)
-	//						dissembler.injectAEPower(armorTool, currentUpgrade)
-	//
-	//					// mining speed
-	//					case cell: IStorageCell =>
-	//						val current = dissembler.getCurrentMiningSpeed(armorTool)
-	//						val additionalLevels = cell.getBytes(upgrade) / 1024
-	//
-	//						dissembler.setCurrentMiningSpeed(armorTool, current + additionalLevels)
-	//
-	//					case any =>
-	//						// mining level
-	//						if (mats.materialLogicProcessor.sameAsStack(upgrade))
-	//						{
-	//							val current = dissembler.getCurrentMiningLevel(armorTool)
-	//							dissembler.setCurrentMiningLevel(armorTool, current + 1)
-	//						}
-	//
-	//						// damage
-	//						else if (mats.materialEngProcessor.sameAsStack(upgrade))
-	//						{
-	//							val current = dissembler.getCurrentDamageVsEntities(armorTool)
-	//							dissembler.setCurrentDamageVsEntities(armorTool, current + 1)
-	//						}
-	//
-	//						// charge multiplier
-	//						else if (mats.materialCardSpeed.sameAsStack(upgrade))
-	//						{
-	//							val current = dissembler.getCurrentChargeMultiplier(armorTool)
-	//							dissembler.setCurrentChargePerTick(armorTool, current + 1)
-	//						}
-	//
-	//						// energy cost
-	//						else if (mats.materialCalcProcessor.sameAsStack(upgrade))
-	//						{
-	//							val current = dissembler.getCurrentEnergyUsage(armorTool)
-	//							dissembler.setCurrentEnergyPerBlockBreak(armorTool, current - 1)
-	//						}
-	//						else
-	//						{
-	//							println(s"Unsupported upgrade $any")
-	//						}
-	//				}
-	//
-	//			case armor: AAEPoweredItemArmor =>
-	//				upgrade.getItem match
-	//				{
-	//					case powerStorage: IAEItemPowerStorage =>
-	//						val currentUpgrade: Double = powerStorage.getAECurrentPower(upgrade)
-	//						val maxUpgrade: Double = powerStorage.getAEMaxPower(upgrade)
-	//
-	//						armor.addAEMaxPower(armorTool, maxUpgrade)
-	//						armor.injectAEPower(armorTool, currentUpgrade)
-	//
-	//					case any => println(s"Unsupported upgrade $any") // TODO remove or better
-	//				}
-	//
-	//			case any => println(s"Unsupported item to upgrade $any") // TODO remove or better
-	//		}
-	//
-	//		this.setInventorySlotContents(2, armorTool.copy())
-	//	}
 
 	private def getTask: WorkbenchCraftRecipe =
 	{
