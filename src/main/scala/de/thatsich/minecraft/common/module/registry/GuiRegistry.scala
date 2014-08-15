@@ -27,13 +27,15 @@ class GuiRegistry(registrable: Seq[Module], log: Log) extends BlockGuiHasher
 	def registerAll(): IGuiHandler =
 	{
 		val table = new util.Hashtable[Int, BlockGuiHandler]()
+		var length = 0
 
 		for (module: Module <- this.registrable; gui <- module.guis)
 		{
 			this.register(gui, table)
+			length += 1
 		}
 
-		this.log.info(s"Finished loading ${this.registrable.length} gui handler(s).")
+		this.log.info(s"Finished loading $length gui handler(s).")
 
 		new GuiBridge(table, this.log)
 	}
@@ -49,7 +51,7 @@ class GuiRegistry(registrable: Seq[Module], log: Log) extends BlockGuiHasher
 		val name: String = handler.name
 		val hash: Int = this.hash(name)
 
-		this.log.debug(s"Adding handler $handler with hash $hash")
+		this.log.debug(s"Adding handler ${handler.getClass.getSimpleName} with producing hash $hash")
 		table.put(hash, handler)
 	}
 }

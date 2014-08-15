@@ -2,6 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 
 
 import de.thatsich.minecraft.common.log.Log
+import de.thatsich.minecraft.common.module.container.slot.SlotSide
 import de.thatsich.minecraft.common.module.gui.BlockGuiHandler
 import de.thatsich.minecraft.common.string.ID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.client.WorkbechGui
@@ -22,7 +23,7 @@ class WorkbenchGuiHandler(val name: ID, log: Log) extends BlockGuiHandler
 	{
 		tile match
 		{
-			case workbench: WorkbenchTileEntity => new WorkbenchContainer(player.inventory, workbench, this.log)
+			case workbench: WorkbenchTileEntity => new WorkbenchContainer(player.inventory, workbench, this.log, SlotSide.Server)
 			case _                              =>
 				this.log.warn(s"Handler $this was used with TE $tile")
 				null

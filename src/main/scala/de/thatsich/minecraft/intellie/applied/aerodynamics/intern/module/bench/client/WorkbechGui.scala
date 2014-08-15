@@ -2,6 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
+import de.thatsich.minecraft.common.module.container.slot.SlotSide
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.{WorkbenchContainer, WorkbenchTileEntity}
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.inventory.GuiContainer
@@ -17,7 +18,7 @@ import org.lwjgl.opengl.GL11
  * @since 06.08.2014.
  */
 @SideOnly(Side.CLIENT)
-class WorkbechGui(invPlayer: InventoryPlayer, workbench: WorkbenchTileEntity, log: Log) extends GuiContainer(new WorkbenchContainer(invPlayer, workbench, log))
+class WorkbechGui(invPlayer: InventoryPlayer, workbench: WorkbenchTileEntity, log: Log) extends GuiContainer(new WorkbenchContainer(invPlayer, workbench, log, SlotSide.Client))
 {
 	this.xSize = 176
 	this.ySize = 176

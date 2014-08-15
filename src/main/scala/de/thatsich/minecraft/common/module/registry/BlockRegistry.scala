@@ -15,19 +15,22 @@ import net.minecraft.block.Block
  * @author thatsIch
  * @since 03.08.2014.
  */
-class BlockRegistry(registrable: Seq[Module], log: Log) extends CamelCaseParser
+class BlockRegistry(registrable: Seq[Module], log: Log)
 {
 	/**
 	 * Registers all the block in modules
 	 */
 	def registerAll(): Unit =
 	{
+		var length = 0
+
 		for (module: Module <- this.registrable; block: Block <- module.blocks)
 		{
 			this.register(block)
+			length += 1
 		}
 
-		this.log.info(s"Finished loading ${this.registrable.length} block(s).")
+		this.log.info(s"Finished loading $length block(s).")
 	}
 
 	/**

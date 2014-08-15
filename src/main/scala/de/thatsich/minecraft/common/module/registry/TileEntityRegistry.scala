@@ -26,12 +26,15 @@ class TileEntityRegistry(registrable: Seq[Module], log: Log)
 	 */
 	def registerAll(): Unit =
 	{
+		var length = 0
+
 		for (module: Module <- this.registrable; te <- module.tiles)
 		{
 			this.register(te)
+			length += 1
 		}
 
-		this.log.info(s"Finished loading ${this.registrable.length} tile(s).")
+		this.log.info(s"Finished loading $length tile(s).")
 	}
 
 	/**

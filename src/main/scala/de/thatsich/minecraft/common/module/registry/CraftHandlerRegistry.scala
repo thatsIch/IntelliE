@@ -22,13 +22,15 @@ class CraftHandlerRegistry(registrable: Seq[Module], log: Log)
 	def registerAll(): Unit =
 	{
 		val registry: IRecipeHandlerRegistry = AEApi.instance().registries().recipes()
+		var length = 0
 
 		for (module: Module <- this.registrable; crafthandler <- module.crafthandlers)
 		{
 			this.register(crafthandler, registry)
+			length += 1
 		}
 
-		this.log.info(s"Finished loading ${this.registrable.length} craft handler(s).")
+		this.log.info(s"Finished loading $length craft handler(s).")
 	}
 
 	/**

@@ -13,19 +13,22 @@ import net.minecraft.item.Item
  * @author thatsIch
  * @since 03.08.2014.
  */
-class ItemRegistry(registrable: Seq[Module], log: Log) extends CamelCaseParser
+class ItemRegistry(registrable: Seq[Module], log: Log)
 {
 	/**
 	 * Registers all items in modules
 	 */
 	def registerAll(): Unit =
 	{
+		var length = 0
+
 		for (module: Module <- this.registrable; item <- module.items)
 		{
 			this.register(item)
+			length += 1
 		}
 
-		this.log.info(s"Finished loading ${this.registrable.length} item(s).")
+		this.log.info(s"Finished loading $length item(s).")
 	}
 
 	/**

@@ -24,13 +24,15 @@ class RecipeRegistry(registrable: Seq[Module], log: Log)
 	def registerAll(): Unit =
 	{
 		val recipehandler: IRecipeHandler = AEApi.instance().registries().recipes().createNewRecipehandler()
+		var length = 0
 
 		for (module: Module <- this.registrable; recipe <- module.recipes)
 		{
 			this.register(recipehandler, recipe)
+			length += 1
 		}
 
-		this.log.info(s"Finished loading ${this.registrable.length} recipe(s).")
+		this.log.info(s"Finished loading $length recipe(s).")
 		recipehandler.injectRecipes()
 	}
 
