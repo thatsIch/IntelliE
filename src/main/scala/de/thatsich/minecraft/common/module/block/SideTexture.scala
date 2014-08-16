@@ -18,9 +18,6 @@ trait SideTexture extends BaseBlock
 	var iconSide: IIcon = null
 
 	@SideOnly(Side.CLIENT)
-	def getSideIcon(side: Int) = this.iconSide
-
-	@SideOnly(Side.CLIENT)
 	override def getIcon(side: Int, metadata: Int) =
 	{
 		side match
@@ -39,6 +36,9 @@ trait SideTexture extends BaseBlock
 			case _             => super.getIcon(world, x, y, z, side)
 		}
 	}
+
+	@SideOnly(Side.CLIENT)
+	def getSideIcon(side: Int) = this.iconSide
 
 	@SideOnly(Side.CLIENT)
 	abstract override def registerBlockIcons(register: IIconRegister) =

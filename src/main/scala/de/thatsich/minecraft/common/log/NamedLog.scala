@@ -48,6 +48,17 @@ class NamedLog(abbr: Abbreviation) extends Log
 	}
 
 	/**
+	 * Default Logging if enabled
+	 *
+	 * @param level  Logging-Level
+	 * @param message log message
+	 */
+	private def logging(level: Level, message: String): Unit =
+	{
+		this.logger.log(level, message)
+	}
+
+	/**
 	 * Used in try catch of exceptions
 	 *
 	 * @param exception thrown exception
@@ -67,16 +78,5 @@ class NamedLog(abbr: Abbreviation) extends Log
 	def severe(message: String): Unit =
 	{
 		this.logging(Level.FATAL, message)
-	}
-
-	/**
-	 * Default Logging if enabled
-	 *
-	 * @param level  Logging-Level
-	 * @param message log message
-	 */
-	private def logging(level: Level, message: String): Unit =
-	{
-		this.logger.log(level, message)
 	}
 }

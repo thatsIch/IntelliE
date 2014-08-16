@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 09.08.2014.
  */
-class OutputSlot(player: EntityPlayer, inv: IInventory, id: Int, x: Int, y: Int, side: SlotSide) extends BaseSlot(player, inv, id, x, y, SlotState.Enabled, side)
+class OutputSlot(player: EntityPlayer, inv: IInventory, id: Int, x: Int, y: Int, side: SlotSide) extends BaseSlot(player, inv, id, x, y, SlotStateWTF.Enabled, side)
 {
 	override def isItemValid(is: ItemStack): Boolean = false
 }

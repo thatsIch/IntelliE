@@ -13,8 +13,7 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 26.07.2014.
  */
-private[dissembler] trait AEWrench extends Item
-                                           with IAEWrench
+private[dissembler] trait AEWrench extends Item with IAEWrench
 {
 	/**
 	 * This item can wrench AE parts
@@ -41,5 +40,4 @@ private[dissembler] trait AEWrench extends Item
 	 * @return true
 	 */
 	override def doesSneakBypassUse(world: World, x: Int, y: Int, z: Int, player: EntityPlayer): Boolean = true
-
 }

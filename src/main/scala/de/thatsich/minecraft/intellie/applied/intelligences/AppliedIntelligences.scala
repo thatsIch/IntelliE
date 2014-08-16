@@ -1,9 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.intelligences
 
 
-import cpw.mods.fml.common.Mod
-
-
 /**
  *
  *

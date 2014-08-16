@@ -39,32 +39,6 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
 		(this.initEnergy + current) min this.maxEnergy
 	}
 
-	def setAEMaxPower(is: ItemStack, value: Double): Unit =
-	{
-		val tag = this.getNBTData(is)
-		tag.setDouble(Tags.MaxEnergy, value)
-	}
-
-	def addAEMaxPower(is: ItemStack, amt: Double): Double =
-	{
-		val max: Double = this.getAEMaxPower(is)
-		val sum = max + amt
-		this.setAEMaxPower(is, sum)
-
-		sum
-	}
-
-	def getPowerFlow(is: ItemStack): AccessRestriction = AccessRestriction.WRITE
-
-	def extractAEPower(is: ItemStack, amt: Double): Double =
-	{
-		val currentStorage = this.getAECurrentPower(is)
-		val newStorage = Math.max(0.0, currentStorage - amt)
-		this.setAECurrentPower(is, newStorage)
-
-		newStorage
-	}
-
 	// AE Current Power
 	def getAECurrentPower(is: ItemStack): Double =
 	{
@@ -78,15 +52,6 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
 		tag.setDouble(Tags.CurrentEnergy, value)
 	}
 
-	def addAECurrentPower(is: ItemStack, value: Double): Double =
-	{
-		val currentPower: Double = this.getAECurrentPower(is)
-		val sum: Double = currentPower + value
-		this.setAECurrentPower(is, sum)
-
-		sum
-	}
-
 	// AE Charge Multiplier
 	def getCurrentChargeMultiplier(is: ItemStack): Double =
 	{
@@ -94,6 +59,41 @@ private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
 		val value = tag.getDouble(Tags.ChargeSpeed)
 
 		(this.initChargeMultiplier + value) min this.maxChargeMultiplier
+	}
+
+	def addAEMaxPower(is: ItemStack, amt: Double): Double =
+	{
+		val max: Double = this.getAEMaxPower(is)
+		val sum = max + amt
+		this.setAEMaxPower(is, sum)
+
+		sum
+	}
+
+	def setAEMaxPower(is: ItemStack, value: Double): Unit =
+	{
+		val tag = this.getNBTData(is)
+		tag.setDouble(Tags.MaxEnergy, value)
+	}
+
+	def getPowerFlow(is: ItemStack): AccessRestriction = AccessRestriction.WRITE
+
+	def extractAEPower(is: ItemStack, amt: Double): Double =
+	{
+		val currentStorage = this.getAECurrentPower(is)
+		val newStorage = Math.max(0.0, currentStorage - amt)
+		this.setAECurrentPower(is, newStorage)
+
+		newStorage
+	}
+
+	def addAECurrentPower(is: ItemStack, value: Double): Double =
+	{
+		val currentPower: Double = this.getAECurrentPower(is)
+		val sum: Double = currentPower + value
+		this.setAECurrentPower(is, sum)
+
+		sum
 	}
 
 	def setCurrentChargeMultiplier(is: ItemStack, value: Double): Unit =

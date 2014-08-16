@@ -18,9 +18,6 @@ trait BottomTexture extends BaseBlock
 	var iconBot: IIcon = null
 
 	@SideOnly(Side.CLIENT)
-	def getBotIcon(side: Int) = this.iconBot
-
-	@SideOnly(Side.CLIENT)
 	override def getIcon(side: Int, metadata: Int) =
 	{
 		side match
@@ -39,6 +36,9 @@ trait BottomTexture extends BaseBlock
 			case _ => super.getIcon(world, x, y, z, side)
 		}
 	}
+
+	@SideOnly(Side.CLIENT)
+	def getBotIcon(side: Int) = this.iconBot
 
 	@SideOnly(Side.CLIENT)
 	abstract override def registerBlockIcons(register: IIconRegister) =

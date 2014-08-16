@@ -61,19 +61,19 @@ private[item] trait TPowerStorage extends IAEItemPowerStorage
 		diff
 	}
 
-	def getAEMaxPower(is: ItemStack): Double = this.maxStorage
-
-	def setAEMaxPower(is: ItemStack, value: Double): Unit =
-	{
-		val tag: NBTTagCompound = this.getNBTData(is)
-		tag.setDouble(this.internalCurrentMaxPower, value)
-	}
-
 	def addAEMaxPower(is: ItemStack, amt: Double): Double =
 	{
 		val max: Double = this.getAEMaxPower(is)
 		this.setAEMaxPower(is, max + amt)
 
 		max + amt
+	}
+
+	def getAEMaxPower(is: ItemStack): Double = this.maxStorage
+
+	def setAEMaxPower(is: ItemStack, value: Double): Unit =
+	{
+		val tag: NBTTagCompound = this.getNBTData(is)
+		tag.setDouble(this.internalCurrentMaxPower, value)
 	}
 }

@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.item
 
+
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.common.item.AAEPoweredItemArmor
 import net.minecraft.client.renderer.texture.IIconRegister

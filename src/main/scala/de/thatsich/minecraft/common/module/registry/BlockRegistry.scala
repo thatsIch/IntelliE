@@ -58,7 +58,7 @@ class BlockRegistry(registrable: Seq[Module], log: Log)
 	{
 		val unlocalizedName: String = block.getUnlocalizedName
 		val position: Int = unlocalizedName.lastIndexOf('.') + 1
-		val name : String = unlocalizedName.substring(position)
+		val name: String = unlocalizedName.substring(position)
 
 		name
 	}

@@ -12,4 +12,4 @@ import net.minecraft.inventory.IInventory
  * @author thatsIch
  * @since 09.08.2014.
  */
-class RestrictedSlot(player: EntityPlayer, inv: IInventory, id: Int, x: Int, y: Int, side: SlotSide) extends BaseSlot(player, inv, id, x, y, SlotState.Enabled, side)
+class RestrictedSlot(player: EntityPlayer, inv: IInventory, id: Int, x: Int, y: Int, side: SlotSide) extends BaseSlot(player, inv, id, x, y, SlotStateWTF.Enabled, side)

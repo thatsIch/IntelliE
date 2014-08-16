@@ -34,6 +34,8 @@ class WorkbenchContainer(player: InventoryPlayer, workbench: WorkbenchTileEntity
 	this.addSlotToContainer(new UpgradeSlot(player.player, workbench, 1, 59, 40, side))
 	this.addSlotToContainer(new OutputSlot(player.player, workbench, 2, 110, 40, side))
 
+	private var lastModificationTime = 0
+
 	def canInteractWith(player: EntityPlayer): Boolean = workbench.isUseableByPlayer(player)
 
 	@SideOnly(Side.CLIENT)
@@ -51,8 +53,6 @@ class WorkbenchContainer(player: InventoryPlayer, workbench: WorkbenchTileEntity
 
 		crafter.sendProgressBarUpdate(this, 0, this.workbench.modificationTime)
 	}
-
-	private var lastModificationTime = 0
 
 	override def detectAndSendChanges(): Unit =
 	{

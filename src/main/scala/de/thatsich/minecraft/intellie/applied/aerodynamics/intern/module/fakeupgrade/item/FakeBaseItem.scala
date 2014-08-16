@@ -12,7 +12,7 @@ import de.thatsich.minecraft.common.string.id.ID
  * @author thatsIch
  * @since 16.08.2014.
  */
-abstract class FakeBaseItem(override protected val modid: ID, itemName: ID, override protected val log: Log) extends BaseItem(modid, itemName, log)
+abstract class FakeBaseItem(modid: ID, itemName: ID, log: Log) extends BaseItem(modid, itemName, log)
 {
 	this.setHarvestLevel("fake", 0)
 }

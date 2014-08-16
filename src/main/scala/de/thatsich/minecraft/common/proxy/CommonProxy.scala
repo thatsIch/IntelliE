@@ -18,14 +18,8 @@ import de.thatsich.minecraft.common.string.Abbreviation
  */
 abstract class CommonProxy extends EventProxy
 {
-	/**
-	 * gets the abbreviation of the mod.
-	 * Is used for the logger
-	 *
-	 * @return abbreviation of mod
-	 */
-	protected val abbr: Abbreviation
-
+	protected final lazy val log: Log = new NamedLog(this.abbr)
+	protected final val stopwatch: Stopwatch = Stopwatch.createUnstarted
 	/**
 	 * Modules of functionality of the mod.
 	 * Can contain blocks, items, recipes etc
@@ -33,16 +27,19 @@ abstract class CommonProxy extends EventProxy
 	 * @return modules of mod
 	 */
 	val modules: Seq[Module]
-
+	/**
+	 * gets the abbreviation of the mod.
+	 * Is used for the logger
+	 *
+	 * @return abbreviation of mod
+	 */
+	protected val abbr: Abbreviation
 	/**
 	 * Instance of the mod
 	 *
 	 * @return mod instance
 	 */
 	protected val mod: AnyRef
-
-	protected final lazy val log: Log = new NamedLog(this.abbr)
-	protected final val stopwatch: Stopwatch = Stopwatch.createUnstarted
 
 	/**
 	 * Run before anything else. Read your config, create blocks, items, etc,

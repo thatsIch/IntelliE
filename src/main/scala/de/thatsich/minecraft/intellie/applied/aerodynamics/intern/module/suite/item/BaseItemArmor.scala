@@ -14,5 +14,4 @@ import de.thatsich.minecraft.common.string.id.ID
  */
 abstract class BaseItemArmor(modid: ID, itemName: ID, log: Log) extends BaseItem(modid, itemName, log)
 {
-
 }
