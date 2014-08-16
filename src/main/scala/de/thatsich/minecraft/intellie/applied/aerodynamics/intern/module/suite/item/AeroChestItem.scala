@@ -1,8 +1,7 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.legs
-
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.item
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.common.item.AAEPoweredItemArmor
+import de.thatsich.minecraft.intellie.applied.aerodynamics.common.item.AAEPoweredItemArmor
 import net.minecraft.client.renderer.texture.IIconRegister
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
@@ -14,27 +13,29 @@ import net.minecraft.world.World
  *
  *
  * @author thatsIch
- * @since 16.04.2014.
+ * @since 07.04.2014.
  */
-class AeroLegsItem extends AAEPoweredItemArmor(7000000, 2)
+class AeroChestItem extends AAEPoweredItemArmor(8000000, 1)
 {
-	private final val dischargeOnTick = 70
+	final val disChargeOnTick = 80
 
 	override def onArmorTick(world: World, player: EntityPlayer, itemStack: ItemStack): Unit =
 	{
 		val currentStorage = this.getAECurrentPower(itemStack)
-		val newStorage = currentStorage
-		this.extractAEPower(itemStack, this.dischargeOnTick)
+		var newStorage = currentStorage
+		if (player.capabilities.isFlying)
+		{
+			newStorage = this.extractAEPower(itemStack, this.disChargeOnTick)
+		}
 
 		if (newStorage > 0)
 		{
-			player.capabilities.setPlayerWalkSpeed(0.11F)
-			player.capabilities.setFlySpeed(0.1F)
+			player.capabilities.allowFlying = true
 		}
 		else
 		{
-			player.capabilities.setPlayerWalkSpeed(0.1F)
-			player.capabilities.setFlySpeed(0.05F)
+			player.capabilities.allowFlying = false
+			player.capabilities.isFlying = false
 		}
 	}
 
@@ -46,6 +47,6 @@ class AeroLegsItem extends AAEPoweredItemArmor(7000000, 2)
 	@SideOnly(Side.CLIENT)
 	override def registerIcons(iconRegister: IIconRegister): Unit =
 	{
-		this.itemIcon = iconRegister.registerIcon("appaero:aerolegs")
+		this.itemIcon = iconRegister.registerIcon("appaero:aerochest")
 	}
 }

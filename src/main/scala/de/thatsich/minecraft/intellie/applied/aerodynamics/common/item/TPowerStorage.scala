@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.common.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.common.item
 
 
 import appeng.api.config.AccessRestriction

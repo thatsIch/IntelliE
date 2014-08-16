@@ -4,6 +4,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.fakeup
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.BaseModule
 import de.thatsich.minecraft.common.string.id.ID
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.fakeupgrade.item.fake.{MiningSpeed, MiningLevel, MaxEnergyStorage, EnergyCostItem, DamageVsEntites, CurrentEnergyStorage, ChargeSpeedItem}
 
 
 /**

@@ -1,8 +1,7 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.helm
-
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.item
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.common.item.AAEPoweredItemArmor
+import de.thatsich.minecraft.intellie.applied.aerodynamics.common.item.AAEPoweredItemArmor
 import net.minecraft.client.renderer.texture.IIconRegister
 import net.minecraft.entity.Entity
 import net.minecraft.item.ItemStack
@@ -14,8 +13,6 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 07.04.2014.
  */
-object AeroHelmItem extends AeroHelmItem
-
 class AeroHelmItem extends AAEPoweredItemArmor(5000000, 0)
 {
 	override def getArmorTexture(stack: ItemStack, entity: Entity, slot: Int, `type`: String): String =

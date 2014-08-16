@@ -1,5 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.fakeupgrade
-
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.fakeupgrade.item.fake
 
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.string.id.{ID, SimpleID}

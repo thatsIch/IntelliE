@@ -12,7 +12,7 @@ import net.minecraft.item.{ItemStack, Item}
  * @author thatsIch
  * @since 10.08.2014.
  */
-abstract class BaseItem(protected val modid: ID, itemName: ID, protected val log: Log) extends Item
+abstract class BaseItem(modid: ID, itemName: ID, log: Log) extends Item
 {
 	private final val name: String = this.itemName
 	private final val id: String = this.modid
