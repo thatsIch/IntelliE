@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.common.module.gui
 
 
-import de.thatsich.minecraft.common.string.ID
+import de.thatsich.minecraft.common.string.id.ID
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.tileentity.TileEntity
 

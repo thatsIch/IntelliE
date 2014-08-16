@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern
 
 
-import de.thatsich.minecraft.common.string.BaseID
+import de.thatsich.minecraft.common.string.id.BaseID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
 
 

@@ -2,8 +2,8 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.fakeup
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.item.BaseItem
-import de.thatsich.minecraft.common.string.{BaseID, ID}
+import de.thatsich.minecraft.common.string.id.{ID, SimpleID}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.fakeupgrade.item.FakeBaseItem
 
 
 /**
@@ -12,6 +12,4 @@ import de.thatsich.minecraft.common.string.{BaseID, ID}
  * @author thatsIch
  * @since 12.08.2014.
  */
-class MaxEnergyStorage(modid: ID, log: Log) extends BaseItem(modid, new MaxEnergyStorageID, log)
-
-private[this] class MaxEnergyStorageID extends BaseID("maxenergy")
+class MaxEnergyStorage(modid: ID, log: Log) extends FakeBaseItem(modid, new SimpleID("maxenergy"), log)

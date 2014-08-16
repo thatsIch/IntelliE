@@ -1,4 +1,7 @@
-package de.thatsich.minecraft.common.string
+package de.thatsich.minecraft.common.string.id
+
+
+import de.thatsich.minecraft.common.string.StringWrapper
 
 
 /**

@@ -9,7 +9,7 @@ package dissembler
 
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.item.BaseItem
-import de.thatsich.minecraft.common.string.ID
+import de.thatsich.minecraft.common.string.id.ID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.{AEPowerStorage, AEWrench, BlockBreakEventHandler, BreakSpeedHandler, HumanNumberFormat, MiningTool, PrecisionHarvester, SpecialTool, UniqueItem, UnstackableItem, Weapon}
 import net.minecraft.block.Block
 import net.minecraft.entity.player.EntityPlayer

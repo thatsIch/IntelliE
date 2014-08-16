@@ -4,7 +4,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.Module
-import de.thatsich.minecraft.common.string.ID
+import de.thatsich.minecraft.common.string.id.ID
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.item.Item
 
@@ -28,7 +28,10 @@ class AeroCreativeTabs(icon: Item, registrable: Seq[Module], log: Log, modid: ID
 		module.items.foreach(item =>
 		{
 			this.log.debug(s"Add item ${item.getClass.getSimpleName} to this creative tab")
-			item.setCreativeTab(this)
+			if (!item.getToolClasses(null).contains("fake"))
+			{
+				item.setCreativeTab(this)
+			}
 		})
 	}
 

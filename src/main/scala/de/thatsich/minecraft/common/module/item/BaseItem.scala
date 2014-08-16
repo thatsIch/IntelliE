@@ -2,7 +2,7 @@ package de.thatsich.minecraft.common.module.item
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.string.ID
+import de.thatsich.minecraft.common.string.id.ID
 import net.minecraft.item.{ItemStack, Item}
 
 
