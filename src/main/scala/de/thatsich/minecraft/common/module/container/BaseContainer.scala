@@ -64,7 +64,7 @@ abstract class BaseContainer extends Container
 						}
 						else
 						{
-							if (!this.mergeItemStack(clickedStack, 36, machineInventorySize, true))
+							if (!this.mergeItemStack(clickedStack, machineSlotIndex, machineSlotIndex + 1, true))
 							{
 								return null
 							}

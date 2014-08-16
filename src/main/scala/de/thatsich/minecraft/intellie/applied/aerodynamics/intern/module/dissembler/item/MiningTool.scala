@@ -28,40 +28,43 @@ trait MiningTool extends Item
 	 */
 	override def getDigSpeed(is: ItemStack, block: Block, metadata: Int): Float =
 	{
-		this.getCurrentMiningSpeed(is)
+		this.getCurrentMiningSpeed(is).toFloat
 	}
 
-	def getCurrentMiningSpeed(is: ItemStack): Int =
+	def getCurrentMiningSpeed(is: ItemStack): Double =
 	{
 		val tag = this.getNBTData(is)
-		val current: Int = tag.getInteger(MiningTool.internalCurrentMiningSpeed)
+		val current: Int = tag.getInteger(Tags.MiningSpeed)
 
-		this.getInBetween(this.initMiningSpeed, current, this.maxMiningSpeed)
+		(this.initMiningSpeed + current) min this.maxMiningSpeed
 	}
 
-	def setCurrentMiningSpeed(is: ItemStack, value: Int): Unit =
+	def setCurrentMiningSpeed(is: ItemStack, value: Double): Unit =
 	{
 		val tag = this.getNBTData(is)
-		tag.setInteger(MiningTool.internalCurrentMiningSpeed, value)
+		tag.setDouble(Tags.MiningSpeed, value)
 	}
 
-	def getCurrentMiningLevel(is: ItemStack): Int =
+	def getCurrentMiningLevel(is: ItemStack): Double =
 	{
 		val tag = this.getNBTData(is)
-		val current = tag.getInteger(MiningTool.internalCurrentMiningLevel)
+		val current = tag.getDouble(Tags.MiningLevel)
 
-		this.getInBetween(this.initMiningLevel, current, this.maxMiningLevel)
+		(this.initMiningLevel + current) min this.maxMiningLevel
 	}
 
-	def setCurrentMiningLevel(is: ItemStack, value: Int): Unit =
+	def setCurrentMiningLevel(is: ItemStack, value: Double): Unit =
 	{
 		val tag = this.getNBTData(is)
-		tag.setInteger(MiningTool.internalCurrentMiningLevel, value)
+		tag.setDouble(Tags.MiningLevel, value)
 	}
+
+	private object Tags extends Enumeration
+	{
+		type Tags = Value
+		val MiningLevel, MiningSpeed = Value
+
+		implicit def tagsToString(tag: Tags): String = tag.toString.toLowerCase
+	}
+
 }
-
-private[this] object MiningTool {
-	private final val internalCurrentMiningSpeed = "internalCurrentMiningSpeed"
-	private final val internalCurrentMiningLevel = "internalCurrentMiningLevel"
-}
-

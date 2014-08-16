@@ -105,7 +105,7 @@ private Integer getGitCommitCount() {
         return matcher[0][1].toInteger()
     }
     catch (exception) {
-        println "Can't get commit count: $exception"
+        logger.warn "Can't get commit count: $exception"
         return 0
     }
 }

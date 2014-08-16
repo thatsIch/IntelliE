@@ -2,8 +2,8 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissem
 
 
 import de.thatsich.minecraft.common.module.util.{CappedValue, NBTAccess}
+import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.entity.{Entity, EntityLivingBase}
 import net.minecraft.item.{Item, ItemStack}
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.DamageSource
@@ -52,19 +52,23 @@ trait Weapon extends Item
 	def getCurrentDamageVsEntities(is: ItemStack): Double =
 	{
 		val tag: NBTTagCompound = this.getNBTData(is)
-		val current: Double = tag.getDouble(Weapon.internalCurrentDamageVsEntities)
+		val current: Double = tag.getDouble(Tags.Damage)
 
-		this.getInBetween(this.initDamageVsEntites, current, this.maxDamageVsEntites)
+		(this.initDamageVsEntites + current) min this.maxDamageVsEntites
 	}
 
 	def setCurrentDamageVsEntities(is: ItemStack, value: Double): Unit =
 	{
 		val tag: NBTTagCompound = this.getNBTData(is)
-		tag.setDouble(Weapon.internalCurrentDamageVsEntities, value)
+		tag.setDouble(Tags.Damage, value)
 	}
-}
 
-object Weapon
-{
-	private final val internalCurrentDamageVsEntities: String = "internalCurrentDamageVsEntities"
+	private object Tags extends Enumeration
+	{
+		type Tags = Value
+		val Damage = Value
+
+		implicit def tagsToString(tag: Tags): String = tag.toString.toLowerCase
+	}
+
 }

@@ -113,12 +113,14 @@ class WorkbenchTileEntity extends TileEntity
 		val output: ItemStack = input.copy()
 
 		val attributeName: String = this.extractItemName(attribute)
-		val attributeValue: Int = attribute.stackSize
-		val attributeModifier: Int = if (attribute.getItemDamage != 0) -1 else 1
+		val attributeValue: Double = attribute.stackSize
+		val attributeModifier: Double = if (attribute.getItemDamage != 0) -1 else 1
 
 		val outputTag: NBTTagCompound = this.getNBTData(output)
-		val attributeValueFromTag: Int = outputTag.getInteger(attributeName)
-		outputTag.setInteger(attributeName, attributeValueFromTag + attributeModifier * attributeValue)
+		val attributeValueFromTag: Double = outputTag.getDouble(attributeName)
+		val modifiedAttributeValue: Double = attributeValueFromTag + attributeModifier * attributeValue
+
+		outputTag.setDouble(attributeName, modifiedAttributeValue)
 
 		this.setInventorySlotContents(2, output)
 	}
@@ -127,7 +129,7 @@ class WorkbenchTileEntity extends TileEntity
 	{
 		val unparsedName: String = stack.getUnlocalizedName
 		val lastPosition: Int = unparsedName.lastIndexOf('.')
-		val parsedName: String = unparsedName.substring(lastPosition)
+		val parsedName: String = unparsedName.substring(lastPosition + 1)
 
 		parsedName
 	}

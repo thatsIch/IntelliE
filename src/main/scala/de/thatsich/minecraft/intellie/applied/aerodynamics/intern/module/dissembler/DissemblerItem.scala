@@ -52,8 +52,8 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 		{
 			val energyUsage = this.getCurrentEnergyUsage(is).toInt
 			val multiplier = this.getCurrentChargeMultiplier(is).toInt
-			val speed = this.getCurrentMiningSpeed(is)
-			val level = this.getCurrentMiningLevel(is)
+			val speed = this.getCurrentMiningSpeed(is).toInt
+			val level = this.getCurrentMiningLevel(is).toInt
 			val damage = this.getCurrentDamageVsEntities(is).toInt
 
 			list.add(s"Stored Energy: $roundCurrent/$roundMax AE - $percent%")
@@ -76,7 +76,7 @@ class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name
 	override def canHarvestBlock(block: Block, is: ItemStack): Boolean =
 	{
 		val harvestLevel: Int = block.getHarvestLevel(0)
-		val currentMiningLevel: Int = this.getCurrentMiningLevel(is)
+		val currentMiningLevel: Double = this.getCurrentMiningLevel(is)
 
 		val currentEnergy = this.getAECurrentPower(is)
 		val energyUsage = this.getCurrentEnergyUsage(is)

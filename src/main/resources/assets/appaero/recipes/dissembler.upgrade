@@ -12,7 +12,7 @@ workbench=aero:dissembler ae2:ItemMaterial.Cell16kPart 21 aero:miningspeed -> ae
 workbench=aero:dissembler ae2:ItemMaterial.Cell64kPart 85 aero:miningspeed -> aero:dissembler
 
 workbench=aero:dissembler ae2:ItemMaterial.EngProcessor 1 aero:damage -> aero:dissembler
-workbench=aero:dissembler ae2:ItemMaterial.CalcProcessor 10 aero:energycost:1 -> aero:dissembler
+workbench=aero:dissembler ae2:ItemMaterial.CalcProcessor 10 aero:energycost -> aero:dissembler
 workbench=aero:dissembler ae2:ItemMaterial.LogicProcessor 1 aero:mininglevel -> aero:dissembler
 
 workbench=aero:dissembler ae2:ItemMaterial.CardSpeed 1 aero:chargespeed -> aero:dissembler
