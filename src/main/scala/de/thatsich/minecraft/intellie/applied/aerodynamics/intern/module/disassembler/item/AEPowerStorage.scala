@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item
 
 
 import appeng.api.config.AccessRestriction
@@ -13,9 +13,9 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 31.07.2014.
  */
-private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
+private[disassembler] trait AEPowerStorage extends IAEItemPowerStorage
                                                  with NBTAccess
-                                                 with DissemblerConfigAccess
+                                                 with DisassemblerConfigAccess
 {
 	def injectAEPower(is: ItemStack, amt: Double): Double =
 	{

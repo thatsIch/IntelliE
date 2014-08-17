@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item
 
 
 import appeng.api.implementations.items.IAEWrench
@@ -13,7 +13,7 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 26.07.2014.
  */
-private[dissembler] trait AEWrench extends Item with IAEWrench
+private[disassembler] trait AEWrench extends Item with IAEWrench
 {
 	/**
 	 * This item can wrench AE parts

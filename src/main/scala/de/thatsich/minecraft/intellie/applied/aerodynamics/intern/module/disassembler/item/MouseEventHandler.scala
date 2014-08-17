@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item
 
 
 import cpw.mods.fml.common.eventhandler.{EventPriority, SubscribeEvent}
@@ -13,7 +13,7 @@ import net.minecraftforge.common.MinecraftForge
  * @author thatsIch
  * @since 29.07.2014.
  */
-private[dissembler] trait MouseEventHandler
+private[disassembler] trait MouseEventHandler
 {
 	MinecraftForge.EVENT_BUS.register(this)
 

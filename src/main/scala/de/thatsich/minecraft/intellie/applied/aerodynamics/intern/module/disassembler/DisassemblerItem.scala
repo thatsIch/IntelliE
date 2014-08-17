@@ -4,13 +4,13 @@ package applied
 package aerodynamics
 package intern
 package module
-package dissembler
+package disassembler
 
 
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.item.BaseItem
 import de.thatsich.minecraft.common.string.id.ID
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.{AEPowerStorage, AEWrench, BlockBreakEventHandler, BreakSpeedHandler, HumanNumberFormat, MiningTool, PrecisionHarvester, SpecialTool, UniqueItem, UnstackableItem, Weapon}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item.{AEPowerStorage, AEWrench, BlockBreakEventHandler, BreakSpeedHandler, HumanNumberFormat, MiningTool, PrecisionHarvester, SpecialTool, UniqueItem, UnstackableItem, Weapon}
 import net.minecraft.block.Block
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -23,18 +23,18 @@ import org.lwjgl.input.Keyboard
  * @author thatsIch
  * @since 07.04.2014.
  */
-class DissemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name, log)
-                                                            with AEWrench
-                                                            with PrecisionHarvester
-                                                            with BlockBreakEventHandler
-                                                            with AEPowerStorage
-                                                            with Weapon
-                                                            with MiningTool
-                                                            with BreakSpeedHandler
-                                                            with SpecialTool
-                                                            with UnstackableItem
-                                                            with UniqueItem
-                                                            with HumanNumberFormat
+private[disassembler] class DisassemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name, log)
+                                                                                  with AEWrench
+                                                                                  with PrecisionHarvester
+                                                                                  with BlockBreakEventHandler
+                                                                                  with AEPowerStorage
+                                                                                  with Weapon
+                                                                                  with MiningTool
+                                                                                  with BreakSpeedHandler
+                                                                                  with SpecialTool
+                                                                                  with UnstackableItem
+                                                                                  with UniqueItem
+                                                                                  with HumanNumberFormat
 {
 	override def addInformation(is: ItemStack, player: EntityPlayer, information: java.util.List[_], advToolTips: Boolean) =
 	{

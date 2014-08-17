@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item
 
 
 import appeng.api.AEApi
@@ -14,7 +14,7 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 28.07.2014.
  */
-private[dissembler] trait PrecisionHarvester extends Item
+private[disassembler] trait PrecisionHarvester extends Item
                                                      with MouseEventHandler
 {
 	/**

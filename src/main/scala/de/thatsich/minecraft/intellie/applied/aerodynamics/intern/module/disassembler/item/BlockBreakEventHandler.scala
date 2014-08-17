@@ -1,8 +1,7 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item
 
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerItem
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{Item, ItemStack}
 import net.minecraftforge.common.MinecraftForge
@@ -17,8 +16,8 @@ import scala.collection.JavaConverters._
  * @author thatsIch
  * @since 31.07.2014.
  */
-private[dissembler] trait BlockBreakEventHandler extends AEPowerStorage
-                                                         with DissemblerConfigAccess
+private[disassembler] trait BlockBreakEventHandler extends AEPowerStorage
+                                                           with DisassemblerConfigAccess
 {
 	MinecraftForge.EVENT_BUS.register(this)
 
@@ -39,7 +38,7 @@ private[dissembler] trait BlockBreakEventHandler extends AEPowerStorage
 
 		val heldItem: Item = heldItemStack.getItem
 		if (heldItem == null) return
-		if (!heldItem.isInstanceOf[DissemblerItem]) return
+		if (!heldItem.isInstanceOf[BlockBreakEventHandler]) return
 
 		// put drops into inventory of player
 		val drops: Seq[ItemStack] = event.drops.asScala

@@ -1,7 +1,7 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item
 
 
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item.config.{DissemblerConfig, DissemblerConfigPath}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item.config.DisassemblerConfig
 
 
 /**
@@ -10,10 +10,9 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissemb
  * @author thatsIch
  * @since 02.08.2014.
  */
-trait DissemblerConfigAccess
+trait DisassemblerConfigAccess
 {
-	final val path = new DissemblerConfigPath
-	final val config = new DissemblerConfig(path)
+	final val config = new DisassemblerConfig()
 
 	// Mining
 	final val initMiningSpeed = this.config.getDouble("General", "initialMiningSpeed", 1)

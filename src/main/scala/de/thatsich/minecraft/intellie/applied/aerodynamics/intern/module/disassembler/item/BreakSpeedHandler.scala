@@ -1,8 +1,8 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item
 
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.DissemblerItem
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.DisassemblerItem
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed
 
@@ -27,6 +27,6 @@ trait BreakSpeedHandler
 		if (heldItemStack == null) return
 
 		val heldItem = heldItemStack.getItem
-		if (!heldItem.isInstanceOf[DissemblerItem]) return
+		if (!heldItem.isInstanceOf[DisassemblerItem]) return
 	}
 }

@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item
 
 
 import de.thatsich.minecraft.common.module.util.NBTAccess
@@ -14,7 +14,7 @@ import net.minecraft.item.{Item, ItemStack}
  */
 trait MiningTool extends Item
                          with NBTAccess
-                         with DissemblerConfigAccess
+                         with DisassemblerConfigAccess
 {
 	/**
 	 * gets the mining speed
