@@ -1,5 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.item
-
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.helm
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.common.item.AAEPoweredItemArmor
@@ -16,6 +15,8 @@ import net.minecraft.item.ItemStack
  */
 class AeroHelmItem extends AAEPoweredItemArmor(5000000, 0)
 {
+	this.setUnlocalizedName("helm")
+
 	override def getArmorTexture(stack: ItemStack, entity: Entity, slot: Int, `type`: String): String =
 	{
 		"appaero:textures/models/aero.png"

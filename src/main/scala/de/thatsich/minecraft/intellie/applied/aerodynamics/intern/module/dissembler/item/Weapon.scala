@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
 
 
-import de.thatsich.minecraft.common.module.util.{CappedValue, NBTAccess}
+import de.thatsich.minecraft.common.module.util.NBTAccess
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{Item, ItemStack}
@@ -18,7 +18,6 @@ import net.minecraft.util.DamageSource
 trait Weapon extends Item
                      with NBTAccess
                      with DissemblerConfigAccess
-                     with CappedValue
                      with AEPowerStorage
 {
 	/**

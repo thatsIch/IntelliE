@@ -3,7 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissem
 
 import appeng.api.config.AccessRestriction
 import appeng.api.implementations.items.IAEItemPowerStorage
-import de.thatsich.minecraft.common.module.util.{CappedValue, NBTAccess}
+import de.thatsich.minecraft.common.module.util.NBTAccess
 import net.minecraft.item.ItemStack
 
 
@@ -16,7 +16,6 @@ import net.minecraft.item.ItemStack
 private[dissembler] trait AEPowerStorage extends IAEItemPowerStorage
                                                  with NBTAccess
                                                  with DissemblerConfigAccess
-                                                 with CappedValue
 {
 	def injectAEPower(is: ItemStack, amt: Double): Double =
 	{

@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.boots
 
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
@@ -16,9 +16,10 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 16.04.2014.
  */
-class AeroBootsItem extends AAEPoweredItemArmor(4000000, 3)
+class FreeRunnerItem extends AAEPoweredItemArmor(4000000, 3)
+                             with FreeRunnerConfigAccess
 {
-	final val disChargeOnTick = 40
+	this.setUnlocalizedName("runner")
 
 	// TODO muss logic ändern, sonst kann user einfach ausziehen und hat immer noch effekt
 	override def onArmorTick(world: World, player: EntityPlayer, itemStack: ItemStack): Unit =
@@ -27,7 +28,7 @@ class AeroBootsItem extends AAEPoweredItemArmor(4000000, 3)
 		var newStorage = currentStorage
 		if (player.isSprinting)
 		{
-			newStorage = this.extractAEPower(itemStack, this.disChargeOnTick)
+			newStorage = this.extractAEPower(itemStack, this.initDischargePerTick)
 		}
 
 		if (newStorage > 0)

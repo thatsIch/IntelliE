@@ -4,7 +4,10 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.BaseModule
 import de.thatsich.minecraft.common.string.id.ID
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.item.{AeroBootsItem, AeroChestItem, AeroHelmItem, AeroLegsItem}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.boots.FreeRunnerItem
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.chest.AeroChestItem
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.helm.AeroHelmItem
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.legs.AeroLegsItem
 
 
 /**
@@ -18,6 +21,6 @@ class SuiteModule(log: Log, modid: ID) extends BaseModule(
 		new AeroHelmItem,
 		new AeroChestItem,
 		new AeroLegsItem,
-		new AeroBootsItem
+		new FreeRunnerItem
 	)
 )

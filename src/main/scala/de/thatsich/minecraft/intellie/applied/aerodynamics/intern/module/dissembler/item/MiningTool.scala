@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.dissembler.item
 
 
-import de.thatsich.minecraft.common.module.util.{CappedValue, NBTAccess}
+import de.thatsich.minecraft.common.module.util.NBTAccess
 import net.minecraft.block.Block
 import net.minecraft.item.{Item, ItemStack}
 
@@ -15,7 +15,6 @@ import net.minecraft.item.{Item, ItemStack}
 trait MiningTool extends Item
                          with NBTAccess
                          with DissemblerConfigAccess
-                         with CappedValue
 {
 	/**
 	 * gets the mining speed

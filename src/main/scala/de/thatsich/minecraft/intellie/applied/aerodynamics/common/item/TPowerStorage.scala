@@ -3,7 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.common.item
 
 import appeng.api.config.AccessRestriction
 import appeng.api.implementations.items.IAEItemPowerStorage
-import de.thatsich.minecraft.common.module.util.{CappedValue, NBTAccess}
+import de.thatsich.minecraft.common.module.util.NBTAccess
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 
@@ -16,7 +16,6 @@ import net.minecraft.nbt.NBTTagCompound
  */
 private[item] trait TPowerStorage extends IAEItemPowerStorage
                                           with NBTAccess
-                                          with CappedValue
 {
 	self: AAEPoweredItemArmor =>
 	//	def maxStorage: Double
