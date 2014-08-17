@@ -36,13 +36,15 @@ trait Weapon extends Item
 		val energyUsage = this.getCurrentEnergyUsage(is)
 		if (this.getAECurrentPower(is) >= energyUsage)
 		{
-			this.extractAEPower(is, energyUsage)
-
 			val source = DamageSource.causePlayerDamage(hitter)
 			val damage: Float = this.getCurrentDamageVsEntities(is).toFloat
 
-			target.attackEntityFrom(source, damage)
-			return true
+			if (damage > 0) {
+				this.extractAEPower(is, energyUsage)
+				target.attackEntityFrom(source, damage)
+
+				return true
+			}
 		}
 
 		false

@@ -48,8 +48,8 @@ class WorkbechGui(invPlayer: InventoryPlayer, workbench: WorkbenchTileEntity, lo
 		this.drawTexturedModalRect(this.guiLeft + 59, this.guiTop + 40, 0, 16, 16, 16)
 
 		// reset color
-		GL11.glColor4f(1, 1, 1, 1)
 		GL11.glDisable(GL11.GL_BLEND)
+		GL11.glColor4f(1, 1, 1, 1)
 		GL11.glPopAttrib()
 	}
 

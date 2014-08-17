@@ -13,6 +13,7 @@ import net.minecraft.item.{Item, ItemStack}
  * @since 10.08.2014.
  */
 trait MiningTool extends Item
+                         with AEPowerStorage
                          with NBTAccess
                          with DisassemblerConfigAccess
 {
@@ -35,7 +36,14 @@ trait MiningTool extends Item
 		val tag = this.getNBTData(is)
 		val current: Int = tag.getInteger(Tags.MiningSpeed)
 
-		(this.initMiningSpeed + current) min this.maxMiningSpeed
+		if (this.getAECurrentPower(is) >= this.getCurrentEnergyUsage(is))
+		{
+			(this.initMiningSpeed + current) min this.maxMiningSpeed
+		}
+		else
+		{
+			0
+		}
 	}
 
 	def setCurrentMiningSpeed(is: ItemStack, value: Double): Unit =

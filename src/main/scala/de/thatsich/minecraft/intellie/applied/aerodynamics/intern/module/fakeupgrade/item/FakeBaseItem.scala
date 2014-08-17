@@ -4,6 +4,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.fakeup
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.item.BaseItem
 import de.thatsich.minecraft.common.string.id.ID
+import net.minecraft.item.Item
 
 
 /**
@@ -15,4 +16,6 @@ import de.thatsich.minecraft.common.string.id.ID
 abstract class FakeBaseItem(modid: ID, itemName: ID, log: Log) extends BaseItem(modid, itemName, log)
 {
 	this.setHarvestLevel("fake", 0)
+
+	override def getHasSubtypes: Boolean = false
 }
