@@ -29,7 +29,7 @@ private[disassembler] trait AEPowerStorage extends IAEItemPowerStorage
 
 		this.setAECurrentPower(is, cappedStorage)
 
-		diff
+		amt - diff
 	}
 
 	// AE Max Power

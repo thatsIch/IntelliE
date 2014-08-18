@@ -26,7 +26,7 @@ class NEIHiderRegistry(registrable: Seq[Module], log: Log)
 		try
 		{
 			val api = java.lang.Class.forName(className)
-			val hideItemMethod = api.getDeclaredMethod("hideItem", classOf[ItemStack])
+			val hideItemMethod = api.getMethod("hideItem", classOf[ItemStack])
 
 			this.iterateAll(hideItemMethod)
 		}
@@ -62,6 +62,6 @@ class NEIHiderRegistry(registrable: Seq[Module], log: Log)
 		val simpleClassName: String = item.getClass.getSimpleName
 
 		this.log.debug(s"Hide item $simpleClassName from NEI")
-		hideItemMethod.invoke(new ItemStack(item))
+		hideItemMethod.invoke(null, new ItemStack(item))
 	}
 }
