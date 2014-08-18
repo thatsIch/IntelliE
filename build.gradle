@@ -60,7 +60,6 @@ dependencies {
 
     testCompile "org.scalatest:scalatest_2.11:2.2.0"
     testCompile "org.scalamock:scalamock-scalatest-support_2.11:3.1.2"
-    testCompile "org.scalamock:scalamock-specs2-support_2.11:3.1.2'"
 //	testCompile "org.scalatest:scalatest_2.10:${VERSION_SCALATEST}"
 //	testCompile "org.scalamock:scalamock_2.10:${VERSION_SCALAMOCK}"
 }
