@@ -7,6 +7,7 @@ package registry
 import appeng.api.AEApi
 import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.common.log.Log
+import net.minecraft.item.Item
 import net.minecraft.tileentity.TileEntity
 
 
@@ -44,7 +45,9 @@ class TileEntityRegistry(registrable: Seq[Module], log: Log)
 	 */
 	private def register(teClass: Class[_ <: TileEntity]): Unit =
 	{
-		this.log.debug(s"Registering TE $teClass")
+		val simpleClassName: String = teClass.getSimpleName
+
+		this.log.debug(s"Registering tile $simpleClassName")
 		GameRegistry.registerTileEntity(teClass, teClass.toString)
 		AEApi.instance().registries().moveable().whiteListTileEntity(teClass)
 	}

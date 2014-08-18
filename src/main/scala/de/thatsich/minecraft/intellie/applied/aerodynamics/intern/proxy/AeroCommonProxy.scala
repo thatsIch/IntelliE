@@ -7,10 +7,11 @@ import de.thatsich.minecraft.common.proxy.CommonProxy
 import de.thatsich.minecraft.common.string.Abbreviation
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.ModificationWorkbenchModule
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.creativetab.{AeroCreativeTabsModule, AeroCreativeTabIcon}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.DisassemblerModule
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.fakeupgrade.FakeUpgradeModule
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.SuiteModule
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.{AeroAbbreviation, AeroCreativeTabIcon, AeroCreativeTabs, AeroID}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.{AeroAbbreviation, AeroCreativeTabs, AeroID}
 
 
 /**
@@ -21,6 +22,8 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.{AeroAbbreviat
  */
 abstract class AeroCommonProxy extends CommonProxy
 {
+	private final val icon = new AeroCreativeTabIcon
+
 	/**
 	 * Modules of functionality of the mod.
 	 * Can contain blocks, items, recipes etc
@@ -31,7 +34,8 @@ abstract class AeroCommonProxy extends CommonProxy
 		new DisassemblerModule(this.log, this.modid),
 		new ModificationWorkbenchModule(this.log, this.modid),
 		new FakeUpgradeModule(this.log, this.modid),
-		new SuiteModule(this.log, this.modid)
+		new SuiteModule(this.log, this.modid),
+		new AeroCreativeTabsModule(this.icon, this.log, this.modid)
 	)
 	/**
 	 * gets the abbreviation of the mod.
@@ -47,7 +51,7 @@ abstract class AeroCommonProxy extends CommonProxy
 	 */
 	final val mod = AppliedAerodynamics
 	final val modid = new AeroID
-	private final val icon = new AeroCreativeTabIcon
+
 	new AeroCreativeTabs(this.icon, this.modules, this.log, this.modid)
 
 	def onInheritatedPreInit(event: FMLPreInitializationEvent): Unit = {}

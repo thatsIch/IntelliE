@@ -1,7 +1,5 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.creativetab
 
-
-import cpw.mods.fml.common.registry.GameRegistry
 import net.minecraft.item.Item
 
 
@@ -15,5 +13,5 @@ class AeroCreativeTabIcon extends Item
 {
 	this.setUnlocalizedName("appaero.creativeTabIcon")
 	this.setTextureName("appaero:aerochest")
-	GameRegistry.registerItem(this, this.getUnlocalizedName)
+	this.setHarvestLevel("fake", 0)
 }
