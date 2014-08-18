@@ -1,7 +1,8 @@
 package de.thatsich.minecraft.common.module.registry
 
 
-import codechicken.nei.api.API
+import java.lang.reflect.Method
+
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.Module
 import net.minecraft.item.{Item, ItemStack}
@@ -20,13 +21,29 @@ class NEIHiderRegistry(registrable: Seq[Module], log: Log)
 	 */
 	def registerAll(): Unit =
 	{
+		try
+		{
+			val className = "codechicken.nei.api.API"
+			val api = java.lang.Class.forName(className)
+			val hideItemMethod = api.getDeclaredMethod("hideItem", classOf[ItemStack])
+
+			this.iterateAll(hideItemMethod)
+		}
+		catch
+			{
+				case e: ClassNotFoundException => this.log.warn("NEI not found. Disabling NEI integration.")
+			}
+	}
+
+	private def iterateAll(hideItemMethod: Method): Unit =
+	{
 		var length = 0
 
 		for (module: Module <- this.registrable; item <- module.items)
 		{
 			if (item.getToolClasses(null).contains("fake"))
 			{
-				this.register(item)
+				this.register(hideItemMethod, item)
 				length += 1
 			}
 		}
@@ -39,11 +56,11 @@ class NEIHiderRegistry(registrable: Seq[Module], log: Log)
 	 *
 	 * @param item to be registered item
 	 */
-	private def register(item: Item): Unit =
+	private def register(hideItemMethod: Method, item: Item): Unit =
 	{
 		val simpleClassName: String = item.getClass.getSimpleName
 
 		this.log.debug(s"Hide item $simpleClassName from NEI")
-		API.hideItem(new ItemStack(item))
+		hideItemMethod.invoke(new ItemStack(item))
 	}
 }
