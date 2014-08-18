@@ -6,13 +6,14 @@ import java.util
 
 import com.google.common.collect.{ImmutableList, ImmutableMap}
 import cpw.mods.fml.common.{LoadController, Loader, ModContainer}
+import de.thatsich.minecraft.common.log.Log
 
 import scala.collection.JavaConverters._
 
 
 trait ChildUnloader extends ChildUnloaderConfigAccess
 {
-	def unload(id: String, disableModule: Boolean): Unit =
+	def unload(id: String, disableModule: Boolean, log: Log): Unit =
 	{
 		if (disableModule)
 		{
@@ -35,6 +36,8 @@ trait ChildUnloader extends ChildUnloaderConfigAccess
 			modsField.set(loader, modsWithoutID.asJava)
 			namedModsField.set(loader, nameModsWithoutID.asJava)
 			activeModListField.set(modController, activeModListWithoutID.asJava)
+
+			log.info(s"Unloaded childmod $id")
 		}
 	}
 

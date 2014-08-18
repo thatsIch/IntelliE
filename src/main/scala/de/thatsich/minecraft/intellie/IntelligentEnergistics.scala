@@ -2,6 +2,11 @@ package de.thatsich.minecraft.intellie
 
 
 import cpw.mods.fml.common.Mod
+import de.thatsich.minecraft.common.log.SimpleLog
+import de.thatsich.minecraft.common.string.Abbreviation
+import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
+import de.thatsich.minecraft.intellie.applied.agricultures.AppliedAgricultures
+import de.thatsich.minecraft.intellie.applied.intelligences.AppliedIntelligences
 import de.thatsich.minecraft.intellie.child.ChildUnloader
 
 
@@ -25,7 +30,10 @@ object IntelligentEnergistics extends ChildUnloader
 	final val version = "${version}"
 	final val dependencies = "required-after:Forge@[7.0,);required-after:FML@[5.0.5,);required-after:appliedenergistics2@[rv1-beta-1,)"
 
-	this.unload("appaero", this.disableAero)
-	this.unload("appagri", this.disableAgro)
-	this.unload("appint", this.disableInt)
+	private val abbreviation = new Abbreviation("IE")
+	private val log = new SimpleLog(this.abbreviation)
+
+	this.unload(AppliedAerodynamics.id, this.disableAero, this.log)
+	this.unload(AppliedAgricultures.id, this.disableAgro, this.log)
+	this.unload(AppliedIntelligences.id, this.disableInt, this.log)
 }

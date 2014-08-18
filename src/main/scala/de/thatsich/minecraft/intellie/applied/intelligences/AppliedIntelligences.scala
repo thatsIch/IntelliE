@@ -16,4 +16,8 @@ package de.thatsich.minecraft.intellie.applied.intelligences
 //)
 object AppliedIntelligences
 {
+	final val id = "appint"
+	final val name = "Applied Intelligences"
+	final val version = "${version}"
+	final val dependencies = "required-after:intellie"
 }
