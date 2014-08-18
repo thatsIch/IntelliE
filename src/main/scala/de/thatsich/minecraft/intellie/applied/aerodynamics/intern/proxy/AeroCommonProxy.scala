@@ -1,6 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy
 
 
+import cpw.mods.fml.common.event.{FMLPreInitializationEvent, FMLServerStartingEvent, FMLPostInitializationEvent, FMLInitializationEvent}
 import de.thatsich.minecraft.common.module.Module
 import de.thatsich.minecraft.common.proxy.CommonProxy
 import de.thatsich.minecraft.common.string.Abbreviation
@@ -38,14 +39,22 @@ abstract class AeroCommonProxy extends CommonProxy
 	 *
 	 * @return abbreviation of mod
 	 */
-	protected final lazy val abbr: Abbreviation = new AeroAbbreviation
+	final lazy val abbr: Abbreviation = new AeroAbbreviation
 	/**
 	 * Instance of the mod
 	 *
 	 * @return mod instance
 	 */
-	protected final val mod = AppliedAerodynamics
-	protected final val modid = new AeroID
+	final val mod = AppliedAerodynamics
+	final val modid = new AeroID
 	private final val icon = new AeroCreativeTabIcon
 	new AeroCreativeTabs(this.icon, this.modules, this.log, this.modid)
+
+	def onInheritatedPreInit(event: FMLPreInitializationEvent): Unit = {}
+
+	def onInheritatedServerStarting(event: FMLServerStartingEvent): Unit = {}
+
+	def onInheritatedPostInit(event: FMLPostInitializationEvent): Unit = {}
+
+	def onInheritatedInit(event: FMLInitializationEvent): Unit = {}
 }

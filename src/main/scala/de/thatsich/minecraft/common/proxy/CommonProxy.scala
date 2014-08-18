@@ -41,7 +41,15 @@ abstract class CommonProxy extends EventProxy
 	 */
 	val mod: AnyRef
 
-	def onPreInit(event: FMLPreInitializationEvent): Unit =
+	def onInheritatedPreInit(event: FMLPreInitializationEvent): Unit
+
+	def onInheritatedInit(event: FMLInitializationEvent): Unit
+
+	def onInheritatedPostInit(event: FMLPostInitializationEvent): Unit
+
+	def onInheritatedServerStarting(event: FMLServerStartingEvent): Unit
+
+	final def onPreInit(event: FMLPreInitializationEvent): Unit =
 	{
 		this.log.info("PreInit Begin")
 		this.stopwatch.reset.start
@@ -52,11 +60,13 @@ abstract class CommonProxy extends EventProxy
 		items.registerAll()
 		blocks.registerAll()
 
+		this.onInheritatedPreInit(event)
+
 		this.stopwatch.stop
 		this.log.info(s"PreInit End ($stopwatch)")
 	}
 
-	def onInit(event: FMLInitializationEvent): Unit =
+	final def onInit(event: FMLInitializationEvent): Unit =
 	{
 		this.log.info("Init Begin")
 		this.stopwatch.reset.start
@@ -72,23 +82,32 @@ abstract class CommonProxy extends EventProxy
 		val handler: IGuiHandler = guis.registerAll()
 		NetworkRegistry.INSTANCE.registerGuiHandler(this.mod, handler)
 
+		this.onInheritatedInit(event)
+
 		this.stopwatch.stop
 		this.log.info(s"Init End ($stopwatch)")
 	}
 
-	def onPostInit(event: FMLPostInitializationEvent): Unit =
+	final def onPostInit(event: FMLPostInitializationEvent): Unit =
 	{
 		this.log.info("PostInit Begin")
 		this.stopwatch.reset.start
+
+		this.onInheritatedPostInit(event)
 
 		this.stopwatch.stop
 		this.log.info(s"PostInit End ($stopwatch)")
 	}
 
-	def onServerStarting(event: FMLServerStartingEvent): Unit =
+	final def onServerStarting(event: FMLServerStartingEvent): Unit =
 	{
 		this.log.info("ServerStarting Begin")
 		this.stopwatch.reset.start
+
+
+		//		event.registerServerCommand()
+
+		this.onInheritatedServerStarting(event)
 
 		this.stopwatch.stop
 		this.log.info(s"ServerStarting End ($stopwatch)")

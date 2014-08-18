@@ -12,18 +12,13 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent
  */
 final class AeroClientProxy extends AeroCommonProxy
 {
-	/**
-	 * Run before anything else. Read your config, create blocks, items, etc,
-	 * and register them with the GameRegistry.
-	 *
-	 * @param event contains information to pre-initialize the mod
-	 */
-	override def preInit(event: FMLPreInitializationEvent): Unit =
+
+	override def onInheritatedPreInit(event: FMLPreInitializationEvent): Unit =
 	{
 		this.initRenderers()
 		this.initSounds()
 
-		super.preInit(event)
+		super.onInheritatedPreInit(event)
 	}
 
 	private def initSounds(): Unit =

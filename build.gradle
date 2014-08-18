@@ -50,11 +50,11 @@ repositories {
 }
 
 dependencies {
-    compile "appeng:appliedenergistics2:rv1-beta-4:dev"
+//    compile "appeng:appliedenergistics2:rv1-beta-4:dev"
 
     compile "mcp.mobius.waila:Waila:1.5.3_1.7.10"
     // These will be included automatically
-    //compile "codechicken:NotEnoughItems:1.7.10-1.0.2.31:dev"
+//    compile "codechicken:NotEnoughItems:1.7.10-1.0.3.49:dev"
     //compile "codechicken:CodeChickenLib:1.7.10-1.1.1.95:dev"
     //compile "codechicken:CodeChickenCore:1.7.10-1.0.2.11:dev"
 
