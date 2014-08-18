@@ -21,9 +21,10 @@ class NEIHiderRegistry(registrable: Seq[Module], log: Log)
 	 */
 	def registerAll(): Unit =
 	{
+		val className = "codechicken.nei.api.API"
+
 		try
 		{
-			val className = "codechicken.nei.api.API"
 			val api = java.lang.Class.forName(className)
 			val hideItemMethod = api.getDeclaredMethod("hideItem", classOf[ItemStack])
 
@@ -31,7 +32,7 @@ class NEIHiderRegistry(registrable: Seq[Module], log: Log)
 		}
 		catch
 			{
-				case e: ClassNotFoundException => this.log.warn("NEI not found. Disabling NEI integration.")
+				case e: ClassNotFoundException => this.log.warn("NEI not found. Disabling NEI Hiding integration.")
 			}
 	}
 
