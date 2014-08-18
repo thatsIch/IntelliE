@@ -23,7 +23,7 @@ object IntelligentEnergistics extends ChildUnloader
 	final val id = "intellie"
 	final val name = "Intelligent Energistics"
 	final val version = "${version}"
-	final val dependencies = "required-after:Forge@[7.0,);required-after:FML@[5.0.5,);after:appliedenergistics2"
+	final val dependencies = "required-after:Forge@[7.0,);required-after:FML@[5.0.5,);required-after:appliedenergistics2@[rv1-beta-1,)"
 
 	this.unload("appaero", this.disableAero)
 	this.unload("appagri", this.disableAgro)

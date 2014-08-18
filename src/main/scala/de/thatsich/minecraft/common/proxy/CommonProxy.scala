@@ -2,9 +2,9 @@ package de.thatsich.minecraft.common.proxy
 
 
 import com.google.common.base.Stopwatch
-import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
+import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent, FMLServerStartingEvent}
 import cpw.mods.fml.common.network.{IGuiHandler, NetworkRegistry}
-import de.thatsich.minecraft.common.log.{Log, NamedLog}
+import de.thatsich.minecraft.common.log.{Log, SimpleLog}
 import de.thatsich.minecraft.common.module.Module
 import de.thatsich.minecraft.common.module.registry.{BlockRegistry, CraftHandlerRegistry, GuiRegistry, ItemRegistry, RecipeRegistry, TileEntityRegistry}
 import de.thatsich.minecraft.common.string.Abbreviation
@@ -18,8 +18,8 @@ import de.thatsich.minecraft.common.string.Abbreviation
  */
 abstract class CommonProxy extends EventProxy
 {
-	protected final lazy val log: Log = new NamedLog(this.abbr)
-	protected final val stopwatch: Stopwatch = Stopwatch.createUnstarted
+	final lazy val log: Log = new SimpleLog(this.abbr)
+	final val stopwatch: Stopwatch = Stopwatch.createUnstarted
 	/**
 	 * Modules of functionality of the mod.
 	 * Can contain blocks, items, recipes etc
@@ -33,21 +33,15 @@ abstract class CommonProxy extends EventProxy
 	 *
 	 * @return abbreviation of mod
 	 */
-	protected val abbr: Abbreviation
+	val abbr: Abbreviation
 	/**
 	 * Instance of the mod
 	 *
 	 * @return mod instance
 	 */
-	protected val mod: AnyRef
+	val mod: AnyRef
 
-	/**
-	 * Run before anything else. Read your config, create blocks, items, etc,
-	 * and register them with the GameRegistry.
-	 *
-	 * @param event contains information to pre-initialize the mod
-	 */
-	def preInit(event: FMLPreInitializationEvent): Unit =
+	def onPreInit(event: FMLPreInitializationEvent): Unit =
 	{
 		this.log.info("PreInit Begin")
 		this.stopwatch.reset.start
@@ -62,13 +56,7 @@ abstract class CommonProxy extends EventProxy
 		this.log.info(s"PreInit End ($stopwatch)")
 	}
 
-	/**
-	 * Do your mod setup. Build whatever data structures you care about.
-	 * Register recipes, send FMLInterModComms messages to other mods.
-	 *
-	 * @param event contains information to initialize and finalize the mod
-	 */
-	def init(event: FMLInitializationEvent): Unit =
+	def onInit(event: FMLInitializationEvent): Unit =
 	{
 		this.log.info("Init Begin")
 		this.stopwatch.reset.start
@@ -88,17 +76,21 @@ abstract class CommonProxy extends EventProxy
 		this.log.info(s"Init End ($stopwatch)")
 	}
 
-	/**
-	 * Handle interaction with other mods, complete your setup based on this.
-	 *
-	 * @param event Event after setup
-	 */
-	def postInit(event: FMLPostInitializationEvent): Unit =
+	def onPostInit(event: FMLPostInitializationEvent): Unit =
 	{
 		this.log.info("PostInit Begin")
 		this.stopwatch.reset.start
 
 		this.stopwatch.stop
 		this.log.info(s"PostInit End ($stopwatch)")
+	}
+
+	def onServerStarting(event: FMLServerStartingEvent): Unit =
+	{
+		this.log.info("ServerStarting Begin")
+		this.stopwatch.reset.start
+
+		this.stopwatch.stop
+		this.log.info(s"ServerStarting End ($stopwatch)")
 	}
 }

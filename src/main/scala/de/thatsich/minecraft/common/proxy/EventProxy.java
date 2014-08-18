@@ -3,6 +3,7 @@ package de.thatsich.minecraft.common.proxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
 /**
  * Interface for supporting the 4 intialisation phases
@@ -18,7 +19,7 @@ public interface EventProxy
 	 *
 	 * @param event contains information to pre-initialize the mod
 	 */
-	void preInit(FMLPreInitializationEvent event);
+	void onPreInit(FMLPreInitializationEvent event);
 
 	/**
 	 * Do your mod setup. Build whatever data structures you care about.
@@ -26,12 +27,19 @@ public interface EventProxy
 	 *
 	 * @param event contains information to initialize and finalize the mod
 	 */
-	void init(FMLInitializationEvent event);
+	void onInit(FMLInitializationEvent event);
 
 	/**
 	 * Handle interaction with other mods, complete your setup based on this.
 	 *
 	 * @param event Event after setup
 	 */
-	void postInit(FMLPostInitializationEvent event);
+	void onPostInit(FMLPostInitializationEvent event);
+
+	/**
+	 * Handles generally client stuff when server started
+	 *
+	 * @param event event when server is starting
+	 */
+	void onServerStarting(FMLServerStartingEvent event);
 }

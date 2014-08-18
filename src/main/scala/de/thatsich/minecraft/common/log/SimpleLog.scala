@@ -12,7 +12,7 @@ import org.apache.logging.log4j.{Level, LogManager, Logger}
  * @author thatsIch
  * @since 04.04.2014.
  */
-class NamedLog(abbr: Abbreviation) extends Log
+class SimpleLog(abbr: Abbreviation) extends Log
 {
 	private final val target: String = abbr
 	private final val logger: Logger = LogManager.getLogger(target)

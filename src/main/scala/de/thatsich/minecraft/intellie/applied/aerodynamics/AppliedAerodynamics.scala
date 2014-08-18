@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics
 
 
-import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
+import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent, FMLServerStartingEvent}
 import cpw.mods.fml.common.{Mod, Optional, SidedProxy}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy.AeroCommonProxy
 
@@ -35,13 +35,17 @@ object AppliedAerodynamics
 
 	@Optional.Method(modid = AppliedAerodynamics.id)
 	@Mod.EventHandler
-	def preInit(event: FMLPreInitializationEvent): Unit = this.proxy.preInit(event)
+	def onPreInit(event: FMLPreInitializationEvent): Unit = this.proxy.onPreInit(event)
 
 	@Optional.Method(modid = AppliedAerodynamics.id)
 	@Mod.EventHandler
-	def init(event: FMLInitializationEvent): Unit = this.proxy.init(event)
+	def onInit(event: FMLInitializationEvent): Unit = this.proxy.onInit(event)
 
 	@Optional.Method(modid = AppliedAerodynamics.id)
 	@Mod.EventHandler
-	def postInit(event: FMLPostInitializationEvent): Unit = this.proxy.postInit(event)
+	def onPostInit(event: FMLPostInitializationEvent): Unit = this.proxy.onPostInit(event)
+
+	@Optional.Method(modid = AppliedAerodynamics.id)
+	@Mod.EventHandler
+	def onServerStarting(event: FMLServerStartingEvent): Unit = this.proxy.onServerStarting(event)
 }
