@@ -6,7 +6,7 @@ import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationE
 import cpw.mods.fml.common.network.{IGuiHandler, NetworkRegistry}
 import de.thatsich.minecraft.common.log.{Log, SimpleLog}
 import de.thatsich.minecraft.common.module.Module
-import de.thatsich.minecraft.common.module.registry.{BlockRegistry, CraftHandlerRegistry, GuiRegistry, ItemRegistry, RecipeRegistry, TileEntityRegistry}
+import de.thatsich.minecraft.common.module.registry.{NEIHiderRegistry, BlockRegistry, CraftHandlerRegistry, GuiRegistry, ItemRegistry, RecipeRegistry, TileEntityRegistry}
 import de.thatsich.minecraft.common.string.Abbreviation
 
 
@@ -104,8 +104,8 @@ abstract class CommonProxy extends EventProxy
 		this.log.info("ServerStarting Begin")
 		this.stopwatch.reset.start
 
-
-		//		event.registerServerCommand()
+		val hider: NEIHiderRegistry = new NEIHiderRegistry(this.modules, this.log)
+		hider.registerAll()
 
 		this.onInheritatedServerStarting(event)
 
