@@ -79,9 +79,9 @@ class NEIHiderRegistry(registrable: Seq[Module], log: Log)
 		}
 		catch
 			{
-				case IllegalAccessException |
-				     IllegalArgumentException |
-				     InvocationTargetException => this.log.warn("Could not invoke 'hideItem'.")
+				case access: IllegalAccessException     => this.log.warn("Illegal access to 'hideItem'.")
+				case argument: IllegalArgumentException => this.log.warn("Illegal args for 'hideItem'.")
+				case invoke: InvocationTargetException  => this.log.warn("Could not invoke 'hideItem'. ")
 			}
 	}
 }
