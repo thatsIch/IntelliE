@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.common.module.registry
 
 
-import java.lang.reflect.Method
+import java.lang.reflect.{InvocationTargetException, Method}
 
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.Module
@@ -9,10 +9,14 @@ import net.minecraft.item.{Item, ItemStack}
 
 
 /**
- *
+ * Responsible to hide marked items from NEI.
+ * Logs the outcome to debug
  *
  * @author thatsIch
  * @since 18.08.2014.
+ *
+ * @param registrable modules
+ * @param log logger
  */
 class NEIHiderRegistry(registrable: Seq[Module], log: Log)
 {
@@ -32,10 +36,17 @@ class NEIHiderRegistry(registrable: Seq[Module], log: Log)
 		}
 		catch
 			{
-				case e: ClassNotFoundException => this.log.warn("NEI not found. Disabling NEI Hiding integration.")
+				case e: ClassNotFoundException => this.log.warn("NEI API not found. Disabling NEI Hiding integration.")
+				case m: NoSuchMethodException  => this.log.warn("NEI method 'hideItem' not found. Disabling NEI Hiding integration.")
+				case s: SecurityException      => this.log.warn("NEI method 'hideItem' was inaccessible. Disabling NEI Hiding integration.")
 			}
 	}
 
+	/**
+	 * Iterates over all modules to apply a hideItem Method on all of them
+	 *
+	 * @param hideItemMethod applied method
+	 */
 	private def iterateAll(hideItemMethod: Method): Unit =
 	{
 		var length = 0
@@ -61,7 +72,16 @@ class NEIHiderRegistry(registrable: Seq[Module], log: Log)
 	{
 		val simpleClassName: String = item.getClass.getSimpleName
 
-		this.log.debug(s"Hide item $simpleClassName from NEI")
-		hideItemMethod.invoke(null, new ItemStack(item))
+		try
+		{
+			this.log.debug(s"Hide item $simpleClassName from NEI")
+			hideItemMethod.invoke(null, new ItemStack(item))
+		}
+		catch
+			{
+				case IllegalAccessException |
+				     IllegalArgumentException |
+				     InvocationTargetException => this.log.warn("Could not invoke 'hideItem'.")
+			}
 	}
 }

@@ -50,7 +50,7 @@ repositories {
 }
 
 dependencies {
-//    compile "appeng:appliedenergistics2:rv1-beta-4:dev"
+    compile "appeng:appliedenergistics2:rv1-beta-4:dev"
 
     compile "mcp.mobius.waila:Waila:1.5.3_1.7.10"
     // These will be included automatically

@@ -40,7 +40,7 @@ private[disassembler] class DisassemblerItem(modid: ID, name: ID, log: Log) exte
 	{
 		val currentPower = this.getAECurrentPower(is).toInt
 		val maxPower = this.getAEMaxPower(is).toInt
-		val percent = 100 * currentPower / maxPower
+		val percent = if (maxPower == 0) 0 else 100 * currentPower / maxPower
 
 		val list = information.asInstanceOf[java.util.List[String]]
 
