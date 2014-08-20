@@ -46,6 +46,9 @@ repositories {
 }
 
 dependencies {
+
+    compile "com.google.code.findbugs:jsr305:3.0.0"
+
     compile "appeng:appliedenergistics2:rv1-beta-5:dev"
 
 //    compile "mcp.mobius.waila:Waila:1.5.3_1.7.10"

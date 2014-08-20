@@ -2,11 +2,11 @@ package de.thatsich.minecraft.common.proxy
 
 
 import com.google.common.base.Stopwatch
-import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent, FMLServerStartingEvent}
+import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import cpw.mods.fml.common.network.{IGuiHandler, NetworkRegistry}
 import de.thatsich.minecraft.common.log.{Log, SimpleLog}
 import de.thatsich.minecraft.common.module.Module
-import de.thatsich.minecraft.common.module.registry.{NEIHiderRegistry, BlockRegistry, CraftHandlerRegistry, GuiRegistry, ItemRegistry, RecipeRegistry, TileEntityRegistry}
+import de.thatsich.minecraft.common.module.registry.{BlockRegistry, CraftHandlerRegistry, GuiRegistry, ItemRegistry, RecipeRegistry, TileEntityRegistry}
 import de.thatsich.minecraft.common.string.Abbreviation
 
 
@@ -46,8 +46,6 @@ abstract class CommonProxy extends EventProxy
 	def onInheritatedInit(event: FMLInitializationEvent): Unit
 
 	def onInheritatedPostInit(event: FMLPostInitializationEvent): Unit
-
-	def onInheritatedServerStarting(event: FMLServerStartingEvent): Unit
 
 	final def onPreInit(event: FMLPreInitializationEvent): Unit =
 	{
@@ -97,19 +95,5 @@ abstract class CommonProxy extends EventProxy
 
 		this.stopwatch.stop
 		this.log.info(s"PostInit End ($stopwatch)")
-	}
-
-	final def onServerStarting(event: FMLServerStartingEvent): Unit =
-	{
-		this.log.info("ServerStarting Begin")
-		this.stopwatch.reset.start
-
-		val hider: NEIHiderRegistry = new NEIHiderRegistry(this.modules, this.log)
-		hider.registerAll()
-
-		this.onInheritatedServerStarting(event)
-
-		this.stopwatch.stop
-		this.log.info(s"ServerStarting End ($stopwatch)")
 	}
 }

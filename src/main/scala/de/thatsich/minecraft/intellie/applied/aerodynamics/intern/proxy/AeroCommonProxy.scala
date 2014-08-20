@@ -1,13 +1,13 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy
 
 
-import cpw.mods.fml.common.event.{FMLPreInitializationEvent, FMLServerStartingEvent, FMLPostInitializationEvent, FMLInitializationEvent}
+import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import de.thatsich.minecraft.common.module.Module
 import de.thatsich.minecraft.common.proxy.CommonProxy
 import de.thatsich.minecraft.common.string.Abbreviation
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.ModificationWorkbenchModule
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.creativetab.{AeroCreativeTabsModule, AeroCreativeTabIcon}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.creativetab.{AeroCreativeTabIcon, AeroCreativeTabsModule}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.DisassemblerModule
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.fakeupgrade.FakeUpgradeModule
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.SuiteModule
@@ -30,7 +30,7 @@ abstract class AeroCommonProxy extends CommonProxy
 	 *
 	 * @return modules of mod
 	 */
-	final lazy val modules: Seq[Module] = Seq(
+	final lazy val modules: Seq[Module] = Vector(
 		new DisassemblerModule(this.log, this.modid),
 		new ModificationWorkbenchModule(this.log, this.modid),
 		new FakeUpgradeModule(this.log, this.modid),
@@ -55,8 +55,6 @@ abstract class AeroCommonProxy extends CommonProxy
 	new AeroCreativeTabs(this.icon, this.modules, this.log, this.modid)
 
 	def onInheritatedPreInit(event: FMLPreInitializationEvent): Unit = {}
-
-	def onInheritatedServerStarting(event: FMLServerStartingEvent): Unit = {}
 
 	def onInheritatedPostInit(event: FMLPostInitializationEvent): Unit = {}
 

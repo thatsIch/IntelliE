@@ -4,7 +4,7 @@ package de.thatsich.minecraft.intellie
 import cpw.mods.fml.common.{Loader, Mod}
 import de.thatsich.minecraft.common.log.SimpleLog
 import de.thatsich.minecraft.common.string.Abbreviation
-import de.thatsich.minecraft.integration.applied.aeronei.AppliedAerodynamicsNei
+import de.thatsich.minecraft.integration.applied.aerodynamics.AppliedAerodynamicsNei
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
 import de.thatsich.minecraft.intellie.applied.agricultures.AppliedAgricultures
 import de.thatsich.minecraft.intellie.applied.intelligences.AppliedIntelligences
@@ -33,13 +33,11 @@ object IntelligentEnergistics extends ChildUnloader
 
 	private val abbreviation = new Abbreviation("IE")
 	private val log = new SimpleLog(this.abbreviation)
-	private val disableAeroNei = !Loader.isModLoaded("NotEnoughItems") || !Loader.isModLoaded("appaero")
+	private val disableAeroNei = !Loader.isModLoaded("NotEnoughItems") || this.disableAgro
 
 	this.unload(AppliedAerodynamics.id, this.disableAero, this.log)
 	this.unload(AppliedAgricultures.id, this.disableAgro, this.log)
 	this.unload(AppliedIntelligences.id, this.disableInt, this.log)
 
-//	this.unload(AppliedAerodynamicsNei.id, disableAeroNei, this.log)
-
-	this.test(AppliedAerodynamicsNei.id, disableModule = true, this.log)
+	this.unload(AppliedAerodynamicsNei.id, this.disableAeroNei, this.log)
 }
