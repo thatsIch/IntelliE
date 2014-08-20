@@ -1,16 +1,46 @@
 [
 {
-  "modid": "intellie",
-  "name": "IntelliE",
-  "description": "Addon to Applied Energistics (AE). Adds smart things to AE.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "https://github.com/thatsIch/IntelliE",
-  "updateUrl": "",
-  "authors": ["thatsIch"],
-  "credits": "JetBrains for the IDE, ForgeDevs for Forge, AlgorithmX2 for AE and #AE for this",
-  "logoFile": "",
-  "screenshots": [],
-  "dependencies": ["AppliedEnergistics"]
-}
+	"modid": "intellie",
+	"name": "IntelliE",
+	"description": "Addon to Applied Energistics (AE). Adds smart things to AE.",
+	"version": "${version}",
+	"mcversion": "${mcversion}",
+	"url": "https://github.com/thatsIch/IntelliE",
+	"updateUrl": "",
+	"authors": ["thatsIch"],
+	"credits": "JetBrains for the IDE, ForgeDevs for Forge, AlgorithmX2 for AE and #AE for this",
+	"logoFile": "",
+	"screenshots": [],
+	"dependencies": ["appliedenergistics2"]
+},
+ {
+ 	"modid": "appaero",
+     "name": "AppliedAerodynamics",
+     "description": "Childmod of IntelliE (IE). Adds tools and armor to make live easier for builders.",
+     "version": "${version}",
+     "mcversion": "${mcversion}",
+     "url": "https://github.com/thatsIch/IntelliE",
+     "updateUrl": "",
+     "authors": ["thatsIch"],
+     "credits": "JetBrains for the IDE, ForgeDevs for Forge, AlgorithmX2 for AE and #AE for this",
+     "logoFile": "",
+     "parent": "intellie",
+     "screenshots": [],
+     "dependencies": ["intellie"]
+ },
+  {
+  	"modid": "appaeronei",
+      "name": "AppliedAerodynamicsNEI",
+      "description": "Integrationmod for Applied Aerodynamics and NEI.",
+      "version": "${version}",
+      "mcversion": "${mcversion}",
+      "url": "https://github.com/thatsIch/IntelliE",
+      "updateUrl": "",
+      "authors": ["thatsIch"],
+      "credits": "JetBrains for the IDE, ForgeDevs for Forge, AlgorithmX2 for AE and #AE for this",
+      "logoFile": "",
+      "parent": "appaero",
+      "screenshots": [],
+      "dependencies": ["appaero"]
+  }
 ]
