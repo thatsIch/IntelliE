@@ -3,7 +3,6 @@ package de.thatsich.minecraft.common.proxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
 /**
  * Interface for supporting the 4 intialisation phases
@@ -35,11 +34,4 @@ public interface EventProxy
 	 * @param event Event after setup
 	 */
 	void onPostInit(FMLPostInitializationEvent event);
-
-	/**
-	 * Handles generally client stuff when server started
-	 *
-	 * @param event event when server is starting
-	 */
-	void onServerStarting(FMLServerStartingEvent event);
 }

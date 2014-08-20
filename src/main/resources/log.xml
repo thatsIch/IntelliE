@@ -9,6 +9,9 @@
 		<Logger name="Aero" level="TRACE" additivity="false">
 			<AppenderRef ref="Console"/>
 		</Logger>
+		<Logger name="Aero|NEI" level="TRACE" additivity="false">
+			<AppenderRef ref="Console"/>
+		</Logger>
 		<Logger name="AE2-CORE" level="OFF" additivity="false">
 			<AppenderRef ref="Console"/>
 		</Logger>

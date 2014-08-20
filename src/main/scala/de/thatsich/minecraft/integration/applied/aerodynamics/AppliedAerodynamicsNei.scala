@@ -50,7 +50,14 @@ object AppliedAerodynamicsNei
 
 	private def registerCustomRecipes(modules: Seq[Module]): Unit =
 	{
+//		var counter = 0
 
+		val workbenchHandler: NEIWorkbenchRecipeHandler = new NEIWorkbenchRecipeHandler
+
+		API.registerRecipeHandler(workbenchHandler)
+		API.registerUsageHandler(workbenchHandler)
+
+//		this.log.info(s"Hid $counter elements from NEI.")
 	}
 
 	private def hideItemsInNEI(modules: Seq[Module]): Unit =
