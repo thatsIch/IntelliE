@@ -8,7 +8,7 @@ import de.thatsich.minecraft.integration.applied.aerodynamics.AppliedAerodynamic
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
 import de.thatsich.minecraft.intellie.applied.agricultures.AppliedAgricultures
 import de.thatsich.minecraft.intellie.applied.intelligences.AppliedIntelligences
-import de.thatsich.minecraft.intellie.child.{ChildUnloaderConfigAccess, ChildUnloader}
+import de.thatsich.minecraft.intellie.child.{ChildUnloader, ChildUnloaderConfigAccess}
 
 
 /**
@@ -33,11 +33,10 @@ object IntelligentEnergistics extends ChildUnloader with ChildUnloaderConfigAcce
 
 	private val abbreviation = new Abbreviation("IE")
 	private val log = new SimpleLog(this.abbreviation)
-	private val disableAeroNei = !Loader.isModLoaded("NotEnoughItems") || this.disableAgro
 
 	this.unload(AppliedAerodynamics.id, this.disableAero, this.log)
 	this.unload(AppliedAgricultures.id, this.disableAgro, this.log)
 	this.unload(AppliedIntelligences.id, this.disableInt, this.log)
 
-	this.unload(AppliedAerodynamicsNei.id, this.disableAeroNei, this.log)
+	this.unload(AppliedAerodynamicsNei.id, this.disableAgro || this.disableAeroNEI || this.disableNEI || !Loader.isModLoaded("NotEnoughItems"), this.log)
 }
