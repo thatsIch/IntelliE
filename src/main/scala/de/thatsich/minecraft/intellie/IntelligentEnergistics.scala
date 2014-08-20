@@ -8,7 +8,7 @@ import de.thatsich.minecraft.integration.applied.aerodynamics.AppliedAerodynamic
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
 import de.thatsich.minecraft.intellie.applied.agricultures.AppliedAgricultures
 import de.thatsich.minecraft.intellie.applied.intelligences.AppliedIntelligences
-import de.thatsich.minecraft.intellie.child.ChildUnloader
+import de.thatsich.minecraft.intellie.child.{ChildUnloaderConfigAccess, ChildUnloader}
 
 
 /**
@@ -24,7 +24,7 @@ import de.thatsich.minecraft.intellie.child.ChildUnloader
 	dependencies = IntelligentEnergistics.dependencies,
 	modLanguage = "scala"
 )
-object IntelligentEnergistics extends ChildUnloader
+object IntelligentEnergistics extends ChildUnloader with ChildUnloaderConfigAccess
 {
 	final val id = "intellie"
 	final val name = "Intelligent Energistics"

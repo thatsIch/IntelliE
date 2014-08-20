@@ -13,7 +13,7 @@ import de.thatsich.minecraft.common.log.Log
 import scala.collection.JavaConverters._
 
 
-trait ChildUnloader extends ChildUnloaderConfigAccess
+trait ChildUnloader
 {
 	def unload(id: String, disableModule: Boolean, log: Log): Unit =
 	{
