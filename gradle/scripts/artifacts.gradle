@@ -1,0 +1,27 @@
+// resulting file with [baseName]-[appendix]-[version]-[classifier].[extension]
+jar {
+    baseName = "IntelligentEnergistics"
+    appendix = VERSION_MINECRAFT
+    version = VERSION_PROJECT.toString()
+    classifier = "universal"
+}
+
+// add a source jar
+task sourceJar(type: Jar) {
+    from sourceSets.main.allSource
+
+    baseName = "IntelligentEnergistics"
+    appendix = VERSION_MINECRAFT
+    version = VERSION_PROJECT.toString()
+    classifier = 'sources'
+}
+
+// because the normal output has been made to be obfuscated
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+
+    baseName = "IntelligentEnergistics"
+    appendix = VERSION_MINECRAFT
+    version = VERSION_PROJECT.toString()
+    classifier = 'deobf'
+}

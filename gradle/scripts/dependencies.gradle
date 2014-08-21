@@ -1,8 +1,13 @@
 dependencies {
-//    compile "appeng:appliedenergistics2:rv0-stable-10:dev"
-//    compile 'org.slf4j:jul-to-slf4j:1.7.7'
+    // Guava dependency to stop Scala from annoyance
+    compile "com.google.code.findbugs:jsr305:3.0.0"
 
-//	testCompile "junit:junit:${VERSION_JUNIT}"
-//	testCompile "org.scalatest:scalatest_2.10:${VERSION_SCALATEST}"
-//	testCompile "org.scalamock:scalamock_2.10:${VERSION_SCALAMOCK}"
+    // AE2 dependency
+    compile "appeng:appliedenergistics2:rv1-beta-8:dev"
+
+//    compile "mcp.mobius.waila:Waila:1.5.3_1.7.10"
+    compile "codechicken:NotEnoughItems:1.7.10-1.0.3.51:dev"
+
+    testCompile "org.scalatest:scalatest_2.11:2.2.0"
+    testCompile "org.scalamock:scalamock-scalatest-support_2.11:3.1.2"
 }
