@@ -1,2 +1,2 @@
-sourceCompatibility = VERSION_JAVA
-targetCompatibility = VERSION_JAVA
+sourceCompatibility = 1.7
+targetCompatibility = 1.7

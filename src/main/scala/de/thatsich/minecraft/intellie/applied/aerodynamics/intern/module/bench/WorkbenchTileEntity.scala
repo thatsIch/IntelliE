@@ -20,18 +20,13 @@ class WorkbenchTileEntity extends TileEntity
                                   with NBTAccess
 {
 	var modificationTime: Int = 0
+	val maxModificationTime: Int = 150
 
 	@SideOnly(Side.CLIENT)
-	def isModifying: Boolean =
-	{
-		this.modificationTime > 0
-	}
+	def isModifying: Boolean = this.modificationTime > 0
 
 	@SideOnly(Side.CLIENT)
-	def getModificationProgressScaled(scale: Int): Int =
-	{
-		this.modificationTime * scale / 200
-	}
+	def getModificationProgressScaled(scale: Int): Int = this.modificationTime * scale / this.maxModificationTime
 
 	override def writeToNBT(compound: NBTTagCompound): Unit =
 	{
@@ -86,7 +81,7 @@ class WorkbenchTileEntity extends TileEntity
 			{
 				this.modificationTime += 1
 
-				if (this.modificationTime == 200)
+				if (this.modificationTime == this.maxModificationTime)
 				{
 					this.modificationTime = 0
 					this.executeTask(task)

@@ -1,9 +1,38 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+    dependencies {
+        classpath "net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT"
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name "Mobius Repo"
+        url "http://mobiusstrip.eu/maven"
+    }
+    maven {
+        name = "chickenbones"
+        url = "http://chickenbones.net/maven/"
+    }
+}
+
 dependencies {
     // Guava dependency to stop Scala from annoyance
     compile "com.google.code.findbugs:jsr305:3.0.0"
 
     // AE2 dependency
-    compile "appeng:appliedenergistics2:rv1-beta-8:dev"
+    compile "appeng:appliedenergistics2:rv1-beta-6:dev"
 
 //    compile "mcp.mobius.waila:Waila:1.5.3_1.7.10"
     compile "codechicken:NotEnoughItems:1.7.10-1.0.3.51:dev"

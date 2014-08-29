@@ -16,6 +16,7 @@ import net.minecraft.item.ItemStack
  * @since 09.08.2014.
  */
 class InputSlot(player: EntityPlayer, inventory: IInventory, id: Int, x: Int, y: Int, side: SlotSide) extends BaseSlot(player, inventory, id, x, y, SlotState.Enabled, side)
+                                                                                                              with HoloSlot
 {
 	private val storage = WorkbenchCraftRecipeStorage
 
@@ -27,4 +28,12 @@ class InputSlot(player: EntityPlayer, inventory: IInventory, id: Int, x: Int, y:
 
 		false
 	}
+
+	val holoSlotOffsetX: Int = 0
+
+	val holoSlotOffsetY: Int = 0
+
+	val textureNamespace: String = "appaero"
+
+	val texturePath: String = "textures/gui/tiles.png"
 }

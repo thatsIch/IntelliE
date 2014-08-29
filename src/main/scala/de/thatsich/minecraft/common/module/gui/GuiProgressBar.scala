@@ -20,11 +20,11 @@ class GuiProgressBar(texture: ResourceLocation,
                      fillV: Int,
                      width: Int,
                      height: Int,
-                     direction: Direction) extends GuiButton(xPos, yPos, width, "")
+                     direction: Direction,
+	                 val maxValue: Int) extends GuiButton(xPos, yPos, width, "")
                                                    with ToolTip
 {
-	private val currentValue = 0
-	private val maxValue = 100
+	var currentValue = 0
 
 	override def drawButton(mc: Minecraft, x: Int, y: Int): Unit =
 	{

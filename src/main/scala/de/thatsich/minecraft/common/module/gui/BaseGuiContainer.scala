@@ -1,11 +1,19 @@
 package de.thatsich.minecraft.common.module.gui
 
 
-import net.minecraft.client.gui.GuiScreen
+import java.util
+
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.client.HoloSlot
+import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.inventory.GuiContainer
+import net.minecraft.client.gui.{GuiButton, GuiScreen}
 import net.minecraft.client.renderer.RenderHelper
-import net.minecraft.inventory.Container
+import net.minecraft.inventory.{Container, Slot}
+import net.minecraft.util.ResourceLocation
 import org.lwjgl.opengl.GL11
+
+import scala.collection.JavaConverters._
+import scala.collection.mutable
 
 
 /**
@@ -14,41 +22,86 @@ import org.lwjgl.opengl.GL11
  * @author thatsIch
  * @since 20.08.2014.
  */
-abstract class BaseGuiContainer(c: Container) extends GuiContainer(c)
+abstract class BaseGuiContainer(container: Container) extends GuiContainer(container)
 {
-
-	def drawGuiContainerBackgroundLayer(f : Float, x : Int, y : Int): Unit =
+	def drawGuiContainerBackgroundLayer(f: Float, x: Int, y: Int): Unit =
 	{
+		// reset colors
+		GL11.glColor4f(1, 1, 1, 1)
+		this.drawBG(this.guiLeft, this.guiTop, x, y)
+		val slots: util.List[Slot] = this.inventorySlots.inventorySlots.asInstanceOf[util.List[Slot]]
+		val slotBuffer: mutable.Buffer[Slot] = slots.asScala
 
+		this.drawHoloIcons(slotBuffer)
+	}
+
+	override def drawGuiContainerForegroundLayer(x: Int, y: Int): Unit =
+	{
+		this.drawFG(this.guiLeft, this.guiTop, x, y)
+	}
+
+	def drawBG(offsetX: Int, offsetY: Int, mouseX: Int, mouseY: Int): Unit
+
+	def drawFG(offsetX: Int, offsetY: Int, mouseX: Int, mouseY: Int): Unit
+
+	private def drawHoloIcons(slots: mutable.Buffer[Slot]): Unit =
+	{
+		slots.foreach
+		{
+			case holo: HoloSlot => this.drawHoloIcon(holo)
+			case _              =>
+		}
+	}
+
+	private def drawHoloIcon(slot: HoloSlot): Unit =
+	{
+		if (slot != null && !slot.getHasStack)
+		{
+			GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS)
+			GL11.glColor4f(1, 1, 1, 0.4F)
+			GL11.glEnable(GL11.GL_BLEND)
+
+			this.bindTexture(slot.textureNamespace, slot.texturePath)
+
+			this.drawTexturedModalRect(this.guiLeft + slot.xDisplayPosition, this.guiTop + slot.yDisplayPosition, slot.holoSlotOffsetX, slot.holoSlotOffsetY, 16, 16)
+
+			GL11.glDisable(GL11.GL_BLEND)
+			GL11.glColor4f(1, 1, 1, 1)
+			GL11.glPopAttrib()
+		}
+	}
+
+	def bindTexture(base: String, location: String): Unit =
+	{
+		val res = new ResourceLocation(base, location)
+		Minecraft.getMinecraft.renderEngine.bindTexture(res)
 	}
 
 	override def drawScreen(mouseX: Int, mouseY: Int, btn: Float): Unit =
 	{
 		super.drawScreen(mouseX, mouseY, btn)
 
-		for (button <- this.buttonList)
+		val buttons: mutable.Buffer[GuiButton] = this.buttonList.asInstanceOf[util.List[GuiButton]].asScala
+		buttons.foreach
 		{
-			button match
-			{
-				case tooltip: ToolTip =>
-					val ttx = tooltip.toolTipXActivationPos
-					val tty = tooltip.toolTipYActivationPos
-					val ttw = tooltip.toolTipActivationWidth
-					val tth = tooltip.toolTipActivationHeight
+			case tooltip: ToolTip =>
+				val ttx = tooltip.toolTipXActivationPos
+				val tty = tooltip.toolTipYActivationPos
+				val ttw = tooltip.toolTipActivationWidth
+				val tth = tooltip.toolTipActivationHeight
 
-					val isVisisble = tooltip.toolTipIsVisisble
-					val isContainedHorizontally = ttx < mouseX && mouseX < ttx + ttw
-					val isContainedVertically = tty < mouseY && mouseY < tty + tth
+				val isVisisble = tooltip.toolTipIsVisisble
+				val isContainedHorizontally = ttx < mouseX && mouseX < ttx + ttw
+				val isContainedVertically = tty < mouseY && mouseY < tty + tth
 
-					if (isVisisble && isContainedHorizontally && isContainedVertically)
-					{
-						val ttyAlignment = tty max 15
-						val message = tooltip.toolTipMessage
-						this.drawToolTip(ttx + 11, ttyAlignment + 4, 0, message)
-					}
+				if (isVisisble && isContainedHorizontally && isContainedVertically)
+				{
+					val ttyAlignment = tty max 15
+					val message = tooltip.toolTipMessage
+					this.drawToolTip(ttx + 11, ttyAlignment + 4, 0, message)
+				}
 
-				case _ =>
-			}
+			case _ =>
 		}
 	}
 

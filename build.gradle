@@ -13,37 +13,8 @@ apply from: 'gradle/scripts/artifacts.gradle'
 
 // needed for pulling new versions from forge
 minecraft {
-    version = "${VERSION_MINECRAFT}-${VERSION_FORGE}"
+    version = "${VERSION_MINECRAFT}-10.13.0.1199"
     runDir = "run"
-}
-
-buildscript {
-    repositories {
-        mavenCentral()
-        maven {
-            name = "forge"
-            url = "http://files.minecraftforge.net/maven"
-        }
-        maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
-        }
-    }
-    dependencies {
-        classpath "net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT"
-    }
-}
-
-repositories {
-    mavenCentral()
-    maven {
-        name "Mobius Repo"
-        url "http://mobiusstrip.eu/maven"
-    }
-    maven {
-        name = "chickenbones"
-        url = "http://chickenbones.net/maven/"
-    }
 }
 
 processResources {
