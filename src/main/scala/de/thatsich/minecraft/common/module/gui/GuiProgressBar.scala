@@ -18,13 +18,17 @@ class GuiProgressBar(texture: ResourceLocation,
                      yPos: Int,
                      fillU: Int,
                      fillV: Int,
-                     width: Int,
-                     height: Int,
+                     _width: Int,
+                     _height: Int,
                      direction: Direction,
-	                 val maxValue: Int) extends GuiButton(xPos, yPos, width, "")
-                                                   with ToolTip
+                     val maxValue: Int) extends GuiButton(xPos, yPos, _width, "")
+                                                with ToolTip
 {
 	var currentValue = 0
+	this.xPosition = this.xPos
+	this.yPosition = this.yPos
+	this.width = 0
+	this.height = this._height
 
 	override def drawButton(mc: Minecraft, x: Int, y: Int): Unit =
 	{
@@ -35,12 +39,12 @@ class GuiProgressBar(texture: ResourceLocation,
 			this.direction match
 			{
 				case Direction.Vertical =>
-					val diff = this.height - (if (this.maxValue > 0) this.height * this.currentValue / this.maxValue else 0)
-					this.drawTexturedModalRect(this.xPos, this.yPos + diff, this.fillU, this.fillV + diff, this.width, this.height - diff)
+					val diff = this._height - (if (this.maxValue > 0) this._height * this.currentValue / this.maxValue else 0)
+					this.drawTexturedModalRect(this.xPos, this.yPos + diff, this.fillU, this.fillV + diff, this._width, this._height - diff)
 
 				case Direction.Horizontal =>
-					val diff = this.width - (if (this.maxValue > 0) this.width * this.currentValue / this.maxValue else 0)
-					this.drawTexturedModalRect(this.xPos, this.yPos, this.fillU + diff, this.fillV, this.width - diff, this.height)
+					val diff = this._width - (if (this.maxValue > 0) this._width * this.currentValue / this.maxValue else 0)
+					this.drawTexturedModalRect(this.xPos, this.yPos, this.fillU + diff, this.fillV, this._width - diff, this._height)
 			}
 
 			this.mouseDragged(mc, x, y)
@@ -54,9 +58,9 @@ class GuiProgressBar(texture: ResourceLocation,
 
 	def toolTipXActivationPos: Int = this.xPos - 2
 
-	def toolTipActivationWidth: Int = this.width + 4
+	def toolTipActivationWidth: Int = this._width + 4
 
 	def toolTipYActivationPos: Int = this.yPos - 2
 
-	def toolTipActivationHeight: Int = this.height + 4
+	def toolTipActivationHeight: Int = this._height + 4
 }

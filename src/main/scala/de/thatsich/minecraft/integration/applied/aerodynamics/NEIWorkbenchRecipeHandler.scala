@@ -31,7 +31,7 @@ class NEIWorkbenchRecipeHandler extends TemplateRecipeHandler
 
 	override def loadTransferRects(): Unit =
 	{
-		this.transferRects.add(new TemplateRecipeHandler.RecipeTransferRect(new Rectangle(84, 23, 24, 18), "workbench"))
+		this.transferRects.add(new TemplateRecipeHandler.RecipeTransferRect(new Rectangle(78, 40, 27, 16), "workbench"))
 	}
 
 	override def getGuiClass: Class[_ <: GuiContainer] = classOf[WorkbechGui]

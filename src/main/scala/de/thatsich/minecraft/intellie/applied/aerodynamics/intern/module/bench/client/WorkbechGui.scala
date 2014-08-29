@@ -33,7 +33,7 @@ class WorkbechGui(invPlayer: InventoryPlayer, workbench: WorkbenchTileEntity, lo
 		super.initGui()
 
 		val resource = new ResourceLocation(AppliedAerodynamics.id, "textures/gui/workbench.png")
-		this.progressBar = new GuiProgressBar(resource, 135, 39, 179, 39, 6, 18, Direction.Vertical, this.workbench.maxModificationTime)
+		this.progressBar = new GuiProgressBar(resource, this.guiLeft + 132, this.guiTop + 39, 179, 39, 6, 18, Direction.Vertical, this.workbench.maxModificationTime)
 
 		val buttons: util.List[GuiButton] = this.buttonList.asInstanceOf[util.List[GuiButton]]
 		buttons.add(this.progressBar)
@@ -42,8 +42,6 @@ class WorkbechGui(invPlayer: InventoryPlayer, workbench: WorkbenchTileEntity, lo
 	def drawBG(offsetX: Int, offsetY: Int, mouseX: Int, mouseY: Int): Unit =
 	{
 		this.bindTexture("appaero", "textures/gui/workbench.png")
-		this.progressBar.xPosition = this.guiLeft + 135
-		this.progressBar.yPosition = this.guiTop + 39
 
 		this.drawTexturedModalRect(offsetX, offsetY, 0, 0, this.xSize, this.ySize)
 	}
