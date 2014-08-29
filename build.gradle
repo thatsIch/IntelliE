@@ -11,9 +11,27 @@ apply from: 'gradle/scripts/dependencies.gradle'
 apply from: 'gradle/scripts/javacompat.gradle'
 apply from: 'gradle/scripts/artifacts.gradle'
 
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+    dependencies {
+        classpath "net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT"
+    }
+}
+
 // needed for pulling new versions from forge
 minecraft {
     version = "${VERSION_MINECRAFT}-10.13.0.1199"
+    replace "@version@", VERSION_PROJECT.toString()
     runDir = "run"
 }
 

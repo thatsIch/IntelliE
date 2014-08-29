@@ -28,7 +28,7 @@ object AppliedAerodynamicsNei
 {
 	final val id = "appaeronei"
 	final val name = "Applied Aerodynamics NEI Integration"
-	final val version = "${version}"
+	final val version = "@version@"
 	final val dependencies = "after:appaero;after:NotEnoughItems"
 
 	private val abbr = new Abbreviation("Aero|NEI")

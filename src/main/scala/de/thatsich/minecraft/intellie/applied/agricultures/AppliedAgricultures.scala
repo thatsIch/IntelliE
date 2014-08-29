@@ -18,6 +18,6 @@ object AppliedAgricultures
 {
 	final val id = "appagri"
 	final val name = "Applied Agricultures"
-	final val version = "${version}"
+	final val version = "@version@"
 	final val dependencies = "required-after:intellie"
 }

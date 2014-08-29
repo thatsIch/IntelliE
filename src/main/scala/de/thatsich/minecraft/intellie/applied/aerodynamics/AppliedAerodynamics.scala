@@ -23,7 +23,7 @@ object AppliedAerodynamics
 {
 	final val id = "appaero"
 	final val name = "Applied Aerodynamics"
-	final val version = "${version}"
+	final val version = "@version@"
 	final val dependencies = "required-after:intellie"
 
 	@SidedProxy(

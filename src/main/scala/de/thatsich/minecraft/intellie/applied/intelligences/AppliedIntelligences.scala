@@ -18,6 +18,6 @@ object AppliedIntelligences
 {
 	final val id = "appint"
 	final val name = "Applied Intelligences"
-	final val version = "${version}"
+	final val version = "@version@"
 	final val dependencies = "required-after:intellie"
 }
