@@ -45,7 +45,6 @@ class GuiProgressBar(texture: ResourceLocation,
 
 			this.mouseDragged(mc, x, y)
 		}
-		super.drawButton(mc, x, y)
 	}
 
 	def toolTipMessage: String = s"$currentValue/$maxValue"

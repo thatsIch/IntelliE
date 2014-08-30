@@ -6,8 +6,8 @@ import java.awt.Rectangle
 import codechicken.nei.PositionedStack
 import codechicken.nei.recipe.TemplateRecipeHandler
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.WorkbenchCraftRecipe
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.client.WorkbechGui
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.{WorkbenchCraftRecipe, WorkbenchCraftRecipeStorage}
 import net.minecraft.client.gui.inventory.GuiContainer
 import net.minecraft.util.{ResourceLocation, StatCollector}
 
@@ -42,6 +42,12 @@ class NEIWorkbenchRecipeHandler extends TemplateRecipeHandler
 		{
 			case "workbench" => if (this.getClass == classOf[NEIWorkbenchRecipeHandler])
 			{
+				WorkbenchCraftRecipeStorage.internalCraftRecipes.foreach
+				{
+					recipe =>
+						val cached = new CachedWorkbenchRecipe(recipe)
+
+				}
 				this.arecipes
 			}
 
@@ -51,6 +57,11 @@ class NEIWorkbenchRecipeHandler extends TemplateRecipeHandler
 
 	private class CachedWorkbenchRecipe(recipe: WorkbenchCraftRecipe) extends CachedRecipe
 	{
+//		val result = new PositionedStack(recipe.)
+
 		def getResult: PositionedStack = ???
+
+
 	}
+
 }
