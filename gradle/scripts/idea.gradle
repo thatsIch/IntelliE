@@ -1,0 +1,9 @@
+apply plugin: 'idea'        // enable automatic setup of idea workspace
+
+idea{
+    module{
+        inheritOutputDirs = true
+//        outputDir = compileJava.destinationDir
+//        testOutputDir = compileTestJava.destinationDir
+    }
+}

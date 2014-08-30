@@ -1,13 +1,4 @@
-def theChangelog = getChangelog()
-def formatChangelog = formatChangelog(theChangelog)
-def theLastGitPush = getLastGitPush()
-
-curse {
-    apiKey = "eb5b9b11-5d6a-405c-baa2-3acac200baee"
-    projectId = "222848"
-    changelog = formatChangelog
-    releaseType = "alpha"
-}
+apply plugin: 'curseforge'  // enable automatic upload to curseforge
 
 private String getChangelog() {
     def outStream = new ByteArrayOutputStream()
@@ -96,17 +87,24 @@ private String formatChangelog(String changelog) {
     return result.toString()
 }
 
+def log = getChangelog()
+def format = formatChangelog(log)
+
+curse {
+    apiKey = "eb5b9b11-5d6a-405c-baa2-3acac200baee"
+    projectId = "222848"
+    changelog = format
+    releaseType = "alpha"
+}
+
 task printChangelog(group: 'Debug', description: 'Prints the theChangelog for debugging purposes.') << {
-    logger.quiet "The last changelog:\n\n$theChangelog"
+    logger.quiet "The last changelog:\n\n$log"
 }
 
 task printFormatChangelog(group: 'Debug', description: 'Prints the theChangelog in a format for debugging purposes.') << {
-    String cl = theChangelog
-    String format = formatChangelog(cl)
-
     logger.quiet "The formatted changelog:\n\n$format"
 }
 
 task printLastGitPush(group: 'Debug', description: 'Prints the hash of last git push for debugging purposes') << {
-    logger.quiet "The last git push hash: $theLastGitPush"
+    logger.quiet "The last git push hash: ${getLastGitPush()}"
 }
