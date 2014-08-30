@@ -1,9 +1,25 @@
 repositories {
     mavenCentral()
+
+    // AE2 is on forge maven
+    maven {
+        name = "forge"
+        url = "http://files.minecraftforge.net/maven"
+    }
+
+    // IC2 is a dep for AE2
+    maven {
+        name = "ic2"
+        url = "http://maven.ic2.player.to/"
+    }
+
+    // WAILA
     maven {
         name "Mobius Repo"
         url "http://mobiusstrip.eu/maven"
     }
+
+    // NEI
     maven {
         name = "chickenbones"
         url = "http://chickenbones.net/maven/"
@@ -15,7 +31,7 @@ dependencies {
     compile "com.google.code.findbugs:jsr305:3.0.0"
 
     // AE2 dependency
-    compile "appeng:appliedenergistics2:rv1-beta-18:dev"
+    compile "appeng:appliedenergistics2:rv1-beta-17:dev"
 
 //    compile "mcp.mobius.waila:Waila:1.5.3_1.7.10"
     compile "codechicken:NotEnoughItems:1.7.10-1.0.3.51:dev"
