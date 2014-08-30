@@ -5,5 +5,12 @@ idea{
         inheritOutputDirs = true
 //        outputDir = compileJava.destinationDir
 //        testOutputDir = compileTestJava.destinationDir
+//        sourceDirs += file('src/main/java')
+//        testSourceDirs += file('src/awesome-test/java')
+//        compileClasspath += sourceSets.main.runtimeClasspath
+//        testClassesDir = sourceSets.'awesome-test'.output.classesDir
+//        classpath += sourceSets.'awesome-test'.runtimeClasspath
+//        excludeDirs -= file(buildDir) //1
+//        buildDir.listFiles({d,f->f != 'generated-sources'} as FilenameFilter).each {excludeDirs += it}}
     }
 }
