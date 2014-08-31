@@ -6,6 +6,13 @@ appaero.item.chest.name=Chest Nut
 appaero.item.legs.name=Free Runner
 appaero.item.boots.name=Horse Shoes
 
+appaero.item.maxenergy.name=Max Energy
+appaero.item.miningspeed.name=Mining Speed
+appaero.item.energycost.name=Energy Cost
+appaero.item.mininglevel.name=Mining Level
+appaero.item.chargespeed.name=Charge Speed
+appaero.item.damage.name=Damage
+
 appaero.tile.workbench.name=Modification Workbench
 
 appaero.gui.workbench.name=Modification Workbench
