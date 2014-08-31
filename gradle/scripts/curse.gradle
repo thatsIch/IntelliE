@@ -78,11 +78,11 @@ private String formatChangelog(String changelog) {
         }
     }
 
-    if (additions.length() > 14) result.append(additions)
-    if (fixes.length() > 14) result.append(fixes)
-    if (changes.length() > 16) result.append(changes)
-    if (removals.length() > 17) result.append(removals)
-    if (misc.length() > 13) result.append(misc)
+    if (additions.length() > 14) result.append(additions.reverse())
+    if (fixes.length() > 14) result.append(fixes.reverse())
+    if (changes.length() > 16) result.append(changes.reverse())
+    if (removals.length() > 17) result.append(removals.reverse())
+    if (misc.length() > 13) result.append(misc.reverse())
 
     return result.toString()
 }
