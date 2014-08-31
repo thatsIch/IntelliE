@@ -45,44 +45,59 @@ private String formatChangelog(String changelog) {
     final String[] split = changelog.split("\n")
 
     final StringBuilder result = new StringBuilder()
-    final StringBuilder additions = new StringBuilder("Additions:\r\n")
-    final StringBuilder fixes = new StringBuilder("\r\nFixes:\r\n")
-    final StringBuilder changes = new StringBuilder("\r\nChanges:\r\n")
-    final StringBuilder removals = new StringBuilder("\r\nRemovals:\r\n")
-    final StringBuilder misc = new StringBuilder("\r\nMisc:\r\n")
+    final StringBuilder additions = new StringBuilder()
+    final StringBuilder fixes = new StringBuilder()
+    final StringBuilder changes = new StringBuilder()
+    final StringBuilder removals = new StringBuilder()
+    final StringBuilder misc = new StringBuilder()
 
     for (String s : split) {
         if (s.length() == 0) continue
-        String temp = s + "\r\n"
+        String temp = "\t" + s + "\r\n"
 
         switch (s.charAt(0)) {
             case '+':
-                additions.append(temp)
+                additions.insert(0, temp)
                 break
 
             case '=':
-                fixes.append(temp)
+                fixes.insert(0, temp)
                 break
 
             case '~':
-                changes.append(temp)
+                changes.insert(0, temp)
                 break
 
             case '-':
-                removals.append(temp)
+                removals.insert(0, temp)
                 break
 
             default:
-                misc.append(temp)
+                misc.insert(0, temp)
                 break
         }
     }
 
-    if (additions.length() > 14) result.append(additions.reverse())
-    if (fixes.length() > 14) result.append(fixes.reverse())
-    if (changes.length() > 16) result.append(changes.reverse())
-    if (removals.length() > 17) result.append(removals.reverse())
-    if (misc.length() > 13) result.append(misc.reverse())
+    if (additions.length() > 0) {
+        additions.insert(0, "Additions:\r\n")
+        result.append(additions)
+    }
+    if (fixes.length() > 0) {
+        fixes.insert(0, "\r\nFixes:\r\n")
+        result.append(fixes)
+    }
+    if (changes.length() > 0) {
+        changes.insert(0, "\r\nChanges:\r\n")
+        result.append(changes)
+    }
+    if (removals.length() > 0) {
+        removals.insert(0, "\r\nRemovals:\r\n")
+        result.append(removals)
+    }
+    if (misc.length() > 0) {
+        misc.insert(0, "\r\nMisc:\r\n")
+        result.append(misc)
+    }
 
     return result.toString()
 }
