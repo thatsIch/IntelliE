@@ -15,13 +15,19 @@ import net.minecraft.util.{ResourceLocation, StatCollector}
 
 
 /**
- *
+ * NEI recipe handler
+ * handles display, rendering and registration of the recipes
  *
  * @author thatsIch
  * @since 20.08.2014.
  */
 class NEIWorkbenchRecipeHandler extends TemplateRecipeHandler
 {
+	/**
+	 * string of gui textures used as background
+	 *
+	 * @return gui texture of workbench
+	 */
 	def getGuiTexture: String =
 	{
 		val resloc = new ResourceLocation(AppliedAerodynamics.id, "textures/gui/workbench.png")
@@ -29,15 +35,34 @@ class NEIWorkbenchRecipeHandler extends TemplateRecipeHandler
 		resloc.toString
 	}
 
+	/**
+	 * Display name in NEI above the recpes
+	 *
+	 * @return localized string of workbench
+	 */
 	def getRecipeName: String = StatCollector.translateToLocal("appaero.gui.workbench.name")
 
+	/**
+	 * Hitbox in workbench gui to show all recipes
+	 */
 	override def loadTransferRects(): Unit =
 	{
 		this.transferRects.add(new TemplateRecipeHandler.RecipeTransferRect(new Rectangle(73, 29, 27, 16), "workbench"))
 	}
 
+	/**
+	 * class of the workbench gui container
+	 *
+	 * @return workbench gui container
+	 */
 	override def getGuiClass: Class[_ <: GuiContainer] = classOf[WorkbechGui]
 
+	/**
+	 * add the recipes to the list
+	 *
+	 * @param outputId id of the workbench
+	 * @param results something
+	 */
 	override def loadCraftingRecipes(outputId: String, results: AnyRef*): Unit =
 	{
 		if (outputId == "workbench" && this.getClass == classOf[NEIWorkbenchRecipeHandler])
@@ -79,6 +104,11 @@ class NEIWorkbenchRecipeHandler extends TemplateRecipeHandler
 		fr.drawString(string, x - width / 2, y, color)
 	}
 
+	/**
+	 * wrapper class which handles the positions of the several itemstacks in the recipe
+	 *
+	 * @param recipe recipe in workbench
+	 */
 	private class CachedWorkbenchRecipe(recipe: WorkbenchCraftRecipe) extends CachedRecipe
 	{
 		val modifier = new PositionedStack(recipe.attribute, 88, 15)
