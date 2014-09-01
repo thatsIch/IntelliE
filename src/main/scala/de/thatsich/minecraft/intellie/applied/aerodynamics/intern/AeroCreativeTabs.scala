@@ -17,6 +17,9 @@ import net.minecraft.item.Item
  */
 class AeroCreativeTabs(icon: Item, registrable: Seq[Module], log: Log, modid: ID) extends CreativeTabs(modid)
 {
+	private var blockCount = 0
+	private var itemCount = 0
+
 	for (module: Module <- this.registrable)
 	{
 		this.log.debug(s"Scanning ${module.getClass.getSimpleName} for blocks and items.")
@@ -24,16 +27,20 @@ class AeroCreativeTabs(icon: Item, registrable: Seq[Module], log: Log, modid: ID
 		{
 			this.log.debug(s"Add block ${block.getClass.getSimpleName} to this creative tab")
 			block.setCreativeTab(this)
+			this.blockCount += 1
 		})
 		module.items.foreach(item =>
 		{
-			this.log.debug(s"Add item ${item.getClass.getSimpleName} to this creative tab")
 			if (!item.getToolClasses(null).contains("fake"))
 			{
+				this.log.debug(s"Add item ${item.getClass.getSimpleName} to this creative tab")
 				item.setCreativeTab(this)
+				this.itemCount += 1
 			}
 		})
 	}
+
+	this.log.info(s"Added $blockCount blocks and $itemCount items to AeroCreativeTabs.")
 
 	@SideOnly(Side.CLIENT)
 	override def getTabIconItem: Item =
