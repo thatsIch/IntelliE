@@ -4,7 +4,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.string.id.ID
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.boots.item.ItemPowerStorage
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.boots.item.HorseShoesItemPowerStorage
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.item.{ArmorType, BaseItemArmor}
 import net.minecraft.client.renderer.texture.IIconRegister
 import net.minecraft.entity.Entity
@@ -17,8 +17,8 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 07.04.2014.
  */
-class SkyDiverItem(modid: ID, log: Log) extends BaseItemArmor(ArmorType.Helmet, modid, new SkyDiverID, log)
-                                                          with ItemPowerStorage
+abstract class SkyDiverItem(modid: ID, log: Log) extends BaseItemArmor(ArmorType.Helmet, modid, new SkyDiverID, log)
+                                                          with HorseShoesItemPowerStorage
 {
 	this.setUnlocalizedName("helm")
 

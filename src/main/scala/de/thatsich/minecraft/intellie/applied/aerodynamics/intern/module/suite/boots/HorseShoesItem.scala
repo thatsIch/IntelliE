@@ -4,6 +4,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.string.id.ID
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.boots.item.{HorseShoesItemPowerStorage, HorseShoesSpecialArmor}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.item.{ArmorType, BasePoweredItemArmor}
 import net.minecraft.client.renderer.texture.IIconRegister
 import net.minecraft.entity.Entity
@@ -18,8 +19,10 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 16.04.2014.
  */
-class HorseShoesItem(modid: ID, log: Log) extends BasePoweredItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
-                                                            with HorseShoesConfigAccess
+class HorseShoesItem(modid: ID, log: Log)
+	extends BasePoweredItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
+	        with HorseShoesItemPowerStorage
+	        with HorseShoesSpecialArmor
 {
 	// TODO muss logic ändern, sonst kann user einfach ausziehen und hat immer noch effekt
 	override def onArmorTick(world: World, player: EntityPlayer, itemStack: ItemStack): Unit =
@@ -28,7 +31,7 @@ class HorseShoesItem(modid: ID, log: Log) extends BasePoweredItemArmor(ArmorType
 		var newStorage = currentStorage
 		if (player.isSprinting)
 		{
-			newStorage = this.extractAEPower(itemStack, this.initDischargePerTick)
+			newStorage = this.extractAEPower(itemStack, this.config.initDischargePerTick)
 		}
 
 		if (newStorage > 0)

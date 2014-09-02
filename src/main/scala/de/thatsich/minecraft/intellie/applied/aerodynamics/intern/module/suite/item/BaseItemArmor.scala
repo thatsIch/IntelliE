@@ -10,6 +10,7 @@ import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{Item, ItemArmor, ItemStack}
 import net.minecraft.world.World
+import net.minecraftforge.common.ISpecialArmor
 
 
 /**
@@ -20,6 +21,7 @@ import net.minecraft.world.World
  */
 abstract class BaseItemArmor(armorType: ArmorType, modid: ID, itemName: ID, log: Log)
 	extends ItemArmor(ItemArmor.ArmorMaterial.DIAMOND, 0, armorType)
+			with ISpecialArmor
 	        with UnstackableItem
 	        with UniqueItem
 {

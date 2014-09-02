@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 02.09.2014.
  */
-trait ItemPowerStorage extends IAEItemPowerStorage
+trait HorseShoesItemPowerStorage extends IAEItemPowerStorage
 {
 	override def injectAEPower(p1: ItemStack, p2: Double): Double = ???
 

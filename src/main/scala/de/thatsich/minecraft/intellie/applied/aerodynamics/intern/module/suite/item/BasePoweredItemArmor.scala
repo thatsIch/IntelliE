@@ -17,8 +17,6 @@ import net.minecraft.item.ItemStack
  */
 abstract class BasePoweredItemArmor(armorType: ArmorType, modid: ID, itemName: ID, log: Log)
 	extends BaseItemArmor(armorType, modid, itemName, log)
-	        with SpecialArmor
-	        with ItemPowerStorage
 	        with PoweredItemDamageDisplay
 {
 	override def addInformation(itemStack: ItemStack, player: EntityPlayer, information: java.util.List[_], advToolTips: Boolean) =
