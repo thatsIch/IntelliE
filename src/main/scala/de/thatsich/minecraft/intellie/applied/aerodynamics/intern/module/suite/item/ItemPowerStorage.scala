@@ -13,10 +13,10 @@ import net.minecraft.nbt.NBTTagCompound
  * @author thatsIch
  * @since 17.04.2014.
  */
-private[item] trait AEItemPowerStorage extends IAEItemPowerStorage
+private[item] trait ItemPowerStorage extends IAEItemPowerStorage
                                           with NBTAccess
 {
-	self: BaseAEItemPowerArmor =>
+	self: BasePoweredItemArmor =>
 	//	def maxStorage: Double
 
 	private final val internalCurrentPower = "internalCurrentPower"

@@ -3,6 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.
 
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.string.id.ID
+import de.thatsich.minecraft.intellie.applied.aerodynamics.common.item.{UniqueItem, UnstackableItem}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.item.ArmorType.ArmorType
 import net.minecraft.block.BlockDispenser
 import net.minecraft.entity.Entity
@@ -17,13 +18,17 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 16.08.2014.
  */
-abstract class BaseItemArmor(armorType: ArmorType, modid: ID, itemName: ID, log: Log) extends ItemArmor(ItemArmor.ArmorMaterial.DIAMOND, 0, armorType)
+abstract class BaseItemArmor(armorType: ArmorType, modid: ID, itemName: ID, log: Log)
+	extends ItemArmor(ItemArmor.ArmorMaterial.DIAMOND, 0, armorType)
+	        with UnstackableItem
+	        with UniqueItem
 {
 	private final val name: String = this.itemName
 	private final val id: String = this.modid
 
 	this.setUnlocalizedName(this.name)
 	this.setTextureName(s"$id:$name")
+
 	BlockDispenser.dispenseBehaviorRegistry.putObject(this, new AeroDispenseBehavior())
 
 	override def getUnlocalizedName(is: ItemStack): String = this.getUnlocalizedName

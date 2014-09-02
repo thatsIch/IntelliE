@@ -1,6 +1,7 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.common.item
 
 
+import appeng.api.implementations.items.IAEItemPowerStorage
 import net.minecraft.item.{Item, ItemStack}
 
 
@@ -8,10 +9,9 @@ import net.minecraft.item.{Item, ItemStack}
  *
  *
  * @author thatsIch
- * @since 10.08.2014.
+ * @since 02.09.2014.
  */
-trait SpecialTool extends Item
-                          with AEPowerStorage
+trait PoweredItemDamageDisplay extends Item with IAEItemPowerStorage
 {
 	override def isRepairable: Boolean = false
 

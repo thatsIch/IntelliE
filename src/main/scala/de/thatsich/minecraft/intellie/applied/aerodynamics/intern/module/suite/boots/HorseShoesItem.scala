@@ -4,9 +4,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.string.id.ID
-import de.thatsich.minecraft.intellie.applied.aerodynamics.common.item.UniqueItem
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.boots.item.ItemPowerStorage
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.item.{ArmorType, BaseItemArmor}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.item.{ArmorType, BasePoweredItemArmor}
 import net.minecraft.client.renderer.texture.IIconRegister
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
@@ -20,13 +18,9 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 16.04.2014.
  */
-class HorseShoesItem(modid: ID, log: Log) extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
+class HorseShoesItem(modid: ID, log: Log) extends BasePoweredItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
                                                             with HorseShoesConfigAccess
-                                                            with ItemPowerStorage
-                                                            with UniqueItem
 {
-	this.setUnlocalizedName("runner")
-
 	// TODO muss logic ändern, sonst kann user einfach ausziehen und hat immer noch effekt
 	override def onArmorTick(world: World, player: EntityPlayer, itemStack: ItemStack): Unit =
 	{

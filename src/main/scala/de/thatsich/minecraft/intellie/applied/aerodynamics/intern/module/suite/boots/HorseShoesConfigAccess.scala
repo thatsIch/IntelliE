@@ -25,4 +25,6 @@ trait HorseShoesConfigAccess
 	final val maxChargedMultiplier = this.config.getDouble("Energy", "maxChargedMultiplier", 10000)
 	final val initDischargePerTick = this.config.getDouble("Energy", "initDischargePerTick", 400)
 	final val minDischargePerTick = this.config.getDouble("Energy", "minDischargePerTick", 40)
+
+	this.config.save()
 }
