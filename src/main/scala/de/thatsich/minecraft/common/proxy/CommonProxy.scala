@@ -5,8 +5,7 @@ import com.google.common.base.Stopwatch
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import cpw.mods.fml.common.network.{IGuiHandler, NetworkRegistry}
 import de.thatsich.minecraft.common.log.{Log, SimpleLog}
-import de.thatsich.minecraft.common.module.Module
-import de.thatsich.minecraft.common.module.registry.{BlockRegistry, CraftHandlerRegistry, GuiRegistry, ItemRegistry, RecipeRegistry, TileEntityRegistry}
+import de.thatsich.minecraft.common.module.{Module, ModuleRegistry}
 import de.thatsich.minecraft.common.string.Abbreviation
 
 
@@ -19,7 +18,7 @@ import de.thatsich.minecraft.common.string.Abbreviation
 abstract class CommonProxy extends EventProxy
 {
 	final lazy val log: Log = new SimpleLog(this.abbr)
-	final val stopwatch: Stopwatch = Stopwatch.createUnstarted
+	private val stopwatch: Stopwatch = Stopwatch.createUnstarted
 	/**
 	 * Modules of functionality of the mod.
 	 * Can contain blocks, items, recipes etc
@@ -41,6 +40,8 @@ abstract class CommonProxy extends EventProxy
 	 */
 	val mod: AnyRef
 
+	val registry = new ModuleRegistry(this.modules, this.log)
+
 	def onInheritatedPreInit(event: FMLPreInitializationEvent): Unit
 
 	def onInheritatedInit(event: FMLInitializationEvent): Unit
@@ -52,11 +53,8 @@ abstract class CommonProxy extends EventProxy
 		this.log.info("PreInit Begin")
 		this.stopwatch.reset.start
 
-		val items: ItemRegistry = new ItemRegistry(this.modules, this.log)
-		val blocks: BlockRegistry = new BlockRegistry(this.modules, this.log)
-
-		items.registerAll()
-		blocks.registerAll()
+		this.registry.itemRegistry.registerAll()
+		this.registry.blockRegistry.registerAll()
 
 		this.onInheritatedPreInit(event)
 
@@ -69,15 +67,11 @@ abstract class CommonProxy extends EventProxy
 		this.log.info("Init Begin")
 		this.stopwatch.reset.start
 
-		val craftHandlers: CraftHandlerRegistry = new CraftHandlerRegistry(this.modules, this.log)
-		val recipes: RecipeRegistry = new RecipeRegistry(this.modules, this.log)
-		val tiles: TileEntityRegistry = new TileEntityRegistry(this.modules, this.log)
-		val guis: GuiRegistry = new GuiRegistry(this.modules, this.log)
+		this.registry.craftRegistry.registerAll()
+		this.registry.recipeRegistry.registerAll()
+		this.registry.tileRegistry.registerAll()
+		val handler: IGuiHandler = this.registry.guiRegistry.registerAll()
 
-		craftHandlers.registerAll()
-		recipes.registerAll()
-		tiles.registerAll()
-		val handler: IGuiHandler = guis.registerAll()
 		NetworkRegistry.INSTANCE.registerGuiHandler(this.mod, handler)
 
 		this.onInheritatedInit(event)

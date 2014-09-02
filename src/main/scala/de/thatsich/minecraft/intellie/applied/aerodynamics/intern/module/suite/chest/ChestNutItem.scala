@@ -1,7 +1,11 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.chest
 
+
 import cpw.mods.fml.relauncher.{Side, SideOnly}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.common.item.AAEPoweredItemArmor
+import de.thatsich.minecraft.common.log.Log
+import de.thatsich.minecraft.common.string.id.ID
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.boots.item.ItemPowerStorage
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.item.{ArmorType, BaseItemArmor}
 import net.minecraft.client.renderer.texture.IIconRegister
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
@@ -15,7 +19,8 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 07.04.2014.
  */
-class AeroChestItem extends AAEPoweredItemArmor(8000000, 1)
+class ChestNutItem(modid: ID, log: Log) extends BaseItemArmor(ArmorType.Boots, modid, new ChestNutID, log)
+                                                           with ItemPowerStorage
 {
 	this.setUnlocalizedName("chest")
 	final val disChargeOnTick = 80

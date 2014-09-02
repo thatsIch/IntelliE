@@ -3,7 +3,6 @@ package de.thatsich.minecraft.common.module.registry
 
 import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.Module
 import net.minecraft.item.Item
 
 
@@ -13,22 +12,15 @@ import net.minecraft.item.Item
  * @author thatsIch
  * @since 03.08.2014.
  */
-class ItemRegistry(registrable: Seq[Module], log: Log)
+class ItemRegistry(registrable: Seq[Item], log: Log)
 {
 	/**
 	 * Registers all items in modules
 	 */
 	def registerAll(): Unit =
 	{
-		var length = 0
-
-		for (module: Module <- this.registrable; item <- module.items)
-		{
-			this.register(item)
-			length += 1
-		}
-
-		this.log.info(s"Finished loading $length item(s).")
+		this.registrable.foreach(this.register)
+		this.log.info(s"Finished loading ${this.registrable.length} item(s).")
 	}
 
 	/**

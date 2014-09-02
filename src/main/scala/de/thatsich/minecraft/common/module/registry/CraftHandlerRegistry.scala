@@ -5,7 +5,6 @@ import appeng.api.AEApi
 import appeng.api.features.IRecipeHandlerRegistry
 import appeng.api.recipes.ICraftHandler
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.Module
 
 
 /**
@@ -14,7 +13,7 @@ import de.thatsich.minecraft.common.module.Module
  * @author thatsIch
  * @since 11.08.2014.
  */
-class CraftHandlerRegistry(registrable: Seq[Module], log: Log)
+class CraftHandlerRegistry(registrable: Seq[Class[_ <: ICraftHandler]], log: Log)
 {
 	/**
 	 * Registers all the craft handlers into AE2 registry
@@ -22,15 +21,9 @@ class CraftHandlerRegistry(registrable: Seq[Module], log: Log)
 	def registerAll(): Unit =
 	{
 		val registry: IRecipeHandlerRegistry = AEApi.instance().registries().recipes()
-		var length = 0
+		this.registrable.foreach(this.register(_, registry))
 
-		for (module: Module <- this.registrable; crafthandler <- module.crafthandlers)
-		{
-			this.register(crafthandler, registry)
-			length += 1
-		}
-
-		this.log.info(s"Finished loading $length craft handler(s).")
+		this.log.info(s"Finished loading ${this.registrable.size} craft handler(s).")
 	}
 
 	/**

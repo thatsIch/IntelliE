@@ -10,7 +10,8 @@ package disassembler
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.item.BaseItem
 import de.thatsich.minecraft.common.string.id.ID
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item.{AEPowerStorage, AEWrench, BlockBreakEventHandler, BreakSpeedHandler, HumanNumberFormat, MiningTool, PrecisionHarvester, SpecialTool, UniqueItem, UnstackableItem, Weapon}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.common.item.UniqueItem
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item.{AEPowerStorage, AEWrench, BlockBreakEventHandler, BreakSpeedHandler, HumanNumberFormat, MiningTool, PrecisionHarvester, SpecialTool, UnstackableItem, Weapon}
 import net.minecraft.block.Block
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -23,7 +24,7 @@ import org.lwjgl.input.Keyboard
  * @author thatsIch
  * @since 07.04.2014.
  */
-private[disassembler] class DisassemblerItem(modid: ID, name: ID, log: Log) extends BaseItem(modid, name, log)
+private[disassembler] class DisassemblerItem(modid: ID, log: Log) extends BaseItem(modid, new DisassemblerID, log)
                                                                                     with AEWrench
                                                                                     with PrecisionHarvester
                                                                                     with BlockBreakEventHandler

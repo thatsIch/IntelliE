@@ -5,24 +5,33 @@ import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationE
 import de.thatsich.minecraft.common.module.Module
 import de.thatsich.minecraft.common.proxy.CommonProxy
 import de.thatsich.minecraft.common.string.Abbreviation
+import de.thatsich.minecraft.common.string.id.SimpleID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.ModificationWorkbenchModule
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.creativetab.{AeroCreativeTabIcon, AeroCreativeTabsModule}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.DisassemblerModule
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.fakeupgrade.FakeUpgradeModule
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.SuiteModule
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.{AeroAbbreviation, AeroCreativeTabs, AeroID}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.{AeroAbbreviation, AeroCreativeTabs}
 
 
 /**
- *
+ * Proxy class shared beetween server and client
  *
  * @author thatsIch
  * @since 03.08.2014.
  */
 abstract class AeroCommonProxy extends CommonProxy
 {
-	private final val icon = new AeroCreativeTabIcon
+	/**
+	 * Instance of the mod
+	 *
+	 * @return mod instance
+	 */
+	final val mod = AppliedAerodynamics
+	final val modid = new SimpleID(this.mod.id)
+
+	private final val icon = new AeroCreativeTabIcon(this.modid)
 
 	/**
 	 * Modules of functionality of the mod.
@@ -34,7 +43,7 @@ abstract class AeroCommonProxy extends CommonProxy
 		new DisassemblerModule(this.log, this.modid),
 		new ModificationWorkbenchModule(this.log, this.modid),
 		new FakeUpgradeModule(this.log, this.modid),
-		new SuiteModule(this.log, this.modid),
+		new SuiteModule(this.modid, this.log),
 		new AeroCreativeTabsModule(this.icon, this.log, this.modid)
 	)
 	/**
@@ -44,14 +53,10 @@ abstract class AeroCommonProxy extends CommonProxy
 	 * @return abbreviation of mod
 	 */
 	final lazy val abbr: Abbreviation = new AeroAbbreviation
-	/**
-	 * Instance of the mod
-	 *
-	 * @return mod instance
-	 */
-	final val mod = AppliedAerodynamics
-	final val modid = new AeroID
 
+	/**
+	 * Creative tab of Aerodynamics
+	 */
 	new AeroCreativeTabs(this.icon, this.modules, this.log, this.modid)
 
 	def onInheritatedPreInit(event: FMLPreInitializationEvent): Unit = {}

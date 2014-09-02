@@ -25,4 +25,5 @@ trait Module
 	val recipes: Seq[Recipe]
 	val guis: Seq[BlockGuiHandler]
 	val crafthandlers: Seq[Class[_ <: ICraftHandler]]
+	val modules: Seq[Module]
 }

@@ -1,7 +1,14 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item
+package de.thatsich.minecraft
+package intellie
+package applied
+package aerodynamics
+package intern
+package module
+package disassembler
+package item
 
 
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item.config.DisassemblerConfig
+import config.DisassemblerConfig
 
 
 /**

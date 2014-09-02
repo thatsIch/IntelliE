@@ -2,13 +2,12 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.item.BaseItem
 import de.thatsich.minecraft.common.string.id.ID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.item.ArmorType.ArmorType
 import net.minecraft.block.BlockDispenser
+import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.entity.{Entity, EntityLiving}
-import net.minecraft.item.ItemStack
+import net.minecraft.item.{Item, ItemArmor, ItemStack}
 import net.minecraft.world.World
 
 
@@ -18,9 +17,27 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 16.08.2014.
  */
-abstract class BaseItemArmor(armorType: ArmorType, modid: ID, itemName: ID, log: Log) extends BaseItem(modid, itemName, log)
+abstract class BaseItemArmor(armorType: ArmorType, modid: ID, itemName: ID, log: Log) extends ItemArmor(ItemArmor.ArmorMaterial.DIAMOND, 0, armorType)
 {
+	private final val name: String = this.itemName
+	private final val id: String = this.modid
+
+	this.setUnlocalizedName(this.name)
+	this.setTextureName(s"$id:$name")
 	BlockDispenser.dispenseBehaviorRegistry.putObject(this, new AeroDispenseBehavior())
+
+	override def getUnlocalizedName(is: ItemStack): String = this.getUnlocalizedName
+
+	override def getUnlocalizedName: String = s"$id.item.$name"
+
+	/**
+	 * integrates the mod id into the item
+	 *
+	 * @param name name of the item
+	 *
+	 * @return itself
+	 */
+	override def setUnlocalizedName(name: String): Item = super.setUnlocalizedName(s"$id.$name")
 
 	override def onItemRightClick(is: ItemStack, world: World, player: EntityPlayer): ItemStack =
 	{

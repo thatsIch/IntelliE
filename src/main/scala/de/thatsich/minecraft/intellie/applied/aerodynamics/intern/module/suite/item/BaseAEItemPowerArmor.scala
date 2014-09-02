@@ -1,5 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.common.item
-
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.item
 
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{ItemArmor, ItemStack}
@@ -11,10 +10,10 @@ import net.minecraft.item.{ItemArmor, ItemStack}
  * @author thatsIch
  * @since 17.04.2014.
  */
-abstract class AAEPoweredItemArmor(protected val maxStorage: Double, armorType: Int)
+abstract class BaseAEItemPowerArmor(protected val maxStorage: Double, armorType: Int)
 	extends ItemArmor(ItemArmor.ArmorMaterial.DIAMOND, 0, armorType)
-	        with TSpecialArmor
-	        with TPowerStorage
+	        with SpecialArmor
+	        with AEItemPowerStorage
 {
 	final val steps = 32
 	this.setMaxDamage(this.steps)

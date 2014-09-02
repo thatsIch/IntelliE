@@ -1,5 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item
-
+package de.thatsich.minecraft.intellie.applied.aerodynamics.common.item
 
 import net.minecraft.item.Item
 

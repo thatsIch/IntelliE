@@ -17,7 +17,7 @@ import de.thatsich.minecraft.common.module.gui.{BlockGuiHandler, GuiBridge}
  * @author thatsIch
  * @since 06.08.2014.
  */
-class GuiRegistry(registrable: Seq[Module], log: Log) extends BlockGuiHasher
+class GuiRegistry(registrable: Seq[BlockGuiHandler], log: Log) extends BlockGuiHasher
 {
 	/**
 	 * Registers all handlers and merge into a singe IGuiHandler
@@ -27,15 +27,8 @@ class GuiRegistry(registrable: Seq[Module], log: Log) extends BlockGuiHasher
 	def registerAll(): IGuiHandler =
 	{
 		val table = new util.Hashtable[Int, BlockGuiHandler]()
-		var length = 0
-
-		for (module: Module <- this.registrable; gui <- module.guis)
-		{
-			this.register(gui, table)
-			length += 1
-		}
-
-		this.log.info(s"Finished loading $length gui handler(s).")
+		this.registrable.foreach(this.register(_, table))
+		this.log.info(s"Finished loading ${this.registrable.length} gui handler(s).")
 
 		new GuiBridge(table, this.log)
 	}

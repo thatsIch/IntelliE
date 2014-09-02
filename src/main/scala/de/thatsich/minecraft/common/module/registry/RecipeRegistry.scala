@@ -6,7 +6,6 @@ import java.io._
 import appeng.api.AEApi
 import appeng.api.recipes.{IRecipeHandler, IRecipeLoader}
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.Module
 import de.thatsich.minecraft.common.module.recipe.Recipe
 
 
@@ -16,7 +15,7 @@ import de.thatsich.minecraft.common.module.recipe.Recipe
  * @author thatsIch
  * @since 03.08.2014.
  */
-class RecipeRegistry(registrable: Seq[Module], log: Log)
+class RecipeRegistry(registrable: Seq[Recipe], log: Log)
 {
 	/**
 	 * Registers all recipes in the modules
@@ -24,15 +23,8 @@ class RecipeRegistry(registrable: Seq[Module], log: Log)
 	def registerAll(): Unit =
 	{
 		val recipehandler: IRecipeHandler = AEApi.instance().registries().recipes().createNewRecipehandler()
-		var length = 0
-
-		for (module: Module <- this.registrable; recipe <- module.recipes)
-		{
-			this.register(recipehandler, recipe)
-			length += 1
-		}
-
-		this.log.info(s"Finished loading $length recipe(s).")
+		this.registrable.foreach(this.register(recipehandler,_))
+		this.log.info(s"Finished loading ${this.registrable.length} recipe(s).")
 		recipehandler.injectRecipes()
 	}
 

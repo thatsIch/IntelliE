@@ -1,5 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.common.item
-
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.item
 
 import appeng.api.config.AccessRestriction
 import appeng.api.implementations.items.IAEItemPowerStorage
@@ -14,10 +13,10 @@ import net.minecraft.nbt.NBTTagCompound
  * @author thatsIch
  * @since 17.04.2014.
  */
-private[item] trait TPowerStorage extends IAEItemPowerStorage
+private[item] trait AEItemPowerStorage extends IAEItemPowerStorage
                                           with NBTAccess
 {
-	self: AAEPoweredItemArmor =>
+	self: BaseAEItemPowerArmor =>
 	//	def maxStorage: Double
 
 	private final val internalCurrentPower = "internalCurrentPower"

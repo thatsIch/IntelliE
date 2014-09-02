@@ -15,22 +15,15 @@ import net.minecraft.block.Block
  * @author thatsIch
  * @since 03.08.2014.
  */
-class BlockRegistry(registrable: Seq[Module], log: Log)
+class BlockRegistry(blocks: Seq[Block], log: Log)
 {
 	/**
 	 * Registers all the block in modules
 	 */
 	def registerAll(): Unit =
 	{
-		var length = 0
-
-		for (module: Module <- this.registrable; block: Block <- module.blocks)
-		{
-			this.register(block)
-			length += 1
-		}
-
-		this.log.info(s"Finished loading $length block(s).")
+		this.blocks.foreach(this.register)
+		this.log.info(s"Finished loading ${blocks.size} block(s).")
 	}
 
 	/**
@@ -38,13 +31,15 @@ class BlockRegistry(registrable: Seq[Module], log: Log)
 	 *
 	 * @param block to be registered block
 	 */
-	private def register(block: Block): Unit =
+	private def register(block: Block): Int =
 	{
 		val name: String = this.getBlockName(block)
 		val simpleClassName: String = block.getClass.getSimpleName
 
 		this.log.debug(s"Adding block $simpleClassName with name $name")
 		GameRegistry.registerBlock(block, name)
+
+		1
 	}
 
 	/**

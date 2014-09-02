@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.
 
 
 import de.thatsich.minecraft.common.config.SimpleConfig
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.boots.config.FreeRunnerConfigPath
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.boots.item.config.HorseShoesConfigPath
 
 
 /**
@@ -11,9 +11,9 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.b
  * @author thatsIch
  * @since 16.08.2014.
  */
-trait FreeRunnerConfigAccess
+trait HorseShoesConfigAccess
 {
-	final val path = new FreeRunnerConfigPath
+	final val path = new HorseShoesConfigPath
 	final val config = new SimpleConfig(this.path)
 
 	final val initArmorLevel = this.config.getDouble("Combat", "maxArmorLevel", 0)

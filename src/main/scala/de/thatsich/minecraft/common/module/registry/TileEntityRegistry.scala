@@ -7,7 +7,6 @@ package registry
 import appeng.api.AEApi
 import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.common.log.Log
-import net.minecraft.item.Item
 import net.minecraft.tileentity.TileEntity
 
 
@@ -20,22 +19,15 @@ import net.minecraft.tileentity.TileEntity
  * @author thatsIch
  * @since 03.08.2014.
  */
-class TileEntityRegistry(registrable: Seq[Module], log: Log)
+class TileEntityRegistry(registrable: Seq[Class[_ <: TileEntity]], log: Log)
 {
 	/**
 	 * Registers all tile entites of the module
 	 */
 	def registerAll(): Unit =
 	{
-		var length = 0
-
-		for (module: Module <- this.registrable; te <- module.tiles)
-		{
-			this.register(te)
-			length += 1
-		}
-
-		this.log.info(s"Finished loading $length tile(s).")
+		this.registrable.foreach(this.register)
+		this.log.info(s"Finished loading ${this.registrable.length} tile(s).")
 	}
 
 	/**
