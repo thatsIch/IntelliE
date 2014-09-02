@@ -2,6 +2,7 @@ package de.thatsich.minecraft.common.module.block
 
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
+import de.thatsich.minecraft.common.module.BaseBlock
 import net.minecraft.client.renderer.texture.IIconRegister
 import net.minecraft.util.IIcon
 import net.minecraft.world.IBlockAccess

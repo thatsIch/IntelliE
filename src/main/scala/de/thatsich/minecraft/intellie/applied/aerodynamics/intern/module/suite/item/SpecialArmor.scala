@@ -1,6 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.item
 
 
+import appeng.api.implementations.items.IAEItemPowerStorage
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -14,7 +15,7 @@ import net.minecraftforge.common.ISpecialArmor
  * @author thatsIch
  * @since 17.04.2014.
  */
-private[item] trait SpecialArmor extends ISpecialArmor
+private[item] trait SpecialArmor extends IAEItemPowerStorage with ISpecialArmor
 {
 	final val energyPerDamage: Double = 1000D
 	final val absorptionRatio: Double = 0.44D

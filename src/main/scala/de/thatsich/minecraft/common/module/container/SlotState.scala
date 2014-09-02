@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.common.module.container.slot
+package de.thatsich.minecraft.common.module.container
 
 
 /**

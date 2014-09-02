@@ -1,12 +1,8 @@
-package de.thatsich.minecraft
-package common
-package module
-package container
-package slot
+package de.thatsich.minecraft.common.module.container
 
 
-import de.thatsich.minecraft.common.module.container.slot.SlotSide.SlotSide
-import de.thatsich.minecraft.common.module.container.slot.SlotState.SlotState
+import de.thatsich.minecraft.common.module.container.SlotSide.SlotSide
+import de.thatsich.minecraft.common.module.container.SlotState.SlotState
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.inventory.{IInventory, Slot}
 import net.minecraft.item.ItemStack

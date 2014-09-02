@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.container.slot.SlotSide
+import de.thatsich.minecraft.common.module.container.SlotSide
 import de.thatsich.minecraft.common.module.gui.BlockGuiHandler
 import de.thatsich.minecraft.common.string.id.ID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.client.WorkbechGui

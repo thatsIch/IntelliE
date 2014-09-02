@@ -1,8 +1,7 @@
-package de.thatsich.minecraft.common.module.gui
+package de.thatsich.minecraft.common.module
 
 
-import java.util
-
+import de.thatsich.minecraft.common.module.gui.ToolTip
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.client.HoloSlot
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.inventory.GuiContainer
@@ -12,7 +11,7 @@ import net.minecraft.inventory.{Container, Slot}
 import net.minecraft.util.ResourceLocation
 import org.lwjgl.opengl.GL11
 
-import scala.collection.JavaConverters._
+import scala.collection.convert.Wrappers.JListWrapper
 import scala.collection.mutable
 
 
@@ -29,8 +28,8 @@ abstract class BaseGuiContainer(container: Container) extends GuiContainer(conta
 		// reset colors
 		GL11.glColor4f(1, 1, 1, 1)
 		this.drawBG(this.guiLeft, this.guiTop, x, y)
-		val slots: util.List[Slot] = this.inventorySlots.inventorySlots.asInstanceOf[util.List[Slot]]
-		val slotBuffer: mutable.Buffer[Slot] = slots.asScala
+		val slots: java.util.List[Slot] = this.inventorySlots.inventorySlots.asInstanceOf[java.util.List[Slot]]
+		val slotBuffer: mutable.Buffer[Slot] = new JListWrapper(slots)
 
 		this.drawHoloIcons(slotBuffer)
 	}
@@ -81,7 +80,7 @@ abstract class BaseGuiContainer(container: Container) extends GuiContainer(conta
 	{
 		super.drawScreen(mouseX, mouseY, btn)
 
-		val buttons: mutable.Buffer[GuiButton] = this.buttonList.asInstanceOf[util.List[GuiButton]].asScala
+		val buttons: mutable.Buffer[GuiButton] = new JListWrapper(this.buttonList.asInstanceOf[java.util.List[GuiButton]])
 		buttons.foreach
 		{
 			case tooltip: ToolTip =>

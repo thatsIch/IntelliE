@@ -1,8 +1,4 @@
-package de.thatsich.minecraft
-package common
-package module
-package block
-
+package de.thatsich.minecraft.common.module
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log

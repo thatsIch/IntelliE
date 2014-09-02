@@ -8,7 +8,8 @@ package bench
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.block.{BaseBlock, MultiTexture}
+import de.thatsich.minecraft.common.module.BaseBlock
+import de.thatsich.minecraft.common.module.block.MultiTexture
 import de.thatsich.minecraft.common.module.registry.BlockGuiHasher
 import de.thatsich.minecraft.common.string.id.ID
 import net.minecraft.block.Block

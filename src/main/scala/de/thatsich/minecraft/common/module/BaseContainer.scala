@@ -1,7 +1,7 @@
-package de.thatsich.minecraft.common.module.container
+package de.thatsich.minecraft.common.module
 
 
-import de.thatsich.minecraft.common.module.container.slot.BaseSlot
+import de.thatsich.minecraft.common.module.container.BaseSlot
 import net.minecraft.entity.player.{EntityPlayer, InventoryPlayer}
 import net.minecraft.inventory.{Container, Slot}
 import net.minecraft.item.ItemStack
