@@ -16,19 +16,9 @@ abstract class BaseItem(modid: ID, itemName: ID, log: Log) extends Item
 	private final val name: String = this.itemName
 	private final val id: String = this.modid
 
-	this.setUnlocalizedName(this.name)
 	this.setTextureName(s"$id:$name")
 
 	override def getUnlocalizedName(is: ItemStack): String = this.getUnlocalizedName
 
 	override def getUnlocalizedName: String = s"$id.item.$name"
-
-	/**
-	 * integrates the mod id into the item
-	 *
-	 * @param name name of the item
-	 *
-	 * @return itself
-	 */
-	override def setUnlocalizedName(name: String): Item = super.setUnlocalizedName(s"$id.$name")
 }

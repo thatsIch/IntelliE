@@ -3,7 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.fakeup
 
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.string.id.{ID, SimpleID}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.fakeupgrade.item.FakeBaseItem
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.fakeupgrade.item.BaseFakeItem
 
 
 /**
@@ -12,4 +12,4 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.fakeupg
  * @author thatsIch
  * @since 12.08.2014.
  */
-class DamageVsEntites(modid: ID, log: Log) extends FakeBaseItem(modid, new SimpleID("damage"), log)
+class DamageVsEntites(modid: ID, log: Log) extends BaseFakeItem(modid, new SimpleID("damage"), log)

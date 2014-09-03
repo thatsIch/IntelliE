@@ -27,21 +27,18 @@ class HorseShoesItem(modid: ID, log: Log)
 	// TODO muss logic ändern, sonst kann user einfach ausziehen und hat immer noch effekt
 	override def onArmorTick(world: World, player: EntityPlayer, itemStack: ItemStack): Unit =
 	{
-		val currentStorage = this.getAECurrentPower(itemStack)
-		var newStorage = currentStorage
 		if (player.isSprinting)
 		{
-			newStorage = this.extractAEPower(itemStack, this.config.initDischargePerTick)
-		}
-
-		if (newStorage > 0)
-		{
-			player.stepHeight = 1F
-			player.fallDistance = 0
-		}
-		else
-		{
-			player.stepHeight = 0.5F
+			val extracted = this.extractAEPower(itemStack, this.config.initDischargePerTick)
+			if (extracted > 0)
+			{
+				player.stepHeight = 1F
+				player.fallDistance = 0
+			}
+			else
+			{
+				player.stepHeight = 0.5F
+			}
 		}
 	}
 

@@ -13,6 +13,9 @@ import de.thatsich.minecraft.common.string.id.ID
  * @since 01.08.2014.
  */
 class DisassemblerModule(log: Log, modid: ID) extends BaseModule(
-	items = Vector(new DisassemblerItem(modid, log)),
+	items = Vector(
+		new DisassemblerItem(modid, log),
+		new FullyUpgradedDisassemblerItem(modid, log)
+	),
 	recipes = Vector(new DisassemblerCraftRecipe, new DisassemblerUpgradeRecipe)
 )

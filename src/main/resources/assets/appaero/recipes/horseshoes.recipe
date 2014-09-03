@@ -1,0 +1,11 @@
+alias=mc -> minecraft
+alias=aero -> appaero
+alias=ae2 -> appliedenergistics2
+
+group=ae2:BlockSkyStone -> stone
+group=ae2:ItemMaterial.SkyDust -> dust
+
+shaped=
+	stone _ stone
+	dust _ dust
+	-> aero:horseshoes

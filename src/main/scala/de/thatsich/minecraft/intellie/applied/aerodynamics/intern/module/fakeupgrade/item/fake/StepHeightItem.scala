@@ -2,14 +2,14 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.fakeup
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.string.id.{ID, SimpleID}
+import de.thatsich.minecraft.common.string.id.{SimpleID, ID}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.fakeupgrade.item.BaseFakeItem
 
 
 /**
- *
+ * 
  *
  * @author thatsIch
- * @since 12.08.2014.
+ * @since 03.09.2014.
  */
-class MiningLevel(modid: ID, log: Log) extends BaseFakeItem(modid, new SimpleID("mininglevel"), log)
+class StepHeightItem(modid: ID, log: Log) extends BaseFakeItem(modid, new SimpleID("stepheight"), log)
