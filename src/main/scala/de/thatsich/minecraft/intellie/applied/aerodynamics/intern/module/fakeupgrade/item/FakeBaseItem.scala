@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.fakeup
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.item.BaseItem
+import de.thatsich.minecraft.common.module.BaseItem
 import de.thatsich.minecraft.common.string.id.ID
 
 

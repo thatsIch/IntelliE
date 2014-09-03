@@ -11,6 +11,8 @@ import net.minecraft.entity.Entity
 import net.minecraft.item.Item
 import net.minecraft.tileentity.TileEntity
 
+import scala.collection._
+
 
 /**
  *
@@ -20,15 +22,13 @@ import net.minecraft.tileentity.TileEntity
  */
 class ModuleRegistry(registrable: Seq[Module], log: Log)
 {
-	private val blocks = Seq[Block]()
-	private val crafts = Seq[Class[_ <: ICraftHandler]]()
-	private val entities = Seq[Entity]()
-	private val guis = Seq[BlockGuiHandler]()
-	private val items = Seq[Item]()
-	private val recipes = Seq[Recipe]()
-	private val tiles = Seq[Class[_ <: TileEntity]]()
-
-	this.registrable.foreach(this.addModule)
+	val blocks = mutable.ArrayBuffer[Block]()
+	val crafts = mutable.ArrayBuffer[Class[_ <: ICraftHandler]]()
+	val entities = mutable.ArrayBuffer[Entity]()
+	val guis = mutable.ArrayBuffer[BlockGuiHandler]()
+	val items = mutable.ArrayBuffer[Item]()
+	val recipes = mutable.ArrayBuffer[Recipe]()
+	val tiles = mutable.ArrayBuffer[Class[_ <: TileEntity]]()
 
 	val blockRegistry = new BlockRegistry(this.blocks, this.log)
 	val craftRegistry = new CraftHandlerRegistry(this.crafts, this.log)
@@ -38,15 +38,17 @@ class ModuleRegistry(registrable: Seq[Module], log: Log)
 	val recipeRegistry = new RecipeRegistry(this.recipes, this.log)
 	val tileRegistry = new TileEntityRegistry(this.tiles, this.log)
 
+	this.registrable.foreach(this.addModule)
+
 	private def addModule(module: Module): Unit =
 	{
-		this.blocks ++ module.blocks
-		this.items ++ module.items
-		this.guis ++ module.guis
-		this.recipes ++ module.recipes
-		this.tiles ++ module.tiles
-		this.crafts ++ module.crafthandlers
-		this.entities ++ module.entites
+		this.blocks ++= module.blocks
+		this.items ++= module.items
+		this.guis ++= module.guis
+		this.recipes ++= module.recipes
+		this.tiles ++= module.tiles
+		this.crafts ++= module.crafthandlers
+		this.entities ++= module.entites
 
 		module.modules.foreach(this.addModule)
 	}

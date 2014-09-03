@@ -28,10 +28,10 @@ abstract class AeroCommonProxy extends CommonProxy
 	 *
 	 * @return mod instance
 	 */
-	final val mod = AppliedAerodynamics
-	final val modid = new SimpleID(this.mod.id)
+	final lazy val mod = AppliedAerodynamics
+	final lazy val modid = new SimpleID(this.mod.id)
 
-	private final val icon = new AeroCreativeTabIcon(this.modid)
+	private final lazy val icon = new AeroCreativeTabIcon(this.modid)
 
 	/**
 	 * Modules of functionality of the mod.
@@ -57,7 +57,7 @@ abstract class AeroCommonProxy extends CommonProxy
 	/**
 	 * Creative tab of Aerodynamics
 	 */
-	new AeroCreativeTabs(this.icon, this.modules, this.log, this.modid)
+	new AeroCreativeTabs(this.icon, this.registry.blocks, this.registry.items, this.log, this.modid)
 
 	def onInheritatedPreInit(event: FMLPreInitializationEvent): Unit = {}
 
