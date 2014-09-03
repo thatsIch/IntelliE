@@ -84,9 +84,10 @@ private[disassembler] trait AEPowerStorage extends IAEItemPowerStorage
 	{
 		val currentStorage = this.getAECurrentPower(is)
 		val newStorage = Math.max(0.0, currentStorage - amt)
+		val diff = currentStorage - newStorage
 		this.setAECurrentPower(is, newStorage)
 
-		newStorage
+		diff
 	}
 
 	def addAECurrentPower(is: ItemStack, value: Double): Double =

@@ -28,6 +28,8 @@ class HorseShoesConfigAccess
 	final val minEnergyPerDamagePoint = this.config.getDouble("Energy", "minEnergyPerDamagePoint", 1000)
 	final val initDischargePerTick = this.config.getDouble("Energy", "initDischargePerTick", 100)
 	final val minDischargePerTick = this.config.getDouble("Energy", "minDischargePerTick", 10)
+	final val initChargeMultiplier = this.config.getDouble("Energy", "initChargeMultiplier", 1)
+	final val maxChargeMultiplier = this.config.getDouble("Energy", "maxChargeMultiplier", 100)
 
 	this.config.save()
 }

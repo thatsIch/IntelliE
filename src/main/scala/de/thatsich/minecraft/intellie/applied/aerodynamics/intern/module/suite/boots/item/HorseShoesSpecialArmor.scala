@@ -20,8 +20,6 @@ trait HorseShoesSpecialArmor extends ISpecialArmor
 	with HorseShoesItemPowerStorage
 	with NBTAccess
 {
-	val config = new HorseShoesConfigAccess
-
 	def getEnergyPerDamage(armor: ItemStack): Double =
 	{
 		val tag: NBTTagCompound = this.getNBTData(armor)

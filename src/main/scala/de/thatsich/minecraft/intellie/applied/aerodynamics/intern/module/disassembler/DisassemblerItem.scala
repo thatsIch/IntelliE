@@ -66,7 +66,7 @@ private[disassembler] class DisassemblerItem(modid: ID, log: Log) extends BaseIt
 		else
 		{
 			val shortCurrent = this.readableForm(currentPower)
-			list.add(s"Stored Energy: $shortCurrent AE - $percent%")
+			list.add(s"Stored Energy: $shortCurrent - $percent%")
 			list.add("Hold shift for more information")
 		}
 	}
