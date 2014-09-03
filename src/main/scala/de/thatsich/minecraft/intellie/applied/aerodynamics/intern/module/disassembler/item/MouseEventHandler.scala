@@ -2,6 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disass
 
 
 import cpw.mods.fml.common.eventhandler.{EventPriority, SubscribeEvent}
+import cpw.mods.fml.relauncher.{Side, SideOnly}
 import net.minecraftforge.client.event.MouseEvent
 import net.minecraftforge.common.MinecraftForge
 
@@ -24,6 +25,7 @@ private[disassembler] trait MouseEventHandler
 	 *
 	 * @param event mouse event
 	 */
+	@SideOnly(Side.CLIENT)
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	def onMouseEvent(event: MouseEvent): Unit =
 	{
