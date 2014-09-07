@@ -3,6 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disass
 
 import appeng.api.config.AccessRestriction
 import appeng.api.implementations.items.IAEItemPowerStorage
+import de.thatsich.minecraft.common.module.BaseItem
 import de.thatsich.minecraft.common.module.util.NBTAccess
 import net.minecraft.item.ItemStack
 
@@ -13,9 +14,10 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 31.07.2014.
  */
-private[disassembler] trait AEPowerStorage extends IAEItemPowerStorage
-                                                 with NBTAccess
-                                                 with DisassemblerConfigAccess
+private[disassembler] trait PoweredItem extends BaseItem
+                                                with IAEItemPowerStorage
+                                                with NBTAccess
+                                                with DisassemblerConfigAccess
 {
 	def injectAEPower(is: ItemStack, amt: Double): Double =
 	{
@@ -30,28 +32,6 @@ private[disassembler] trait AEPowerStorage extends IAEItemPowerStorage
 		this.setAECurrentPower(is, cappedStorage)
 
 		amt - diff
-	}
-
-	// AE Max Power
-	def getAEMaxPower(is: ItemStack): Double =
-	{
-		val tag = this.getNBTData(is)
-		val current = tag.getDouble(Tags.MaxEnergy)
-
-		(this.initEnergy + current) min this.maxEnergy
-	}
-
-	// AE Current Power
-	def getAECurrentPower(is: ItemStack): Double =
-	{
-		val tag = this.getNBTData(is)
-		tag.getDouble(Tags.CurrentEnergy)
-	}
-
-	def setAECurrentPower(is: ItemStack, value: Double): Unit =
-	{
-		val tag = this.getNBTData(is)
-		tag.setDouble(Tags.CurrentEnergy, value)
 	}
 
 	// AE Charge Multiplier
@@ -72,6 +52,15 @@ private[disassembler] trait AEPowerStorage extends IAEItemPowerStorage
 		sum
 	}
 
+	// AE Max Power
+	def getAEMaxPower(is: ItemStack): Double =
+	{
+		val tag = this.getNBTData(is)
+		val current = tag.getDouble(Tags.MaxEnergy)
+
+		(this.initEnergy + current) min this.maxEnergy
+	}
+
 	def setAEMaxPower(is: ItemStack, value: Double): Unit =
 	{
 		val tag = this.getNBTData(is)
@@ -88,6 +77,19 @@ private[disassembler] trait AEPowerStorage extends IAEItemPowerStorage
 		this.setAECurrentPower(is, newStorage)
 
 		diff
+	}
+
+	// AE Current Power
+	def getAECurrentPower(is: ItemStack): Double =
+	{
+		val tag = this.getNBTData(is)
+		tag.getDouble(Tags.CurrentEnergy)
+	}
+
+	def setAECurrentPower(is: ItemStack, value: Double): Unit =
+	{
+		val tag = this.getNBTData(is)
+		tag.setDouble(Tags.CurrentEnergy, value)
 	}
 
 	def addAECurrentPower(is: ItemStack, value: Double): Double =
@@ -120,12 +122,9 @@ private[disassembler] trait AEPowerStorage extends IAEItemPowerStorage
 		tag.setDouble(Tags.EnergyCost, value)
 	}
 
-	private object Tags extends Enumeration
+	private object Tags extends BaseNBTProperty
 	{
-		type Tags = Value
 		val CurrentEnergy, MaxEnergy, ChargeSpeed, EnergyCost = Value
-
-		implicit def tagsToString(tag: Tags): String = tag.toString.toLowerCase
 	}
-
+	Tags.values.foreach(this.properties += _)
 }

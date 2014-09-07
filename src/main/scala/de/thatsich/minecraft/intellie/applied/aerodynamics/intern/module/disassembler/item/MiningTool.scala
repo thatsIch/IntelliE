@@ -1,9 +1,10 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item
 
 
+import de.thatsich.minecraft.common.module.BaseItem
 import de.thatsich.minecraft.common.module.util.NBTAccess
 import net.minecraft.block.Block
-import net.minecraft.item.{Item, ItemStack}
+import net.minecraft.item.ItemStack
 
 
 /**
@@ -12,8 +13,8 @@ import net.minecraft.item.{Item, ItemStack}
  * @author thatsIch
  * @since 10.08.2014.
  */
-trait MiningTool extends Item
-                         with AEPowerStorage
+trait MiningTool extends BaseItem
+                         with PoweredItem
                          with NBTAccess
                          with DisassemblerConfigAccess
 {
@@ -66,12 +67,9 @@ trait MiningTool extends Item
 		tag.setDouble(Tags.MiningLevel, value)
 	}
 
-	private object Tags extends Enumeration
+	private object Tags extends BaseNBTProperty
 	{
-		type Tags = Value
 		val MiningLevel, MiningSpeed = Value
-
-		implicit def tagsToString(tag: Tags): String = tag.toString.toLowerCase
 	}
-
+	Tags.values.foreach(this.properties += _)
 }

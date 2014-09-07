@@ -16,7 +16,7 @@ import scala.collection.JavaConverters._
  * @author thatsIch
  * @since 31.07.2014.
  */
-private[disassembler] trait BlockBreakEventHandler extends AEPowerStorage
+private[disassembler] trait BlockBreakEventHandler extends PoweredItem
                                                            with DisassemblerConfigAccess
 {
 	MinecraftForge.EVENT_BUS.register(this)

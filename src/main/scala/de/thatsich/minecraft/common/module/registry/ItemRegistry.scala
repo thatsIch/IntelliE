@@ -3,7 +3,10 @@ package de.thatsich.minecraft.common.module.registry
 
 import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.common.log.Log
+import de.thatsich.minecraft.common.string.id.ID
 import net.minecraft.item.Item
+
+import scala.collection._
 
 
 /**
@@ -12,7 +15,7 @@ import net.minecraft.item.Item
  * @author thatsIch
  * @since 03.08.2014.
  */
-class ItemRegistry(registrable: Seq[Item], log: Log)
+class ItemRegistry(registrable: Seq[Item], modid: ID, log: Log)
 {
 	/**
 	 * Registers all items in modules

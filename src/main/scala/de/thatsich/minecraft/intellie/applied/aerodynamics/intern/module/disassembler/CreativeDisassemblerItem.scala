@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 03.09.2014.
  */
-class FullyUpgradedDisassemblerItem(modid: ID, log: Log) extends DisassemblerItem(modid, log)
+class CreativeDisassemblerItem(modid: ID, log: Log) extends DisassemblerItem(modid, log)
 {
 	override def getUnlocalizedName: String = s"${modid.id}.item.creativedisassembler"
 

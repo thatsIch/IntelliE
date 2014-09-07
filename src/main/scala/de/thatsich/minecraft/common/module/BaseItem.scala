@@ -1,6 +1,7 @@
 package de.thatsich.minecraft.common.module
 
 import de.thatsich.minecraft.common.log.Log
+import de.thatsich.minecraft.common.module.item.NBTKeyStorage
 import de.thatsich.minecraft.common.string.id.ID
 import net.minecraft.item.{Item, ItemStack}
 
@@ -12,6 +13,7 @@ import net.minecraft.item.{Item, ItemStack}
  * @since 10.08.2014.
  */
 abstract class BaseItem(modid: ID, itemName: ID, log: Log) extends Item
+	with NBTKeyStorage
 {
 	private final val name: String = this.itemName
 	private final val id: String = this.modid

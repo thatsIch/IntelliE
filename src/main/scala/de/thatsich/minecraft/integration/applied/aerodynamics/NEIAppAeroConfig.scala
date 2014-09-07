@@ -9,7 +9,9 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
 
 
 /**
- *
+ * if you name it NEI___Config and implement IConfigureNEI
+ * it will be automatically loaded by NEI
+ * not the cleanest way but it works..
  *
  * @author thatsIch
  * @since 30.08.2014.
@@ -33,5 +35,5 @@ class NEIAppAeroConfig extends IConfigureNEI
 
 	override def getName: String = AppliedAerodynamicsNei.id
 
-	override def getVersion: String = "1"
+	override def getVersion: String = AppliedAerodynamicsNei.version
 }

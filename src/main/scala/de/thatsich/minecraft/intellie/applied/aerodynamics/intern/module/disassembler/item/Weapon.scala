@@ -1,10 +1,11 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item
 
 
+import de.thatsich.minecraft.common.module.BaseItem
 import de.thatsich.minecraft.common.module.util.NBTAccess
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.item.{Item, ItemStack}
+import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.DamageSource
 
@@ -15,10 +16,10 @@ import net.minecraft.util.DamageSource
  * @author thatsIch
  * @since 10.08.2014.
  */
-trait Weapon extends Item
+trait Weapon extends BaseItem
                      with NBTAccess
                      with DisassemblerConfigAccess
-                     with AEPowerStorage
+                     with PoweredItem
 {
 	/**
 	 * Called when hitting an entity
@@ -64,12 +65,9 @@ trait Weapon extends Item
 		tag.setDouble(Tags.Damage, value)
 	}
 
-	private object Tags extends Enumeration
+	private object Tags extends BaseNBTProperty
 	{
-		type Tags = Value
 		val Damage = Value
-
-		implicit def tagsToString(tag: Tags): String = tag.toString.toLowerCase
 	}
-
+	Tags.values.foreach(this.properties += _)
 }

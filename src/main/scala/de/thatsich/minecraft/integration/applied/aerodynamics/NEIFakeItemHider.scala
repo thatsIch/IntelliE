@@ -18,14 +18,19 @@ class NEIFakeItemHider(modules: Seq[Module], log: Log)
 	def hideItemsInNEI(): Unit =
 	{
 		var counter = 0
-		for (module <- this.modules; item <- module.items)
+		for (module <- this.modules)
 		{
-			if (item.getToolClasses(null).contains("fake"))
-			{
+			module.fakes.foreach(fake => {
+				API.hideItem(new ItemStack(fake))
+				counter += 1
+				this.log.debug(s"Hid ${fake.getClass.getSimpleName} from NEI.")
+			})
+
+			module.items.foreach(item => {
 				API.hideItem(new ItemStack(item))
 				counter += 1
 				this.log.debug(s"Hid ${item.getClass.getSimpleName} from NEI.")
-			}
+			})
 		}
 		this.log.info(s"Hid $counter elements from NEI.")
 	}

@@ -7,6 +7,7 @@ import cpw.mods.fml.common.network.{IGuiHandler, NetworkRegistry}
 import de.thatsich.minecraft.common.log.{Log, SimpleLog}
 import de.thatsich.minecraft.common.module.{Module, ModuleRegistry}
 import de.thatsich.minecraft.common.string.Abbreviation
+import de.thatsich.minecraft.common.string.id.ID
 
 
 /**
@@ -17,6 +18,14 @@ import de.thatsich.minecraft.common.string.Abbreviation
  */
 abstract class CommonProxy extends EventProxy
 {
+	/**
+	 * gets the abbreviation of the mod.
+	 * Is used for the logger
+	 *
+	 * @return abbreviation of mod
+	 */
+	val abbr: Abbreviation
+
 	final lazy val log: Log = new SimpleLog(this.abbr)
 	private val stopwatch: Stopwatch = Stopwatch.createUnstarted
 	/**
@@ -26,13 +35,7 @@ abstract class CommonProxy extends EventProxy
 	 * @return modules of mod
 	 */
 	val modules: Seq[Module]
-	/**
-	 * gets the abbreviation of the mod.
-	 * Is used for the logger
-	 *
-	 * @return abbreviation of mod
-	 */
-	val abbr: Abbreviation
+
 	/**
 	 * Instance of the mod
 	 *
@@ -40,7 +43,12 @@ abstract class CommonProxy extends EventProxy
 	 */
 	val mod: AnyRef
 
-	val registry = new ModuleRegistry(this.modules, this.log)
+	/**
+	 * ID of the mod
+	 */
+	val modid: ID
+
+	val registry = new ModuleRegistry(this.modules, this.modid, this.log)
 
 	def onInheritatedPreInit(event: FMLPreInitializationEvent): Unit
 
@@ -55,6 +63,7 @@ abstract class CommonProxy extends EventProxy
 
 		this.registry.itemRegistry.registerAll()
 		this.registry.blockRegistry.registerAll()
+		this.registry.fakeRegistry.registerAll()
 
 		this.onInheritatedPreInit(event)
 

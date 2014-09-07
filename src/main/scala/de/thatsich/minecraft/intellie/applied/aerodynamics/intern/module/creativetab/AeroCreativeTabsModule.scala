@@ -14,5 +14,5 @@ import net.minecraft.item.Item
  * @since 18.08.2014.
  */
 class AeroCreativeTabsModule(icon: Item, log: Log, modid: ID) extends BaseModule(
-	items = Vector(icon)
+	fakes = Vector(icon)
 )

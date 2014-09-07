@@ -18,12 +18,13 @@ import net.minecraft.tileentity.TileEntity
  */
 trait Module
 {
-	val items: Seq[Item]
 	val blocks: Seq[Block]
-	val tiles: Seq[Class[_ <: TileEntity]]
-	val entites: Seq[Entity]
-	val recipes: Seq[Recipe]
-	val guis: Seq[BlockGuiHandler]
 	val crafthandlers: Seq[Class[_ <: ICraftHandler]]
+	val entites: Seq[Entity]
+	val fakes: Seq[Item]
+	val guis: Seq[BlockGuiHandler]
+	val items: Seq[Item]
 	val modules: Seq[Module]
+	val recipes: Seq[Recipe]
+	val tiles: Seq[Class[_ <: TileEntity]]
 }
