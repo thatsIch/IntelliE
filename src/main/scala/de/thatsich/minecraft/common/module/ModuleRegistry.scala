@@ -7,9 +7,10 @@ import de.thatsich.minecraft.common.module.gui.BlockGuiHandler
 import de.thatsich.minecraft.common.module.recipe.Recipe
 import de.thatsich.minecraft.common.module.registry.{FakeItemRegistry, BlockRegistry, CraftHandlerRegistry, EntityRegistry, GuiRegistry, ItemRegistry, RecipeRegistry, TileEntityRegistry}
 import de.thatsich.minecraft.common.util.string.ID
+import de.thatsich.minecraft.intellie.applied.aerodynamics.common.{Module, Modules}
 import net.minecraft.block.Block
 import net.minecraft.entity.Entity
-import net.minecraft.item.Item
+import net.minecraft.item.{ItemStack, Item}
 import net.minecraft.tileentity.TileEntity
 
 import scala.collection._
@@ -21,18 +22,18 @@ import scala.collection._
  * @author thatsIch
  * @since 02.09.2014.
  */
-class ModuleRegistry(modules: Seq[Module], modid: ID, log: Log)
+class ModuleRegistry(modules: Modules, modid: ID, log: Log)
 {
 	val blocks = mutable.ArrayBuffer[Block]()
 	val crafts = mutable.ArrayBuffer[Class[_ <: ICraftHandler]]()
 	val entities = mutable.ArrayBuffer[Entity]()
-	val fakes = mutable.ArrayBuffer[Item]()
+	val fakes = mutable.ArrayBuffer[ItemStack]()
 	val guis = mutable.ArrayBuffer[BlockGuiHandler]()
 	val items = mutable.ArrayBuffer[Item]()
 	val recipes = mutable.ArrayBuffer[Recipe]()
 	val tiles = mutable.ArrayBuffer[Class[_ <: TileEntity]]()
 
-	this.modules.foreach(this.addModule)
+	this.modules.vectorized.foreach(this.addModule)
 
 	val blockRegistry = new BlockRegistry(this.blocks, this.log)
 	val craftRegistry = new CraftHandlerRegistry(this.crafts, this.log)
@@ -45,15 +46,17 @@ class ModuleRegistry(modules: Seq[Module], modid: ID, log: Log)
 
 	private def addModule(module: Module): Unit =
 	{
-		this.blocks ++= module.blocks
-		this.crafts ++= module.crafthandlers
-		this.entities ++= module.entites
-		this.fakes ++= module.fakes
-		this.guis ++= module.guis
-		this.items ++= module.items
-		this.recipes ++= module.recipes
-		this.tiles ++= module.tiles
+		val definitions: Definitions = module.definitions
 
-		module.modules.foreach(this.addModule)
+		this.blocks ++= definitions.blocks
+		this.crafts ++= definitions.crafthandlers
+		this.entities ++= definitions.entites
+		this.fakes ++= definitions.fakes
+		this.guis ++= definitions.guis
+		this.items ++= definitions.items
+		this.recipes ++= definitions.recipes
+		this.tiles ++= definitions.tiles
+
+		definitions.modules.foreach(this.addModule)
 	}
 }

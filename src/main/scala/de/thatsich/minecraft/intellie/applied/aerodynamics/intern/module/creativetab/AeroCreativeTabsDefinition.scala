@@ -2,9 +2,9 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.creati
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.BaseModule
+import de.thatsich.minecraft.common.module.BaseDefinition
 import de.thatsich.minecraft.common.util.string.ID
-import net.minecraft.item.Item
+import net.minecraft.item.{Item, ItemStack}
 
 
 /**
@@ -13,6 +13,6 @@ import net.minecraft.item.Item
  * @author thatsIch
  * @since 18.08.2014.
  */
-class AeroCreativeTabsModule(icon: Item, log: Log, modid: ID) extends BaseModule(
-	fakes = Vector(icon)
+class AeroCreativeTabsDefinition(icon: Item, log: Log, modid: ID) extends BaseDefinition(
+	fakes = Vector(new ItemStack(icon))
 )

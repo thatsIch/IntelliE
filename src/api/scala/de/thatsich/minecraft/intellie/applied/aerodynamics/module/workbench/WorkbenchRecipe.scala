@@ -13,20 +13,20 @@ import net.minecraft.item.ItemStack
 trait WorkbenchRecipe
 {
 	// to be modified item
-	val input: ItemStack
+	def input: ItemStack
 
 	// item consumed to upgrade input
-	val upgrade: ItemStack
+	def upgrade: ItemStack
 
 	// fake modifier item to set NBT attribute on input. Size determines the value
-	val modifier: ItemStack
+	def modifier: String
 
 	// output of the recipe
-	val output: ItemStack
+	def output: ItemStack
 
 	// energy cost to modify the input
-	val energycost: Double
+	def energycost: Double
 
 	// time required to modify the input
-	val time: Int
+	def time: Int
 }

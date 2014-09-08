@@ -19,7 +19,7 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy.AeroComm
 	dependencies = AppliedAerodynamics.dependencies,
 	modLanguage = "scala"
 )
-object AppliedAerodynamics
+object AppliedAerodynamics extends AeroAPI
 {
 	final val id = "appaero"
 	final val name = "Applied Aerodynamics"

@@ -8,8 +8,8 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.common.Module
  * 
  *
  * @author thatsIch
- * @since 07.09.2014.
+ * @since 08.09.2014.
  */
-trait DisassemblerModule extends Module
+trait CreativetabsModule extends Module
 {
 }

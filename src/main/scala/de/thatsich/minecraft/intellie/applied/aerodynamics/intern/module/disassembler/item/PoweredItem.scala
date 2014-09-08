@@ -126,5 +126,4 @@ private[disassembler] trait PoweredItem extends BaseItem
 	{
 		val CurrentEnergy, MaxEnergy, ChargeSpeed, EnergyCost = Value
 	}
-	Tags.values.foreach(this.properties += _)
 }

@@ -3,9 +3,12 @@ package de.thatsich.minecraft.integration.applied.aerodynamics
 
 import codechicken.nei.api.IConfigureNEI
 import de.thatsich.minecraft.common.log.SimpleLog
-import de.thatsich.minecraft.common.module.Module
 import de.thatsich.minecraft.common.string.Abbreviation
-import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
+import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamicsAPI
+import de.thatsich.minecraft.intellie.applied.aerodynamics.common.Module
+import net.minecraft.item.ItemStack
+
+import scala.collection.mutable.ArrayBuffer
 
 
 /**
@@ -23,14 +26,28 @@ class NEIAppAeroConfig extends IConfigureNEI
 		val abbr = new Abbreviation("Aero|NEI")
 		val log = new SimpleLog(abbr)
 
-		val modules: Seq[Module] = AppliedAerodynamics.proxy.modules
-		val hider = new NEIFakeItemHider(modules, log)
-		val explanation = new NEICustomExplanations(modules, log)
-		val recipes = new NEICustomRecipes(modules, log)
+		val vectorized: Seq[Module] = AppliedAerodynamicsAPI.instance.proxy.modules.vectorized
+		val fakes: Seq[ItemStack] = this.extractFakes(vectorized)
+
+		val hider = new NEIFakeHider(fakes, log)
+		val explanation = new NEICustomExplanations(null, log)
+		val recipes = new NEICustomRecipes(log)
 
 		hider.hideItemsInNEI()
 		explanation.registerCustomExplanations()
 		recipes.registerCustomRecipes()
+	}
+
+	private def extractFakes(vectorized: Seq[Module]): Seq[ItemStack] =
+	{
+		val buffer = new ArrayBuffer[ItemStack]()
+
+		vectorized.foreach(module =>
+		{
+			buffer ++= module.definitions.fakes
+		})
+
+		buffer.toVector
 	}
 
 	override def getName: String = AppliedAerodynamicsNei.id

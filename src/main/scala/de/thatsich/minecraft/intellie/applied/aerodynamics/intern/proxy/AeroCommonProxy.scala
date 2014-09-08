@@ -2,13 +2,13 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy
 
 
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
-import de.thatsich.minecraft.common.module.Module
 import de.thatsich.minecraft.common.proxy.CommonProxy
 import de.thatsich.minecraft.common.string.Abbreviation
 import de.thatsich.minecraft.common.string.id.SimpleID
-import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
+import de.thatsich.minecraft.intellie.applied.aerodynamics.common.AeroModules
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.creativetab.AeroCreativeTabIcon
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.{AeroAbbreviation, AeroCreativeTabs, AeroModules}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.{AeroAbbreviation, AeroCreativeTabs, AppliedAerodynamicsModules}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.{AeroProxy, AppliedAerodynamics}
 
 
 /**
@@ -17,7 +17,7 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.{AeroAbbreviat
  * @author thatsIch
  * @since 03.08.2014.
  */
-abstract class AeroCommonProxy extends CommonProxy
+abstract class AeroCommonProxy extends CommonProxy with AeroProxy
 {
 	/**
 	 * Instance of the mod
@@ -32,7 +32,7 @@ abstract class AeroCommonProxy extends CommonProxy
 	 *
 	 * @return modules of mod
 	 */
-	final lazy val modules: Seq[Module] = new AeroModules(this.icon, this.modid, this.log).vector
+	final lazy val modules: AeroModules = new AppliedAerodynamicsModules(this.icon, this.modid, this.log)
 	/**
 	 * gets the abbreviation of the mod.
 	 * Is used for the logger

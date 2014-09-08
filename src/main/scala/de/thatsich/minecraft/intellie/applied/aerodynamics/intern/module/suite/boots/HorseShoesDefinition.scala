@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.BaseModule
+import de.thatsich.minecraft.common.module.BaseDefinition
 import de.thatsich.minecraft.common.util.string.ID
 
 
@@ -12,7 +12,7 @@ import de.thatsich.minecraft.common.util.string.ID
  * @author thatsIch
  * @since 02.09.2014.
  */
-class HorseShoesModule(modid: ID, log: Log) extends BaseModule(
+class HorseShoesDefinition(modid: ID, log: Log) extends BaseDefinition(
 	items = Vector(new HorseShoesItem(modid, log)),
 	recipes = Vector()
 )

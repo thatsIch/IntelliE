@@ -2,8 +2,8 @@ package de.thatsich.minecraft.integration.applied.aerodynamics
 
 
 import codechicken.nei.api.API
+import codechicken.nei.recipe.TemplateRecipeHandler
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.Module
 
 
 /**
@@ -12,13 +12,17 @@ import de.thatsich.minecraft.common.module.Module
  * @author thatsIch
  * @since 30.08.2014.
  */
-class NEICustomRecipes(modules: Seq[Module], log: Log)
+class NEICustomRecipes(log: Log)
 {
 	def registerCustomRecipes(): Unit =
 	{
-		val workbenchHandler: NEIWorkbenchRecipeHandler = new NEIWorkbenchRecipeHandler
+		this.registerCustomRecipe(new NEIWorkbenchRecipeHandler, this.log)
+	}
 
-		API.registerRecipeHandler(workbenchHandler)
-		API.registerUsageHandler(workbenchHandler)
+	private def registerCustomRecipe(recipe: TemplateRecipeHandler, log: Log): Unit =
+	{
+		API.registerRecipeHandler(recipe)
+		API.registerUsageHandler(recipe)
+		log.debug(s"Registered custom recipe $recipe.")
 	}
 }

@@ -1,12 +1,16 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.common
 
+
+import de.thatsich.minecraft.common.module.Definitions
+
+
 /**
  * 
  *
  * @author thatsIch
  * @since 08.09.2014.
  */
-trait Modules
+trait Module
 {
-	def vectorized: Seq[Module]
+	def definitions: Definitions
 }

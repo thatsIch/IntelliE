@@ -16,7 +16,5 @@ trait WorkbenchRegistry
 
 	def addRecipe(recipe: WorkbenchRecipe): Unit
 
-	def addRecipe(input: ItemStack, upgrade: ItemStack, modifier: ItemStack, output: ItemStack, energycost: Double, time: Int): Unit
-
 	def recipesForInput(input: ItemStack): Seq[WorkbenchRecipe]
 }

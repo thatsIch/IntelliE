@@ -5,9 +5,10 @@ import com.google.common.base.Stopwatch
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import cpw.mods.fml.common.network.{IGuiHandler, NetworkRegistry}
 import de.thatsich.minecraft.common.log.{Log, SimpleLog}
-import de.thatsich.minecraft.common.module.{Module, ModuleRegistry}
+import de.thatsich.minecraft.common.module.ModuleRegistry
 import de.thatsich.minecraft.common.string.Abbreviation
 import de.thatsich.minecraft.common.util.string.ID
+import de.thatsich.minecraft.intellie.applied.aerodynamics.common.Modules
 
 
 /**
@@ -34,7 +35,7 @@ abstract class CommonProxy extends EventProxy
 	 *
 	 * @return modules of mod
 	 */
-	val modules: Seq[Module]
+	val modules: Modules
 
 	/**
 	 * Instance of the mod

@@ -9,5 +9,5 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics
  */
 trait AeroAPI
 {
-	val proxy: Proxy
+	def proxy: AeroProxy
 }

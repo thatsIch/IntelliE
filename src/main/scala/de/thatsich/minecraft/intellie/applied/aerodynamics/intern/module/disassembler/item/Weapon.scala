@@ -69,5 +69,4 @@ trait Weapon extends BaseItem
 	{
 		val Damage = Value
 	}
-	Tags.values.foreach(this.properties += _)
 }

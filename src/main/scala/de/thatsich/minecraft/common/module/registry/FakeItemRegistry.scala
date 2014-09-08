@@ -7,7 +7,7 @@ import de.thatsich.minecraft.common.module.item.SimpleFakeItem
 import de.thatsich.minecraft.common.module.registry.fake.NBTKeyCollector
 import de.thatsich.minecraft.common.string.id.SimpleID
 import de.thatsich.minecraft.common.util.string.ID
-import net.minecraft.item.Item
+import net.minecraft.item.{ItemStack, Item}
 
 import scala.collection.Seq
 import scala.collection.mutable.{Set => MutableSet}
@@ -19,7 +19,7 @@ import scala.collection.mutable.{Set => MutableSet}
  * @author thatsIch
  * @since 06.09.2014.
  */
-class FakeItemRegistry(registrable: Seq[Item], modid: ID, log: Log)
+class FakeItemRegistry(registrable: Seq[ItemStack], modid: ID, log: Log)
 {
 	/**
  * Registers all items in modules

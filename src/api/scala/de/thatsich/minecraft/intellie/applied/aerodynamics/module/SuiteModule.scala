@@ -1,7 +1,8 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.module
 
 
-import de.thatsich.minecraft.intellie.applied.aerodynamics.module.suite.FreeRunnerModule
+import de.thatsich.minecraft.intellie.applied.aerodynamics.common.Module
+import de.thatsich.minecraft.intellie.applied.aerodynamics.module.suite.{SkyDiverModule, HorseShoesModule, ChestNutModule, FreeRunnerModule}
 
 
 /**
@@ -10,7 +11,13 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.module.suite.FreeRunn
  * @author thatsIch
  * @since 07.09.2014.
  */
-trait SuiteModule
+trait SuiteModule extends Module
 {
-	val freerunner: FreeRunnerModule
+	def skydiver: SkyDiverModule
+
+	def chestnut: ChestNutModule
+
+	def freerunner: FreeRunnerModule
+
+	def horseshoes: HorseShoesModule
 }

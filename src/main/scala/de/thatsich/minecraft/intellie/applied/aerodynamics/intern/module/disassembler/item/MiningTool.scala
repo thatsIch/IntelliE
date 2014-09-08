@@ -23,7 +23,7 @@ trait MiningTool extends BaseItem
 	 *
 	 * @param is ItemStack of this
 	 * @param block Mining block
-	 * @param metadata metadata of bloc
+	 * @param metadata metadata of block
 	 *
 	 * @return configured mining speed
 	 */
@@ -71,5 +71,4 @@ trait MiningTool extends BaseItem
 	{
 		val MiningLevel, MiningSpeed = Value
 	}
-	Tags.values.foreach(this.properties += _)
 }

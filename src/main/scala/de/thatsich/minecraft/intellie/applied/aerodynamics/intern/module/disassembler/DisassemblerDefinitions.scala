@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disass
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.BaseModule
+import de.thatsich.minecraft.common.module.BaseDefinition
 import de.thatsich.minecraft.common.util.string.ID
 
 
@@ -12,10 +12,10 @@ import de.thatsich.minecraft.common.util.string.ID
  * @author thatsIch
  * @since 01.08.2014.
  */
-class DisassemblerModule(log: Log, modid: ID) extends BaseModule(
+class DisassemblerDefinitions(log: Log, modid: ID) extends BaseDefinition(
 	items = Vector(
 		new DisassemblerItem(modid, log),
 		new CreativeDisassemblerItem(modid, log)
 	),
 	recipes = Vector(new DisassemblerCraftRecipe, new DisassemblerUpgradeRecipe)
-)
+) 
