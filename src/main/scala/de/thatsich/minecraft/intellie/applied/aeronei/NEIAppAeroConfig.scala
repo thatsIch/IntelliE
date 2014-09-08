@@ -1,5 +1,4 @@
-package de.thatsich.minecraft.integration.applied.aerodynamics
-
+package de.thatsich.minecraft.intellie.applied.aeronei
 
 import codechicken.nei.api.IConfigureNEI
 import de.thatsich.minecraft.common.log.SimpleLog

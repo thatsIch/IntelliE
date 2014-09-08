@@ -4,8 +4,8 @@ package de.thatsich.minecraft.intellie
 import cpw.mods.fml.common.{Loader, Mod}
 import de.thatsich.minecraft.common.log.SimpleLog
 import de.thatsich.minecraft.common.string.BaseAbbreviation
-import de.thatsich.minecraft.integration.applied.aerodynamics.AppliedAerodynamicsNei
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
+import de.thatsich.minecraft.intellie.applied.aeronei.AppliedAerodynamicsNei
 import de.thatsich.minecraft.intellie.applied.agricultures.AppliedAgricultures
 import de.thatsich.minecraft.intellie.applied.intelligences.AppliedIntelligences
 import de.thatsich.minecraft.intellie.child.{ChildUnloader, ChildUnloaderConfigAccess}

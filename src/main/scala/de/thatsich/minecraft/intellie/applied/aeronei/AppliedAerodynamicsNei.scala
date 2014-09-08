@@ -1,5 +1,4 @@
-package de.thatsich.minecraft.integration.applied.aerodynamics
-
+package de.thatsich.minecraft.intellie.applied.aeronei
 
 import cpw.mods.fml.common.Mod
 import de.thatsich.minecraft.common.log.SimpleLog
