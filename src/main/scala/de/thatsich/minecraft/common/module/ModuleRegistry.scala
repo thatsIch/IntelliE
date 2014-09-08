@@ -3,14 +3,13 @@ package de.thatsich.minecraft.common.module
 
 import appeng.api.recipes.ICraftHandler
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.gui.BlockGuiHandler
-import de.thatsich.minecraft.common.module.recipe.Recipe
-import de.thatsich.minecraft.common.module.registry.{FakeItemRegistry, BlockRegistry, CraftHandlerRegistry, EntityRegistry, GuiRegistry, ItemRegistry, RecipeRegistry, TileEntityRegistry}
-import de.thatsich.minecraft.common.util.string.ID
-import de.thatsich.minecraft.intellie.applied.aerodynamics.common.{Module, Modules}
+import de.thatsich.minecraft.common.module.registry.{BlockRegistry, CraftHandlerRegistry, EntityRegistry, FakeItemRegistry, GuiRegistry, ItemRegistry, RecipeRegistry, TileEntityRegistry}
+import de.thatsich.minecraft.intellie.common.module.BlockGuiHandler
+import de.thatsich.minecraft.intellie.common.util.string.ID
+import de.thatsich.minecraft.intellie.common.{Definitions, Module, Modules, Recipe}
 import net.minecraft.block.Block
 import net.minecraft.entity.Entity
-import net.minecraft.item.{ItemStack, Item}
+import net.minecraft.item.{Item, ItemStack}
 import net.minecraft.tileentity.TileEntity
 
 import scala.collection._

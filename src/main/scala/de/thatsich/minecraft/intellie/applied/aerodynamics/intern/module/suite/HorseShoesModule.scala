@@ -2,10 +2,9 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.Definitions
-import de.thatsich.minecraft.common.util.string.ID
-import de.thatsich.minecraft.intellie.applied.aerodynamics.common.Module
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.boots.HorseShoesDefinition
+import de.thatsich.minecraft.intellie.common.util.string.ID
+import de.thatsich.minecraft.intellie.common.{Definitions, Module}
 
 
 /**

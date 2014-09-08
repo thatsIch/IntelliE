@@ -40,7 +40,8 @@ trait Weapon extends BaseItem
 			val source = DamageSource.causePlayerDamage(hitter)
 			val damage: Float = this.getCurrentDamageVsEntities(is).toFloat
 
-			if (damage > 0) {
+			if (damage > 0)
+			{
 				this.extractAEPower(is, energyUsage)
 				target.attackEntityFrom(source, damage)
 
@@ -69,4 +70,5 @@ trait Weapon extends BaseItem
 	{
 		val Damage = Value
 	}
+
 }

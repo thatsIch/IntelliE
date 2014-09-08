@@ -16,7 +16,8 @@ class NEIFakeHider(itemstacks: Seq[ItemStack], log: Log)
 {
 	def hideItemsInNEI(): Unit =
 	{
-		this.itemstacks.foreach(is => {
+		this.itemstacks.foreach(is =>
+		{
 			API.hideItem(is)
 			this.log.debug(s"Hid $is from NEI.")
 		})

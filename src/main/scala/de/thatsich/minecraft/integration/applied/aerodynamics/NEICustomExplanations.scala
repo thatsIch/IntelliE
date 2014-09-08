@@ -2,7 +2,7 @@ package de.thatsich.minecraft.integration.applied.aerodynamics
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.Definitions
+import de.thatsich.minecraft.intellie.common.Definitions
 
 
 /**
@@ -15,6 +15,5 @@ class NEICustomExplanations(modules: Seq[Definitions], log: Log)
 {
 	def registerCustomExplanations(): Unit =
 	{
-
 	}
 }

@@ -3,7 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.creati
 
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.BaseDefinition
-import de.thatsich.minecraft.common.util.string.ID
+import de.thatsich.minecraft.intellie.common.util.string.ID
 import net.minecraft.item.{Item, ItemStack}
 
 

@@ -1,7 +1,7 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.common
-
+package de.thatsich.minecraft.intellie.applied.aerodynamics
 
 import de.thatsich.minecraft.intellie.applied.aerodynamics.module.{DisassemblerModule, SuiteModule, WorkbenchModule}
+import de.thatsich.minecraft.intellie.common.Modules
 
 
 /**

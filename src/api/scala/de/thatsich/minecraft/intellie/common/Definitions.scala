@@ -1,13 +1,10 @@
-package de.thatsich.minecraft.common.module
-
+package de.thatsich.minecraft.intellie.common
 
 import appeng.api.recipes.ICraftHandler
-import de.thatsich.minecraft.common.module.gui.BlockGuiHandler
-import de.thatsich.minecraft.common.module.recipe.Recipe
-import de.thatsich.minecraft.intellie.applied.aerodynamics.common.Module
+import de.thatsich.minecraft.intellie.common.module.BlockGuiHandler
 import net.minecraft.block.Block
 import net.minecraft.entity.Entity
-import net.minecraft.item.{ItemStack, Item}
+import net.minecraft.item.{Item, ItemStack}
 import net.minecraft.tileentity.TileEntity
 
 

@@ -3,9 +3,9 @@ package de.thatsich.minecraft.integration.applied.aerodynamics
 
 import codechicken.nei.api.IConfigureNEI
 import de.thatsich.minecraft.common.log.SimpleLog
-import de.thatsich.minecraft.common.string.Abbreviation
+import de.thatsich.minecraft.common.string.BaseAbbreviation
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamicsAPI
-import de.thatsich.minecraft.intellie.applied.aerodynamics.common.Module
+import de.thatsich.minecraft.intellie.common.Module
 import net.minecraft.item.ItemStack
 
 import scala.collection.mutable.ArrayBuffer
@@ -23,7 +23,7 @@ class NEIAppAeroConfig extends IConfigureNEI
 {
 	override def loadConfig(): Unit =
 	{
-		val abbr = new Abbreviation("Aero|NEI")
+		val abbr = new BaseAbbreviation("Aero|NEI")
 		val log = new SimpleLog(abbr)
 
 		val vectorized: Seq[Module] = AppliedAerodynamicsAPI.instance.proxy.modules.vectorized

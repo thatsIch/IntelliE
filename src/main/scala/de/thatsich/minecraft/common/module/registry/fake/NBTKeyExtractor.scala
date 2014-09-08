@@ -2,7 +2,7 @@ package de.thatsich.minecraft.common.module.registry.fake
 
 
 import de.thatsich.minecraft.common.module.item.NBTKeyStorage
-import net.minecraft.item.{ItemStack, Item}
+import net.minecraft.item.{Item, ItemStack}
 
 import scala.collection.Set
 

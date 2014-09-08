@@ -1,6 +1,8 @@
 package de.thatsich.minecraft.common.module.item
 
+
 import scala.collection._
+
 
 /**
  * 
@@ -20,4 +22,5 @@ trait NBTKeyStorage
 
 		implicit def valuesToString(value: Value): String = value.toString.toLowerCase
 	}
+
 }

@@ -1,9 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics
 
 
-import de.thatsich.minecraft.common.string.Abbreviation
-import de.thatsich.minecraft.common.util.string.ID
-import de.thatsich.minecraft.intellie.applied.aerodynamics.common.AeroModules
+import de.thatsich.minecraft.intellie.common.util.string.{Abbreviation, ID}
 
 
 /**

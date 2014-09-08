@@ -9,9 +9,9 @@ package disassembler
 
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.BaseItem
-import de.thatsich.minecraft.common.util.string.ID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.common.item.{PoweredItemDamageDisplay, UniqueItem, UnstackableItem}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item.{PoweredItem, AEWrench, BlockBreakEventHandler, BreakSpeedHandler, HumanNumberFormat, MiningTool, PrecisionHarvester, Weapon}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item.{AEWrench, BlockBreakEventHandler, BreakSpeedHandler, HumanNumberFormat, MiningTool, PoweredItem, PrecisionHarvester, Weapon}
+import de.thatsich.minecraft.intellie.common.util.string.ID
 import net.minecraft.block.Block
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -25,17 +25,17 @@ import org.lwjgl.input.Keyboard
  * @since 07.04.2014.
  */
 private[disassembler] class DisassemblerItem(modid: ID, log: Log) extends BaseItem(modid, new DisassemblerID, log)
-                                                                                    with AEWrench
-                                                                                    with PrecisionHarvester
-                                                                                    with BlockBreakEventHandler
-                                                                                    with PoweredItem
-                                                                                    with Weapon
-                                                                                    with MiningTool
-                                                                                    with BreakSpeedHandler
-                                                                                    with PoweredItemDamageDisplay
-                                                                                    with UnstackableItem
-                                                                                    with UniqueItem
-                                                                                    with HumanNumberFormat
+                                                                          with AEWrench
+                                                                          with PrecisionHarvester
+                                                                          with BlockBreakEventHandler
+                                                                          with PoweredItem
+                                                                          with Weapon
+                                                                          with MiningTool
+                                                                          with BreakSpeedHandler
+                                                                          with PoweredItemDamageDisplay
+                                                                          with UnstackableItem
+                                                                          with UniqueItem
+                                                                          with HumanNumberFormat
 {
 	override def addInformation(is: ItemStack, player: EntityPlayer, information: java.util.List[_], advToolTips: Boolean) =
 	{

@@ -8,7 +8,7 @@ package disassembler
 package item
 
 
-import config.DisassemblerConfig
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disassembler.item.config.DisassemblerConfig
 
 
 /**

@@ -71,4 +71,5 @@ trait MiningTool extends BaseItem
 	{
 		val MiningLevel, MiningSpeed = Value
 	}
+
 }

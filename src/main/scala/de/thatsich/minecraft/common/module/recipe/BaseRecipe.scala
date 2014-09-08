@@ -1,6 +1,9 @@
 package de.thatsich.minecraft.common.module.recipe
 
 
+import de.thatsich.minecraft.intellie.common.Recipe
+
+
 /**
  *
  *

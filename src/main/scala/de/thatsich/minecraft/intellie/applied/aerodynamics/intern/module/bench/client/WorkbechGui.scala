@@ -12,7 +12,7 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.{WorkbenchContainer, WorkbenchTileEntity}
 import net.minecraft.client.gui.GuiButton
 import net.minecraft.entity.player.InventoryPlayer
-import net.minecraft.util.{StatCollector, ResourceLocation}
+import net.minecraft.util.{ResourceLocation, StatCollector}
 
 
 /**

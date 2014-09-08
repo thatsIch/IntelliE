@@ -34,6 +34,24 @@ minecraft {
     runDir = "run"
 }
 
+sourceSets {
+    main {
+        scala {
+            srcDirs += "src/api/scala"
+        }
+    }
+}
+
+compileScala {
+    scalaCompileOptions.useCompileDaemon = true
+}
+
+tasks.withType(ScalaCompile) {
+    scalaCompileOptions.useAnt = false
+}
+
+
+
 processResources {
     // this will ensure that this task is redone when the versions change.
     inputs.property "version", VERSION_PROJECT.toString()

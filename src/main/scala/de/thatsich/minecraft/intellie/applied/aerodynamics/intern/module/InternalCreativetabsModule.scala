@@ -1,8 +1,8 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module
 
 
-import de.thatsich.minecraft.common.module.Definitions
 import de.thatsich.minecraft.intellie.applied.aerodynamics.module.CreativetabsModule
+import de.thatsich.minecraft.intellie.common.Definitions
 
 
 /**

@@ -2,9 +2,8 @@ package de.thatsich.minecraft.common.module
 
 
 import appeng.api.recipes.ICraftHandler
-import de.thatsich.minecraft.common.module.gui.BlockGuiHandler
-import de.thatsich.minecraft.common.module.recipe.Recipe
-import de.thatsich.minecraft.intellie.applied.aerodynamics.common.Module
+import de.thatsich.minecraft.intellie.common.module.BlockGuiHandler
+import de.thatsich.minecraft.intellie.common.{Definitions, Module, Recipe}
 import net.minecraft.block.Block
 import net.minecraft.entity.Entity
 import net.minecraft.item.{Item, ItemStack}

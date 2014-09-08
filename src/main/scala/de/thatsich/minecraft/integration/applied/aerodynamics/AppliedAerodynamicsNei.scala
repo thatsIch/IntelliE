@@ -3,7 +3,7 @@ package de.thatsich.minecraft.integration.applied.aerodynamics
 
 import cpw.mods.fml.common.Mod
 import de.thatsich.minecraft.common.log.SimpleLog
-import de.thatsich.minecraft.common.string.Abbreviation
+import de.thatsich.minecraft.common.string.BaseAbbreviation
 
 
 /**
@@ -26,6 +26,6 @@ object AppliedAerodynamicsNei
 	final val version = "@version@"
 	final val dependencies = "after:appaero;after:NotEnoughItems"
 
-	val abbr = new Abbreviation("Aero|NEI")
+	val abbr = new BaseAbbreviation("Aero|NEI")
 	val log = new SimpleLog(abbr)
 }

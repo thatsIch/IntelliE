@@ -13,6 +13,7 @@ import de.thatsich.minecraft.common.log.Log
 
 import scala.collection.JavaConverters._
 
+
 trait ChildUnloader
 {
 	def unload(id: String, disableModule: Boolean, log: Log): Unit =
@@ -73,7 +74,7 @@ trait ChildUnloader
 		builder.build()
 	}
 
-	private def removeFromArrayList(list: util.ArrayList[ModContainer], elem: String): util.ArrayList[ModContainer]=
+	private def removeFromArrayList(list: util.ArrayList[ModContainer], elem: String): util.ArrayList[ModContainer] =
 	{
 		val tempList = list.asScala
 		val newList = Lists.newArrayList[ModContainer]()

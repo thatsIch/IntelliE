@@ -15,7 +15,7 @@ import net.minecraft.world.World
  * @since 28.07.2014.
  */
 private[disassembler] trait PrecisionHarvester extends Item
-                                                     with MouseEventHandler
+                                                       with MouseEventHandler
 {
 	/**
 	 * harvests block into inventory

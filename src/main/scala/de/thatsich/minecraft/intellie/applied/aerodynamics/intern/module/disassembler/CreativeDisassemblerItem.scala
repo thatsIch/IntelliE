@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.disass
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.util.string.ID
+import de.thatsich.minecraft.intellie.common.util.string.ID
 import net.minecraft.item.ItemStack
 
 

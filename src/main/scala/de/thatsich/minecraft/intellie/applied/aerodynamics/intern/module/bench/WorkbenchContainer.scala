@@ -10,8 +10,8 @@ package bench
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.BaseContainer
-import de.thatsich.minecraft.common.module.container.{SlotSide, OutputSlot}
-import SlotSide.SlotSide
+import de.thatsich.minecraft.common.module.container.SlotSide.SlotSide
+import de.thatsich.minecraft.common.module.container.{OutputSlot, SlotSide}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.client.{InputSlot, UpgradeSlot}
 import net.minecraft.entity.player.{EntityPlayer, InventoryPlayer}
 import net.minecraft.inventory.ICrafting

@@ -1,9 +1,9 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module
 
 
-import de.thatsich.minecraft.common.module.Definitions
 import de.thatsich.minecraft.intellie.applied.aerodynamics.module.SuiteModule
-import de.thatsich.minecraft.intellie.applied.aerodynamics.module.suite.{SkyDiverModule, HorseShoesModule, FreeRunnerModule, ChestNutModule}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.module.suite.{ChestNutModule, FreeRunnerModule, HorseShoesModule, SkyDiverModule}
+import de.thatsich.minecraft.intellie.common.Definitions
 
 
 /**

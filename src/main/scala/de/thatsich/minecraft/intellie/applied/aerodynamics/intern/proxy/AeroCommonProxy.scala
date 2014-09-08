@@ -3,12 +3,11 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy
 
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import de.thatsich.minecraft.common.proxy.CommonProxy
-import de.thatsich.minecraft.common.string.Abbreviation
 import de.thatsich.minecraft.common.string.id.SimpleID
-import de.thatsich.minecraft.intellie.applied.aerodynamics.common.AeroModules
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.creativetab.AeroCreativeTabIcon
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.{AeroAbbreviation, AeroCreativeTabs, AppliedAerodynamicsModules}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.{AeroProxy, AppliedAerodynamics}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.{AeroModules, AeroProxy, AppliedAerodynamics}
+import de.thatsich.minecraft.intellie.common.util.string.Abbreviation
 
 
 /**

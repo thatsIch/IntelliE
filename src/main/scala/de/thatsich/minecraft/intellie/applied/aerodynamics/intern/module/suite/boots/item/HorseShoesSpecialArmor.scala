@@ -17,8 +17,8 @@ import net.minecraftforge.common.ISpecialArmor
  * @since 02.09.2014.
  */
 trait HorseShoesSpecialArmor extends ISpecialArmor
-	with HorseShoesItemPowerStorage
-	with NBTAccess
+                                     with HorseShoesItemPowerStorage
+                                     with NBTAccess
 {
 	def getEnergyPerDamage(armor: ItemStack): Double =
 	{
@@ -74,4 +74,5 @@ trait HorseShoesSpecialArmor extends ISpecialArmor
 
 		implicit def tagsToString(tag: Tags): String = tag.toString.toLowerCase
 	}
+
 }

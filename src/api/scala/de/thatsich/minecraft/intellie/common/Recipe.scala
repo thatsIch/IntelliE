@@ -1,5 +1,4 @@
-package de.thatsich.minecraft.common.module.recipe
-
+package de.thatsich.minecraft.intellie.common
 
 /**
  *

@@ -11,7 +11,7 @@ import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.BaseBlock
 import de.thatsich.minecraft.common.module.block.MultiTexture
 import de.thatsich.minecraft.common.module.registry.BlockGuiHasher
-import de.thatsich.minecraft.common.util.string.ID
+import de.thatsich.minecraft.intellie.common.util.string.ID
 import net.minecraft.block.Block
 import net.minecraft.entity.item.EntityItem
 import net.minecraft.entity.player.EntityPlayer

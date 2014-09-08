@@ -2,7 +2,7 @@ package de.thatsich.minecraft.common.string.id
 
 
 import de.thatsich.minecraft.common.string.BaseStringWrapper
-import de.thatsich.minecraft.common.util.string.ID
+import de.thatsich.minecraft.intellie.common.util.string.ID
 
 
 /**

@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern
 
 
-import de.thatsich.minecraft.common.string.Abbreviation
+import de.thatsich.minecraft.common.string.BaseAbbreviation
 
 
 /**
@@ -10,4 +10,4 @@ import de.thatsich.minecraft.common.string.Abbreviation
  * @author thatsIch
  * @since 10.07.2014.
  */
-class AeroAbbreviation extends Abbreviation("Aero")
+class AeroAbbreviation extends BaseAbbreviation("Aero")

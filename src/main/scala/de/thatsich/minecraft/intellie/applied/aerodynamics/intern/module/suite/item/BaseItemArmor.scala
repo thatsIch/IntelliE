@@ -2,9 +2,9 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.util.string.ID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.common.item.{UniqueItem, UnstackableItem}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.item.ArmorType.ArmorType
+import de.thatsich.minecraft.intellie.common.util.string.ID
 import net.minecraft.block.BlockDispenser
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
@@ -21,7 +21,7 @@ import net.minecraftforge.common.ISpecialArmor
  */
 abstract class BaseItemArmor(armorType: ArmorType, modid: ID, itemName: ID, log: Log)
 	extends ItemArmor(ItemArmor.ArmorMaterial.DIAMOND, 0, armorType)
-			with ISpecialArmor
+	        with ISpecialArmor
 	        with UnstackableItem
 	        with UniqueItem
 {

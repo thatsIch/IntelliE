@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.common.string
 
 
-import de.thatsich.minecraft.common.util.string.ResourcePath
+import de.thatsich.minecraft.intellie.common.util.string.ResourcePath
 
 
 /**
