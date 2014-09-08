@@ -5,7 +5,8 @@ import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.item.SimpleFakeItem
 import de.thatsich.minecraft.common.module.registry.fake.NBTKeyCollector
-import de.thatsich.minecraft.common.string.id.{SimpleID, ID}
+import de.thatsich.minecraft.common.string.id.SimpleID
+import de.thatsich.minecraft.common.util.string.ID
 import net.minecraft.item.Item
 
 import scala.collection.Seq

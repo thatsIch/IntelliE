@@ -2,7 +2,7 @@ package de.thatsich.minecraft.common.module.item
 
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.BaseItem
-import de.thatsich.minecraft.common.string.id.ID
+import de.thatsich.minecraft.common.util.string.ID
 
 
 /**

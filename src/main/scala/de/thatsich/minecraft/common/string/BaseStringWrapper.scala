@@ -1,6 +1,9 @@
 package de.thatsich.minecraft.common.string
 
 
+import de.thatsich.minecraft.common.util.string.StringWrapper
+
+
 /**
  *
  *

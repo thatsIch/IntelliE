@@ -16,4 +16,6 @@ trait Modules
 	val disassembler: DisassemblerModule
 
 	val suite: SuiteModule
+
+	val vectorized: Seq[AnyRef]
 }

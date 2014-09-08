@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.item
 
 
-import de.thatsich.minecraft.common.string.StringWrapper
+import de.thatsich.minecraft.common.util.string.StringWrapper
 
 
 /**

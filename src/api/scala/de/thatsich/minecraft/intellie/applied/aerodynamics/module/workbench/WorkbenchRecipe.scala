@@ -24,7 +24,9 @@ trait WorkbenchRecipe
 	// output of the recipe
 	val output: ItemStack
 
+	// energy cost to modify the input
 	val energycost: Double
 
+	// time required to modify the input
 	val time: Int
 }

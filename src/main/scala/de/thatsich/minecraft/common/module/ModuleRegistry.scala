@@ -6,7 +6,7 @@ import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.gui.BlockGuiHandler
 import de.thatsich.minecraft.common.module.recipe.Recipe
 import de.thatsich.minecraft.common.module.registry.{FakeItemRegistry, BlockRegistry, CraftHandlerRegistry, EntityRegistry, GuiRegistry, ItemRegistry, RecipeRegistry, TileEntityRegistry}
-import de.thatsich.minecraft.common.string.id.ID
+import de.thatsich.minecraft.common.util.string.ID
 import net.minecraft.block.Block
 import net.minecraft.entity.Entity
 import net.minecraft.item.Item

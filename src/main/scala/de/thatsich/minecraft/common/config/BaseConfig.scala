@@ -2,8 +2,7 @@ package de.thatsich.minecraft.common.config
 
 
 import java.io.File
-
-import de.thatsich.minecraft.common.string.ConfigPath
+import de.thatsich.minecraft.common.util.string.ConfigPath
 import net.minecraftforge.common.config.Configuration
 
 
