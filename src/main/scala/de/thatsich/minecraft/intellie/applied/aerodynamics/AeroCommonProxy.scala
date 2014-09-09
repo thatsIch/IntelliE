@@ -5,7 +5,7 @@ import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationE
 import de.thatsich.minecraft.common.proxy.CommonProxy
 import de.thatsich.minecraft.common.string.id.SimpleID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.creativetab.AeroCreativeTabIcon
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.{AeroAbbreviation, AeroCreativeTabs, AppliedAerodynamicsModules}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.{NBTKeyRegistry, AeroModules, AeroAbbreviation, AeroCreativeTabs, AppliedAerodynamicsModules}
 import de.thatsich.minecraft.intellie.common.util.string.Abbreviation
 
 

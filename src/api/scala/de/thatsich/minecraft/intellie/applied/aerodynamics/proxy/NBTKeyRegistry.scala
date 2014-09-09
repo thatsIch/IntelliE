@@ -1,5 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics
-
+package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy
 
 import net.minecraft.item.ItemStack
 

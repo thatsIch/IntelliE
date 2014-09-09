@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.intellie.applied.aerodynamics.AeroModules
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.AeroModules
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.{CreativetabsModule, DisassemblerModule, InternalCreativetabsModule, InternalDisassemblerModule, InternalSuiteModule, InternalWorkbenchModule, SuiteModule, WorkbenchModule}
 import de.thatsich.minecraft.intellie.common.Module
 import de.thatsich.minecraft.intellie.common.util.string.ID

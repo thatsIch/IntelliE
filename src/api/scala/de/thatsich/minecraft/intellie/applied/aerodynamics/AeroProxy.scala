@@ -1,6 +1,9 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics
 
 
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.{NBTKeyRegistry, AeroModules}
+
+
 /**
  * 
  *
