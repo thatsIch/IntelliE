@@ -3,7 +3,6 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics
 
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import cpw.mods.fml.common.{Mod, SidedProxy}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy.AeroCommonProxy
 
 
 /**
@@ -28,8 +27,8 @@ object AppliedAerodynamics extends AeroAPI
 
 	@SidedProxy(
 		modId = AppliedAerodynamics.id,
-		clientSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy.AeroClientProxy",
-		serverSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.intern.proxy.AeroServerProxy"
+		clientSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.AeroClientProxy",
+		serverSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.AeroServerProxy"
 	)
 	var proxy: AeroCommonProxy = null
 

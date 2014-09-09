@@ -2,7 +2,7 @@ package de.thatsich.minecraft.common.module
 
 
 import de.thatsich.minecraft.common.module.gui.ToolTip
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.client.HoloSlot
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench.client.HoloSlot
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.inventory.GuiContainer
 import net.minecraft.client.gui.{GuiButton, GuiScreen}

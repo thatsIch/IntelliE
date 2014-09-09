@@ -1,13 +1,14 @@
 package de.thatsich.minecraft.intellie.applied.aeronei
 
+
 import java.awt.Rectangle
 
 import codechicken.nei.PositionedStack
 import codechicken.nei.recipe.TemplateRecipeHandler
 import com.google.common.collect.Lists
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.client.WorkbechGui
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.{WorkbenchCraftRecipe, WorkbenchCraftRecipeStorage}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench.client.WorkbechGui
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench.{WorkbenchCraftRecipe, WorkbenchCraftRecipeStorage}
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.inventory.GuiContainer
 import net.minecraft.util.{ResourceLocation, StatCollector}

@@ -1,6 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics
 
-import de.thatsich.minecraft.intellie.applied.aerodynamics.module.{DisassemblerModule, SuiteModule, WorkbenchModule}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.{DisassemblerModule, SuiteModule, WorkbenchModule}
 import de.thatsich.minecraft.intellie.common.Modules
 
 

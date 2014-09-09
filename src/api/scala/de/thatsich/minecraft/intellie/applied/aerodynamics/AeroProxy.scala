@@ -1,9 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics
 
 
-import de.thatsich.minecraft.intellie.common.util.string.{Abbreviation, ID}
-
-
 /**
  * 
  *
@@ -12,9 +9,7 @@ import de.thatsich.minecraft.intellie.common.util.string.{Abbreviation, ID}
  */
 trait AeroProxy
 {
-	def modid: ID
-
-	def abbr: Abbreviation
+	def nbtkeyregistry: NBTKeyRegistry
 
 	def modules: AeroModules
 }

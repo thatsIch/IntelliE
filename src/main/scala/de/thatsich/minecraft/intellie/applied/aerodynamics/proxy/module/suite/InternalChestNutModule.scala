@@ -1,0 +1,19 @@
+package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite
+
+
+import de.thatsich.minecraft.common.log.Log
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.chestnut.ChestNutDefinitions
+import de.thatsich.minecraft.intellie.common.Definitions
+import de.thatsich.minecraft.intellie.common.util.string.ID
+
+
+/**
+ * 
+ *
+ * @author thatsIch
+ * @since 09.09.2014.
+ */
+class InternalChestNutModule(modid: ID, log: Log) extends ChestNutModule
+{
+	override lazy val definitions: Definitions = new ChestNutDefinitions(this.modid, this.log)
+}
