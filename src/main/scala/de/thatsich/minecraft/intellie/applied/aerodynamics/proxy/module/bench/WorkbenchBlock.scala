@@ -1,12 +1,11 @@
-package de.thatsich.minecraft
-package intellie
-package applied
-package aerodynamics
-package intern
-package de.thatsich.minecraft.intellie.applied.aerodynamics.module
-package bench
+package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench
 
-
+import de.thatsich.minecraft.common.log.Log
+import de.thatsich.minecraft.common.module.BaseBlock
+import de.thatsich.minecraft.common.module.block.MultiTexture
+import de.thatsich.minecraft.common.module.registry.BlockGuiHasher
+import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
+import de.thatsich.minecraft.intellie.common.util.string.ID
 import net.minecraft.block.Block
 import net.minecraft.entity.item.EntityItem
 import net.minecraft.entity.player.EntityPlayer

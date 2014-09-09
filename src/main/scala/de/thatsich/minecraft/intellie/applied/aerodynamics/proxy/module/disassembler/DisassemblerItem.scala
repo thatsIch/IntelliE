@@ -1,12 +1,10 @@
-package de.thatsich.minecraft
-package intellie
-package applied
-package aerodynamics
-package intern
-package de.thatsich.minecraft.intellie.applied.aerodynamics.module
-package disassembler
+package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler
 
-
+import de.thatsich.minecraft.common.log.Log
+import de.thatsich.minecraft.common.module.BaseItem
+import de.thatsich.minecraft.common.module.item.{PoweredItemDamageDisplay, UniqueItem, UnstackableItem}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.{AEWrench, BlockBreakEventHandler, BreakSpeedHandler, HumanNumberFormat, MiningTool, PoweredItem, PrecisionHarvester, Weapon}
+import de.thatsich.minecraft.intellie.common.util.string.ID
 import net.minecraft.block.Block
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack

@@ -2,6 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disasse
 
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.DisassemblerItem
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed
 

@@ -2,7 +2,6 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite
 
 
 import de.thatsich.minecraft.intellie.common.Module
-import net.minecraft.item.{Item, ItemStack}
 
 
 /**

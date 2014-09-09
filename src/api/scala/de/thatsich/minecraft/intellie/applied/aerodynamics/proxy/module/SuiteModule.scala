@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module
 
 
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.{SkyDiverModule, HorseShoesModule, ChestNutModule, FreeRunnerModule}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.{ChestNutModule, FreeRunnerModule, HorseShoesModule, SkyDiverModule}
 import de.thatsich.minecraft.intellie.common.Module
 
 

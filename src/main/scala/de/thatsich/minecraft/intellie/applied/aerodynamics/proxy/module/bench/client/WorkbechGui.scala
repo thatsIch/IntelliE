@@ -9,7 +9,7 @@ import de.thatsich.minecraft.common.module.BaseGuiContainer
 import de.thatsich.minecraft.common.module.container.SlotSide
 import de.thatsich.minecraft.common.module.gui.{Direction, GuiProgressBar}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench.WorkbenchTileEntity
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench.{WorkbenchContainer, WorkbenchTileEntity}
 import net.minecraft.client.gui.GuiButton
 import net.minecraft.entity.player.InventoryPlayer
 import net.minecraft.util.{ResourceLocation, StatCollector}

@@ -1,15 +1,15 @@
-package de.thatsich.minecraft
-package intellie
-package applied
-package aerodynamics
-package intern
-package de.thatsich.minecraft.intellie.applied.aerodynamics.module
-package bench
-
+package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
+import de.thatsich.minecraft.common.log.Log
+import de.thatsich.minecraft.common.module.BaseContainer
+import de.thatsich.minecraft.common.module.container.OutputSlot
+import de.thatsich.minecraft.common.module.container.SlotSide.SlotSide
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench.client.{InputSlot, UpgradeSlot}
 import net.minecraft.entity.player.{EntityPlayer, InventoryPlayer}
 import net.minecraft.inventory.ICrafting
+
+import scala.collection.convert.Wrappers.JListWrapper
 
 
 /**
@@ -51,7 +51,8 @@ class WorkbenchContainer(player: InventoryPlayer, workbench: WorkbenchTileEntity
 	{
 		super.detectAndSendChanges()
 
-		val crafters = this.crafters.toList.asInstanceOf[List[ICrafting]]
+		val wrapper = new JListWrapper(this.crafters)
+		val crafters = wrapper.asInstanceOf[List[ICrafting]]
 		for (crafter <- crafters)
 		{
 			if (this.lastModificationTime != this.workbench.modificationTime)

@@ -2,6 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy
 
 
 import cpw.mods.fml.common.event.FMLPreInitializationEvent
+import de.thatsich.minecraft.intellie.applied.aerodynamics.AeroCommonProxy
 
 
 /**
