@@ -15,7 +15,7 @@ import net.minecraft.item.Item
  * @author thatsIch
  * @since 07.09.2014.
  */
-class AppliedAerodynamicsModules(icon: Item, modid: ID, log: Log) extends AeroModules
+class InternalAeroModules(icon: Item, modid: ID, log: Log) extends AeroModules
 {
 	val disassembler: DisassemblerModule = new InternalDisassemblerModule(this.modid, this.log)
 	val workbench: WorkbenchModule = new InternalWorkbenchModule(this.modid, this.log)

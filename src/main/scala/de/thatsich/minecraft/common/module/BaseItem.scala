@@ -13,7 +13,7 @@ import net.minecraft.item.{Item, ItemStack}
  * @author thatsIch
  * @since 10.08.2014.
  */
-abstract class BaseItem(modid: ID, itemName: ID, log: Log) extends Item
+abstract class BaseItem(itemName: ID, modid: ID, log: Log) extends Item
                                                                    with NBTKeyStorage
 {
 	private final val name: String = this.itemName

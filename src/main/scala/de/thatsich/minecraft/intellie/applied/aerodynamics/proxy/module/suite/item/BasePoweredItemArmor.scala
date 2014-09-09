@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.i
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.intellie.applied.aerodynamics.common.item.PoweredItemDamageDisplay
+import de.thatsich.minecraft.common.module.item.PoweredItemDamageDisplay
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.item.ArmorType.ArmorType
 import de.thatsich.minecraft.intellie.common.util.string.ID
 import net.minecraft.entity.player.EntityPlayer

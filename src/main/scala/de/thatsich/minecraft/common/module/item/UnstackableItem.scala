@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.common.item
+package de.thatsich.minecraft.common.module.item
 
 
 import net.minecraft.item.Item

@@ -13,7 +13,7 @@ trait NBTKeyRegistry
 {
 	def addNBTKey(key: String): Unit
 
-	def allKeys: Seq[String]
+	def allKeys: Set[String]
 
-	def allKeysAsItemStack: Seq[ItemStack]
+	def allKeysAsItemStack: Iterable[ItemStack]
 }
