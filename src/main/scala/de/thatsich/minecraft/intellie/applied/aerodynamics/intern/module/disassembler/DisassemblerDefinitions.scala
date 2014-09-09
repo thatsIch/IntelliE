@@ -12,7 +12,7 @@ import de.thatsich.minecraft.intellie.common.util.string.ID
  * @author thatsIch
  * @since 01.08.2014.
  */
-class DisassemblerDefinitions(log: Log, modid: ID) extends BaseDefinition(
+class DisassemblerDefinitions(modid: ID, log: Log) extends BaseDefinition(
 	items = Vector(
 		new DisassemblerItem(modid, log),
 		new CreativeDisassemblerItem(modid, log)

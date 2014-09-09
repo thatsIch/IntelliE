@@ -18,10 +18,10 @@ import net.minecraft.item.Item
  */
 class AppliedAerodynamicsModules(icon: Item, modid: ID, log: Log) extends AeroModules
 {
-	val disassembler: DisassemblerModule = new InternalDisassemblerModule
-	val workbench: WorkbenchModule = new InternalWorkbenchModule
-	val suite: SuiteModule = new InternalSuiteModule
-	val creativetabs: CreativetabsModule = new InternalCreativetabsModule
+	val disassembler: DisassemblerModule = new InternalDisassemblerModule(this.modid, this.log)
+	val workbench: WorkbenchModule = new InternalWorkbenchModule(this.modid, this.log)
+	val suite: SuiteModule = new InternalSuiteModule(this.modid, this.log)
+	val creativetabs: CreativetabsModule = new InternalCreativetabsModule(this.modid, this.log)
 
 	val vectorized = Vector[Module](this.disassembler, this.workbench, this.suite, this.creativetabs)
 }

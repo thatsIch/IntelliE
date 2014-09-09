@@ -12,7 +12,7 @@ import de.thatsich.minecraft.intellie.common.util.string.ID
  * @author thatsIch
  * @since 04.08.2014.
  */
-class ModificationWorkbenchDefinition(log: Log, modid: ID, name: ID = new WorkbenchID, craftStorage: WorkbenchCraftRecipeStorage = WorkbenchCraftRecipeStorage) extends BaseDefinition(
+class WorkbenchDefinition(modid: ID, log: Log, name: ID = new WorkbenchID, craftStorage: WorkbenchCraftRecipeStorage = WorkbenchCraftRecipeStorage) extends BaseDefinition(
 	blocks = Vector(new WorkbenchBlock(modid, name, log)),
 	recipes = Vector(new WorkbenchRecipe),
 	tiles = Vector(classOf[WorkbenchTileEntity]),

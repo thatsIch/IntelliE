@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack
  */
 trait WorkbenchModule extends Module
 {
-	def createNewWorkbenchRecipe(input: ItemStack, upgrade: ItemStack, modifier: String, energycost: Double, time: Int): WorkbenchRecipe
+	def createNewWorkbenchRecipe(input: ItemStack, upgrade: ItemStack, modifier: String, output: ItemStack, energycost: Double, time: Int): WorkbenchRecipe
 
 	def registry: WorkbenchRegistry
 }
