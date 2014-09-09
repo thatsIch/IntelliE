@@ -12,8 +12,3 @@ import net.minecraft.item.{Item, ItemStack}
  * @since 07.09.2014.
  */
 trait FreeRunnerModule extends Module
-{
-	val item: Item
-
-	val stack: ItemStack
-}

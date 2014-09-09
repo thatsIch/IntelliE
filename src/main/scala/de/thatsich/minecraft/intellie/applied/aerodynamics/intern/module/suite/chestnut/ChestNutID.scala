@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.chest
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.chestnut
 
 
 import de.thatsich.minecraft.common.string.id.BaseID

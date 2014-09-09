@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.WorkbenchDefinition
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.WorkbenchDefinitions
 import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.bench.recipe.{InternalWorkbenchRecipe, InternalWorkbenchRegistry}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.module.WorkbenchModule
 import de.thatsich.minecraft.intellie.applied.aerodynamics.module.workbench.{WorkbenchRecipe, WorkbenchRegistry}
@@ -20,7 +20,7 @@ import net.minecraft.item.ItemStack
 class InternalWorkbenchModule(modid: ID, log: Log) extends WorkbenchModule
 {
 	private val workbenchregistry: WorkbenchRegistry = new InternalWorkbenchRegistry
-	private val workbenchdefinitions: Definitions = new WorkbenchDefinition(this.modid, this.log)
+	private val workbenchdefinitions: Definitions = new WorkbenchDefinitions(this.modid, this.log)
 
 	override def createNewWorkbenchRecipe(input: ItemStack, upgrade: ItemStack, modifier: String, output: ItemStack, energycost: Double, time: Int): WorkbenchRecipe =
 	{

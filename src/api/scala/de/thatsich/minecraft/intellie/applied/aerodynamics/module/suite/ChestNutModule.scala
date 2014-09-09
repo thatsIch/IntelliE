@@ -11,5 +11,3 @@ import de.thatsich.minecraft.intellie.common.Module
  * @since 08.09.2014.
  */
 trait ChestNutModule extends Module
-{
-}

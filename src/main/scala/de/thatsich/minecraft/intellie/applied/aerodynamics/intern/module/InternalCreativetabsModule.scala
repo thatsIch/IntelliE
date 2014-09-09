@@ -1,8 +1,12 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module
 
 
+import de.thatsich.minecraft.common.log.Log
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.creativetab.AeroCreativeTabsDefinitions
 import de.thatsich.minecraft.intellie.applied.aerodynamics.module.CreativetabsModule
 import de.thatsich.minecraft.intellie.common.Definitions
+import de.thatsich.minecraft.intellie.common.util.string.ID
+import net.minecraft.item.Item
 
 
 /**
@@ -11,7 +15,7 @@ import de.thatsich.minecraft.intellie.common.Definitions
  * @author thatsIch
  * @since 08.09.2014.
  */
-class InternalCreativetabsModule extends CreativetabsModule
+class InternalCreativetabsModule(icon: Item, modid: ID, log: Log) extends CreativetabsModule
 {
-	override def definitions: Definitions = ???
+	override lazy val definitions: Definitions = new AeroCreativeTabsDefinitions(this.icon, this.modid, this.log)
 }

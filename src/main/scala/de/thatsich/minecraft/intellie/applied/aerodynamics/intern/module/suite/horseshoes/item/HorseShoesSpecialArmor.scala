@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.boots.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.horseshoes.item
 
 
 import de.thatsich.minecraft.common.module.util.NBTAccess

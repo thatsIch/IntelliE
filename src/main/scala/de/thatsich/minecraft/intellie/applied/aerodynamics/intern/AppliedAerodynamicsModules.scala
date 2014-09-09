@@ -21,7 +21,7 @@ class AppliedAerodynamicsModules(icon: Item, modid: ID, log: Log) extends AeroMo
 	val disassembler: DisassemblerModule = new InternalDisassemblerModule(this.modid, this.log)
 	val workbench: WorkbenchModule = new InternalWorkbenchModule(this.modid, this.log)
 	val suite: SuiteModule = new InternalSuiteModule(this.modid, this.log)
-	val creativetabs: CreativetabsModule = new InternalCreativetabsModule(this.modid, this.log)
+	val creativetabs: CreativetabsModule = new InternalCreativetabsModule(this.icon, this.modid, this.log)
 
 	val vectorized = Vector[Module](this.disassembler, this.workbench, this.suite, this.creativetabs)
 }

@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.boots
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.horseshoes
 
 
 import de.thatsich.minecraft.common.string.id.BaseID

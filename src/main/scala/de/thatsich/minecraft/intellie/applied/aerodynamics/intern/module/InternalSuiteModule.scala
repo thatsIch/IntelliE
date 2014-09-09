@@ -1,9 +1,12 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module
 
 
+import de.thatsich.minecraft.common.log.Log
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.{InternalChestNutModule, InternalFreeRunnerModule, SuiteDefinitions, InternalHorseShoesModule, InternalSkydiverModule}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.module.SuiteModule
 import de.thatsich.minecraft.intellie.applied.aerodynamics.module.suite.{ChestNutModule, FreeRunnerModule, HorseShoesModule, SkyDiverModule}
 import de.thatsich.minecraft.intellie.common.Definitions
+import de.thatsich.minecraft.intellie.common.util.string.ID
 
 
 /**
@@ -12,15 +15,15 @@ import de.thatsich.minecraft.intellie.common.Definitions
  * @author thatsIch
  * @since 08.09.2014.
  */
-class InternalSuiteModule extends SuiteModule
+class InternalSuiteModule(modid: ID, log: Log) extends SuiteModule
 {
-	override def skydiver: SkyDiverModule = ???
+	override lazy val horseshoes: HorseShoesModule = new InternalHorseShoesModule(this.modid, this.log)
 
-	override def horseshoes: HorseShoesModule = ???
+	override lazy val skydiver: SkyDiverModule = new InternalSkydiverModule(this.modid, this.log)
 
-	override def freerunner: FreeRunnerModule = ???
+	override lazy val freerunner: FreeRunnerModule = new InternalFreeRunnerModule(this.modid, this.log)
 
-	override def chestnut: ChestNutModule = ???
+	override lazy val chestnut: ChestNutModule = new InternalChestNutModule(this.modid, this.log)
 
-	override def definitions: Definitions = ???
+	override lazy val definitions: Definitions = new SuiteDefinitions(this.modid, this.log)
 }

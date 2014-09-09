@@ -1,7 +1,7 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.boots.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.horseshoes.item
 
 
-import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.boots.item.config.HorseShoesConfig
+import de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.horseshoes.item.config.HorseShoesConfig
 
 
 /**

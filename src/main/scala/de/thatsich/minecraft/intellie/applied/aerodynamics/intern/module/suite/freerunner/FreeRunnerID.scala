@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.legs
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.freerunner
 
 
 import de.thatsich.minecraft.common.string.id.BaseID

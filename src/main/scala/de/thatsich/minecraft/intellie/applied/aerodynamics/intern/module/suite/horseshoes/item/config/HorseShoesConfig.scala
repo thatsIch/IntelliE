@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.boots.item.config
+package de.thatsich.minecraft.intellie.applied.aerodynamics.intern.module.suite.horseshoes.item.config
 
 
 import de.thatsich.minecraft.common.config.BaseConfig
