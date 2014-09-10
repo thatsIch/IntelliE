@@ -53,7 +53,7 @@ class WorkbenchContainer(player: InventoryPlayer, workbench: WorkbenchTileEntity
 		super.detectAndSendChanges()
 
 		val wrapper = new JListWrapper(this.crafters)
-		val crafters = wrapper.asInstanceOf[List[ICrafting]]
+		val crafters = wrapper.toList.asInstanceOf[List[ICrafting]]
 		for (crafter <- crafters)
 		{
 			if (this.lastModificationTime != this.workbench.modificationTime)

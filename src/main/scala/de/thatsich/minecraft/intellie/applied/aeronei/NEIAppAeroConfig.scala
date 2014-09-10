@@ -6,7 +6,7 @@ import de.thatsich.minecraft.common.Module
 import de.thatsich.minecraft.common.log.SimpleLog
 import de.thatsich.minecraft.common.string.BaseAbbreviation
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamicsAPI
-import net.minecraft.item.Item
+import net.minecraft.item.{ItemStack, Item}
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -26,14 +26,18 @@ class NEIAppAeroConfig extends IConfigureNEI
 		val abbr = new BaseAbbreviation("Aero|NEI")
 		val log = new SimpleLog(abbr)
 
+		val nbtkeys: Iterable[ItemStack] = AppliedAerodynamicsAPI.instance.proxy.nbtkeyregistry.allKeysAsItemStack
 		val vectorized: Seq[Module] = AppliedAerodynamicsAPI.instance.proxy.modules.vectorized
 		val fakes: Seq[Item] = this.extractFakes(vectorized)
+		val fakeStacks = fakes.map(new ItemStack(_))
 
-		val hider = new NEIFakeHider(fakes, log)
+		val nbtkeyHider = new NEIItemStackHider(nbtkeys, log)
+		val fakeHider = new NEIItemStackHider(fakeStacks, log)
 		val explanation = new NEICustomExplanations(null, log)
 		val recipes = new NEICustomRecipes(log)
 
-		hider.hideItemsInNEI()
+		nbtkeyHider.hideItemsInNEI()
+		fakeHider.hideItemsInNEI()
 		explanation.registerCustomExplanations()
 		recipes.registerCustomRecipes()
 	}
