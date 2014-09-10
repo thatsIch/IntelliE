@@ -19,7 +19,7 @@ class NEIItemStackHider(stacks: Iterable[ItemStack], log: Log)
 		this.stacks.foreach(stack =>
 		{
 			API.hideItem(stack)
-			this.log.debug(s"Hid $stack from NEI.")
+			this.log.debug(s"Hid ${stack.getItem.getUnlocalizedName} from NEI.")
 		})
 		this.log.info(s"Hid ${this.stacks.size} elements from NEI.")
 	}

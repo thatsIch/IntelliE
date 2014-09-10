@@ -23,6 +23,6 @@ class NEICustomRecipes(log: Log)
 	{
 		API.registerRecipeHandler(recipe)
 		API.registerUsageHandler(recipe)
-		log.debug(s"Registered custom recipe $recipe.")
+		log.debug(s"Registered custom recipe ${recipe.getClass.getSimpleName}.")
 	}
 }
