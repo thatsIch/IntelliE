@@ -6,8 +6,8 @@ import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.registry.fake.NBTKeyCollector
 import de.thatsich.minecraft.common.proxy.CommonProxy
-import de.thatsich.minecraft.common.string.id.SimpleID
-import de.thatsich.minecraft.common.util.string.ID
+import de.thatsich.minecraft.common.string.id.SimpleModID
+import de.thatsich.minecraft.common.util.string.ModID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.creativetab.AeroCreativeTabIcon
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.{AeroAbbreviation, AeroCreativeTabs, AeroModules, InternalAeroModules, InternalNBTKeyRegistry, NBTKeyRegistry}
 import de.thatsich.minecraft.intellie.common.util.string.Abbreviation
@@ -28,7 +28,7 @@ abstract class AeroCommonProxy extends CommonProxy with AeroProxy
 	 * @return mod instance
 	 */
 	final lazy val mod = AppliedAerodynamics
-	final lazy val modid = new SimpleID(this.mod.id)
+	final lazy val modid = new SimpleModID(this.mod.id)
 	/**
 	 * Modules of functionality of the mod.
 	 * Can contain blocks, items, recipes etc
@@ -55,9 +55,6 @@ abstract class AeroCommonProxy extends CommonProxy with AeroProxy
 
 	def onInheritatedPreInit(event: FMLPreInitializationEvent): Unit =
 	{
-		// scans all nbt keys in items
-
-
 		// registers all nbt key items
 		this.nbtkeyregistry.allKeysAsItemStack.foreach(stack =>
 		{
@@ -65,23 +62,6 @@ abstract class AeroCommonProxy extends CommonProxy with AeroProxy
 			val name = this.getItemName(item)
 			GameRegistry.registerItem(item, name)
 		})
-	}
-
-	def onInheritatedPostInit(event: FMLPostInitializationEvent): Unit =
-	{}
-
-	def onInheritatedInit(event: FMLInitializationEvent): Unit =
-	{}
-
-	private def getNBTKeyRegistry(items: Seq[Item], modid: ID, log: Log): NBTKeyRegistry =
-	{
-		val registry = new InternalNBTKeyRegistry(modid, log)
-		val collector = new NBTKeyCollector(items)
-		val keys = collector.getNBTKeys
-
-		keys foreach registry.addNBTKey
-
-		registry
 	}
 
 	/**
@@ -98,5 +78,22 @@ abstract class AeroCommonProxy extends CommonProxy with AeroProxy
 		val name: String = unlocalizedName.substring(position)
 
 		name
+	}
+
+	def onInheritatedPostInit(event: FMLPostInitializationEvent): Unit =
+	{}
+
+	def onInheritatedInit(event: FMLInitializationEvent): Unit =
+	{}
+
+	private def getNBTKeyRegistry(items: Seq[Item], modid: ModID, log: Log): NBTKeyRegistry =
+	{
+		val registry = new InternalNBTKeyRegistry(modid, log)
+		val collector = new NBTKeyCollector(items)
+		val keys = collector.getNBTKeys
+
+		keys foreach registry.addNBTKey
+
+		registry
 	}
 }

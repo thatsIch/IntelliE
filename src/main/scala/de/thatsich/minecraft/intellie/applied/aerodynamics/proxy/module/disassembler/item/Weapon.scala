@@ -70,5 +70,6 @@ trait Weapon extends BaseItem
 	{
 		val Damage = Value
 	}
+	this.addNBTs(Tags)
 
 }

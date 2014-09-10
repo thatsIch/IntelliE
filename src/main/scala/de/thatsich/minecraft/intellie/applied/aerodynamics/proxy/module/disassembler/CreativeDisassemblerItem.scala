@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disasse
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.util.string.ID
+import de.thatsich.minecraft.common.util.string.ModID
 import net.minecraft.item.ItemStack
 
 
@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 03.09.2014.
  */
-class CreativeDisassemblerItem(modid: ID, log: Log) extends DisassemblerItem(modid, log)
+class CreativeDisassemblerItem(modid: ModID, log: Log) extends DisassemblerItem(modid, log)
 {
 	override def getUnlocalizedName: String = s"${modid.id}.item.creativedisassembler"
 

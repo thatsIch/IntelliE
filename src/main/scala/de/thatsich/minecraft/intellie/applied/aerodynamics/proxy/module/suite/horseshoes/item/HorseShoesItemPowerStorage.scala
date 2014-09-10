@@ -3,6 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.h
 
 import appeng.api.config.AccessRestriction
 import appeng.api.implementations.items.IAEItemPowerStorage
+import de.thatsich.minecraft.common.module.item.NBTKeyStorage
 import de.thatsich.minecraft.common.module.util.NBTAccess
 import net.minecraft.item.ItemStack
 
@@ -15,6 +16,7 @@ import net.minecraft.item.ItemStack
  */
 trait HorseShoesItemPowerStorage extends IAEItemPowerStorage
                                          with NBTAccess
+                                         with NBTKeyStorage
 {
 	val config = new HorseShoesConfigAccess
 
@@ -74,12 +76,9 @@ trait HorseShoesItemPowerStorage extends IAEItemPowerStorage
 		diff
 	}
 
-	private object Tags extends Enumeration
+	private object Tags extends BaseNBTProperty
 	{
-		type Tags = Value
 		val CurrentEnergy, MaxEnergy, ChargeMultiplier = Value
-
-		implicit def tagsToString(tag: Tags): String = tag.toString.toLowerCase
 	}
-
+	this.addNBTs(Tags)
 }

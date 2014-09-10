@@ -4,7 +4,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.item.SimpleFakeItem
 import de.thatsich.minecraft.common.string.id.SimpleID
-import de.thatsich.minecraft.common.util.string.ID
+import de.thatsich.minecraft.common.util.string.ModID
 import net.minecraft.item.ItemStack
 
 import scala.collection.mutable
@@ -16,7 +16,7 @@ import scala.collection.mutable
  * @author thatsIch
  * @since 10.09.2014.
  */
-class InternalNBTKeyRegistry(modid: ID, log: Log) extends NBTKeyRegistry
+class InternalNBTKeyRegistry(modid: ModID, log: Log) extends NBTKeyRegistry
 {
 	private val registry = new mutable.HashMap[String, ItemStack]()
 

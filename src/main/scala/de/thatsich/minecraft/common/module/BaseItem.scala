@@ -3,7 +3,7 @@ package de.thatsich.minecraft.common.module
 
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.item.NBTKeyStorage
-import de.thatsich.minecraft.common.util.string.ID
+import de.thatsich.minecraft.common.util.string.{ModID, ID}
 import net.minecraft.item.{Item, ItemStack}
 
 
@@ -13,7 +13,7 @@ import net.minecraft.item.{Item, ItemStack}
  * @author thatsIch
  * @since 10.08.2014.
  */
-abstract class BaseItem(itemName: ID, modid: ID, log: Log)
+abstract class BaseItem(itemName: ID, modid: ModID, log: Log)
 	extends Item
 	        with NBTKeyStorage
 {

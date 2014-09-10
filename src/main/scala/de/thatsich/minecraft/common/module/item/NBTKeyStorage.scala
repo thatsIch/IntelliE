@@ -16,10 +16,14 @@ trait NBTKeyStorage
 
 	def getNBTKeys: Set[String] = this.properties.toSet
 
+	def addNBTs(nbts: BaseNBTProperty): Unit =
+	{
+		val valueset = nbts.values
+		valueset foreach(value => this.properties += value.toString.toLowerCase)
+	}
+
 	abstract class BaseNBTProperty extends Enumeration
 	{
-		properties += this.toString().toLowerCase
-
 		implicit def valuesToString(value: Value): String = value.toString.toLowerCase
 	}
 
