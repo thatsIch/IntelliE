@@ -3,7 +3,7 @@ package de.thatsich.minecraft.common.module.registry
 
 import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.intellie.common.util.string.ID
+import de.thatsich.minecraft.common.util.string.ID
 import net.minecraft.item.Item
 
 import scala.collection._
@@ -36,7 +36,7 @@ class ItemRegistry(registrable: Seq[Item], modid: ID, log: Log)
 		val name: String = this.getItemName(item)
 		val simpleClassName: String = item.getClass.getSimpleName
 
-		this.log.debug(s"Adding item $simpleClassName with name $name")
+		this.log.debug(s"Adding item $simpleClassName with name $name of ${item.getUnlocalizedName}")
 		GameRegistry.registerItem(item, name)
 	}
 

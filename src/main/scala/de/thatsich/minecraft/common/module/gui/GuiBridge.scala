@@ -5,7 +5,7 @@ import java.util
 
 import cpw.mods.fml.common.network.IGuiHandler
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.intellie.common.module.BlockGuiHandler
+import de.thatsich.minecraft.common.module.BlockGuiHandler
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.world.World
 

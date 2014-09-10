@@ -4,7 +4,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.item.SimpleFakeItem
 import de.thatsich.minecraft.common.string.id.SimpleID
-import de.thatsich.minecraft.intellie.common.util.string.ID
+import de.thatsich.minecraft.common.util.string.ID
 import net.minecraft.item.ItemStack
 
 import scala.collection.mutable

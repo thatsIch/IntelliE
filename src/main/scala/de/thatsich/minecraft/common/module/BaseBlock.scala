@@ -3,7 +3,7 @@ package de.thatsich.minecraft.common.module
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.intellie.common.util.string.ID
+import de.thatsich.minecraft.common.util.string.ID
 import net.minecraft.block.material.Material
 import net.minecraft.block.{Block, BlockContainer}
 import net.minecraft.util.IIcon

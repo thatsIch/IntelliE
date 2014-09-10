@@ -3,7 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disasse
 
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.BaseDefinitions
-import de.thatsich.minecraft.intellie.common.util.string.ID
+import de.thatsich.minecraft.common.util.string.ID
 
 
 /**

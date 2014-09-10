@@ -1,4 +1,7 @@
-package de.thatsich.minecraft.intellie.common.util.string
+package de.thatsich.minecraft.common.util.string
+
+
+import de.thatsich.minecraft.intellie.common.util.string.StringWrapper
 
 
 /**

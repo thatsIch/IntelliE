@@ -2,10 +2,10 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench
 
 
 import de.thatsich.minecraft.common.log.Log
+import de.thatsich.minecraft.common.module.BlockGuiHandler
 import de.thatsich.minecraft.common.module.container.SlotSide
+import de.thatsich.minecraft.common.util.string.ID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench.client.WorkbechGui
-import de.thatsich.minecraft.intellie.common.module.BlockGuiHandler
-import de.thatsich.minecraft.intellie.common.util.string.ID
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.tileentity.TileEntity
 

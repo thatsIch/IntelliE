@@ -4,10 +4,9 @@ package de.thatsich.minecraft.common.module
 import appeng.api.recipes.ICraftHandler
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.registry.{BlockRegistry, CraftHandlerRegistry, EntityRegistry, FakeItemRegistry, GuiRegistry, ItemRegistry, RecipeRegistry, TileEntityRegistry}
+import de.thatsich.minecraft.common.util.string.ID
 import de.thatsich.minecraft.common.{Definitions, Module, Modules}
 import de.thatsich.minecraft.intellie.common.Recipe
-import de.thatsich.minecraft.intellie.common.module.BlockGuiHandler
-import de.thatsich.minecraft.intellie.common.util.string.ID
 import net.minecraft.block.Block
 import net.minecraft.entity.Entity
 import net.minecraft.item.Item

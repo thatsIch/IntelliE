@@ -4,7 +4,6 @@ package de.thatsich.minecraft.common.module
 import appeng.api.recipes.ICraftHandler
 import de.thatsich.minecraft.common.{Definitions, Module}
 import de.thatsich.minecraft.intellie.common.Recipe
-import de.thatsich.minecraft.intellie.common.module.BlockGuiHandler
 import net.minecraft.block.Block
 import net.minecraft.entity.Entity
 import net.minecraft.item.Item

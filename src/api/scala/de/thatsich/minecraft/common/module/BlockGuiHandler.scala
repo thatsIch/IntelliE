@@ -1,7 +1,6 @@
-package de.thatsich.minecraft.intellie.common.module
+package de.thatsich.minecraft.common.module
 
-
-import de.thatsich.minecraft.intellie.common.util.string.ID
+import de.thatsich.minecraft.common.util.string.ID
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.tileentity.TileEntity
 

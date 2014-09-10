@@ -7,9 +7,10 @@ import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.registry.fake.NBTKeyCollector
 import de.thatsich.minecraft.common.proxy.CommonProxy
 import de.thatsich.minecraft.common.string.id.SimpleID
+import de.thatsich.minecraft.common.util.string.ID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.creativetab.AeroCreativeTabIcon
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.{AeroAbbreviation, AeroCreativeTabs, AeroModules, InternalAeroModules, InternalNBTKeyRegistry, NBTKeyRegistry}
-import de.thatsich.minecraft.intellie.common.util.string.{Abbreviation, ID}
+import de.thatsich.minecraft.intellie.common.util.string.Abbreviation
 import net.minecraft.item.Item
 
 
