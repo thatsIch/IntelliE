@@ -3,14 +3,10 @@ package de.thatsich.minecraft.common.module.registry
 
 import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.item.SimpleFakeItem
-import de.thatsich.minecraft.common.module.registry.fake.NBTKeyCollector
-import de.thatsich.minecraft.common.string.id.SimpleID
 import de.thatsich.minecraft.intellie.common.util.string.ID
-import net.minecraft.item.{Item, ItemStack}
+import net.minecraft.item.Item
 
 import scala.collection.Seq
-import scala.collection.mutable.{Set => MutableSet}
 
 
 /**
@@ -19,28 +15,44 @@ import scala.collection.mutable.{Set => MutableSet}
  * @author thatsIch
  * @since 06.09.2014.
  */
-class FakeItemRegistry(registrable: Seq[ItemStack], modid: ID, log: Log)
+class FakeItemRegistry(registrable: Seq[Item], modid: ID, log: Log)
 {
 	/**
  * Registers all items in modules
  */
-	def registerAll(): Set[Item] =
+	def registerAll(): Unit =
 	{
-		val collector = new NBTKeyCollector(this.registrable)
-		val fakes = MutableSet[Item]()
-		val keys = collector.getNBTKeys
+		this.registrable foreach this.register
+		this.log.info(s"Finished loading ${this.registrable.size} fake item(s).")
+	}
 
-		keys.foreach(key =>
-		{
-			val id = new SimpleID(key)
-			val item = new SimpleFakeItem(this.modid, id, this.log)
-			fakes += item
+	/**
+	 * Registers a single item
+	 *
+	 * @param item to be registered item
+	 */
+	private def register(item: Item): Unit =
+	{
+		val name: String = this.getItemName(item)
+		val simpleClassName: String = item.getClass.getSimpleName
 
-			this.log.debug(s"Adding fake item $key")
-			GameRegistry.registerItem(item, key)
-		})
-		this.log.info(s"Finished loading ${keys.size} fake item(s).")
+		this.log.debug(s"Adding fake item $simpleClassName with name $name")
+		GameRegistry.registerItem(item, name)
+	}
 
-		fakes.toSet
+	/**
+	 * Gets the name which will be stored in the end in the registry
+	 *
+	 * @param item to be extracted name of item
+	 *
+	 * @return stripped down version of the itemname
+	 */
+	private def getItemName(item: Item): String =
+	{
+		val unlocalizedName: String = item.getUnlocalizedName
+		val position: Int = unlocalizedName.lastIndexOf('.') + 1
+		val name: String = unlocalizedName.substring(position)
+
+		name
 	}
 }

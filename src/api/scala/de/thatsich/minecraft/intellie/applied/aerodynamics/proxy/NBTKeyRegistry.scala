@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack
 
 
 /**
- * 
+ * Registry for NBT Keys
  *
  * @author thatsIch
  * @since 09.09.2014.

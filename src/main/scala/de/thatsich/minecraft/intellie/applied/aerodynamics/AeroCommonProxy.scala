@@ -2,11 +2,15 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics
 
 
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
+import cpw.mods.fml.common.registry.GameRegistry
+import de.thatsich.minecraft.common.log.Log
+import de.thatsich.minecraft.common.module.registry.fake.NBTKeyCollector
 import de.thatsich.minecraft.common.proxy.CommonProxy
 import de.thatsich.minecraft.common.string.id.SimpleID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.creativetab.AeroCreativeTabIcon
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.{AeroAbbreviation, AeroCreativeTabs, AeroModules, InternalAeroModules, InternalNBTKeyRegistry, NBTKeyRegistry}
-import de.thatsich.minecraft.intellie.common.util.string.Abbreviation
+import de.thatsich.minecraft.intellie.common.util.string.{Abbreviation, ID}
+import net.minecraft.item.Item
 
 
 /**
@@ -46,14 +50,52 @@ abstract class AeroCommonProxy extends CommonProxy with AeroProxy
 	 */
 	new AeroCreativeTabs(this.icon, this.registry.blocks, this.registry.items, this.log, this.modid)
 
-	override lazy val nbtkeyregistry: NBTKeyRegistry = new InternalNBTKeyRegistry(this.modid, this.log)
+	override lazy val nbtkeyregistry: NBTKeyRegistry = this.getNBTKeyRegistry(this.registry.items, this.modid, this.log)
 
 	def onInheritatedPreInit(event: FMLPreInitializationEvent): Unit =
-	{}
+	{
+		// scans all nbt keys in items
+
+
+		// registers all nbt key items
+		this.nbtkeyregistry.allKeysAsItemStack.foreach(stack =>
+		{
+			val item = stack.getItem
+			val name = this.getItemName(item)
+			GameRegistry.registerItem(item, name)
+		})
+	}
 
 	def onInheritatedPostInit(event: FMLPostInitializationEvent): Unit =
 	{}
 
 	def onInheritatedInit(event: FMLInitializationEvent): Unit =
 	{}
+
+	private def getNBTKeyRegistry(items: Seq[Item], modid: ID, log: Log): NBTKeyRegistry =
+	{
+		val registry = new InternalNBTKeyRegistry(modid, log)
+		val collector = new NBTKeyCollector(items)
+		val keys = collector.getNBTKeys
+
+		keys foreach registry.addNBTKey
+
+		registry
+	}
+
+	/**
+ * Gets the name which will be stored in the end in the registry
+ *
+ * @param item to be extracted name of item
+ *
+ * @return stripped down version of the itemname
+ */
+	private def getItemName(item: Item): String =
+	{
+		val unlocalizedName: String = item.getUnlocalizedName
+		val position: Int = unlocalizedName.lastIndexOf('.') + 1
+		val name: String = unlocalizedName.substring(position)
+
+		name
+	}
 }

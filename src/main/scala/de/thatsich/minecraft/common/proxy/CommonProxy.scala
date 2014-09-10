@@ -4,9 +4,9 @@ package de.thatsich.minecraft.common.proxy
 import com.google.common.base.Stopwatch
 import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationEvent, FMLPreInitializationEvent}
 import cpw.mods.fml.common.network.{IGuiHandler, NetworkRegistry}
+import de.thatsich.minecraft.common.Modules
 import de.thatsich.minecraft.common.log.{Log, SimpleLog}
 import de.thatsich.minecraft.common.module.ModuleRegistry
-import de.thatsich.minecraft.intellie.common.Modules
 import de.thatsich.minecraft.intellie.common.util.string.{Abbreviation, ID}
 
 

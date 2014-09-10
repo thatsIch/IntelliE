@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.chestnut
 
+
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.HorseShoesItemPowerStorage

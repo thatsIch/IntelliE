@@ -1,8 +1,8 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module
 
 
+import de.thatsich.minecraft.common.Module
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.workbench.{WorkbenchRecipe, WorkbenchRegistry}
-import de.thatsich.minecraft.intellie.common.Module
 import net.minecraft.item.ItemStack
 
 

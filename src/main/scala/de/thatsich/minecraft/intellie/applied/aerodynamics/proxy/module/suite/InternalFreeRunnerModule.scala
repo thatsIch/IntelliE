@@ -1,9 +1,9 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite
 
 
+import de.thatsich.minecraft.common.Definitions
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.freerunner.FreeRunnerDefinitions
-import de.thatsich.minecraft.intellie.common.Definitions
 import de.thatsich.minecraft.intellie.common.util.string.ID
 
 

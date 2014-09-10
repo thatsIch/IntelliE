@@ -1,11 +1,12 @@
-package de.thatsich.minecraft.intellie.common
+package de.thatsich.minecraft.common
 
 
 import appeng.api.recipes.ICraftHandler
+import de.thatsich.minecraft.intellie.common.Recipe
 import de.thatsich.minecraft.intellie.common.module.BlockGuiHandler
 import net.minecraft.block.Block
 import net.minecraft.entity.Entity
-import net.minecraft.item.{Item, ItemStack}
+import net.minecraft.item.Item
 import net.minecraft.tileentity.TileEntity
 
 
@@ -20,7 +21,7 @@ trait Definitions
 	val blocks: Seq[Block]
 	val crafthandlers: Seq[Class[_ <: ICraftHandler]]
 	val entites: Seq[Entity]
-	val fakes: Seq[ItemStack]
+	val fakes: Seq[Item]
 	val guis: Seq[BlockGuiHandler]
 	val items: Seq[Item]
 	val modules: Seq[Module]

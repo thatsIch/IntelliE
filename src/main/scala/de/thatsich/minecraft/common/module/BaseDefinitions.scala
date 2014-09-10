@@ -2,11 +2,12 @@ package de.thatsich.minecraft.common.module
 
 
 import appeng.api.recipes.ICraftHandler
+import de.thatsich.minecraft.common.{Definitions, Module}
+import de.thatsich.minecraft.intellie.common.Recipe
 import de.thatsich.minecraft.intellie.common.module.BlockGuiHandler
-import de.thatsich.minecraft.intellie.common.{Definitions, Module, Recipe}
 import net.minecraft.block.Block
 import net.minecraft.entity.Entity
-import net.minecraft.item.{Item, ItemStack}
+import net.minecraft.item.Item
 import net.minecraft.tileentity.TileEntity
 
 
@@ -19,7 +20,7 @@ import net.minecraft.tileentity.TileEntity
 abstract class BaseDefinitions(val blocks: Seq[Block] = Vector(),
                                val crafthandlers: Seq[Class[_ <: ICraftHandler]] = Vector(),
                                val entites: Seq[Entity] = Vector(),
-                               val fakes: Seq[ItemStack] = Vector(),
+                               val fakes: Seq[Item] = Vector(),
                                val guis: Seq[BlockGuiHandler] = Vector(),
                                val items: Seq[Item] = Vector(),
                                val modules: Seq[Module] = Vector(),

@@ -4,12 +4,13 @@ package de.thatsich.minecraft.common.module
 import appeng.api.recipes.ICraftHandler
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.registry.{BlockRegistry, CraftHandlerRegistry, EntityRegistry, FakeItemRegistry, GuiRegistry, ItemRegistry, RecipeRegistry, TileEntityRegistry}
+import de.thatsich.minecraft.common.{Definitions, Module, Modules}
+import de.thatsich.minecraft.intellie.common.Recipe
 import de.thatsich.minecraft.intellie.common.module.BlockGuiHandler
 import de.thatsich.minecraft.intellie.common.util.string.ID
-import de.thatsich.minecraft.intellie.common.{Definitions, Module, Modules, Recipe}
 import net.minecraft.block.Block
 import net.minecraft.entity.Entity
-import net.minecraft.item.{Item, ItemStack}
+import net.minecraft.item.Item
 import net.minecraft.tileentity.TileEntity
 
 import scala.collection._
@@ -26,7 +27,7 @@ class ModuleRegistry(modules: Modules, modid: ID, log: Log)
 	val blocks = mutable.ArrayBuffer[Block]()
 	val crafts = mutable.ArrayBuffer[Class[_ <: ICraftHandler]]()
 	val entities = mutable.ArrayBuffer[Entity]()
-	val fakes = mutable.ArrayBuffer[ItemStack]()
+	val fakes = mutable.ArrayBuffer[Item]()
 	val guis = mutable.ArrayBuffer[BlockGuiHandler]()
 	val items = mutable.ArrayBuffer[Item]()
 	val recipes = mutable.ArrayBuffer[Recipe]()

@@ -1,5 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench
 
+
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.BaseContainer

@@ -2,7 +2,7 @@ package de.thatsich.minecraft.common.module.registry.fake
 
 
 import de.thatsich.minecraft.common.module.item.NBTKeyStorage
-import net.minecraft.item.{Item, ItemStack}
+import net.minecraft.item.Item
 
 import scala.collection.Set
 
@@ -15,9 +15,8 @@ import scala.collection.Set
  */
 class NBTKeyExtractor
 {
-	def extractNBTKeys(is: ItemStack): Set[String] =
+	def extractNBTKeys(item: Item): Set[String] =
 	{
-		val item: Item = is.getItem
 		item match
 		{
 			case keystorage: NBTKeyStorage => keystorage.getNBTKeys

@@ -1,8 +1,8 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module
 
 
+import de.thatsich.minecraft.common.Module
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.fake.{FakeItem, FakeItemRegistry}
-import de.thatsich.minecraft.intellie.common.Module
 
 
 /**

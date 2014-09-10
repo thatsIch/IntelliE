@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module
 
 
-import de.thatsich.minecraft.intellie.common.Module
+import de.thatsich.minecraft.common.Module
 
 
 /**
