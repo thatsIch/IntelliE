@@ -2,6 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disasse
 
 
 import de.thatsich.minecraft.common.module.BaseItem
+import de.thatsich.minecraft.common.module.item.NBTKeyStorage
 import de.thatsich.minecraft.common.module.util.NBTAccess
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
@@ -20,6 +21,7 @@ trait Weapon extends BaseItem
                      with NBTAccess
                      with DisassemblerConfigAccess
                      with PoweredItem
+                     with NBTKeyStorage
 {
 	/**
 	 * Called when hitting an entity

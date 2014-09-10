@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item
 
 
-import de.thatsich.minecraft.common.module.BaseItem
+import de.thatsich.minecraft.common.module.item.NBTKeyStorage
 import de.thatsich.minecraft.common.module.util.NBTAccess
 import net.minecraft.block.Block
 import net.minecraft.item.ItemStack
@@ -13,10 +13,10 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 10.08.2014.
  */
-trait MiningTool extends BaseItem
-                         with PoweredItem
+trait MiningTool extends PoweredItem
                          with NBTAccess
                          with DisassemblerConfigAccess
+                         with NBTKeyStorage
 {
 	/**
 	 * gets the mining speed
@@ -39,7 +39,7 @@ trait MiningTool extends BaseItem
 
 		if (this.getAECurrentPower(is) >= this.getCurrentEnergyUsage(is))
 		{
-			(this.initMiningSpeed + current) min this.maxMiningSpeed
+			(this.initMiningSpeed max current) min this.maxMiningSpeed
 		}
 		else
 		{
@@ -61,16 +61,12 @@ trait MiningTool extends BaseItem
 		(this.initMiningLevel + current) min this.maxMiningLevel
 	}
 
-	def setCurrentMiningLevel(is: ItemStack, value: Double): Unit =
-	{
-		val tag = this.getNBTData(is)
-		tag.setDouble(Tags.MiningLevel, value)
-	}
+	def setCurrentMiningLevel(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(Tags.MiningLevel, value)
 
 	private object Tags extends BaseNBTProperty
 	{
 		val MiningLevel, MiningSpeed = Value
 	}
-	this.addNBTs(Tags)
 
+	this.addNBTs(Tags)
 }

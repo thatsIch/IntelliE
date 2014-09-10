@@ -4,6 +4,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disasse
 import appeng.api.config.AccessRestriction
 import appeng.api.implementations.items.IAEItemPowerStorage
 import de.thatsich.minecraft.common.module.BaseItem
+import de.thatsich.minecraft.common.module.item.NBTKeyStorage
 import de.thatsich.minecraft.common.module.util.NBTAccess
 import net.minecraft.item.ItemStack
 
@@ -18,6 +19,7 @@ private[disassembler] trait PoweredItem extends BaseItem
                                                 with IAEItemPowerStorage
                                                 with NBTAccess
                                                 with DisassemblerConfigAccess
+                                                with NBTKeyStorage
 {
 	def injectAEPower(is: ItemStack, amt: Double): Double =
 	{
@@ -61,11 +63,7 @@ private[disassembler] trait PoweredItem extends BaseItem
 		(this.initEnergy + current) min this.maxEnergy
 	}
 
-	def setAEMaxPower(is: ItemStack, value: Double): Unit =
-	{
-		val tag = this.getNBTData(is)
-		tag.setDouble(Tags.MaxEnergy, value)
-	}
+	def setAEMaxPower(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(Tags.MaxEnergy, value)
 
 	def getPowerFlow(is: ItemStack): AccessRestriction = AccessRestriction.WRITE
 
@@ -80,17 +78,9 @@ private[disassembler] trait PoweredItem extends BaseItem
 	}
 
 	// AE Current Power
-	def getAECurrentPower(is: ItemStack): Double =
-	{
-		val tag = this.getNBTData(is)
-		tag.getDouble(Tags.CurrentEnergy)
-	}
+	def getAECurrentPower(is: ItemStack): Double = this.getNBTData(is).getDouble(Tags.CurrentEnergy)
 
-	def setAECurrentPower(is: ItemStack, value: Double): Unit =
-	{
-		val tag = this.getNBTData(is)
-		tag.setDouble(Tags.CurrentEnergy, value)
-	}
+	def setAECurrentPower(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(Tags.CurrentEnergy, value)
 
 	def addAECurrentPower(is: ItemStack, value: Double): Double =
 	{
@@ -101,11 +91,7 @@ private[disassembler] trait PoweredItem extends BaseItem
 		sum
 	}
 
-	def setCurrentChargeMultiplier(is: ItemStack, value: Double): Unit =
-	{
-		val tag = this.getNBTData(is)
-		tag.setDouble(Tags.ChargeSpeed, value)
-	}
+	def setCurrentChargeMultiplier(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(Tags.ChargeSpeed, value)
 
 	// AE Current Energy Usage
 	def getCurrentEnergyUsage(is: ItemStack): Double =
@@ -116,16 +102,12 @@ private[disassembler] trait PoweredItem extends BaseItem
 		(this.initEnergyUsage - value) max this.minEnergyUsage
 	}
 
-	def setCurrentEnergyPerBlockBreak(is: ItemStack, value: Double): Unit =
-	{
-		val tag = this.getNBTData(is)
-		tag.setDouble(Tags.EnergyCost, value)
-	}
+	def setCurrentEnergyPerBlockBreak(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(Tags.EnergyCost, value)
 
 	private object Tags extends BaseNBTProperty
 	{
 		val CurrentEnergy, MaxEnergy, ChargeSpeed, EnergyCost = Value
 	}
-	this.addNBTs(Tags)
 
+	this.addNBTs(Tags)
 }

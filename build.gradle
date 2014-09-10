@@ -29,7 +29,7 @@ buildscript {
 
 // needed for pulling new versions from forge
 minecraft {
-    version = "${VERSION_MINECRAFT}-10.13.0.1208"
+    version = "${VERSION_MINECRAFT}-10.13.1.1216-new"
     replace "@version@", VERSION_PROJECT.toString()
     runDir = "run"
 }
@@ -42,10 +42,12 @@ sourceSets {
     }
 }
 
+// uses scala compile daemon
 compileScala {
     scalaCompileOptions.useCompileDaemon = true
 }
 
+// use FSC and not Ant to compile
 tasks.withType(ScalaCompile) {
     scalaCompileOptions.useAnt = false
 }
