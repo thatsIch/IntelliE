@@ -1,36 +1,32 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics
 
 
-import scala.reflect.runtime.universe
-
-
 /**
  * Entry Point of Aero API
  *
  * @author thatsIch
  * @since 07.09.2014.
  */
-object AppliedAerodynamicsAPI
+object AppliedAerodynamicsAPI extends AeroAPI
 {
-	private var api: AeroAPI = null
+	private var instance: AeroProxy = null
 
 	/**
 		 * Access to the API object of Applied Aerodynamics
 		 *
 		 * @return the {@link AeroAPI}
 		 */
-	def instance: AeroAPI =
+	def proxy: AeroProxy =
 	{
-		if (this.api == null)
+		if (this.instance == null)
 		{
-			val runtimeMirror = universe.runtimeMirror(getClass.getClassLoader)
-			val module = runtimeMirror.staticModule("de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics")
-			val obj = runtimeMirror.reflectModule(module)
-			val instance = obj.instance
+			val clazz = Class.forName("de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics$")
+			val modulefield = clazz.getField("MODULE$")
+			val instance = modulefield.get(clazz).asInstanceOf[AeroAPI]
 
-			this.api = instance.asInstanceOf[AeroAPI]
+			this.instance = instance.proxy
 		}
 
-		this.api
+		this.instance
 	}
 }

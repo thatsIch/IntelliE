@@ -61,7 +61,7 @@ trait HorseShoesItemPowerStorage extends IAEItemPowerStorage
 		val tag = this.getNBTData(is)
 		val current = tag.getDouble(Tags.MaxEnergy)
 
-		(this.config.initEnergy + current) min this.config.maxEnergy
+		(this.config.initEnergy max current) min this.config.maxEnergy
 	}
 
 	override def getPowerFlow(is: ItemStack): AccessRestriction = AccessRestriction.WRITE
@@ -76,9 +76,19 @@ trait HorseShoesItemPowerStorage extends IAEItemPowerStorage
 		diff
 	}
 
+	def getDischargePerTick(is: ItemStack): Double =
+	{
+		val tag = this.getNBTData(is)
+		val current = tag.getDouble(Tags.DischargePerTick)
+
+		(this.config.minDischargePerTick max current) min this.config.initDischargePerTick
+	}
+
+	def setDischargePerTick(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(Tags.DischargePerTick, value)
+
 	private object Tags extends BaseNBTProperty
 	{
-		val CurrentEnergy, MaxEnergy, ChargeMultiplier = Value
+		val CurrentEnergy, MaxEnergy, ChargeMultiplier, DischargePerTick = Value
 	}
 	this.addNBTs(Tags)
 }

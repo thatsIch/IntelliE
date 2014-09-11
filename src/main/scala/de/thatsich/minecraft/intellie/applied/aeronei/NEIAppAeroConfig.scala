@@ -2,6 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aeronei
 
 
 import codechicken.nei.api.IConfigureNEI
+import com.google.common.base.Stopwatch
 import de.thatsich.minecraft.common.Module
 import de.thatsich.minecraft.common.log.SimpleLog
 import de.thatsich.minecraft.common.string.BaseAbbreviation
@@ -26,20 +27,41 @@ class NEIAppAeroConfig extends IConfigureNEI
 		val abbr = new BaseAbbreviation("Aero|NEI")
 		val log = new SimpleLog(abbr)
 
-		val nbtkeys: Iterable[ItemStack] = AppliedAerodynamicsAPI.instance.proxy.nbtkeyregistry.allKeysAsItemStack
-		val vectorized: Seq[Module] = AppliedAerodynamicsAPI.instance.proxy.modules.vectorized
+		val stopwatch: Stopwatch = Stopwatch.createUnstarted
+		log.info("ClientStart Begin")
+		stopwatch.start
+
+		val apiproxy = AppliedAerodynamicsAPI.proxy
+		log.debug(s"Extracted API ($stopwatch).")
+
+		val nbtkeys: Iterable[ItemStack] = apiproxy.nbtkeyregistry.allKeysAsItemStack
+		log.debug(s"Extracted NBT Keys ($stopwatch).")
+
+		val vectorized: Seq[Module] = apiproxy.modules.vectorized
+		log.debug(s"Extracted Modules ($stopwatch).")
+
 		val fakes: Seq[Item] = this.extractFakes(vectorized)
+		log.debug(s"Extracted Fakes ($stopwatch).")
+
 		val fakeStacks = fakes.map(new ItemStack(_))
+		log.debug(s"Extracted fake Stacks ($stopwatch).")
 
 		val nbtkeyHider = new NEIItemStackHider(nbtkeys, log)
 		val fakeHider = new NEIItemStackHider(fakeStacks, log)
 		val explanation = new NEICustomExplanations(null, log)
 		val recipes = new NEICustomRecipes(log)
 
+		log.debug(s"Created all processing ($stopwatch).")
+
 		nbtkeyHider.hideItemsInNEI()
 		fakeHider.hideItemsInNEI()
 		explanation.registerCustomExplanations()
 		recipes.registerCustomRecipes()
+
+		log.debug(s"Finished processing ($stopwatch).")
+
+		stopwatch.stop()
+		log.info(s"ClientStart End ($stopwatch)")
 	}
 
 	private def extractFakes(vectorized: Seq[Module]): Seq[Item] =
