@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.common.config
 
 
-import de.thatsich.minecraft.intellie.common.util.string.ConfigPath
+import de.thatsich.minecraft.common.util.string.ConfigPath
 
 
 /**

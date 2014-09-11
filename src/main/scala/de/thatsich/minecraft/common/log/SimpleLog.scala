@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.common.log
 
 
-import de.thatsich.minecraft.intellie.common.util.string.Abbreviation
+import de.thatsich.minecraft.common.util.string.Abbreviation
 import org.apache.logging.log4j.{Level, LogManager, Logger}
 
 

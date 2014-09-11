@@ -8,7 +8,6 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.ho
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.item.{ArmorType, BasePoweredItemArmor}
 import net.minecraft.client.renderer.texture.IIconRegister
 import net.minecraft.entity.Entity
-import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.world.World
 
@@ -24,12 +23,12 @@ class HorseShoesItem(modid: ID, log: Log)
 	        with HorseShoesItemPowerStorage
 	        with HorseShoesSpecialArmor
 {
-	// TODO muss logic ändern, sonst kann user einfach ausziehen und hat immer noch effekt
-	override def onArmorTick(world: World, player: EntityPlayer, itemStack: ItemStack): Unit =
+	override def onUpdate(is: ItemStack, world: World, player: Entity, invIndex: Int, isHeldItem: Boolean): Unit =
 	{
+		println(invIndex)
 		if (player.isSprinting)
 		{
-			val extracted = this.extractAEPower(itemStack, this.config.initDischargePerTick)
+			val extracted = this.extractAEPower(is, this.config.initDischargePerTick)
 			if (extracted > 0)
 			{
 				player.stepHeight = 1F
@@ -44,12 +43,12 @@ class HorseShoesItem(modid: ID, log: Log)
 
 	override def getArmorTexture(stack: ItemStack, entity: Entity, slot: Int, `type`: String): String =
 	{
-		"appaero:textures/models/aero.png"
+		"appaero:textures/models/suit.png"
 	}
 
 	@SideOnly(Side.CLIENT)
 	override def registerIcons(iconRegister: IIconRegister): Unit =
 	{
-		this.itemIcon = iconRegister.registerIcon("appaero:aeroboots")
+		this.itemIcon = iconRegister.registerIcon("appaero:horseshoes")
 	}
 }

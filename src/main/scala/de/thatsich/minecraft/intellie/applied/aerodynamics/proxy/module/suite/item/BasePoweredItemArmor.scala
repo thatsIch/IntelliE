@@ -30,7 +30,6 @@ abstract class BasePoweredItemArmor(armorType: ArmorType, modid: ID, itemName: I
 
 		val message = s"Stored Energy: $currentPower AE - $percent%"
 
-
 		list.add(message)
 	}
 }

@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.common.string
 
 
-import de.thatsich.minecraft.intellie.common.util.string.StringWrapper
+import de.thatsich.minecraft.common.util.string.StringWrapper
 
 
 /**
@@ -12,5 +12,3 @@ import de.thatsich.minecraft.intellie.common.util.string.StringWrapper
  */
 abstract class BaseStringWrapper(protected val wrapped: String)
 	extends StringWrapper
-{
-}
