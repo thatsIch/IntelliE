@@ -2,7 +2,7 @@ package de.thatsich.minecraft.common.module.item
 
 
 import scala.collection._
-
+import scala.language.implicitConversions
 
 /**
  * 

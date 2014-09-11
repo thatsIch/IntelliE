@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.DamageSource
 import net.minecraftforge.common.ISpecialArmor
-
+import scala.language.implicitConversions
 
 /**
  *

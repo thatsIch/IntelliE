@@ -1,6 +1,9 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.item
 
 
+import scala.language.implicitConversions
+
+
 /**
  *
  *

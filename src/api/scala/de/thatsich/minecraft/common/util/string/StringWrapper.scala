@@ -1,5 +1,9 @@
 package de.thatsich.minecraft.common.util.string
 
+
+import scala.language.implicitConversions
+
+
 /**
  *
  *
