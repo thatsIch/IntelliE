@@ -18,15 +18,11 @@ import net.minecraft.item.ItemStack
  */
 class InternalWorkbenchModule(modid: ID, log: Log) extends WorkbenchModule
 {
-	private val workbenchregistry: WorkbenchRegistry = new InternalWorkbenchRegistry
-	private val workbenchdefinitions: Definitions = new WorkbenchDefinitions(this.modid, this.log)
+	override lazy val registry: WorkbenchRegistry = new InternalWorkbenchRegistry
+	override lazy val definitions: Definitions = new WorkbenchDefinitions(this.modid, this.log)
 
 	override def createNewWorkbenchRecipe(input: ItemStack, upgrade: ItemStack, modifier: String, output: ItemStack, energycost: Double, time: Int): WorkbenchRecipe =
 	{
 		new InternalWorkbenchRecipe(input, upgrade, modifier, output, energycost, time)
 	}
-
-	override def registry: WorkbenchRegistry = this.workbenchregistry
-
-	override def definitions: Definitions = this.workbenchdefinitions
 }

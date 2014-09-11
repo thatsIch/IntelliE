@@ -3,7 +3,7 @@ package de.thatsich.minecraft.common.string
 
 import java.io.File
 
-import de.thatsich.minecraft.intellie.common.util.string.ConfigPath
+import de.thatsich.minecraft.common.util.string.ConfigPath
 
 
 /**

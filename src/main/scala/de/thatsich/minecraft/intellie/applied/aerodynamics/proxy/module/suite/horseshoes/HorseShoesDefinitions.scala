@@ -14,5 +14,5 @@ import de.thatsich.minecraft.common.util.string.ID
  */
 class HorseShoesDefinitions(modid: ID, log: Log) extends BaseDefinitions(
 	items = Vector(new HorseShoesItem(modid, log)),
-	recipes = Vector()
+	recipes = Vector(new HorseShoesCraftRecipe)
 )

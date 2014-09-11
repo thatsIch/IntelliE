@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy
 
 
-import de.thatsich.minecraft.common.Modules
+import de.thatsich.minecraft.common.{Module, Modules}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.{DisassemblerModule, SuiteModule, WorkbenchModule}
 
 
@@ -18,4 +18,6 @@ trait AeroModules extends Modules
 	def disassembler: DisassemblerModule
 
 	def suite: SuiteModule
+
+	def vectorized: Seq[Module]
 }

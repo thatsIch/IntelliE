@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disasse
 
 
 import de.thatsich.minecraft.common.module.recipe.BaseRecipe
-import de.thatsich.minecraft.common.string.{BaseConfigPath, BaseResourcePath}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.recipe.{ExternalDisassemblerCraftRecipePath, InternalDisassemblerCraftRecipePath}
 
 
 /**
@@ -12,7 +12,3 @@ import de.thatsich.minecraft.common.string.{BaseConfigPath, BaseResourcePath}
  * @since 23.06.2014.
  */
 private[disassembler] class DisassemblerCraftRecipe extends BaseRecipe(new InternalDisassemblerCraftRecipePath, new ExternalDisassemblerCraftRecipePath)
-
-private class ExternalDisassemblerCraftRecipePath extends BaseConfigPath("config", "AppliedEnergistics2", "IntelliE", "Aero", "disassembler.recipe")
-
-private class InternalDisassemblerCraftRecipePath extends BaseResourcePath("assets", "appaero", "recipes", "disassembler.recipe")

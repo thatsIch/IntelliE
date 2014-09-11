@@ -1,5 +1,4 @@
-package de.thatsich.minecraft.intellie.common.util.string
-
+package de.thatsich.minecraft.common.util.string
 
 /**
  *
