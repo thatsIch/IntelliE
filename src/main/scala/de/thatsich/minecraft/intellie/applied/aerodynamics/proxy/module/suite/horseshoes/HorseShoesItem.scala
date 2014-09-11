@@ -29,6 +29,9 @@ class HorseShoesItem(modid: ID, log: Log)
 {
 	MinecraftForge.EVENT_BUS.register(this)
 
+	/**
+	 * reset player step height
+	 */
 	@SubscribeEvent
 	def onLivingUpdateEvent(event: LivingUpdateEvent): Unit =
 	{
@@ -41,14 +44,10 @@ class HorseShoesItem(modid: ID, log: Log)
 					val armor = player.inventory.armorItemInSlot(0)
 					if (armor == null || armor.getItem != this)
 					{
-						if (player.capabilities.allowFlying)
-						{
-							player.capabilities.allowFlying = false
-						}
+						player.stepHeight = 0.5F
 					}
 			}
 		}
-
 	}
 
 	/**
@@ -56,35 +55,21 @@ class HorseShoesItem(modid: ID, log: Log)
 	 * when player is sprinting and has enough power
 	 * power is drained and the stepheight is increased
 	 */
-	//	override def onArmorTick(world: World, player: EntityPlayer, is: ItemStack): Unit = {
-	//		val currentpower = this.getAECurrentPower(is)
-	//		val discharge = this.getDischargePerTick(is)
-	//
-	//		if (player.isSprinting && currentpower >= discharge)
-	//		{
-	//			this.extractAEPower(is, discharge)
-	//
-	//			player.stepHeight = 1F
-	//			player.fallDistance = 0
-	//		}
-	//		else {
-	//			player.stepHeight = 0.5F
-	//		}
-	//	}
-
-	/**
-	 * reset player step height
-	 */
-	//	override def onUpdate(is: ItemStack, world: World, player: Entity, invIndex: Int, isHeldItem: Boolean): Unit =
-	//	{
-	//		player.stepHeight = 0.5F
-	//	}
-
-	override def onArmorTick(world: World, player: EntityPlayer, itemStack: ItemStack): Unit =
+	override def onArmorTick(world: World, player: EntityPlayer, is: ItemStack): Unit =
 	{
-		if (!player.capabilities.allowFlying)
+		val currentpower = this.getAECurrentPower(is)
+		val discharge = this.getDischargePerTick(is)
+
+		if (player.isSprinting && currentpower >= discharge)
 		{
-			player.capabilities.allowFlying = true
+			this.extractAEPower(is, discharge)
+
+			player.stepHeight = 1F
+			player.fallDistance = 0
+		}
+		else
+		{
+			player.stepHeight = 0.5F
 		}
 	}
 
