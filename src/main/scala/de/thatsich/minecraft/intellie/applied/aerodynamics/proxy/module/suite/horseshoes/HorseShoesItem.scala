@@ -77,6 +77,8 @@ class HorseShoesItem(modid: ID, log: Log)
 					{
 						player.stepHeight = 0.5F
 					}
+
+				case _ =>
 			}
 		}
 	}
