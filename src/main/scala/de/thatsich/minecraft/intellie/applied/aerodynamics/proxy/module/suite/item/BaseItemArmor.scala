@@ -1,11 +1,13 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.item
 
 
+import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.item.{UniqueItem, UnstackableItem}
-import de.thatsich.minecraft.common.util.string.ID
+import de.thatsich.minecraft.common.util.string.{ModID, ID}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.item.ArmorType.ArmorType
 import net.minecraft.block.BlockDispenser
+import net.minecraft.client.renderer.texture.IIconRegister
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{Item, ItemArmor, ItemStack}
@@ -19,13 +21,13 @@ import net.minecraftforge.common.ISpecialArmor
  * @author thatsIch
  * @since 16.08.2014.
  */
-abstract class BaseItemArmor(armorType: ArmorType, modid: ID, itemName: ID, log: Log)
+abstract class BaseItemArmor(armorType: ArmorType, modid: ModID, itemid: ID, log: Log)
 	extends ItemArmor(ItemArmor.ArmorMaterial.DIAMOND, 0, armorType)
 	        with ISpecialArmor
 	        with UnstackableItem
 	        with UniqueItem
 {
-	private final val name: String = this.itemName
+	private final val name: String = this.itemid
 	private final val id: String = this.modid
 
 	this.setUnlocalizedName(this.name)
@@ -66,4 +68,21 @@ abstract class BaseItemArmor(armorType: ArmorType, modid: ID, itemName: ID, log:
 	}
 
 	override def isBookEnchantable(stack: ItemStack, book: ItemStack): Boolean = false
+
+	override def getArmorTexture(stack: ItemStack, entity: Entity, slot: Int, `type`: String): String =
+	{
+		val modstring: String = this.modid
+		val namestring: String = this.itemid
+
+		s"$modstring:textures/models/$namestring.png"
+	}
+
+	@SideOnly(Side.CLIENT)
+	override def registerIcons(iconRegister: IIconRegister): Unit =
+	{
+		val modstring: String = this.modid
+		val namestring: String = this.itemid
+
+		this.itemIcon = iconRegister.registerIcon(s"$modstring:$namestring")
+	}
 }
