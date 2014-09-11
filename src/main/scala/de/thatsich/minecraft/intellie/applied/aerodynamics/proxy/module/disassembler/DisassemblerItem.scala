@@ -5,7 +5,7 @@ import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.BaseItem
 import de.thatsich.minecraft.common.module.item.{PoweredItemDamageDisplay, UniqueItem, UnstackableItem}
 import de.thatsich.minecraft.common.util.string.ModID
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.{AEWrench, BlockBreakEventHandler, BreakSpeedHandler, HumanNumberFormat, MiningTool, PoweredItem, PrecisionHarvester, Weapon}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.{AEWrench, BlockBreakEventHandler, BreakSpeedHandler, AEHumanNumberFormat, MiningTool, PoweredItem, PrecisionHarvester, Weapon}
 import net.minecraft.block.Block
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
@@ -29,7 +29,7 @@ private[disassembler] class DisassemblerItem(modid: ModID, log: Log) extends Bas
                                                                           with PoweredItemDamageDisplay
                                                                           with UnstackableItem
                                                                           with UniqueItem
-                                                                          with HumanNumberFormat
+                                                                          with AEHumanNumberFormat
 {
 	override def addInformation(is: ItemStack, player: EntityPlayer, information: java.util.List[_], advToolTips: Boolean) =
 	{

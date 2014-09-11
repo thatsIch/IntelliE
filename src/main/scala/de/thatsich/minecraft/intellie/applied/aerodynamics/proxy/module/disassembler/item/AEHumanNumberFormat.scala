@@ -7,7 +7,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disasse
  * @author thatsIch
  * @since 10.08.2014.
  */
-trait HumanNumberFormat
+trait AEHumanNumberFormat
 {
 	protected def readableForm(value: Int): String =
 	{
