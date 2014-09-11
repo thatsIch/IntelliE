@@ -9,24 +9,17 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics
  */
 object AppliedAerodynamicsAPI extends AeroAPI
 {
-	private var instance: AeroProxy = null
-
 	/**
-		 * Access to the API object of Applied Aerodynamics
-		 *
-		 * @return the {@link AeroAPI}
-		 */
-	def proxy: AeroProxy =
+	 * Access to the API object of Applied Aerodynamics
+	 *
+	 * @return the {@link AeroProxy}
+	 */
+	lazy val proxy: AeroProxy =
 	{
-		if (this.instance == null)
-		{
-			val clazz = Class.forName("de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics$")
-			val modulefield = clazz.getField("MODULE$")
-			val instance = modulefield.get(clazz).asInstanceOf[AeroAPI]
+		val clazz = Class.forName("de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics$")
+		val modulefield = clazz.getField("MODULE$")
+		val instance = modulefield.get(clazz).asInstanceOf[AeroAPI]
 
-			this.instance = instance.proxy
-		}
-
-		this.instance
+		instance.proxy
 	}
 }
