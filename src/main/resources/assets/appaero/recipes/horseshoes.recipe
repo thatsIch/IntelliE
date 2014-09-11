@@ -6,7 +6,7 @@ group=ae2:BlockSkyStone -> stone
 group=ae2:ItemMaterial.SkyDust -> dust
 
 shaped=
-	_ _ _
-	stone _ stone
+	_ _ _,
+	stone _ stone,
 	dust _ dust
 	-> aero:horseshoes
