@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack
  */
 class CreativeDisassemblerItem(modid: ModID, log: Log) extends DisassemblerItem(modid, log)
 {
-	override def getUnlocalizedName: String = s"${modid.id}.item.creativedisassembler"
+	override def getUnlocalizedName: String = s"${modid.id}.item.creative_disassembler"
 
 	override def getCurrentMiningSpeed(is: ItemStack): Double = this.maxMiningSpeed
 

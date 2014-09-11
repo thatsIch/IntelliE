@@ -2,11 +2,10 @@ alias=mc -> minecraft
 alias=aero -> appaero
 alias=ae2 -> appliedenergistics2
 
-group=ae2:BlockSkyStone -> stone
-group=ae2:ItemMaterial.SkyDust -> dust
+group=aero:skystone_ingot -> dust
 
 shaped=
 	_ _ _,
-	stone _ stone,
-	dust _ dust
+	dust _ dust,
+	mc:piston _ mc:piston
 	-> aero:horseshoes
