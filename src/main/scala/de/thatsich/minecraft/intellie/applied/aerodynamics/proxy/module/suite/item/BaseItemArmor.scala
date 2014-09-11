@@ -50,7 +50,6 @@ abstract class BaseItemArmor(armorType: ArmorType, modid: ID, itemName: ID, log:
 	{
 		val pos: Int = 3 - armorType.id
 		val armor: ItemStack = player.getCurrentArmor(pos)
-		println(armor)
 
 		if (armor == null)
 		{
