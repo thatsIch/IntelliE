@@ -5,7 +5,6 @@ alias=ae2 -> appliedenergistics2
 group=aero:skystone_ingot -> dust
 
 shaped=
-	_ _ _,
 	dust _ dust,
 	mc:piston _ mc:piston
 	-> aero:horseshoes

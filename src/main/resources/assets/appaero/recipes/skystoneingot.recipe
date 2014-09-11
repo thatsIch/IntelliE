@@ -1,5 +1,0 @@
-alias=mc -> minecraft
-alias=aero -> appaero
-alias=ae2 -> appliedenergistics2
-
-inscribe=mc:iron_ingot ae2:ItemMaterial.SkyDust -> aero:skystone_ingot

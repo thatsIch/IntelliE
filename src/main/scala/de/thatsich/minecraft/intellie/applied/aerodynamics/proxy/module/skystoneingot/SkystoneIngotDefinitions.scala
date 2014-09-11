@@ -14,5 +14,6 @@ import de.thatsich.minecraft.common.util.string.ModID
  */
 class SkystoneIngotDefinitions(modid: ModID, log: Log)
 	extends BaseDefinitions(
-		items = Vector(new SkystoneIngotItem(modid, log))
+		items = Vector(new SkystoneIngotItem(modid, log)),
+		recipes = Vector(new SkystoneIngotCraftRecipe)
 	)
