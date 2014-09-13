@@ -1,5 +1,4 @@
 apply plugin: 'java'        // enables sourcesets
-apply plugin: 'scala'       // enable scala
 apply plugin: 'forge'       // forge tasks
 
 apply from: 'gradle/scripts/properties.gradle'
@@ -10,6 +9,7 @@ apply from: 'gradle/scripts/javacompat.gradle'
 apply from: 'gradle/scripts/idea.gradle'
 apply from: 'gradle/scripts/artifacts.gradle'
 apply from: 'gradle/scripts/gradle.gradle'
+apply from: 'gradle/scripts/scala.gradle'
 
 buildscript {
     repositories {
@@ -34,26 +34,6 @@ minecraft {
     replace "@version@", VERSION_PROJECT.toString()
     runDir = "run"
 }
-
-sourceSets {
-    main {
-        scala {
-            srcDirs += "src/api/scala"
-        }
-    }
-}
-
-// uses scala compile daemon
-compileScala {
-    scalaCompileOptions.useCompileDaemon = true
-}
-
-// use FSC and not Ant to compile
-tasks.withType(ScalaCompile) {
-    scalaCompileOptions.useAnt = false
-}
-
-
 
 processResources {
     // this will ensure that this task is redone when the versions change.
