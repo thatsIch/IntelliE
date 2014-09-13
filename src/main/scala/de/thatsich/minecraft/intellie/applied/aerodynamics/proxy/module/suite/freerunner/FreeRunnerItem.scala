@@ -3,7 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.f
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.util.string.ID
+import de.thatsich.minecraft.common.util.string.ModID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.HorseShoesItemPowerStorage
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.item.{ArmorType, BaseItemArmor}
 import net.minecraft.client.renderer.texture.IIconRegister
