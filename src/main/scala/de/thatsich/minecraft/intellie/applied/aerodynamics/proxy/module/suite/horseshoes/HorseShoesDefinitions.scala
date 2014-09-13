@@ -13,6 +13,6 @@ import de.thatsich.minecraft.common.util.string.ModID
  * @since 02.09.2014.
  */
 class HorseShoesDefinitions(modid: ModID, log: Log) extends BaseDefinitions(
-	items = Vector(new HorseShoesItem(modid, log), new CreativeHorseShoesItem(modid, log)),
+	items = Vector(new HorseShoesItem(modid, log)),
 	recipes = Vector(new HorseShoesCraftRecipe, new HorseShoesUpgradeRecipe)
 )
