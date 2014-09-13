@@ -16,5 +16,4 @@ trait FakeItem extends Item
 	def modid: ModID
 
 	this.setHarvestLevel("fake", 0)
-	this.setTextureName(s"${modid.id}:default")
 }

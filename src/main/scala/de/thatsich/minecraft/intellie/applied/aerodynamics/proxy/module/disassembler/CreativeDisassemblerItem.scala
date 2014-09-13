@@ -2,7 +2,6 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disasse
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.item.FakeItem
 import de.thatsich.minecraft.common.util.string.ModID
 import net.minecraft.item.ItemStack
 
@@ -14,7 +13,6 @@ import net.minecraft.item.ItemStack
  * @since 03.09.2014.
  */
 class CreativeDisassemblerItem(val modid: ModID, log: Log) extends DisassemblerItem(modid, log)
-                                                                   with FakeItem
 {
 	override def getUnlocalizedName: String = s"${modid.id}.item.creative_disassembler"
 

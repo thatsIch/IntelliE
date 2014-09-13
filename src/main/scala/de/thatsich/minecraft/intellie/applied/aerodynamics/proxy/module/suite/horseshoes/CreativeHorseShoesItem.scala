@@ -14,7 +14,6 @@ import net.minecraft.item.ItemStack
  * @since 13.09.2014.
  */
 class CreativeHorseShoesItem(val modid: ModID, log: Log) extends HorseShoesItem(modid, log)
-                                                             with FakeItem
 {
 	override def getUnlocalizedName: String = s"${modid.id}.item.creative_horseshoes"
 
