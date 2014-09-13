@@ -21,5 +21,5 @@ trait NBTKeyStorage
 
 	def addNBT(nbt: BoundNBTProperty): Unit = this.properties += nbt
 
-	def addNBTs(nbts: NBTTags): Unit = nbts.values.foreach(this.properties += _)
+	def addNBTs(nbts: NBTTags): Unit = nbts.values.foreach(nbt => this.properties += nbt)
 }

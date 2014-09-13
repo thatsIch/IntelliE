@@ -15,4 +15,4 @@ workbench=aero:horseshoes ae2:BlockDenseEnergyCell 1600000 aero:maxenergy -> aer
 #workbench=aero:horseshoes ae2:ItemMaterial.CalcProcessor 10 aero:energycost -> aero:horseshoes
 #workbench=aero:horseshoes ae2:ItemMaterial.LogicProcessor 1 aero:absorptionratio -> aero:horseshoes
 
-workbench=aero:horseshoes ae2:ItemMaterial.CardSpeed 1 aero:chargespeed -> aero:horseshoes
+workbench=aero:horseshoes ae2:ItemMaterial.CardSpeed 1 aero:chargemultiplier -> aero:horseshoes

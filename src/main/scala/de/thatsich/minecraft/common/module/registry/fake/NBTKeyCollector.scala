@@ -16,10 +16,7 @@ class NBTKeyCollector(items: Seq[Item])
 {
 	private val extractor = new NBTKeyExtractor
 	private val collection: mutable.Set[String] = mutable.Set[String]()
-	this.items.foreach(item =>
-	{
-		this.collection ++= this.extractor.extractNBTKeys(item)
-	})
+	this.items.foreach(this.collection ++= this.extractor.extractNBTKeys(_))
 
 	def getNBTKeys: Set[String] = this.collection.toSet
 }

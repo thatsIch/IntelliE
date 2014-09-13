@@ -19,5 +19,5 @@ trait BoundNBTProperty
 
 object BoundNBTProperty
 {
-	implicit def propertyToString(prop: BoundNBTProperty): String = prop.getClass.getSimpleName
+	implicit def propertyToString(prop: BoundNBTProperty): String = prop.getClass.getSimpleName.split("\\$").last.toLowerCase
 }
