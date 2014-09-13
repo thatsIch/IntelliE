@@ -3,8 +3,6 @@ package de.thatsich.minecraft.common.util.string
 
 import java.io.File
 
-import de.thatsich.minecraft.common.util.string.ConfigPath
-
 
 /**
  *

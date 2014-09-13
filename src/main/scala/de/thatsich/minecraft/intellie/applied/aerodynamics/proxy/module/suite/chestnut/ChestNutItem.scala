@@ -3,7 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.c
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.util.string.ID
+import de.thatsich.minecraft.common.util.string.ModID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.HorseShoesItemPowerStorage
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.item.{ArmorType, BaseItemArmor}
 import net.minecraft.client.renderer.texture.IIconRegister
@@ -19,7 +19,7 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 07.04.2014.
  */
-abstract class ChestNutItem(modid: ID, log: Log) extends BaseItemArmor(ArmorType.Boots, modid, new ChestNutID, log)
+abstract class ChestNutItem(modid: ModID, log: Log) extends BaseItemArmor(ArmorType.Boots, modid, new ChestNutID, log)
                                                          with HorseShoesItemPowerStorage
 {
 	this.setUnlocalizedName("chest")

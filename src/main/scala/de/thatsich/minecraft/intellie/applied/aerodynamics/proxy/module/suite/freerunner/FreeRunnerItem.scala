@@ -19,7 +19,7 @@ import net.minecraft.world.World
  * @author thatsIch
  * @since 16.04.2014.
  */
-abstract class FreeRunnerItem(modid: ID, log: Log) extends BaseItemArmor(ArmorType.Boots, modid, new FreeRunnerID, log)
+abstract class FreeRunnerItem(modid: ModID, log: Log) extends BaseItemArmor(ArmorType.Boots, modid, new FreeRunnerID, log)
                                                            with HorseShoesItemPowerStorage
 {
 	this.setUnlocalizedName("legs")
