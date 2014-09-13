@@ -12,7 +12,7 @@ import de.thatsich.minecraft.common.util.string.{ModID, ID}
  * @author thatsIch
  * @since 16.08.2014.
  */
-abstract class BaseFakeItem(itemName: ID, modid: ModID, log: Log) extends BaseItem(itemName, modid, log)
+abstract class BaseFakeItem(itemid: ID, modid: ModID, log: Log) extends BaseItem(itemid, modid, log)
 {
 	this.setHarvestLevel("fake", 0)
 	this.setTextureName(s"${modid.id}:default")

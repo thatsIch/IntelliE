@@ -2,6 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.h
 
 
 import de.thatsich.minecraft.common.log.Log
+import de.thatsich.minecraft.common.module.item.FakeItem
 import de.thatsich.minecraft.common.util.string.ModID
 import net.minecraft.item.ItemStack
 
@@ -12,7 +13,8 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 13.09.2014.
  */
-class CreativeHorseShoesItem(modid: ModID, log: Log) extends HorseShoesItem(modid, log)
+class CreativeHorseShoesItem(val modid: ModID, log: Log) extends HorseShoesItem(modid, log)
+                                                             with FakeItem
 {
 	override def getUnlocalizedName: String = s"${modid.id}.item.creative_horseshoes"
 
