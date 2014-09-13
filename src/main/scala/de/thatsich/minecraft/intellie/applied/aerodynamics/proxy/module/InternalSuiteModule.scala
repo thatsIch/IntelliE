@@ -23,5 +23,5 @@ class InternalSuiteModule(modid: ModID, log: Log) extends SuiteModule
 
 	override lazy val chestnut: ChestNutModule = new InternalChestNutModule(this.modid, this.log)
 
-	override lazy val definitions: Definitions = new SuiteDefinitions(this.modid, this.log)
+	override lazy val definitions: Definitions = new SuiteDefinitions(this.modid, this.log, this.horseshoes, this.skydiver, this.freerunner, this.chestnut)
 }
