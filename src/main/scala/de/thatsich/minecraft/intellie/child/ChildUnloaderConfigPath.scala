@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.child
 
 
-import de.thatsich.minecraft.common.string.BaseConfigPath
+import de.thatsich.minecraft.common.util.string.BaseConfigPath
 
 
 /**

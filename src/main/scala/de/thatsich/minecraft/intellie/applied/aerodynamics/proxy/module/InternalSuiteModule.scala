@@ -3,7 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module
 
 import de.thatsich.minecraft.common.Definitions
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.util.string.ID
+import de.thatsich.minecraft.common.util.string.ModID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.{ChestNutModule, FreeRunnerModule, HorseShoesModule, InternalChestNutModule, InternalFreeRunnerModule, InternalHorseShoesModule, InternalSkydiverModule, SkyDiverModule, SuiteDefinitions}
 
 
@@ -13,7 +13,7 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.{C
  * @author thatsIch
  * @since 08.09.2014.
  */
-class InternalSuiteModule(modid: ID, log: Log) extends SuiteModule
+class InternalSuiteModule(modid: ModID, log: Log) extends SuiteModule
 {
 	override lazy val horseshoes: HorseShoesModule = new InternalHorseShoesModule(this.modid, this.log)
 

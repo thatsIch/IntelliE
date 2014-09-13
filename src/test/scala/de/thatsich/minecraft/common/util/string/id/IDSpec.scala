@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.common.string.id
+package de.thatsich.minecraft.common.util.string.id
 
 
 import org.scalatest.{FlatSpec, Matchers}

@@ -6,7 +6,7 @@ import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.registry.fake.NBTKeyCollector
 import de.thatsich.minecraft.common.proxy.CommonProxy
-import de.thatsich.minecraft.common.string.id.SimpleModID
+import de.thatsich.minecraft.common.util.string.id.SimpleModID
 import de.thatsich.minecraft.common.util.string.{Abbreviation, ModID}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.creativetab.AeroCreativeTabIcon
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.{AeroAbbreviation, AeroCreativeTabs, AeroModules, InternalAeroModules, InternalNBTKeyRegistry, NBTKeyRegistry}

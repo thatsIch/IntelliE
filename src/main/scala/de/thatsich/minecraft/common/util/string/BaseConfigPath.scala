@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.common.string
+package de.thatsich.minecraft.common.util.string
 
 
 import java.io.File

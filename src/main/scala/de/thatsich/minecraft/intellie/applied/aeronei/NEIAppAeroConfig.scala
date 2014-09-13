@@ -5,7 +5,7 @@ import codechicken.nei.api.IConfigureNEI
 import com.google.common.base.Stopwatch
 import de.thatsich.minecraft.common.Module
 import de.thatsich.minecraft.common.log.SimpleLog
-import de.thatsich.minecraft.common.string.BaseAbbreviation
+import de.thatsich.minecraft.common.util.string.BaseAbbreviation
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamicsAPI
 import net.minecraft.item.{ItemStack, Item}
 

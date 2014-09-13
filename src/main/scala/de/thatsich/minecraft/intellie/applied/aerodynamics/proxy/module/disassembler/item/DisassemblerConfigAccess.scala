@@ -12,23 +12,23 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassem
  */
 trait DisassemblerConfigAccess
 {
-	final val config = new DisassemblerConfig()
+	val config = new DisassemblerConfig()
 
 	// Mining
-	final val initMiningSpeed = this.config.getDouble("General", "initialMiningSpeed", 1)
-	final val maxMiningSpeed = this.config.getDouble("General", "maxMiningSpeed", 5000)
-	final val initMiningLevel = this.config.getDouble("General", "initialMiningLevel", 0)
-	final val maxMiningLevel = this.config.getDouble("General", "maxMiningLevel", 5)
+	val initMiningSpeed = this.config.getDouble("General", "initialMiningSpeed", 1)
+	val maxMiningSpeed = this.config.getDouble("General", "maxMiningSpeed", 5000)
+	val initMiningLevel = this.config.getDouble("General", "initialMiningLevel", 0)
+	val maxMiningLevel = this.config.getDouble("General", "maxMiningLevel", 5)
 	// Weapon
-	final val initDamageVsEntites = this.config.getDouble("Combat", "initialDamageVsEntites", 0)
-	final val maxDamageVsEntites = this.config.getDouble("Combat", "maxDamageVsEntities", 20)
+	val initDamageVsEntites = this.config.getDouble("Combat", "initialDamageVsEntites", 0)
+	val maxDamageVsEntites = this.config.getDouble("Combat", "maxDamageVsEntities", 20)
 	// Energy
-	final val initEnergy = this.config.getDouble("Energy", "initialEnergy", 0)
-	final val maxEnergy = this.config.getDouble("Energy", "maxEnergy", 100000000)
-	final val initChargeMultiplier = this.config.getDouble("Energy", "initialChargeMultiplier", 1)
-	final val maxChargeMultiplier = this.config.getDouble("Energy", "maxChargeMultiplier", 10000)
-	final val initEnergyUsage = this.config.getDouble("Energy", "initEnergyPerBlockBreak", 100000)
-	final val minEnergyUsage = this.config.getDouble("Energy", "minEnergyPerBlockBreak", 6666)
+	val initEnergy = this.config.getDouble("Energy", "initialEnergy", 0)
+	val maxEnergy = this.config.getDouble("Energy", "maxEnergy", 100000000)
+	val initChargeMultiplier = this.config.getDouble("Energy", "initialChargeMultiplier", 1)
+	val maxChargeMultiplier = this.config.getDouble("Energy", "maxChargeMultiplier", 10000)
+	val initEnergyUsage = this.config.getDouble("Energy", "initEnergyPerBlockBreak", 100000)
+	val minEnergyUsage = this.config.getDouble("Energy", "minEnergyPerBlockBreak", 6666)
 
 	this.config.save()
 }

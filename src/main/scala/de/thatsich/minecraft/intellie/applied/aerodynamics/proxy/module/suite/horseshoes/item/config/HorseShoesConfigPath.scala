@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.config
 
 
-import de.thatsich.minecraft.common.string.BaseConfigPath
+import de.thatsich.minecraft.common.util.string.BaseConfigPath
 
 
 /**

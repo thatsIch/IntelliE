@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy
 
 
-import de.thatsich.minecraft.common.string.BaseAbbreviation
+import de.thatsich.minecraft.common.util.string.BaseAbbreviation
 
 
 /**

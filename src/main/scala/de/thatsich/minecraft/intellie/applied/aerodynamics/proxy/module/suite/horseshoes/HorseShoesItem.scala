@@ -37,12 +37,22 @@ class HorseShoesItem(modid: ModID, log: Log)
 		// add additional information when sneaking
 		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT))
 		{
-			val multiplier = this.getCurrentChargeMultiplier(is).toInt
+			val stepheight = this.getStepHeight(is).toInt
+
+			val absorptionratio = this.getAbsorptionRatio(is).toInt
+			val armorbase = this.getArmorBase(is).toInt
+
+			val energyperdamage = this.getEnergyPerDamage(is).toInt
 			val discharge = this.getDischargePerTick(is).toInt
+			val chargemultiplier = this.getCurrentChargeMultiplier(is).toInt
 
 			list.add(s"Stored Energy: $currentPower/$maxPower AE - $percent%")
-			list.add(s"Charge Multiplier: $multiplier")
+			list.add(s"Charge Multiplier: $chargemultiplier")
 			list.add(s"Discharge per Tick: $discharge")
+			list.add(s"Energy per Damage: $energyperdamage")
+			list.add(s"Absorptionratio: $absorptionratio")
+			list.add(s"Armorbase: $armorbase")
+			list.add(s"Stepheight: $stepheight")
 		}
 		else
 		{

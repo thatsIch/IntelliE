@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes
 
 
-import de.thatsich.minecraft.common.string.id.BaseID
+import de.thatsich.minecraft.common.util.string.id.BaseID
 
 
 /**

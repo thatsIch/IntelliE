@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench
 
 
-import de.thatsich.minecraft.common.string.id.BaseID
+import de.thatsich.minecraft.common.util.string.id.BaseID
 
 
 /**

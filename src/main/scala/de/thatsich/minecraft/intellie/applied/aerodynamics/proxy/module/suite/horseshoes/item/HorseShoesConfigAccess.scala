@@ -10,12 +10,12 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.ho
  * @author thatsIch
  * @since 02.09.2014.
  */
-class HorseShoesConfigAccess
+trait HorseShoesConfigAccess
 {
 	final val config = new HorseShoesConfig
 
-	final val initStepHeight = this.config.getDouble("General", "initStepHeight", 0.5)
-	final val maxStepHeight = this.config.getDouble("General", "maxStepHeight", 1)
+	final val initStepHeight = this.config.getDouble("Functionality", "initStepHeight", 0.5)
+	final val maxStepHeight = this.config.getDouble("Functionality", "maxStepHeight", 1)
 
 	final val initAbsorptionRatio = this.config.getDouble("Combat", "initAbsorptionRatio", 0)
 	final val maxAbsorptionRatio = this.config.getDouble("Combat", "maxAbsorptionRatio", 0.44)

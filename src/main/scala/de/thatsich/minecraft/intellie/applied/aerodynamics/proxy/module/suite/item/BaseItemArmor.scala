@@ -32,6 +32,7 @@ abstract class BaseItemArmor(armorType: ArmorType, modid: ModID, itemid: ID, log
 
 	this.setUnlocalizedName(this.name)
 	this.setTextureName(s"$id:$name")
+	this.setMaxDamage(0)
 
 	BlockDispenser.dispenseBehaviorRegistry.putObject(this, new AeroDispenseBehavior())
 

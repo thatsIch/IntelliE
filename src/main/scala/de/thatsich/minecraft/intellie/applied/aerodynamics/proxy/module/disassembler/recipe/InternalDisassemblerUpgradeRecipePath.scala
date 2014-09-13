@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.recipe
 
 
-import de.thatsich.minecraft.common.string.BaseResourcePath
+import de.thatsich.minecraft.common.util.string.BaseResourcePath
 
 
 /**
