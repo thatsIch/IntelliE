@@ -29,4 +29,6 @@ class CreativeHorseShoesItem(val modid: ModID, log: Log) extends HorseShoesItem(
 	override def getAEMaxPower(is: ItemStack): Double = this.maxEnergy
 
 	override def getDischargePerTick(is: ItemStack): Double = this.minDischargePerTick
+
+	override def getStepHeight(is: ItemStack): Double = this.maxStepHeight
 }

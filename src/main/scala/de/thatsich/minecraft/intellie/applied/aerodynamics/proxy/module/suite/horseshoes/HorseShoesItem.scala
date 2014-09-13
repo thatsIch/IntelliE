@@ -37,9 +37,9 @@ class HorseShoesItem(modid: ModID, log: Log)
 		// add additional information when sneaking
 		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT))
 		{
-			val stepheight = this.getStepHeight(is).toInt
+			val stepheight = this.getStepHeight(is)
 
-			val absorptionratio = this.getAbsorptionRatio(is).toInt
+			val absorptionratio = this.getAbsorptionRatio(is)
 			val armorbase = this.getArmorBase(is).toInt
 
 			val energyperdamage = this.getEnergyPerDamage(is).toInt
