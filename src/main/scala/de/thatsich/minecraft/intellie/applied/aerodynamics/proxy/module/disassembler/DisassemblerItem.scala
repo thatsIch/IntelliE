@@ -22,18 +22,19 @@ import org.lwjgl.input.Keyboard
  * @author thatsIch
  * @since 07.04.2014.
  */
-private[disassembler] class DisassemblerItem(modid: ModID, log: Log) extends BaseItem(new DisassemblerID, modid, log)
-                                                                             with AEWrench
-                                                                             with PrecisionHarvester
-                                                                             with BlockBreakEventHandler
-                                                                             with PoweredItem
-                                                                             with Weapon
-                                                                             with MiningTool
-                                                                             with BreakSpeedHandler
-                                                                             with PoweredItemDamageDisplay
-                                                                             with UnstackableItem
-                                                                             with UniqueItem
-                                                                             with AEHumanNumberFormat
+private[disassembler] class DisassemblerItem(modid: ModID, log: Log)
+extends BaseItem(new DisassemblerID, modid, log)
+        with AEWrench
+        with PrecisionHarvester
+        with BlockBreakEventHandler
+        with PoweredItem
+        with Weapon
+        with MiningTool
+        with BreakSpeedHandler
+        with PoweredItemDamageDisplay
+        with UnstackableItem
+        with UniqueItem
+        with AEHumanNumberFormat
 {
 	override def addInformation(is: ItemStack, player: EntityPlayer, information: java.util.List[_], advToolTips: Boolean) =
 	{
@@ -80,7 +81,8 @@ private[disassembler] class DisassemblerItem(modid: ModID, log: Log) extends Bas
 		currentMiningLevel >= harvestLevel && currentEnergy >= energyUsage
 	}
 
-	override def getSubItems(item : Item, tabs : CreativeTabs, list : util.List[_]): Unit = {
+	override def getSubItems(item: Item, tabs: CreativeTabs, list: util.List[_]): Unit =
+	{
 		super.getSubItems(item, tabs, list)
 
 		val stacks = list.asInstanceOf[util.List[ItemStack]]

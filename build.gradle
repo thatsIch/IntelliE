@@ -9,6 +9,7 @@ apply from: 'gradle/scripts/dependencies.gradle'
 apply from: 'gradle/scripts/javacompat.gradle'
 apply from: 'gradle/scripts/idea.gradle'
 apply from: 'gradle/scripts/artifacts.gradle'
+apply from: 'gradle/scripts/gradle.gradle'
 
 buildscript {
     repositories {
