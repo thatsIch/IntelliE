@@ -39,7 +39,7 @@ class TileEntityRegistry(registrable: Seq[Class[_ <: TileEntity]], log: Log)
 	{
 		val simpleClassName: String = teClass.getSimpleName
 
-		this.log.debug(s"Registering tile $simpleClassName")
+		this.log.debug(s"\tRegistering tile $simpleClassName")
 		GameRegistry.registerTileEntity(teClass, teClass.toString)
 		AEApi.instance().registries().moveable().whiteListTileEntity(teClass)
 	}

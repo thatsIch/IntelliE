@@ -1,8 +1,11 @@
 package de.thatsich.minecraft.common.module.item
 
 
+import de.thatsich.minecraft.common.util.nbt.{NBTTags, BoundNBTProperty}
+
 import scala.collection._
 import scala.language.implicitConversions
+
 
 /**
  * 
@@ -16,15 +19,7 @@ trait NBTKeyStorage
 
 	def getNBTKeys: Set[String] = this.properties.toSet
 
-	def addNBTs(nbts: BaseNBTProperty): Unit =
-	{
-		val valueset = nbts.values
-		valueset foreach(value => this.properties += value.toString.toLowerCase)
-	}
+	def addNBT(nbt: BoundNBTProperty): Unit = this.properties += nbt
 
-	abstract class BaseNBTProperty extends Enumeration
-	{
-		implicit def valuesToString(value: Value): String = value.toString.toLowerCase
-	}
-
+	def addNBTs(nbts: NBTTags): Unit = nbts.values.foreach(this.properties += _)
 }

@@ -4,10 +4,10 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disasse
 import de.thatsich.minecraft.common.module.BaseItem
 import de.thatsich.minecraft.common.module.item.NBTKeyStorage
 import de.thatsich.minecraft.common.module.util.NBTAccess
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.tags.WeaponTags
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
-import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.DamageSource
 
 
@@ -23,6 +23,8 @@ trait Weapon extends BaseItem
                      with PoweredItem
                      with NBTKeyStorage
 {
+	this.addNBTs(WeaponTags)
+
 	/**
 	 * Called when hitting an entity
 	 * if sufficient power is there
@@ -54,24 +56,7 @@ trait Weapon extends BaseItem
 		false
 	}
 
-	def getCurrentDamageVsEntities(is: ItemStack): Double =
-	{
-		val tag: NBTTagCompound = this.getNBTData(is)
-		val current: Double = tag.getDouble(Tags.Damage)
+	def getCurrentDamageVsEntities(is: ItemStack): Double = this.withinBounds(is, WeaponTags.Damage)
 
-		(this.initDamageVsEntites + current) min this.maxDamageVsEntites
-	}
-
-	def setCurrentDamageVsEntities(is: ItemStack, value: Double): Unit =
-	{
-		val tag: NBTTagCompound = this.getNBTData(is)
-		tag.setDouble(Tags.Damage, value)
-	}
-
-	private object Tags extends BaseNBTProperty
-	{
-		val Damage = Value
-	}
-	this.addNBTs(Tags)
-
+	def setCurrentDamageVsEntities(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(WeaponTags.Damage, value)
 }

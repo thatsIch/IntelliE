@@ -13,9 +13,6 @@ import de.thatsich.minecraft.common.util.string.ModID
  * @since 01.08.2014.
  */
 class DisassemblerDefinitions(modid: ModID, log: Log) extends BaseDefinitions(
-	items = Vector(
-		new DisassemblerItem(modid, log),
-		new CreativeDisassemblerItem(modid, log)
-	),
+	items = Vector(new DisassemblerItem(modid, log)),
 	recipes = Vector(new DisassemblerCraftRecipe, new DisassemblerUpgradeRecipe)
 ) 

@@ -37,7 +37,7 @@ class CraftHandlerRegistry(registrable: Seq[Class[_ <: ICraftHandler]], log: Log
 		val simpleClassName: String = handler.getSimpleName
 		val stripped: String = this.stripCraftHandlerFromName(name)
 
-		this.log.debug(s"Adding craft handler $simpleClassName with name: $stripped")
+		this.log.debug(s"\tAdding craft handler $simpleClassName with name: $stripped")
 		registry.addNewCraftHandler(stripped, handler)
 	}
 

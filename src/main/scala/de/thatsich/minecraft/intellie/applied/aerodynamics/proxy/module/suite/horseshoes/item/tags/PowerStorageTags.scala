@@ -1,7 +1,8 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags
 
 
-import de.thatsich.minecraft.common.util.BaseNBTProperty
+import de.thatsich.minecraft.common.util.nbt.{BaseBoundNBTProperty, BoundNBTProperty, NBTTags}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.HorseShoesConfigAccess
 
 
 /**
@@ -10,7 +11,12 @@ import de.thatsich.minecraft.common.util.BaseNBTProperty
  * @author thatsIch
  * @since 13.09.2014.
  */
-object PowerStorageTags extends BaseNBTProperty
+object PowerStorageTags extends NBTTags with HorseShoesConfigAccess
 {
-	val CurrentEnergy, MaxEnergy, ChargeMultiplier, DischargePerTick = Value
+	object CurrentEnergy extends BaseBoundNBTProperty(this.initEnergy, this.maxEnergy)
+	object MaxEnergy extends BaseBoundNBTProperty(this.initEnergy, this.maxEnergy)
+	object ChargeMultiplier extends BaseBoundNBTProperty(this.initChargeMultiplier, this.maxChargeMultiplier)
+	object DischargePerTick extends BaseBoundNBTProperty(this.minDischargePerTick, this.initDischargePerTick)
+
+	override def values: Seq[BoundNBTProperty] = Vector(CurrentEnergy, MaxEnergy, ChargeMultiplier, DischargePerTick)
 }

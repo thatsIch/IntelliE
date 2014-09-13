@@ -5,6 +5,8 @@ import appeng.api.config.AccessRestriction
 import appeng.api.implementations.items.IAEItemPowerStorage
 import de.thatsich.minecraft.common.module.item.NBTKeyStorage
 import de.thatsich.minecraft.common.module.util.NBTAccess
+import de.thatsich.minecraft.common.util.BoundDetection
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags.PowerStorageTags
 import net.minecraft.item.ItemStack
 
 
@@ -14,11 +16,15 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 02.09.2014.
  */
-trait HorseShoesItemPowerStorage extends IAEItemPowerStorage
-                                         with NBTAccess
-                                         with NBTKeyStorage
-                                         with HorseShoesConfigAccess
+trait HorseShoesItemPowerStorage
+extends IAEItemPowerStorage
+        with NBTAccess
+        with NBTKeyStorage
+        with HorseShoesConfigAccess
+        with BoundDetection
 {
+	this.addNBTs(PowerStorageTags)
+
 	override def injectAEPower(is: ItemStack, amt: Double): Double =
 	{
 		val currentStorage = this.getAECurrentPower(is)
@@ -34,22 +40,7 @@ trait HorseShoesItemPowerStorage extends IAEItemPowerStorage
 		amt - diff
 	}
 
-	// AE Charge Multiplier
-	def getCurrentChargeMultiplier(is: ItemStack): Double =
-	{
-		val tag = this.getNBTData(is)
-		val value = tag.getDouble(Tags.ChargeMultiplier)
-
-		(this.initChargeMultiplier + value) min this.maxChargeMultiplier
-	}
-
-	override def getAEMaxPower(is: ItemStack): Double =
-	{
-		val tag = this.getNBTData(is)
-		val current = tag.getDouble(Tags.MaxEnergy)
-
-		(this.initEnergy max current) min this.maxEnergy
-	}
+	override def getAEMaxPower(is: ItemStack): Double = this.withinBounds(is, PowerStorageTags.MaxEnergy)
 
 	override def getPowerFlow(is: ItemStack): AccessRestriction = AccessRestriction.WRITE
 
@@ -63,32 +54,13 @@ trait HorseShoesItemPowerStorage extends IAEItemPowerStorage
 		diff
 	}
 
-	override def getAECurrentPower(is: ItemStack): Double =
-	{
-		val tag = this.getNBTData(is)
-		tag.getDouble(Tags.CurrentEnergy)
-	}
+	override def getAECurrentPower(is: ItemStack): Double = this.getNBTData(is).getDouble(PowerStorageTags.CurrentEnergy)
 
-	def setAECurrentPower(is: ItemStack, value: Double): Unit =
-	{
-		val tag = this.getNBTData(is)
-		tag.setDouble(Tags.CurrentEnergy, value)
-	}
+	def getCurrentChargeMultiplier(is: ItemStack): Double = this.withinBounds(is, PowerStorageTags.ChargeMultiplier)
 
-	def getDischargePerTick(is: ItemStack): Double =
-	{
-		val tag = this.getNBTData(is)
-		val current = tag.getDouble(Tags.DischargePerTick)
+	def setAECurrentPower(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(PowerStorageTags.CurrentEnergy, value)
 
-		(this.minDischargePerTick max current) min this.initDischargePerTick
-	}
+	def getDischargePerTick(is: ItemStack): Double = this.withinBounds(is, PowerStorageTags.DischargePerTick)
 
-	def setDischargePerTick(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(Tags.DischargePerTick, value)
-
-	private object Tags extends BaseNBTProperty
-	{
-		val CurrentEnergy, MaxEnergy, ChargeMultiplier, DischargePerTick = Value
-	}
-
-	this.addNBTs(Tags)
+	def setDischargePerTick(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(PowerStorageTags.DischargePerTick, value)
 }

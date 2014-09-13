@@ -3,6 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.h
 
 import de.thatsich.minecraft.common.util.BoundDetection
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.steplogic.HorseShoesLivingUpdateEventHandler
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags.LogicTags
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{ItemArmor, ItemStack}
 import net.minecraft.world.World
@@ -16,11 +17,12 @@ import net.minecraftforge.common.MinecraftForge
  * @since 12.09.2014.
  */
 trait HorseShoesStepHeightLogic
-	extends ItemArmor
-	        with HorseShoesItemPowerStorage
-	        with HorseShoesConfigAccess
-	        with BoundDetection
+extends ItemArmor
+        with HorseShoesItemPowerStorage
+        with HorseShoesConfigAccess
+        with BoundDetection
 {
+	this.addNBTs(LogicTags)
 	MinecraftForge.EVENT_BUS.register(new HorseShoesLivingUpdateEventHandler(this))
 
 	/**
@@ -46,18 +48,5 @@ trait HorseShoesStepHeightLogic
 		}
 	}
 
-	def getStepHeight(is: ItemStack): Double =
-	{
-		val tag = this.getNBTData(is)
-		val current = tag.getDouble(Tags.StepHeight)
-
-		this.withinBounds(current, this.initStepHeight, this.maxStepHeight)
-	}
-
-	private object Tags extends BaseNBTProperty
-	{
-		val StepHeight = Value
-	}
-
-	this.addNBTs(Tags)
+	def getStepHeight(armor: ItemStack): Double = this.withinBounds(armor, LogicTags.StepHeight)
 }

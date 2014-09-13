@@ -42,12 +42,12 @@ class RecipeRegistry(registrable: Seq[Recipe], log: Log)
 
 		if (externalRecipe.exists())
 		{
-			this.log.debug("Registring external recipe from " + externalRecipe.getPath)
+			this.log.debug("\tRegistring external recipe from " + externalRecipe.getPath)
 			recipehandler.parseRecipes(new ExternalRecipeLoader, externalRecipe.getPath)
 		}
 		else
 		{
-			this.log.debug("Registring internal recipe from " + internalRecipePath)
+			this.log.debug("\tRegistring internal recipe from " + internalRecipePath)
 			recipehandler.parseRecipes(new InternalRecipeLoader, internalRecipePath)
 		}
 	}

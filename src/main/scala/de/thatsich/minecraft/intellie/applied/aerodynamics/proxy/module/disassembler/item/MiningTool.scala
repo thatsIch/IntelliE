@@ -3,6 +3,8 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disasse
 
 import de.thatsich.minecraft.common.module.item.NBTKeyStorage
 import de.thatsich.minecraft.common.module.util.NBTAccess
+import de.thatsich.minecraft.common.util.BoundDetection
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.tags.ToolTags
 import net.minecraft.block.Block
 import net.minecraft.item.ItemStack
 
@@ -13,11 +15,15 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 10.08.2014.
  */
-trait MiningTool extends PoweredItem
-                         with NBTAccess
-                         with DisassemblerConfigAccess
-                         with NBTKeyStorage
+trait MiningTool
+extends PoweredItem
+        with NBTAccess
+        with DisassemblerConfigAccess
+        with NBTKeyStorage
+        with BoundDetection
 {
+	this.addNBTs(ToolTags)
+
 	/**
 	 * gets the mining speed
 	 *
@@ -27,46 +33,13 @@ trait MiningTool extends PoweredItem
 	 *
 	 * @return configured mining speed
 	 */
-	override def getDigSpeed(is: ItemStack, block: Block, metadata: Int): Float =
-	{
-		this.getCurrentMiningSpeed(is).toFloat
-	}
+	override def getDigSpeed(is: ItemStack, block: Block, metadata: Int): Float = this.getCurrentMiningSpeed(is).toFloat
 
-	def getCurrentMiningSpeed(is: ItemStack): Double =
-	{
-		val tag = this.getNBTData(is)
-		val current: Int = tag.getInteger(Tags.MiningSpeed)
+	def getCurrentMiningSpeed(is: ItemStack): Double = if (this.getAECurrentPower(is) >= this.getCurrentEnergyUsage(is)) this.withinBounds(is, ToolTags.MiningSpeed) else 0
 
-		if (this.getAECurrentPower(is) >= this.getCurrentEnergyUsage(is))
-		{
-			(this.initMiningSpeed max current) min this.maxMiningSpeed
-		}
-		else
-		{
-			0
-		}
-	}
+	def setCurrentMiningSpeed(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(ToolTags.MiningSpeed, value)
 
-	def setCurrentMiningSpeed(is: ItemStack, value: Double): Unit =
-	{
-		val tag = this.getNBTData(is)
-		tag.setDouble(Tags.MiningSpeed, value)
-	}
+	def getCurrentMiningLevel(is: ItemStack): Double = this.withinBounds(is, ToolTags.MiningLevel)
 
-	def getCurrentMiningLevel(is: ItemStack): Double =
-	{
-		val tag = this.getNBTData(is)
-		val current = tag.getDouble(Tags.MiningLevel)
-
-		(this.initMiningLevel + current) min this.maxMiningLevel
-	}
-
-	def setCurrentMiningLevel(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(Tags.MiningLevel, value)
-
-	private object Tags extends BaseNBTProperty
-	{
-		val MiningLevel, MiningSpeed = Value
-	}
-
-	this.addNBTs(Tags)
+	def setCurrentMiningLevel(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(ToolTags.MiningLevel, value)
 }

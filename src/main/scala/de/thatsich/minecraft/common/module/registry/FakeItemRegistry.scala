@@ -36,7 +36,7 @@ class FakeItemRegistry(registrable: Seq[Item], modid: ID, log: Log)
 		val name: String = this.getItemName(item)
 		val simpleClassName: String = item.getClass.getSimpleName
 
-		this.log.debug(s"Adding fake item $simpleClassName with name $name")
+		this.log.debug(s"\tAdding fake item $simpleClassName with name $name")
 		GameRegistry.registerItem(item, name)
 	}
 

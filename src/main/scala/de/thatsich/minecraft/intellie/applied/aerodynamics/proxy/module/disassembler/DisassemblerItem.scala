@@ -1,14 +1,18 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler
 
 
+import java.util
+
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.BaseItem
 import de.thatsich.minecraft.common.module.item.{PoweredItemDamageDisplay, UniqueItem, UnstackableItem}
 import de.thatsich.minecraft.common.util.string.ModID
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.{AEWrench, BlockBreakEventHandler, BreakSpeedHandler, AEHumanNumberFormat, MiningTool, PoweredItem, PrecisionHarvester, Weapon}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.{AEHumanNumberFormat, AEWrench, BlockBreakEventHandler, BreakSpeedHandler, MiningTool, PoweredItem, PrecisionHarvester, Weapon}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.tags.{PowerStorageTags, ToolTags, WeaponTags}
 import net.minecraft.block.Block
+import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.item.ItemStack
+import net.minecraft.item.{Item, ItemStack}
 import org.lwjgl.input.Keyboard
 
 
@@ -19,17 +23,17 @@ import org.lwjgl.input.Keyboard
  * @since 07.04.2014.
  */
 private[disassembler] class DisassemblerItem(modid: ModID, log: Log) extends BaseItem(new DisassemblerID, modid, log)
-                                                                          with AEWrench
-                                                                          with PrecisionHarvester
-                                                                          with BlockBreakEventHandler
-                                                                          with PoweredItem
-                                                                          with Weapon
-                                                                          with MiningTool
-                                                                          with BreakSpeedHandler
-                                                                          with PoweredItemDamageDisplay
-                                                                          with UnstackableItem
-                                                                          with UniqueItem
-                                                                          with AEHumanNumberFormat
+                                                                             with AEWrench
+                                                                             with PrecisionHarvester
+                                                                             with BlockBreakEventHandler
+                                                                             with PoweredItem
+                                                                             with Weapon
+                                                                             with MiningTool
+                                                                             with BreakSpeedHandler
+                                                                             with PoweredItemDamageDisplay
+                                                                             with UnstackableItem
+                                                                             with UniqueItem
+                                                                             with AEHumanNumberFormat
 {
 	override def addInformation(is: ItemStack, player: EntityPlayer, information: java.util.List[_], advToolTips: Boolean) =
 	{
@@ -74,6 +78,26 @@ private[disassembler] class DisassemblerItem(modid: ModID, log: Log) extends Bas
 		val energyUsage = this.getCurrentEnergyUsage(is)
 
 		currentMiningLevel >= harvestLevel && currentEnergy >= energyUsage
+	}
+
+	override def getSubItems(item : Item, tabs : CreativeTabs, list : util.List[_]): Unit = {
+		super.getSubItems(item, tabs, list)
+
+		val stacks = list.asInstanceOf[util.List[ItemStack]]
+
+		val stack = new ItemStack(this)
+		val tag = this.getNBTData(stack)
+		tag.setDouble(PowerStorageTags.CurrentEnergy, this.maxEnergy)
+		tag.setDouble(PowerStorageTags.MaxEnergy, this.maxEnergy)
+		tag.setDouble(PowerStorageTags.ChargeMultiplier, this.maxChargeMultiplier)
+		tag.setDouble(PowerStorageTags.EnergyCost, this.minEnergyUsage)
+
+		tag.setDouble(WeaponTags.Damage, this.maxDamageVsEntites)
+
+		tag.setDouble(ToolTags.MiningLevel, this.maxMiningLevel)
+		tag.setDouble(ToolTags.MiningSpeed, this.maxMiningSpeed)
+
+		stacks.add(stack)
 	}
 }
 

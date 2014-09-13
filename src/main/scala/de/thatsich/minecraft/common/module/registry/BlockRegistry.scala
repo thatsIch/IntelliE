@@ -36,7 +36,7 @@ class BlockRegistry(blocks: Seq[Block], log: Log)
 		val name: String = this.getBlockName(block)
 		val simpleClassName: String = block.getClass.getSimpleName
 
-		this.log.debug(s"Adding block $simpleClassName with name $name")
+		this.log.debug(s"\tAdding block $simpleClassName with name $name")
 		GameRegistry.registerBlock(block, name)
 
 		1
