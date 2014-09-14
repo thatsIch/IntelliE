@@ -11,6 +11,3 @@ import de.thatsich.minecraft.common.config.BaseConfig
  * @since 02.08.2014.
  */
 class DisassemblerConfig extends BaseConfig(new DisassemblerConfigPath)
-{
-	println("CONSTRUCTED")
-}
