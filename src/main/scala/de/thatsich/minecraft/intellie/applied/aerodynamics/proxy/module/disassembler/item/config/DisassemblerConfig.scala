@@ -10,4 +10,7 @@ import de.thatsich.minecraft.common.config.BaseConfig
  * @author thatsIch
  * @since 02.08.2014.
  */
-private[item] class DisassemblerConfig extends BaseConfig(new DisassemblerConfigPath)
+class DisassemblerConfig extends BaseConfig(new DisassemblerConfigPath)
+{
+	println("CONSTRUCTED")
+}

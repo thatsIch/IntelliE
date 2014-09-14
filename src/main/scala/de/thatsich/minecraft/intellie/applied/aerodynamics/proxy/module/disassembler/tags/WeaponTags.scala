@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disasse
 
 
 import de.thatsich.minecraft.common.util.nbt.{BaseBoundNBTProperty, BoundNBTProperty, NBTTags}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.DisassemblerConfigAccess
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.config.DisassemblerWeaponConfig
 
 
 /**
@@ -11,9 +11,10 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassem
  * @author thatsIch
  * @since 13.09.2014.
  */
-object WeaponTags extends NBTTags with DisassemblerConfigAccess
+class WeaponTags(config: DisassemblerWeaponConfig) extends NBTTags
 {
 	override def values: Seq[BoundNBTProperty] = Vector[BoundNBTProperty](Damage)
 
-	object Damage extends BaseBoundNBTProperty(this.initDamageVsEntites, this.maxDamageVsEntites)
+	object Damage extends BaseBoundNBTProperty(this.config.minimalDamageVsEntites, this.config.maximalDamageVsEntites)
+
 }

@@ -3,10 +3,12 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disasse
 
 import java.util
 
+import de.thatsich.minecraft.common.config.Config
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.BaseItem
 import de.thatsich.minecraft.common.module.item.{PoweredItemDamageDisplay, UniqueItem, UnstackableItem}
 import de.thatsich.minecraft.common.util.string.ModID
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.config.{DisassemblerConfig, DisassemblerEnergyConfig, DisassemblerEnergyConfigAccess, DisassemblerFunctionalityConfig, DisassemblerFunctionalityConfigAccess, DisassemblerWeaponConfig, DisassemblerWeaponConfigAccess}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.{AEHumanNumberFormat, AEWrench, BlockBreakEventHandler, BreakSpeedHandler, MiningTool, PoweredItem, PrecisionHarvester, Weapon}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.tags.{PowerStorageTags, ToolTags, WeaponTags}
 import net.minecraft.block.Block
@@ -36,6 +38,20 @@ extends BaseItem(new DisassemblerID, modid, log)
         with UniqueItem
         with AEHumanNumberFormat
 {
+	val config: Config = new DisassemblerConfig
+
+	val functionalityConfig: DisassemblerFunctionalityConfig = new DisassemblerFunctionalityConfigAccess(this.config)
+	val weaponConfig: DisassemblerWeaponConfig = new DisassemblerWeaponConfigAccess(this.config)
+	val powerStorageConfig: DisassemblerEnergyConfig = new DisassemblerEnergyConfigAccess(this.config)
+
+	val toolTags: ToolTags = new ToolTags(this.functionalityConfig)
+	val weapontags: WeaponTags = new WeaponTags(this.weaponConfig)
+	val powerStorageTags: PowerStorageTags = new PowerStorageTags(this.powerStorageConfig)
+
+	this.addNBTs(this.toolTags)
+	this.addNBTs(this.weapontags)
+	this.addNBTs(this.powerStorageTags)
+
 	override def addInformation(is: ItemStack, player: EntityPlayer, information: java.util.List[_], advToolTips: Boolean) =
 	{
 		val currentPower = this.getAECurrentPower(is).toInt
@@ -89,15 +105,15 @@ extends BaseItem(new DisassemblerID, modid, log)
 
 		val stack = new ItemStack(this)
 		val tag = this.getNBTData(stack)
-		tag.setDouble(PowerStorageTags.CurrentEnergy, this.maxEnergy)
-		tag.setDouble(PowerStorageTags.MaxEnergy, this.maxEnergy)
-		tag.setDouble(PowerStorageTags.ChargeMultiplier, this.maxChargeMultiplier)
-		tag.setDouble(PowerStorageTags.EnergyCost, this.minEnergyUsage)
+		tag.setDouble(this.powerStorageTags.CurrentEnergy, this.powerStorageConfig.maximalEnergy)
+		tag.setDouble(this.powerStorageTags.MaxEnergy, this.powerStorageConfig.maximalEnergy)
+		tag.setDouble(this.powerStorageTags.ChargeMultiplier, this.powerStorageConfig.maximalChargeMultiplier)
+		tag.setDouble(this.powerStorageTags.EnergyCost, this.powerStorageConfig.minimalEnergyPerBlockBreak)
 
-		tag.setDouble(WeaponTags.Damage, this.maxDamageVsEntites)
+		tag.setDouble(this.weapontags.Damage, this.weaponConfig.maximalDamageVsEntites)
 
-		tag.setDouble(ToolTags.MiningLevel, this.maxMiningLevel)
-		tag.setDouble(ToolTags.MiningSpeed, this.maxMiningSpeed)
+		tag.setDouble(this.toolTags.MiningLevel, this.functionalityConfig.maximalMiningLevel)
+		tag.setDouble(this.toolTags.MiningSpeed, this.functionalityConfig.maximalMiningSpeed)
 
 		stacks.add(stack)
 	}

@@ -10,15 +10,15 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassem
  * @author thatsIch
  * @since 02.08.2014.
  */
-trait DisassemblerConfigAccess
+class DisassemblerConfigAccess
 {
 	val config = new DisassemblerConfig()
 
 	// Mining
-	val initMiningSpeed = this.config.getDouble("General", "initialMiningSpeed", 1)
-	val maxMiningSpeed = this.config.getDouble("General", "maxMiningSpeed", 5000)
-	val initMiningLevel = this.config.getDouble("General", "initialMiningLevel", 0)
-	val maxMiningLevel = this.config.getDouble("General", "maxMiningLevel", 5)
+	val minimalMiningSpeed = this.config.getInt("Functionality", "minimalMiningSpeed", 1)
+	val maximalMiningSpeed = this.config.getInt("Functionality", "maximalMiningSpeed", 5000)
+	val initMiningLevel = this.config.getInt("Functionality", "initialMiningLevel", 0)
+	val maxMiningLevel = this.config.getInt("Functionality", "maxMiningLevel", 5)
 	// Weapon
 	val initDamageVsEntites = this.config.getDouble("Combat", "initialDamageVsEntites", 0)
 	val maxDamageVsEntites = this.config.getDouble("Combat", "maxDamageVsEntities", 20)

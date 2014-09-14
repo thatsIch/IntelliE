@@ -17,7 +17,6 @@ import scala.collection.JavaConverters._
  * @since 31.07.2014.
  */
 private[disassembler] trait BlockBreakEventHandler extends PoweredItem
-                                                           with DisassemblerConfigAccess
 {
 	MinecraftForge.EVENT_BUS.register(this)
 

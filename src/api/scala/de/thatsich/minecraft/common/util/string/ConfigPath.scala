@@ -8,3 +8,6 @@ package de.thatsich.minecraft.common.util.string
  * @since 10.07.2014.
  */
 trait ConfigPath extends StringWrapper
+{
+	val path: String = this.wrapped
+}

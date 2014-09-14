@@ -19,11 +19,10 @@ import net.minecraft.util.DamageSource
  */
 trait Weapon extends BaseItem
                      with NBTAccess
-                     with DisassemblerConfigAccess
                      with PoweredItem
                      with NBTKeyStorage
 {
-	this.addNBTs(WeaponTags)
+	def weapontags: WeaponTags
 
 	/**
 	 * Called when hitting an entity
@@ -56,7 +55,7 @@ trait Weapon extends BaseItem
 		false
 	}
 
-	def getCurrentDamageVsEntities(is: ItemStack): Double = this.withinBounds(is, WeaponTags.Damage)
+	def getCurrentDamageVsEntities(is: ItemStack): Double = this.withinBounds(is, this.weapontags.Damage)
 
-	def setCurrentDamageVsEntities(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(WeaponTags.Damage, value)
+	def setCurrentDamageVsEntities(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(this.weapontags.Damage, value)
 }

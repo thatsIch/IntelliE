@@ -13,66 +13,32 @@ import net.minecraftforge.common.config.Configuration
  * @author thatsIch
  * @since 04.04.2014.
  */
-abstract class BaseConfig(configPath: ConfigPath) extends Config
+abstract class BaseConfig(configPath: ConfigPath)
+extends Configuration(new File(configPath.path))
+        with Config
 {
-	/**
-	 * Path to the real config file
-	 */
-	private val configPathString: String = this.configPath
-
-	/**
-	 * The real configuration. Derives the file from the incoming config path string
-	 */
-	private val config = new Configuration(new File(this.configPathString))
-
 	/**
 	 * Saves the underlying config if the config itself has changed
 	 */
-	def save(): Unit =
+	override def save(): Unit =
 	{
-		if (this.config.hasChanged)
+		if (super.hasChanged)
 		{
-			this.config.save()
+			super.save()
 		}
 	}
 
-	def getBoolean(category: String, key: String, defaultValue: Boolean): Boolean =
-	{
-		this.config.get(category, key, defaultValue).getBoolean(defaultValue)
-	}
+	override def getBoolean(category: String, key: String, defaultValue: Boolean): Boolean = super.get(category, key, defaultValue).getBoolean
 
-	def getBooleanList(category: String, key: String, defaultValue: Array[Boolean]): Array[Boolean] =
-	{
-		this.config.get(category, key, defaultValue).getBooleanList
-	}
+	override def getInt(category: String, key: String, defaultValue: Int): Int = super.get(category, key, defaultValue).getInt
 
-	def getDouble(category: String, key: String, defaultValue: Double): Double =
-	{
-		this.config.get(category, key, defaultValue).getDouble(defaultValue)
-	}
+	override def getDouble(category: String, key: String, defaultValue: Double): Double = super.get(category, key, defaultValue).getDouble
 
-	def getDoubleList(category: String, key: String, defaultValue: Array[Double]): Array[Double] =
-	{
-		this.config.get(category, key, defaultValue).getDoubleList
-	}
+	override def getDouble(category: String, key: String, defaultValue: Double, comment: String): Double = super.get(category, key, defaultValue, comment).getDouble
 
-	def getInt(category: String, key: String, defaultValue: Int): Int =
-	{
-		this.config.get(category, key, defaultValue).getInt
-	}
+	override def getFloat(category: String, key: String, defaultValue: Float): Float = super.get(category, key, defaultValue).getDouble.toFloat
 
-	def getIntList(category: String, key: String, defaultValue: Array[Int]): Array[Int] =
-	{
-		this.config.get(category, key, defaultValue).getIntList
-	}
+	override def getFloat(category: String, key: String, defaultValue: Float, comment: String): Float = super.get(category, key, defaultValue, comment).getDouble.toFloat
 
-	def getString(category: String, key: String, defaultValue: String): String =
-	{
-		this.config.get(category, key, defaultValue).getString
-	}
-
-	def getStringList(category: String, key: String, defaultValue: Array[String]): Array[String] =
-	{
-		this.config.get(category, key, defaultValue).getStringList
-	}
+	override def getInt(category: String, key: String, defaultValue: Int, comment: String): Int = super.get(category, key, defaultValue, comment).getInt
 }
