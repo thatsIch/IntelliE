@@ -1,18 +1,16 @@
 # Aliases
+alias=minecraft -> mc
 alias=aero -> appaero
 alias=ae2 -> appliedenergistics2
 
 # Energy
 workbench=aero:horseshoes ae2:BlockEnergyCell 200000 aero:maxenergy -> aero:horseshoes
 workbench=aero:horseshoes ae2:BlockDenseEnergyCell 1600000 aero:maxenergy -> aero:horseshoes
-
-#workbench=aero:horseshoes ae2:ItemMaterial.Cell1kPart 1 aero:miningspeed -> aero:horseshoes
-#workbench=aero:horseshoes ae2:ItemMaterial.Cell4kPart 5 aero:miningspeed -> aero:horseshoes
-#workbench=aero:horseshoes ae2:ItemMaterial.Cell16kPart 21 aero:miningspeed -> aero:horseshoes
-#workbench=aero:horseshoes ae2:ItemMaterial.Cell64kPart 85 aero:miningspeed -> aero:horseshoes
-
-#workbench=aero:horseshoes ae2:ItemMaterial.EngProcessor 1 aero:armorbase -> aero:horseshoes
-#workbench=aero:horseshoes ae2:ItemMaterial.CalcProcessor 10 aero:energycost -> aero:horseshoes
-#workbench=aero:horseshoes ae2:ItemMaterial.LogicProcessor 1 aero:absorptionratio -> aero:horseshoes
-
 workbench=aero:horseshoes ae2:ItemMaterial.CardSpeed 1 aero:chargemultiplier -> aero:horseshoes
+workbench=aero:horseshoes ae2:ItemMaterial.CalcProcessor 1 aero:dischargepertick -> aero:horseshoes
+
+workbench=aero:horseshoes mc:diamond_boots 1 aero:armorbase -> aero:horseshoes
+workbench=aero:horseshoes ae2:ItemMaterial.EngProcessor 1 aero:absorptionratio -> aero:horseshoes
+workbench=aero:horseshoes ae2:ItemMaterial.LogicProcessor 1 aero:energyperdamage -> aero:horseshoes
+
+workbench=aero:horseshoes mc:piston 1 aero:stepheight -> aero:horseshoes

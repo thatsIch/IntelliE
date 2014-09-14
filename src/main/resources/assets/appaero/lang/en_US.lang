@@ -11,7 +11,7 @@ appaero.item.maxenergy.name=Max Energy
 appaero.item.miningspeed.name=Mining Speed
 appaero.item.energycost.name=Energy Cost
 appaero.item.mininglevel.name=Mining Level
-appaero.item.chargemultiplier.name=Charge Speed
+appaero.item.chargemultiplier.name=Charge Multiplier
 appaero.item.damage.name=Damage
 
 appaero.tile.workbench.name=Modification Workbench
