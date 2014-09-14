@@ -1,5 +1,4 @@
 apply plugin: 'java'        // enables sourcesets
-apply plugin: 'forge'       // forge tasks
 
 apply from: 'gradle/scripts/properties.gradle'
 apply from: 'gradle/scripts/versioning.gradle'
@@ -10,6 +9,8 @@ apply from: 'gradle/scripts/idea.gradle'
 apply from: 'gradle/scripts/artifacts.gradle'
 apply from: 'gradle/scripts/gradle.gradle'
 apply from: 'gradle/scripts/scala.gradle'
+
+apply plugin: 'forge'       // forge tasks
 
 buildscript {
     repositories {
