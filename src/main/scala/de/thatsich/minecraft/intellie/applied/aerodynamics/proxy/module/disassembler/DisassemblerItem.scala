@@ -6,7 +6,7 @@ import java.util
 import de.thatsich.minecraft.common.config.Config
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.BaseItem
-import de.thatsich.minecraft.common.module.item.{PoweredItemDamageDisplay, UniqueItem, UnstackableItem}
+import de.thatsich.minecraft.common.module.item.{NBTKeyStorage, PoweredItemDamageDisplay, UniqueItem, UnstackableItem}
 import de.thatsich.minecraft.common.util.string.ModID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.config.{DisassemblerConfig, DisassemblerItemPowerStorageConfig, DisassemblerItemPowerStorageConfigAccess, DisassemblerFunctionalityConfig, DisassemblerFunctionalityConfigAccess, DisassemblerWeaponConfig, DisassemblerWeaponConfigAccess}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.{AEHumanNumberFormat, AEWrench, BlockBreakEventHandler, BreakSpeedHandler, MiningTool, DisassemblerItemPowerStorage, PrecisionHarvester, Weapon}
@@ -37,6 +37,7 @@ extends BaseItem(new DisassemblerID, modid, log)
         with UnstackableItem
         with UniqueItem
         with AEHumanNumberFormat
+        with NBTKeyStorage
 {
 	val config: Config = new DisassemblerConfig
 

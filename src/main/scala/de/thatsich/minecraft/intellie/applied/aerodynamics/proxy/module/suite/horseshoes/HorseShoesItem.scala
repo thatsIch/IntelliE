@@ -4,10 +4,10 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.h
 import java.util
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.item.PoweredItemDamageDisplay
+import de.thatsich.minecraft.common.module.item.{NBTKeyStorage, PoweredItemDamageDisplay}
 import de.thatsich.minecraft.common.util.string.ModID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.AEHumanNumberFormat
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.config.{HorseShoesItemPowerStorageConfigAccess, HorseShoesFunctionalityConfigAccess, HorseShoesArmorConfigAccess, HorseShoesConfig}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.config.{HorseShoesArmorConfigAccess, HorseShoesConfig, HorseShoesFunctionalityConfigAccess, HorseShoesItemPowerStorageConfigAccess}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags.{ArmorTags, FunctionalityTags, ItemPowerStorageTags}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.{HorseShoesItemPowerStorage, HorseShoesSpecialArmor, HorseShoesStepHeightLogic}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.item.{ArmorType, BaseItemArmor}
@@ -31,6 +31,7 @@ extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
         with PoweredItemDamageDisplay
         with AEHumanNumberFormat
         with HorseShoesStepHeightLogic
+        with NBTKeyStorage
 {
 	val config = new HorseShoesConfig
 

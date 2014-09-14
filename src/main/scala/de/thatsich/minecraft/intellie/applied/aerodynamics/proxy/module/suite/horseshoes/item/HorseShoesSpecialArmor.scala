@@ -1,7 +1,6 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item
 
 
-import de.thatsich.minecraft.common.module.item.NBTKeyStorage
 import de.thatsich.minecraft.common.util.BoundDetection
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags.ArmorTags
 import net.minecraft.entity.EntityLivingBase
@@ -22,7 +21,6 @@ import scala.language.implicitConversions
 trait HorseShoesSpecialArmor
 extends ISpecialArmor
         with HorseShoesItemPowerStorage
-        with NBTKeyStorage
         with BoundDetection
 {
 	def armorTags: ArmorTags

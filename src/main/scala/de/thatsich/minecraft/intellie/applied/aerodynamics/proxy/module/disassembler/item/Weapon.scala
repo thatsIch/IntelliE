@@ -2,7 +2,6 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disasse
 
 
 import de.thatsich.minecraft.common.module.BaseItem
-import de.thatsich.minecraft.common.module.item.NBTKeyStorage
 import de.thatsich.minecraft.common.module.util.NBTAccess
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.tags.WeaponTags
 import net.minecraft.entity.Entity
@@ -20,7 +19,6 @@ import net.minecraft.util.DamageSource
 trait Weapon extends BaseItem
                      with NBTAccess
                      with DisassemblerItemPowerStorage
-                     with NBTKeyStorage
 {
 	def weapontags: WeaponTags
 

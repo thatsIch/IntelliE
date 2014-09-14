@@ -3,7 +3,6 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disasse
 
 import appeng.api.config.AccessRestriction
 import appeng.api.implementations.items.IAEItemPowerStorage
-import de.thatsich.minecraft.common.module.item.NBTKeyStorage
 import de.thatsich.minecraft.common.module.util.NBTAccess
 import de.thatsich.minecraft.common.util.BoundDetection
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.tags.ItemPowerStorageTags
@@ -19,7 +18,6 @@ import net.minecraft.item.ItemStack
 private[disassembler] trait DisassemblerItemPowerStorage
 extends IAEItemPowerStorage
         with NBTAccess
-        with NBTKeyStorage
         with BoundDetection
 {
 	def powerStorageTags: ItemPowerStorageTags

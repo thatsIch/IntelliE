@@ -1,12 +1,11 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item
 
 
-import de.thatsich.minecraft.common.module.item.NBTKeyStorage
 import de.thatsich.minecraft.common.module.util.NBTAccess
 import de.thatsich.minecraft.common.util.BoundDetection
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.tags.ToolTags
 import net.minecraft.block.Block
-import net.minecraft.item.{ItemStack, Item}
+import net.minecraft.item.{Item, ItemStack}
 
 
 /**
@@ -19,7 +18,6 @@ trait MiningTool
 extends Item
         with DisassemblerItemPowerStorage
         with NBTAccess
-        with NBTKeyStorage
         with BoundDetection
 {
 	def toolTags: ToolTags
