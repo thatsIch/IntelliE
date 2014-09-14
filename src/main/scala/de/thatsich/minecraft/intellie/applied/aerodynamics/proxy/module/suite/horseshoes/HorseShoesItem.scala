@@ -7,7 +7,8 @@ import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.item.PoweredItemDamageDisplay
 import de.thatsich.minecraft.common.util.string.ModID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.AEHumanNumberFormat
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags.{ArmorTags, LogicTags, PowerStorageTags}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.config.{HorseShoesItemPowerStorageConfigAccess, HorseShoesFunctionalityConfigAccess, HorseShoesArmorConfigAccess, HorseShoesConfig}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags.{ArmorTags, FunctionalityTags, ItemPowerStorageTags}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.{HorseShoesItemPowerStorage, HorseShoesSpecialArmor, HorseShoesStepHeightLogic}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.item.{ArmorType, BaseItemArmor}
 import net.minecraft.creativetab.CreativeTabs
@@ -31,6 +32,20 @@ extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
         with AEHumanNumberFormat
         with HorseShoesStepHeightLogic
 {
+	val config = new HorseShoesConfig
+
+	val armorConfig = new HorseShoesArmorConfigAccess(this.config)
+	val functionalityConfig = new HorseShoesFunctionalityConfigAccess(this.config)
+	val powerConfig = new HorseShoesItemPowerStorageConfigAccess(this.config)
+
+	val armorTags = new ArmorTags(this.armorConfig)
+	val functionalityTags = new FunctionalityTags(this.functionalityConfig)
+	val powerTags = new ItemPowerStorageTags(this.powerConfig)
+
+	this.addNBTs(this.armorTags)
+	this.addNBTs(this.functionalityTags)
+	this.addNBTs(this.powerTags)
+
 	override def addInformation(is: ItemStack, player: EntityPlayer, information: java.util.List[_], advToolTips: Boolean) =
 	{
 		val currentPower = this.getAECurrentPower(is).toInt
@@ -66,16 +81,16 @@ extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
 
 		val stack = new ItemStack(this)
 		val tag = this.getNBTData(stack)
-		tag.setDouble(PowerStorageTags.CurrentEnergy, this.maxEnergy)
-		tag.setDouble(PowerStorageTags.MaxEnergy, this.maxEnergy)
-		tag.setDouble(PowerStorageTags.ChargeMultiplier, this.maxChargeMultiplier)
-		tag.setDouble(PowerStorageTags.DischargePerTick, this.minDischargePerTick)
+		tag.setDouble(this.powerTags.CurrentEnergy, this.powerConfig.maximalEnergy)
+		tag.setDouble(this.powerTags.MaxEnergy, this.powerConfig.maximalEnergy)
+		tag.setDouble(this.powerTags.ChargeMultiplier, this.powerConfig.maximalChargeMultiplier)
+		tag.setDouble(this.powerTags.DischargePerTick, this.powerConfig.minimalDischargePerTick)
 
-		tag.setDouble(ArmorTags.EnergyPerDamage, this.minEnergyPerDamagePoint)
-		tag.setDouble(ArmorTags.ArmorBase, this.maxArmorBase)
-		tag.setDouble(ArmorTags.AbsorptionRatio, this.maxAbsorptionRatio)
+		tag.setDouble(this.armorTags.EnergyPerDamage, this.armorConfig.minimalEnergyPerDamage)
+		tag.setDouble(this.armorTags.ArmorBase, this.armorConfig.maximalArmorBase)
+		tag.setDouble(this.armorTags.AbsorptionRatio, this.armorConfig.maximalAbsorptionRatio)
 
-		tag.setDouble(LogicTags.StepHeight, this.maxStepHeight)
+		tag.setDouble(this.functionalityTags.StepHeight, this.functionalityConfig.maximalStepHeight)
 
 		list.add(stack)
 	}

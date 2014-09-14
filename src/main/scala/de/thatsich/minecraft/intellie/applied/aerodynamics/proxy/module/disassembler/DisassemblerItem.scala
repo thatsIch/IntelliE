@@ -8,9 +8,9 @@ import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.module.BaseItem
 import de.thatsich.minecraft.common.module.item.{PoweredItemDamageDisplay, UniqueItem, UnstackableItem}
 import de.thatsich.minecraft.common.util.string.ModID
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.config.{DisassemblerConfig, DisassemblerEnergyConfig, DisassemblerEnergyConfigAccess, DisassemblerFunctionalityConfig, DisassemblerFunctionalityConfigAccess, DisassemblerWeaponConfig, DisassemblerWeaponConfigAccess}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.{AEHumanNumberFormat, AEWrench, BlockBreakEventHandler, BreakSpeedHandler, MiningTool, PoweredItem, PrecisionHarvester, Weapon}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.tags.{PowerStorageTags, ToolTags, WeaponTags}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.config.{DisassemblerConfig, DisassemblerItemPowerStorageConfig, DisassemblerItemPowerStorageConfigAccess, DisassemblerFunctionalityConfig, DisassemblerFunctionalityConfigAccess, DisassemblerWeaponConfig, DisassemblerWeaponConfigAccess}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.{AEHumanNumberFormat, AEWrench, BlockBreakEventHandler, BreakSpeedHandler, MiningTool, DisassemblerItemPowerStorage, PrecisionHarvester, Weapon}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.tags.{ItemPowerStorageTags, ToolTags, WeaponTags}
 import net.minecraft.block.Block
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.player.EntityPlayer
@@ -29,7 +29,7 @@ extends BaseItem(new DisassemblerID, modid, log)
         with AEWrench
         with PrecisionHarvester
         with BlockBreakEventHandler
-        with PoweredItem
+        with DisassemblerItemPowerStorage
         with Weapon
         with MiningTool
         with BreakSpeedHandler
@@ -42,11 +42,11 @@ extends BaseItem(new DisassemblerID, modid, log)
 
 	val functionalityConfig: DisassemblerFunctionalityConfig = new DisassemblerFunctionalityConfigAccess(this.config)
 	val weaponConfig: DisassemblerWeaponConfig = new DisassemblerWeaponConfigAccess(this.config)
-	val powerStorageConfig: DisassemblerEnergyConfig = new DisassemblerEnergyConfigAccess(this.config)
+	val powerStorageConfig: DisassemblerItemPowerStorageConfig = new DisassemblerItemPowerStorageConfigAccess(this.config)
 
 	val toolTags: ToolTags = new ToolTags(this.functionalityConfig)
 	val weapontags: WeaponTags = new WeaponTags(this.weaponConfig)
-	val powerStorageTags: PowerStorageTags = new PowerStorageTags(this.powerStorageConfig)
+	val powerStorageTags: ItemPowerStorageTags = new ItemPowerStorageTags(this.powerStorageConfig)
 
 	this.addNBTs(this.toolTags)
 	this.addNBTs(this.weapontags)

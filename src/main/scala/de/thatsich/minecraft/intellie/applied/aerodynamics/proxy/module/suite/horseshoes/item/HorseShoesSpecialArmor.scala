@@ -23,10 +23,9 @@ trait HorseShoesSpecialArmor
 extends ISpecialArmor
         with HorseShoesItemPowerStorage
         with NBTKeyStorage
-        with HorseShoesConfigAccess
         with BoundDetection
 {
-	this.addNBTs(ArmorTags)
+	def armorTags: ArmorTags
 
 	override def getProperties(player: EntityLivingBase, armor: ItemStack, source: DamageSource, damage: Double, slot: Int): ISpecialArmor.ArmorProperties =
 	{
@@ -45,9 +44,9 @@ extends ISpecialArmor
 		this.extractAEPower(armor, damage * this.getEnergyPerDamage(armor))
 	}
 
-	def getAbsorptionRatio(armor: ItemStack): Double = this.withinBounds(armor, ArmorTags.AbsorptionRatio)
+	def getAbsorptionRatio(armor: ItemStack): Double = this.withinBounds(armor, this.armorTags.AbsorptionRatio)
 
-	def getEnergyPerDamage(armor: ItemStack): Double = this.withinReversedBounds(armor, ArmorTags.EnergyPerDamage)
+	def getEnergyPerDamage(armor: ItemStack): Double = this.withinReversedBounds(armor, this.armorTags.EnergyPerDamage)
 
-	def getArmorBase(armor: ItemStack): Double = this.withinBounds(armor, ArmorTags.ArmorBase)
+	def getArmorBase(armor: ItemStack): Double = this.withinBounds(armor, this.armorTags.ArmorBase)
 }

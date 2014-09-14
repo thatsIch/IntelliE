@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.h
 
 
 import de.thatsich.minecraft.common.util.nbt.{BaseBoundNBTProperty, BoundNBTProperty, NBTTags}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.HorseShoesConfigAccess
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.config.HorseShoesFunctionalityConfig
 
 
 /**
@@ -11,9 +11,10 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.ho
  * @author thatsIch
  * @since 13.09.2014.
  */
-object LogicTags extends NBTTags with HorseShoesConfigAccess
+class FunctionalityTags(config: HorseShoesFunctionalityConfig) extends NBTTags
 {
-	object StepHeight extends BaseBoundNBTProperty(this.initStepHeight, this.maxStepHeight)
-
 	override def values: Seq[BoundNBTProperty] = Vector(StepHeight)
+
+	object StepHeight extends BaseBoundNBTProperty(this.config.minimalStepHeight, this.config.maximalStepHeight)
+
 }

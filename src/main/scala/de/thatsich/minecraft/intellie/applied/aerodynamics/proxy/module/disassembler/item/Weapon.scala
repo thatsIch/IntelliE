@@ -19,7 +19,7 @@ import net.minecraft.util.DamageSource
  */
 trait Weapon extends BaseItem
                      with NBTAccess
-                     with PoweredItem
+                     with DisassemblerItemPowerStorage
                      with NBTKeyStorage
 {
 	def weapontags: WeaponTags

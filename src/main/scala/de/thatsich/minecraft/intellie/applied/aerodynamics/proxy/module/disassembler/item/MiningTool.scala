@@ -17,7 +17,7 @@ import net.minecraft.item.{ItemStack, Item}
  */
 trait MiningTool
 extends Item
-        with PoweredItem
+        with DisassemblerItemPowerStorage
         with NBTAccess
         with NBTKeyStorage
         with BoundDetection

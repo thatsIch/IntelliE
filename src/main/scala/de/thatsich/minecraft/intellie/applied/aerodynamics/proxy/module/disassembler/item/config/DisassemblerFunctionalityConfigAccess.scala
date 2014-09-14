@@ -12,11 +12,10 @@ import de.thatsich.minecraft.common.config.Config
  */
 class DisassemblerFunctionalityConfigAccess(config: Config) extends DisassemblerFunctionalityConfig
 {
-	override def minimalMiningSpeed: Int = this.config.getInt("Functionality", "minimalMiningSpeed", 1)
+	val minimalMiningSpeed: Int = this.config.getInt("Functionality", "minimalMiningSpeed", 1)
+	val maximalMiningSpeed: Int = this.config.getInt("Functionality", "maximalMiningSpeed", 5000)
+	val maximalMiningLevel: Int = this.config.getInt("Functionality", "maximalMiningLevel", 5)
+	val minimalMiningLevel: Int = this.config.getInt("Functionality", "minimalMiningLevel", 0)
 
-	override def maximalMiningSpeed: Int = this.config.getInt("Functionality", "maximalMiningSpeed", 5000)
-
-	override def maximalMiningLevel: Int = this.config.getInt("Functionality", "maximalMiningLevel", 5)
-
-	override def minimalMiningLevel: Int = this.config.getInt("Functionality", "minimalMiningLevel", 0)
+	this.config.save()
 }

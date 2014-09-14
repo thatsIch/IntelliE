@@ -3,7 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.h
 
 import de.thatsich.minecraft.common.util.BoundDetection
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.steplogic.HorseShoesLivingUpdateEventHandler
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags.LogicTags
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags.FunctionalityTags
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{ItemArmor, ItemStack}
 import net.minecraft.world.World
@@ -19,10 +19,10 @@ import net.minecraftforge.common.MinecraftForge
 trait HorseShoesStepHeightLogic
 extends ItemArmor
         with HorseShoesItemPowerStorage
-        with HorseShoesConfigAccess
         with BoundDetection
 {
-	this.addNBTs(LogicTags)
+	def functionalityTags: FunctionalityTags
+
 	MinecraftForge.EVENT_BUS.register(new HorseShoesLivingUpdateEventHandler(this))
 
 	/**
@@ -48,5 +48,5 @@ extends ItemArmor
 		}
 	}
 
-	def getStepHeight(armor: ItemStack): Double = this.withinBounds(armor, LogicTags.StepHeight)
+	def getStepHeight(armor: ItemStack): Double = this.withinBounds(armor, this.functionalityTags.StepHeight)
 }

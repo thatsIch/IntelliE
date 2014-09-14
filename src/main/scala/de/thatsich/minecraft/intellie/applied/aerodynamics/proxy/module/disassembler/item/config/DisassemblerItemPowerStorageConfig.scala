@@ -7,7 +7,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disasse
  * @author thatsIch
  * @since 14.09.2014.
  */
-trait DisassemblerEnergyConfig
+trait DisassemblerItemPowerStorageConfig
 {
 	def minimalEnergy: Double
 

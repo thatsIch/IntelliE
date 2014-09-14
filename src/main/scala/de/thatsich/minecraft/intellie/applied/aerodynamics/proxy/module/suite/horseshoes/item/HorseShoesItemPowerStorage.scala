@@ -3,10 +3,9 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.h
 
 import appeng.api.config.AccessRestriction
 import appeng.api.implementations.items.IAEItemPowerStorage
-import de.thatsich.minecraft.common.module.item.NBTKeyStorage
 import de.thatsich.minecraft.common.module.util.NBTAccess
 import de.thatsich.minecraft.common.util.BoundDetection
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags.PowerStorageTags
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags.ItemPowerStorageTags
 import net.minecraft.item.ItemStack
 
 
@@ -19,11 +18,9 @@ import net.minecraft.item.ItemStack
 trait HorseShoesItemPowerStorage
 extends IAEItemPowerStorage
         with NBTAccess
-        with NBTKeyStorage
-        with HorseShoesConfigAccess
         with BoundDetection
 {
-	this.addNBTs(PowerStorageTags)
+	def powerTags: ItemPowerStorageTags
 
 	override def injectAEPower(is: ItemStack, amt: Double): Double =
 	{
@@ -40,7 +37,7 @@ extends IAEItemPowerStorage
 		amt - diff
 	}
 
-	override def getAEMaxPower(is: ItemStack): Double = this.withinBounds(is, PowerStorageTags.MaxEnergy)
+	override def getAEMaxPower(is: ItemStack): Double = this.withinBounds(is, this.powerTags.MaxEnergy)
 
 	override def getPowerFlow(is: ItemStack): AccessRestriction = AccessRestriction.WRITE
 
@@ -54,13 +51,13 @@ extends IAEItemPowerStorage
 		diff
 	}
 
-	override def getAECurrentPower(is: ItemStack): Double = this.getNBTData(is).getDouble(PowerStorageTags.CurrentEnergy)
+	override def getAECurrentPower(is: ItemStack): Double = this.getNBTData(is).getDouble(this.powerTags.CurrentEnergy)
 
-	def getCurrentChargeMultiplier(is: ItemStack): Double = this.withinBounds(is, PowerStorageTags.ChargeMultiplier)
+	def getCurrentChargeMultiplier(is: ItemStack): Double = this.withinBounds(is, this.powerTags.ChargeMultiplier)
 
-	def setAECurrentPower(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(PowerStorageTags.CurrentEnergy, value)
+	def setAECurrentPower(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(this.powerTags.CurrentEnergy, value)
 
-	def getDischargePerTick(is: ItemStack): Double = this.withinReversedBounds(is, PowerStorageTags.DischargePerTick)
+	def getDischargePerTick(is: ItemStack): Double = this.withinReversedBounds(is, this.powerTags.DischargePerTick)
 
-	def setDischargePerTick(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(PowerStorageTags.DischargePerTick, value)
+	def setDischargePerTick(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(this.powerTags.DischargePerTick, value)
 }

@@ -12,7 +12,9 @@ import de.thatsich.minecraft.common.config.Config
  */
 class DisassemblerWeaponConfigAccess(config: Config) extends DisassemblerWeaponConfig
 {
-	override def minimalDamageVsEntites: Float = this.config.getFloat("Combat", "initialDamageVsEntites", 0)
+	override val minimalDamageVsEntites: Float = this.config.getFloat("Combat", "initialDamageVsEntites", 0)
 
-	override def maximalDamageVsEntites: Float = this.config.getFloat("Combat", "maximalDamageVsEntites", 20)
+	override val maximalDamageVsEntites: Float = this.config.getFloat("Combat", "maximalDamageVsEntites", 20)
+
+	this.config.save()
 }
