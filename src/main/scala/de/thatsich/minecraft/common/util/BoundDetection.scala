@@ -31,4 +31,14 @@ trait BoundDetection extends NBTAccess
 
 		(current max min) min max
 	}
+
+	def withinReversedBounds(stack: ItemStack, prop: BoundNBTProperty): Double =
+	{
+		val tag = this.getNBTData(stack)
+		val current = tag.getDouble(prop)
+		val min = prop.min
+		val max = prop.max
+
+		if (current == 0) max else current max min
+	}
 }

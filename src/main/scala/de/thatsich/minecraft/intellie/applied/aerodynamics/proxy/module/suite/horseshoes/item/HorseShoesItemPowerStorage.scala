@@ -60,7 +60,7 @@ extends IAEItemPowerStorage
 
 	def setAECurrentPower(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(PowerStorageTags.CurrentEnergy, value)
 
-	def getDischargePerTick(is: ItemStack): Double = this.withinBounds(is, PowerStorageTags.DischargePerTick)
+	def getDischargePerTick(is: ItemStack): Double = this.withinReversedBounds(is, PowerStorageTags.DischargePerTick)
 
 	def setDischargePerTick(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(PowerStorageTags.DischargePerTick, value)
 }

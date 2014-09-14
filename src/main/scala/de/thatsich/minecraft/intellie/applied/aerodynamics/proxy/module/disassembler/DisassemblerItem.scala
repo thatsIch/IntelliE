@@ -65,8 +65,8 @@ extends BaseItem(new DisassemblerID, modid, log)
 		{
 			val energyUsage = this.getCurrentEnergyUsage(is).toInt
 			val multiplier = this.getCurrentChargeMultiplier(is).toInt
-			val speed = this.getCurrentMiningSpeed(is).toInt
-			val level = this.getCurrentMiningLevel(is).toInt
+			val speed = this.getCurrentMiningSpeed(is)
+			val level = this.getCurrentMiningLevel(is)
 			val damage = this.getCurrentDamageVsEntities(is).toInt
 
 			list.add(s"Stored Energy: $currentPower/$maxPower AE - $percent%")

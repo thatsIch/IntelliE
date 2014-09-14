@@ -44,7 +44,7 @@ class GuiRegistry(registrable: Seq[BlockGuiHandler], log: Log) extends BlockGuiH
 		val name: String = handler.name
 		val hash: Int = this.hash(name)
 
-		this.log.debug(s"\tAdding handler ${handler.getClass.getSimpleName} with producing hash $hash")
+		this.log.debug(s"> Adding handler ${handler.getClass.getSimpleName} with producing hash $hash")
 		table.put(hash, handler)
 	}
 }

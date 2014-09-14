@@ -14,9 +14,9 @@ class DisassemblerEnergyConfigAccess(config: Config) extends DisassemblerEnergyC
 {
 	override def minimalEnergy: Double = this.config.getDouble("Energy", "minimalEnergy", 0)
 
-	override def minimalEnergyPerBlockBreak: Double = this.config.getDouble("Energy", "minimalEnergyPerBlockBreak", 100000)
+	override def minimalEnergyPerBlockBreak: Double = this.config.getDouble("Energy", "minimalEnergyPerBlockBreak", 6666)
 
-	override def maximalEnergyPerBlockBreak: Double = this.config.getDouble("Energy", "maximalEnergyPerBlockBreak", 6666)
+	override def maximalEnergyPerBlockBreak: Double = this.config.getDouble("Energy", "maximalEnergyPerBlockBreak", 100000)
 
 	override def minimalChargeMultiplier: Int = this.config.getInt("Energy", "minimalChargeMultiplier", 1)
 

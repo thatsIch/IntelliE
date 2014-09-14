@@ -36,7 +36,7 @@ class ItemRegistry(registrable: Seq[Item], modid: ID, log: Log)
 		val name: String = this.getItemName(item)
 		val simpleClassName: String = item.getClass.getSimpleName
 
-		this.log.debug(s"\tAdding item $simpleClassName with name $name.")
+		this.log.debug(s"> Adding item $simpleClassName with name $name.")
 		GameRegistry.registerItem(item, name)
 	}
 

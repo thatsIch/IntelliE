@@ -16,7 +16,7 @@ class DisassemblerFunctionalityConfigAccess(config: Config) extends Disassembler
 
 	override def maximalMiningSpeed: Int = this.config.getInt("Functionality", "maximalMiningSpeed", 5000)
 
-	override def maximalMiningLevel: Int = this.config.getInt("Functionality", "maximalMiningLevel", 0)
+	override def maximalMiningLevel: Int = this.config.getInt("Functionality", "maximalMiningLevel", 5)
 
-	override def minimalMiningLevel: Int = this.config.getInt("Functionality", "minimalMiningLevel", 5)
+	override def minimalMiningLevel: Int = this.config.getInt("Functionality", "minimalMiningLevel", 0)
 }

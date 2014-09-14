@@ -35,11 +35,11 @@ extends Item
 	 */
 	override def getDigSpeed(is: ItemStack, block: Block, metadata: Int): Float = this.getCurrentMiningSpeed(is).toFloat
 
-	def getCurrentMiningSpeed(is: ItemStack): Double = if (this.getAECurrentPower(is) >= this.getCurrentEnergyUsage(is)) this.withinBounds(is, this.toolTags.MiningSpeed) else 0
+	def getCurrentMiningSpeed(is: ItemStack): Int = if (this.getAECurrentPower(is) >= this.getCurrentEnergyUsage(is)) this.withinBounds(is, this.toolTags.MiningSpeed).toInt else 0
 
 	def setCurrentMiningSpeed(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(this.toolTags.MiningSpeed, value)
 
-	def getCurrentMiningLevel(is: ItemStack): Double = this.withinBounds(is, this.toolTags.MiningLevel)
+	def getCurrentMiningLevel(is: ItemStack): Int = this.withinBounds(is, this.toolTags.MiningLevel).toInt
 
 	def setCurrentMiningLevel(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(this.toolTags.MiningLevel, value)
 }

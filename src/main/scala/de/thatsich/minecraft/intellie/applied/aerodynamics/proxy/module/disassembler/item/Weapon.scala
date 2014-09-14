@@ -41,7 +41,7 @@ trait Weapon extends BaseItem
 		if (this.getAECurrentPower(is) >= energyUsage)
 		{
 			val source = DamageSource.causePlayerDamage(hitter)
-			val damage: Float = this.getCurrentDamageVsEntities(is).toFloat
+			val damage: Float = this.getCurrentDamageVsEntities(is)
 
 			if (damage > 0)
 			{
@@ -55,7 +55,7 @@ trait Weapon extends BaseItem
 		false
 	}
 
-	def getCurrentDamageVsEntities(is: ItemStack): Double = this.withinBounds(is, this.weapontags.Damage)
+	def getCurrentDamageVsEntities(is: ItemStack): Float = this.withinBounds(is, this.weapontags.Damage).toFloat
 
 	def setCurrentDamageVsEntities(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(this.weapontags.Damage, value)
 }

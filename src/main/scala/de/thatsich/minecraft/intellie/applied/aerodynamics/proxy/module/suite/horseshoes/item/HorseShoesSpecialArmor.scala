@@ -47,7 +47,7 @@ extends ISpecialArmor
 
 	def getAbsorptionRatio(armor: ItemStack): Double = this.withinBounds(armor, ArmorTags.AbsorptionRatio)
 
-	def getEnergyPerDamage(armor: ItemStack): Double = this.withinBounds(armor, ArmorTags.EnergyPerDamage)
+	def getEnergyPerDamage(armor: ItemStack): Double = this.withinReversedBounds(armor, ArmorTags.EnergyPerDamage)
 
 	def getArmorBase(armor: ItemStack): Double = this.withinBounds(armor, ArmorTags.ArmorBase)
 }
