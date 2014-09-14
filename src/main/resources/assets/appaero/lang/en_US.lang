@@ -1,20 +1,30 @@
+# Creative Tabs
 appaero.tab.name=Applied Aerodynamics
 
+# Items
 appaero.item.disassembler.name=Disassembler
-appaero.item.skydiver.name=Sky Diver
-appaero.item.chestnut.name=Chest Nut
-appaero.item.freerunner.name=Free Runner
-appaero.item.horseshoes.name=Horse Shoes
+appaero.item.skydiver.name=Skydiver
+appaero.item.chestnut.name=Chestnut
+appaero.item.freerunner.name=Freerunner
+appaero.item.horseshoes.name=Horseshoes
 appaero.item.skystone_ingot.name=Skystone Ingot
 
+# NBT Tags
 appaero.item.maxenergy.name=Max Energy
-appaero.item.miningspeed.name=Mining Speed
-appaero.item.energycost.name=Energy Cost
-appaero.item.mininglevel.name=Mining Level
-appaero.item.chargemultiplier.name=Charge Multiplier
+appaero.item.miningspeed.name=Miningspeed
+appaero.item.energycost.name=Energycost
+appaero.item.mininglevel.name=Mininglevel
+appaero.item.chargemultiplier.name=Chargemultiplier
 appaero.item.damage.name=Damage
+appaero.item.energyperdamage.name=Energy per Damage
+appaero.item.armorbase.name=Armorbase
+appaero.item.absorptionratio.name=Absorptionratio
+appaero.item.dischargepertick.name=Discharge per Tick
+appaero.item.stepheight.name=Stepheight
 
+# Tile Entities
 appaero.tile.workbench.name=Modification Workbench
 
+# GUI Labels
 appaero.gui.workbench.name=Modification Workbench
 appaero.gui.inventory.name=Inventory
