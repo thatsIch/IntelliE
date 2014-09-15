@@ -16,11 +16,11 @@ import net.minecraft.item.Item
  */
 class InternalAeroModules(icon: Item, modid: ModID, log: Log) extends AeroModules
 {
-	val disassembler: DisassemblerModule = new InternalDisassemblerModule(this.modid, this.log)
 	val workbench: WorkbenchModule = new InternalWorkbenchModule(this.modid, this.log)
+	val disassembler: DisassemblerModule = new InternalDisassemblerModule(this.modid, this.log)
 	val suite: SuiteModule = new InternalSuiteModule(this.modid, this.log)
 	val skystoneingot: SkystoneIngotModule = new InternalSkystoneIngotModule(this.modid, this.log)
 	val creativetabs: CreativetabsModule = new InternalCreativetabsModule(this.icon, this.modid, this.log)
 
-	val vectorized = Vector[Module](this.disassembler, this.workbench, this.suite, this.skystoneingot, this.creativetabs)
+	val vectorized = Vector[Module](this.workbench, this.disassembler, this.suite, this.skystoneingot, this.creativetabs)
 }

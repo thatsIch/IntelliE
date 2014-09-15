@@ -5,9 +5,9 @@ import java.util
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.BaseGuiContainer
-import de.thatsich.minecraft.common.module.container.SlotSide
-import de.thatsich.minecraft.common.module.gui.{Direction, GuiProgressBar}
+import de.thatsich.minecraft.common.proxy.module.BaseGuiContainer
+import de.thatsich.minecraft.common.proxy.module.container.SlotSide
+import de.thatsich.minecraft.common.proxy.module.gui.{Direction, GuiProgressBar}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench.{WorkbenchContainer, WorkbenchTileEntity}
 import net.minecraft.client.gui.GuiButton

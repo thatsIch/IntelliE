@@ -2,8 +2,7 @@ package de.thatsich.minecraft.common
 
 
 import appeng.api.recipes.ICraftHandler
-import de.thatsich.minecraft.common.module.BlockGuiHandler
-import de.thatsich.minecraft.intellie.common.Recipe
+import de.thatsich.minecraft.common.proxy.module.BlockGuiHandler
 import net.minecraft.block.Block
 import net.minecraft.entity.Entity
 import net.minecraft.item.Item

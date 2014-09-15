@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench.client
 
 
-import de.thatsich.minecraft.common.module.container.BaseSlot
+import de.thatsich.minecraft.common.proxy.module.container.BaseSlot
 
 
 /**

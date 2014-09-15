@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics
 
 
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.{AeroModules, NBTKeyRegistry}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.{AeroModules, NBTItemRegistry}
 
 
 /**
@@ -12,7 +12,7 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.{AeroModules, N
  */
 trait AeroProxy
 {
-	def nbtkeyregistry: NBTKeyRegistry
+	def nbtitemregistry: NBTItemRegistry
 
 	def modules: AeroModules
 }

@@ -32,33 +32,20 @@ class NEIAppAeroConfig extends IConfigureNEI
 		stopwatch.start
 
 		val apiproxy = AppliedAerodynamicsAPI.proxy
-		log.debug(s"Extracted API ($stopwatch).")
-
-		val nbtkeys: Iterable[ItemStack] = apiproxy.nbtkeyregistry.allKeysAsItemStack
-		log.debug(s"Extracted NBT Keys ($stopwatch).")
-
+		val nbtitemstacks: Seq[ItemStack] = apiproxy.nbtitemregistry.itemstacks
 		val vectorized: Seq[Module] = apiproxy.modules.vectorized
-		log.debug(s"Extracted Modules ($stopwatch).")
-
 		val fakes: Seq[Item] = this.extractFakes(vectorized)
-		log.debug(s"Extracted Fakes ($stopwatch).")
-
 		val fakeStacks = fakes.map(new ItemStack(_))
-		log.debug(s"Extracted fake Stacks ($stopwatch).")
 
-		val nbtkeyHider = new NEIItemStackHider(nbtkeys, log)
+		val nbtkeyHider = new NEIItemStackHider(nbtitemstacks, log)
 		val fakeHider = new NEIItemStackHider(fakeStacks, log)
 		val explanation = new NEICustomExplanations(null, log)
 		val recipes = new NEICustomRecipes(log)
-
-		log.debug(s"Created all processing ($stopwatch).")
 
 		nbtkeyHider.hideItemsInNEI()
 		fakeHider.hideItemsInNEI()
 		explanation.registerCustomExplanations()
 		recipes.registerCustomRecipes()
-
-		log.debug(s"Finished processing ($stopwatch).")
 
 		stopwatch.stop()
 		log.info(s"ClientStart End ($stopwatch)")

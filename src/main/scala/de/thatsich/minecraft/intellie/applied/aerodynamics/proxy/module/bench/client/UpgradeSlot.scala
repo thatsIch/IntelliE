@@ -1,8 +1,8 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench.client
 
 
-import de.thatsich.minecraft.common.module.container.SlotSide.SlotSide
-import de.thatsich.minecraft.common.module.container.{BaseSlot, SlotState}
+import de.thatsich.minecraft.common.proxy.module.container.SlotSide.SlotSide
+import de.thatsich.minecraft.common.proxy.module.container.{BaseSlot, SlotState}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench.WorkbenchCraftRecipeStorage
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.inventory.IInventory

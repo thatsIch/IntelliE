@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler
 
 
-import de.thatsich.minecraft.common.module.recipe.BaseRecipe
+import de.thatsich.minecraft.common.proxy.module.recipe.BaseRecipe
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.recipe.{ExternalDisassemblerCraftRecipePath, InternalDisassemblerCraftRecipePath}
 
 

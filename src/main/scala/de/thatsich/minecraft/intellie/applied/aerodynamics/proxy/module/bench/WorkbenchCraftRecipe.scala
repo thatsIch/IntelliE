@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench
 
 
-import de.thatsich.minecraft.common.module.craftrecipe.CraftRecipe
+import de.thatsich.minecraft.common.proxy.module.craftrecipe.CraftRecipe
 import net.minecraft.item.ItemStack
 
 

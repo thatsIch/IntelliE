@@ -2,9 +2,9 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench
 
 
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.BaseBlock
-import de.thatsich.minecraft.common.module.block.MultiTexture
-import de.thatsich.minecraft.common.module.registry.BlockGuiHasher
+import de.thatsich.minecraft.common.proxy.module.BaseBlock
+import de.thatsich.minecraft.common.proxy.module.block.MultiTexture
+import de.thatsich.minecraft.common.proxy.module.registry.BlockGuiHasher
 import de.thatsich.minecraft.common.util.string.ID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
 import net.minecraft.block.Block
@@ -24,9 +24,9 @@ import net.minecraft.world.World
  */
 class WorkbenchBlock(modid: ID, name: ID, log: Log) extends BaseBlock(modid, name, log)
                                                             with MultiTexture
-                                                            with BlockGuiHasher
 {
-	final private val guiID: Int = this.hash(this.name)
+	private val hasher = new BlockGuiHasher
+	final private val guiID: Int = this.hasher.hash(this.name)
 
 	override def onBlockActivated(world: World, x: Int, y: Int, z: Int, player: EntityPlayer, side: Int, hitX: Float, hitY: Float, p_149727_9_ : Float): Boolean =
 	{

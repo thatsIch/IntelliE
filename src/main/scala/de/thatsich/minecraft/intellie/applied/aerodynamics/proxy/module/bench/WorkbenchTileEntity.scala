@@ -2,7 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench
 
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
-import de.thatsich.minecraft.common.module.util.NBTAccess
+import de.thatsich.minecraft.common.proxy.module.util.NBTAccess
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.{NBTTagCompound, NBTTagList}
 import net.minecraft.tileentity.TileEntity

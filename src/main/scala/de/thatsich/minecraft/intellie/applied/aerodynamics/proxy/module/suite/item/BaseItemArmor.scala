@@ -3,7 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.i
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.item.{UniqueItem, UnstackableItem}
+import de.thatsich.minecraft.common.proxy.module.item.{UniqueItem, UnstackableItem}
 import de.thatsich.minecraft.common.util.string.{ModID, ID}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.item.ArmorType.ArmorType
 import net.minecraft.block.BlockDispenser

@@ -3,9 +3,9 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.BaseContainer
-import de.thatsich.minecraft.common.module.container.OutputSlot
-import de.thatsich.minecraft.common.module.container.SlotSide.SlotSide
+import de.thatsich.minecraft.common.proxy.module.BaseContainer
+import de.thatsich.minecraft.common.proxy.module.container.OutputSlot
+import de.thatsich.minecraft.common.proxy.module.container.SlotSide.SlotSide
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench.client.{InputSlot, UpgradeSlot}
 import net.minecraft.entity.player.{EntityPlayer, InventoryPlayer}
 import net.minecraft.inventory.ICrafting
@@ -19,7 +19,8 @@ import scala.collection.convert.Wrappers.JListWrapper
  * @author thatsIch
  * @since 06.08.2014.
  */
-class WorkbenchContainer(player: InventoryPlayer, workbench: WorkbenchTileEntity, log: Log, side: SlotSide) extends BaseContainer
+class WorkbenchContainer(player: InventoryPlayer, workbench: WorkbenchTileEntity, log: Log, side: SlotSide)
+extends BaseContainer
 {
 	this.bindPlayerInventory(player, 0, 94)
 

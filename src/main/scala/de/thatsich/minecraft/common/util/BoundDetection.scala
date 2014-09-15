@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.common.util
 
 
-import de.thatsich.minecraft.common.module.util.NBTAccess
+import de.thatsich.minecraft.common.proxy.module.util.NBTAccess
 import de.thatsich.minecraft.common.util.nbt.BoundNBTProperty
 import net.minecraft.item.ItemStack
 

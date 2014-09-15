@@ -3,7 +3,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.h
 
 import appeng.api.config.AccessRestriction
 import appeng.api.implementations.items.IAEItemPowerStorage
-import de.thatsich.minecraft.common.module.util.NBTAccess
+import de.thatsich.minecraft.common.proxy.module.util.NBTAccess
 import de.thatsich.minecraft.common.util.BoundDetection
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags.ItemPowerStorageTags
 import net.minecraft.item.ItemStack

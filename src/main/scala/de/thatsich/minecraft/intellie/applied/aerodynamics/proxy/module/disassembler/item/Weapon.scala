@@ -1,8 +1,8 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item
 
 
-import de.thatsich.minecraft.common.module.BaseItem
-import de.thatsich.minecraft.common.module.util.NBTAccess
+import de.thatsich.minecraft.common.proxy.module.BaseItem
+import de.thatsich.minecraft.common.proxy.module.util.NBTAccess
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.tags.WeaponTags
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer

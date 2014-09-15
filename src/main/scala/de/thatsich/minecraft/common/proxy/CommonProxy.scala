@@ -6,7 +6,7 @@ import cpw.mods.fml.common.event.{FMLInitializationEvent, FMLPostInitializationE
 import cpw.mods.fml.common.network.{IGuiHandler, NetworkRegistry}
 import de.thatsich.minecraft.common.Modules
 import de.thatsich.minecraft.common.log.{Log, SimpleLog}
-import de.thatsich.minecraft.common.module.ModuleRegistry
+import de.thatsich.minecraft.common.proxy.module.ModuleRegistry
 import de.thatsich.minecraft.common.util.string.{Abbreviation, ID}
 
 

@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench
 
 
-import de.thatsich.minecraft.common.module.craftrecipe.CraftRecipeStorage
+import de.thatsich.minecraft.common.proxy.module.craftrecipe.CraftRecipeStorage
 import net.minecraft.item.ItemStack
 
 import scala.collection.mutable

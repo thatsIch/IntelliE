@@ -3,8 +3,10 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.h
 
 import java.util
 
+import cpw.mods.fml.relauncher.{SideOnly, Side}
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.item.{NBTKeyStorage, PoweredItemDamageDisplay}
+import de.thatsich.minecraft.common.proxy.module.item.{NBTKeys, PoweredItemDamageDisplay}
+import de.thatsich.minecraft.common.util.nbt.NBTTags
 import de.thatsich.minecraft.common.util.string.ModID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.AEHumanNumberFormat
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.config.{HorseShoesArmorConfigAccess, HorseShoesConfig, HorseShoesFunctionalityConfigAccess, HorseShoesItemPowerStorageConfigAccess}
@@ -23,7 +25,7 @@ import org.lwjgl.input.Keyboard
  * @author thatsIch
  * @since 16.04.2014.
  */
-// TODO upgrades
+// TODO convert config values to int and use a multiple of N instead using double cause stepheight 0.5 -> 1.0 is impossible with +1. Instead do 5 -> 10 and later divide through 10 but use int 5 - 10 internally
 class HorseShoesItem(modid: ModID, log: Log)
 extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
         with HorseShoesItemPowerStorage
@@ -31,7 +33,7 @@ extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
         with PoweredItemDamageDisplay
         with AEHumanNumberFormat
         with HorseShoesStepHeightLogic
-        with NBTKeyStorage
+        with NBTKeys
 {
 	val config = new HorseShoesConfig
 
@@ -43,9 +45,7 @@ extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
 	val functionalityTags = new FunctionalityTags(this.functionalityConfig)
 	val powerTags = new ItemPowerStorageTags(this.powerConfig)
 
-	this.addNBTs(this.armorTags)
-	this.addNBTs(this.functionalityTags)
-	this.addNBTs(this.powerTags)
+	override def getNBTKeys: Seq[NBTTags] = Vector(this.armorTags, this.functionalityTags, this.powerTags)
 
 	override def addInformation(is: ItemStack, player: EntityPlayer, information: java.util.List[_], advToolTips: Boolean) =
 	{
@@ -74,6 +74,7 @@ extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
 		}
 	}
 
+	@SideOnly(Side.CLIENT)
 	override def getSubItems(item: Item, tabs: CreativeTabs, itemstacks: util.List[_]): Unit =
 	{
 		super.getSubItems(item, tabs, itemstacks)

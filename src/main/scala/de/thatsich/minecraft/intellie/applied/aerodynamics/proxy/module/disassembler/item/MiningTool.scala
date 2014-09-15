@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item
 
 
-import de.thatsich.minecraft.common.module.util.NBTAccess
+import de.thatsich.minecraft.common.proxy.module.util.NBTAccess
 import de.thatsich.minecraft.common.util.BoundDetection
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.tags.ToolTags
 import net.minecraft.block.Block

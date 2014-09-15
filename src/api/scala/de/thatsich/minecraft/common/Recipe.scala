@@ -1,5 +1,4 @@
-package de.thatsich.minecraft.intellie.common
-
+package de.thatsich.minecraft.common
 
 /**
  *

@@ -3,13 +3,15 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disasse
 
 import java.util
 
+import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.config.Config
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.module.BaseItem
-import de.thatsich.minecraft.common.module.item.{NBTKeyStorage, PoweredItemDamageDisplay, UniqueItem, UnstackableItem}
+import de.thatsich.minecraft.common.proxy.module.BaseItem
+import de.thatsich.minecraft.common.proxy.module.item.{NBTKeys, PoweredItemDamageDisplay, UniqueItem, UnstackableItem}
+import de.thatsich.minecraft.common.util.nbt.NBTTags
 import de.thatsich.minecraft.common.util.string.ModID
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.config.{DisassemblerConfig, DisassemblerItemPowerStorageConfig, DisassemblerItemPowerStorageConfigAccess, DisassemblerFunctionalityConfig, DisassemblerFunctionalityConfigAccess, DisassemblerWeaponConfig, DisassemblerWeaponConfigAccess}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.{AEHumanNumberFormat, AEWrench, BlockBreakEventHandler, BreakSpeedHandler, MiningTool, DisassemblerItemPowerStorage, PrecisionHarvester, Weapon}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.config.{DisassemblerConfig, DisassemblerFunctionalityConfig, DisassemblerFunctionalityConfigAccess, DisassemblerItemPowerStorageConfig, DisassemblerItemPowerStorageConfigAccess, DisassemblerWeaponConfig, DisassemblerWeaponConfigAccess}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.{AEHumanNumberFormat, AEWrench, BlockBreakEventHandler, BreakSpeedHandler, DisassemblerItemPowerStorage, MiningTool, PrecisionHarvester, Weapon}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.tags.{ItemPowerStorageTags, ToolTags, WeaponTags}
 import net.minecraft.block.Block
 import net.minecraft.creativetab.CreativeTabs
@@ -37,7 +39,7 @@ extends BaseItem(new DisassemblerID, modid, log)
         with UnstackableItem
         with UniqueItem
         with AEHumanNumberFormat
-        with NBTKeyStorage
+        with NBTKeys
 {
 	val config: Config = new DisassemblerConfig
 
@@ -49,9 +51,7 @@ extends BaseItem(new DisassemblerID, modid, log)
 	val weapontags: WeaponTags = new WeaponTags(this.weaponConfig)
 	val powerStorageTags: ItemPowerStorageTags = new ItemPowerStorageTags(this.powerStorageConfig)
 
-	this.addNBTs(this.toolTags)
-	this.addNBTs(this.weapontags)
-	this.addNBTs(this.powerStorageTags)
+	override def getNBTKeys: Seq[NBTTags] = Vector(this.toolTags, this.weapontags, this.powerStorageTags)
 
 	override def addInformation(is: ItemStack, player: EntityPlayer, information: java.util.List[_], advToolTips: Boolean) =
 	{
@@ -98,6 +98,7 @@ extends BaseItem(new DisassemblerID, modid, log)
 		currentMiningLevel >= harvestLevel && currentEnergy >= energyUsage
 	}
 
+	@SideOnly(Side.CLIENT)
 	override def getSubItems(item: Item, tabs: CreativeTabs, list: util.List[_]): Unit =
 	{
 		super.getSubItems(item, tabs, list)
