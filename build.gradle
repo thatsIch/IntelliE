@@ -31,7 +31,7 @@ buildscript {
 
 // needed for pulling new versions from forge
 minecraft {
-    version = "${VERSION_MINECRAFT}-10.13.1.1216-new"
+    version = "${VERSION_MINECRAFT}-10.13.1.1217"
     replace "@version@", VERSION_PROJECT.toString()
     runDir = "run"
 }

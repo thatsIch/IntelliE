@@ -33,7 +33,8 @@ repositories {
 
 dependencies {
     // Guava dependency to stop Scala from annoyance
-    compile "com.google.code.findbugs:jsr305:3.0.0"
+    // FML uses 305 by default now
+    // compile "com.google.code.findbugs:jsr305:3.0.0"
 
     // AE2 dependency
     compile("appeng:appliedenergistics2:rv1-beta-25:dev") {

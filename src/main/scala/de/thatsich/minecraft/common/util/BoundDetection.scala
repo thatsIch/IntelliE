@@ -17,60 +17,67 @@ trait BoundDetection extends NBTAccess
 	def withinBounds[Double](stack: ItemStack, prop: BoundNBTProperty[scala.Double]): scala.Double =
 	{
 		val tag = this.getNBTData(stack)
-		val current: scala.Double = tag.getDouble(prop.toString)
-		val min: scala.Double = prop.min * prop.scale
-		val max: scala.Double = prop.max * prop.scale
+		val current = tag.getDouble(prop.toString)
+		val min = prop.min
+		val max = prop.max
 
-		(current max min) min max
+		val result = ((current + min) min max) / prop.scale
+//
+		//		if (prop.toString == "stepheight")
+		//		{
+		//			println(s"current $current, min $min, max $max, result: $result")
+		//		}
+
+		result
 	}
 
 	def withinBounds[Float](stack: ItemStack, prop: BoundNBTProperty[scala.Float]): scala.Float =
 	{
 		val tag = this.getNBTData(stack)
-		val current: scala.Float = tag.getFloat(prop.toString)
-		val min: scala.Float = prop.min * prop.scale
-		val max: scala.Float = prop.max * prop.scale
+		val current = tag.getFloat(prop.toString)
+		val min = prop.min / prop.scale
+		val max = prop.max / prop.scale
 
-		(current max min) min max
+		((current + min) min max) / prop.scale
 	}
 
 	def withinBounds[Int](stack: ItemStack, prop: BoundNBTProperty[scala.Int]): scala.Int =
 	{
 		val tag = this.getNBTData(stack)
-		val current: scala.Int = tag.getInteger(prop.toString)
-		val min: scala.Int = prop.min * prop.scale
-		val max: scala.Int = prop.max * prop.scale
+		val current = tag.getInteger(prop.toString)
+		val min = prop.min
+		val max = prop.max
 
-		(current max min) min max
+		((current + min) min max) / prop.scale
 	}
 
 	def withinReversedBounds[Double](stack: ItemStack, prop: BoundNBTProperty[scala.Double]): scala.Double =
 	{
 		val tag = this.getNBTData(stack)
 		val current = tag.getDouble(prop.toString)
-		val min: scala.Double = prop.min * prop.scale
-		val max: scala.Double = prop.max * prop.scale
+		val min = prop.min
+		val max = prop.max
 
-		if (current == 0) max else current max min
+		(if (current == 0) max else current max min) / prop.scale
 	}
 
 	def withinReversedBounds[Float](stack: ItemStack, prop: BoundNBTProperty[scala.Float]): scala.Float =
 	{
 		val tag = this.getNBTData(stack)
 		val current = tag.getFloat(prop.toString)
-		val min = prop.min * prop.scale
-		val max = prop.max * prop.scale
+		val min = prop.min
+		val max = prop.max
 
-		if (current == 0) max else current max min
+		(if (current == 0) max else current max min) / prop.scale
 	}
 
 	def withinReversedBounds[Int](stack: ItemStack, prop: BoundNBTProperty[scala.Int]): scala.Int =
 	{
 		val tag = this.getNBTData(stack)
 		val current = tag.getInteger(prop.toString)
-		val min = prop.min * prop.scale
-		val max = prop.max * prop.scale
+		val min = prop.min
+		val max = prop.max
 
-		if (current == 0) max else current max min
+		(if (current == 0) max else current max min) / prop.scale
 	}
 }
