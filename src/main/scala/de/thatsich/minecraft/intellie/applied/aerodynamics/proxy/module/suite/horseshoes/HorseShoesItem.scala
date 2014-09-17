@@ -25,7 +25,6 @@ import org.lwjgl.input.Keyboard
  * @author thatsIch
  * @since 16.04.2014.
  */
-// TODO convert config values to int and use a multiple of N instead using double cause stepheight 0.5 -> 1.0 is impossible with +1. Instead do 5 -> 10 and later divide through 10 but use int 5 - 10 internally
 class HorseShoesItem(modid: ModID, log: Log)
 extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
         with HorseShoesItemPowerStorage
