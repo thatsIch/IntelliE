@@ -110,7 +110,7 @@ extends BaseItem(new DisassemblerID, modid, log)
 		tag.setDouble(this.powerStorageTags.CurrentEnergy.toString, this.powerStorageTags.CurrentEnergy.max)
 		tag.setDouble(this.powerStorageTags.MaxEnergy.toString, this.powerStorageTags.MaxEnergy.max)
 		tag.setInteger(this.powerStorageTags.ChargeMultiplier.toString, this.powerStorageTags.ChargeMultiplier.max)
-		tag.setDouble(this.powerStorageTags.EnergyCost.toString, this.powerStorageTags.EnergyCost.min)
+		tag.setDouble(this.powerStorageTags.EnergyCost.toString, this.powerStorageTags.EnergyCost.max)
 
 		tag.setFloat(this.weapontags.Damage.toString, this.weapontags.Damage.max)
 

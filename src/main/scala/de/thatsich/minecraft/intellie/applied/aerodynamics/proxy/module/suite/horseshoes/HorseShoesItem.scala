@@ -86,9 +86,9 @@ extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
 		tag.setDouble(this.powerTags.CurrentEnergy.toString, this.powerTags.CurrentEnergy.max)
 		tag.setDouble(this.powerTags.MaxEnergy.toString, this.powerTags.MaxEnergy.max)
 		tag.setInteger(this.powerTags.ChargeMultiplier.toString, this.powerTags.ChargeMultiplier.max)
-		tag.setDouble(this.powerTags.DischargePerTick.toString, this.powerTags.DischargePerTick.min)
+		tag.setDouble(this.powerTags.DischargePerTick.toString, this.powerTags.DischargePerTick.max)
 
-		tag.setDouble(this.armorTags.EnergyPerDamage.toString, this.armorTags.EnergyPerDamage.min)
+		tag.setDouble(this.armorTags.EnergyPerDamage.toString, this.armorTags.EnergyPerDamage.max)
 		tag.setInteger(this.armorTags.ArmorBase.toString, this.armorTags.ArmorBase.max)
 		tag.setDouble(this.armorTags.AbsorptionRatio.toString, this.armorTags.AbsorptionRatio.max)
 

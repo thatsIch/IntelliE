@@ -21,14 +21,7 @@ trait BoundDetection extends NBTAccess
 		val min = prop.min
 		val max = prop.max
 
-		val result = ((current + min) min max) / prop.scale
-//
-		//		if (prop.toString == "stepheight")
-		//		{
-		//			println(s"current $current, min $min, max $max, result: $result")
-		//		}
-
-		result
+		((current + min) min max) / prop.scale
 	}
 
 	def withinBounds[Float](stack: ItemStack, prop: BoundNBTProperty[scala.Float]): scala.Float =
@@ -58,7 +51,7 @@ trait BoundDetection extends NBTAccess
 		val min = prop.min
 		val max = prop.max
 
-		(if (current == 0) max else current max min) / prop.scale
+		((max - current) max min) / prop.scale
 	}
 
 	def withinReversedBounds[Float](stack: ItemStack, prop: BoundNBTProperty[scala.Float]): scala.Float =
@@ -68,7 +61,7 @@ trait BoundDetection extends NBTAccess
 		val min = prop.min
 		val max = prop.max
 
-		(if (current == 0) max else current max min) / prop.scale
+		((max - current) max min) / prop.scale
 	}
 
 	def withinReversedBounds[Int](stack: ItemStack, prop: BoundNBTProperty[scala.Int]): scala.Int =
@@ -78,6 +71,6 @@ trait BoundDetection extends NBTAccess
 		val min = prop.min
 		val max = prop.max
 
-		(if (current == 0) max else current max min) / prop.scale
+		((max - current) max min) / prop.scale
 	}
 }
