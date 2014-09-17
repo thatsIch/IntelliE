@@ -51,13 +51,11 @@ extends IAEItemPowerStorage
 		diff
 	}
 
-	override def getAECurrentPower(is: ItemStack): Double = this.getNBTData(is).getDouble(this.powerTags.CurrentEnergy)
+	override def getAECurrentPower(is: ItemStack): Double = this.withinBounds(is, this.powerTags.CurrentEnergy)
 
-	def getCurrentChargeMultiplier(is: ItemStack): Double = this.withinBounds(is, this.powerTags.ChargeMultiplier)
+	def getCurrentChargeMultiplier(is: ItemStack): Int = this.withinBounds(is, this.powerTags.ChargeMultiplier)
 
-	def setAECurrentPower(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(this.powerTags.CurrentEnergy, value)
+	def setAECurrentPower(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(this.powerTags.CurrentEnergy.toString, value)
 
 	def getDischargePerTick(is: ItemStack): Double = this.withinReversedBounds(is, this.powerTags.DischargePerTick)
-
-	def setDischargePerTick(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(this.powerTags.DischargePerTick, value)
 }

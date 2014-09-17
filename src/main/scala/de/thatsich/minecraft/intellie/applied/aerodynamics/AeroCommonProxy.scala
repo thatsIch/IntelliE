@@ -67,7 +67,7 @@ abstract class AeroCommonProxy extends CommonProxy with AeroProxy
 				val tags: Seq[NBTTags] = keys.getNBTKeys
 				tags.foreach(tag => tag.values.foreach(bound =>
 				{
-					val boundname: String = bound
+					val boundname: String = bound.toString
 					if (!filter.contains(boundname))
 					{
 						filter += boundname

@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.tags
 
 
-import de.thatsich.minecraft.common.util.nbt.{BaseBoundNBTProperty, BoundNBTProperty, NBTTags}
+import de.thatsich.minecraft.common.util.nbt.{BaseBoundNBTProperty, NBTTags}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.config.DisassemblerFunctionalityConfig
 
 
@@ -13,10 +13,10 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassem
  */
 class ToolTags(config: DisassemblerFunctionalityConfig) extends NBTTags
 {
-	override def values: Seq[BoundNBTProperty] = Vector[BoundNBTProperty](MiningLevel, MiningSpeed)
+	override def values = Vector(MiningLevel, MiningSpeed)
 
-	object MiningLevel extends BaseBoundNBTProperty(this.config.minimalMiningLevel, this.config.maximalMiningLevel)
+	object MiningLevel extends BaseBoundNBTProperty[Int](this.config.minimalMiningLevel, this.config.maximalMiningLevel)
 
-	object MiningSpeed extends BaseBoundNBTProperty(this.config.minimalMiningSpeed, this.config.maximalMiningSpeed)
+	object MiningSpeed extends BaseBoundNBTProperty[Int](this.config.minimalMiningSpeed, this.config.maximalMiningSpeed)
 
 }

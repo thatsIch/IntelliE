@@ -21,5 +21,5 @@ class NBTKeyRegistry
 
 	def addNBTKeys(keys: NBTKeys): Unit = keys.getNBTKeys.foreach(key => this.addNBTTags(key))
 
-	private def addNBTTags(tags: NBTTags): Unit = tags.values.foreach(nbt => this.properties += nbt)
+	private def addNBTTags(tags: NBTTags): Unit = tags.values.foreach(nbt => this.properties += nbt.toString)
 }

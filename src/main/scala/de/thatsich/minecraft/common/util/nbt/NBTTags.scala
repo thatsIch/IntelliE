@@ -8,5 +8,5 @@ package de.thatsich.minecraft.common.util.nbt
  */
 trait NBTTags
 {
-	def values: Seq[BoundNBTProperty]
+	def values: Seq[BoundNBTProperty[_ <: AnyVal]]
 }

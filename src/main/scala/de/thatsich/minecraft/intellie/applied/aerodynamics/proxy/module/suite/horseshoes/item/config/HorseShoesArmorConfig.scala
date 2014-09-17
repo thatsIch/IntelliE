@@ -13,9 +13,9 @@ trait HorseShoesArmorConfig
 
 	def maximalAbsorptionRatio: Double
 
-	def minimalArmorBase: Double
+	def minimalArmorBase: Int
 
-	def maximalArmorBase: Double
+	def maximalArmorBase: Int
 
 	def minimalEnergyPerDamage: Double
 

@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.tags
 
 
-import de.thatsich.minecraft.common.util.nbt.{BaseBoundNBTProperty, BoundNBTProperty, NBTTags}
+import de.thatsich.minecraft.common.util.nbt.{BaseBoundNBTProperty, NBTTags}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.config.DisassemblerWeaponConfig
 
 
@@ -13,8 +13,8 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassem
  */
 class WeaponTags(config: DisassemblerWeaponConfig) extends NBTTags
 {
-	override def values: Seq[BoundNBTProperty] = Vector[BoundNBTProperty](Damage)
+	override def values = Vector(Damage)
 
-	object Damage extends BaseBoundNBTProperty(this.config.minimalDamageVsEntites, this.config.maximalDamageVsEntites)
+	object Damage extends BaseBoundNBTProperty[Float](this.config.minimalDamageVsEntites, this.config.maximalDamageVsEntites)
 
 }

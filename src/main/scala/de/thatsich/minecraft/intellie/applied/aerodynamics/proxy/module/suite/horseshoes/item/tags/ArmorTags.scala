@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags
 
 
-import de.thatsich.minecraft.common.util.nbt.{BaseBoundNBTProperty, BoundNBTProperty, NBTTags}
+import de.thatsich.minecraft.common.util.nbt.{BaseBoundNBTProperty, NBTTags}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.config.HorseShoesArmorConfig
 
 
@@ -13,9 +13,9 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.ho
  */
 class ArmorTags (config: HorseShoesArmorConfig) extends NBTTags
 {
-	object EnergyPerDamage extends BaseBoundNBTProperty(this.config.minimalEnergyPerDamage, this.config.maximalEnergyPerDamage)
-	object AbsorptionRatio extends BaseBoundNBTProperty(this.config.minimalAbsorptionRatio, this.config.maximalAbsorptionRatio)
-	object ArmorBase extends BaseBoundNBTProperty(this.config.minimalArmorBase, this.config.maximalArmorBase)
+	object EnergyPerDamage extends BaseBoundNBTProperty[Double](this.config.minimalEnergyPerDamage, this.config.maximalEnergyPerDamage)
+	object AbsorptionRatio extends BaseBoundNBTProperty[Double](this.config.minimalAbsorptionRatio, this.config.maximalAbsorptionRatio, 100)
+	object ArmorBase extends BaseBoundNBTProperty[Int](this.config.minimalArmorBase, this.config.maximalArmorBase)
 
-	override def values: Seq[BoundNBTProperty] = Vector(EnergyPerDamage, AbsorptionRatio, ArmorBase)
+	override def values = Vector(EnergyPerDamage, AbsorptionRatio, ArmorBase)
 }

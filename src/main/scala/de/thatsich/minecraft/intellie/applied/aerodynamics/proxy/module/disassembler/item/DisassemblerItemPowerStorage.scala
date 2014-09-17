@@ -39,9 +39,7 @@ extends IAEItemPowerStorage
 
 	override def getAECurrentPower(is: ItemStack): Double = this.withinBounds(is, this.powerStorageTags.CurrentEnergy)
 
-	def getCurrentChargeMultiplier(is: ItemStack): Double = this.withinBounds(is, this.powerStorageTags.ChargeMultiplier)
-
-	def setAECurrentPower(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(this.powerStorageTags.CurrentEnergy, value)
+	def setAECurrentPower(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(this.powerStorageTags.CurrentEnergy.toString, value)
 
 	override def getAEMaxPower(is: ItemStack): Double = this.withinBounds(is, this.powerStorageTags.MaxEnergy)
 
@@ -57,11 +55,7 @@ extends IAEItemPowerStorage
 		diff
 	}
 
-	def setAEMaxPower(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(this.powerStorageTags.MaxEnergy, value)
-
-	def setCurrentChargeMultiplier(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(this.powerStorageTags.ChargeMultiplier, value)
-
 	def getCurrentEnergyUsage(is: ItemStack): Double = this.withinReversedBounds(is, this.powerStorageTags.EnergyCost)
 
-	def setCurrentEnergyPerBlockBreak(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(this.powerStorageTags.EnergyCost, value)
+	def getCurrentChargeMultiplier(is: ItemStack): Double = this.withinBounds(is, this.powerStorageTags.ChargeMultiplier)
 }

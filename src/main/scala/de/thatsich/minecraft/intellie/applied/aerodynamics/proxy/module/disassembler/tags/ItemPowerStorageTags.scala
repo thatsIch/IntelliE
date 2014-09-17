@@ -13,14 +13,14 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassem
  */
 class ItemPowerStorageTags(config: DisassemblerItemPowerStorageConfig) extends NBTTags
 {
-	override def values: Seq[BoundNBTProperty] = Vector(CurrentEnergy, MaxEnergy, ChargeMultiplier, EnergyCost)
+	override def values: Seq[BoundNBTProperty[_ <: AnyVal]] = Vector(CurrentEnergy, MaxEnergy, ChargeMultiplier, EnergyCost)
 
-	object CurrentEnergy extends BaseBoundNBTProperty(this.config.minimalEnergy, this.config.maximalEnergy)
+	object CurrentEnergy extends BaseBoundNBTProperty[Double](this.config.minimalEnergy, this.config.maximalEnergy)
 
-	object MaxEnergy extends BaseBoundNBTProperty(this.config.minimalEnergy, this.config.maximalEnergy)
+	object MaxEnergy extends BaseBoundNBTProperty[Double](this.config.minimalEnergy, this.config.maximalEnergy)
 
-	object ChargeMultiplier extends BaseBoundNBTProperty(this.config.minimalChargeMultiplier, this.config.maximalChargeMultiplier)
+	object ChargeMultiplier extends BaseBoundNBTProperty[Int](this.config.minimalChargeMultiplier, this.config.maximalChargeMultiplier)
 
-	object EnergyCost extends BaseBoundNBTProperty(this.config.minimalEnergyPerBlockBreak, this.config.maximalEnergyPerBlockBreak)
+	object EnergyCost extends BaseBoundNBTProperty[Double](this.config.minimalEnergyPerBlockBreak, this.config.maximalEnergyPerBlockBreak)
 
 }

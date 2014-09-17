@@ -10,14 +10,13 @@ import scala.language.implicitConversions
  * @author thatsIch
  * @since 13.09.2014.
  */
-trait BoundNBTProperty
+trait BoundNBTProperty[T]
 {
-	def min: Double
+	def min: T
 
-	def max: Double
-}
+	def max: T
 
-object BoundNBTProperty
-{
-	implicit def propertyToString(prop: BoundNBTProperty): String = prop.getClass.getSimpleName.split("\\$").last.toLowerCase
+	def scale: T
+
+	override def toString: String = this.getClass.getSimpleName.split("\\$").last.toLowerCase
 }

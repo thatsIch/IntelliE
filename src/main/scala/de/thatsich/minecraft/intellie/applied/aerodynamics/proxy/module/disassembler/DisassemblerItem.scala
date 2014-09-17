@@ -107,15 +107,15 @@ extends BaseItem(new DisassemblerID, modid, log)
 
 		val stack = new ItemStack(this)
 		val tag = this.getNBTData(stack)
-		tag.setDouble(this.powerStorageTags.CurrentEnergy, this.powerStorageConfig.maximalEnergy)
-		tag.setDouble(this.powerStorageTags.MaxEnergy, this.powerStorageConfig.maximalEnergy)
-		tag.setDouble(this.powerStorageTags.ChargeMultiplier, this.powerStorageConfig.maximalChargeMultiplier)
-		tag.setDouble(this.powerStorageTags.EnergyCost, this.powerStorageConfig.minimalEnergyPerBlockBreak)
+		tag.setDouble(this.powerStorageTags.CurrentEnergy.toString, this.powerStorageTags.CurrentEnergy.max)
+		tag.setDouble(this.powerStorageTags.MaxEnergy.toString, this.powerStorageTags.MaxEnergy.max)
+		tag.setInteger(this.powerStorageTags.ChargeMultiplier.toString, this.powerStorageTags.ChargeMultiplier.max)
+		tag.setDouble(this.powerStorageTags.EnergyCost.toString, this.powerStorageTags.EnergyCost.min)
 
-		tag.setDouble(this.weapontags.Damage, this.weaponConfig.maximalDamageVsEntites)
+		tag.setFloat(this.weapontags.Damage.toString, this.weapontags.Damage.max)
 
-		tag.setDouble(this.toolTags.MiningLevel, this.functionalityConfig.maximalMiningLevel)
-		tag.setDouble(this.toolTags.MiningSpeed, this.functionalityConfig.maximalMiningSpeed)
+		tag.setInteger(this.toolTags.MiningLevel.toString, this.toolTags.MiningLevel.max)
+		tag.setInteger(this.toolTags.MiningSpeed.toString, this.toolTags.MiningSpeed.max)
 
 		stacks.add(stack)
 	}

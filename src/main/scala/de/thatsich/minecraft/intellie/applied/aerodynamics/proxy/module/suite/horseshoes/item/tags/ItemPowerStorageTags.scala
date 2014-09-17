@@ -1,7 +1,7 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags
 
 
-import de.thatsich.minecraft.common.util.nbt.{BaseBoundNBTProperty, BoundNBTProperty, NBTTags}
+import de.thatsich.minecraft.common.util.nbt.{BaseBoundNBTProperty, NBTTags}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.config.HorseShoesItemPowerStorageConfig
 
 
@@ -13,10 +13,14 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.ho
  */
 class ItemPowerStorageTags(config: HorseShoesItemPowerStorageConfig) extends NBTTags
 {
-	object CurrentEnergy extends BaseBoundNBTProperty(this.config.minimalEnergy, this.config.maximalEnergy)
-	object MaxEnergy extends BaseBoundNBTProperty(this.config.minimalEnergy, this.config.maximalEnergy)
-	object ChargeMultiplier extends BaseBoundNBTProperty(this.config.minimalChargeMultiplier, this.config.maximalChargeMultiplier)
-	object DischargePerTick extends BaseBoundNBTProperty(this.config.minimalDischargePerTick, this.config.maximalDischargePerTick)
+	override def values = Vector(CurrentEnergy, MaxEnergy, ChargeMultiplier, DischargePerTick)
 
-	override def values: Seq[BoundNBTProperty] = Vector(CurrentEnergy, MaxEnergy, ChargeMultiplier, DischargePerTick)
+	object CurrentEnergy extends BaseBoundNBTProperty[Double](this.config.minimalEnergy, this.config.maximalEnergy)
+
+	object MaxEnergy extends BaseBoundNBTProperty[Double](this.config.minimalEnergy, this.config.maximalEnergy)
+
+	object ChargeMultiplier extends BaseBoundNBTProperty[Int](this.config.minimalChargeMultiplier, this.config.maximalChargeMultiplier)
+
+	object DischargePerTick extends BaseBoundNBTProperty[Double](this.config.minimalDischargePerTick, this.config.maximalDischargePerTick)
+
 }

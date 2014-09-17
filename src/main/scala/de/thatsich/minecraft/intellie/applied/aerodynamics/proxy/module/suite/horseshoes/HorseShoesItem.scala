@@ -59,7 +59,7 @@ extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
 		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT))
 		{
 			list.add(s"Stored Energy: $currentPower/$maxPower AE - $percent%")
-			list.add(s"Charge Multiplier: ${this.getCurrentChargeMultiplier(is).toInt}")
+			list.add(s"Charge Multiplier: ${this.getCurrentChargeMultiplier(is)}")
 			list.add(s"Discharge per Tick: ${this.getDischargePerTick(is).toInt}")
 			list.add(s"Energy per Damage: ${this.getEnergyPerDamage(is).toInt}")
 			list.add(s"Absorptionratio: ${this.getAbsorptionRatio(is)}")
@@ -83,16 +83,16 @@ extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
 
 		val stack = new ItemStack(this)
 		val tag = this.getNBTData(stack)
-		tag.setDouble(this.powerTags.CurrentEnergy, this.powerConfig.maximalEnergy)
-		tag.setDouble(this.powerTags.MaxEnergy, this.powerConfig.maximalEnergy)
-		tag.setDouble(this.powerTags.ChargeMultiplier, this.powerConfig.maximalChargeMultiplier)
-		tag.setDouble(this.powerTags.DischargePerTick, this.powerConfig.minimalDischargePerTick)
+		tag.setDouble(this.powerTags.CurrentEnergy.toString, this.powerTags.CurrentEnergy.max)
+		tag.setDouble(this.powerTags.MaxEnergy.toString, this.powerTags.MaxEnergy.max)
+		tag.setInteger(this.powerTags.ChargeMultiplier.toString, this.powerTags.ChargeMultiplier.max)
+		tag.setDouble(this.powerTags.DischargePerTick.toString, this.powerTags.DischargePerTick.min)
 
-		tag.setDouble(this.armorTags.EnergyPerDamage, this.armorConfig.minimalEnergyPerDamage)
-		tag.setDouble(this.armorTags.ArmorBase, this.armorConfig.maximalArmorBase)
-		tag.setDouble(this.armorTags.AbsorptionRatio, this.armorConfig.maximalAbsorptionRatio)
+		tag.setDouble(this.armorTags.EnergyPerDamage.toString, this.armorTags.EnergyPerDamage.min)
+		tag.setInteger(this.armorTags.ArmorBase.toString, this.armorTags.ArmorBase.max)
+		tag.setDouble(this.armorTags.AbsorptionRatio.toString, this.armorTags.AbsorptionRatio.max)
 
-		tag.setDouble(this.functionalityTags.StepHeight, this.functionalityConfig.maximalStepHeight)
+		tag.setDouble(this.functionalityTags.StepHeight.toString, this.functionalityTags.StepHeight.max)
 
 		list.add(stack)
 	}

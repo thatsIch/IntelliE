@@ -53,7 +53,5 @@ trait Weapon extends BaseItem
 		false
 	}
 
-	def getCurrentDamageVsEntities(is: ItemStack): Float = this.withinBounds(is, this.weapontags.Damage).toFloat
-
-	def setCurrentDamageVsEntities(is: ItemStack, value: Double): Unit = this.getNBTData(is).setDouble(this.weapontags.Damage, value)
+	def getCurrentDamageVsEntities(is: ItemStack): Float = this.withinBounds(is, this.weapontags.Damage)
 }
