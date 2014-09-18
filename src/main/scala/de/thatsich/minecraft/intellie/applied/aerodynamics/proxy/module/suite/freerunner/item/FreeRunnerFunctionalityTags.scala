@@ -11,6 +11,7 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.fr
  * @author thatsIch
  * @since 18.09.2014.
  */
+private[freerunner]
 class FreeRunnerFunctionalityTags(config: FreeRunnerFunctionalityConfig)
 extends NBTTags
 {

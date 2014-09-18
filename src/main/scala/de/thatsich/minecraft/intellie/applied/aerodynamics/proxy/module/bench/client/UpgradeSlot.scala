@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 09.08.2014.
  */
-class UpgradeSlot(player: EntityPlayer, inventory: IInventory, id: Int, x: Int, y: Int, side: SlotSide) extends BaseSlot(player, inventory, id, x, y, SlotState.Enabled, side)
+class UpgradeSlot(player: EntityPlayer, inventory: IInventory, id: Int, x: Int, y: Int, side: SlotSide, storage: WorkbenchCraftRecipeStorage) extends BaseSlot(player, inventory, id, x, y, SlotState.Enabled, side)
                                                                                                                 with HoloSlot
 {
 	val holoSlotOffsetX: Int = 0
@@ -25,8 +25,6 @@ class UpgradeSlot(player: EntityPlayer, inventory: IInventory, id: Int, x: Int, 
 	val textureNamespace: String = "appaero"
 
 	val texturePath: String = "textures/gui/tiles.png"
-
-	protected val storage = WorkbenchCraftRecipeStorage
 
 	override def isItemValid(is: ItemStack): Boolean =
 	{

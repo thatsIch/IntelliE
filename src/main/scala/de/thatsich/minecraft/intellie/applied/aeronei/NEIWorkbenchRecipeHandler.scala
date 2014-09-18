@@ -21,6 +21,7 @@ import net.minecraft.util.{ResourceLocation, StatCollector}
  * @author thatsIch
  * @since 20.08.2014.
  */
+// TODO use the API registry and replace the WorkbenchCraftRecipeStorage because of mutable state
 class NEIWorkbenchRecipeHandler extends TemplateRecipeHandler
 {
 	/**

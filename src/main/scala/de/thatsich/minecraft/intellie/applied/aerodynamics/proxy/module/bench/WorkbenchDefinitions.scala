@@ -16,6 +16,6 @@ class WorkbenchDefinitions(modid: ID, log: Log, name: ID = new WorkbenchID, craf
 	blocks = Vector(new WorkbenchBlock(modid, name, log)),
 	recipes = Vector(new WorkbenchRecipe),
 	tiles = Vector(classOf[WorkbenchTileEntity]),
-	guis = Vector(new WorkbenchGuiHandler(name, log)),
+	guis = Vector(new WorkbenchGuiHandler(name, log, craftStorage)),
 	crafthandlers = Vector(classOf[WorkbenchCraftHandler])
 )

@@ -17,13 +17,13 @@ import net.minecraft.tileentity.TileEntity
  * @author thatsIch
  * @since 06.08.2014.
  */
-class WorkbenchGuiHandler(val name: ID, log: Log) extends BlockGuiHandler
+class WorkbenchGuiHandler(val name: ID, log: Log, recipestorage: WorkbenchCraftRecipeStorage) extends BlockGuiHandler
 {
 	def getServerGuiElement(player: EntityPlayer, tile: TileEntity): AnyRef =
 	{
 		tile match
 		{
-			case workbench: WorkbenchTileEntity => new WorkbenchContainer(player.inventory, workbench, this.log, SlotSide.Server)
+			case workbench: WorkbenchTileEntity => new WorkbenchContainer(player.inventory, workbench, this.log, SlotSide.Server, recipestorage)
 			case _                              =>
 				this.log.warn(s"Handler $this was used with TE $tile")
 				null

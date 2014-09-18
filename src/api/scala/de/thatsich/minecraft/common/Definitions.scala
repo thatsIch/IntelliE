@@ -17,13 +17,21 @@ import net.minecraft.tileentity.TileEntity
  */
 trait Definitions
 {
-	val blocks: Seq[Block]
-	val crafthandlers: Seq[Class[_ <: ICraftHandler]]
-	val entites: Seq[Entity]
-	val fakes: Seq[Item]
-	val guis: Seq[BlockGuiHandler]
-	val items: Seq[Item]
-	val modules: Seq[Module]
-	val recipes: Seq[Recipe]
-	val tiles: Seq[Class[_ <: TileEntity]]
+	def blocks: Seq[Block]
+
+	def crafthandlers: Seq[Class[_ <: ICraftHandler]]
+
+	def entites: Seq[Entity]
+
+	def fakes: Seq[Item]
+
+	def guis: Seq[BlockGuiHandler]
+
+	def items: Seq[Item]
+
+	def modules: Seq[Module]
+
+	def recipes: Seq[Recipe]
+
+	def tiles: Seq[Class[_ <: TileEntity]]
 }

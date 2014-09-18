@@ -10,4 +10,4 @@ import de.thatsich.minecraft.common.util.string.id.BaseID
  * @author thatsIch
  * @since 02.09.2014.
  */
-class ChestNutID extends BaseID("chestnut")
+private[chestnut] class ChestNutID extends BaseID("chestnut")

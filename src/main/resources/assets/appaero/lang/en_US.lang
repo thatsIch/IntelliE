@@ -23,6 +23,7 @@ appaero.item.dischargepertick.name=Discharge per Tick
 appaero.item.stepheight.name=Stepheight
 appaero.item.runspeed.name=Runspeed
 appaero.item.walkspeed.name=Walkspeed
+appaero.item.flyspeed.name=Flyspeed
 
 # Tile Entities
 appaero.tile.workbench.name=Modification Workbench

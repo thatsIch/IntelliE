@@ -16,6 +16,7 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent
  * @author thatsIch
  * @since 18.09.2014.
  */
+private[item]
 class FreeRunnerLivingUpdateEventHandler(armor: ItemArmor, modifierID: UUID)
 {
 	/**

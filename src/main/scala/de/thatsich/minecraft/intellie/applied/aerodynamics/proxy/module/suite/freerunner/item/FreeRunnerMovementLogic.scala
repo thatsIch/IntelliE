@@ -37,22 +37,22 @@ extends ItemArmor
 		val discharge = this.getDischargePerTick(is)
 
 		val attribute = player.getEntityAttribute(SharedMonsterAttributes.movementSpeed)
+		val modifier = attribute.getModifier(this.modifierID)
 
 		if (currentPower >= discharge)
 		{
 			this.extractAEPower(is, discharge)
 
-			if (attribute.getModifier(this.modifierID) == null)
+			if (modifier == null)
 			{
 				val speed = if (player.isSprinting) this.getRunSpeed(is) else this.getWalkSpeed(is)
-				val modifier = new AttributeModifier(this.modifierID, "Movement speed boost" , speed, 2)
+				val newmodifier = new AttributeModifier(this.modifierID, "Movement speed boost" , speed, 2)
 
-				attribute.applyModifier(modifier)
+				attribute.applyModifier(newmodifier)
 			}
 		}
 		else
 		{
-			val modifier = attribute.getModifier(this.modifierID)
 			if (modifier != null)
 			{
 				attribute.removeModifier(modifier)

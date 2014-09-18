@@ -16,8 +16,6 @@ import net.minecraft.item.ItemStack
  */
 class WorkbenchCraftHandler extends ICraftHandler
 {
-	private val storage: WorkbenchCraftRecipeStorage = WorkbenchCraftRecipeStorage
-
 	private var armorTool: IIngredient = null
 	private var upgrade: IIngredient = null
 	private var attribute: IIngredient = null
@@ -54,9 +52,11 @@ class WorkbenchCraftHandler extends ICraftHandler
 
 		val craftRecipe: WorkbenchCraftRecipe = new WorkbenchCraftRecipe(armorToolStack, upgradeStack, attributeStack)
 
-		this.storage.internalInputs.add(armorToolStack)
-		this.storage.internalUpgrades.add(upgradeStack)
-		this.storage.internalAttributes.add(attributeStack)
-		this.storage.internalCraftRecipes.add(craftRecipe)
+		val storage: WorkbenchCraftRecipeStorage = WorkbenchCraftRecipeStorage
+
+		storage.internalInputs.add(armorToolStack)
+		storage.internalUpgrades.add(upgradeStack)
+		storage.internalAttributes.add(attributeStack)
+		storage.internalCraftRecipes.add(craftRecipe)
 	}
 }

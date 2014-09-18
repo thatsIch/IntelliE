@@ -3,6 +3,7 @@ apply plugin: 'idea'        // enable automatic setup of idea workspace
 idea{
     module{
         inheritOutputDirs = true
+        excludeDirs -= minecraft.runDir
 //        outputDir = compileJava.destinationDir
 //        testOutputDir = compileTestJava.destinationDir
 //        sourceDirs += file('src/main/java')

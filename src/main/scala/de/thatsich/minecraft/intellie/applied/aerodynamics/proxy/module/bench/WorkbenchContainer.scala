@@ -19,14 +19,14 @@ import scala.collection.convert.Wrappers.JListWrapper
  * @author thatsIch
  * @since 06.08.2014.
  */
-class WorkbenchContainer(player: InventoryPlayer, workbench: WorkbenchTileEntity, log: Log, side: SlotSide)
+class WorkbenchContainer(player: InventoryPlayer, workbench: WorkbenchTileEntity, log: Log, side: SlotSide, recipestorage: WorkbenchCraftRecipeStorage)
 extends BaseContainer
 {
 	this.bindPlayerInventory(player, 0, 94)
 
 	// Workbench
-	this.addSlotToContainer(new InputSlot(player.player, workbench, 0, 39, 40, side))
-	this.addSlotToContainer(new UpgradeSlot(player.player, workbench, 1, 59, 40, side))
+	this.addSlotToContainer(new InputSlot(player.player, workbench, 0, 39, 40, side, this.recipestorage))
+	this.addSlotToContainer(new UpgradeSlot(player.player, workbench, 1, 59, 40, side, this.recipestorage))
 	this.addSlotToContainer(new OutputSlot(player.player, workbench, 2, 110, 40, side))
 
 	private var lastModificationTime = 0

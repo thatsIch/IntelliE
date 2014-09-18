@@ -16,6 +16,6 @@ class AeroCreativeTabIcon(id: ID) extends Item
 	private val modid: String = this.id
 
 	this.setUnlocalizedName(s"$modid.creativeTabIcon")
-	this.setTextureName(s"$modid:aerochest")
+	this.setTextureName(s"$modid:creativeicon")
 	this.setHarvestLevel("fake", 0)
 }

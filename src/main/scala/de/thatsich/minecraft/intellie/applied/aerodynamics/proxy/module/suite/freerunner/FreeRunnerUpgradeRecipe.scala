@@ -11,7 +11,7 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.fr
  * @author thatsIch
  * @since 17.09.2014.
  */
-class FreeRunnerUpgradeRecipe
+private[freerunner] class FreeRunnerUpgradeRecipe
 extends BaseRecipe(
 	new InternalFreeRunnerUpgradeRecipePath,
 	new ExternalFreeRunnerUpgradeRecipePath

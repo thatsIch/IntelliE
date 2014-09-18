@@ -26,7 +26,7 @@ import org.lwjgl.input.Keyboard
  * @author thatsIch
  * @since 16.04.2014.
  */
-class FreeRunnerItem(modid: ModID, log: Log)
+private[freerunner] class FreeRunnerItem(modid: ModID, log: Log)
 extends BaseItemArmor(ArmorType.Legs, modid, new FreeRunnerID, log)
         with ArmorPower
         with SpecialArmor

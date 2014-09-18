@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.freerunner.item.config
+package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.chestnut.item.config
 
 
 import de.thatsich.minecraft.common.config.Config
@@ -9,14 +9,14 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.co
  * 
  *
  * @author thatsIch
- * @since 17.09.2014.
+ * @since 19.09.2014.
  */
-private[freerunner]
-class FreeRunnerPowerConfigAccess(config: Config)
+private[chestnut]
+class ChestNutPowerConfigAccess(config: Config)
 extends ArmorPowerConfig
 {
 	val minimalEnergy: Double = this.config.getDouble("Energy", "minimalEnergy", 0)
-	val maximalEnergy: Double = this.config.getDouble("Energy", "maximalEnergy", 7000000)
+	val maximalEnergy: Double = this.config.getDouble("Energy", "maximalEnergy", 8000000)
 	val minimalDischargePerTick: Double = this.config.getDouble("Energy", "minimalDischargePerTick", 10)
 	val maximalDischargePerTick: Double = this.config.getDouble("Energy", "maximalDischargePerTick", 100)
 	val minimalEnergyPerDamagePoint: Double = this.config.getDouble("Energy", "minimalEnergyPerDamagePoint", 1000)

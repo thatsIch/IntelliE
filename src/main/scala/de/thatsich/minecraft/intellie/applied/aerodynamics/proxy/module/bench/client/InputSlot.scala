@@ -15,25 +15,21 @@ import net.minecraft.item.ItemStack
  * @author thatsIch
  * @since 09.08.2014.
  */
-class InputSlot(player: EntityPlayer, inventory: IInventory, id: Int, x: Int, y: Int, side: SlotSide) extends BaseSlot(player, inventory, id, x, y, SlotState.Enabled, side)
-                                                                                                              with HoloSlot
+class InputSlot(player: EntityPlayer, inventory: IInventory, id: Int, x: Int, y: Int, side: SlotSide, recipestorage: WorkbenchCraftRecipeStorage)
+extends BaseSlot(player, inventory, id, x, y, SlotState.Enabled, side)
+        with HoloSlot
 {
-	private val storage = WorkbenchCraftRecipeStorage
+	val holoSlotOffsetX: Int = 0
+	val holoSlotOffsetY: Int = 0
+	val textureNamespace: String = "appaero"
+	val texturePath: String = "textures/gui/tiles.png"
 
 	override def isItemValid(is: ItemStack): Boolean =
 	{
-		this.storage.internalInputs.foreach(
+		this.recipestorage.internalInputs.foreach(
 			storedIS => if (storedIS.isItemEqual(is)) return true
 		)
 
 		false
 	}
-
-	val holoSlotOffsetX: Int = 0
-
-	val holoSlotOffsetY: Int = 0
-
-	val textureNamespace: String = "appaero"
-
-	val texturePath: String = "textures/gui/tiles.png"
 }
