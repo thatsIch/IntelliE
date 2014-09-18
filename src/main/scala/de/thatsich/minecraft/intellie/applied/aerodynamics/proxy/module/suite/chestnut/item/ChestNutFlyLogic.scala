@@ -33,9 +33,12 @@ extends ItemArmor
 
 		if (currentPower >= discharge)
 		{
-			this.extractAEPower(is, discharge)
-
 			player.capabilities.allowFlying = true
+			if (player.capabilities.isFlying)
+			{
+				this.extractAEPower(is, discharge)
+			}
+//			player.capabilities.setFlySpeed()
 		}
 		else
 		{

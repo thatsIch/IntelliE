@@ -9,7 +9,7 @@ import de.thatsich.minecraft.common.proxy.module.BaseGuiContainer
 import de.thatsich.minecraft.common.proxy.module.container.SlotSide
 import de.thatsich.minecraft.common.proxy.module.gui.{Direction, GuiProgressBar}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench.{WorkbenchContainer, WorkbenchTileEntity}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench.{WorkbenchCraftRecipeStorage, WorkbenchContainer, WorkbenchTileEntity}
 import net.minecraft.client.gui.GuiButton
 import net.minecraft.entity.player.InventoryPlayer
 import net.minecraft.util.{ResourceLocation, StatCollector}
@@ -22,7 +22,7 @@ import net.minecraft.util.{ResourceLocation, StatCollector}
  * @since 06.08.2014.
  */
 @SideOnly(Side.CLIENT)
-class WorkbechGui(invPlayer: InventoryPlayer, workbench: WorkbenchTileEntity, log: Log) extends BaseGuiContainer(new WorkbenchContainer(invPlayer, workbench, log, SlotSide.Client))
+class WorkbechGui(invPlayer: InventoryPlayer, workbench: WorkbenchTileEntity, log: Log, recipestorage: WorkbenchCraftRecipeStorage) extends BaseGuiContainer(new WorkbenchContainer(invPlayer, workbench, log, SlotSide.Client, recipestorage))
 {
 	this.xSize = 176
 	this.ySize = 176

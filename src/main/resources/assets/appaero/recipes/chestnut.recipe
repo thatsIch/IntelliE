@@ -3,10 +3,9 @@ alias=aero -> appaero
 alias=ae2 -> appliedenergistics2
 
 group=aero:skystone_ingot -> ingot
-group=ae2:ae2:ItemMaterial.Singularity -> singularity
 
 shaped=
 	ingot _ ingot,
-	ingot singularity ingot,
+	ingot ae2:ItemMaterial.Singularity ingot,
 	ingot ingot ingot
 	-> aero:chestnut

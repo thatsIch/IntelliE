@@ -28,7 +28,7 @@ import org.lwjgl.input.Keyboard
  */
 private[chestnut]
 class ChestNutItem(modid: ModID, log: Log)
-extends BaseItemArmor(ArmorType.Boots, modid, new ChestNutID, log)
+extends BaseItemArmor(ArmorType.Plate, modid, new ChestNutID, log)
         with ArmorPower
         with SpecialArmor
         with PoweredItemDamageDisplay
@@ -65,8 +65,7 @@ extends BaseItemArmor(ArmorType.Boots, modid, new ChestNutID, log)
 			list.add(s"Energy per Damage: ${this.getEnergyPerDamage(is).toInt}")
 			list.add(s"Absorptionratio: ${this.getAbsorptionRatio(is)}")
 			list.add(s"Armorbase: ${this.getArmorBase(is).toInt}")
-			list.add(s"Walkspeed: ${this.getWalkSpeed(is)}")
-			list.add(s"Runspeed: ${this.getRunSpeed(is)}")
+			list.add(s"Flyspeed: ${this.getFlySpeed(is)}")
 		}
 		else
 		{
@@ -94,8 +93,7 @@ extends BaseItemArmor(ArmorType.Boots, modid, new ChestNutID, log)
 		tag.setInteger(this.armorTags.ArmorBase.toString, this.armorTags.ArmorBase.max)
 		tag.setDouble(this.armorTags.AbsorptionRatio.toString, this.armorTags.AbsorptionRatio.max)
 
-		tag.setFloat(this.funcTags.WalkSpeed.toString, this.funcTags.WalkSpeed.max)
-		tag.setFloat(this.funcTags.RunSpeed.toString, this.funcTags.RunSpeed.max)
+		tag.setFloat(this.funcTags.FlySpeed.toString, this.funcTags.FlySpeed.max)
 
 		list.add(stack)
 	}

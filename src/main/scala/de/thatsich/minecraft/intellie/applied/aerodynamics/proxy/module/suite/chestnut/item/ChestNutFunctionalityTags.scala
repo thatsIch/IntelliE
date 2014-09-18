@@ -17,5 +17,5 @@ extends NBTTags
 {
 	override def values: Seq[BoundNBTProperty[_ <: AnyVal]] = Vector(FlySpeed)
 
-	object FlySpeed extends BaseBoundNBTProperty[Double](this.config.minimalFlySpeed, this.config.maximalFlySpeed, 100)
+	object FlySpeed extends BaseBoundNBTProperty[Float](this.config.minimalFlySpeed, this.config.maximalFlySpeed, 100)
 }

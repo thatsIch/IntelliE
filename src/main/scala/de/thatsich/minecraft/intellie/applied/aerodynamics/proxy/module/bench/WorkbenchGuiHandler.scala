@@ -34,7 +34,7 @@ class WorkbenchGuiHandler(val name: ID, log: Log, recipestorage: WorkbenchCraftR
 	{
 		tile match
 		{
-			case workbench: WorkbenchTileEntity => new WorkbechGui(player.inventory, workbench, this.log)
+			case workbench: WorkbenchTileEntity => new WorkbechGui(player.inventory, workbench, this.log, this.recipestorage)
 			case _                              =>
 				this.log.warn(s"Handler $this was used with TE $tile")
 				null
