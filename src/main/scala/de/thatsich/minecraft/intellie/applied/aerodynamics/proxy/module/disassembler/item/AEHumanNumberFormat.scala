@@ -15,6 +15,7 @@ trait AEHumanNumberFormat
 		if (value < unit) return value + " AE"
 		val exp = (Math.log(value) / Math.log(unit)).toInt
 		val pre: String = "kMBT".charAt(exp - 1) + ""
-		"%.1f %sAE".format(value / Math.pow(unit, exp), pre)
+
+		f"${value / Math.pow(unit, exp)}%.1f ${pre}AE"
 	}
 }
