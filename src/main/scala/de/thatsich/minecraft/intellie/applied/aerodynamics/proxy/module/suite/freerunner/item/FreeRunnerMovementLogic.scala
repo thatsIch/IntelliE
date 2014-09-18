@@ -1,9 +1,13 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.freerunner.item
 
 
+import java.util.UUID
+
 import de.thatsich.minecraft.common.util.BoundDetection
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.ArmorPower
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.freerunner.item.movementlogic.FreeRunnerLivingUpdateEventHandler
+import net.minecraft.entity.SharedMonsterAttributes
+import net.minecraft.entity.ai.attributes.AttributeModifier
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{ItemArmor, ItemStack}
 import net.minecraft.world.World
@@ -23,29 +27,36 @@ extends ItemArmor
 {
 	def funcTags: FreeRunnerFunctionalityTags
 
-	MinecraftForge.EVENT_BUS.register(new FreeRunnerLivingUpdateEventHandler(this))
+	private val modifierID = UUID.randomUUID()
+	MinecraftForge.EVENT_BUS.register(new FreeRunnerLivingUpdateEventHandler(this, this.modifierID))
+
 
 	override def onArmorTick(world: World, player: EntityPlayer, is: ItemStack): Unit =
 	{
 		val currentPower = this.getAECurrentPower(is)
 		val discharge = this.getDischargePerTick(is)
 
+		val attribute = player.getEntityAttribute(SharedMonsterAttributes.movementSpeed)
+
 		if (currentPower >= discharge)
 		{
 			this.extractAEPower(is, discharge)
 
-			if (player.isSprinting)
+			if (attribute.getModifier(this.modifierID) == null)
 			{
-				player.capabilities.setPlayerWalkSpeed(this.getRunSpeed(is))
-			}
-			else
-			{
-				player.capabilities.setPlayerWalkSpeed(this.getWalkSpeed(is))
+				val speed = if (player.isSprinting) this.getRunSpeed(is) else this.getWalkSpeed(is)
+				val modifier = new AttributeModifier(this.modifierID, "Movement speed boost" , speed, 2)
+
+				attribute.applyModifier(modifier)
 			}
 		}
 		else
 		{
-			player.capabilities.setPlayerWalkSpeed(this.funcTags.WalkSpeed.min / this.funcTags.WalkSpeed.scale)
+			val modifier = attribute.getModifier(this.modifierID)
+			if (modifier != null)
+			{
+				attribute.removeModifier(modifier)
+			}
 		}
 	}
 
