@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.item
 
 
 import cpw.mods.fml.client.registry.ClientRegistry
@@ -24,7 +24,8 @@ class KeyHandler
 {
 	ClientRegistry.registerKeyBinding(KeyHandler.BINDING)
 
-	@SubscribeEvent def onKeyInput(event: InputEvent.KeyInputEvent): Unit =
+	@SubscribeEvent
+	def onKeyInput(event: InputEvent.KeyInputEvent): Unit =
 	{
 		if (KeyHandler.BINDING.isPressed)
 		{

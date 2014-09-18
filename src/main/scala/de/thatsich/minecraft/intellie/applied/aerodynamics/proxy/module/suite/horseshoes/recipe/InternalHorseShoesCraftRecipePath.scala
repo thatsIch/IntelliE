@@ -10,10 +10,10 @@ import de.thatsich.minecraft.common.util.string.BaseResourcePath
  * @author thatsIch
  * @since 11.09.2014.
  */
-class InternalHorseShoesCraftRecipePath
-	extends BaseResourcePath(
-		"assets",
-		"appaero",
-		"recipes",
-		"horseshoes.recipe"
-	)
+private[horseshoes] class InternalHorseShoesCraftRecipePath
+extends BaseResourcePath(
+	"assets",
+	"appaero",
+	"recipes",
+	"horseshoes.recipe"
+)

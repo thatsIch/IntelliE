@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.item
 
 
 import scala.language.implicitConversions

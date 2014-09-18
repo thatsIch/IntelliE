@@ -3,8 +3,10 @@ alias=aero -> appaero
 alias=ae2 -> appliedenergistics2
 
 group=aero:skystone_ingot -> ingot
+group=ae2:ItemMaterial.CardSpeed -> speed
 
 shaped=
-	ingot _ ingot,
-	mc:piston _ mc:piston
-	-> aero:horseshoes
+	ingot ingot ingot,
+	speed _ speed,
+	ingot _ ingot
+	-> aero:freerunner

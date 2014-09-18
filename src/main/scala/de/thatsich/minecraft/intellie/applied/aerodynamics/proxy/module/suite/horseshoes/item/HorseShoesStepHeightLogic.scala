@@ -2,6 +2,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.h
 
 
 import de.thatsich.minecraft.common.util.BoundDetection
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.ArmorPower
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.steplogic.HorseShoesLivingUpdateEventHandler
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags.FunctionalityTags
 import net.minecraft.entity.player.EntityPlayer
@@ -16,9 +17,9 @@ import net.minecraftforge.common.MinecraftForge
  * @author thatsIch
  * @since 12.09.2014.
  */
-trait HorseShoesStepHeightLogic
+private[horseshoes] trait HorseShoesStepHeightLogic
 extends ItemArmor
-        with HorseShoesItemPowerStorage
+        with ArmorPower
         with BoundDetection
 {
 	def functionalityTags: FunctionalityTags

@@ -1,13 +1,12 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.config
-
+package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.item.config
 
 /**
  * 
  *
  * @author thatsIch
- * @since 14.09.2014.
+ * @since 17.09.2014.
  */
-trait HorseShoesArmorConfig
+private[suite] trait ArmorConfig
 {
 	def minimalAbsorptionRatio: Double
 

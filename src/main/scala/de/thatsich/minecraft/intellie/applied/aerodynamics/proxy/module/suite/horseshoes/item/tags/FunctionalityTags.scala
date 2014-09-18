@@ -11,7 +11,8 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.ho
  * @author thatsIch
  * @since 13.09.2014.
  */
-class FunctionalityTags(config: HorseShoesFunctionalityConfig) extends NBTTags
+class FunctionalityTags(config: HorseShoesFunctionalityConfig)
+extends NBTTags
 {
 	override def values = Vector(StepHeight)
 

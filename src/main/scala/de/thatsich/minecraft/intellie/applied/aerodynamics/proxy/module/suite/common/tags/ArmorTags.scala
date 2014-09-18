@@ -1,17 +1,17 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags
+package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.tags
 
 
 import de.thatsich.minecraft.common.util.nbt.{BaseBoundNBTProperty, NBTTags}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.config.HorseShoesArmorConfig
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.item.config.ArmorConfig
 
 
 /**
  * 
  *
  * @author thatsIch
- * @since 13.09.2014.
+ * @since 17.09.2014.
  */
-class ArmorTags (config: HorseShoesArmorConfig) extends NBTTags
+private[suite] class ArmorTags(config: ArmorConfig) extends NBTTags
 {
 	object EnergyPerDamage extends BaseBoundNBTProperty[Double](this.config.minimalEnergyPerDamage, this.config.maximalEnergyPerDamage)
 	object AbsorptionRatio extends BaseBoundNBTProperty[Double](this.config.minimalAbsorptionRatio, this.config.maximalAbsorptionRatio, 100)

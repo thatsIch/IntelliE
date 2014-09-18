@@ -1,26 +1,26 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common
 
 
 import appeng.api.config.AccessRestriction
 import appeng.api.implementations.items.IAEItemPowerStorage
 import de.thatsich.minecraft.common.proxy.module.util.NBTAccess
 import de.thatsich.minecraft.common.util.BoundDetection
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags.ItemPowerStorageTags
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.tags.ArmorPowerTags
 import net.minecraft.item.ItemStack
 
 
 /**
- *
+ * 
  *
  * @author thatsIch
- * @since 02.09.2014.
+ * @since 17.09.2014.
  */
-trait HorseShoesItemPowerStorage
+trait ArmorPower
 extends IAEItemPowerStorage
         with NBTAccess
         with BoundDetection
 {
-	def powerTags: ItemPowerStorageTags
+	def powerTags: ArmorPowerTags
 
 	override def injectAEPower(is: ItemStack, amt: Double): Double =
 	{

@@ -1,17 +1,17 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags
+package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.tags
 
 
 import de.thatsich.minecraft.common.util.nbt.{BaseBoundNBTProperty, NBTTags}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.config.HorseShoesItemPowerStorageConfig
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.item.config.ArmorPowerConfig
 
 
 /**
  * 
  *
  * @author thatsIch
- * @since 13.09.2014.
+ * @since 17.09.2014.
  */
-class ItemPowerStorageTags(config: HorseShoesItemPowerStorageConfig) extends NBTTags
+class ArmorPowerTags(config: ArmorPowerConfig) extends NBTTags
 {
 	override def values = Vector(CurrentEnergy, MaxEnergy, ChargeMultiplier, DischargePerTick)
 

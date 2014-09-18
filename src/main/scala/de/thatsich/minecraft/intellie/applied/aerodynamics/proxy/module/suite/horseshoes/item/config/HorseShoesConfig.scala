@@ -10,4 +10,5 @@ import de.thatsich.minecraft.common.config.BaseConfig
  * @author thatsIch
  * @since 02.09.2014.
  */
-class HorseShoesConfig extends BaseConfig(new HorseShoesConfigPath)
+private[horseshoes] class HorseShoesConfig
+extends BaseConfig(new HorseShoesConfigPath)

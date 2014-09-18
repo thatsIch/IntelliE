@@ -21,6 +21,8 @@ appaero.item.armorbase.name=Armorbase
 appaero.item.absorptionratio.name=Absorptionratio
 appaero.item.dischargepertick.name=Discharge per Tick
 appaero.item.stepheight.name=Stepheight
+appaero.item.runspeed.name=Runspeed
+appaero.item.walkspeed.name=Walkspeed
 
 # Tile Entities
 appaero.tile.workbench.name=Modification Workbench

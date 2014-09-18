@@ -1,26 +1,24 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common
 
 
 import de.thatsich.minecraft.common.util.BoundDetection
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags.ArmorTags
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.tags.ArmorTags
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.DamageSource
 import net.minecraftforge.common.ISpecialArmor
 
-import scala.language.implicitConversions
-
 
 /**
- *
+ * 
  *
  * @author thatsIch
- * @since 02.09.2014.
+ * @since 17.09.2014.
  */
-trait HorseShoesSpecialArmor
+private[suite] trait SpecialArmor
 extends ISpecialArmor
-        with HorseShoesItemPowerStorage
+        with ArmorPower
         with BoundDetection
 {
 	def armorTags: ArmorTags

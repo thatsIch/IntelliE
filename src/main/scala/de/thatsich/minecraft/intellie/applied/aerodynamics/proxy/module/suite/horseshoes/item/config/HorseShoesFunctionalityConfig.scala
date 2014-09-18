@@ -1,13 +1,15 @@
 package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.config
 
+
 /**
  * 
  *
  * @author thatsIch
  * @since 14.09.2014.
  */
-trait HorseShoesFunctionalityConfig
+private[horseshoes] trait HorseShoesFunctionalityConfig
 {
-	val minimalStepHeight: Double
-	val maximalStepHeight: Double
+	def minimalStepHeight: Double
+
+	def maximalStepHeight: Double
 }

@@ -1,0 +1,17 @@
+# Aliases
+alias=minecraft -> mc
+alias=aero -> appaero
+alias=ae2 -> appliedenergistics2
+
+# Energy
+workbench=aero:freerunner ae2:BlockEnergyCell 200000 aero:maxenergy -> aero:freerunner
+workbench=aero:freerunner ae2:BlockDenseEnergyCell 1600000 aero:maxenergy -> aero:freerunner
+workbench=aero:freerunner ae2:ItemMaterial.CardSpeed 1 aero:chargemultiplier -> aero:freerunner
+workbench=aero:freerunner ae2:ItemMaterial.CalcProcessor 1 aero:dischargepertick -> aero:freerunner
+
+workbench=aero:freerunner mc:diamond_leggings 1 aero:armorbase -> aero:freerunner
+workbench=aero:freerunner ae2:ItemMaterial.EngProcessor 1 aero:absorptionratio -> aero:freerunner
+workbench=aero:freerunner ae2:ItemMaterial.LogicProcessor 1 aero:energyperdamage -> aero:freerunner
+
+workbench=aero:freerunner mc:redstone 1 aero:walkspeed -> aero:freerunner
+workbench=aero:freerunner mc:glowstone_dust 1 aero:runspeed -> aero:freerunner

@@ -10,11 +10,11 @@ import de.thatsich.minecraft.common.util.string.BaseConfigPath
  * @author thatsIch
  * @since 11.09.2014.
  */
-class ExternalHorseShoesCraftRecipePath
-	extends BaseConfigPath(
-		"config",
-		"AppliedEnergistics2",
-		"IntelliE",
-		"Aero",
-		"horseshoes.recipe"
-	)
+private[horseshoes] class ExternalHorseShoesCraftRecipePath
+extends BaseConfigPath(
+	"config",
+	"AppliedEnergistics2",
+	"IntelliE",
+	"Aero",
+	"horseshoes.recipe"
+)

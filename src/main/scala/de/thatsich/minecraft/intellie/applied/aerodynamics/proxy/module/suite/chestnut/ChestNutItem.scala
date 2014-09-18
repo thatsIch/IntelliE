@@ -4,8 +4,8 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.c
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.util.string.ModID
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.HorseShoesItemPowerStorage
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.item.{ArmorType, BaseItemArmor}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.ArmorPower
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.item.{ArmorType, BaseItemArmor}
 import net.minecraft.client.renderer.texture.IIconRegister
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
@@ -20,7 +20,7 @@ import net.minecraft.world.World
  * @since 07.04.2014.
  */
 abstract class ChestNutItem(modid: ModID, log: Log) extends BaseItemArmor(ArmorType.Boots, modid, new ChestNutID, log)
-                                                         with HorseShoesItemPowerStorage
+                                                         with ArmorPower
 {
 	this.setUnlocalizedName("chest")
 	final val disChargeOnTick = 80

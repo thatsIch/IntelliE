@@ -11,8 +11,8 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.ho
  * @author thatsIch
  * @since 11.09.2014.
  */
-class HorseShoesUpgradeRecipe
-	extends BaseRecipe(
-		new InternalHorseShoesUpgradeRecipePath,
-		new ExternalHorseShoesUpgradeRecipePath
-	)
+private[horseshoes] class HorseShoesUpgradeRecipe
+extends BaseRecipe(
+	new InternalHorseShoesUpgradeRecipePath,
+	new ExternalHorseShoesUpgradeRecipePath
+)

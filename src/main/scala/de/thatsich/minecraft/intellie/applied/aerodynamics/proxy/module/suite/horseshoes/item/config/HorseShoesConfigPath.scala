@@ -10,4 +10,5 @@ import de.thatsich.minecraft.common.util.string.BaseConfigPath
  * @author thatsIch
  * @since 16.08.2014.
  */
-private[horseshoes] class HorseShoesConfigPath extends BaseConfigPath("config", "AppliedEnergistics2", "IntelliE", "Aero", "FreeRunner.cfg")
+private[horseshoes] class HorseShoesConfigPath
+extends BaseConfigPath("config", "AppliedEnergistics2", "IntelliE", "Aero", "FreeRunner.cfg")

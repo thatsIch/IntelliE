@@ -3,16 +3,18 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.h
 
 import java.util
 
-import cpw.mods.fml.relauncher.{SideOnly, Side}
+import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.proxy.module.item.{NBTKeys, PoweredItemDamageDisplay}
 import de.thatsich.minecraft.common.util.nbt.NBTTags
 import de.thatsich.minecraft.common.util.string.ModID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.AEHumanNumberFormat
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.item.{ArmorType, BaseItemArmor}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.tags.{ArmorPowerTags, ArmorTags}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.{ArmorPower, SpecialArmor}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.HorseShoesStepHeightLogic
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.config.{HorseShoesArmorConfigAccess, HorseShoesConfig, HorseShoesFunctionalityConfigAccess, HorseShoesItemPowerStorageConfigAccess}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags.{ArmorTags, FunctionalityTags, ItemPowerStorageTags}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.{HorseShoesItemPowerStorage, HorseShoesSpecialArmor, HorseShoesStepHeightLogic}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.item.{ArmorType, BaseItemArmor}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags.FunctionalityTags
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{Item, ItemStack}
@@ -25,10 +27,10 @@ import org.lwjgl.input.Keyboard
  * @author thatsIch
  * @since 16.04.2014.
  */
-class HorseShoesItem(modid: ModID, log: Log)
+private[horseshoes] class HorseShoesItem(modid: ModID, log: Log)
 extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
-        with HorseShoesItemPowerStorage
-        with HorseShoesSpecialArmor
+        with ArmorPower
+        with SpecialArmor
         with PoweredItemDamageDisplay
         with AEHumanNumberFormat
         with HorseShoesStepHeightLogic
@@ -42,7 +44,7 @@ extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
 
 	val armorTags = new ArmorTags(this.armorConfig)
 	val functionalityTags = new FunctionalityTags(this.functionalityConfig)
-	val powerTags = new ItemPowerStorageTags(this.powerConfig)
+	val powerTags = new ArmorPowerTags(this.powerConfig)
 
 	override def getNBTKeys: Seq[NBTTags] = Vector(this.armorTags, this.functionalityTags, this.powerTags)
 

@@ -1,11 +1,11 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.item
+package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.item
 
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.proxy.module.item.{UniqueItem, UnstackableItem}
 import de.thatsich.minecraft.common.util.string.{ModID, ID}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.item.ArmorType.ArmorType
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.item.ArmorType.ArmorType
 import net.minecraft.block.BlockDispenser
 import net.minecraft.client.renderer.texture.IIconRegister
 import net.minecraft.entity.Entity
