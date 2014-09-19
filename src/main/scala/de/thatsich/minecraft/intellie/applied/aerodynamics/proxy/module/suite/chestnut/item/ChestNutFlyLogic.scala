@@ -32,104 +32,74 @@ extends ItemArmor
 
 	override def onArmorTick(world: World, player: EntityPlayer, is: ItemStack): Unit =
 	{
-//		val currentPower = this.getAECurrentPower(is)
-		//		val discharge = this.getDischargePerTick(is)
-		//
-		//		if (currentPower >= discharge)
-		//		{
-		//			player.capabilities.allowFlying = true
-		//			if (player.capabilities.isFlying)
-		//			{
-		//				this.extractAEPower(is, discharge)
-		//			}
-		//			//			player.capabilities.setFlySpeed()
-		//		}
-		//		else
-		//		{
-		//			player.capabilities.allowFlying = false
-		//			player.capabilities.isFlying = false
-		//		}
 		this.fly(player, is)
 	}
 
+	private var flyToggleTimer = 0
+	private var jumped = true
+	private var on = false
+
 	private def fly(player: EntityPlayer, armor: ItemStack): Unit =
 	{
-		val flyspeed = this.getFlySpeed(armor)
-
-		println(flyspeed)
-
-		val sidewaysSpeed = flyspeed.toFloat
-		val verticalAccel = 0.75 * flyspeed
-		val verticalSpeedCap = 4 * flyspeed
-
-		val currentAccel = if (player.motionY < 0.3) verticalAccel * 2.5 else verticalAccel
-
-		if (this.isOn)
+		// jumps for first time, starts toggle timer
+		if (this.keys.isJumping && this.flyToggleTimer == 0)
 		{
-			if (this.isFlying(player))
+			this.flyToggleTimer = 7
+			this.jumped = false
+		}
+		// released jump
+		else if (!this.keys.isJumping && this.flyToggleTimer > 0)
+		{
+			this.jumped = true
+		}
+		// double jumped
+		else if (this.keys.isJumping && this.flyToggleTimer > 0 && this.jumped)
+		{
+			this.on = !this.on
+		}
+
+		if (this.flyToggleTimer > 0) this.flyToggleTimer -= 1
+
+		if (this.on && this.inAir(player) && this.hasEnoughPower(armor))
+		{
+			val discharge = this.getDischargePerTick(armor)
+			this.extractAEPower(armor, discharge)
+
+			val flyspeed = this.getFlySpeed(armor)
+			val sidewaysSpeed = flyspeed.toFloat
+			val verticalAccel = 1.25 * flyspeed
+			val verticalSpeedCap = 4 * flyspeed
+
+			// fly upwards
+			if (this.keys.isJumping && !this.keys.isSneaking) player.motionY = (player.motionY + verticalAccel) min verticalSpeedCap
+			else if (!this.keys.isJumping && this.keys.isSneaking) player.motionY = (player.motionY + verticalAccel) min -verticalSpeedCap
+			else player.motionY = 0
+
+			// fly sideways
+			if (this.keys.isForward && !this.keys.isBackward) player.moveFlying(0, sidewaysSpeed, sidewaysSpeed)
+			else if (this.keys.isBackward && !this.keys.isForward) player.moveFlying(0, -sidewaysSpeed, 0.8F * sidewaysSpeed)
+			if (this.keys.isLeft && !this.keys.isRight) player.moveFlying(sidewaysSpeed, 0, sidewaysSpeed)
+			else if (this.keys.isRight && !this.keys.isLeft) player.moveFlying(-sidewaysSpeed, 0, sidewaysSpeed)
+
+			// if no keys are pressed
+			if (!this.keys.isForward && !this.keys.isBackward && !this.keys.isLeft && !this.keys.isRight)
 			{
-				if (this.hasEnoughPower(armor))
-				{
-					val discharge = this.getDischargePerTick(armor)
-					this.extractAEPower(armor, discharge)
+				player.motionX = 0
+				player.motionZ = 0
+			}
 
-					// fly upwards
-					if (this.keys.isJumping && !this.keys.isSneaking)
-					{
-						player.motionY = (player.motionY + currentAccel) min verticalSpeedCap
-					}
-					else if (!this.keys.isJumping && this.keys.isSneaking)
-					{
-						player.motionY = (player.motionY + currentAccel) min -verticalSpeedCap
-					}
-					else
-					{
-						player.motionY = 0
-					}
-
-					if (this.keys.isForward)
-					{
-						player.moveFlying(0, sidewaysSpeed, sidewaysSpeed)
-					}
-
-					if (this.keys.isBackward)
-					{
-						player.moveFlying(0, -sidewaysSpeed, 0.8F * sidewaysSpeed)
-					}
-
-					if (this.keys.isLeft)
-					{
-						player.moveFlying(sidewaysSpeed, 0, sidewaysSpeed)
-					}
-
-					if (this.keys.isRight)
-					{
-						player.moveFlying(-sidewaysSpeed, 0, sidewaysSpeed)
-					}
-
-					if (!this.keys.isForward && !this.keys.isBackward && !this.keys.isLeft && !this.keys.isRight)
-					{
-						player.motionX = 0
-						player.motionZ = 0
-					}
-
-					// set fall distance to 0 else player dies after landing
-					if (!player.worldObj.isRemote)
-					{
-						player.fallDistance = 0
-						player.capabilities.allowFlying = true
-					}
-				}
+			// set fall distance to 0 else player dies after landing
+			if (!player.worldObj.isRemote)
+			{
+				player.fallDistance = 0
+				player.capabilities.allowFlying = true
 			}
 		}
 
 		// emergency truster
-
 	}
 
-	private def isOn: Boolean = true
-
-	private def isFlying(player: EntityPlayer): Boolean = !player.onGround
+	private def inAir(player: EntityPlayer): Boolean = !player.onGround
 
 	private def hasEnoughPower(is: ItemStack): Boolean = this.getAECurrentPower(is) >= this.getDischargePerTick(is)
 
