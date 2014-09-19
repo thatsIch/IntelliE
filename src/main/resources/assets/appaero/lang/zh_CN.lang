@@ -1,0 +1,33 @@
+# Creative Tabs
+appaero.tab.name=应用空气动力
+
+# Items
+appaero.item.disassembler.name=反汇编扳手
+appaero.item.skydiver.name=Skydiver
+appaero.item.chestnut.name=奇点陨石胸甲
+appaero.item.freerunner.name=飞速护腿
+appaero.item.horseshoes.name=马蹄铁靴子
+appaero.item.skystone_ingot.name=陨石锭
+
+# NBT Tags
+appaero.item.maxenergy.name=最大能源
+appaero.item.miningspeed.name=采掘速度
+appaero.item.energycost.name=能量消耗
+appaero.item.mininglevel.name=采掘等级
+appaero.item.chargemultiplier.name=充能加倍数
+appaero.item.damage.name=攻击伤害
+appaero.item.energyperdamage.name=承受攻击耗能
+appaero.item.armorbase.name=护甲等级
+appaero.item.absorptionratio.name=吸收率
+appaero.item.dischargepertick.name=每Tick释放能量
+appaero.item.stepheight.name=阶跃高度
+appaero.item.runspeed.name=奔跑速度
+appaero.item.walkspeed.name=步行速度
+appaero.item.flyspeed.name=飞行速度
+
+# Tile Entities
+appaero.tile.workbench.name=改进工作台
+
+# GUI Labels
+appaero.gui.workbench.name=改进工作台
+appaero.gui.inventory.name=物品栏
