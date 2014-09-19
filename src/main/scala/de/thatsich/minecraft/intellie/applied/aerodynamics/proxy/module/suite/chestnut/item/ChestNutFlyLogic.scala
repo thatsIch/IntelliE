@@ -26,7 +26,6 @@ extends ItemArmor
 	def funcTags: ChestNutFunctionalityTags
 
 	val keys = new ChestNutKeyInputEventHandler
-
 	MinecraftForge.EVENT_BUS.register(new ChestNutLivingUpdadeEventHandler(this))
 	FMLCommonHandler.instance().bus().register(this.keys)
 
