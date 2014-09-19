@@ -34,8 +34,6 @@ class ChestNutLivingUpdadeEventHandler(armor: ItemArmor)
 					{
 						player.capabilities.allowFlying = false
 						player.capabilities.isFlying = false
-//						player.capabilities.setFlySpeed()
-						// TODO somehow set flyspeed
 					}
 
 				case _ =>
