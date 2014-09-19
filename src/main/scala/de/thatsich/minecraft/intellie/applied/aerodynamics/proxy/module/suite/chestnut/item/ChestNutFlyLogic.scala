@@ -117,6 +117,7 @@ extends ItemArmor
 					if (!player.worldObj.isRemote)
 					{
 						player.fallDistance = 0
+						player.capabilities.allowFlying = true
 					}
 				}
 			}
