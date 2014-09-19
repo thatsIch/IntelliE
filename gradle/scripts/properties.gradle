@@ -1,3 +1,4 @@
 ext {
-    VERSION_MINECRAFT = '1.7.10'
+    mcversion = "1.7.10"
+    rundir = "run"
 }

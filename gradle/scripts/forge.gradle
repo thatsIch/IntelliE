@@ -1,0 +1,20 @@
+apply plugin: 'forge'       // forge tasks
+
+processResources {
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", VERSION_PROJECT.toString()
+    inputs.property "mcversion", mcversion
+
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+
+        // replace version and mcversion
+        expand 'version': VERSION_PROJECT.toString(), 'mcversion': mcversion
+    }
+
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}

@@ -27,7 +27,7 @@ class ProjectVersion {
     }
 
     public ProjectVersion incMajor() {
-        this.major++
+        ++this.major
         this.minor = 0
         this.revision = 0
 
@@ -35,14 +35,14 @@ class ProjectVersion {
     }
 
     public ProjectVersion incMinor() {
-        this.minor++
+        ++this.minor
         this.revision = 0
 
         return this
     }
 
     public ProjectVersion incRevision() {
-        this.revision++
+        ++this.revision
 
         return this
     }

@@ -1,2 +1,4 @@
+apply plugin: 'java'        // enables sourcesets
+
 sourceCompatibility = 1.7
 targetCompatibility = 1.7

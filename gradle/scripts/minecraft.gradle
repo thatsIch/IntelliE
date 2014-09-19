@@ -1,0 +1,10 @@
+// needed for pulling new versions from forge
+minecraft {
+    version = "$mcversion-10.13.1.1217"
+    replace "@version@", VERSION_PROJECT.toString()
+    runDir = rundir
+}
+
+task cleanRun(type: Delete) {
+    delete rundir
+}

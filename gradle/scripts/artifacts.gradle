@@ -1,7 +1,7 @@
 // resulting file with [baseName]-[appendix]-[version]-[classifier].[extension]
 jar {
     baseName = "IntelligentEnergistics"
-    appendix = VERSION_MINECRAFT
+    appendix = mcversion
     version = VERSION_PROJECT.toString()
     classifier = "universal"
 }
@@ -11,7 +11,7 @@ task sourceJar(type: Jar) {
     from sourceSets.main.allSource
 
     baseName = "IntelligentEnergistics"
-    appendix = VERSION_MINECRAFT
+    appendix = mcversion
     version = VERSION_PROJECT.toString()
     classifier = 'sources'
 }
@@ -21,7 +21,7 @@ task deobfJar(type: Jar) {
     from sourceSets.main.output
 
     baseName = "IntelligentEnergistics"
-    appendix = VERSION_MINECRAFT
+    appendix = mcversion
     version = VERSION_PROJECT.toString()
     classifier = 'deobf'
 }
