@@ -10,7 +10,6 @@
 		</Console>
 		<Console name="FML" target="SYSTEM_OUT">
 			<PatternLayout pattern="[%d{HH:mm:ss}] [%-5level] [%logger{36}]: %msg%n"/>
-			<!--<RegexFilter regex=".*Unable to determine registrant mod.*" onMatch="DENY" onMismatch="ACCEPT"/>-->
 			<RegexFilter regex="(.*Unable to determine registrant mod.*)|(.*does not have a MCVersion annotation.*)|(.*The binary patch set is missing.*)|(.*FML appears to be missing any signature data.*)" onMatch="DENY" onMismatch="ACCEPT"/>
 		</Console>
 	</Appenders>
