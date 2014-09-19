@@ -37,7 +37,7 @@ dependencies {
     // compile "com.google.code.findbugs:jsr305:3.0.0"
 
     // AE2 dependency
-    compile("appeng:appliedenergistics2:rv1-beta-25:dev") {
+    compile("appeng:appliedenergistics2:rv1-beta-35:dev") {
         exclude group: "net.industrial-craft", module: "industrialcraft-2"
         exclude group: "mcp.mobius.waila", module: "Waila"
         exclude group: "codechicken", module: "ForgeMultipart"
