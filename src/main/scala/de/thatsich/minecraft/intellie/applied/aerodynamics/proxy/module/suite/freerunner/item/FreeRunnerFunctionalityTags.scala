@@ -17,8 +17,8 @@ extends NBTTags
 {
 	override def values: Seq[BoundNBTProperty[_ <: AnyVal]] = Vector(WalkSpeed, RunSpeed)
 
-	object WalkSpeed extends BaseBoundNBTProperty[Float](this.config.minimalWalkSpeed, this.config.maximalWalkSpeed, 100)
+	object WalkSpeed extends BaseBoundNBTProperty[Double](this.config.minimalWalkSpeed, this.config.maximalWalkSpeed, 100)
 
-	object RunSpeed extends BaseBoundNBTProperty[Float](this.config.minimalRunSpeed, this.config.maximalRunSpeed, 100)
+	object RunSpeed extends BaseBoundNBTProperty[Double](this.config.minimalRunSpeed, this.config.maximalRunSpeed, 100)
 
 }

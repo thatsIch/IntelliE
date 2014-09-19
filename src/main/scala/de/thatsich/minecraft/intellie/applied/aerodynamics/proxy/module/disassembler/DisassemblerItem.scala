@@ -112,7 +112,7 @@ extends BaseItem(new DisassemblerID, modid, log)
 		tag.setInteger(this.powerStorageTags.ChargeMultiplier.toString, this.powerStorageTags.ChargeMultiplier.max)
 		tag.setDouble(this.powerStorageTags.EnergyCost.toString, this.powerStorageTags.EnergyCost.max)
 
-		tag.setFloat(this.weapontags.Damage.toString, this.weapontags.Damage.max)
+		tag.setDouble(this.weapontags.Damage.toString, this.weapontags.Damage.max)
 
 		tag.setInteger(this.toolTags.MiningLevel.toString, this.toolTags.MiningLevel.max)
 		tag.setInteger(this.toolTags.MiningSpeed.toString, this.toolTags.MiningSpeed.max)

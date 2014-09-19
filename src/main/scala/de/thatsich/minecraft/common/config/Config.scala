@@ -22,10 +22,6 @@ trait Config
 
 	def getInt(category: String, key: String, defaultValue: Int, comment: String): Int
 
-	def getFloat(category: String, key: String, defaultValue: Float): Float
-
-	def getFloat(category: String, key: String, defaultValue: Float, comment: String): Float
-
 	def getDouble(category: String, key: String, defaultValue: Double): Double
 
 	def getDouble(category: String, key: String, defaultValue: Double, comment: String): Double

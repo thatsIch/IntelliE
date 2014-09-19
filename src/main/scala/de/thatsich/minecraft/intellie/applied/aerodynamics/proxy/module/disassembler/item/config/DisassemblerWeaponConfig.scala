@@ -9,7 +9,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disasse
  */
 trait DisassemblerWeaponConfig
 {
-	def minimalDamageVsEntites: Float
+	def minimalDamageVsEntites: Double
 
-	def maximalDamageVsEntites: Float
+	def maximalDamageVsEntites: Double
 }

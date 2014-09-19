@@ -4,6 +4,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.c
 import cpw.mods.fml.client.registry.ClientRegistry
 import cpw.mods.fml.common.eventhandler.SubscribeEvent
 import cpw.mods.fml.common.gameevent.InputEvent
+import cpw.mods.fml.relauncher.{Side, SideOnly}
 import net.minecraft.client.settings.KeyBinding
 import org.lwjgl.input.Keyboard
 
@@ -24,6 +25,7 @@ class KeyHandler
 {
 	ClientRegistry.registerKeyBinding(KeyHandler.BINDING)
 
+	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	def onKeyInput(event: InputEvent.KeyInputEvent): Unit =
 	{

@@ -93,8 +93,8 @@ extends BaseItemArmor(ArmorType.Legs, modid, new FreeRunnerID, log)
 		tag.setInteger(this.armorTags.ArmorBase.toString, this.armorTags.ArmorBase.max)
 		tag.setDouble(this.armorTags.AbsorptionRatio.toString, this.armorTags.AbsorptionRatio.max)
 
-		tag.setFloat(this.funcTags.WalkSpeed.toString, this.funcTags.WalkSpeed.max)
-		tag.setFloat(this.funcTags.RunSpeed.toString, this.funcTags.RunSpeed.max)
+		tag.setDouble(this.funcTags.WalkSpeed.toString, this.funcTags.WalkSpeed.max)
+		tag.setDouble(this.funcTags.RunSpeed.toString, this.funcTags.RunSpeed.max)
 
 		list.add(stack)
 	}

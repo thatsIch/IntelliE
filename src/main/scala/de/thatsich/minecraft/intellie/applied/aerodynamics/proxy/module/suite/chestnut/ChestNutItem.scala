@@ -93,7 +93,7 @@ extends BaseItemArmor(ArmorType.Plate, modid, new ChestNutID, log)
 		tag.setInteger(this.armorTags.ArmorBase.toString, this.armorTags.ArmorBase.max)
 		tag.setDouble(this.armorTags.AbsorptionRatio.toString, this.armorTags.AbsorptionRatio.max)
 
-		tag.setFloat(this.funcTags.FlySpeed.toString, this.funcTags.FlySpeed.max)
+		tag.setDouble(this.funcTags.FlySpeed.toString, this.funcTags.FlySpeed.max)
 
 		list.add(stack)
 	}

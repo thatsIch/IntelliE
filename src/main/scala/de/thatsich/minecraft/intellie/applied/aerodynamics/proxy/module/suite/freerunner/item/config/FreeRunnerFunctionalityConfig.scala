@@ -9,11 +9,11 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.f
  */
 private[freerunner] trait FreeRunnerFunctionalityConfig
 {
-	def minimalWalkSpeed: Float
+	def minimalWalkSpeed: Double
 
-	def maximalWalkSpeed: Float
+	def maximalWalkSpeed: Double
 
-	def minimalRunSpeed: Float
+	def minimalRunSpeed: Double
 
-	def maximalRunSpeed: Float
+	def maximalRunSpeed: Double
 }

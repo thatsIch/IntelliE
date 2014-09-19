@@ -22,14 +22,6 @@ trait BoundDetection extends NBTAccess
 		((current + prop.min) min prop.max) / prop.scale
 	}
 
-	def withinBounds[Float](stack: ItemStack, prop: BoundNBTProperty[scala.Float]): scala.Float =
-	{
-		val tag = this.getNBTData(stack)
-		val current = tag.getFloat(prop.toString)
-
-		((current + prop.min) min prop.max) / prop.scale
-	}
-
 	def withinBounds[Int](stack: ItemStack, prop: BoundNBTProperty[scala.Int]): scala.Int =
 	{
 		val tag = this.getNBTData(stack)
@@ -42,14 +34,6 @@ trait BoundDetection extends NBTAccess
 	{
 		val tag = this.getNBTData(stack)
 		val current = tag.getDouble(prop.toString)
-
-		((prop.max - current) max prop.min) / prop.scale
-	}
-
-	def withinReversedBounds[Float](stack: ItemStack, prop: BoundNBTProperty[scala.Float]): scala.Float =
-	{
-		val tag = this.getNBTData(stack)
-		val current = tag.getFloat(prop.toString)
 
 		((prop.max - current) max prop.min) / prop.scale
 	}

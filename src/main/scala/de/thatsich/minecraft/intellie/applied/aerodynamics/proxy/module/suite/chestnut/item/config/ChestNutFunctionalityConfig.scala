@@ -10,7 +10,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.c
 private[chestnut]
 trait ChestNutFunctionalityConfig
 {
-	def minimalFlySpeed: Float
+	def minimalFlySpeed: Double
 
-	def maximalFlySpeed: Float
+	def maximalFlySpeed: Double
 }

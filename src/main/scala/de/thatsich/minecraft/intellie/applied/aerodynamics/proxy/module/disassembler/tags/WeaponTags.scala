@@ -15,6 +15,6 @@ class WeaponTags(config: DisassemblerWeaponConfig) extends NBTTags
 {
 	override def values = Vector(Damage)
 
-	object Damage extends BaseBoundNBTProperty[Float](this.config.minimalDamageVsEntites, this.config.maximalDamageVsEntites)
+	object Damage extends BaseBoundNBTProperty[Double](this.config.minimalDamageVsEntites, this.config.maximalDamageVsEntites)
 
 }

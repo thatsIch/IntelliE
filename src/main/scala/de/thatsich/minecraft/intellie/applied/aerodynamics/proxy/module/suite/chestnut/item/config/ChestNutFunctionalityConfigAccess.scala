@@ -14,8 +14,8 @@ private [chestnut]
 class ChestNutFunctionalityConfigAccess(config: Config)
 extends ChestNutFunctionalityConfig
 {
-	val minimalFlySpeed = this.config.getFloat("Functionality", "minimalFlySpeed", 0.05F)
-	val maximalFlySpeed = this.config.getFloat("Functionality", "maximalFlySpeed", 0.1F)
+	val minimalFlySpeed = this.config.getDouble("Functionality", "minimalFlySpeed", 0.05)
+	val maximalFlySpeed = this.config.getDouble("Functionality", "maximalFlySpeed", 0.19)
 
 	this.config.save()
 

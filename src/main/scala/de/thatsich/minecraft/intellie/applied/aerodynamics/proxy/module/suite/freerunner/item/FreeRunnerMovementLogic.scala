@@ -60,7 +60,7 @@ extends ItemArmor
 		}
 	}
 
-	def getWalkSpeed(is: ItemStack): Float = this.withinBounds(is, this.funcTags.WalkSpeed)
+	def getWalkSpeed(is: ItemStack): Double = this.withinBounds(is, this.funcTags.WalkSpeed)
 
-	def getRunSpeed(is: ItemStack): Float = this.withinBounds(is, this.funcTags.RunSpeed)
+	def getRunSpeed(is: ItemStack): Double = this.withinBounds(is, this.funcTags.RunSpeed)
 }

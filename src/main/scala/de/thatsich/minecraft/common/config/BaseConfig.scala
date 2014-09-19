@@ -36,9 +36,5 @@ extends Configuration(new File(configPath.path))
 
 	override def getDouble(category: String, key: String, defaultValue: Double, comment: String): Double = super.get(category, key, defaultValue, comment).getDouble
 
-	override def getFloat(category: String, key: String, defaultValue: Float): Float = super.get(category, key, defaultValue).getDouble.toFloat
-
-	override def getFloat(category: String, key: String, defaultValue: Float, comment: String): Float = super.get(category, key, defaultValue, comment).getDouble.toFloat
-
 	override def getInt(category: String, key: String, defaultValue: Int, comment: String): Int = super.get(category, key, defaultValue, comment).getInt
 }
