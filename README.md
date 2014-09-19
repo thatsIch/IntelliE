@@ -69,7 +69,9 @@ Before you want to add major changes, you might want to discuss them with me fir
 If you are still willing to contribute to this project, you can contribute via [Pull-Request](https://help.github.com/articles/creating-a-pull-request).
 
 1. Fork this repository
-2. Clone the fork via SSH `git clone git@github.com:<your username>/IntelliE-Scala.git` or HTTPS `git clone https://github.com/<your username>/IntelliE-Scala.git`
+2. Clone the fork via
+  * SSH `git clone git@github.com:<your username>/IntelliE-Scala.git` or 
+  * HTTPS `git clone https://github.com/<your username>/IntelliE-Scala.git`
 3. Change code base
 4. Add changes to git `git add -A`
 5. Commit changes to your clone `git commit -m "<made changes>"`
