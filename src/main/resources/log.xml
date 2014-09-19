@@ -4,6 +4,15 @@
 		<Console name="Console" target="SYSTEM_OUT">
 			<PatternLayout pattern="[%d{HH:mm:ss}] [%-5level] [%logger{36}]: %msg%n"/>
 		</Console>
+		<Console name="Println" target="SYSTEM_OUT">
+			<PatternLayout pattern="[%d{HH:mm:ss}] [%-5level] [%logger{36}]: %msg%n"/>
+			<RegexFilter regex=".*paulscode.sound.SoundSystemLogger.*" onMatch="DENY" onMismatch="ACCEPT"/>
+		</Console>
+		<Console name="FML" target="SYSTEM_OUT">
+			<PatternLayout pattern="[%d{HH:mm:ss}] [%-5level] [%logger{36}]: %msg%n"/>
+			<!--<RegexFilter regex=".*Unable to determine registrant mod.*" onMatch="DENY" onMismatch="ACCEPT"/>-->
+			<RegexFilter regex="(.*Unable to determine registrant mod.*)|(.*does not have a MCVersion annotation.*)|(.*The binary patch set is missing.*)|(.*FML appears to be missing any signature data.*)" onMatch="DENY" onMismatch="ACCEPT"/>
+		</Console>
 	</Appenders>
 	<Loggers>
 		<Logger name="Aero" level="TRACE" additivity="false">
@@ -19,9 +28,17 @@
 			<AppenderRef ref="Console"/>
 		</Logger>
 		<Logger name="FML" level="WARN" additivity="false">
-			<AppenderRef ref="Console"/>
+			<AppenderRef ref="FML"/>
 		</Logger>
+		<Logger name="STDOUT" level="ALL" additivity="false">
+			<AppenderRef ref="Println"/>
+		</Logger>
+		<!--<Logger name="STDOUT" class="paulscode.sound.SoundSystemLogger" level="OFF" additivity="false">-->
+			<!--<AppenderRef ref="Console"/>-->
+		<!--</Logger>-->
+
 		<Root level="WARN">
+		<!--<Root level="ALL">-->
 			<AppenderRef ref="Console"/>
 		</Root>
 	</Loggers>
