@@ -27,7 +27,7 @@ extends ItemArmor
 {
 	def funcTags: FreeRunnerFunctionalityTags
 
-	private val modifierID = UUID.randomUUID()
+	private val modifierID = UUID.nameUUIDFromBytes(this.getUnlocalizedName.getBytes)
 	MinecraftForge.EVENT_BUS.register(new FreeRunnerLivingUpdateEventHandler(this, this.modifierID))
 
 

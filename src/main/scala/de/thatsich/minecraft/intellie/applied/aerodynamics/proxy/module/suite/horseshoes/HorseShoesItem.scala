@@ -13,7 +13,7 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.co
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.tags.{ArmorPowerTags, ArmorTags}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.{ArmorPower, SpecialArmor}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.HorseShoesStepHeightLogic
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.config.{HorseShoesArmorConfigAccess, HorseShoesConfig, HorseShoesFunctionalityConfigAccess, HorseShoesItemPowerStorageConfigAccess}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.config.{HorseShoesArmorConfigAccess, HorseShoesConfig, HorseShoesFunctionalityConfigAccess, HorseShoesArmorPowerConfigAccess}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags.FunctionalityTags
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.player.EntityPlayer
@@ -40,7 +40,7 @@ extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
 
 	val armorConfig = new HorseShoesArmorConfigAccess(this.config)
 	val functionalityConfig = new HorseShoesFunctionalityConfigAccess(this.config)
-	val powerConfig = new HorseShoesItemPowerStorageConfigAccess(this.config)
+	val powerConfig = new HorseShoesArmorPowerConfigAccess(this.config)
 
 	val armorTags = new ArmorTags(this.armorConfig)
 	val functionalityTags = new FunctionalityTags(this.functionalityConfig)

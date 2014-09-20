@@ -1,0 +1,16 @@
+# Aliases
+alias=minecraft -> mc
+alias=aero -> appaero
+alias=ae2 -> appliedenergistics2
+
+# Energy
+workbench=aero:skydiver ae2:BlockEnergyCell 200000 aero:maxenergy -> aero:skydiver
+workbench=aero:skydiver ae2:BlockDenseEnergyCell 1600000 aero:maxenergy -> aero:skydiver
+workbench=aero:skydiver ae2:ItemMaterial.CardSpeed 1 aero:chargemultiplier -> aero:skydiver
+workbench=aero:skydiver ae2:ItemMaterial.CalcProcessor 1 aero:dischargepertick -> aero:skydiver
+
+workbench=aero:skydiver mc:diamond_leggings 1 aero:armorbase -> aero:chestnut
+workbench=aero:skydiver ae2:ItemMaterial.EngProcessor 1 aero:absorptionratio -> aero:skydiver
+workbench=aero:skydiver ae2:ItemMaterial.LogicProcessor 1 aero:energyperdamage -> aero:skydiver
+
+# workbench=aero:skydiver ae2:ItemMaterial.Singularity 1 aero:flyspeed -> aero:skydiver

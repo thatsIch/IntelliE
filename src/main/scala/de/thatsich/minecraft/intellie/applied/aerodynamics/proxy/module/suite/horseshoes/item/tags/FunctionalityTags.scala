@@ -11,6 +11,7 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.ho
  * @author thatsIch
  * @since 13.09.2014.
  */
+private[horseshoes]
 class FunctionalityTags(config: HorseShoesFunctionalityConfig)
 extends NBTTags
 {

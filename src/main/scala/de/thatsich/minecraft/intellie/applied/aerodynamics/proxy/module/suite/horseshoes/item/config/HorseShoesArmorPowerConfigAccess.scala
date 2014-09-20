@@ -11,7 +11,8 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.co
  * @author thatsIch
  * @since 14.09.2014.
  */
-private[horseshoes] class HorseShoesItemPowerStorageConfigAccess(config: Config)
+private[horseshoes]
+class HorseShoesArmorPowerConfigAccess(config: Config)
 extends ArmorPowerConfig
 {
 	val minimalEnergy: Double = this.config.getDouble("Energy", "minimalEnergy", 0)

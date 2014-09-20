@@ -1,0 +1,10 @@
+alias=mc -> minecraft
+alias=aero -> appaero
+alias=ae2 -> appliedenergistics2
+
+group=aero:skystone_ingot -> ingot
+
+shaped=
+	ingot ae2:BlockQuartzLamp ingot,
+	ingot _ ingot
+	-> aero:skydiver
