@@ -61,7 +61,7 @@ You install this mod by putting it into the `minecraft/mods/` folder. It require
   - CI server `gradlew setupCIWorkspace`
 3. (Import into IDE)
 4. (Generate run for IntelliJ `gradlew genIntellijRuns`
-5. Build `gradlew build`. Jar will be in `build/libs`
+5. Build `gradlew build`. Jar will be in `.gradle/libs`
 
 ## Contribution
 
