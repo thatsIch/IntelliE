@@ -1,4 +1,4 @@
-package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item
+package de.thatsich.minecraft.common.proxy.module.item
 
 
 /**

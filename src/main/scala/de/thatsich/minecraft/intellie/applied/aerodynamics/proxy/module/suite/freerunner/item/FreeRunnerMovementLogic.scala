@@ -30,7 +30,6 @@ extends ItemArmor
 	private val modifierID = UUID.nameUUIDFromBytes(this.getUnlocalizedName.getBytes)
 	MinecraftForge.EVENT_BUS.register(new FreeRunnerLivingUpdateEventHandler(this, this.modifierID))
 
-
 	override def onArmorTick(world: World, player: EntityPlayer, is: ItemStack): Unit =
 	{
 		val currentPower = this.getAECurrentPower(is)

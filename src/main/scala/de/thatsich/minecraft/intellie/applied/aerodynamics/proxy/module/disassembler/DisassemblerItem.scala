@@ -7,11 +7,11 @@ import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.config.Config
 import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.proxy.module.BaseItem
-import de.thatsich.minecraft.common.proxy.module.item.{NBTKeys, PoweredItemDamageDisplay, UniqueItem, UnstackableItem}
+import de.thatsich.minecraft.common.proxy.module.item.{AEHumanNumberFormat, NBTKeys, PoweredItemDamageDisplay, UniqueItem, UnstackableItem}
 import de.thatsich.minecraft.common.util.nbt.NBTTags
 import de.thatsich.minecraft.common.util.string.ModID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.config.{DisassemblerConfig, DisassemblerFunctionalityConfig, DisassemblerFunctionalityConfigAccess, DisassemblerItemPowerStorageConfig, DisassemblerItemPowerStorageConfigAccess, DisassemblerWeaponConfig, DisassemblerWeaponConfigAccess}
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.{AEHumanNumberFormat, AEWrench, BlockBreakEventHandler, BreakSpeedHandler, DisassemblerItemPowerStorage, MiningTool, PrecisionHarvester, Weapon}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.{AEWrench, BlockBreakEventHandler, BreakSpeedHandler, DisassemblerItemPowerStorage, MiningTool, PrecisionHarvester, Weapon}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.tags.{ItemPowerStorageTags, ToolTags, WeaponTags}
 import net.minecraft.block.Block
 import net.minecraft.creativetab.CreativeTabs

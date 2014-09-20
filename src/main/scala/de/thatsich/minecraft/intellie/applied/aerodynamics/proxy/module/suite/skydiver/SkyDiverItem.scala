@@ -5,10 +5,9 @@ import java.util
 
 import cpw.mods.fml.relauncher.{Side, SideOnly}
 import de.thatsich.minecraft.common.log.Log
-import de.thatsich.minecraft.common.proxy.module.item.{NBTKeys, PoweredItemDamageDisplay}
+import de.thatsich.minecraft.common.proxy.module.item.{AEHumanNumberFormat, NBTKeys, PoweredItemDamageDisplay}
 import de.thatsich.minecraft.common.util.nbt.NBTTags
 import de.thatsich.minecraft.common.util.string.ModID
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.disassembler.item.AEHumanNumberFormat
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.item.{ArmorType, BaseItemArmor}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.tags.{ArmorPowerTags, ArmorTags}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.{ArmorPower, SpecialArmor}
@@ -67,8 +66,7 @@ extends BaseItemArmor(ArmorType.Helmet, modid, new SkyDiverID, log)
 		}
 		else
 		{
-			val shortCurrent = this.readableForm(currentPower)
-			list.add(s"Stored Energy: $shortCurrent - $percent%")
+			list.add(s"Stored Energy: ${this.readableForm(currentPower)} - $percent%")
 			list.add("Hold shift for more information")
 		}
 	}
