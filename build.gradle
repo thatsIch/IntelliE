@@ -18,7 +18,7 @@ buildscript {
 apply from: 'gradle/scripts/idea.gradle'
 apply from: 'gradle/scripts/gradle.gradle'
 apply from: 'gradle/scripts/java.gradle'            // +java
-apply from: 'gradle/scripts/curse.gradle'           // +curse
+apply from: 'gradle/scripts/curse.gradle'           // +curse -java
 apply from: 'gradle/scripts/properties.gradle'      // +properties
 apply from: 'gradle/scripts/dependencies.gradle'    // -java
 apply from: 'gradle/scripts/scala.gradle'           // -java

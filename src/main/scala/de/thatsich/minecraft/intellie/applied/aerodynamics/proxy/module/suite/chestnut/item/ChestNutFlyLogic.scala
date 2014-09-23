@@ -3,12 +3,11 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.c
 
 import cpw.mods.fml.common.FMLCommonHandler
 import de.thatsich.minecraft.common.util.BoundDetection
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.chestnut.item.flylogic.{ChestNutKeyInputEventHandler, ChestNutLivingUpdadeEventHandler}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.chestnut.item.flylogic.ChestNutKeyInputEventHandler
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.ArmorPower
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.{ItemArmor, ItemStack}
 import net.minecraft.world.World
-import net.minecraftforge.common.MinecraftForge
 
 
 /**
@@ -26,7 +25,6 @@ extends ItemArmor
 	def funcTags: ChestNutFunctionalityTags
 
 	val keys = new ChestNutKeyInputEventHandler
-	MinecraftForge.EVENT_BUS.register(new ChestNutLivingUpdadeEventHandler(this))
 	FMLCommonHandler.instance().bus().register(this.keys)
 
 	override def onArmorTick(world: World, player: EntityPlayer, is: ItemStack): Unit =
