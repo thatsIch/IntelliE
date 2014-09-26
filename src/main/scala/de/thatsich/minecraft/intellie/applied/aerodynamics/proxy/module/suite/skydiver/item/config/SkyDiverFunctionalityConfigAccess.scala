@@ -15,4 +15,9 @@ class SkyDiverFunctionalityConfigAccess(config: Config)
 extends SkyDiverFunctionalityConfig
 {
 	this.config.save()
+
+	val minimalBreathing = this.config.getInt("Functionality", "minimalStepHeight", 0)
+
+	val maximalBreathing: Int = this.config.getInt("Functionality", "maximalBreathing", 300)
+
 }

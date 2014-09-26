@@ -11,6 +11,7 @@ import de.thatsich.minecraft.common.util.string.ModID
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.item.{ArmorType, BaseItemArmor}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.tags.{ArmorPowerTags, ArmorTags}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.{ArmorPower, SpecialArmor}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.skydiver.item.SkyDiverBreathingLogic
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.skydiver.item.config.{SkyDiverArmorConfigAccess, SkyDiverArmorPowerConfigAccess, SkyDiverConfig, SkyDiverFunctionalityConfigAccess}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.skydiver.item.tags.FunctionalityTags
 import net.minecraft.creativetab.CreativeTabs
@@ -32,6 +33,7 @@ extends BaseItemArmor(ArmorType.Helmet, modid, new SkyDiverID, log)
         with SpecialArmor
         with PoweredItemDamageDisplay
         with AEHumanNumberFormat
+        with SkyDiverBreathingLogic
         with NBTKeys
 {
 	val config = new SkyDiverConfig
@@ -63,6 +65,7 @@ extends BaseItemArmor(ArmorType.Helmet, modid, new SkyDiverID, log)
 			list.add(s"Energy per Damage: ${this.getEnergyPerDamage(is).toInt}")
 			list.add(s"Absorptionratio: ${this.getAbsorptionRatio(is)}")
 			list.add(s"Armorbase: ${this.getArmorBase(is).toInt}")
+			list.add(s"Breating: ${this.getBreathing(is)}")
 		}
 		else
 		{
@@ -88,6 +91,8 @@ extends BaseItemArmor(ArmorType.Helmet, modid, new SkyDiverID, log)
 		tag.setDouble(this.armorTags.EnergyPerDamage.toString, this.armorTags.EnergyPerDamage.max)
 		tag.setInteger(this.armorTags.ArmorBase.toString, this.armorTags.ArmorBase.max)
 		tag.setDouble(this.armorTags.AbsorptionRatio.toString, this.armorTags.AbsorptionRatio.max)
+
+		tag.setInteger(this.functionalityTags.Breathing.toString, this.functionalityTags.Breathing.max)
 
 		list.add(stack)
 	}
