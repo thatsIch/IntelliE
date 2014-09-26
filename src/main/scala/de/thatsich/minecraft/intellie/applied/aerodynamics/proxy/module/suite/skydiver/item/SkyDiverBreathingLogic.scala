@@ -23,11 +23,19 @@ extends ItemArmor
 {
 	def functionalityTags: FunctionalityTags
 
-	override def onArmorTick(world: World, player: EntityPlayer, itemStack: ItemStack): Unit =
+	override def onArmorTick(world: World, player: EntityPlayer, is: ItemStack): Unit =
 	{
-		val currentAir: Int = player.getAir
-		val maxAir: Int = 300 min (currentAir + this.getBreathing(itemStack))
-		player.setAir(maxAir)
+		val currentpower = this.getAECurrentPower(is)
+		val discharge = this.getDischargePerTick(is)
+
+		if (player.isInWater && currentpower >= discharge)
+		{
+			this.extractAEPower(is, discharge)
+
+			val currentAir: Int = player.getAir
+			val maxAir: Int = 300 min (currentAir + this.getBreathing(is))
+			player.setAir(maxAir)
+		}
 	}
 
 	def getBreathing(armor: ItemStack): Int = this.withinBounds(armor, this.functionalityTags.Breathing)

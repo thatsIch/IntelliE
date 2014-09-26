@@ -17,7 +17,8 @@ import net.minecraftforge.common.MinecraftForge
  * @author thatsIch
  * @since 12.09.2014.
  */
-private[horseshoes] trait HorseShoesStepHeightLogic
+private[horseshoes]
+trait HorseShoesStepHeightLogic
 extends ItemArmor
         with ArmorPower
         with BoundDetection

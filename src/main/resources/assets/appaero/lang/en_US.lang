@@ -24,6 +24,7 @@ appaero.item.stepheight.name=Stepheight
 appaero.item.runspeed.name=Runspeed
 appaero.item.walkspeed.name=Walkspeed
 appaero.item.flyspeed.name=Flyspeed
+appaero.item.breathing.name=Breathing
 
 # Tile Entities
 appaero.tile.workbench.name=Modification Workbench
