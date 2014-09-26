@@ -64,7 +64,7 @@ abstract class BaseGuiContainer(container: Container) extends GuiContainer(conta
 
 			this.drawTexturedModalRect(this.guiLeft + slot.xDisplayPosition, this.guiTop + slot.yDisplayPosition, slot.holoSlotOffsetX, slot.holoSlotOffsetY, 16, 16)
 
-			GL11.glDisable(GL11.GL_BLEND)
+//			GL11.glDisable(GL11.GL_BLEND)
 			GL11.glColor4f(1, 1, 1, 1)
 			GL11.glPopAttrib()
 		}
