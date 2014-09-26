@@ -1,0 +1,33 @@
+# Creative Tabs
+appaero.tab.name=Applied Aerodynamics
+
+# Items
+appaero.item.disassembler.name=Разборщик
+appaero.item.skydiver.name=Небесный шлем
+appaero.item.chestnut.name=Небесная кираса
+appaero.item.freerunner.name=Небесные поножи
+appaero.item.horseshoes.name=Небесные ботинки
+appaero.item.skystone_ingot.name=Слиток из небесного камня
+
+# NBT Tags
+appaero.item.maxenergy.name=Макс. энергия
+appaero.item.miningspeed.name=Скорость добычи
+appaero.item.energycost.name=Затраты энергии
+appaero.item.mininglevel.name=Уровень добычи
+appaero.item.chargemultiplier.name=Коэффициент заряда
+appaero.item.damage.name=Урон
+appaero.item.energyperdamage.name=Энергия за урон
+appaero.item.armorbase.name=Основа брони
+appaero.item.absorptionratio.name=Соотношение поглощения
+appaero.item.dischargepertick.name=Разрядка за тик
+appaero.item.stepheight.name=Высота шага
+appaero.item.runspeed.name=Скорость бега
+appaero.item.walkspeed.name=Скорость ходьбы
+appaero.item.flyspeed.name=Скорость полёта
+
+# Tile Entities
+appaero.tile.workbench.name=Верстак модификаций
+
+# GUI Labels
+appaero.gui.workbench.name=Верстак модификаций
+appaero.gui.inventory.name=Инвентарь
