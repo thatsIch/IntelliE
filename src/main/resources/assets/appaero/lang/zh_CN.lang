@@ -2,9 +2,9 @@
 appaero.tab.name=应用空气动力
 
 # Items
-appaero.item.disassembler.name=反汇编扳手
-appaero.item.skydiver.name=Skydiver
-appaero.item.chestnut.name=奇点陨石胸甲
+appaero.item.disassembler.name=万能拆卸扳手
+appaero.item.skydiver.name=天行头盔
+appaero.item.chestnut.name=奇点胸甲
 appaero.item.freerunner.name=飞速护腿
 appaero.item.horseshoes.name=马蹄铁靴子
 appaero.item.skystone_ingot.name=陨石锭
@@ -24,6 +24,7 @@ appaero.item.stepheight.name=阶跃高度
 appaero.item.runspeed.name=奔跑速度
 appaero.item.walkspeed.name=步行速度
 appaero.item.flyspeed.name=飞行速度
+appaero.item.breathing.name=水下呼吸
 
 # Tile Entities
 appaero.tile.workbench.name=改进工作台
