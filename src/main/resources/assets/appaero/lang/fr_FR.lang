@@ -1,0 +1,34 @@
+# Creative Tabs 
+appaero.tab.name=Applied Aerodynamics 
+
+# Items 
+appaero.item.disassembler.name=Désassembleur 
+appaero.item.skydiver.name=Parachutiste 
+appaero.item.chestnut.name=Châtaigne 
+appaero.item.freerunner.name=Courreur libre 
+appaero.item.horseshoes.name=Fer à cheval 
+appaero.item.skystone_ingot.name=Lingot de pierre du ciel 
+
+# NBT Tags 
+appaero.item.maxenergy.name=Max Energie
+appaero.item.miningspeed.name=Vitesse d'extraction 
+appaero.item.energycost.name=Coût énergétique 
+appaero.item.mininglevel.name=Niveau d'extraction 
+appaero.item.chargemultiplier.name=Multiplicateur de charge 
+appaero.item.damage.name=Dégât 
+appaero.item.energyperdamage.name=Energie par dégât 
+appaero.item.armorbase.name=Base d'armure 
+appaero.item.absorptionratio.name=Ratio d'absorption 
+appaero.item.dischargepertick.name=Décharge par Tick 
+appaero.item.stepheight.name=Hauteur de pas 
+appaero.item.runspeed.name=Vitesse de course 
+appaero.item.walkspeed.name=Vitesse de marche 
+appaero.item.flyspeed.name=Vitesse de vol 
+appaero.item.breathing.name=Respiration 
+
+# Tile Entities 
+appaero.tile.workbench.name=Etabli de modification 
+
+# GUI Labels 
+appaero.gui.workbench.name=Etabli de modification 
+appaero.gui.inventory.name=Inventaire
