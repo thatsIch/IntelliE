@@ -14,20 +14,20 @@ import de.thatsich.minecraft.common.log.Log
 import scala.collection.JavaConverters._
 
 
-trait ChildUnloader
+class ChildUnloader
 {
+	private val loader = Loader.instance()
+
+	private val modsField = this.grantFieldAccess(classOf[Loader], "mods")
+	private val namedModsField = this.grantFieldAccess(classOf[Loader], "namedMods")
+	private val modControllerField = this.grantFieldAccess(classOf[Loader], "modController")
+	private val activeModListField = this.grantFieldAccess(classOf[LoadController], "activeModList")
+	private val eventChannelsField = this.grantFieldAccess(classOf[LoadController], "eventChannels")
+
 	def unload(id: String, disableModule: Boolean, log: Log): Unit =
 	{
 		if (disableModule)
 		{
-			val loader = Loader.instance()
-
-			val modsField = this.grantFieldAccess(classOf[Loader], "mods")
-			val namedModsField = this.grantFieldAccess(classOf[Loader], "namedMods")
-			val modControllerField = this.grantFieldAccess(classOf[Loader], "modController")
-			val activeModListField = this.grantFieldAccess(classOf[LoadController], "activeModList")
-			val eventChannelsField = this.grantFieldAccess(classOf[LoadController], "eventChannels")
-
 			val mods = modsField.get(loader).asInstanceOf[ImmutableList[ModContainer]]
 			val namedMods = namedModsField.get(loader).asInstanceOf[ImmutableMap[String, ModContainer]]
 			val modController = modControllerField.get(loader).asInstanceOf[LoadController]
