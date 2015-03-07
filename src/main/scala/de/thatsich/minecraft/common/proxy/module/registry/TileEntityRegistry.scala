@@ -18,7 +18,7 @@ import net.minecraft.tileentity.TileEntity
 class TileEntityRegistry(registrable: Seq[Class[_ <: TileEntity]], log: Log)
 {
 	/**
-	 * Registers all tile entites of the module
+	 * Registers all tile entities of the module
 	 */
 	def registerAll(): Unit =
 	{
@@ -37,6 +37,6 @@ class TileEntityRegistry(registrable: Seq[Class[_ <: TileEntity]], log: Log)
 
 		this.log.debug(s"> Registering tile $simpleClassName")
 		GameRegistry.registerTileEntity(teClass, teClass.toString)
-		AEApi.instance().registries().moveable().whiteListTileEntity(teClass)
+		AEApi.instance().registries().movable().whiteListTileEntity(teClass)
 	}
 }
