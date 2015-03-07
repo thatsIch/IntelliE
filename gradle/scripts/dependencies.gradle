@@ -33,7 +33,7 @@ repositories {
 
 dependencies {
      // AE2 dependency
-    compile("appeng:appliedenergistics2:rv1-stable-1:dev") {
+    compile("appeng:appliedenergistics2:rv2-beta-8:dev") {
         exclude group: "net.industrial-craft", module: "industrialcraft-2"
         exclude group: "mcp.mobius.waila", module: "Waila"
         exclude group: "codechicken", module: "ForgeMultipart"
@@ -41,7 +41,7 @@ dependencies {
 
 //    compile "mcp.mobius.waila:Waila:1.5.3_1.7.10"
     compile "codechicken:CodeChickenCore:1.7.10-1.0.4.29:dev"
-    compile "codechicken:NotEnoughItems:1.7.10-1.0.3.68:dev"
+    compile "codechicken:NotEnoughItems:1.7.10-1.0.3.74:dev"
 
     testCompile "org.scalatest:scalatest_2.11:2.2.0"
     testCompile "org.scalamock:scalamock-scalatest-support_2.11:3.1.2"

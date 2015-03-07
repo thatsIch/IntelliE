@@ -4,8 +4,8 @@ idea{
     module{
         inheritOutputDirs = true
 
-        excludeDirs += file(".idea/")
-        excludeDirs += file("run/")
+        // excludeDirs += file(".idea/")
+        // excludeDirs += file("run/")
 
 //        outputDir = compileJava.destinationDir
 //        testOutputDir = compileTestJava.destinationDir

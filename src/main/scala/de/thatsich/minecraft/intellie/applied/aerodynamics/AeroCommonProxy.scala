@@ -13,7 +13,7 @@ import net.minecraft.item.Item
 
 
 /**
- * Proxy class shared beetween server and client
+ * Proxy class shared between server and client
  *
  * @author thatsIch
  * @since 03.08.2014.
