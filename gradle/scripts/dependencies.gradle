@@ -34,9 +34,7 @@ repositories {
 dependencies {
      // AE2 dependency
     compile("appeng:appliedenergistics2:rv2-beta-8:dev") {
-        exclude group: "net.industrial-craft", module: "industrialcraft-2"
-        exclude group: "mcp.mobius.waila", module: "Waila"
-        exclude group: "codechicken", module: "ForgeMultipart"
+        transitive = false
     }
 
 //    compile "mcp.mobius.waila:Waila:1.5.3_1.7.10"
