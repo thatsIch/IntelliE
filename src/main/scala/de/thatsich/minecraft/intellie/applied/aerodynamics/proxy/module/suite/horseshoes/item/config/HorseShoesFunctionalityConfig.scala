@@ -9,7 +9,7 @@ package de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.h
  */
 private[horseshoes] trait HorseShoesFunctionalityConfig
 {
-	def minimalExtraStepHeight: Double
+	def minimalStepHeight: Double
 
-	def maximalExtraStepHeight: Double
+	def maximalStepHeight: Double
 }

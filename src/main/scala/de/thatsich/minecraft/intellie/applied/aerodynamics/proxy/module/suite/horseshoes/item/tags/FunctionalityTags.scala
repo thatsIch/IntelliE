@@ -15,8 +15,7 @@ private[horseshoes]
 class FunctionalityTags(config: HorseShoesFunctionalityConfig)
 extends NBTTags
 {
-	override def values = Vector(ExtraStepHeight)
+	override def values = Vector(StepHeight)
 
-	object ExtraStepHeight extends BaseBoundNBTProperty[Double](this.config.minimalExtraStepHeight, this.config.maximalExtraStepHeight, 10)
-
+	object StepHeight extends BaseBoundNBTProperty[Double](this.config.minimalStepHeight, this.config.maximalStepHeight, 10)
 }

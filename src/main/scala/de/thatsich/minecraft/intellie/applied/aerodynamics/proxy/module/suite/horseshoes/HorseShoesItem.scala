@@ -13,6 +13,7 @@ import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.co
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.common.{ArmorPower, SpecialArmor}
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.HorseShoesStepHeightLogic
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.config.{HorseShoesArmorConfigAccess, HorseShoesConfig, HorseShoesFunctionalityConfigAccess, HorseShoesArmorPowerConfigAccess}
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.steplogic.BoostedRegistry
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.suite.horseshoes.item.tags.FunctionalityTags
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.entity.player.EntityPlayer
@@ -45,6 +46,8 @@ extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
 	val functionalityTags = new FunctionalityTags(this.functionalityConfig)
 	val powerTags = new ArmorPowerTags(this.powerConfig)
 
+	val boosted: BoostedRegistry = new BoostedRegistry
+
 	override def getNBTKeys: Seq[NBTTags] = Vector(this.armorTags, this.functionalityTags, this.powerTags)
 
 	override def addInformation(is: ItemStack, player: EntityPlayer, information: java.util.List[_], advToolTips: Boolean) =
@@ -64,7 +67,7 @@ extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
 			list.add(s"Energy per Damage: ${this.getEnergyPerDamage(is).toInt}")
 			list.add(s"Absorptionratio: ${this.getAbsorptionRatio(is)}")
 			list.add(s"Armorbase: ${this.getArmorBase(is).toInt}")
-			list.add(s"Stepheight: ${this.getExtraStepHeight(is)}")
+			list.add(s"Stepheight: ${this.getStepHeight(is)}")
 		}
 		else
 		{
@@ -92,7 +95,7 @@ extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
 		tag.setInteger(this.armorTags.ArmorBase.toString, this.armorTags.ArmorBase.max)
 		tag.setDouble(this.armorTags.AbsorptionRatio.toString, this.armorTags.AbsorptionRatio.max)
 
-		tag.setDouble(this.functionalityTags.ExtraStepHeight.toString, this.functionalityTags.ExtraStepHeight.max)
+		tag.setDouble(this.functionalityTags.StepHeight.toString, this.functionalityTags.StepHeight.max)
 
 		list.add(stack)
 	}
