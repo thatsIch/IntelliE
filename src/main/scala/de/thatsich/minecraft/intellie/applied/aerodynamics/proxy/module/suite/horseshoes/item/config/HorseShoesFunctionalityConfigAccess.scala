@@ -13,8 +13,8 @@ import de.thatsich.minecraft.common.config.Config
 private[horseshoes] class HorseShoesFunctionalityConfigAccess(config: Config)
 extends HorseShoesFunctionalityConfig
 {
-	val minimalStepHeight = this.config.getDouble("Functionality", "minimalStepHeight", 0.5)
-	val maximalStepHeight = this.config.getDouble("Functionality", "maximalStepHeight", 1)
+	val minimalExtraStepHeight = this.config.getDouble("Functionality", "minimalExtraStepHeight", 0)
+	val maximalExtraStepHeight = this.config.getDouble("Functionality", "maximalExtraStepHeight", 0.5)
 
 	this.config.save()
 }

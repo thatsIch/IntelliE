@@ -64,7 +64,7 @@ extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
 			list.add(s"Energy per Damage: ${this.getEnergyPerDamage(is).toInt}")
 			list.add(s"Absorptionratio: ${this.getAbsorptionRatio(is)}")
 			list.add(s"Armorbase: ${this.getArmorBase(is).toInt}")
-			list.add(s"Stepheight: ${this.getStepHeight(is)}")
+			list.add(s"Stepheight: ${this.getExtraStepHeight(is)}")
 		}
 		else
 		{
@@ -92,7 +92,7 @@ extends BaseItemArmor(ArmorType.Boots, modid, new HorseShoesID, log)
 		tag.setInteger(this.armorTags.ArmorBase.toString, this.armorTags.ArmorBase.max)
 		tag.setDouble(this.armorTags.AbsorptionRatio.toString, this.armorTags.AbsorptionRatio.max)
 
-		tag.setDouble(this.functionalityTags.StepHeight.toString, this.functionalityTags.StepHeight.max)
+		tag.setDouble(this.functionalityTags.ExtraStepHeight.toString, this.functionalityTags.ExtraStepHeight.max)
 
 		list.add(stack)
 	}

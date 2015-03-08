@@ -41,7 +41,7 @@ extends ItemArmor
 		{
 			this.extractAEPower(is, discharge)
 
-			player.stepHeight = this.getStepHeight(is).toFloat
+			player.stepHeight = this.getExtraStepHeight(is).toFloat
 			player.fallDistance = 0
 		}
 		else
@@ -50,5 +50,5 @@ extends ItemArmor
 		}
 	}
 
-	def getStepHeight(armor: ItemStack): Double = this.withinBounds(armor, this.functionalityTags.StepHeight)
+	def getExtraStepHeight(armor: ItemStack): Double = this.withinBounds(armor, this.functionalityTags.ExtraStepHeight)
 }
