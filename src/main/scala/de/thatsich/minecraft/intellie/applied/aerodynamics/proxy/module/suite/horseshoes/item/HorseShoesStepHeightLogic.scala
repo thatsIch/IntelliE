@@ -28,7 +28,7 @@ extends ItemArmor
 	MinecraftForge.EVENT_BUS.register(new HorseShoesLivingUpdateEventHandler(this))
 
 	/**
-	 * Ticks every tick when equiped in armor slot
+	 * Ticks every tick when equipped in armor slot
 	 * when player is sprinting and has enough power
 	 * power is drained and the stepheight is increased
 	 */

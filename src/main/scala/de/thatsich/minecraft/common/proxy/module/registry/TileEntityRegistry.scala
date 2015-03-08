@@ -1,6 +1,8 @@
 package de.thatsich.minecraft.common.proxy.module.registry
 
-import appeng.api.AEApi
+import appeng.api.features.IRegistryContainer
+import appeng.api.movable.IMovableRegistry
+import appeng.api.{IAppEngApi, AEApi}
 import cpw.mods.fml.common.registry.GameRegistry
 import de.thatsich.minecraft.common.log.Log
 import net.minecraft.tileentity.TileEntity
@@ -37,6 +39,11 @@ class TileEntityRegistry(registrable: Seq[Class[_ <: TileEntity]], log: Log)
 
 		this.log.debug(s"> Registering tile $simpleClassName")
 		GameRegistry.registerTileEntity(teClass, teClass.toString)
-		AEApi.instance().registries().movable().whiteListTileEntity(teClass)
+
+		val api: IAppEngApi = AEApi.instance()
+		val registries: IRegistryContainer = api.registries()
+		val movable: IMovableRegistry = registries.movable()
+
+		movable.whiteListTileEntity(teClass)
 	}
 }

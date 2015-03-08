@@ -17,7 +17,7 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent
 class HorseShoesLivingUpdateEventHandler(armor: ItemArmor)
 {
 	/**
-	 * reset player step height
+	 * reset player step height, when shoes were unequipped
 	 */
 	@SubscribeEvent
 	def onLivingUpdateEvent(event: LivingUpdateEvent): Unit =
