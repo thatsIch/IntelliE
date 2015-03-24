@@ -1,6 +1,6 @@
 # IntelliE
 
-## Table of Content
+## Table of Contents
 
 * [About](#about)
 * [Contacts](#contacts)
