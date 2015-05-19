@@ -1,6 +1,6 @@
 # IntelliE
 
-## Table of Content
+## Table of Contents
 
 * [About](#about)
 * [Contacts](#contacts)
@@ -88,4 +88,4 @@ Thanks to
 * Notch et al for Minecraft
 * Lex et al for MinecraftForge
 * AlgorithmnX2 for AppliedEnergistics2
-* all [contributers](https://github.com/thatsIch/IntelliE-Scala/graphs/contributors) helping making this mod.
+* all [contributors](https://github.com/thatsIch/IntelliE-Scala/graphs/contributors) helping making this mod.
