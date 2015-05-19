@@ -33,13 +33,13 @@ repositories {
 
 dependencies {
      // AE2 dependency
-    compile("appeng:appliedenergistics2:rv2-beta-8:dev") {
+    compile("appeng:appliedenergistics2:rv2-stable-2:dev") {
         transitive = false
     }
 
 //    compile "mcp.mobius.waila:Waila:1.5.3_1.7.10"
-    compile "codechicken:CodeChickenCore:1.7.10-1.0.4.29:dev"
-    compile "codechicken:NotEnoughItems:1.7.10-1.0.3.74:dev"
+    compile "codechicken:CodeChickenCore:1.7.10-1.0.4.35:dev"
+    compile "codechicken:NotEnoughItems:1.7.10-1.0.4.90:dev"
 
     testCompile "org.scalatest:scalatest_2.11:2.2.0"
     testCompile "org.scalamock:scalamock-scalatest-support_2.11:3.1.2"

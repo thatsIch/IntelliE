@@ -20,7 +20,7 @@ trait Weapon extends BaseItem
                      with NBTAccess
                      with DisassemblerItemPowerStorage
 {
-	def weapontags: WeaponTags
+	def weaponTags: WeaponTags
 
 	/**
 	 * Called when hitting an entity
@@ -53,5 +53,5 @@ trait Weapon extends BaseItem
 		false
 	}
 
-	def getCurrentDamageVsEntities(is: ItemStack): Double = this.withinBounds(is, this.weapontags.Damage)
+	def getCurrentDamageVsEntities(is: ItemStack): Double = this.withinBounds(is, this.weaponTags.Damage)
 }

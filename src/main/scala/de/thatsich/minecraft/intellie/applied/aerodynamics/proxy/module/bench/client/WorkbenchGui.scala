@@ -22,7 +22,7 @@ import net.minecraft.util.{ResourceLocation, StatCollector}
  * @since 06.08.2014.
  */
 @SideOnly(Side.CLIENT)
-class WorkbechGui(invPlayer: InventoryPlayer, workbench: WorkbenchTileEntity, log: Log, recipestorage: WorkbenchCraftRecipeStorage) extends BaseGuiContainer(new WorkbenchContainer(invPlayer, workbench, log, SlotSide.Client, recipestorage))
+class WorkbenchGui(invPlayer: InventoryPlayer, workbench: WorkbenchTileEntity, log: Log, recipestorage: WorkbenchCraftRecipeStorage) extends BaseGuiContainer(new WorkbenchContainer(invPlayer, workbench, log, SlotSide.Client, recipestorage))
 {
 	this.xSize = 176
 	this.ySize = 176

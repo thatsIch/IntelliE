@@ -7,7 +7,7 @@ import codechicken.nei.PositionedStack
 import codechicken.nei.recipe.TemplateRecipeHandler
 import com.google.common.collect.Lists
 import de.thatsich.minecraft.intellie.applied.aerodynamics.AppliedAerodynamics
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench.client.WorkbechGui
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench.client.WorkbenchGui
 import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench.{WorkbenchCraftRecipe, WorkbenchCraftRecipeStorage}
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.inventory.GuiContainer
@@ -56,7 +56,7 @@ class NEIWorkbenchRecipeHandler extends TemplateRecipeHandler
 	 *
 	 * @return workbench gui container
 	 */
-	override def getGuiClass: Class[_ <: GuiContainer] = classOf[WorkbechGui]
+	override def getGuiClass: Class[_ <: GuiContainer] = classOf[WorkbenchGui]
 
 	/**
 	 * add the recipes to the list

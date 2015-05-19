@@ -5,7 +5,7 @@ import de.thatsich.minecraft.common.log.Log
 import de.thatsich.minecraft.common.proxy.module.BlockGuiHandler
 import de.thatsich.minecraft.common.proxy.module.container.SlotSide
 import de.thatsich.minecraft.common.util.string.ID
-import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench.client.WorkbechGui
+import de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.module.bench.client.WorkbenchGui
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.tileentity.TileEntity
 
@@ -17,13 +17,13 @@ import net.minecraft.tileentity.TileEntity
  * @author thatsIch
  * @since 06.08.2014.
  */
-class WorkbenchGuiHandler(val name: ID, log: Log, recipestorage: WorkbenchCraftRecipeStorage) extends BlockGuiHandler
+class WorkbenchGuiHandler(val name: ID, log: Log, recipeStorage: WorkbenchCraftRecipeStorage) extends BlockGuiHandler
 {
 	def getServerGuiElement(player: EntityPlayer, tile: TileEntity): AnyRef =
 	{
 		tile match
 		{
-			case workbench: WorkbenchTileEntity => new WorkbenchContainer(player.inventory, workbench, this.log, SlotSide.Server, recipestorage)
+			case workbench: WorkbenchTileEntity => new WorkbenchContainer(player.inventory, workbench, this.log, SlotSide.Server, recipeStorage)
 			case _                              =>
 				this.log.warn(s"Handler $this was used with TE $tile")
 				null
@@ -34,7 +34,7 @@ class WorkbenchGuiHandler(val name: ID, log: Log, recipestorage: WorkbenchCraftR
 	{
 		tile match
 		{
-			case workbench: WorkbenchTileEntity => new WorkbechGui(player.inventory, workbench, this.log, this.recipestorage)
+			case workbench: WorkbenchTileEntity => new WorkbenchGui(player.inventory, workbench, this.log, this.recipeStorage)
 			case _                              =>
 				this.log.warn(s"Handler $this was used with TE $tile")
 				null

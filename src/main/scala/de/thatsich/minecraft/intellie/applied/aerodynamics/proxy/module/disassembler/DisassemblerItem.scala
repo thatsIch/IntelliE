@@ -48,10 +48,10 @@ extends BaseItem(new DisassemblerID, modid, log)
 	val powerStorageConfig: DisassemblerItemPowerStorageConfig = new DisassemblerItemPowerStorageConfigAccess(this.config)
 
 	val toolTags: ToolTags = new ToolTags(this.functionalityConfig)
-	val weapontags: WeaponTags = new WeaponTags(this.weaponConfig)
+	val weaponTags: WeaponTags = new WeaponTags(this.weaponConfig)
 	val powerStorageTags: ItemPowerStorageTags = new ItemPowerStorageTags(this.powerStorageConfig)
 
-	override def getNBTKeys: Seq[NBTTags] = Vector(this.toolTags, this.weapontags, this.powerStorageTags)
+	override def getNBTKeys: Seq[NBTTags] = Vector(this.toolTags, this.weaponTags, this.powerStorageTags)
 
 	override def addInformation(is: ItemStack, player: EntityPlayer, information: java.util.List[_], advToolTips: Boolean) =
 	{
@@ -112,7 +112,7 @@ extends BaseItem(new DisassemblerID, modid, log)
 		tag.setInteger(this.powerStorageTags.ChargeMultiplier.toString, this.powerStorageTags.ChargeMultiplier.max)
 		tag.setDouble(this.powerStorageTags.EnergyCost.toString, this.powerStorageTags.EnergyCost.max)
 
-		tag.setDouble(this.weapontags.Damage.toString, this.weapontags.Damage.max)
+		tag.setDouble(this.weaponTags.Damage.toString, this.weaponTags.Damage.max)
 
 		tag.setInteger(this.toolTags.MiningLevel.toString, this.toolTags.MiningLevel.max)
 		tag.setInteger(this.toolTags.MiningSpeed.toString, this.toolTags.MiningSpeed.max)
