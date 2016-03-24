@@ -1,6 +1,6 @@
 // needed for pulling new versions from forge
 minecraft {
-    version = "$mcversion-10.13.2.1291"
+    version = "$mcversion-10.13.4.1558"
     replace "@version@", projectversion.toString()
     runDir = rundir
 }
