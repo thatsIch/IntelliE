@@ -31,3 +31,18 @@ test:
     # may contain duplicates but worth the whole process
     - ./gradlew build
 
+    # copy all artifacts to $CIRCLE_ARTIFACTS
+
+    - mkdir -p $CIRCLE_ARTIFACTS/jars
+    - cp -r build/libs/. build/libs/* $CIRCLE_ARTIFACTS/jars
+
+    - mkdir -p $CIRCLE_ARTIFACTS/javadoc
+    - cp -r build/docs/javadoc/. build/docs/javadoc/* $CIRCLE_ARTIFACTS/javadoc
+
+    - mkdir -p $CIRCLE_ARTIFACTS/test
+    - cp -r build/reports/tests/. build/reports/tests/* $CIRCLE_ARTIFACTS/test
+
+    # copy the XML output of unit testing to let circle io collect the meta data
+    # https://circleci.com/docs/test-metadata#metadata-collection-in-custom-test-steps
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
