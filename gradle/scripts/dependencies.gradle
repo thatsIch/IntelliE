@@ -33,7 +33,8 @@ repositories {
 
 dependencies {
      // AE2 dependency
-    compile("appeng:appliedenergistics2:rv2-stable-2:dev") {
+    compile "appeng:appliedenergistics2:rv3-beta-5:api"
+    runtime("appeng:appliedenergistics2:rv3-beta-5:dev") {
         transitive = false
     }
 
