@@ -10,13 +10,13 @@ appaero.item.horseshoes.name=Fer à cheval
 appaero.item.skystone_ingot.name=Lingot de pierre du ciel 
 
 # NBT Tags 
-appaero.item.maxenergy.name=Max Energie
+appaero.item.maxenergy.name=Énergie maxi
 appaero.item.miningspeed.name=Vitesse d'extraction 
 appaero.item.energycost.name=Coût énergétique 
 appaero.item.mininglevel.name=Niveau d'extraction 
 appaero.item.chargemultiplier.name=Multiplicateur de charge 
 appaero.item.damage.name=Dégât 
-appaero.item.energyperdamage.name=Energie par dégât 
+appaero.item.energyperdamage.name=Énergie par dégât 
 appaero.item.armorbase.name=Base d'armure 
 appaero.item.absorptionratio.name=Ratio d'absorption 
 appaero.item.dischargepertick.name=Décharge par Tick 
