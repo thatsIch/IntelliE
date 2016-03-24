@@ -36,9 +36,9 @@ private[disassembler] trait PrecisionHarvester extends Item
 	override def onItemUseFirst(stack: ItemStack, player: EntityPlayer, world: World, x: Int, y: Int, z: Int, side: Int, hitX: Float, hitY: Float, hitZ: Float): Boolean =
 	{
 		val block: Block = world.getBlock(x, y, z)
-		val blockCharger = AEApi.instance().blocks().blockCharger
+		val blockCharger = AEApi.instance().definitions().blocks().charger()
 
-		if (blockCharger.sameAsBlock(world, x, y, z) || !this.canHarvestBlock(block, stack))
+		if (blockCharger.isSameAs(world, x, y, z) || !this.canHarvestBlock(block, stack))
 		{
 			false
 		}
