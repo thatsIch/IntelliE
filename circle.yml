@@ -1,0 +1,33 @@
+#adjusting the VM to your preferences and requirements
+machine:
+  java:
+    version: oraclejdk8
+  timezone: Europe/Berlin
+
+# setting up your project's language-specific dependencies
+dependencies:
+  override:
+    - chmod +x gradlew
+    # print CPU architecture
+    - lscpu
+
+  cache_directories:
+    - "~/.gradle"
+    - ".gradle"
+
+# running your tests
+test:
+  override:
+    - ./gradlew test
+
+  post:
+    # after all tests build the jars
+    # generates changelog
+    # generates jar
+    # generates javadoc
+    # generates sources
+    # tests
+    # coverages
+    # may contain duplicates but worth the whole process
+    - ./gradlew build
+
