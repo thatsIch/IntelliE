@@ -114,6 +114,8 @@ package object packager
  *
  * It provides a Fuzzy Mode, which lets you chain all of the same inventory
  * touching the imprinted inventory.
+ *
+ * name: connected distribution
  * </p>
  */
 package object router

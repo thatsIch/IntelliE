@@ -19,5 +19,6 @@
 !.gitmodules
 !.gitignore
 
-# include travis build
+# include travis and circle build
 !.travis.yml
+!circle.yml
