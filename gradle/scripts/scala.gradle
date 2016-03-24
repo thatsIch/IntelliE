@@ -1,5 +1,15 @@
 apply plugin: 'scala'       // enable scala, needs to be called after java plugin
 
+// uses scala compile daemon
+compileScala {
+    scalaCompileOptions.useCompileDaemon = true
+}
+
+// use FSC and not Ant to compile
+tasks.withType(ScalaCompile) {
+    scalaCompileOptions.useAnt = false
+}
+
 // add the API to the sourcesets so that it will be included into the build
 sourceSets {
     main {

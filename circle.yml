@@ -12,7 +12,7 @@ dependencies:
     - lscpu
 
   cache_directories:
-    - "~/.gradle"
+    - "home/unbuntu/.gradle"
     - ".gradle"
 
 # running your tests

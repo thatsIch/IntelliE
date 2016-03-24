@@ -120,9 +120,14 @@ private void tag(String oldTag, String newTag) {
     String message = "Incrementing project version: $oldTag -> $newTag"
     logger.quiet message
 
-    exec {
+    try {
+        exec {
         executable = 'git'
         args = ['tag', '-a', "v$newTag", "-m", message]
+        }
+    }
+    catch (exception) {
+        logger.warn "can not tag cause: $exception"
     }
 }
 

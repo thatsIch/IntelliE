@@ -67,7 +67,7 @@ dependencies {
     compile("appeng:appliedenergistics2:rv3-beta-5:api") {
         transitive = false
     }
-    runtime("appeng:appliedenergistics2:rv3-beta-5:dev") {
+    runtime("appeng:appliedenergistics2:rv2-stable-10:dev") {
         transitive = false
     }
 
