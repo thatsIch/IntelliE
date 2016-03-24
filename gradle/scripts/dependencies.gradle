@@ -29,17 +29,50 @@ repositories {
         name = "chickenbones"
         url = "http://chickenbones.net/maven/"
     }
+
+    // for APIs
+    maven {
+        name "FireBall API Depot"
+        url "http://dl.tsr.me/artifactory/libs-release-local"
+    }
+
+    maven {
+        name = "Tterrag"
+        url = "http://maven.tterrag.com/"
+    }
+
+    maven  {
+        name = "RX14 Proxy"
+        url = "http://mvn.rx14.co.uk/repo/"
+    }
+
+    maven {
+        name "OpenComputers Repo"
+        url = "http://maven.cil.li/"
+    }
+
+    maven {
+        name = "MM repo"
+        url = "http://maven.k-4u.nl/"
+    }
+
+    ivy {
+        name "BuildCraft"
+        artifactPattern "http://www.mod-buildcraft.com/releases/BuildCraft/[revision]/[module]-[revision]-[classifier].[ext]"
+    }
 }
 
 dependencies {
      // AE2 dependency
-    compile "appeng:appliedenergistics2:rv3-beta-5:api"
+    compile("appeng:appliedenergistics2:rv3-beta-5:api") {
+        transitive = false
+    }
     runtime("appeng:appliedenergistics2:rv3-beta-5:dev") {
         transitive = false
     }
 
 //    compile "mcp.mobius.waila:Waila:1.5.3_1.7.10"
-    compile "codechicken:CodeChickenCore:1.7.10-1.0.4.35:dev"
+    runtime "codechicken:CodeChickenCore:1.7.10-1.0.4.35:dev"
     compile "codechicken:NotEnoughItems:1.7.10-1.0.4.90:dev"
 
     testCompile "org.scalatest:scalatest_2.11:2.2.0"
