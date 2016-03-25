@@ -56,15 +56,15 @@ repositories {
         url = "http://maven.k-4u.nl/"
     }
 
+    // BuildCraft
     ivy {
-        name "BuildCraft"
         artifactPattern "http://www.mod-buildcraft.com/releases/BuildCraft/[revision]/[module]-[revision]-[classifier].[ext]"
     }
 }
 
 dependencies {
      // AE2 dependency
-    compile("appeng:appliedenergistics2:rv3-beta-5:api") {
+    compile("appeng:appliedenergistics2:rv2-stable-10:api") {
         transitive = false
     }
     runtime("appeng:appliedenergistics2:rv2-stable-10:dev") {
@@ -72,7 +72,7 @@ dependencies {
     }
 
 //    compile "mcp.mobius.waila:Waila:1.5.3_1.7.10"
-    runtime "codechicken:CodeChickenCore:1.7.10-1.0.4.35:dev"
+    compile "codechicken:CodeChickenCore:1.7.10-1.0.4.35:dev"
     compile "codechicken:NotEnoughItems:1.7.10-1.0.4.90:dev"
 
     testCompile "org.scalatest:scalatest_2.11:2.2.0"
