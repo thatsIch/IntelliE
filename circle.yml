@@ -10,6 +10,7 @@ dependencies:
     - chmod +x gradlew
     # print CPU architecture
     - lscpu
+    - ./gradlew check
 
   cache_directories:
     - "home/unbuntu/.gradle"
