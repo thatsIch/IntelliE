@@ -24,7 +24,7 @@ test:
     # after all tests build the jars
     # generates changelog
     # generates jar
-    # generates javadoc
+    # generates javadoc - not yet
     # generates sources
     # tests
     # coverages
@@ -36,8 +36,8 @@ test:
     - mkdir -p $CIRCLE_ARTIFACTS/jars
     - cp -r build/libs/. build/libs/* $CIRCLE_ARTIFACTS/jars
 
-    - mkdir -p $CIRCLE_ARTIFACTS/javadoc
-    - cp -r build/docs/javadoc/. build/docs/javadoc/* $CIRCLE_ARTIFACTS/javadoc
+    # - mkdir -p $CIRCLE_ARTIFACTS/javadoc
+    # - cp -r build/docs/javadoc/. build/docs/javadoc/* $CIRCLE_ARTIFACTS/javadoc
 
     - mkdir -p $CIRCLE_ARTIFACTS/test
     - cp -r build/reports/tests/. build/reports/tests/* $CIRCLE_ARTIFACTS/test
