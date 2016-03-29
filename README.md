@@ -1,5 +1,7 @@
 # IntelliE
 
+[![Build Status](https://circleci.com/gh/thatsIch/IntelliE.svg?style=svg&circle-token=ebbc5957ab386cd6932571453b744374ea29ce7f)](https://circleci.com/gh/thatsIch/IntelliE)
+
 ## Table of Contents
 
 * [About](#about)
