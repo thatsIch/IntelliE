@@ -2,6 +2,7 @@
 
 [![Build Status](https://circleci.com/gh/thatsIch/IntelliE.svg?style=shield&circle-token=ebbc5957ab386cd6932571453b744374ea29ce7f)](https://circleci.com/gh/thatsIch/IntelliE)
 [![Coverage Status](https://coveralls.io/repos/thatsIch/IntelliE/badge.svg?branch=master&service=github)](https://coveralls.io/github/thatsIch/IntelliE?branch=master)
+[![GitHub version](https://badge.fury.io/gh/thatsIch%2FIntelliE.svg)](http://badge.fury.io/gh/thatsIch%2FIntelliE)
 
 ## Table of Contents
 
