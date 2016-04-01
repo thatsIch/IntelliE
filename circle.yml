@@ -14,7 +14,7 @@ dependencies:
     - chmod +x gradlew
 
     # check gradle dependencies
-    - ./gradlew dependencies --daemon
+    - ./gradlew dependencies --daemon --quiet
     - ./gradlew compileTestJava --daemon
 
   cache_directories:
