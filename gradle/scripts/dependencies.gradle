@@ -75,6 +75,7 @@ dependencies {
     compile "codechicken:CodeChickenCore:1.7.10-1.0.4.35:dev"
     compile "codechicken:NotEnoughItems:1.7.10-1.0.4.90:dev"
 
+    testCompile "junit:junit:4.12"
     testCompile "org.scalatest:scalatest_2.11:2.2.0"
     testCompile "org.scalamock:scalamock-scalatest-support_2.11:3.1.2"
 }
