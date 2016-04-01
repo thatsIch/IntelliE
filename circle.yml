@@ -7,6 +7,8 @@ machine:
 # setting up your project's language-specific dependencies
 dependencies:
   override:
+    # grand gradlew permissions
+    - chmod +x gradlew
     - ./gradlew compileTestJava
 
   cache_directories:
