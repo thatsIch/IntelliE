@@ -8,6 +8,9 @@ checkout:
   post:
     - git fetch --tags
 
+    # show all tags
+    - git tag
+
 # setting up your project's language-specific dependencies
 dependencies:
   pre:
