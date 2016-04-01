@@ -22,7 +22,9 @@ dependencies:
 
   override:
     # check gradle dependencies
-    - ./gradlew dependencies --daemon --profile > /dev/null
+    #- ./gradlew dependencies --daemon --profile > /dev/null
+    # test it with dry run
+    - ./gradlew test --daemon --dry-run
 
   cache_directories:
     - "~/.gradle"
@@ -42,7 +44,7 @@ test:
     # tests
     # coverages
     # may contain duplicates but worth the whole process
-    - ./gradlew build --daemon
+    - ./gradlew build --daemon --profile
 
     # copy all artifacts to $CIRCLE_ARTIFACTS
 
