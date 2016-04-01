@@ -7,13 +7,11 @@ machine:
 # setting up your project's language-specific dependencies
 dependencies:
   override:
-    - chmod +x gradlew
-    # print CPU architecture
-    - lscpu
-    - ./gradlew check
+    - ./gradlew compileTestJava
 
   cache_directories:
     - "home/unbuntu/.gradle"
+    - "~/.gradle"
     - ".gradle"
 
 # running your tests
