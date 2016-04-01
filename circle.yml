@@ -22,7 +22,7 @@ dependencies:
 
   override:
     # check gradle dependencies
-    - ./gradlew dependencies --daemon > /dev/null
+    - ./gradlew dependencies --daemon --profile > /dev/null
 
   cache_directories:
     - "~/.gradle"
@@ -48,6 +48,9 @@ test:
 
     - mkdir -p $CIRCLE_ARTIFACTS/jars
     - cp -r build/libs/. build/libs/* $CIRCLE_ARTIFACTS/jars
+
+    - mkdir -p $CIRCLE_ARTIFACTS/profile
+    - cp -r build/reports/profile/* $CIRCLE_ARTIFACTS/profile
 
     # - mkdir -p $CIRCLE_ARTIFACTS/javadoc
     # - cp -r build/docs/javadoc/. build/docs/javadoc/* $CIRCLE_ARTIFACTS/javadoc
