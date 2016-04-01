@@ -20,6 +20,9 @@ dependencies:
     # grand gradlew permissions
     - chmod +x gradlew
 
+    # maybe fixes git?
+    - unset GIT_EXEC_PATH
+
   override:
     # check gradle dependencies
     - ./gradlew dependencies --daemon > /dev/null
