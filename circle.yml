@@ -4,15 +4,20 @@ machine:
     version: oraclejdk8
   timezone: Europe/Berlin
 
+checkout:
+  post:
+    - git fetch --tags
+
 # setting up your project's language-specific dependencies
 dependencies:
-  override:
+  pre:
     # print CPU architecture
     - lscpu
 
     # grand gradlew permissions
     - chmod +x gradlew
 
+  override:
     # check gradle dependencies
     - ./gradlew dependencies --daemon --quiet
     - ./gradlew compileTestJava --daemon
