@@ -15,7 +15,6 @@ dependencies:
     - ./gradlew compileTestJava --daemon
 
   cache_directories:
-    - "home/unbuntu/.gradle"
     - "~/.gradle"
     - ".gradle"
 
