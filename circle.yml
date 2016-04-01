@@ -7,9 +7,12 @@ machine:
 # setting up your project's language-specific dependencies
 dependencies:
   override:
+    # print CPU architecture
+    - lscpu
+
     # grand gradlew permissions
     - chmod +x gradlew
-    - ./gradlew compileTestJava
+    - ./gradlew compileTestJava --daemon
 
   cache_directories:
     - "home/unbuntu/.gradle"
@@ -19,7 +22,7 @@ dependencies:
 # running your tests
 test:
   override:
-    - ./gradlew test
+    - ./gradlew test --daemon
 
   post:
     # after all tests build the jars
@@ -30,7 +33,7 @@ test:
     # tests
     # coverages
     # may contain duplicates but worth the whole process
-    - ./gradlew build
+    - ./gradlew build --daemon
 
     # copy all artifacts to $CIRCLE_ARTIFACTS
 
