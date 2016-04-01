@@ -6,7 +6,7 @@ machine:
 
 checkout:
   post:
-    - git fetch --tags
+    - git pull --tags
 
     # show all tags
     # - git tag
