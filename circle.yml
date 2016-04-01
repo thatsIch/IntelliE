@@ -9,7 +9,7 @@ checkout:
     - git fetch --tags
 
     # show all tags
-    - git tag
+    # - git tag
 
 # setting up your project's language-specific dependencies
 dependencies:
@@ -19,9 +19,6 @@ dependencies:
 
     # grand gradlew permissions
     - chmod +x gradlew
-
-    # maybe fixes git?
-    - unset GIT_EXEC_PATH
 
   override:
     # check gradle dependencies
