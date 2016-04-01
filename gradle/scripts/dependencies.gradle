@@ -1,4 +1,6 @@
 repositories {
+    mavenLocal()
+    jcenter()
     mavenCentral()
 
     // AE2 is on forge maven
