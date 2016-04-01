@@ -62,12 +62,12 @@ private ProjectVersion readVersion() {
     try {
         exec {
             executable = 'git'
-            args = ['describe', '--tags', "HEAD"]
+            args = ['describe', '--tags', "HEAD", "--abbrev=0"]
             standardOutput = outStream
         }
 
         def fullVersion = outStream.toString().trim()
-        def matcher = fullVersion =~ /(\d+).(\d+).(\d+).(\d+)/
+        def matcher = fullVersion =~ /v(\d+).(\d+).(\d+).(\d+)/
 
         Integer major = matcher[0][1].toInteger()
         Integer minor = matcher[0][2].toInteger()
