@@ -19,7 +19,7 @@ dependencies:
 
   override:
     # check gradle dependencies
-    - ./gradlew dependencies --daemon --quiet
+    - ./gradlew dependencies --daemon > /dev/null
     - ./gradlew compileTestJava --daemon
 
   cache_directories:
