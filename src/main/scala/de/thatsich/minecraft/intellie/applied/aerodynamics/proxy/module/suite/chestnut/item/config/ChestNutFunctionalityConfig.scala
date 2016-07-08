@@ -13,4 +13,6 @@ trait ChestNutFunctionalityConfig
 	def minimalFlySpeed: Double
 
 	def maximalFlySpeed: Double
+
+	def ticksToRegisterDoubleJump: Int
 }

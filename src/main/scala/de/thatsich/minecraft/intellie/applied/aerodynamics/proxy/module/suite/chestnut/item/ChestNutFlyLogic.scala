@@ -22,6 +22,7 @@ extends ItemArmor
         with ArmorPower
         with BoundDetection
 {
+	// provided
 	def funcTags: ChestNutFunctionalityTags
 
 	val keys = new ChestNutKeyInputEventHandler
@@ -41,7 +42,7 @@ extends ItemArmor
 		// jumps for first time, starts toggle timer
 		if (this.keys.isJumping && this.flyToggleTimer == 0)
 		{
-			this.flyToggleTimer = 7
+			this.flyToggleTimer = funcTags.TicksToRegisterDoubleJump
 			this.jumped = false
 		}
 		// released jump
@@ -55,6 +56,7 @@ extends ItemArmor
 			this.on = !this.on
 		}
 
+		// decrements until reaching 0 again; resetting the counter
 		if (this.flyToggleTimer > 0) this.flyToggleTimer -= 1
 
 		if (this.on && this.inAir(player) && this.hasEnoughPower(armor))
