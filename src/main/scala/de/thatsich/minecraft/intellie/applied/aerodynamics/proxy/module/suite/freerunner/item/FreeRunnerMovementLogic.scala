@@ -40,7 +40,10 @@ extends ItemArmor
 
 		if (currentPower >= discharge)
 		{
-			this.extractAEPower(is, discharge)
+			val isPressingWASD = player.moveForward != 0 || player.moveStrafing != 0
+			if (isPressingWASD) {
+				this.extractAEPower(is, discharge)
+			}
 
 			if (modifier == null)
 			{
