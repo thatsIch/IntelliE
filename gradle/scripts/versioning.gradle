@@ -77,7 +77,7 @@ private ProjectVersion readVersion() {
         projectVersion = new ProjectVersion(major, minor, revision, commit)
     }
     catch (errorOnParse) {
-        logger.error ("exception occured while parsing the version from 'git describe --tags HEAD'", errorOnParse)
+        logger.error ("exception occurred while parsing the version from 'git describe --tags HEAD'", errorOnParse)
 
         tag("/dev/null", "0.0.0.0")
     }
