@@ -12,7 +12,7 @@ object AppliedAerodynamicsAPI extends AeroAPI
 	/**
 	 * Access to the API object of Applied Aerodynamics
 	 *
-	 * @return the {@link AeroProxy}
+	 * @return the [[AeroProxy]]
 	 */
 	lazy val proxy: AeroProxy =
 	{

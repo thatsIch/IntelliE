@@ -1,5 +1,20 @@
-package de.thatsich.minecraft.intellie.applied.intelligences
+package de.thatsich.minecraft.intellie.applied.int
 
+
+/**
+  * hand-held item having wireless access to the AE Network
+	- uses items and blocks from AE network
+	- you can add several points to it, which will expand its copied range
+	- maybe overlay to indicate which items are missing in the network?
+	- GUI with checkboxes to fine-configure it
+  * opens like Terminal
+  * auto-craft or only use existing items
+  *
+  * @author thatsIch
+  * @since 04.08.16
+  */
+package object replicator
+{}
 
 /**
  * bore constructed with pipes

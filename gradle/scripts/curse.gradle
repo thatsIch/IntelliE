@@ -109,7 +109,7 @@ curse {
     apiKey = "eb5b9b11-5d6a-405c-baa2-3acac200baee"
     projectId = "222848"
     changelog = format
-    releaseType = "release"
+    releaseType = "alpha"
 }
 
 task printChangelog(group: 'Debug', description: 'Prints the theChangelog for debugging purposes.') << {
