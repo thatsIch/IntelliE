@@ -30,7 +30,7 @@ object AppliedAerodynamics extends AeroAPI
 		clientSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.AeroClientProxy",
 		serverSide = "de.thatsich.minecraft.intellie.applied.aerodynamics.proxy.AeroServerProxy"
 	)
-	var proxy: AeroCommonProxy = null
+	var proxy: AeroCommonProxy = _
 
 	@Mod.EventHandler
 	def onPreInit(event: FMLPreInitializationEvent): Unit = this.proxy.onPreInit(event)
